@@ -5,15 +5,18 @@ using UnityEngine;
 public class SoundManager : SingletonDDOL<SoundManager>
 {
     private AudioSource audioSource;
-    public float musicVolume { get; private set; }
-    public float soundEffectVolume { get; private set; }
+    public float musicVolume;// { get; private set; }
+    public float soundEffectVolume;// { get; private set; }
+
+    [SerializeField] private AudioClip clipTest;
 
     protected override void Awake()
     {
         base.Awake();
 
-        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         audioSource.loop = true;
+        SetMusicVolume(musicVolume);
     }
 
     //¾À¹Ù²ð¶§ BGM ¹Ù²Ù±â
@@ -33,5 +36,23 @@ public class SoundManager : SingletonDDOL<SoundManager>
         //
         tempComp.SetClip(clip, soundEffectVolume, 0.1f);
         return tempObj;
+    }
+
+    //¹è°æÀ½¾Ç Á¶Àý
+    public void SetMusicVolume(float volume)
+    {
+        musicVolume = volume;
+        audioSource.volume = volume;
+    }
+
+    public void SetSoundEffectVolume(float volume)
+    {
+        soundEffectVolume = volume;
+    }
+
+
+    public void SoundTest()
+    {
+        GameObject soundObj = SoundManager.Instance.PlayClip(clipTest);
     }
 }
