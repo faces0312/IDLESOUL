@@ -33,7 +33,13 @@ public class CSVController
         strBuilder.Append(",");
         strBuilder.Append(saveData.Name);
         strBuilder.Append(",");
-        strBuilder.Append(saveData.Datas);
+
+        strBuilder.Append('\"');
+        for (int i = 0 ; i < saveData.Datas.Count; i++)
+        {
+            strBuilder.Append(saveData.Datas[i].ToString() + ",");
+        }
+        strBuilder.Append('\"');
         tw.WriteLine(strBuilder.ToString());
         tw.Close();
 

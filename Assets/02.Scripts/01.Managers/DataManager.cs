@@ -6,7 +6,7 @@ using UnityEngine;
 public class SaveData
 {
     public readonly string saveFileHeader =  "UID,Name,Datas" ;
-    public readonly string saveFileHeaderType = "int,String,List<int>" ;
+    public readonly string saveFileHeaderType = "int,string,list<int>" ;
 
     public int UID;
     public string Name;
