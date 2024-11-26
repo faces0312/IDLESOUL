@@ -1,0 +1,5 @@
+﻿ID,Name,Age,Scores,Fact
+int,string,int,float,bool
+1,John,25,0.85,TRUE
+2,Jane,30,0.76,FALSE
+3,Doe,22,0.65,TRUE
