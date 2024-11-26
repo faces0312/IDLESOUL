@@ -10,6 +10,9 @@ public class SoundManager : SingletonDDOL<SoundManager>
 
     [SerializeField] private AudioClip clipTest;
 
+    private const string SOUND_POOL_KEY = "SoundEffects";
+    private const int INITIAL_POOL_SIZE = 10;
+
     protected override void Awake()
     {
         base.Awake();
@@ -17,6 +20,8 @@ public class SoundManager : SingletonDDOL<SoundManager>
         audioSource = gameObject.GetComponent<AudioSource>();
         audioSource.loop = true;
         SetMusicVolume(musicVolume);
+
+        InitializeSoundPool();
     }
 
     //씬바뀔때 BGM 바꾸기
@@ -26,11 +31,19 @@ public class SoundManager : SingletonDDOL<SoundManager>
         audioSource.clip = clip;
         audioSource.Play();
     }
+    private void InitializeSoundPool()
+    {
+        ObjectPool soundPool = new ObjectPool("SoundEffect", INITIAL_POOL_SIZE, "Prefabs/Sample/AudioSource");
+        ObjectPoolManager.Instance.AddPool(SOUND_POOL_KEY, soundPool);
+    }
+
     //효과음
     public GameObject PlayClip(AudioClip clip)
     {
-        GameObject tempObj = new GameObject("SoundSource");
-        SoundSource tempComp = tempObj.AddComponent<SoundSource>();
+        ObjectPool pool = ObjectPoolManager.Instance.GetPool(SOUND_POOL_KEY, "SoundEffect");
+        GameObject tempObj = pool.GetObject();
+        tempObj.SetActive(true);
+        SoundSource tempComp = tempObj.GetComponent<SoundSource>();
         //TODO :: new GameObject가 ObjectPool에서 접근할 수 있게
         //AddComponent 대신 GetComponent로 SoundSource에 접근
         //
@@ -49,7 +62,6 @@ public class SoundManager : SingletonDDOL<SoundManager>
     {
         soundEffectVolume = volume;
     }
-
 
     public void SoundTest()
     {
