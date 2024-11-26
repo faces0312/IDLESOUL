@@ -4,9 +4,11 @@ using UnityEngine.SceneManagement;
 public class SceneDataManager : SingletonDDOL<SceneDataManager>
 {
     public string NextScene;
-    public int Stage;
-    public float Modifier;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     public void LoadScene(string nextScene)
     {

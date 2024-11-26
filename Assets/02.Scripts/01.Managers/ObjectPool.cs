@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class ObjectPool : MonoBehaviour
+public class ObjectPool
 {
     public string Id;
     public int Size;
@@ -20,17 +20,19 @@ public class ObjectPool : MonoBehaviour
         this.Id = id;
         this.Size = size;
         this.Path = path;
-
-        MakePool();
-    }
-
-    private void Awake()
-    {
+        Prefab = Resources.Load<GameObject>(path);
         Pool = new Queue<GameObject>();
-        Prefab = Resources.Load<GameObject>(Path);
 
         MakePool();
     }
+
+    //private void Awake()
+    //{
+    //    Pool = new Queue<GameObject>();
+    //    Prefab = Resources.Load<GameObject>(Path);
+
+    //    MakePool();
+    //}
 
     /// <summary>
     /// 오브젝트 풀의 Queue<GameObject>를 반환
@@ -70,7 +72,7 @@ public class ObjectPool : MonoBehaviour
         }
         for (int i = 0; i < Size; i++)
         {
-            GameObject obj = Instantiate(Prefab);
+            GameObject obj = MonoBehaviour.Instantiate(Prefab);
             obj.SetActive(false);
             Pool.Enqueue(obj);
         }
