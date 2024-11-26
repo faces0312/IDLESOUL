@@ -1,10 +1,16 @@
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneDataManager : Singleton<SceneDataManager>
+public class SceneDataManager : SingletonDDOL<SceneDataManager>
 {
-    public void LoadScene(string sceneName)
+    public string NextScene;
+    public int Stage;
+    public float Modifier;
+
+
+    public void LoadScene(string nextScene)
     {
-        nextScene = sceneName;
+        NextScene = nextScene;
         SceneManager.LoadScene("LoadingScene");
     }
 }
