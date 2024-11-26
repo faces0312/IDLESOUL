@@ -1,5 +1,5 @@
-﻿ID,Name,Age,Scores,Fact
-int,string,int,float,bool
-1,John,25,0.85,TRUE
-2,Jane,30,0.76,FALSE
-3,Doe,22,0.65,TRUE
+﻿ID,Name,Age,Scores,Fact,Datas,Datas2
+int,string,int,float,bool,List<int>,List<string>
+1,John,25,0.85,TRUE,"1,20,30","A,B,C"
+2,Jane,30,0.76,FALSE,"20,51,43","C,BD,S"
+3,Doe,22,0.65,TRUE,"52,84,101","S,X,DD,EF"
