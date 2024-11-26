@@ -17,15 +17,24 @@ public class UIManager : Singleton<UIManager>
 
     public void ShowUI(string key)
     {
-        if(activeController != null)
-        {
-            activeController.OnHide();
-        }
+        //if(activeController != null)
+        //{
+        //    activeController.OnHide();
+        //}
 
         if(controllers.TryGetValue(key, out UIController controller))
         {
             activeController = controller;
             activeController.OnShow();
+        }
+    }
+
+    public void HideUI(string key)
+    {
+        if (controllers.TryGetValue(key, out UIController controller))
+        {
+            activeController = controller;
+            activeController.OnHide();
         }
     }
 

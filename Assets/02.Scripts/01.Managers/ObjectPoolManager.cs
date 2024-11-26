@@ -47,7 +47,7 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
     /// <param name="pool">추가할 오브젝트 풀</param>
     public void AddPool(string id, ObjectPool pool)
     {
-        if (poolDict[id] == null)
+        if (!poolDict.ContainsKey(id))
         {
             List<ObjectPool> objPool = new List<ObjectPool>();
             objPool.Add(pool);
