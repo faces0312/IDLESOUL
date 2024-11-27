@@ -20,10 +20,21 @@ public class ObjectPool
         this.Id = id;
         this.Size = size;
         this.Path = path;
-        Prefab = Resources.Load<GameObject>(path);
-        Pool = new Queue<GameObject>();
+        this.Prefab = Resources.Load<GameObject>(path);
+        this.Pool = new Queue<GameObject>();
 
         MakePool();
+    }
+
+    public ObjectPool(string id, int size, GameObject prefab)
+    {
+        this.Id = id;
+        this.Size = size;
+        this.Path = string.Empty;
+        this.Prefab = prefab;
+        this.Pool = new Queue<GameObject>();
+
+        MakePoolWithPrefab();
     }
 
     //private void Awake()
@@ -70,6 +81,17 @@ public class ObjectPool
         {
             Prefab = Resources.Load<GameObject>(Path);
         }
+        for (int i = 0; i < Size; i++)
+        {
+            GameObject obj = MonoBehaviour.Instantiate(Prefab);
+            obj.SetActive(false);
+            Pool.Enqueue(obj);
+        }
+    }
+
+    public void MakePoolWithPrefab()
+    {
+        Pool = new Queue<GameObject>();
         for (int i = 0; i < Size; i++)
         {
             GameObject obj = MonoBehaviour.Instantiate(Prefab);
