@@ -1,0 +1,53 @@
+{
+    "UserID": 12345,
+    "Nickname": "지존 감자탕11111",
+    "Level": 60,
+    "Experience": 100052,
+    "Gold": 999999,
+    "Diamonds": 9999,
+    "PlayTimeInSeconds": 72000,
+    "Inventory": {
+        "Items": [
+            {
+                "ID": 1000,
+                "Name": "나무검",
+                "Type": "Weapon",
+                "Rairty": "Common",
+                "Descripton": "평범한 나무 검이다.",
+                "Attack": 5.0,
+                "AttackPercent": false,
+                "Defence": 0.0,
+                "DefencePercent": false,
+                "Health": 0.0,
+                "HealthPercent": false,
+                "CritChance": 1.0,
+                "CritChancePercent": false,
+                "CritDamage": 100.0,
+                "CritDamagePercent": false,
+                "Effect": "없음",
+                "Cost": 100,
+                "StackMaxCount": 1
+            },
+            {
+                "ID": 2000,
+                "Name": "하급회복포션",
+                "Type": "Consummable",
+                "Rairty": "Common",
+                "Descripton": "HP회복 포션이다. 30의 체력을 올려준다.",
+                "Attack": 0.0,
+                "AttackPercent": false,
+                "Defence": 0.0,
+                "DefencePercent": false,
+                "Health": 30.0,
+                "HealthPercent": false,
+                "CritChance": 0.0,
+                "CritChancePercent": false,
+                "CritDamage": 0.0,
+                "CritDamagePercent": false,
+                "Effect": "HP회복",
+                "Cost": 200,
+                "StackMaxCount": 999
+            }
+        ]
+    }
+}

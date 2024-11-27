@@ -25,9 +25,6 @@ public class SoundSource : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         audioSource.Stop();
-
-        //TODO :: Destory대신에 비활성화 
         gameObject.SetActive(false);
-        //
     }
 }
