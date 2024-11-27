@@ -13,6 +13,7 @@ public enum SkillType
 public interface ISkill
 {
     void UseSkill();
+    void UpgradeSkill(int amount);
 }
 
 public abstract class Skill : MonoBehaviour, ISkill
@@ -32,4 +33,5 @@ public abstract class Skill : MonoBehaviour, ISkill
     protected SkillType type;
 
     public abstract void UseSkill();
+    public abstract void UpgradeSkill(int amount);
 }

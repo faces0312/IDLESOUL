@@ -8,4 +8,9 @@ public class KnightUltimateSkill : Skill
     {
         
     }
+
+    public override void UpgradeSkill(int amount)
+    {
+
+    }
 }

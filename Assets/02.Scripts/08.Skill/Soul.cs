@@ -6,7 +6,8 @@ public enum JobType
 {
     Attacker,
     Tanker,
-    Healer
+    Healer,
+    None
 }
 
 public abstract class Soul : MonoBehaviour
@@ -16,34 +17,39 @@ public abstract class Soul : MonoBehaviour
     protected string soulName;
     protected string description;
 
-    protected int level;
-    protected int maxLevel;
+    protected int level = 1;
+    protected int maxLevel = 100;
     protected int levelUpCost;
 
     protected int upgradeCount = 1;
     protected int upgradeStack = 0;
 
-    protected JobType job;
+    protected JobType job = JobType.None;
 
     protected Skill[] skills = new Skill[(int)SkillType.Max];
 
-    protected void LevelUP(int levelAmount)
+    protected void Awake()
     {
-
+        statHandler = GetComponent<StatHandler>();
     }
 
-    protected void ApplyPassiveSkill(Skill skill)
+    public void LevelUP(int amount)
     {
-
+        statHandler.LevelUp(amount);
     }
 
-    protected void UseDefaultSkill(Skill skill)
+    public void UpgradeSkill(Skill skill, int amount)
     {
-
+        skill.UpgradeSkill(amount);
     }
 
-    protected void UseUltimateSkill(Skill skill)
+    public void ApplyPassiveSkill()
     {
+        skills[(int)SkillType.Passive].UseSkill();
+    }
 
+    public void UseSkill(Skill skill)
+    {
+        skill.UseSkill();
     }
 }
