@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Linq;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using static UnityEditor.Progress;
@@ -46,6 +47,18 @@ public class EnemyData
     public float    CritChance;
     public float    CritDamage;
 }
+[System.Serializable]
+public class StagaData
+{
+    public int       ID;
+    public int       ChapterNum;
+    public int       StageNum;
+    public float     CurStageModifier;
+    public string    StageName;
+    public int       SlayEnemyCount;
+    public List<int> SummonEnemyIDList;
+
+}
 
 [Serializable]
 public class UserData
@@ -59,6 +72,7 @@ public class UserData
     public int       PlayTimeInSeconds;
     //public string    LastLogin;         // Unity의 JsonUtolity는 DataTime 자료형 지원 안함
     public Inventory Inventory;
+    public ClearStageData ClearStage;
 }
 
 [Serializable]
@@ -68,10 +82,18 @@ public class Inventory
     //public Equipment Equipment;
 }
 
+[Serializable]
+public class ClearStageData
+{
+
+    
+}
+
 public class DataManager : SingletonDDOL<DataManager>
 {
     private readonly string csvItemDBPath = "CSV/ItemDB";
     private readonly string csvEnemyDBPath = "CSV/EnemyDB";
+    private readonly string csvStageDBPath = "CSV/StageDB";
 
     private readonly string jsonUserDataPath = Application.dataPath + "/userdata.json";
 
@@ -81,9 +103,10 @@ public class DataManager : SingletonDDOL<DataManager>
 
     private Dictionary<int, ItemData> itemDB = new Dictionary<int, ItemData>();
     private Dictionary<int, EnemyData> enemyDB = new Dictionary<int, EnemyData>();
-
+    private Dictionary<int, StagaData> stageDB = new Dictionary<int, StagaData>();
     public Dictionary<int, ItemData> ItemDB { get => itemDB; }
     public Dictionary<int, EnemyData> EnemyDB { get => enemyDB; }
+    public Dictionary<int, StagaData> StageDB { get => stageDB; }
 
     Inventory inventory = new Inventory();
     UserData userData = new UserData();
@@ -97,6 +120,7 @@ public class DataManager : SingletonDDOL<DataManager>
     {
         itemDB = CsvController.ItemCSVRead(csvItemDBPath);
         enemyDB = CsvController.EnemyCSVRead(csvEnemyDBPath);
+        stageDB = CsvController.StageCSVRead(csvStageDBPath);
 
         inventory.Items = new List<ItemData>();
         inventory.Items.Add(ItemDB[1000]);
