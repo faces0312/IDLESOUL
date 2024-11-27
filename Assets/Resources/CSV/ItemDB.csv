@@ -1,0 +1,11 @@
+﻿ID,Name,Type,Rairty,Descripton,Attack,AttackPercent,Defence,DefencePercent,Health,HealthPercent,CritChance,CritChancePercent,CritDamage,CritDamagePercent,Effect,Cost,StackMaxCount
+int,string,string,string,string,float,bool,float,bool,float,bool,float,bool,float,bool,string,int,int
+1000,나무검,Weapon,Common,평범한 나무 검이다.,5,FALSE,0,FALSE,0,FALSE,1,FALSE,100,FALSE,없음,100,1
+1001,철검,Weapon,Rare,철로 만든 검이다.,7,FALSE,0,FALSE,0,FALSE,1,FALSE,100,FALSE,없음,100,1
+1002,황동검,Weapon,Rare,황동으로 만든 검이다. 웬지 기분이 나쁘다.,5,FALSE,5,FALSE,0,FALSE,1,FALSE,100,FALSE,없음,100,1
+1003,은검,Weapon,Epic,은으로 만든 검이다. 1인분은 하는것 같다.,10,FALSE,5,FALSE,0,FALSE,1,FALSE,100,FALSE,없음,100,1
+1004,금검,Weapon,Legendary,금으로 만든 검이다. 이제 좀 치는것 같다.,20,FALSE,10,FALSE,0,FALSE,5,FALSE,150,FALSE,없음,100,1
+2000,하급회복포션,Consummable,Common,HP회복 포션이다. 30의 체력을 올려준다.,0,FALSE,0,FALSE,30,FALSE,0,FALSE,0,FALSE,HP회복,200,999
+2001,중급회복포션,Consummable,Rare,HP회복 포션이다. 50의 체력을 올려준다.,0,FALSE,0,FALSE,50,FALSE,0,FALSE,0,FALSE,HP회복,200,999
+2002,상급회복포션,Consummable,Epic,HP회복 포션이다. 100의 체력을 올려준다.,0,FALSE,0,FALSE,100,FALSE,0,FALSE,0,FALSE,HP회복,200,999
+2003,엘릭서,Consummable,Legendary,HP회복 포션이다. 50% 체력을 올려준다.,0,FALSE,0,FALSE,30,TRUE,0,FALSE,0,FALSE,HP회복,200,999

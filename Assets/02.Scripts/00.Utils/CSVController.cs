@@ -4,14 +4,8 @@ using System.Text.RegularExpressions;
 using System.Linq;
 using System.IO;
 using System.Text;
-using UnityEngine.Analytics;
 
-public enum CSVEnumType
-{
-    Bullet = 0,
-    Enemy = 1,
 
-}
 
 public class CSVController
 {
@@ -19,44 +13,18 @@ public class CSVController
     static string LINE_SPLIT_RE = @"\r\n|\n\r|\n|\r";//가져온 CSV데이터를 엔터단위로 끊기위한 분리자
     static char[] TRIM_CHARS = { '\"' }; //
 
-    private StringBuilder strBuilder = new StringBuilder();
-
-    public void Write(string filePath, SaveData saveData)
+    public Dictionary<int, ItemData> ItemCSVRead(string file)
     {
-        TextWriter tw = new StreamWriter(filePath, false, Encoding.UTF8 );
-
-        tw.WriteLine(saveData.saveFileHeader);
-        tw.WriteLine(saveData.saveFileHeaderType);
-
-        strBuilder.Clear();
-        strBuilder.Append(saveData.UID);
-        strBuilder.Append(",");
-        strBuilder.Append(saveData.Name);
-        strBuilder.Append(",");
-
-        strBuilder.Append('\"');
-        for (int i = 0 ; i < saveData.Datas.Count; i++)
-        {
-            strBuilder.Append(saveData.Datas[i].ToString() + ",");
-        }
-        strBuilder.Append('\"');
-        tw.WriteLine(strBuilder.ToString());
-        tw.Close();
-
-    }
-
-    public List<Dictionary<string, object>> Read(string file)
-    {
-        List<Dictionary<string, object>> list = new List<Dictionary<string, object>>();
+        Dictionary<int, ItemData> list = new Dictionary<int, ItemData>();
         TextAsset data = Resources.Load(file) as TextAsset;
 
         //가져온 텍스트 덩어리를 해당 분리자를 통해 분리한다.
         string[] lines = Regex.Split(data.text, LINE_SPLIT_RE);
-        
+
         //해당 CSV 데이터에 헤더(카테고리) + 해당 자료형만 입력되있는 상태이므로 List 반환
         if (lines.Length <= 2) return list;
 
-      
+
         string[] header = Regex.Split(lines[0], SPLIT_RE);  //해당 CSV 데이터에 헤더(카테고리)입력 -> Dictonary의 키값으로 사용
         string[] typeHeader = Regex.Split(lines[1], SPLIT_RE);   //해당 CSV 데이터에 자료형 입력 -> 해당 자료의 자료형 선정시 사용됨
         for (int i = 2; i < lines.Length; i++)
@@ -64,23 +32,69 @@ public class CSVController
             string[] values = Regex.Split(lines[i], SPLIT_RE);
             if (values.Length == 0 || values[0] == "") continue; //정보가 없으면 다음 행으로 이동
 
-            Dictionary<string, object> entry = new Dictionary<string, object>();
-            for (int j = 0; j < header.Length && j < values.Length; j++)
-            {
-                string value = values[j];
-                //데이터의 앞 뒤의 null문자를 제거하고 빈 데이터("")로 전환
-                value = value.TrimStart(TRIM_CHARS).TrimEnd(TRIM_CHARS).Replace("\\", "");
+            ItemData item = new ItemData();
+            item.ID = (int)DataTypeCheck(typeHeader[0], values[0]);
+            item.Name = (string)DataTypeCheck(typeHeader[1], values[1]);
+            item.Type = (string)DataTypeCheck(typeHeader[2], values[2]);
+            item.Rairty = (string)DataTypeCheck(typeHeader[3], values[3]);
+            item.Descripton = (string)DataTypeCheck(typeHeader[4], values[4]);
+            item.Attack = (float)DataTypeCheck(typeHeader[5], values[5]); ;
+            item.AttackPercent = (bool)DataTypeCheck(typeHeader[6], values[6]); ;
+            item.Defence = (float)DataTypeCheck(typeHeader[7], values[7]);
+            item.DefencePercent = (bool)DataTypeCheck(typeHeader[8], values[8]);
+            item.Health = (float)DataTypeCheck(typeHeader[9], values[9]);
+            item.HealthPercent = (bool)DataTypeCheck(typeHeader[10], values[10]);
+            item.CritChance = (float)DataTypeCheck(typeHeader[11], values[11]);
+            item.CritChancePercent = (bool)DataTypeCheck(typeHeader[12], values[12]);
+            item.CritDamage = (float)DataTypeCheck(typeHeader[13], values[13]);
+            item.CritDamagePercent = (bool)DataTypeCheck(typeHeader[14], values[14]);
+            item.Effect = (string)DataTypeCheck(typeHeader[15], values[15]);
+            item.Cost = (int)DataTypeCheck(typeHeader[16], values[16]);
+            item.StackMaxCount = (int)DataTypeCheck(typeHeader[17], values[17]);
+            list[item.ID] = item;
 
-                var finalvalue = DataTypeCheck(typeHeader[j] , value);
-
-                entry[header[j]] = finalvalue;
-            }
-            list.Add(entry);
         }
         return list;
     }
 
-    private object DataTypeCheck(string type ,string value)
+    public Dictionary<int, EnemyData> EnemyCSVRead(string file)
+    {
+        Dictionary<int, EnemyData> list = new Dictionary<int, EnemyData>();
+        TextAsset data = Resources.Load(file) as TextAsset;
+
+        //가져온 텍스트 덩어리를 해당 분리자를 통해 분리한다.
+        string[] lines = Regex.Split(data.text, LINE_SPLIT_RE);
+
+        //해당 CSV 데이터에 헤더(카테고리) + 해당 자료형만 입력되있는 상태이므로 List 반환
+        if (lines.Length <= 2) return list;
+
+        string[] header = Regex.Split(lines[0], SPLIT_RE);  //해당 CSV 데이터에 헤더(카테고리)입력 -> Dictonary의 키값으로 사용
+        string[] typeHeader = Regex.Split(lines[1], SPLIT_RE);   //해당 CSV 데이터에 자료형 입력 -> 해당 자료의 자료형 선정시 사용됨
+        for (int i = 2; i < lines.Length; i++)
+        {
+            string[] values = Regex.Split(lines[i], SPLIT_RE);
+            if (values.Length == 0 || values[0] == "") continue; //정보가 없으면 다음 행으로 이동
+
+            EnemyData enemy = new EnemyData();
+            enemy.ID = (int)DataTypeCheck(typeHeader[0], values[0]);
+            enemy.Name = (string)DataTypeCheck(typeHeader[1], values[1]);
+            enemy.Descripton = (string)DataTypeCheck(typeHeader[2], values[2]);
+            enemy.DropItemID = (List<int>)DataTypeCheck(typeHeader[3], values[3]);
+            enemy.DropGold = (int)DataTypeCheck(typeHeader[4], values[4]);
+            enemy.Attack = (float)DataTypeCheck(typeHeader[5], values[5]); ;
+            enemy.AttackSpeed = (float)DataTypeCheck(typeHeader[6], values[6]);
+            enemy.Defence = (float)DataTypeCheck(typeHeader[7], values[7]);
+            enemy.Health = (float)DataTypeCheck(typeHeader[8], values[8]);
+            enemy.Health = (float)DataTypeCheck(typeHeader[9], values[9]);
+            enemy.CritChance = (float)DataTypeCheck(typeHeader[10], values[10]);
+            enemy.CritDamage = (float)DataTypeCheck(typeHeader[11], values[11]);
+            list[enemy.ID] = enemy;
+
+        }
+        return list;
+    }
+
+    private object DataTypeCheck(string type, string value)
     {
         switch (type)
         {
@@ -98,13 +112,12 @@ public class CSVController
             //    throw new Exception($"지원하지 않는 자료형 타입입니다.: {type}");
         }
 
-        if(type.StartsWith("List<Enum"))
-        {
-
-        }
-        else if (type.StartsWith("List<"))
+        if (type.StartsWith("List<"))
         {
             var itemType = type.Substring(5, type.Length - 6);
+
+            //CSV 데이터 셀 서식이 Text이기에 \" 철자를 제거해야된다. 
+            value = value.TrimStart(TRIM_CHARS).TrimEnd(TRIM_CHARS).Replace("\\", "");
 
             switch (itemType)
             {
@@ -118,10 +131,12 @@ public class CSVController
                     return value.Split(',').Select(bool.Parse).ToList();  //List<bool>
                 case "string":
                     return value.Split(',').Select(v => v.Trim()).ToList();  //List<string>
-                    
+
             }
         }
 
+
         return null;
     }
+
 }
