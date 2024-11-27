@@ -1,27 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : SingletonDDOL<SoundManager>
 {
+    public AudioMixer audioMixer;
     private AudioSource audioSource;
+
+    public float masterVolume;// { get; private set; }
     public float musicVolume;// { get; private set; }
     public float soundEffectVolume;// { get; private set; }
-
-    [SerializeField] private AudioClip clipTest;
-
-    private const string SOUND_POOL_KEY = "SoundEffects";
-    private const int INITIAL_POOL_SIZE = 10;
 
     protected override void Awake()
     {
         base.Awake();
 
         audioSource = gameObject.GetComponent<AudioSource>();
-        audioSource.loop = true;
-        SetMusicVolume(musicVolume);
+        audioSource.loop = true; 
+    }
 
-        InitializeSoundPool();
+    private void Start()
+    {
+        SetBGMVolume(musicVolume);
+        SetSoundEffectVolume(soundEffectVolume);
     }
 
     //씬바뀔때 BGM 바꾸기
@@ -31,40 +33,30 @@ public class SoundManager : SingletonDDOL<SoundManager>
         audioSource.clip = clip;
         audioSource.Play();
     }
-    private void InitializeSoundPool()
+
+    //전체음악 조절(슬라이더)
+    public void SetMasterVolume(float volume)
     {
-        ObjectPool soundPool = new ObjectPool("SoundEffect", INITIAL_POOL_SIZE, "Prefabs/Sample/AudioSource");
-        ObjectPoolManager.Instance.AddPool(SOUND_POOL_KEY, soundPool);
+        masterVolume = volume;
+        //masterVolume 범위를 0.001~1사이의 값으로
+        //오디어 믹서는 20 ~ -80 사이의 값이기 때문
+        masterVolume = Mathf.Clamp(masterVolume, 0.001f, 1f);
+        audioMixer.SetFloat("Master", Mathf.Log10(masterVolume) * 20);
     }
 
-    //효과음
-    public GameObject PlayClip(AudioClip clip)
-    {
-        ObjectPool pool = ObjectPoolManager.Instance.GetPool(SOUND_POOL_KEY, "SoundEffect");
-        GameObject tempObj = pool.GetObject();
-        tempObj.SetActive(true);
-        SoundSource tempComp = tempObj.GetComponent<SoundSource>();
-        //TODO :: new GameObject가 ObjectPool에서 접근할 수 있게
-        //AddComponent 대신 GetComponent로 SoundSource에 접근
-        //
-        tempComp.SetClip(clip, soundEffectVolume, 0.1f);
-        return tempObj;
-    }
-
-    //배경음악 조절
-    public void SetMusicVolume(float volume)
+    //배경음악 조절(슬라이더)
+    public void SetBGMVolume(float volume)
     {
         musicVolume = volume;
-        audioSource.volume = volume;
+        musicVolume = Mathf.Clamp(musicVolume, 0.001f, 1f);
+        audioMixer.SetFloat("BGM", Mathf.Log10(musicVolume) * 20);
     }
 
+    //효과음 조절(슬라이더)
     public void SetSoundEffectVolume(float volume)
     {
         soundEffectVolume = volume;
-    }
-
-    public void SoundTest()
-    {
-        GameObject soundObj = SoundManager.Instance.PlayClip(clipTest);
+        soundEffectVolume = Mathf.Clamp(soundEffectVolume, 0.001f, 1f);
+        audioMixer.SetFloat("SFX", Mathf.Log10(soundEffectVolume) * 20);
     }
 }
