@@ -3,23 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : BaseCharacter
-{
-    public EnemyData enemyData;
-    
-    public GameObject target;
-    Vector3 direction;
-    public Rigidbody rb;
+{    
+    private GameObject target;
+    private Vector3 direction;
+   [SerializeField] private float distance;
+    private Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         //target = GameManager.Instance.player;
         target = GameObject.Find("Player");
-
-
-        Debug.Log(enemyData.ID);
-        Debug.Log(enemyData.Name);
-        Debug.Log(enemyData.MoveSpeed);
     }
 
     public override void Attack()
@@ -28,11 +22,11 @@ public class Enemy : BaseCharacter
 
     public override void Move()
     {
-        Vector3 targetVelocity = direction * enemyData.MoveSpeed * 5;
-        rb.velocity = targetVelocity;
+        /*Vector3 targetVelocity = direction * enemyData.MoveSpeed * 5;
+        rb.velocity = targetVelocity;*/
 
         /*float distance = Vector3.Distance(transform.position, target.transform.position);
-        if (distance > enemyData.distance)
+        if (distance > enemyData.Distance)
         {
             Vector3 targetVelocity = direction * enemyData.MoveSpeed;
             rb.velocity = targetVelocity;

@@ -22,14 +22,14 @@ public class EnemyDB
     public string Descripton;
 
     /// <summary>
-    /// DropItemID
-    /// </summary>
-    public List<int> DropItemID;
-
-    /// <summary>
     /// DropGold
     /// </summary>
     public int DropGold;
+
+    /// <summary>
+    /// DropDia
+    /// </summary>
+    public int DropDia;
 
     /// <summary>
     /// Attack
@@ -40,6 +40,11 @@ public class EnemyDB
     /// AttackSpeed
     /// </summary>
     public float AttackSpeed;
+
+    /// <summary>
+    /// AttackDistance
+    /// </summary>
+    public float AttackDistance;
 
     /// <summary>
     /// Defence

@@ -11,7 +11,9 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         InitializeEnemyPool();
-        EnemySpawn(1, "Goblin", 5000);
+
+        Invoke("SpawnCycle",1f);
+        //EnemySpawn(1, "Goblin", 5000);
         //EnemySpawn(2, "Orc", 5003);
     }
     private void InitializeEnemyPool()
@@ -21,6 +23,10 @@ public class EnemyManager : MonoBehaviour
         ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinPool);
         ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, orcPool);
     }
+    void SpawnCycle()
+    {
+        EnemySpawn(1, "Goblin", 5000);
+    }
 
     public void EnemySpawn(int cycle, string name, int id)
     {
@@ -29,7 +35,6 @@ public class EnemyManager : MonoBehaviour
         {
             GameObject enemy = pool.GetObject();
             Enemy tempEnemy = enemy.GetComponent<Enemy>();
-            tempEnemy.enemyData = DataManager.Instance.EnemyDB[id];
             enemy.SetActive(true);
             GameManager.Instance.enemies.Add(enemy);
         }
