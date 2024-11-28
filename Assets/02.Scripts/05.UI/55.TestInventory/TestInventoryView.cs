@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TestInventoryView : MonoBehaviour, UIBase
+public class TestInventoryView : MonoBehaviour, IUIBase
 {
     [SerializeField] private GameObject invenPanel;
     [SerializeField] private TextMeshProUGUI goldText;

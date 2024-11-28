@@ -6,7 +6,7 @@ public class TestInventoryController : UIController
 {
     private TestInventoryModel inventoryModel;
 
-    public override void Initialize(UIBase view, UIModel model)
+    public override void Initialize(IUIBase view, UIModel model)
     {
         base.Initialize(view, model);
 
