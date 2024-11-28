@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1212871570038520750}
+  - component: {fileID: 614377289679129780}
   m_Layer: 0
   m_Name: Orc
   m_TagString: Untagged
@@ -31,3 +32,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &614377289679129780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251077222424514876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28e1e395d495905459a98c89a6485619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData:
+    ID: 0
+    Name: 
+    Descripton: 
+    DropItemID: 
+    DropGold: 0
+    Attack: 0
+    AttackSpeed: 0
+    Defence: 0
+    MoveSpeed: 0
+    Health: 0
+    CritChance: 0
+    CritDamage: 0
+  ID: 0
+  Name: 
+  Description: 
+  DropGoldMin: 0
+  DropGoldMax: 0
+  DropDiamondMin: 0
+  DropDiamondMax: 0
