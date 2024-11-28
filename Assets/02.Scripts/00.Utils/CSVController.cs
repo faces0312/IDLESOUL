@@ -2,10 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Linq;
-using System.IO;
-using System.Text;
-
-
 
 public class CSVController
 {
@@ -56,7 +52,6 @@ public class CSVController
         }
         return list;
     }
-
     public Dictionary<int, EnemyData> EnemyCSVRead(string file)
     {
         Dictionary<int, EnemyData> list = new Dictionary<int, EnemyData>();
