@@ -39,30 +39,42 @@ public class DataManager : SingletonDDOL<DataManager>
     private readonly string jsonSellItemDBPath = "JSON/SellItemDB";
     private readonly string jsonEnemyDBPath = "JSON/EnemyDB";
     private readonly string jsonStageDBPath = "JSON/StageDB";
+    private readonly string jsonSoulDBPath = "JSON/SoulDB";
+    private readonly string jsonSkillDBPath = "JSON/SkillDB";
+
 
     private readonly string jsonUserDataPath = Application.dataPath + "/userdata.json";
 
     private StringBuilder strBuilder = new StringBuilder();
     public JsonController JsonController = new JsonController();
 
-    //Inventory inventory = new Inventory();
-
     private EnemyDBLoader enemyDB;
     private ItemDBLoader itemDB;
     private SellItemDBLoader sellItemDB;
     private StageDBLoader stageDB;
+    private SoulDBLoader soulDB;
+    private SkillDBLoader skillDB;
+
 
     public EnemyDBLoader EnemyDB { get => enemyDB; }
     public ItemDBLoader ItemDB { get => itemDB; }
     public SellItemDBLoader SellItemDB { get => sellItemDB; }
     public StageDBLoader StageDB { get => stageDB; }
+    public SoulDBLoader SoulDB { get => soulDB; }
+    public SkillDBLoader SkillDB { get => skillDB; }
 
-    Inventory inventory;
-    UserData userData = new UserData();
+    private Inventory inventory = new Inventory();
+    private UserData userData = new UserData();
+
+    public static event Action<UserData> OnEventSaveUserData;
+    public static event Action OnEventLoadUserData;
 
     protected override void Awake()
     {
         base.Awake();
+
+        OnEventSaveUserData += SaveUserData;
+        OnEventLoadUserData += LoadUserData;
     }
 
     private void Start()
@@ -71,7 +83,9 @@ public class DataManager : SingletonDDOL<DataManager>
         itemDB = new ItemDBLoader(jsonItemDBPath);
         sellItemDB = new SellItemDBLoader(jsonSellItemDBPath);
         stageDB = new StageDBLoader(jsonStageDBPath);
-        
+        soulDB = new SoulDBLoader(jsonSoulDBPath);
+        skillDB = new SkillDBLoader(jsonSkillDBPath);
+
         inventory.Items = new List<ItemDB>();
         inventory.Items.Add(itemDB.GetByKey(1000));
         inventory.Items.Add(itemDB.GetByKey(2000));
@@ -85,8 +99,6 @@ public class DataManager : SingletonDDOL<DataManager>
         userData.PlayTimeInSeconds = 72000;
         //userData.Inventory = inventory;
 
-
-
         ////ToDoCode : 저장할데이터를 쓰는 코드 테스트 부분
 
         strBuilder.Clear();
@@ -94,27 +106,37 @@ public class DataManager : SingletonDDOL<DataManager>
         //CsvController.Write(strBuilder.ToString(), saveData);
     }
 
+    private void SaveUserData(UserData userData) // 유저 데이터 세이브
+    {
+        JsonController.SaveUserData(userData, jsonUserDataPath);
+    }
+
+    private void LoadUserData() // 유저 데이터 로드
+    {
+        userData = JsonController.LoadUserData(jsonUserDataPath);
+
+        Debug.Log($"로드한 닉네임  : {userData.Nickname}");
+        Debug.Log($"로드한 레벨  : {userData.Level}");
+    }
+
+    //Debug
     private void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.S)) //데이터 세이브
-        {
-            JsonController.SaveUserData(userData, jsonUserDataPath);
-        }
-        else if (Input.GetKeyDown(KeyCode.L)) //데이터 로드
-        {
-            userData = JsonController.LoadUserData(jsonUserDataPath);
-
-            Debug.Log($"로드한 닉네임  : {userData.Nickname}");
-            Debug.Log($"로드한 레벨  : {userData.Level}");
-        }
-        else if (Input.GetKeyDown(KeyCode.D)) // 데이터 갱신
+        if (Input.GetKeyDown(KeyCode.D)) // 데이터 갱신
         {
             userData.Nickname += "1";
             userData.Level += 10;
 
             Debug.Log($"닉네임 변경 : {userData.Nickname}");
             Debug.Log($"레벨 변경 : {userData.Level}");
+        }
+        else if(Input.GetKeyDown(KeyCode.S))
+        {
+            OnEventSaveUserData?.Invoke(userData);
+        }
+        else if( Input.GetKeyDown(KeyCode.L))
+        {
+            OnEventLoadUserData?.Invoke();
         }
     }
 
