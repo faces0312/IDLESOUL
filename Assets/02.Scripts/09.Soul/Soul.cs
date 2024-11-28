@@ -29,6 +29,11 @@ public abstract class Soul : MonoBehaviour
     protected Skill[] skills = new Skill[(int)SkillType.Max];
     public Skill[] Skills { get { return skills; } }
 
+    public Soul()
+    {
+        // TODO : 소울을 어떻게 생성할 것인가?
+    }
+
     protected void Awake()
     {
         statHandler = GetComponent<StatHandler>();

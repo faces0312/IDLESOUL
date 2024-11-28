@@ -1,9 +1,18 @@
 using ScottGarland;
 
+public enum StatType
+{
+    Player,
+    Soul,
+    Enemy,
+}
+
 [System.Serializable]
 public class Stat
 {
     public BigInteger combatPower;
+
+    public int iD;
     public int level;
 
     public BigInteger health;
@@ -21,6 +30,4 @@ public class Stat
 
     public BigInteger exp;
     public BigInteger MaxExp;
-
-    public TestSkill[] skills = new TestSkill[(int)TestSkillType.Max];
 }
