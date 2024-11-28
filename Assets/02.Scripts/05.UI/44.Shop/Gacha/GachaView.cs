@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GachaView : MonoBehaviour, UIBase
+public class GachaView : MonoBehaviour, IUIBase
 {
     [SerializeField] private GameObject gachaPanel;
-    private testSoul testSoul;
+    [SerializeField] private Sprite ResultSprite;
 
     private void OnEnable()
     {

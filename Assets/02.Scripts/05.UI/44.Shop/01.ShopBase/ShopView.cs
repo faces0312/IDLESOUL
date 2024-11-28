@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShopView : MonoBehaviour, UIBase
+public class ShopView : MonoBehaviour, IUIBase
 {
     public GameObject ShopPanel;
 

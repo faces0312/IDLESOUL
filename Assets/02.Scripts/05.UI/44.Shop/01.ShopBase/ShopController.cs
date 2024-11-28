@@ -2,7 +2,7 @@ public class ShopController : UIController
 {
     private ShopModel shopModel;
 
-    public override void Initialize(UIBase view, UIModel model)
+    public override void Initialize(IUIBase view, UIModel model)
     {
         base.Initialize(view, model);
 

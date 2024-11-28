@@ -1,3 +1,4 @@
+using Enums;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class ShopModel : UIModel
 
     private void Awake()
     {
+        testUser = new UserData();
         ItemGachaList = new Dictionary<string, List<testItem>>();
         SoulGachaList  = new Dictionary<string, List<testSoul>>();
         //Todo : 아이템 리스트, 소울 리스트 받아오기
@@ -23,7 +25,7 @@ public class ShopModel : UIModel
         SoulPickUP = "SSS";
     }
 
-    public void DiamondGacha<T>(string Pickup) where T : Gachable
+    public void DiamondGacha<T>(string Pickup) where T : IGachable
     {
         string t = typeof(T).ToString();
         if (testUser.Diamonds >= GachaPrice)
@@ -42,7 +44,7 @@ public class ShopModel : UIModel
         else Debug.LogAssertion("다이아가 부족합니다.");
     }
 
-    private T Gacha<T>(List<T> GachaList) where T : Gachable
+    private T Gacha<T>(List<T> GachaList) where T : IGachable
     {
         List<T> normal = new List<T>();
         List<T> Rare = new List<T>();
@@ -50,7 +52,7 @@ public class ShopModel : UIModel
 
         for (int i = 0; i < GachaList.Count; i++)
         {
-            switch (GachaList[i].Grade)
+            switch (GachaList[i].GetGrade())
             {
                 case Enums.Grade.Normal:
                     normal.Add(GachaList[i]);
@@ -78,19 +80,55 @@ public class ShopModel : UIModel
     }
 }
 
-public class Gachable
+public interface IGachable
+{
+    Enums.Grade GetGrade();
+
+    int GetID();
+
+    string GetName();
+}
+
+public class testSoul : IGachable //DataManager.Instance.SoulDB
 {
     public int ID;
     public Enums.Grade Grade;
     public string Name;
+
+    public Grade GetGrade()
+    {
+        return Grade;
+    }
+
+    public int GetID()
+    {
+        return ID;
+    }
+
+    public string GetName()
+    {
+        return Name;
+    }
 }
 
-public class testSoul : Gachable //DataManager.Instance.SoulDB
+public class testItem : IGachable
 {
-    
-}
+    public int ID;
+    public Enums.Grade Grade;
+    public string Name;
 
-public class testItem : Gachable
-{
+    public Grade GetGrade()
+    {
+        return Grade;
+    }
 
+    public int GetID()
+    {
+        return ID;
+    }
+
+    public string GetName()
+    {
+        return Name;
+    }
 }

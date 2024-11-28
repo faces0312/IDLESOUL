@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageSelector : MonoBehaviour, UIBase
+public class StageSelector : MonoBehaviour, IUIBase
 {
     private ObjectPool pool;
     [SerializeField] private GameObject stageButton;
