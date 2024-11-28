@@ -24,7 +24,7 @@ public class MagicianDefaultSkill : Skill
 
     public override void UseSkill()
     {
-        // TODO : 가장 가까운 Enemy 를 찾는 로직 구현
+        // 가장 가까운 Enemy 를 찾는 로직 구현
         // Enemy 리스트를 받아와 거리 기반 탐지
 
         List<GameObject> targets = GameManager.Instance.enemies;    // Enemy 리스트

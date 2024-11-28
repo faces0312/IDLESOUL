@@ -25,8 +25,13 @@ public class TestManager : SingletonDDOL<TestManager>
         GameManager.Instance.enemies.Add(testEnemy4);
     }
 
-    public void OnUseSkill()
+    public void OnUseDefaultSkill()
     {
         TestSoul.UseSkill(TestSoul.Skills[(int)SkillType.Default]);
+    }
+
+    public void OnUseUltimateSkill()
+    {
+        TestSoul.UseSkill(TestSoul.Skills[(int)SkillType.Ultimate]);
     }
 }
