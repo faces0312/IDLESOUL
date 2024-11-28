@@ -1,0 +1,103 @@
+{
+  "Items": [
+    {
+      "key": 12000,
+      "Name": "TestSkill0",
+      "Descripton": "TestSkill0Desc",
+      "SkillType": 0,
+      "MaxLevel": 10,
+      "Value": 30,
+      "UpgradeValue": 3,
+      "ApplyCount": 1,
+      "UpgradeCost": 100
+    },
+    {
+      "key": 12001,
+      "Name": "TestSkill1",
+      "Descripton": "TestSkill1Desc",
+      "SkillType": 1,
+      "MaxLevel": 5,
+      "Value": 50,
+      "UpgradeValue": 5,
+      "ApplyCount": 1,
+      "UpgradeCost": 200
+    },
+    {
+      "key": 12002,
+      "Name": "TestSkill2",
+      "Descripton": "TestSkill2Desc",
+      "SkillType": 2,
+      "MaxLevel": 3,
+      "Value": 100,
+      "UpgradeValue": 10,
+      "ApplyCount": 1,
+      "UpgradeCost": 500
+    },
+    {
+      "key": 12003,
+      "Name": "TestSkill3",
+      "Descripton": "TestSkill3Desc",
+      "SkillType": 0,
+      "MaxLevel": 10,
+      "Value": 30,
+      "UpgradeValue": 3,
+      "ApplyCount": 1,
+      "UpgradeCost": 100
+    },
+    {
+      "key": 12004,
+      "Name": "TestSkill4",
+      "Descripton": "TestSkill4Desc",
+      "SkillType": 1,
+      "MaxLevel": 5,
+      "Value": 50,
+      "UpgradeValue": 5,
+      "ApplyCount": 1,
+      "UpgradeCost": 200
+    },
+    {
+      "key": 12005,
+      "Name": "TestSkill5",
+      "Descripton": "TestSkill5Desc",
+      "SkillType": 2,
+      "MaxLevel": 3,
+      "Value": 100,
+      "UpgradeValue": 10,
+      "ApplyCount": 1,
+      "UpgradeCost": 500
+    },
+    {
+      "key": 12006,
+      "Name": "TestSkill6",
+      "Descripton": "TestSkill6Desc",
+      "SkillType": 0,
+      "MaxLevel": 10,
+      "Value": 30,
+      "UpgradeValue": 3,
+      "ApplyCount": 1,
+      "UpgradeCost": 100
+    },
+    {
+      "key": 12007,
+      "Name": "TestSkill7",
+      "Descripton": "TestSkill7Desc",
+      "SkillType": 1,
+      "MaxLevel": 5,
+      "Value": 50,
+      "UpgradeValue": 5,
+      "ApplyCount": 1,
+      "UpgradeCost": 200
+    },
+    {
+      "key": 12008,
+      "Name": "TestSkill8",
+      "Descripton": "TestSkill8Desc",
+      "SkillType": 2,
+      "MaxLevel": 3,
+      "Value": 100,
+      "UpgradeValue": 10,
+      "ApplyCount": 1,
+      "UpgradeCost": 500
+    }
+  ]
+}

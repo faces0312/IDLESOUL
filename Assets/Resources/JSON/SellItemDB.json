@@ -6,7 +6,7 @@
         1000
       ],
       "ProductName": "나무검",
-      "ProductDescription": "",
+      "ProductDescription": "나무검 입니다.",
       "PriceType": "gold",
       "Price": 1000,
       "IsStack": false,
@@ -18,7 +18,7 @@
         1001
       ],
       "ProductName": "철검",
-      "ProductDescription": "",
+      "ProductDescription": "철검 입니다.",
       "PriceType": "gold",
       "Price": 1100,
       "IsStack": false,
@@ -30,7 +30,7 @@
         1002
       ],
       "ProductName": "황동검",
-      "ProductDescription": "",
+      "ProductDescription": "황동검 입니다.",
       "PriceType": "gold",
       "Price": 1200,
       "IsStack": false,
@@ -43,7 +43,7 @@
         1003
       ],
       "ProductName": "실버,골드검세트",
-      "ProductDescription": "",
+      "ProductDescription": "실버,골드검세트 입니다.",
       "PriceType": "diamond",
       "Price": 1300,
       "IsStack": true,
@@ -57,7 +57,7 @@
         1004
       ],
       "ProductName": "황동,골드검세트",
-      "ProductDescription": "",
+      "ProductDescription": "황동,골드검세트 입니다.",
       "PriceType": "diamond",
       "Price": 1400,
       "IsStack": true,
@@ -72,7 +72,7 @@
         2001
       ],
       "ProductName": "검\u002B회복포션세트1",
-      "ProductDescription": "",
+      "ProductDescription": "검\u002B회복포션세트1 입니다.",
       "PriceType": "diamond",
       "Price": 1500,
       "IsStack": false,
@@ -87,7 +87,7 @@
         2002
       ],
       "ProductName": "검\u002B회복포션세트2",
-      "ProductDescription": "",
+      "ProductDescription": "검\u002B회복포션세트2 입니다.",
       "PriceType": "diamond",
       "Price": 1600,
       "IsStack": false,
@@ -101,7 +101,7 @@
         2002
       ],
       "ProductName": "회복포션세트",
-      "ProductDescription": "",
+      "ProductDescription": "회복포션세트 입니다.",
       "PriceType": "gold",
       "Price": 1700,
       "IsStack": true,
@@ -113,7 +113,7 @@
         2003
       ],
       "ProductName": "전설의 회복포션",
-      "ProductDescription": "",
+      "ProductDescription": "전설의 회복포션 입니다.",
       "PriceType": "diamond",
       "Price": 1800,
       "IsStack": false,

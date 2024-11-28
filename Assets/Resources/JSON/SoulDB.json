@@ -1,0 +1,55 @@
+{
+  "Items": [
+    {
+      "key": 11000,
+      "Name": "딜러영혼",
+      "Descripton": "딜러 영혼이다.",
+      "JobType": 0,
+      "Health": 100,
+      "Attack": 50,
+      "Defence": 25,
+      "ReduceDamage": 5,
+      "AttackSpeed": 3,
+      "CriticalRate": 15,
+      "CriticalDamage": 110,
+      "AtkSpeed": 1.2,
+      "MoveSpeed": 1,
+      "CoolDown": 0,
+      "MaxExp": 100
+    },
+    {
+      "key": 11001,
+      "Name": "탱커영혼",
+      "Descripton": "탱커 영혼이다.",
+      "JobType": 1,
+      "Health": 200,
+      "Attack": 25,
+      "Defence": 50,
+      "ReduceDamage": 10,
+      "AttackSpeed": 1,
+      "CriticalRate": 5,
+      "CriticalDamage": 100,
+      "AtkSpeed": 0.8,
+      "MoveSpeed": 0.7,
+      "CoolDown": 0,
+      "MaxExp": 100
+    },
+    {
+      "key": 11002,
+      "Name": "힐러영혼",
+      "Descripton": "힐러 영혼이다.",
+      "JobType": 2,
+      "Health": 80,
+      "Attack": 10,
+      "Defence": 15,
+      "ReduceDamage": 1,
+      "AttackSpeed": 2,
+      "CriticalRate": 10,
+      "CriticalDamage": 100,
+      "AtkSpeed": 1,
+      "MoveSpeed": 1.2,
+      "CoolDown": 0,
+      "MaxExp": 100
+    }
+  ]
+}
