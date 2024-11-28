@@ -31,30 +31,38 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
     /// <returns>ObjectPool</returns>
     public ObjectPool GetPool(string dictId, string poolId)
     {
-        for (int i = 0; i < poolDict[dictId].Count; i++)
+        if(poolDict.ContainsKey(dictId))
         {
-            if(poolDict[dictId][i].Id == poolId)
-                return poolDict[dictId][i];
+            for (int i = 0; i < poolDict[dictId].Count; i++)
+            {
+                if (poolDict[dictId][i].Id == poolId)
+                    return poolDict[dictId][i];
+            }
         }
         return null;
     }
 
     /// <summary>
-    /// 딕셔너리[id]에 풀을 추가, 없다면 생성
+    /// 딕셔너리[id]에 풀을 추가, 있다면 갱신, 없다면 생성
     /// </summary>
-    /// <param name="id">딕셔너리 키</param>
+    /// <param name="dictId">딕셔너리 키</param>
     /// <param name="pool">추가할 오브젝트 풀</param>
-    public void AddPool(string id, ObjectPool pool)
+    public void AddPool(string dictId, ObjectPool pool)
     {
-        if (!poolDict.ContainsKey(id))
+        if (!poolDict.ContainsKey(dictId))
         {
             List<ObjectPool> objPool = new List<ObjectPool>();
             objPool.Add(pool);
-            poolDict.Add(id, objPool);
+            poolDict.Add(dictId, objPool);
+        }
+        else if(poolDict[dictId].Contains(pool))
+        {
+            poolDict[dictId].Remove(pool);
+            poolDict[dictId].Add(pool);
         }
         else
         {
-            poolDict[id].Add(pool);
+            poolDict[dictId].Add(pool);
         }
     }
 }

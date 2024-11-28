@@ -1,48 +1,75 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StageSelector : MonoBehaviour, IUIBase
 {
-    private ObjectPool pool;
-    [SerializeField] private GameObject stageButton;
+    [SerializeField] private GameObject StagePanel;
     [SerializeField] private Transform content;
+
     private readonly string POOL_DICT_KEY = "StageSelector";
     private readonly string POOL_KEY = "StageSelectors";
 
+    private ObjectPool pool;
+    private Stack<Vector2> stagePositions;
+
     private void OnEnable()
     {
-        if(ObjectPoolManager.Instance.GetPool(POOL_DICT_KEY, POOL_KEY) == null)
+        stagePositions = new Stack<Vector2>();
+        if (ObjectPoolManager.Instance.GetPool(POOL_DICT_KEY, POOL_KEY) == null)
         {
-            MakePool();
+            pool = new ObjectPool(POOL_KEY, 5, "Prefabs/Sample/Stage", content);
+            ObjectPoolManager.Instance.AddPool(POOL_DICT_KEY, pool);
         }
-        pool = ObjectPoolManager.Instance.GetPool(POOL_DICT_KEY, POOL_KEY);
+        else pool = ObjectPoolManager.Instance.GetPool(POOL_DICT_KEY, POOL_KEY);
+
+        pool.SetActiveAllTrue();
+
+        for (int i = 0; i < pool.GetPool().Count; i++)
+        {
+            stagePositions.Push(pool.GetObject().transform.position);
+        }
     }
 
-    private void MakePool()
+    private void Update()
     {
-        ObjectPool pool = new ObjectPool(POOL_KEY, 5, stageButton, content);
-        ObjectPoolManager.Instance.AddPool(POOL_DICT_KEY, pool);
+        Debug.Log(content.position);
+    }
 
+    private void OnDisable()
+    {
+        pool.SetActiveAllFalse();
+    }
+
+    private void InfiniteScroll(Vector2 position)
+    {
+        float end = 0f;
+        if(position.x < end)
+        {
+
+        }
     }
 
     public void Initialize()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public void ShowUI()
     {
-        throw new System.NotImplementedException();
+        StagePanel.SetActive(true);
     }
 
     public void HideUI()
     {
-        throw new System.NotImplementedException();
+        StagePanel.SetActive(false);
     }
 
     public void UpdateUI()
     {
-        throw new System.NotImplementedException();
+
     }
 }

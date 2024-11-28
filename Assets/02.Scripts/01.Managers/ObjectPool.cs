@@ -5,10 +5,10 @@ using UnityEngine;
 public class ObjectPool
 {
     public string Id;
-    public int Size;
-    public string Path;
-    public GameObject Prefab;
-    public Queue<GameObject> Pool;
+    private int Size;
+    private string Path;
+    private GameObject Prefab;
+    private Queue<GameObject> Pool;
 
     public ObjectPool()
     {
@@ -156,4 +156,24 @@ public class ObjectPool
         Pool.Enqueue(obj);
     }
     #endregion
+
+    public void SetActiveAllTrue()
+    {
+        for(int i = 0; i < Size; i++)
+        {
+            GameObject obj = Pool.Dequeue();
+            obj.SetActive(true);
+            Pool.Enqueue(obj);
+        }
+    }
+
+    public void SetActiveAllFalse()
+    {
+        for (int i = 0; i < Size; i++)
+        {
+            GameObject obj = Pool.Dequeue();
+            obj.SetActive(false);
+            Pool.Enqueue(obj);
+        }
+    }
 }

@@ -1,11 +1,11 @@
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Stage : MonoBehaviour
 {
     public int ID;
-    //public StageData stageData;
 
     [SerializeField] private TextMeshProUGUI Name;
 
