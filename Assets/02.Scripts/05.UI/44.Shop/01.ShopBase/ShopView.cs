@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ShopView : MonoBehaviour, IUIBase
 {
+    public UserData userData;
     public GameObject ShopPanel;
 
     public void HideUI()

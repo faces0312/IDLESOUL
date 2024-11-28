@@ -19,7 +19,7 @@ public class ShopModel : UIModel
     {
         testUser = new UserData();
         ItemGachaList = new Dictionary<string, List<testItem>>();
-        SoulGachaList  = new Dictionary<string, List<testSoul>>();
+        SoulGachaList = new Dictionary<string, List<testSoul>>();
         //Todo : 아이템 리스트, 소울 리스트 받아오기
         ItemPickUP = "GoldenSword"; //Todo : 이벤트 매니저? 를 통해 픽업 이벤트 관리 필요
         SoulPickUP = "SSS";
@@ -28,20 +28,16 @@ public class ShopModel : UIModel
     public void DiamondGacha<T>(string Pickup) where T : IGachable
     {
         string t = typeof(T).ToString();
-        if (testUser.Diamonds >= GachaPrice)
-        {
 
-            switch (t)
-            {
-                case "testSoul":
-                    Gacha<testSoul>(SoulGachaList[Pickup]);
-                    break;
-                case "testItem":
-                    Gacha<testItem>(ItemGachaList[Pickup]);
-                    break;
-            }
+        switch (t)
+        {
+            case "testSoul":
+                Gacha<testSoul>(SoulGachaList[Pickup]);
+                break;
+            case "testItem":
+                Gacha<testItem>(ItemGachaList[Pickup]);
+                break;
         }
-        else Debug.LogAssertion("다이아가 부족합니다.");
     }
 
     private T Gacha<T>(List<T> GachaList) where T : IGachable
@@ -75,7 +71,7 @@ public class ShopModel : UIModel
         }
 
         target = Random.Range(0, targetList.Count);
-        
+
         return targetList[target];
     }
 }
