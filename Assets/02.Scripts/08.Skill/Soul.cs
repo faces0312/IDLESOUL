@@ -33,6 +33,8 @@ public abstract class Soul : MonoBehaviour
         statHandler = GetComponent<StatHandler>();
     }
 
+    protected abstract void InitSkills();   // 스킬 생성
+
     public void LevelUP(int amount)
     {
         statHandler.LevelUp(amount);

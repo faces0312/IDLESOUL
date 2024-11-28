@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class SoulArcher : Soul
 {
-    
+    protected override void InitSkills()
+    {
+        
+    }
 }

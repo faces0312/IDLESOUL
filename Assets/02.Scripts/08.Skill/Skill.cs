@@ -16,7 +16,7 @@ public interface ISkill
     void UpgradeSkill(int amount);
 }
 
-public abstract class Skill : MonoBehaviour, ISkill
+public abstract class Skill : ISkill
 {
     protected int iD;
 
