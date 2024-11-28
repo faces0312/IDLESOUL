@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonDDOL<GameManager>
 {
-
     //플레이어 접근
     /*public Player _player;
     public Player player

@@ -1,95 +1,28 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using System.Xml.Linq;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using static UnityEditor.Progress;
-
-[System.Serializable]
-public class ItemData
-{
-    public int      ID;
-    public string   Name;
-    public string   Type;
-    public string   Rairty;
-    public string   Descripton;
-    public float    Attack;
-    public bool     AttackPercent;
-    public float    Defence;
-    public bool     DefencePercent;
-    public float    Health;
-    public bool     HealthPercent;
-    public float    CritChance;
-    public bool     CritChancePercent;
-    public float    CritDamage;
-    public bool     CritDamagePercent;
-    public string   Effect;
-    public int      Cost;
-    public int      StackMaxCount;
-}
-[System.Serializable]
-public class SellItemData
-{
-    public int ProductID;
-    public List<int> OriginID;
-    public string ProductName;
-    public string ProductDescription;
-    public string PriceType;
-    public int Price;
-    public bool IsStack;
-    public int StackCount;
-}
-[System.Serializable]
-public class EnemyData
-{
-    public int      ID;
-    public string   Name;
-    public string   Descripton;
-    public List<int> DropItemID;
-    public int      DropGold;
-    public float    Attack;
-    public float    AttackSpeed;
-    public float    Defence;
-    public float    MoveSpeed;
-    public float    Health;
-    public float    CritChance;
-    public float    CritDamage;
-}
-[System.Serializable]
-public class StagaData
-{
-    public int       ID;
-    public int       ChapterNum;
-    public int       StageNum;
-    public float     CurStageModifier;
-    public string    StageName;
-    public int       SlayEnemyCount;
-    public List<int> SummonEnemyIDList;
-
-}
 
 [Serializable]
 public class UserData
 {
-    public int       UserID;
-    public string    Nickname;
-    public int       Level;
-    public int       Experience;
-    public int       Gold;
-    public int       Diamonds;
-    public int       PlayTimeInSeconds;
+    public int UserID;
+    public string Nickname;
+    public int Level;
+    public int Experience;
+    public int Gold;
+    public int Diamonds;
+    public int PlayTimeInSeconds;
     //public string    LastLogin;         // Unity의 JsonUtolity는 DataTime 자료형 지원 안함
-    public Inventory Inventory;
+    //public Inventory Inventory;
     public ClearStageData ClearStage;
 }
 
 [Serializable]
 public class Inventory
 {
-    public List<ItemData> Items;
+    public List<ItemDB> Items;
     //public Equipment Equipment;
 }
 
@@ -97,32 +30,34 @@ public class Inventory
 public class ClearStageData
 {
 
-    
+
 }
 
 public class DataManager : SingletonDDOL<DataManager>
 {
-    private readonly string csvItemDBPath = "CSV/ItemDB";
-    private readonly string csvSellItemDBPath = "CSV/SellItemDB";
-    private readonly string csvEnemyDBPath = "CSV/EnemyDB";
-    private readonly string csvStageDBPath = "CSV/StageDB";
+    private readonly string jsonItemDBPath = "JSON/ItemDB";
+    private readonly string jsonSellItemDBPath = "JSON/SellItemDB";
+    private readonly string jsonEnemyDBPath = "JSON/EnemyDB";
+    private readonly string jsonStageDBPath = "JSON/StageDB";
 
     private readonly string jsonUserDataPath = Application.dataPath + "/userdata.json";
 
     private StringBuilder strBuilder = new StringBuilder();
-    public CSVController CsvController = new CSVController();
     public JsonController JsonController = new JsonController();
 
-    private Dictionary<int, ItemData> itemDB = new Dictionary<int, ItemData>();
-    private Dictionary<int, EnemyData> enemyDB = new Dictionary<int, EnemyData>();
-    private Dictionary<int, StagaData> stageDB = new Dictionary<int, StagaData>();
-    private Dictionary<int, SellItemData> sellItemDB = new Dictionary<int, SellItemData>();
-    public Dictionary<int, ItemData> ItemDB { get => itemDB; }
-    public Dictionary<int, SellItemData> SellItemDB { get => sellItemDB; }
-    public Dictionary<int, EnemyData> EnemyDB { get => enemyDB; }
-    public Dictionary<int, StagaData> StageDB { get => stageDB; }
+    //Inventory inventory = new Inventory();
 
-    Inventory inventory = new Inventory();
+    private EnemyDBLoader enemyDB;
+    private ItemDBLoader itemDB;
+    private SellItemDBLoader sellItemDB;
+    private StageDBLoader stageDB;
+
+    public EnemyDBLoader EnemyDB { get => enemyDB; }
+    public ItemDBLoader ItemDB { get => itemDB; }
+    public SellItemDBLoader SellItemDB { get => sellItemDB; }
+    public StageDBLoader StageDB { get => stageDB; }
+
+    Inventory inventory;
     UserData userData = new UserData();
 
     protected override void Awake()
@@ -132,14 +67,14 @@ public class DataManager : SingletonDDOL<DataManager>
 
     private void Start()
     {
-        itemDB = CsvController.ItemCSVRead(csvItemDBPath);
-        sellItemDB = CsvController.SellItemCSVRead(csvSellItemDBPath);
-        enemyDB = CsvController.EnemyCSVRead(csvEnemyDBPath);
-        stageDB = CsvController.StageCSVRead(csvStageDBPath);
-
-        inventory.Items = new List<ItemData>();
-        inventory.Items.Add(ItemDB[1000]);
-        inventory.Items.Add(ItemDB[2000]);
+        enemyDB = new EnemyDBLoader(jsonEnemyDBPath);
+        itemDB = new ItemDBLoader(jsonItemDBPath);
+        sellItemDB = new SellItemDBLoader(jsonSellItemDBPath);
+        stageDB = new StageDBLoader(jsonStageDBPath);
+        
+        inventory.Items = new List<ItemDB>();
+        inventory.Items.Add(itemDB.GetByKey(1000));
+        inventory.Items.Add(itemDB.GetByKey(2000));
 
         userData.UserID = 12345;
         userData.Nickname = "지존 감자탕";
@@ -148,9 +83,9 @@ public class DataManager : SingletonDDOL<DataManager>
         userData.Gold = 999999;
         userData.Diamonds = 9999;
         userData.PlayTimeInSeconds = 72000;
-        userData.Inventory = inventory;
+        //userData.Inventory = inventory;
 
-    
+
 
         ////ToDoCode : 저장할데이터를 쓰는 코드 테스트 부분
 
@@ -162,7 +97,7 @@ public class DataManager : SingletonDDOL<DataManager>
     private void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.S)) //데이터 세이브
+        if (Input.GetKeyDown(KeyCode.S)) //데이터 세이브
         {
             JsonController.SaveUserData(userData, jsonUserDataPath);
         }
@@ -173,7 +108,7 @@ public class DataManager : SingletonDDOL<DataManager>
             Debug.Log($"로드한 닉네임  : {userData.Nickname}");
             Debug.Log($"로드한 레벨  : {userData.Level}");
         }
-        else if(Input.GetKeyDown(KeyCode.D)) // 데이터 갱신
+        else if (Input.GetKeyDown(KeyCode.D)) // 데이터 갱신
         {
             userData.Nickname += "1";
             userData.Level += 10;

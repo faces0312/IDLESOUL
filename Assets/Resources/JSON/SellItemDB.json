@@ -1,0 +1,123 @@
+{
+  "Items": [
+    {
+      "key": 10000,
+      "OriginID": [
+        1000
+      ],
+      "ProductName": "나무검",
+      "ProductDescription": "",
+      "PriceType": "gold",
+      "Price": 1000,
+      "IsStack": false,
+      "StackCount": 1
+    },
+    {
+      "key": 10001,
+      "OriginID": [
+        1001
+      ],
+      "ProductName": "철검",
+      "ProductDescription": "",
+      "PriceType": "gold",
+      "Price": 1100,
+      "IsStack": false,
+      "StackCount": 1
+    },
+    {
+      "key": 10002,
+      "OriginID": [
+        1002
+      ],
+      "ProductName": "황동검",
+      "ProductDescription": "",
+      "PriceType": "gold",
+      "Price": 1200,
+      "IsStack": false,
+      "StackCount": 1
+    },
+    {
+      "key": 10003,
+      "OriginID": [
+        1002,
+        1003
+      ],
+      "ProductName": "실버,골드검세트",
+      "ProductDescription": "",
+      "PriceType": "diamond",
+      "Price": 1300,
+      "IsStack": true,
+      "StackCount": 10
+    },
+    {
+      "key": 10004,
+      "OriginID": [
+        1002,
+        1003,
+        1004
+      ],
+      "ProductName": "황동,골드검세트",
+      "ProductDescription": "",
+      "PriceType": "diamond",
+      "Price": 1400,
+      "IsStack": true,
+      "StackCount": 5
+    },
+    {
+      "key": 10005,
+      "OriginID": [
+        1002,
+        1003,
+        2000,
+        2001
+      ],
+      "ProductName": "검\u002B회복포션세트1",
+      "ProductDescription": "",
+      "PriceType": "diamond",
+      "Price": 1500,
+      "IsStack": false,
+      "StackCount": 1
+    },
+    {
+      "key": 10006,
+      "OriginID": [
+        1002,
+        1003,
+        2001,
+        2002
+      ],
+      "ProductName": "검\u002B회복포션세트2",
+      "ProductDescription": "",
+      "PriceType": "diamond",
+      "Price": 1600,
+      "IsStack": false,
+      "StackCount": 1
+    },
+    {
+      "key": 10007,
+      "OriginID": [
+        2000,
+        2001,
+        2002
+      ],
+      "ProductName": "회복포션세트",
+      "ProductDescription": "",
+      "PriceType": "gold",
+      "Price": 1700,
+      "IsStack": true,
+      "StackCount": 3
+    },
+    {
+      "key": 10008,
+      "OriginID": [
+        2003
+      ],
+      "ProductName": "전설의 회복포션",
+      "ProductDescription": "",
+      "PriceType": "diamond",
+      "Price": 1800,
+      "IsStack": false,
+      "StackCount": 1
+    }
+  ]
+}
