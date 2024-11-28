@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface UIBase
+public interface IUIBase
 {
     void Initialize();
     void ShowUI();

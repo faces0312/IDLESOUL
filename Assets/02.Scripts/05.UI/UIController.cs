@@ -4,10 +4,10 @@ using UnityEngine;
 
 public abstract class UIController
 {
-    protected UIBase view;
+    protected IUIBase view;
     protected UIModel model;
 
-    public virtual void Initialize(UIBase view, UIModel model)
+    public virtual void Initialize(IUIBase view, UIModel model)
     {
         this.view = view;
         this.model = model;
