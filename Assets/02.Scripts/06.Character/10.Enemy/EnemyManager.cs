@@ -11,9 +11,8 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         InitializeEnemyPool();
-        GoblinSpawn();
-        GoblinSpawn();
-        OrcSpawn();
+        EnemySpawn(1, "Goblin", 5000);
+        //EnemySpawn(2, "Orc", 5003);
     }
     private void InitializeEnemyPool()
     {
@@ -23,20 +22,16 @@ public class EnemyManager : MonoBehaviour
         ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, orcPool);
     }
 
-
-    public void GoblinSpawn()
+    public void EnemySpawn(int cycle, string name, int id)
     {
-        ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_POOL_KEY, "Goblin");
-        GameObject enemy = pool.GetObject();
-        enemy.SetActive(true);
-        Enemy tempEnemy = enemy.GetComponent<Enemy>();
-    }
-
-    public void OrcSpawn()
-    {
-        ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_POOL_KEY, "Orc");
-        GameObject enemy = pool.GetObject();
-        enemy.SetActive(true);
-        Enemy tempEnemy = enemy.GetComponent<Enemy>();
+        ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_POOL_KEY, name);
+        for (int i =0; i<cycle; i++)
+        {
+            GameObject enemy = pool.GetObject();
+            Enemy tempEnemy = enemy.GetComponent<Enemy>();
+            tempEnemy.enemyData = DataManager.Instance.EnemyDB[id];
+            enemy.SetActive(true);
+            GameManager.Instance.enemies.Add(enemy);
+        }
     }
 }
