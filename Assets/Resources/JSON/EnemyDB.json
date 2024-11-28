@@ -1,0 +1,175 @@
+{
+  "Items": [
+    {
+      "key": 5000,
+      "Name": "고블린",
+      "Descripton": "고블린 설명",
+      "DropItemID": [
+        2000,
+        2001,
+        1000,
+        1000
+      ],
+      "DropGold": 100,
+      "Attack": 5,
+      "AttackSpeed": 1,
+      "Defence": 0,
+      "MoveSpeed": 1,
+      "Health": 0,
+      "CritChance": 1,
+      "CritDamage": 100
+    },
+    {
+      "key": 5001,
+      "Name": "고블린 사제장",
+      "Descripton": "고블린 사제장 설명",
+      "DropItemID": [
+        2000,
+        2001,
+        1000,
+        1000
+      ],
+      "DropGold": 150,
+      "Attack": 7,
+      "AttackSpeed": 1,
+      "Defence": 0,
+      "MoveSpeed": 1,
+      "Health": 0,
+      "CritChance": 1,
+      "CritDamage": 100
+    },
+    {
+      "key": 5002,
+      "Name": "고블린 대장",
+      "Descripton": "고블린 대장 설명",
+      "DropItemID": [
+        2000,
+        2001,
+        1000,
+        1000
+      ],
+      "DropGold": 200,
+      "Attack": 5,
+      "AttackSpeed": 1,
+      "Defence": 5,
+      "MoveSpeed": 1,
+      "Health": 0,
+      "CritChance": 1,
+      "CritDamage": 100
+    },
+    {
+      "key": 5003,
+      "Name": "오크",
+      "Descripton": "오크",
+      "DropItemID": [
+        2000,
+        2001,
+        1000,
+        1000
+      ],
+      "DropGold": 250,
+      "Attack": 10,
+      "AttackSpeed": 1,
+      "Defence": 5,
+      "MoveSpeed": 0.8,
+      "Health": 0,
+      "CritChance": 1,
+      "CritDamage": 100
+    },
+    {
+      "key": 5004,
+      "Name": "오크 전사",
+      "Descripton": "오크 전사 설명",
+      "DropItemID": [
+        2000,
+        2001,
+        1000,
+        1000
+      ],
+      "DropGold": 300,
+      "Attack": 20,
+      "AttackSpeed": 1,
+      "Defence": 10,
+      "MoveSpeed": 0.8,
+      "Health": 0,
+      "CritChance": 5,
+      "CritDamage": 150
+    },
+    {
+      "key": 5005,
+      "Name": "오크 경비병",
+      "Descripton": "오크 경비병 설명",
+      "DropItemID": [
+        2000,
+        2001,
+        1000,
+        1000
+      ],
+      "DropGold": 350,
+      "Attack": 0,
+      "AttackSpeed": 1,
+      "Defence": 0,
+      "MoveSpeed": 0.8,
+      "Health": 30,
+      "CritChance": 0,
+      "CritDamage": 0
+    },
+    {
+      "key": 5006,
+      "Name": "박쥐",
+      "Descripton": "박쥐 설명",
+      "DropItemID": [
+        2000,
+        2001,
+        1000,
+        1000
+      ],
+      "DropGold": 50,
+      "Attack": 0,
+      "AttackSpeed": 1,
+      "Defence": 0,
+      "MoveSpeed": 1.2,
+      "Health": 50,
+      "CritChance": 0,
+      "CritDamage": 0
+    },
+    {
+      "key": 5007,
+      "Name": "거미",
+      "Descripton": "거미 설명",
+      "DropItemID": [
+        2000,
+        2001,
+        1000,
+        1000
+      ],
+      "DropGold": 50,
+      "Attack": 0,
+      "AttackSpeed": 1,
+      "Defence": 0,
+      "MoveSpeed": 1.2,
+      "Health": 100,
+      "CritChance": 0,
+      "CritDamage": 0
+    },
+    {
+      "key": 5008,
+      "Name": "독사",
+      "Descripton": "독사 설명",
+      "DropItemID": [
+        2000,
+        2001,
+        1000,
+        1000
+      ],
+      "DropGold": 50,
+      "Attack": 0,
+      "AttackSpeed": 1,
+      "Defence": 0,
+      "MoveSpeed": 1.2,
+      "Health": 30,
+      "CritChance": 0,
+      "CritDamage": 0
+    }
+  ]
+}
