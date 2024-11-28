@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageSelector : MonoBehaviour
+public class StageSelector : MonoBehaviour, UIBase
 {
     private ObjectPool pool;
     [SerializeField] private GameObject stageButton;
@@ -26,5 +26,23 @@ public class StageSelector : MonoBehaviour
 
     }
 
-    
+    public void Initialize()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void ShowUI()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void HideUI()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void UpdateUI()
+    {
+        throw new System.NotImplementedException();
+    }
 }

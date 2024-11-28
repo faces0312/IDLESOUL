@@ -111,6 +111,7 @@ public class ObjectPool
         }
     }
 
+    //추천하지 않음
    public void MakePoolWithParent(Transform parent)
     {
         Pool = new Queue<GameObject>();

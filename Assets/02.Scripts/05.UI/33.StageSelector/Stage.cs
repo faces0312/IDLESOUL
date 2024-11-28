@@ -32,9 +32,4 @@ public class Stage : MonoBehaviour
 
         }
     }
-
-    public void MakeIsOpenTrue()
-    {
-        this.isOpen = true;
-    }
 }
