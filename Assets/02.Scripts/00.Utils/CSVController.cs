@@ -79,7 +79,7 @@ public class CSVController
             enemy.Attack = (float)DataTypeCheck(typeHeader[5], values[5]); ;
             enemy.AttackSpeed = (float)DataTypeCheck(typeHeader[6], values[6]);
             enemy.Defence = (float)DataTypeCheck(typeHeader[7], values[7]);
-            enemy.Health = (float)DataTypeCheck(typeHeader[8], values[8]);
+            enemy.MoveSpeed = (float)DataTypeCheck(typeHeader[8], values[8]);
             enemy.Health = (float)DataTypeCheck(typeHeader[9], values[9]);
             enemy.CritChance = (float)DataTypeCheck(typeHeader[10], values[10]);
             enemy.CritDamage = (float)DataTypeCheck(typeHeader[11], values[11]);
