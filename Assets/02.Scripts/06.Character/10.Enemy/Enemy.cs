@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : BaseCharacter
 {
     public int ID;
     public string Name;
@@ -12,7 +12,13 @@ public class Enemy : MonoBehaviour
     public int DropDiamondMin;  // 가챠 재화 최소
     public int DropDiamondMax;  // 가챠 재화 최대
 
-    public StatHandler statHandler; //스텟 관리 클래스
+    public override void Attack()
+    {
+    }
+
+    public override void Move()
+    {
+    }
 
     // Start is called before the first frame update
     void Start()

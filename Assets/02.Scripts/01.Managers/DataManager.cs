@@ -30,7 +30,18 @@ public class ItemData
     public int      Cost;
     public int      StackMaxCount;
 }
-
+[System.Serializable]
+public class SellItemData
+{
+    public int ProductID;
+    public List<int> OriginID;
+    public string ProductName;
+    public string ProductDescription;
+    public string PriceType;
+    public int Price;
+    public bool IsStack;
+    public int StackCount;
+}
 [System.Serializable]
 public class EnemyData
 {
@@ -92,6 +103,7 @@ public class ClearStageData
 public class DataManager : SingletonDDOL<DataManager>
 {
     private readonly string csvItemDBPath = "CSV/ItemDB";
+    private readonly string csvSellItemDBPath = "CSV/SellItemDB";
     private readonly string csvEnemyDBPath = "CSV/EnemyDB";
     private readonly string csvStageDBPath = "CSV/StageDB";
 
@@ -104,7 +116,9 @@ public class DataManager : SingletonDDOL<DataManager>
     private Dictionary<int, ItemData> itemDB = new Dictionary<int, ItemData>();
     private Dictionary<int, EnemyData> enemyDB = new Dictionary<int, EnemyData>();
     private Dictionary<int, StagaData> stageDB = new Dictionary<int, StagaData>();
+    private Dictionary<int, SellItemData> sellItemDB = new Dictionary<int, SellItemData>();
     public Dictionary<int, ItemData> ItemDB { get => itemDB; }
+    public Dictionary<int, SellItemData> SellItemDB { get => sellItemDB; }
     public Dictionary<int, EnemyData> EnemyDB { get => enemyDB; }
     public Dictionary<int, StagaData> StageDB { get => stageDB; }
 
@@ -119,6 +133,7 @@ public class DataManager : SingletonDDOL<DataManager>
     private void Start()
     {
         itemDB = CsvController.ItemCSVRead(csvItemDBPath);
+        sellItemDB = CsvController.SellItemCSVRead(csvSellItemDBPath);
         enemyDB = CsvController.EnemyCSVRead(csvEnemyDBPath);
         stageDB = CsvController.StageCSVRead(csvStageDBPath);
 
