@@ -8,23 +8,32 @@ public class Enemy : BaseCharacter
     private GameObject target;
     private Vector3 direction;
 
-    private float distance;
-    private float attackSpeedTmp;
     private Rigidbody rb;
 
-    private LayerMask layerMask;
+    private float attackSpeedTmp;
+    public GameObject bulletTest;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         //target = GameManager.Instance.player;
         target = GameObject.Find("Player");
-        distance = 1f;
         attackSpeedTmp = enemyDB.AttackSpeed;
+        //임의로 작성
+        enemyDB.Distance = 7f;
     }
 
     public override void Attack()
     {
+        GameObject bulletInstance = Instantiate(bulletTest, transform.position, Quaternion.Euler(Vector3.zero));
+        BulletTest monsterBullet = bulletInstance.GetComponent<BulletTest>();
+        monsterBullet.attack = enemyDB.Attack;
+        monsterBullet.knockbackPower = enemyDB.KnockBackPower;
+
+        Vector3 playerProjection = new Vector3(target.transform.position.x, target.transform.position.y, 0.0f);
+        Vector3 selfProjection = new Vector3(transform.position.x, transform.position.y, 0.0f);
+
+        monsterBullet.direction = (playerProjection - selfProjection).normalized;
     }
     private void AttackDelay()
     {
@@ -42,9 +51,6 @@ public class Enemy : BaseCharacter
 
     public override void Move()
     {
-        /*Vector3 targetVelocity = direction * enemyDB.MoveSpeed * 5;
-        rb.velocity = targetVelocity;*/
-
         float distanceTmp = Vector3.Distance(transform.position, target.transform.position);
         if (distanceTmp > enemyDB.Distance)
         {
