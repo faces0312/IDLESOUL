@@ -1,2 +1,0 @@
-2024-11-28 오후 2:28:50: Empty values detected in file 'excel_files\SellItemDB.xlsx'. Default values were used.
-2024-11-28 오후 3:13:17: Empty values detected in file 'excel_files\SellItemDB.xlsx'. Default values were used.
