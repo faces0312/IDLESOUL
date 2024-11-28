@@ -6,11 +6,13 @@ public class MagicianDefaultSkill : Skill
 {
     GameObject skillPrefab;
     private float range;
+    private float searchRange;
 
     public MagicianDefaultSkill(int id, string name, string description, int applyCount, float value, SkillType type) : base(id, name, description, applyCount, value, type)
     {
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/Explosion");
         range = 5f;
+        searchRange = 10f;
     }
 
     public override void UpgradeSkill(int amount)
@@ -42,12 +44,16 @@ public class MagicianDefaultSkill : Skill
             }
         }
 
-        Vector3 targetPos = Vector3.zero;
+        // 탐색 범위를 넘어선 대상은 null 처리
+        if (searchRange * searchRange < closestDistanceSqr)
+            closestTarget = null;
 
-        if (closestTarget == null)
-            Debug.LogAssertion("Target is null!");
-        else
+        Vector3 targetPos = Vector3.zero;   // TODO : Default값 -> 플레이어 앞 좌표
+
+        if (closestTarget != null)
             targetPos = closestTarget.transform.position;
+        else
+            Debug.LogAssertion("Target is null!");
 
         GameObject explosion = Object.Instantiate(skillPrefab, targetPos, Quaternion.identity);
         if(explosion.TryGetComponent(out Explosion component))
