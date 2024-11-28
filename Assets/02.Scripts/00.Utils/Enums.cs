@@ -7,4 +7,12 @@ namespace Enums
         EXP,
         Upgrade
     }
+
+    public enum Grade
+    {
+        None,
+        Normal,
+        Rare,
+        Legendary
+    }
 }
