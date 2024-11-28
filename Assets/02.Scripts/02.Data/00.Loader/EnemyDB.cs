@@ -71,6 +71,20 @@ public class EnemyDB
     /// </summary>
     public float CritDamage;
 
+    /// <summary>
+    /// Distance
+    /// </summary>
+    public float Distance;
+
+    /// <summary>
+    /// KnockBackPower
+    /// </summary>
+    public float KnockBackPower;
+
+    /// <summary>
+    /// KnockBackResistance
+    /// </summary>
+    public float KnockBackResistance;
 }
 public class EnemyDBLoader
 {
