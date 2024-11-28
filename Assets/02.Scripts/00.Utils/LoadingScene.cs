@@ -28,13 +28,16 @@ public class LoadingScene : MonoBehaviour
     {
         yield return null;
         AsyncOperation loading = SceneManager.LoadSceneAsync(nextScene);
-        loading.allowSceneActivation = false;
+        loading.allowSceneActivation = true;
         while (!loading.isDone)
         {
             yield return null;
             gauge.value = loading.progress;
-            Debug.Log(loading.progress);
             percent.text = (gauge.value * 100).ToString() + " %";
+            if (loading.isDone)
+            {
+                Debug.Log("¿Ï·á!");
+            }
             if (loading.progress >= 0.9f)
             {
                 gauge.value = 1f;

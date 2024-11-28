@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class ObjectPool : MonoBehaviour
+public class ObjectPool
 {
     public string Id;
     public int Size;
@@ -20,17 +20,52 @@ public class ObjectPool : MonoBehaviour
         this.Id = id;
         this.Size = size;
         this.Path = path;
+        this.Prefab = Resources.Load<GameObject>(path);
+        this.Pool = new Queue<GameObject>();
 
         MakePool();
     }
 
-    private void Awake()
+    public ObjectPool(string id, int size, GameObject prefab)
     {
-        Pool = new Queue<GameObject>();
-        Prefab = Resources.Load<GameObject>(Path);
+        this.Id = id;
+        this.Size = size;
+        this.Path = string.Empty;
+        this.Prefab = prefab;
+        this.Pool = new Queue<GameObject>();
 
         MakePool();
     }
+
+    public ObjectPool(string id, int size, string path, Transform parent)
+    {
+        this.Id = id;
+        this.Size = size;
+        this.Path = path;
+        this.Prefab = Resources.Load<GameObject>(path);
+        this.Pool = new Queue<GameObject>();
+
+        MakePoolWithParent(parent);
+    }
+
+    public ObjectPool(string id, int size, GameObject prefab, Transform parent)
+    {
+        this.Id = id;
+        this.Size = size;
+        this.Path = string.Empty;
+        this.Prefab = prefab;
+        this.Pool = new Queue<GameObject>();
+
+        MakePoolWithParent(parent);
+    }
+
+    //private void Awake()
+    //{
+    //    Pool = new Queue<GameObject>();
+    //    Prefab = Resources.Load<GameObject>(Path);
+
+    //    MakePool();
+    //}
 
     /// <summary>
     /// 오브젝트 풀의 Queue<GameObject>를 반환
@@ -70,7 +105,18 @@ public class ObjectPool : MonoBehaviour
         }
         for (int i = 0; i < Size; i++)
         {
-            GameObject obj = Instantiate(Prefab);
+            GameObject obj = MonoBehaviour.Instantiate(Prefab);
+            obj.SetActive(false);
+            Pool.Enqueue(obj);
+        }
+    }
+
+   public void MakePoolWithParent(Transform parent)
+    {
+        Pool = new Queue<GameObject>();
+        for (int i = 0; i < Size; i++)
+        {
+            GameObject obj = MonoBehaviour.Instantiate(Prefab, parent);
             obj.SetActive(false);
             Pool.Enqueue(obj);
         }

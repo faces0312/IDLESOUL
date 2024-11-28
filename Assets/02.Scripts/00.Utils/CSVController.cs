@@ -93,7 +93,37 @@ public class CSVController
         }
         return list;
     }
+    public Dictionary<int, StagaData> StageCSVRead(string file)
+    {
+        Dictionary<int, StagaData> list = new Dictionary<int, StagaData>();
+        TextAsset data = Resources.Load(file) as TextAsset;
 
+        //가져온 텍스트 덩어리를 해당 분리자를 통해 분리한다.
+        string[] lines = Regex.Split(data.text, LINE_SPLIT_RE);
+
+        //해당 CSV 데이터에 헤더(카테고리) + 해당 자료형만 입력되있는 상태이므로 List 반환
+        if (lines.Length <= 2) return list;
+
+        string[] header = Regex.Split(lines[0], SPLIT_RE);  //해당 CSV 데이터에 헤더(카테고리)입력 -> Dictonary의 키값으로 사용
+        string[] typeHeader = Regex.Split(lines[1], SPLIT_RE);   //해당 CSV 데이터에 자료형 입력 -> 해당 자료의 자료형 선정시 사용됨
+        for (int i = 2; i < lines.Length; i++)
+        {
+            string[] values = Regex.Split(lines[i], SPLIT_RE);
+            if (values.Length == 0 || values[0] == "") continue; //정보가 없으면 다음 행으로 이동
+
+            StagaData stage = new StagaData();
+            stage.ID = (int)DataTypeCheck(typeHeader[0], values[0]);
+            stage.ChapterNum = (int)DataTypeCheck(typeHeader[1], values[1]);
+            stage.StageNum = (int)DataTypeCheck(typeHeader[2], values[2]);
+            stage.CurStageModifier = (float)DataTypeCheck(typeHeader[3], values[3]);
+            stage.StageName = (string)DataTypeCheck(typeHeader[4], values[4]);
+            stage.SlayEnemyCount = (int)DataTypeCheck(typeHeader[5], values[5]); ;
+            stage.SummonEnemyIDList = (List<int>)DataTypeCheck(typeHeader[6], values[6]);
+            list[stage.ID] = stage;
+
+        }
+        return list;
+    }
     private object DataTypeCheck(string type, string value)
     {
         switch (type)
