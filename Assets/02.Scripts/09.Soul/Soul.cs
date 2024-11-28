@@ -27,6 +27,7 @@ public abstract class Soul : MonoBehaviour
     protected JobType job = JobType.None;
 
     protected Skill[] skills = new Skill[(int)SkillType.Max];
+    public Skill[] Skills { get { return skills; } }
 
     protected void Awake()
     {
