@@ -13,7 +13,8 @@ public class SoulMagician : Soul
     {
         // TODO : 데이터를 받아와 넣기
 
-        //skills[(int)SkillType.Passive] = new MagicianPassiveSkill();
+        skills[(int)SkillType.Passive] = new MagicianPassiveSkill(
+            0000, "능숙한 마법", "공격력이 증가합니다.", 1, 1f, SkillType.Passive);
         skills[(int)SkillType.Default] = new MagicianDefaultSkill(
             0001, "익스플로전", "범위 내의 적에게 폭발을 일으켜 데미지를 입힌다.", 1, 1f, SkillType.Default);
         skills[(int)SkillType.Ultimate] = new MagicianUltimateSkill(

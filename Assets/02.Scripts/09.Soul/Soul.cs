@@ -48,11 +48,12 @@ public abstract class Soul : MonoBehaviour
 
     public void ApplyPassiveSkill()
     {
-        skills[(int)SkillType.Passive].UseSkill();
+        // 객체 생성 시 최초 1회 or 패시브 스킬 업그레이드 시 호출이 되면 된다.
+        skills[(int)SkillType.Passive].UseSkill(statHandler);
     }
 
     public void UseSkill(Skill skill)
     {
-        skill.UseSkill();
+        skill.UseSkill(statHandler);
     }
 }

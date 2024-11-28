@@ -21,7 +21,7 @@ public class MagicianUltimateSkill : Skill
         // TODO : amount 만큼 value 증가
     }
 
-    public override void UseSkill()
+    public override void UseSkill(StatHandler statHandler)
     {
         // TODO : 플레이어 대각 위치에서 생성한다.
 

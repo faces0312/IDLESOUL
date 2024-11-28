@@ -9,6 +9,8 @@ public class StatHandler : MonoBehaviour
     [SerializeField] private StatSO baseStat;
     public Stat currentStat;
     public Stat equipStat;
+    
+    // TODO : 리스트 or 딕셔너리를 만들어서 추가 적용할 스텟을 관리
 
     private void Awake()
     {

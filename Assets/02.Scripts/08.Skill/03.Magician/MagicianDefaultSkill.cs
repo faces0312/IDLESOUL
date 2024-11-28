@@ -22,7 +22,7 @@ public class MagicianDefaultSkill : Skill
         // TODO : amount 만큼 value 증가
     }
 
-    public override void UseSkill()
+    public override void UseSkill(StatHandler statHandler)
     {
         // 가장 가까운 Enemy 를 찾는 로직 구현
         // Enemy 리스트를 받아와 거리 기반 탐지

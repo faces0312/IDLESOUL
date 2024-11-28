@@ -8,7 +8,7 @@ public class KnightDefaultSkill : Skill
     {
     }
 
-    public override void UseSkill()
+    public override void UseSkill(StatHandler statHandler)
     {
         
     }
