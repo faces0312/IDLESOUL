@@ -1,5 +1,6 @@
 public class ShopController : UIController
 {
+    private ShopView shopView;
     private ShopModel shopModel;
 
     public override void Initialize(IUIBase view, UIModel model)

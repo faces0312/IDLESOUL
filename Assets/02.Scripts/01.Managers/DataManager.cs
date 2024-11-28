@@ -59,7 +59,7 @@ public class EnemyData
     public float    CritDamage;
 }
 [System.Serializable]
-public class StagaData
+public class StageData
 {
     public int       ID;
     public int       ChapterNum;
@@ -115,12 +115,12 @@ public class DataManager : SingletonDDOL<DataManager>
 
     private Dictionary<int, ItemData> itemDB = new Dictionary<int, ItemData>();
     private Dictionary<int, EnemyData> enemyDB = new Dictionary<int, EnemyData>();
-    private Dictionary<int, StagaData> stageDB = new Dictionary<int, StagaData>();
+    private Dictionary<int, StageData> stageDB = new Dictionary<int, StageData>();
     private Dictionary<int, SellItemData> sellItemDB = new Dictionary<int, SellItemData>();
     public Dictionary<int, ItemData> ItemDB { get => itemDB; }
     public Dictionary<int, SellItemData> SellItemDB { get => sellItemDB; }
     public Dictionary<int, EnemyData> EnemyDB { get => enemyDB; }
-    public Dictionary<int, StagaData> StageDB { get => stageDB; }
+    public Dictionary<int, StageData> StageDB { get => stageDB; }
 
     Inventory inventory = new Inventory();
     UserData userData = new UserData();
