@@ -9,8 +9,7 @@ public class UserData
 {
     public int UserID;
     public string Nickname;
-    public int Level;
-    public int Experience;
+    public Stat Status;
     public int Gold;
     public int Diamonds;
     public int PlayTimeInSeconds;
@@ -42,7 +41,6 @@ public class DataManager : SingletonDDOL<DataManager>
     private readonly string jsonSoulDBPath = "JSON/SoulDB";
     private readonly string jsonSkillDBPath = "JSON/SkillDB";
 
-
     private readonly string jsonUserDataPath = Application.dataPath + "/userdata.json";
 
     private StringBuilder strBuilder = new StringBuilder();
@@ -55,7 +53,6 @@ public class DataManager : SingletonDDOL<DataManager>
     private SoulDBLoader soulDB;
     private SkillDBLoader skillDB;
 
-
     public EnemyDBLoader EnemyDB { get => enemyDB; }
     public ItemDBLoader ItemDB { get => itemDB; }
     public SellItemDBLoader SellItemDB { get => sellItemDB; }
@@ -65,6 +62,8 @@ public class DataManager : SingletonDDOL<DataManager>
 
     private Inventory inventory = new Inventory();
     private UserData userData = new UserData();
+
+    public UserData UserData { get => userData;}
 
     public static event Action<UserData> OnEventSaveUserData;
     public static event Action OnEventLoadUserData;
@@ -92,18 +91,14 @@ public class DataManager : SingletonDDOL<DataManager>
 
         userData.UserID = 12345;
         userData.Nickname = "지존 감자탕";
-        userData.Level = 10;
-        userData.Experience = 100052;
+        userData.Status = new Stat();
+        userData.Status.level = 1;
         userData.Gold = 999999;
         userData.Diamonds = 9999;
         userData.PlayTimeInSeconds = 72000;
         //userData.Inventory = inventory;
 
-        ////ToDoCode : 저장할데이터를 쓰는 코드 테스트 부분
 
-        strBuilder.Clear();
-        //strBuilder.Append(csvSaveFilePath);
-        //CsvController.Write(strBuilder.ToString(), saveData);
     }
 
     private void SaveUserData(UserData userData) // 유저 데이터 세이브
@@ -114,9 +109,6 @@ public class DataManager : SingletonDDOL<DataManager>
     private void LoadUserData() // 유저 데이터 로드
     {
         userData = JsonController.LoadUserData(jsonUserDataPath);
-
-        Debug.Log($"로드한 닉네임  : {userData.Nickname}");
-        Debug.Log($"로드한 레벨  : {userData.Level}");
     }
 
     //Debug
@@ -124,11 +116,7 @@ public class DataManager : SingletonDDOL<DataManager>
     {
         if (Input.GetKeyDown(KeyCode.D)) // 데이터 갱신
         {
-            userData.Nickname += "1";
-            userData.Level += 10;
-
-            Debug.Log($"닉네임 변경 : {userData.Nickname}");
-            Debug.Log($"레벨 변경 : {userData.Level}");
+            userData.Nickname += "_WA";
         }
         else if(Input.GetKeyDown(KeyCode.S))
         {
