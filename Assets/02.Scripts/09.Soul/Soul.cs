@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +14,7 @@ public enum JobType
 public abstract class Soul
 {
     protected SoulDB tempDB;
-    public StatHandler statHandler; // ÀÓ½Ã·Î public ´Ù½Ã protected ·Î µ¹·Á³õ±â
+    public StatHandler statHandler; // ì„ì‹œë¡œ public ë‹¤ì‹œ protected ë¡œ ëŒë ¤ë†“ê¸°
 
     protected string soulName;
     protected string description;
@@ -34,8 +34,7 @@ public abstract class Soul
 
     public Soul(int key)
     {
-        // TODO : ID´Â ¾î¶»°Ô ¾Ë¾Æ ¿Ã °ÍÀÎ°¡?
-        // DB´Â ¾î¶»°Ô ¾Ë¾Æ¿Ã °ÍÀÎ°¡?
+        // TODO : DBë¥¼ ë“¤ê³  ìˆì„ì§€, ë°ì´í„°ë¥¼ ì¶”ì¶œí•´ì„œ ê°œë³„ì ìœ¼ë¡œ ë“¤ê³  ìˆì„ì§€
 
         tempDB = DataManager.Instance.SoulDB.GetByKey(key);
         statHandler = new StatHandler(StatType.Soul, key);
@@ -43,7 +42,7 @@ public abstract class Soul
         InitSkills();
     }
 
-    protected abstract void InitSkills();   // ½ºÅ³ »ı¼º
+    protected abstract void InitSkills();   // ìŠ¤í‚¬ ìƒì„±
 
     public void LevelUP(int amount)
     {
@@ -58,7 +57,8 @@ public abstract class Soul
 
     public void ApplyPassiveSkill()
     {
-        // °´Ã¼ »ı¼º ½Ã ÃÖÃÊ 1È¸ or ÆĞ½Ãºê ½ºÅ³ ¾÷±×·¹ÀÌµå ½Ã È£ÃâÀÌ µÇ¸é µÈ´Ù.
+        // TODO : íŒ¨ì‹œë¸Œ ìŠ¤í‚¬ ì ìš©ì‹œí‚¤ê¸°
+        // ê°ì²´ ìƒì„± ì‹œ ìµœì´ˆ 1íšŒ or íŒ¨ì‹œë¸Œ ìŠ¤í‚¬ ì—…ê·¸ë ˆì´ë“œ ì‹œ í˜¸ì¶œì´ ë˜ë©´ ëœë‹¤.
         skills[(int)SkillType.Passive].UseSkill(statHandler);
     }
 

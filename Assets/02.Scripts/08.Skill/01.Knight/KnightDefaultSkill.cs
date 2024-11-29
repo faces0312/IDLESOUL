@@ -7,7 +7,7 @@ public class KnightDefaultSkill : Skill
     GameObject skillPrefab;
     private float range;
 
-    public KnightDefaultSkill(int id, string name, string description, int applyCount, float value, SkillType type) : base(id, name, description, applyCount, value, type)
+    public KnightDefaultSkill(int id) : base(id)
     {
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/SpinSword");
         range = 5f;

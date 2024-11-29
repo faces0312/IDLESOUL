@@ -11,7 +11,7 @@ public class StatHandler
     private Stat baseStat;
     private Stat currentStat;
 
-    // 추가 스텟을 List로 관리
+    // 추가 스텟을 List로 관리 (장비, 패시브 등)
     private List<Stat> additionalStats = new List<Stat>();
     public Stat CurrentStat { get { return currentStat; } }
     
@@ -42,19 +42,13 @@ public class StatHandler
         switch (type)
         {
             case StatType.Player:
-                //currentStat.exp = new BigInteger(baseStat.exp);
-                //currentStat.MaxExp = new BigInteger(baseStat.MaxExp);
-
                 // TODO : 플레이어 스텟 핸들러를 연결해줌
                 TestManager.Instance.playerStatHandler = this;
                 break;
             case StatType.Soul:
-                // TODO : 스킬 정보
-
                 // TODO : 플레이가 레벨업, 장비를 장착할 때 소울들의 정보도 갱신이 되어야 한다.
-                //TestPlayerManager.Instance.OnUpdateSoulStats += UpdateStats;
-                //TestPlayerManager.Instance.OnUpdateSoulStats += UpdateSoulStats;
                 TestManager.Instance.OnUpdateSoulStats += UpdateSoulStats;
+                UpdateSoulStats();
                 break;
             case StatType.Enemy:
                 break;
@@ -78,26 +72,7 @@ public class StatHandler
 
         currentStat.critChance = baseStat.critChance * level;
         currentStat.critDamage = baseStat.critDamage * level;
-        currentStat.coolDown = baseStat.coolDown * level;
-    }
-
-    private void UpdateStats(Stat stat)
-    {
-        // 단순 덧셈
-
-        currentStat.health += stat.health;
-        currentStat.maxHealth += stat.maxHealth;
-        currentStat.atk += stat.atk;
-        currentStat.def += stat.def;
-
-        currentStat.moveSpeed += stat.moveSpeed;
-        currentStat.atkSpeed += stat.atkSpeed;
-
-        currentStat.reduceDamage += stat.reduceDamage;
-
-        currentStat.critChance += stat.critChance;
-        currentStat.critDamage += stat.critDamage;
-        currentStat.coolDown += stat.coolDown;
+        currentStat.coolDown = baseStat.coolDown * level;   // TODO : 0 일때 처리
     }
 
     private void UpdateSoulStats()
@@ -106,18 +81,42 @@ public class StatHandler
         // 소울 현재 스텟 * 플레이어 현재 스텟 %
         Stat playerStat = TestManager.Instance.playerStatHandler.currentStat;
 
-        currentStat.health = BigInteger.Multiply(int.Parse(currentStat.maxHealth.ToString()), BigInteger.Add(BigInteger.Divide(playerStat.maxHealth, 100), 1));
-        currentStat.maxHealth = currentStat.health;
-        currentStat.atk = BigInteger.Multiply(int.Parse(currentStat.atk.ToString()), BigInteger.Add(BigInteger.Divide(playerStat.atk, 100), 1));
-        currentStat.def = BigInteger.Multiply(int.Parse(currentStat.def.ToString()), BigInteger.Add(BigInteger.Divide(playerStat.def, 100), 1));
+        // 기존에 적용되어 있는 추가 스텟을 해제
+        Stat prevStats = new Stat();
 
-        currentStat.reduceDamage = currentStat.reduceDamage * (playerStat.reduceDamage * 0.01f + 1);
-        currentStat.critChance = currentStat.critChance * (playerStat.critChance * 0.01f + 1);
-        currentStat.critDamage = currentStat.critDamage * (playerStat.critDamage * 0.01f + 1);
+        foreach(Stat stat in additionalStats)
+        {
+            prevStats += stat;
+        }
 
-        currentStat.atkSpeed = currentStat.atkSpeed * (playerStat.atkSpeed * 0.01f + 1);
-        currentStat.moveSpeed = currentStat.moveSpeed * (playerStat.moveSpeed * 0.01f + 1);
-        currentStat.coolDown = currentStat.coolDown * (playerStat.coolDown * 0.01f + 1);
+        currentStat -= prevStats;
+        additionalStats.Clear();
+
+        // 추가 스텟을 새로 계산해서 추가
+        Stat calcStat = new Stat();
+
+        calcStat.health = BigInteger.Add(currentStat.maxHealth, BigInteger.Divide(BigInteger.Multiply(currentStat.maxHealth, playerStat.maxHealth), 100));
+        calcStat.maxHealth = calcStat.health;
+        calcStat.atk = BigInteger.Add(currentStat.atk, BigInteger.Divide(BigInteger.Multiply(currentStat.atk, playerStat.atk), 100));
+
+        BigInteger mul = BigInteger.Multiply(currentStat.def, playerStat.def);
+        BigInteger div = BigInteger.Divide(mul, 100);
+
+        calcStat.def = BigInteger.Add(currentStat.def, div);
+
+        calcStat.reduceDamage = currentStat.reduceDamage * (playerStat.reduceDamage * 0.01f + 1);
+        calcStat.critChance = currentStat.critChance * (playerStat.critChance * 0.01f + 1);
+        calcStat.critDamage = currentStat.critDamage * (playerStat.critDamage * 0.01f + 1);
+
+        calcStat.atkSpeed = currentStat.atkSpeed * (playerStat.atkSpeed * 0.01f + 1);
+        calcStat.moveSpeed = currentStat.moveSpeed * (playerStat.moveSpeed * 0.01f + 1);
+        calcStat.coolDown = currentStat.coolDown * (playerStat.coolDown * 0.01f + 1);   // TODO : 0 일때 처리
+
+        calcStat -= currentStat;
+
+        additionalStats.Add(calcStat);
+
+        currentStat += calcStat;
     }
 
     private Stat CalculateAdditionalStats()
@@ -126,29 +125,22 @@ public class StatHandler
 
         foreach (Stat stat in additionalStats)
         {
-            itemStats.health += stat.health;
-            itemStats.atk += stat.atk;
-            itemStats.def += stat.def;
-
-            itemStats.moveSpeed += stat.moveSpeed;
-            itemStats.atkSpeed += stat.atkSpeed;
-
-            itemStats.reduceDamage += stat.reduceDamage;
-
-            itemStats.critChance += stat.critChance;
-            itemStats.critDamage += stat.critDamage;
-            itemStats.coolDown += stat.coolDown;
+            itemStats += stat;
         }
-
+        
         return itemStats;
     }
 
     public void LevelUp(int level)
     {
-        UpdateStats(level);
+        //UpdateStats(level);
+        currentStat = baseStat * level;  // 연산자 오버로딩 테스트
 
-        if(type == StatType.Soul)
+        if (type == StatType.Soul)
+        {
+            additionalStats.Clear();    // 추가 값이 사라졌으므로 초기화 시킨다.
             UpdateSoulStats();
+        }
     }
 
     public void EquipItem(Stat itemStat)
@@ -157,15 +149,13 @@ public class StatHandler
 
         Stat itemStatSum = CalculateAdditionalStats();
 
-        UpdateStats(itemStatSum);
+        currentStat += itemStatSum;
     }
 
     public void UnEquipItem(Stat itemStat)
     {
         additionalStats.Remove(itemStat);
 
-        Stat itemStatSum = CalculateAdditionalStats();
-
-        UpdateStats(itemStatSum);
+        currentStat -= itemStat;
     }
 }
