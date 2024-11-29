@@ -19,13 +19,13 @@ public class Enemy : BaseCharacter
     public Rigidbody rb;
     public AnimatorHashData animatorHashData;
     //public Animator animator;
+    public GameObject bulletTest;
 
     [Header("State Machine")]
     private EnemyStateMachine stateMachine;
 
     [Header("CurrentStats")]
     private float currentHealth;
-    public GameObject bulletTest;
 
     private void Awake()
     {

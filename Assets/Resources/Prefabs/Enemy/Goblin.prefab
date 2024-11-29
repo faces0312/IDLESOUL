@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e1e395d495905459a98c89a6485619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackType: 0
+  attackType: 1
   enemyDB:
     key: 0
     Name: 
