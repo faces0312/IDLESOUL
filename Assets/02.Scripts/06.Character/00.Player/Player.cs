@@ -23,8 +23,6 @@ public class TestStat
 
     public int exp;
     public int MaxExp;
-
-    public TestSkill[] skills = new TestSkill[(int)TestSkillType.Max];
 }
 
 public class UserData
