@@ -14,7 +14,7 @@ public class StatHandler
     // 추가 스텟을 List로 관리
     private List<Stat> additionalStats = new List<Stat>();
     public Stat CurrentStat { get { return currentStat; } }
-    
+
     public StatHandler(StatType type, int key = 0)
     {
         this.type = type;

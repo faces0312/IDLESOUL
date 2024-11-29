@@ -1,3 +1,4 @@
+using ScottGarland;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -100,24 +101,26 @@ public class UserDB
     {
         key = userData.UID;
         Nickname = userData.NickName;
+        Level = userData.Level;
         Gold = userData.Gold;
         Diamonds = userData.Diamonds;
         PlayTimeInSeconds = userData.PlayTimeInSeconds;
+        exp = userData.Exp;
+        MaxExp = userData.MaxExp;
 
-        Level = userData.Tstat.level;
-        Health = userData.Tstat.health;
-        MaxHealth = userData.Tstat.maxHealth;
-        Atk = userData.Tstat.atk;
-        Def = userData.Tstat.def;
-        ReduceDamage = userData.Tstat.reduceDamage;
-        CriticalDamage = userData.Tstat.criticalDamage;
-        CriticalRate = userData.Tstat.criticalRate;
-        atkSpeed = userData.Tstat.atkSpeed;
-        moveSpeed = userData.Tstat.moveSpeed;
-        coolDown = userData.Tstat.coolDown;
-        exp = userData.Tstat.exp;
-        MaxExp = userData.Tstat.MaxExp;
+        Health = BigInteger.ToInt32(userData.stat.health); ;
+        MaxHealth = BigInteger.ToInt32(userData.stat.maxHealth);
+        Atk = BigInteger.ToInt32(userData.stat.atk);
+        Def = BigInteger.ToInt32(userData.stat.def);
 
+        moveSpeed = userData.stat.moveSpeed;
+        atkSpeed = userData.stat.atkSpeed;
+       
+        ReduceDamage = userData.stat.reduceDamage;
+
+        CriticalRate = userData.stat.critChance;
+        CriticalDamage = userData.stat.critDamage;
+        coolDown = userData.stat.coolDown;
     }
 
 }
