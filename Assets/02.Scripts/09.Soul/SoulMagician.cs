@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class SoulMagician : Soul
 {
-    private void Start()
+    public SoulMagician(int key) : base(key)
     {
-        InitSkills();
     }
 
     protected override void InitSkills()

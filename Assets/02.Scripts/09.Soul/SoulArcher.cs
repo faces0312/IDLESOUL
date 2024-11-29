@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SoulArcher : Soul
 {
+    public SoulArcher(int key) : base(key)
+    {
+    }
+
     protected override void InitSkills()
     {
         

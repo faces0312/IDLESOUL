@@ -10,13 +10,15 @@ public enum JobType
     None
 }
 
-public abstract class Soul : MonoBehaviour
+public abstract class Soul
 {
+    protected SoulDB tempDB;
     protected StatHandler statHandler;
 
     protected string soulName;
     protected string description;
 
+    protected int iD;
     protected int level = 1;
     protected int maxLevel = 100;
     protected int levelUpCost;
@@ -29,21 +31,23 @@ public abstract class Soul : MonoBehaviour
     protected Skill[] skills = new Skill[(int)SkillType.Max];
     public Skill[] Skills { get { return skills; } }
 
-    public Soul()
+    public Soul(int key)
     {
-        // TODO : 소울을 어떻게 생성할 것인가?
-    }
+        // TODO : ID는 어떻게 알아 올 것인가?
+        // DB는 어떻게 알아올 것인가?
 
-    protected void Awake()
-    {
-        statHandler = GetComponent<StatHandler>();
+        tempDB = DataManager.Instance.SoulDB.GetByKey(key);
+        statHandler = new StatHandler(StatType.Soul, key);
+
+        InitSkills();
     }
 
     protected abstract void InitSkills();   // 스킬 생성
 
     public void LevelUP(int amount)
     {
-        statHandler.LevelUp(amount);
+        level += amount;
+        statHandler.LevelUp(level);
     }
 
     public void UpgradeSkill(Skill skill, int amount)

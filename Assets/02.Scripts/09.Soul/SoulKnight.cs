@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SoulKnight : Soul
 {
+    public SoulKnight(int key) : base(key)
+    {
+    }
+
     protected override void InitSkills()
     {
         // TODO : 데이터를 받아와 넣기
