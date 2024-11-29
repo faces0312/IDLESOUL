@@ -35,6 +35,7 @@ public class EnemyManager : MonoBehaviour
         {
             GameObject enemy = pool.GetObject();
             Enemy tempEnemy = enemy.GetComponent<Enemy>();
+            tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(id);
             enemy.SetActive(true);
             GameManager.Instance.enemies.Add(enemy);
         }
