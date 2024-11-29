@@ -14,7 +14,6 @@ public class EnemyMoveState : EnemyBaseState
         /*animator.SetBool(animatorHashData.IdleParameterHash, false);
         animator.SetBool(animatorHashData.WalkParameterHash, true);
         animator.SetTrigger(animatorHashData.AttackParameterHash, false);*/
-        Debug.Log("움직임 애니메이션");
         // 이동 애니메이션 시작
     }
 
