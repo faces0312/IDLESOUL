@@ -10,9 +10,9 @@ public class Player : BaseCharacter
     {
         //Model(UserData) 세팅
         userData = DataManager.Instance.UserData;
-        base.statHandler.InitializeStats(StatType.Player); //Player 데이터 세팅
+        //base.statHandler.InitializeStats(StatType.Player); //Player 데이터 세팅
 
-        statHandler.currentStat = userData.Status;
+        //statHandler.currentStat = userData.Status;
     }
 
     public override void TakeDamage(float damage)

@@ -92,7 +92,7 @@ public class DataManager : SingletonDDOL<DataManager>
         userData.UserID = 12345;
         userData.Nickname = "지존 감자탕";
         userData.Status = new Stat();
-        userData.Status.level = 1;
+        //userData.Status.level = 1;
         userData.Gold = 999999;
         userData.Diamonds = 9999;
         userData.PlayTimeInSeconds = 72000;
