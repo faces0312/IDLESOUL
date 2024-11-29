@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using UnityEngine;
@@ -34,7 +34,7 @@ public abstract class Skill : ISkill
 
     protected SkillType type;
 
-    // TODO : »ı¼º½Ã µ¥ÀÌÅÍ Àû¿ë
+    // ìƒì„±ìì—ì„œ ë°ì´í„° ì ìš©
     public Skill(int id)
     {
         SkillDB db = DataManager.Instance.SkillDB.GetByKey(id);

@@ -11,7 +11,7 @@ public class StatHandler
     private Stat baseStat;
     private Stat currentStat;
 
-    // 추가 스텟을 List로 관리
+    // 추가 스텟을 List로 관리 (장비, 패시브 등)
     private List<Stat> additionalStats = new List<Stat>();
     public Stat CurrentStat { get { return currentStat; } }
     
@@ -42,18 +42,11 @@ public class StatHandler
         switch (type)
         {
             case StatType.Player:
-                //currentStat.exp = new BigInteger(baseStat.exp);
-                //currentStat.MaxExp = new BigInteger(baseStat.MaxExp);
-
                 // TODO : 플레이어 스텟 핸들러를 연결해줌
                 TestManager.Instance.playerStatHandler = this;
                 break;
             case StatType.Soul:
-                // TODO : 스킬 정보
-
                 // TODO : 플레이가 레벨업, 장비를 장착할 때 소울들의 정보도 갱신이 되어야 한다.
-                //TestPlayerManager.Instance.OnUpdateSoulStats += UpdateStats;
-                //TestPlayerManager.Instance.OnUpdateSoulStats += UpdateSoulStats;
                 TestManager.Instance.OnUpdateSoulStats += UpdateSoulStats;
                 UpdateSoulStats();
                 break;

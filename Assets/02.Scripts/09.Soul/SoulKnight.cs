@@ -10,8 +10,6 @@ public class SoulKnight : Soul
 
     protected override void InitSkills()
     {
-        // TODO : 데이터를 받아와 넣기
-
         //skills[(int)SkillType.Passive] = new KnightPassiveSkill(12003);
         skills[(int)SkillType.Default] = new KnightDefaultSkill(12004);
         //skills[(int)SkillType.Ultimate] = new KnightUltimateSkill(12005);
