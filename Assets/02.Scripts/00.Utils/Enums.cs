@@ -15,4 +15,11 @@ namespace Enums
         Rare,
         Legendary
     }
+
+    public enum Gacha
+    {
+        None,
+        Weapon,
+        Soul
+    }
 }

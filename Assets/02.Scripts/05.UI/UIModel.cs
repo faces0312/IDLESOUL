@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public interface IUIBase
@@ -10,7 +11,7 @@ public interface IUIBase
     void UpdateUI();
 }
 
-public class UIModel
+public class UIModel : MonoBehaviour
 {
     // 상태 관리
     // 공통 데이터

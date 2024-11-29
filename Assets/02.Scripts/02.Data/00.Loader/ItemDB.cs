@@ -96,6 +96,11 @@ public class ItemDB
     /// </summary>
     public int StackMaxCount;
 
+    /// <summary>
+    /// IconPath
+    /// </summary>
+    public string IconPath;
+
 }
 public class ItemDBLoader
 {
