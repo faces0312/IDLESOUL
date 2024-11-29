@@ -4,25 +4,23 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    private BoxCollider2D myCollider;
     private float value;
     private float range;
 
-    private void Awake()
-    {
-        myCollider = GetComponent<BoxCollider2D>();
-    }
+    private LayerMask layerMask;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        myCollider.size = new Vector2(range, range);
+        layerMask = 1 << LayerMask.NameToLayer("Enemy");
+        transform.localScale = new Vector3(range, range, range);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // TODO : 폭발 구현
     }
 
     public void InitSettings(float value, float range)
@@ -33,15 +31,13 @@ public class Explosion : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // TODO : 단순 이름 비교가 아닌 LayerMask로 변경
-
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (Utils.IsInLayerMask(collision.gameObject.layer, layerMask))
         {
             GameManager.Instance.enemies.Remove(collision.gameObject);  // 임시로 제거
-            //Destroy(collision.gameObject);
+            Destroy(collision.gameObject);
             Debug.LogAssertion("Enemy Destroy");
         }
 
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 }

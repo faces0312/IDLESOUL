@@ -12,7 +12,7 @@ public enum SkillType
 
 public interface ISkill
 {
-    void UseSkill();
+    void UseSkill(StatHandler statHandler);
     void UpgradeSkill(int amount);
 }
 
@@ -43,6 +43,6 @@ public abstract class Skill : ISkill
         this.type = type;
     }
 
-    public abstract void UseSkill();
+    public abstract void UseSkill(StatHandler statHandler);
     public abstract void UpgradeSkill(int amount);
 }

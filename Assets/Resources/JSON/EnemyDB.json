@@ -13,7 +13,10 @@
       "MoveSpeed": 1,
       "Health": 0,
       "CritChance": 1,
-      "CritDamage": 100
+      "CritDamage": 100,
+      "Distance": 5,
+      "KnockBackPower": 10,
+      "KnockBackResistance": 1
     },
     {
       "key": 5001,
@@ -28,7 +31,10 @@
       "MoveSpeed": 1,
       "Health": 0,
       "CritChance": 1,
-      "CritDamage": 100
+      "CritDamage": 100,
+      "Distance": 5,
+      "KnockBackPower": 10,
+      "KnockBackResistance": 1
     },
     {
       "key": 5002,
@@ -43,7 +49,10 @@
       "MoveSpeed": 1,
       "Health": 0,
       "CritChance": 1,
-      "CritDamage": 100
+      "CritDamage": 100,
+      "Distance": 5,
+      "KnockBackPower": 10,
+      "KnockBackResistance": 1
     },
     {
       "key": 5003,
@@ -58,7 +67,10 @@
       "MoveSpeed": 0.8,
       "Health": 0,
       "CritChance": 1,
-      "CritDamage": 100
+      "CritDamage": 100,
+      "Distance": 5,
+      "KnockBackPower": 10,
+      "KnockBackResistance": 1
     },
     {
       "key": 5004,
@@ -73,7 +85,10 @@
       "MoveSpeed": 0.8,
       "Health": 0,
       "CritChance": 5,
-      "CritDamage": 150
+      "CritDamage": 150,
+      "Distance": 5,
+      "KnockBackPower": 10,
+      "KnockBackResistance": 1
     },
     {
       "key": 5005,
@@ -88,7 +103,10 @@
       "MoveSpeed": 0.8,
       "Health": 30,
       "CritChance": 0,
-      "CritDamage": 0
+      "CritDamage": 0,
+      "Distance": 5,
+      "KnockBackPower": 10,
+      "KnockBackResistance": 1
     },
     {
       "key": 5006,
@@ -103,7 +121,10 @@
       "MoveSpeed": 1.2,
       "Health": 50,
       "CritChance": 0,
-      "CritDamage": 0
+      "CritDamage": 0,
+      "Distance": 5,
+      "KnockBackPower": 10,
+      "KnockBackResistance": 1
     },
     {
       "key": 5007,
@@ -118,7 +139,10 @@
       "MoveSpeed": 1.2,
       "Health": 100,
       "CritChance": 0,
-      "CritDamage": 0
+      "CritDamage": 0,
+      "Distance": 5,
+      "KnockBackPower": 10,
+      "KnockBackResistance": 1
     },
     {
       "key": 5008,
@@ -133,7 +157,10 @@
       "MoveSpeed": 1.2,
       "Health": 30,
       "CritChance": 0,
-      "CritDamage": 0
+      "CritDamage": 0,
+      "Distance": 5,
+      "KnockBackPower": 10,
+      "KnockBackResistance": 1
     }
   ]
 }

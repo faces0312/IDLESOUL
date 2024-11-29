@@ -1,21 +1,22 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SoulMagician : Soul
 {
-    private void Start()
+    public SoulMagician(int key) : base(key)
     {
-        InitSkills();
     }
 
     protected override void InitSkills()
     {
-        // TODO : µ¥ÀÌÅÍ¸¦ ¹Ş¾Æ¿Í ³Ö±â
+        // TODO : ë°ì´í„°ë¥¼ ë°›ì•„ì™€ ë„£ê¸°
 
-        //skills[(int)SkillType.Passive] = new MagicianPassiveSkill();
+        skills[(int)SkillType.Passive] = new MagicianPassiveSkill(
+            0000, "ëŠ¥ìˆ™í•œ ë§ˆë²•", "ê³µê²©ë ¥ì´ ì¦ê°€í•©ë‹ˆë‹¤.", 1, 1f, SkillType.Passive);
         skills[(int)SkillType.Default] = new MagicianDefaultSkill(
-            0001, "ÀÍ½ºÇÃ·ÎÀü", "¹üÀ§ ³»ÀÇ Àû¿¡°Ô Æø¹ßÀ» ÀÏÀ¸ÄÑ µ¥¹ÌÁö¸¦ ÀÔÈù´Ù.", 1, 1f, SkillType.Default);
-        //skills[(int)SkillType.Ultimate] = new MagicianUltimateSkill();
+            0001, "ìµìŠ¤í”Œë¡œì „", "ë²”ìœ„ ë‚´ì˜ ì ì—ê²Œ í­ë°œì„ ì¼ìœ¼ì¼œ ë°ë¯¸ì§€ë¥¼ ì…íŒë‹¤.", 1, 1f, SkillType.Default);
+        skills[(int)SkillType.Ultimate] = new MagicianUltimateSkill(
+            0002, "ë©”í…Œì˜¤", "ë²”ìœ„ ë‚´ì— ê±°ëŒ€í•œ í­ë°œì„ ì¼ìœ¼ì¼œ ë°ë¯¸ì§€ë¥¼ ì…íŒë‹¤.", 1, 1f, SkillType.Ultimate);
     }
 }

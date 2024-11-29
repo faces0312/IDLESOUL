@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using TMPro;
 
 public class TestManager : SingletonDDOL<TestManager>
 {
@@ -9,7 +11,52 @@ public class TestManager : SingletonDDOL<TestManager>
 
     public GameObject TestPlayer;
     public Soul TestSoul;
-    
+    public StatHandler playerStatHandler;
+    public int playerLevel = 1;
+    public int soulLevel = 1;
+
+    public event Action OnUpdateSoulStats;
+
+    public TextMeshProUGUI[] playerStats;
+    public TextMeshProUGUI[] soulStats;
+
+    public TestInventoryModel inventory;
+
+    private void Start()
+    {
+        TestSoul = new SoulMagician(11000);
+        playerStatHandler = new StatHandler(StatType.Player);
+
+        StatViewUpdate();
+    }
+
+    public void StatViewUpdate()
+    {
+        playerStats[0].text = playerStatHandler.CurrentStat.iD.ToString();
+        playerStats[1].text = playerStatHandler.CurrentStat.health.ToString();
+        playerStats[2].text = playerStatHandler.CurrentStat.maxHealth.ToString();
+        playerStats[3].text = playerStatHandler.CurrentStat.atk.ToString();
+        playerStats[4].text = playerStatHandler.CurrentStat.def.ToString();
+        playerStats[5].text = playerStatHandler.CurrentStat.moveSpeed.ToString();
+        playerStats[6].text = playerStatHandler.CurrentStat.atkSpeed.ToString();
+        playerStats[7].text = playerStatHandler.CurrentStat.reduceDamage.ToString();
+        playerStats[8].text = playerStatHandler.CurrentStat.critChance.ToString();
+        playerStats[9].text = playerStatHandler.CurrentStat.critDamage.ToString();
+        playerStats[10].text = playerStatHandler.CurrentStat.coolDown.ToString();
+        
+        soulStats[0].text = TestSoul.statHandler.CurrentStat.iD.ToString();
+        soulStats[1].text = TestSoul.statHandler.CurrentStat.health.ToString();
+        soulStats[2].text = TestSoul.statHandler.CurrentStat.maxHealth.ToString();
+        soulStats[3].text = TestSoul.statHandler.CurrentStat.atk.ToString();
+        soulStats[4].text = TestSoul.statHandler.CurrentStat.def.ToString();
+        soulStats[5].text = TestSoul.statHandler.CurrentStat.moveSpeed.ToString();
+        soulStats[6].text = TestSoul.statHandler.CurrentStat.atkSpeed.ToString();
+        soulStats[7].text = TestSoul.statHandler.CurrentStat.reduceDamage.ToString();
+        soulStats[8].text = TestSoul.statHandler.CurrentStat.critChance.ToString();
+        soulStats[9].text = TestSoul.statHandler.CurrentStat.critDamage.ToString();
+        soulStats[10].text = TestSoul.statHandler.CurrentStat.coolDown.ToString();
+    }
+
     public void OnSpawnEnemy()
     {
         GameObject prefab = Resources.Load<GameObject>("Prefabs/Enemy/TestEnemy");
@@ -25,8 +72,38 @@ public class TestManager : SingletonDDOL<TestManager>
         GameManager.Instance.enemies.Add(testEnemy4);
     }
 
-    public void OnUseSkill()
+    public void OnUseDefaultSkill()
     {
         TestSoul.UseSkill(TestSoul.Skills[(int)SkillType.Default]);
+    }
+
+    public void OnUseUltimateSkill()
+    {
+        TestSoul.UseSkill(TestSoul.Skills[(int)SkillType.Ultimate]);
+    }
+
+    public void OnClickPlayerLevelUp(int level)
+    {
+        playerLevel += level;
+        playerStatHandler.LevelUp(playerLevel);
+        OnUpdateSoulStats?.Invoke();
+        StatViewUpdate();
+    }
+
+    public void OnClickSoulLevelUp(int level)
+    {
+        soulLevel += level;
+        TestSoul.statHandler.LevelUp(soulLevel);
+        StatViewUpdate();
+    }
+
+    public void OnClickAddItem(string key)
+    {
+        inventory.AddItem(key);
+    }
+
+    public void OnClickRemoveItem(string key)
+    {
+        inventory.RemoveItem(key);
     }
 }

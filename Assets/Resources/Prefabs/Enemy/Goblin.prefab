@@ -131,21 +131,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e1e395d495905459a98c89a6485619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData:
-    ID: 0
+  attackType: 1
+  enemyDB:
+    key: 0
     Name: 
     Descripton: 
-    DropItemID: 
     DropGold: 0
+    DropDia: 0
     Attack: 0
     AttackSpeed: 0
+    AttackDistance: 0
     Defence: 0
     MoveSpeed: 0
     Health: 0
     CritChance: 0
     CritDamage: 0
+    Distance: 0
+    KnockBackPower: 0
+    KnockBackResistance: 0
   target: {fileID: 0}
   rb: {fileID: 0}
+  bulletTest: {fileID: 7331459659348895967, guid: c066ec948ba440747820b2a0bafe2f1c, type: 3}
 --- !u!54 &6919928748636764415
 Rigidbody:
   m_ObjectHideFlags: 0
