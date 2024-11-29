@@ -125,18 +125,7 @@ public class StatHandler
 
         foreach (Stat stat in additionalStats)
         {
-            itemStats.health += stat.health;
-            itemStats.atk += stat.atk;
-            itemStats.def += stat.def;
-
-            itemStats.moveSpeed += stat.moveSpeed;
-            itemStats.atkSpeed += stat.atkSpeed;
-
-            itemStats.reduceDamage += stat.reduceDamage;
-
-            itemStats.critChance += stat.critChance;
-            itemStats.critDamage += stat.critDamage;
-            itemStats.coolDown += stat.coolDown;
+            itemStats += stat;
         }
         
         return itemStats;
