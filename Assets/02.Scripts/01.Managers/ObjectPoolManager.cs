@@ -32,10 +32,13 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
     /// <returns>ObjectPool</returns>
     public ObjectPool GetPool(string dictId, int poolId)
     {
-        for (int i = 0; i < poolDict[dictId].Count; i++)
+        if (poolDict.ContainsKey(dictId))
         {
-            if (poolDict[dictId][i].Id == poolId)
-                return poolDict[dictId][i];
+            for (int i = 0; i < poolDict[dictId].Count; i++)
+            {
+                if (poolDict[dictId][i].Id == poolId)
+                    return poolDict[dictId][i];
+            }
         }
         return null;
     }
