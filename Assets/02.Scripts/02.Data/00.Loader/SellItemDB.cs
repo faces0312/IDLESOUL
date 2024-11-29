@@ -46,6 +46,11 @@ public class SellItemDB
     /// </summary>
     public int StackCount;
 
+    /// <summary>
+    /// IconPath
+    /// </summary>
+    public string IconPath;
+
 }
 public class SellItemDBLoader
 {

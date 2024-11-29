@@ -17,7 +17,6 @@ public class ShopModel : UIModel
 
     private void Awake()
     {
-        testUser = new UserData();
         ItemGachaList = new Dictionary<string, List<testItem>>();
         SoulGachaList = new Dictionary<string, List<testSoul>>();
     }

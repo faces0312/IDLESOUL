@@ -4,18 +4,19 @@ using UnityEngine;
 [System.Serializable]
 public class ObjectPool
 {
-    public string Id;
-    private int Size;
-    private string Path;
-    private GameObject Prefab;
-    private Queue<GameObject> Pool;
+    public int Id;
+    //public string Id;
+    public int Size;
+    public string Path;
+    public GameObject Prefab;
+    public Queue<GameObject> Pool;
 
     public ObjectPool()
     {
 
     }
 
-    public ObjectPool(string id, int size, string path)
+    public ObjectPool(int id, int size, string path)
     {
         this.Id = id;
         this.Size = size;
@@ -25,8 +26,7 @@ public class ObjectPool
 
         MakePool();
     }
-
-    public ObjectPool(string id, int size, GameObject prefab)
+    public ObjectPool(int id, int size, GameObject prefab)
     {
         this.Id = id;
         this.Size = size;
@@ -37,7 +37,7 @@ public class ObjectPool
         MakePool();
     }
 
-    public ObjectPool(string id, int size, string path, Transform parent)
+    public ObjectPool(int id, int size, string path, Transform parent)
     {
         this.Id = id;
         this.Size = size;
@@ -48,7 +48,7 @@ public class ObjectPool
         MakePoolWithParent(parent);
     }
 
-    public ObjectPool(string id, int size, GameObject prefab, Transform parent)
+    public ObjectPool(int id, int size, GameObject prefab, Transform parent)
     {
         this.Id = id;
         this.Size = size;
@@ -58,6 +58,50 @@ public class ObjectPool
 
         MakePoolWithParent(parent);
     }
+
+    //public ObjectPool(string id, int size, string path)
+    //{
+    //    this.Id = id;
+    //    this.Size = size;
+    //    this.Path = path;
+    //    this.Prefab = Resources.Load<GameObject>(path);
+    //    this.Pool = new Queue<GameObject>();
+
+    //    MakePool();
+    //}
+
+    //public ObjectPool(string id, int size, GameObject prefab)
+    //{
+    //    this.Id = id;
+    //    this.Size = size;
+    //    this.Path = string.Empty;
+    //    this.Prefab = prefab;
+    //    this.Pool = new Queue<GameObject>();
+
+    //    MakePool();
+    //}
+
+    //public ObjectPool(string id, int size, string path, Transform parent)
+    //{
+    //    this.Id = id;
+    //    this.Size = size;
+    //    this.Path = path;
+    //    this.Prefab = Resources.Load<GameObject>(path);
+    //    this.Pool = new Queue<GameObject>();
+
+    //    MakePoolWithParent(parent);
+    //}
+
+    //public ObjectPool(string id, int size, GameObject prefab, Transform parent)
+    //{
+    //    this.Id = id;
+    //    this.Size = size;
+    //    this.Path = string.Empty;
+    //    this.Prefab = prefab;
+    //    this.Pool = new Queue<GameObject>();
+
+    //    MakePoolWithParent(parent);
+    //}
 
     //private void Awake()
     //{

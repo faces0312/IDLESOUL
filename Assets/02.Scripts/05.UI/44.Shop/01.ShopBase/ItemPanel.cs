@@ -9,22 +9,21 @@ public class ItemPanel : MonoBehaviour
     public TextMeshProUGUI Description;
     public Button Buy;
     public Button Cancel;
-    public ItemDB curItem;
+    public SellItemDB curItem;
     private TestInventoryModel inventory;
 
     private void OnEnable()
     {
-        Name.text = curItem.Name;
-        Description.text = curItem.Descripton;
+        Name.text = curItem.ProductName;
+        Description.text = curItem.ProductDescription;
         Buy.onClick.AddListener(BuyItem);
         Cancel.onClick.AddListener(Quit);
     }
     private void Start()
     {
-        inventory = TestPlayerManager.Instance.Inventory;
     }
 
-    public void SetItemDB(ItemDB item)
+    public void SetItemDB(SellItemDB item)
     {
         this.curItem = item;
     }
@@ -36,6 +35,6 @@ public class ItemPanel : MonoBehaviour
 
     private void BuyItem()
     {
-        inventory.AddItem(curItem.key.ToString());
+        //inventory.AddItem(curItem.key.ToString());
     }
 }

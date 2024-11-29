@@ -14,7 +14,7 @@ public class StageSelector : MonoBehaviour, IUIBase
     [SerializeField] private RectTransform contentRect;
 
     private readonly string POOL_DICT_KEY = "StageSelector";
-    private readonly string POOL_KEY = "StageSelectors";
+    private readonly int POOL_KEY = 0;
 
     private ObjectPool pool;
     private float srReach = 1f;

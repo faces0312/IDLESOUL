@@ -8,5 +8,6 @@ public class ShopInventory : UIModel
     private void Awake()
     {
         InventorySlots = GetComponentsInChildren<ShopSlot>();
+
     }
 }

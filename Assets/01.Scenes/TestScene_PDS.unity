@@ -260,7 +260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &99398340
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1735,9 +1735,9 @@ RectTransform:
   - {fileID: 1333031311}
   m_Father: {fileID: 1070471824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1098.75, y: -85}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 250, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &747206411
@@ -1858,10 +1858,10 @@ RectTransform:
   - {fileID: 1094658068}
   m_Father: {fileID: 292340531}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -150}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &783623097
 MonoBehaviour:
@@ -1877,8 +1877,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemKey: 0
   Price: 0
-  itemText: {fileID: 0}
-  itemIcon: {fileID: 0}
+  itemText: {fileID: 1094658069}
+  itemIcon: {fileID: 2090830121}
   itemPanel: {fileID: 0}
 --- !u!114 &783623098
 MonoBehaviour:
@@ -2307,9 +2307,9 @@ RectTransform:
   - {fileID: 1430840712}
   m_Father: {fileID: 1070471824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 486.25, y: -85}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 250, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &840884506
@@ -2474,6 +2474,7 @@ GameObject:
   - component: {fileID: 959543130}
   - component: {fileID: 959543129}
   - component: {fileID: 959543131}
+  - component: {fileID: 959543132}
   m_Layer: 5
   m_Name: POPUP_Shop
   m_TagString: Untagged
@@ -2558,13 +2559,28 @@ MonoBehaviour:
   gachaPanel: {fileID: 1737574298}
   content_BuyItem: {fileID: 1778681669}
   content_ChangeProduct: {fileID: 1540368857}
-  buyItemPanel: {fileID: 0}
+  buyItemPanel: {fileID: 99398339}
   gachaType_Soul: {fileID: 1978130558}
   gachaType_Weapon: {fileID: 970726197}
   pickupImage: {fileID: 1911362216}
   gachaOnce: {fileID: 626257174}
   gacha10: {fileID: 821943642}
-  itemPanel: {fileID: 0}
+  buyPanel: {fileID: 1908414855}
+--- !u!114 &959543132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959543127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c76b4927af6d034191731fa21b63de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoulGachaCount: 0
+  ItemGachaCount: 0
+  GachaPrice: 1000
 --- !u!1 &970726195
 GameObject:
   m_ObjectHideFlags: 0
@@ -2599,9 +2615,9 @@ RectTransform:
   - {fileID: 671532976}
   m_Father: {fileID: 1070471824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 792.5, y: -85}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 250, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &970726197
@@ -4377,7 +4393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1737574299
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4888,13 +4904,14 @@ GameObject:
   - component: {fileID: 1908414852}
   - component: {fileID: 1908414854}
   - component: {fileID: 1908414853}
+  - component: {fileID: 1908414855}
   m_Layer: 5
   m_Name: ItemPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1908414852
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4957,6 +4974,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908414851}
   m_CullTransparentMesh: 1
+--- !u!114 &1908414855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908414851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ea2099ab227574fa97eb958e6aea21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 1585926333}
+  Name: {fileID: 693663259}
+  Description: {fileID: 1685483633}
+  Buy: {fileID: 2034835658}
+  Cancel: {fileID: 309063939}
+  curItem:
+    key: 0
+    OriginID: 
+    ProductName: 
+    ProductDescription: 
+    PriceType: 
+    Price: 0
+    IsStack: 0
+    StackCount: 0
 --- !u!1 &1911362213
 GameObject:
   m_ObjectHideFlags: 0
@@ -5320,9 +5363,9 @@ RectTransform:
   - {fileID: 742089548}
   m_Father: {fileID: 1070471824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180, y: -85}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 250, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1978130558
