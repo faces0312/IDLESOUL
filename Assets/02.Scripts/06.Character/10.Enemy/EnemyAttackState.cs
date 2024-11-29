@@ -52,12 +52,12 @@ public class EnemyAttackState : EnemyBaseState
 
     void MeleeAttack()
     {
-        Debug.Log("근거리공격");
+        //Debug.Log("근거리공격");
     }
 
     void RangedAttack()
     {
-        Debug.Log("원거리공격");
+        //Debug.Log("원거리공격");
         //원거리 적의 경우
         GameObject bulletInstance = Object.Instantiate(stateMachine.Enemy.bulletTest, stateMachine.Enemy.transform.position, Quaternion.Euler(Vector3.zero));
         BulletTest monsterBullet = bulletInstance.GetComponent<BulletTest>();
