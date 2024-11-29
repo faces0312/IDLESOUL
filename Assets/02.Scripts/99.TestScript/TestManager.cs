@@ -24,8 +24,8 @@ public class TestManager : SingletonDDOL<TestManager>
 
     private void Start()
     {
-        TestSoul = new SoulMagician(11000);
         playerStatHandler = new StatHandler(StatType.Player);
+        TestSoul = new SoulMagician(11000);
 
         StatViewUpdate();
     }

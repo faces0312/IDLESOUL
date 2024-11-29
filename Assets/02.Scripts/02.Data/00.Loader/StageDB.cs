@@ -1,3 +1,4 @@
+using Enums;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -40,6 +41,13 @@ public class StageDB
     /// SummonEnemyIDList
     /// </summary>
     public List<int> SummonEnemyIDList;
+
+
+    /// <summary>
+    /// StageType Int /
+    /// 0 = none, 1 = daily, 2 = EXP, 3 = Upgrade
+    /// </summary>
+    public int StageType;
 
 }
 public class StageDBLoader

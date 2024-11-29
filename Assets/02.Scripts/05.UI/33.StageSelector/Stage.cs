@@ -5,21 +5,18 @@ using UnityEngine.UI;
 
 public class Stage : MonoBehaviour
 {
-    public int ID;
-    private string stageName;
+    public string StageName;
+    private StageDB stageData;
+    private Button click;
 
-    [SerializeField] private TextMeshProUGUI Name;
-
-    private Button button;
-    private bool isOpen;
-
-    private void OnEnable()
+    private void Start()
     {
-        Name.text = stageName;
+        click = GetComponent<Button>();
+        click.onClick.AddListener(SendData);
     }
 
-    public void SetStageName(string stageName)
+    private void SendData()
     {
-        this.stageName = stageName;
+        //Todo : 해당 스테이지 데이터 전송 후 게임씬 이동?
     }
 }
