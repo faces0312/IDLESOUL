@@ -16,6 +16,6 @@ public class BaseStateMachine
 
     public void FixedUpdateState()
     {
-        currentState?.Update();
+        currentState?.FixedUpdate();
     }
 }
