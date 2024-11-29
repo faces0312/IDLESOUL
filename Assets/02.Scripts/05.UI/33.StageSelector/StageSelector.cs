@@ -1,75 +1,41 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
+using Enums;
+using System.Collections.Generic;
 
-public class StageSelector : MonoBehaviour, IUIBase
+public class StageSelector : MonoBehaviour
 {
-    [SerializeField] private GameObject StagePanel;
-    [SerializeField] private Transform content;
-    [SerializeField] private ScrollRect scrollRect;
-    [SerializeField] private RectTransform contentRect;
+    [SerializeField] private RectTransform content;
 
-    private readonly string POOL_DICT_KEY = "StageSelector";
+    private List<StageDB> stageDatas;
+    private List<StageDB> targetStageDBs;
+    private List<Stage> stages;
+    private StageType stageType;
+    private ObjectPool stagePool;
+
     private readonly int POOL_KEY = 0;
+    private readonly string DICT_KEY = "StagePool";
+    private readonly string STAGE_PREFAB_PATH = "Prefabs/Sample/Stage";
 
-    private ObjectPool pool;
-    private float srReach = 1f;
+    private void Awake()
+    {
+        stageDatas = DataManager.Instance.StageDB.ItemsList;
+        stagePool = new ObjectPool(POOL_KEY, 10, STAGE_PREFAB_PATH, content);
+        ObjectPoolManager.Instance.AddPool(DICT_KEY, stagePool);
+    }
 
     private void OnEnable()
     {
-        if (ObjectPoolManager.Instance.GetPool(POOL_DICT_KEY, POOL_KEY) == null)
+        foreach (StageDB item in stageDatas)
         {
-            pool = new ObjectPool(POOL_KEY, 10, "Prefabs/Sample/Stage", content);
-            ObjectPoolManager.Instance.AddPool(POOL_DICT_KEY, pool);
+            if ((StageType)item.StageType == stageType)
+            {
+                targetStageDBs.Add(item);
+            }
         }
-        else pool = ObjectPoolManager.Instance.GetPool(POOL_DICT_KEY, POOL_KEY);
-
-        for (int i = 0; i < pool.GetPool().Count(); i++) 
-        {
-            pool.GetObject().GetComponent<Stage>().SetStageName(i.ToString());
-        }
-
-        scrollRect.onValueChanged.AddListener(InfiniteScroll);
-        pool.SetActiveAllTrue();
     }
 
-    private void OnDisable()
+    public void SetStageType(StageType type)
     {
-        pool.SetActiveAllFalse();
-        scrollRect.onValueChanged.RemoveListener(InfiniteScroll);
-    }
-
-    private void InfiniteScroll(Vector2 position)
-    {
-        // Todo : position.x 값이 -400미만이라면 가장 왼쪽의 오브젝트를 오른쪽에 재생성
-        // 반대로 -400이상이라면 가장 오른쪽의 오브젝트를 왼쪽에 재생성
-        // 가장 왼쪽의 오브젝트는 Queue순으로 Dequeue로 해결가능
-        // 가장 오른쪽의 오브젝트는?
-
-        
-    }
-
-    public void Initialize()
-    {
-
-    }
-
-    public void ShowUI()
-    {
-        StagePanel.SetActive(true);
-    }
-
-    public void HideUI()
-    {
-        StagePanel.SetActive(false);
-    }
-
-    public void UpdateUI()
-    {
-
+        this.stageType = type;
     }
 }

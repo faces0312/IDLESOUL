@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ShopButtonController : MonoBehaviour
 {
-    private Gacha GachaType = Gacha.Soul;
+    private GachaType GachaType = GachaType.Soul;
 
     [SerializeField] private Button content_Gacha;
     [SerializeField] private GameObject gachaPanel;
@@ -61,13 +61,13 @@ public class ShopButtonController : MonoBehaviour
 
     private void SoulGacha()
     {
-        GachaType = Gacha.Soul;
+        GachaType = GachaType.Soul;
         pickupImage.sprite = Resources.Load<Sprite>("Prefabs/Sample/CurSoulPickup");
     }
 
     private void ItemGacha()
     {
-        GachaType = Gacha.Weapon;
+        GachaType = GachaType.Weapon;
         pickupImage.sprite = Resources.Load<Sprite>("Prefabs/Sample/CurItemPickup");
     }
 
@@ -78,10 +78,10 @@ public class ShopButtonController : MonoBehaviour
             userData.Diamonds -= shop.GachaPrice;
             switch (GachaType)
             {
-                case Gacha.Soul:
+                case GachaType.Soul:
                     shop.DiamondGacha<testSoul>("SSS");
                     break;
-                case Gacha.Weapon:
+                case GachaType.Weapon:
                     shop.DiamondGacha<testItem>("GoldenSword");
                     break;
             }
@@ -96,10 +96,10 @@ public class ShopButtonController : MonoBehaviour
             for(int i = 0; i < 10; i++)
             switch (GachaType)
             {
-                case Gacha.Soul:
+                case GachaType.Soul:
                     shop.DiamondGacha<testSoul>("SSS");
                     break;
-                case Gacha.Weapon:
+                case GachaType.Weapon:
                     shop.DiamondGacha<testItem>("GoldenSword");
                     break;
             }

@@ -29,6 +29,7 @@ public class ShopSlot : MonoBehaviour
 
     private void SendData()
     {
+        itemPanel.gameObject.SetActive(true);
         itemPanel.SetItemDB(itemData);
     }
 }

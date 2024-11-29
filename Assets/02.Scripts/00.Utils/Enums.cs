@@ -1,6 +1,6 @@
 namespace Enums
 {
-    public enum Stage
+    public enum StageType
     {
         None,
         Daily,
@@ -16,7 +16,7 @@ namespace Enums
         Legendary
     }
 
-    public enum Gacha
+    public enum GachaType
     {
         None,
         Weapon,
