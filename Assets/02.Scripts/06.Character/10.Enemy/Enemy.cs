@@ -2,25 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AttackType
+{
+    Melee,
+    Ranged
+}
+
 public class Enemy : BaseCharacter
 {
+    [Header("Data")]
+    public AttackType attackType;
     public EnemyDB enemyDB;
-    private GameObject target;
-    private Vector3 direction;
 
-    private Rigidbody rb;
+    [Header("References")]
+    public GameObject target;
+    public Rigidbody rb;
+    public AnimatorHashData animatorHashData;
+    //public Animator animator;
 
-    private float attackSpeedTmp;
+    [Header("State Machine")]
+    private EnemyStateMachine stateMachine;
+
+    [Header("CurrentStats")]
+    private float currentHealth;
     public GameObject bulletTest;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        stateMachine = new EnemyStateMachine(this);
+        animatorHashData = new AnimatorHashData();
+        //animator = GetComponent<Animator>();
+        //target = GameManager.Instance.player;
+        currentHealth = enemyDB.Health;
+    }
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        //target = GameManager.Instance.player;
-        target = GameObject.Find("Player");
-        attackSpeedTmp = enemyDB.AttackSpeed;
         //임의로 작성
+        target = GameObject.Find("Player");
         enemyDB.Distance = 7f;
+
+        stateMachine.Initialize();
+    }
+
+    private void Update()
+    {
+        stateMachine.Update();
+    }
+    private void FixedUpdate()
+    {
+        stateMachine.FixedUpdateState();
     }
 
     public override void Attack()
@@ -37,7 +69,7 @@ public class Enemy : BaseCharacter
     }
     private void AttackDelay()
     {
-        if (attackSpeedTmp > 0)
+        /*if (attackSpeedTmp > 0)
         {
             attackSpeedTmp -= Time.deltaTime;
         }
@@ -46,12 +78,12 @@ public class Enemy : BaseCharacter
             attackSpeedTmp = enemyDB.AttackSpeed;
             Debug.Log("공격 실행");
             Attack();
-        }
+        }*/
     }
 
     public override void Move()
     {
-        float distanceTmp = Vector3.Distance(transform.position, target.transform.position);
+        /*float distanceTmp = Vector3.Distance(transform.position, target.transform.position);
         if (distanceTmp > enemyDB.Distance)
         {
             Vector3 targetVelocity = direction * enemyDB.MoveSpeed;
@@ -61,14 +93,7 @@ public class Enemy : BaseCharacter
         {
             rb.velocity = Vector3.zero;
             AttackDelay();
-        }
-    }
-
-
-    private void FixedUpdate()
-    {
-        direction = (target.transform.position - transform.position).normalized;
-        Move();
+        }*/
     }
 
     /*//공격 로직

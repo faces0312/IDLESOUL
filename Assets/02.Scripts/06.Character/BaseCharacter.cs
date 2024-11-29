@@ -11,11 +11,11 @@ public abstract class BaseCharacter : MonoBehaviour, ITakeDamageAble
     public abstract void Attack();
     public abstract void Move();
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
     }
 
-    public void TakeKnockBack(Vector3 direction, float force)
+    public virtual void TakeKnockBack(Vector3 direction, float force)
     {
     }
 }
