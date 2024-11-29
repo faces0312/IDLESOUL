@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 
 public enum SkillType
@@ -29,18 +30,24 @@ public abstract class Skill : ISkill
 
     protected int applyCount;
     protected float value;
+    protected float upgradeValue;
 
     protected SkillType type;
 
     // TODO : 积己矫 单捞磐 利侩
-    public Skill(int id, string name, string description, int applyCount, float value, SkillType type)
+    public Skill(int id)
     {
+        SkillDB db = DataManager.Instance.SkillDB.GetByKey(id);
+
         this.id = id;
-        this.skillName = name;
-        this.description = description;
-        this.applyCount = applyCount;
-        this.value = value;
-        this.type = type;
+        this.skillName = db.Name;
+        this.description = db.Descripton;
+        this.maxLevel = db.MaxLevel;
+        this.applyCount = db.ApplyCount;
+        this.value = db.Value;
+        this.upgradeValue = db.UpgradeValue;
+        this.upgradeCost = db.UpgradeCost;
+        this.type = db.SkillType;
     }
 
     public abstract void UseSkill(StatHandler statHandler);

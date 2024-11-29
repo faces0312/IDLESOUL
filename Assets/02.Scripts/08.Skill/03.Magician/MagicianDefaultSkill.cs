@@ -8,7 +8,7 @@ public class MagicianDefaultSkill : Skill
     private float range;
     private float searchRange;
 
-    public MagicianDefaultSkill(int id, string name, string description, int applyCount, float value, SkillType type) : base(id, name, description, applyCount, value, type)
+    public MagicianDefaultSkill(int id) : base(id)
     {
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/Explosion");
         range = 5f;
