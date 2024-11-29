@@ -81,6 +81,10 @@ public class SoulDB
     /// </summary>
     public int MaxExp;
 
+    /// <summary>
+    /// SkillList
+    /// </summary>
+    public List<int> SkillList;
 }
 public class SoulDBLoader
 {
