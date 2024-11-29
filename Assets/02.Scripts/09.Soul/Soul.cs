@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,7 @@ public enum JobType
 public abstract class Soul
 {
     protected SoulDB tempDB;
-    protected StatHandler statHandler;
+    public StatHandler statHandler; // 임시로 public 다시 protected 로 돌려놓기
 
     protected string soulName;
     protected string description;

@@ -1,6 +1,7 @@
 ﻿using ScottGarland;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class StatHandler
@@ -16,6 +17,8 @@ public class StatHandler
     
     public StatHandler(StatType type, int key = 0)
     {
+        this.type = type;
+
         switch(type)
         {
             case StatType.Player:
@@ -29,9 +32,9 @@ public class StatHandler
                 break;
         }
 
-        currentStat = baseStat;
+        currentStat = new Stat(baseStat);
 
-        //Initialize(type);
+        Initialize(type);
     }
 
     private void Initialize(StatType type)
@@ -43,7 +46,7 @@ public class StatHandler
                 //currentStat.MaxExp = new BigInteger(baseStat.MaxExp);
 
                 // TODO : 플레이어 스텟 핸들러를 연결해줌
-                TestPlayerManager.Instance.PlayerStatHandler = this;
+                TestManager.Instance.playerStatHandler = this;
                 break;
             case StatType.Soul:
                 // TODO : 스킬 정보
@@ -51,6 +54,7 @@ public class StatHandler
                 // TODO : 플레이가 레벨업, 장비를 장착할 때 소울들의 정보도 갱신이 되어야 한다.
                 //TestPlayerManager.Instance.OnUpdateSoulStats += UpdateStats;
                 //TestPlayerManager.Instance.OnUpdateSoulStats += UpdateSoulStats;
+                TestManager.Instance.OnUpdateSoulStats += UpdateSoulStats;
                 break;
             case StatType.Enemy:
                 break;
@@ -100,7 +104,7 @@ public class StatHandler
     {
         // TODO : 플레이어 스텟 불러오기 => 임시 값 사용중
         // 소울 현재 스텟 * 플레이어 현재 스텟 %
-        Stat playerStat = TestPlayerManager.Instance.PlayerStatHandler.currentStat;
+        Stat playerStat = TestManager.Instance.playerStatHandler.currentStat;
 
         currentStat.health = BigInteger.Multiply(int.Parse(currentStat.maxHealth.ToString()), BigInteger.Add(BigInteger.Divide(playerStat.maxHealth, 100), 1));
         currentStat.maxHealth = currentStat.health;
