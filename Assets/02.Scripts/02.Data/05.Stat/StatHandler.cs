@@ -79,7 +79,7 @@ public class StatHandler
     {
         // TODO : 플레이어 스텟 불러오기 => 임시 값 사용중
         // 소울 현재 스텟 * 플레이어 현재 스텟 %
-        Stat playerStat = TestManager.Instance.playerStatHandler.CurrentStat;
+        Stat playerStat = TestManager.Instance.playerStatHandler.currentStat;
 
         // 기존에 적용되어 있는 추가 스텟을 해제
         Stat prevStats = new Stat();

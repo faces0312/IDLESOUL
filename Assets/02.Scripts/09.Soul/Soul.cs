@@ -35,12 +35,11 @@ public abstract class Soul
     public Soul(int key)
     {
         // TODO : DB를 들고 있을지, 데이터를 추출해서 개별적으로 들고 있을지
-        // 기본 공격 타입 : 근거리 원거리
+
         tempDB = DataManager.Instance.SoulDB.GetByKey(key);
         statHandler = new StatHandler(StatType.Soul, key);
 
         InitSkills();
-        ApplyPassiveSkill();
     }
 
     protected abstract void InitSkills();   // 스킬 생성
@@ -51,9 +50,9 @@ public abstract class Soul
         statHandler.LevelUp(level);
     }
 
-    public void UpgradeSkill(SkillType type, int amount)
+    public void UpgradeSkill(Skill skill, int amount)
     {
-        skills[(int)type].UpgradeSkill(amount);
+        skill.UpgradeSkill(amount);
     }
 
     public void ApplyPassiveSkill()

@@ -18,8 +18,7 @@ public class MagicianUltimateSkill : Skill
     {
         level += amount;
 
-        // TODO : 배율 조정
-        value *= level;
+        // TODO : amount 만큼 value 증가
     }
 
     public override void UseSkill(StatHandler statHandler)
