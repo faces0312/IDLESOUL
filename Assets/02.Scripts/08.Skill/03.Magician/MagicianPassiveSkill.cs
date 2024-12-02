@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MagicianPassiveSkill : Skill
 {
+    Stat passiveStat;
+    StatHandler playerStatHandler;
+
     public MagicianPassiveSkill(int id) : base(id)
     {
         passiveStat = new Stat();
@@ -17,6 +20,10 @@ public class MagicianPassiveSkill : Skill
         level += amount;
 
         // TODO : amount 만큼 value 증가
+
+        playerStatHandler.UnEquipItem(passiveStat);
+
+        passiveStat.atk = (int)value * level;
     }
 
     public override void UseSkill(StatHandler statHandler)
