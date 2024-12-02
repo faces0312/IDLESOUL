@@ -74,8 +74,6 @@ public class Player : BaseCharacter
 
     private void Awake()
     {
-        GameManager.Instance.player = this;
-
         if (targetSearch == null)
         {
             targetSearch = GetComponent<TargetSearch>();
@@ -91,6 +89,8 @@ public class Player : BaseCharacter
         //FSM 초기 상태 설정 (Idle)
         playerStateMachine = new PlayerStateMachine(this);
 
+        Initialize();
+        GameManager.Instance.player = this;
     }
 
     public void Initialize()

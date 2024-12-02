@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+﻿//using UnityEngine;
 
-public class TestTigger : MonoBehaviour
-{
-    [SerializeField] Player player;
+//public class TestTigger : MonoBehaviour
+//{
+//    [SerializeField] Player player;
 
-    private void Start()
-    {
-        player.Initialize();
-    }
-}
+//    private void Start()
+//    {
+//        player.Initialize();
+//    }
+//}
