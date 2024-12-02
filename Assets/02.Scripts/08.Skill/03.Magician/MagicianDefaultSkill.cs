@@ -7,6 +7,7 @@ public class MagicianDefaultSkill : Skill
     GameObject skillPrefab;
     private float range;
     private float searchRange;
+    private float totalValue;
 
     public MagicianDefaultSkill(int id) : base(id)
     {
@@ -19,19 +20,20 @@ public class MagicianDefaultSkill : Skill
     {
         level += amount;
 
-        // TODO : amount 만큼 value 증가
+        // TODO : 배율 조정
+        totalValue = value * (level * upgradeValue);
     }
 
     public override void UseSkill(StatHandler statHandler)
     {
-        // 가장 가까운 Enemy 를 찾는 로직 구현
+        // 가장 가까운 Enemy 를 찾는 로직
         // Enemy 리스트를 받아와 거리 기반 탐지
 
         List<GameObject> targets = GameManager.Instance.enemies;    // Enemy 리스트
         GameObject closestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
 
-        Vector2 playerPos = TestManager.Instance.TestPlayer.transform.position;   // TODO : 플레이어 좌표
+        Vector2 playerPos = GameManager.Instance.player.transform.position;   // TODO : 플레이어 좌표 => 적용 확인 시 주석 삭제
 
         foreach (GameObject target in targets)
         {
@@ -58,7 +60,7 @@ public class MagicianDefaultSkill : Skill
         GameObject explosion = Object.Instantiate(skillPrefab, targetPos, Quaternion.identity);
         if(explosion.TryGetComponent(out Explosion component))
         {
-            component.InitSettings(value, range);
+            component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);
         }
     }
 }

@@ -44,6 +44,4 @@ public class EnemyBaseState : IState
     {
         //stateMachine.{객체}.Animator.SetBool(animatorHash, false);
     }
-
-
 }

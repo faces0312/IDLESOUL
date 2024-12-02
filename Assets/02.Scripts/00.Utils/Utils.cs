@@ -8,4 +8,7 @@ public static class Utils
     {
         return ((1 << layer) & layerMask) != 0;
     }
+
+    public static readonly int POOL_KEY_PLAYERPROJECTILE = 10;
+
 }

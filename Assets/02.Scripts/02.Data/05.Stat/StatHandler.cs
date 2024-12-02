@@ -42,8 +42,8 @@ public class StatHandler
         switch (type)
         {
             case StatType.Player:
-                // TODO : 플레이어 스텟 핸들러를 연결해줌
-                TestManager.Instance.playerStatHandler = this;
+                // TODO : 플레이어 스텟 핸들러를 연결해줌 => 적용 확인 시 주석 삭제
+                GameManager.Instance.player.StatHandler = this;
                 break;
             case StatType.Soul:
                 // TODO : 플레이가 레벨업, 장비를 장착할 때 소울들의 정보도 갱신이 되어야 한다.
@@ -77,9 +77,9 @@ public class StatHandler
 
     private void UpdateSoulStats()
     {
-        // TODO : 플레이어 스텟 불러오기 => 임시 값 사용중
+        // TODO : 플레이어 스텟 불러오기 => 적용 확인 시 주석 삭제
         // 소울 현재 스텟 * 플레이어 현재 스텟 %
-        Stat playerStat = TestManager.Instance.playerStatHandler.currentStat;
+        Stat playerStat = GameManager.Instance.player.StatHandler.currentStat;
 
         // 기존에 적용되어 있는 추가 스텟을 해제
         Stat prevStats = new Stat();

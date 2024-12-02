@@ -85,6 +85,11 @@ public class SoulDB
     /// SkillList
     /// </summary>
     public List<int> SkillList;
+
+    /// <summary>
+    /// AttackType
+    /// </summary>
+    public AttackType AttackType;
 }
 public class SoulDBLoader
 {

@@ -6,6 +6,10 @@ public class MagicianPassiveSkill : Skill
 {
     public MagicianPassiveSkill(int id) : base(id)
     {
+        passiveStat = new Stat();
+        passiveStat.atk = (int)value * level;
+        // TODO : 플레이어 스텟 불러오기 => 적용 확인 시 주석 삭제
+        playerStatHandler = GameManager.Instance.player.StatHandler;
     }
 
     public override void UpgradeSkill(int amount)
@@ -17,6 +21,7 @@ public class MagicianPassiveSkill : Skill
 
     public override void UseSkill(StatHandler statHandler)
     {
-        // TODO : 공격력이 상시로 증가함
+        // 공격력이 상시로 증가함
+        playerStatHandler.EquipItem(passiveStat);
     }
 }

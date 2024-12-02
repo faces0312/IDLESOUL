@@ -10,6 +10,7 @@ public class SoulMagician : Soul
 
     protected override void InitSkills()
     {
+        // TODO : SoulDB에서 받아서 넣기
         skills[(int)SkillType.Passive] = new MagicianPassiveSkill(12000);
         skills[(int)SkillType.Default] = new MagicianDefaultSkill(12001);
         skills[(int)SkillType.Ultimate] = new MagicianUltimateSkill(12002);

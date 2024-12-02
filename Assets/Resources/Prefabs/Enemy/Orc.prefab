@@ -93,9 +93,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5219914586833014945}
-  - component: {fileID: 4922513074112103713}
   - component: {fileID: 6919928748636764415}
   - component: {fileID: 7699591755769845695}
+  - component: {fileID: 4909677301726446247}
   m_Layer: 7
   m_Name: Orc
   m_TagString: Untagged
@@ -119,39 +119,6 @@ Transform:
   - {fileID: 8283629711366134130}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4922513074112103713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5346500510400555959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28e1e395d495905459a98c89a6485619, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackType: 0
-  enemyDB:
-    key: 0
-    Name: 
-    Descripton: 
-    DropGold: 0
-    DropDia: 0
-    Attack: 0
-    AttackSpeed: 0
-    AttackDistance: 0
-    Defence: 0
-    MoveSpeed: 0
-    Health: 0
-    CritChance: 0
-    CritDamage: 0
-    Distance: 0
-    KnockBackPower: 0
-    KnockBackResistance: 0
-  target: {fileID: 0}
-  rb: {fileID: 6919928748636764415}
-  bulletTest: {fileID: 7331459659348895967, guid: c066ec948ba440747820b2a0bafe2f1c, type: 3}
 --- !u!54 &6919928748636764415
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -202,3 +169,36 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4909677301726446247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5346500510400555959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0af86195ee2bef4aaac4d1cd8280dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackType: 0
+  enemyDB:
+    key: 0
+    Name: 
+    Descripton: 
+    DropGold: 0
+    DropDia: 0
+    Attack: 0
+    AttackSpeed: 0
+    AttackDistance: 0
+    Defence: 0
+    MoveSpeed: 0
+    Health: 0
+    CritChance: 0
+    CritDamage: 0
+    Distance: 0
+    KnockBackPower: 0
+    KnockBackResistance: 0
+  target: {fileID: 0}
+  rb: {fileID: 0}
+  bulletTest: {fileID: 0}

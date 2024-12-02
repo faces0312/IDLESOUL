@@ -9,22 +9,28 @@ public class PlayerAnimationController : MonoBehaviour
     #region Inspector
     // [SpineAnimation] attribute allows an Inspector dropdown of Spine animation names coming form SkeletonAnimation.
     [SpineAnimation]
-    public string runAnimationName;
-
-    [SpineAnimation]
     public string idleAnimationName;
 
     [SpineAnimation]
-    public string AttackAnimationName;
-
-    [Header("Transitions")]
-    [SpineAnimation]
-    public string idleTurnAnimationName;
+    public string runAnimationName;
 
     [SpineAnimation]
-    public string runToIdleAnimationName;
+    public string MeleeAttackAnimationName;
 
-    public float runWalkDuration = 1.5f;
+    [SpineAnimation]
+    public string ShotAttackAnimationName;
+
+    [SpineAnimation]
+    public string VictoryAnimationName;
+
+    //[Header("Transitions")]
+    //[SpineAnimation]
+    //public string idleTurnAnimationName;
+
+    //[SpineAnimation]
+    //public string runToIdleAnimationName;
+
+    //public float runWalkDuration = 1.5f;
     #endregion
 
     #region
@@ -34,13 +40,12 @@ public class PlayerAnimationController : MonoBehaviour
     private SkeletonAnimation skeletonAnimation;
     public Spine.AnimationState spineAnimationState;
     public Spine.Skeleton skeleton;
-
-    private void Awake()
+    public void Initialize()
     {
         //spineanimation √ ±‚»≠
         skeletonAnimation = GetComponent<SkeletonAnimation>();
         spineAnimationState = skeletonAnimation.AnimationState;
         skeleton = skeletonAnimation.Skeleton;
-      
     }
+    
 }

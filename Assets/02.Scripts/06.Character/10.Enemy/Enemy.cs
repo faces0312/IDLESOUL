@@ -8,7 +8,7 @@ public enum AttackType
     Ranged
 }
 
-public class Enemy : BaseCharacter
+public abstract class Enemy : BaseCharacter
 {
     [Header("Data")]
     public AttackType attackType;
@@ -22,7 +22,7 @@ public class Enemy : BaseCharacter
     public GameObject bulletTest;
 
     [Header("State Machine")]
-    private EnemyStateMachine stateMachine;
+    public EnemyStateMachine stateMachine;
 
     [Header("CurrentStats")]
     private float currentHealth;
@@ -35,18 +35,12 @@ public class Enemy : BaseCharacter
         //animator = GetComponent<Animator>();
         //target = GameManager.Instance.player;
         currentHealth = enemyDB.Health;
-    }
-
-    private void Start()
-    {
-        //임의로 작성
         target = GameObject.Find("Player");
-        enemyDB.Distance = 7f;
-
         stateMachine.Initialize();
+        enemyDB.Distance = 7f;
     }
 
-    private void Update()
+    public virtual void Update()
     {
         stateMachine.Update();
     }
@@ -57,7 +51,7 @@ public class Enemy : BaseCharacter
 
     public override void Attack()
     {
-        GameObject bulletInstance = Instantiate(bulletTest, transform.position, Quaternion.Euler(Vector3.zero));
+        /*GameObject bulletInstance = Instantiate(bulletTest, transform.position, Quaternion.Euler(Vector3.zero));
         BulletTest monsterBullet = bulletInstance.GetComponent<BulletTest>();
         monsterBullet.attack = enemyDB.Attack;
         monsterBullet.knockbackPower = enemyDB.KnockBackPower;
@@ -65,7 +59,7 @@ public class Enemy : BaseCharacter
         Vector3 playerProjection = new Vector3(target.transform.position.x, target.transform.position.y, 0.0f);
         Vector3 selfProjection = new Vector3(transform.position.x, transform.position.y, 0.0f);
 
-        monsterBullet.direction = (playerProjection - selfProjection).normalized;
+        monsterBullet.direction = (playerProjection - selfProjection).normalized;*/
     }
     private void AttackDelay()
     {

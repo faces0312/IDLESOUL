@@ -1,10 +1,11 @@
+using ScottGarland;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Meteor : MonoBehaviour
 {
-    private float value;
+    private BigInteger value;
     private float range;
 
     private float gravity = 9.8f;
@@ -43,7 +44,7 @@ public class Meteor : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void InitSettings(float value, float range)
+    public void InitSettings(BigInteger value, float range)
     {
         this.value = value;
         this.range = range;

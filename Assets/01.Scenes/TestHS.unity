@@ -998,6 +998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb64c576a2ac4745ab1d9fbee233a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss: 1
   spawnTime: 3
 --- !u!1 &1500263657
 GameObject:
@@ -1298,6 +1299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b0a477d3332914c9c09444ce85a241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
   score: 0
   isTryBoss: 0
   objectPool:
