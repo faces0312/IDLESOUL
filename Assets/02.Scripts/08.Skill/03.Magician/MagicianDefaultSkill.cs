@@ -19,7 +19,8 @@ public class MagicianDefaultSkill : Skill
     {
         level += amount;
 
-        // TODO : amount 만큼 value 증가
+        // TODO : 배율 조정
+        value *= level;
     }
 
     public override void UseSkill(StatHandler statHandler)
