@@ -12,7 +12,7 @@ public class Stage : MonoBehaviour
     private void Start()
     {
         click = GetComponent<Button>();
-        click.onClick.AddListener(SendData);
+        //click.onClick.AddListener(SendData);
     }
 
     private void SendData()
