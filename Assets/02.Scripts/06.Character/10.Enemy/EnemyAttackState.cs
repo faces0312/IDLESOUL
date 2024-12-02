@@ -52,7 +52,7 @@ public class EnemyAttackState : EnemyBaseState
 
     void MeleeAttack()
     {
-        //Debug.Log("근거리공격");
+        Debug.Log("근거리공격");
     }
 
     void RangedAttack()
@@ -67,6 +67,7 @@ public class EnemyAttackState : EnemyBaseState
         Vector3 playerProjection = new Vector3(stateMachine.Enemy.target.transform.position.x, stateMachine.Enemy.target.transform.position.y, 0.0f);
         Vector3 selfProjection = new Vector3(stateMachine.Enemy. transform.position.x, stateMachine.Enemy.transform.position.y, 0.0f);
 
-        monsterBullet.direction = (playerProjection - selfProjection).normalized;
+        Vector3 direction = (playerProjection - selfProjection).normalized;
+        monsterBullet.Initialize(direction);
     }
 }

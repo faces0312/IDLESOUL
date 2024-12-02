@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : SingletonDDOL<GameManager>
 {
     //플레이어 접근
-    /*public Player _player;
+    public Player _player;
     public Player player
     {
         get { return _player; }
         set { _player = value; }
-    }*/
+    }
     public int score;//점수
     public bool isTryBoss;//보스를 트라이 한적이 있는지
 

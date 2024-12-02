@@ -7,17 +7,20 @@ public class BulletTest : MonoBehaviour
     public float attack;//총알 데미지
     public float knockbackPower;//총알 데미지
     [SerializeField] float speed;
+    private Rigidbody rb;
     public Vector3 direction;//날라가는 방향
     [SerializeField] private LayerMask targetLayers;
 
-    private void OnEnable()
+    private void Awake()
     {
-        Invoke("DestroyBullet", 5f);
+        rb = GetComponent<Rigidbody>();
     }
 
-    private void FixedUpdate()
+    public void Initialize(Vector3 dir)
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        direction = dir.normalized;
+        rb.velocity = direction * speed;
+        Invoke("DestroyBullet", 5f);
     }
 
     void DestroyBullet()

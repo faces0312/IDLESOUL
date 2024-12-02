@@ -4,6 +4,7 @@
     public EnemyIdleState IdleState { get; private set; }
     public EnemyMoveState MoveState { get; private set; }
     public EnemyAttackState AttackState { get; private set; }
+    public EnemySkillState SkillState { get; private set; }
 
     public EnemyStateMachine(Enemy enemy)
     {
@@ -11,6 +12,7 @@
         IdleState = new EnemyIdleState(this);
         MoveState = new EnemyMoveState(this);
         AttackState = new EnemyAttackState(this);
+        SkillState = new EnemySkillState(this);
     }
 
     public void Initialize()
