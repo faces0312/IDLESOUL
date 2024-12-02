@@ -97,8 +97,8 @@ public class Player : BaseCharacter
         //FSM 초기 상태 설정 (Idle)
         playerStateMachine = new PlayerStateMachine(this);
 
-        Initialize();
         GameManager.Instance.player = this;
+        Initialize();
 
         ObjectPool playerProjectilePool = new ObjectPool(Utils.POOL_KEY_PLAYERPROJECTILE, INITIAL_POOL_SIZE, "Prefabs/Player/Attack/EnergyBolt");
         ObjectPoolManager.Instance.AddPool("playerProjectile", playerProjectilePool);
