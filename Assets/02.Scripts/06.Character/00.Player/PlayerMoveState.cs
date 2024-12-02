@@ -1,6 +1,10 @@
-﻿
+﻿using UnityEngine;
+
 public class PlayerMoveState : PlayerBaseState
 {
+    //ToDO : 나중에 Json 으로 데이터 뺴야됨
+    private static readonly float AttackRange = 5.0f;
+
     public PlayerMoveState(PlayerStateMachine _stateMachine) : base(_stateMachine)
     {
         stateMachine = _stateMachine;
@@ -8,19 +12,35 @@ public class PlayerMoveState : PlayerBaseState
 
     public override void Enter()
     {
+        Debug.Log("Player Move State Enter");
+        string animName = stateMachine._Player.PlayerAnimationController.runAnimationName;
+        stateMachine._Player.PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, true);
     }
 
     public override void Exit()
     {
+        Debug.Log("Player Move State Exit");
     }
 
     public override void Update()
     {
         base.Update();
 
-        if (stateMachine._Player.targetSearch.ShortEnemyTarget == null)
+        //추격할 타겟이 사라지면 대기 상태로 전환
+        if (stateMachine._Player.targetSearch.ShortEnemyTarget != null)
         {
-            //이동 상태로 전환
+            float targetDist = Vector3.Distance(stateMachine._Player.transform.position, stateMachine._Player.targetSearch.ShortEnemyTarget.transform.position);
+
+            //적과의 거리가 공격범위보다 작으면 공격 상태로 진입
+            if (targetDist <= AttackRange)
+            {
+                //공격 상태로 전환
+                stateMachine.ChangeState(stateMachine.AttackState);
+            }
+
+        }
+        else //추격할 타겟이 사라지면 대기 상태로 전환
+        {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
     }

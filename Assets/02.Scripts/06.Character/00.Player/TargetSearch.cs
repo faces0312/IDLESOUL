@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 //전투 중에는 <일점 벙위 안에 적을 찾는 기능>이 켜지면 안됨
 //이동중에만 동작해야함 
@@ -11,6 +12,11 @@ public class TargetSearch : MonoBehaviour
 
     public float Radius { get => radius; set => radius = value; }
     public GameObject ShortEnemyTarget { get => shortEnemyTarget; }
+
+    private void Start()
+    {
+        TestEnemySMS.OnEventTargetRemove += TargetClear;
+    }
 
     public void OnTargetSearch()
     {

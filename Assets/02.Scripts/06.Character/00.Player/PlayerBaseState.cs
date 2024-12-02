@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Spine.Unity;
+using UnityEngine;
 
 public abstract class PlayerBaseState : IState
 {
@@ -49,6 +50,12 @@ public abstract class PlayerBaseState : IState
         Move(movementDirection);
     }
 
+    public void FlipCharacter(bool isFacingRight)
+    {
+        // true이면 ScaleX를 1로 설정, false이면 -1로 설정
+        stateMachine._Player.PlayerAnimationController.skeleton.ScaleX = isFacingRight ? 1f : -1f;
+    }
+
     private Vector3 GetMovementDirection()
     {
 
@@ -56,6 +63,16 @@ public abstract class PlayerBaseState : IState
         {
             Vector3 TargetPos = stateMachine._Player.targetSearch.ShortEnemyTarget.transform.position;
             Vector3 targetDir = (TargetPos - stateMachine._Player.transform.position).normalized;
+            
+            if(targetDir.x > 0)
+            {
+                FlipCharacter(true);
+            }
+            else
+            {
+                FlipCharacter(false);
+            }
+            
             return targetDir;
         }
         else
@@ -64,6 +81,8 @@ public abstract class PlayerBaseState : IState
         }
 
     }
+
+    
 
     private void Move(Vector3 direction)
     {

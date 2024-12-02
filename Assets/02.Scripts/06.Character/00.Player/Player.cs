@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using Spine.Unity;
 
 public class UserData
 {
@@ -55,15 +55,18 @@ public class Player : BaseCharacter
     [Header("Data")]
     private UserData userData;
 
+    [Header("References")]
+    public TargetSearch targetSearch;
+    public Rigidbody rb;
+    private PlayerAnimationController playerAnimationController;
+    public PlayerAnimationController PlayerAnimationController { get => playerAnimationController; }
+
     [Header("State Machine")]
     private PlayerStateMachine playerStateMachine;
 
-    [Header("Controller")]
-    public TargetSearch targetSearch;
-    public Rigidbody rb;
-
     public StatHandler StatHandler { get => base.statHandler; }
     public UserData UserData { get => userData;  }
+  
 
     private void Awake()
     {
@@ -75,8 +78,13 @@ public class Player : BaseCharacter
         {
             rb = GetComponent<Rigidbody>();
         }
+        if(playerAnimationController == null)
+        {
+            playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
+        }
         //FSM 초기 상태 설정 (Idle)
         playerStateMachine = new PlayerStateMachine(this);
+
     }
 
     public void Initialize()
