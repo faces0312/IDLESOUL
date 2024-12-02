@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using Spine.Unity;
+using System;
 
 public class UserData
 {
@@ -68,9 +69,11 @@ public class Player : BaseCharacter
     private PlayerStateMachine playerStateMachine;
    
 
-    public StatHandler StatHandler { get => base.statHandler; }
+    public StatHandler StatHandler { get => base.statHandler; set => base.statHandler = value; }    // Set을 추가했습니다. 확인 시 주석 제거
     public UserData UserData { get => userData;  }
-  
+
+    public Action OnUpdateSoulStats;
+
 
     private void Awake()
     {

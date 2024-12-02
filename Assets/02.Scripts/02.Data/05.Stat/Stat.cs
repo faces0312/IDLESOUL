@@ -11,7 +11,7 @@ public enum StatType
 [System.Serializable]
 public class Stat
 {
-    public BigInteger totalDamage;
+    public BigInteger totalDamage = 0;
 
     public int iD;
 

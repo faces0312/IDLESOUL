@@ -1,10 +1,11 @@
+using ScottGarland;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    private float value;
+    private BigInteger value;
     private float range;
 
     private LayerMask layerMask;
@@ -23,7 +24,7 @@ public class Explosion : MonoBehaviour
         // TODO : Æø¹ß ±¸Çö
     }
 
-    public void InitSettings(float value, float range)
+    public void InitSettings(BigInteger value, float range)
     {
         this.value = value;
         this.range = range;

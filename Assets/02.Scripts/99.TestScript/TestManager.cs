@@ -25,8 +25,11 @@ public class TestManager : SingletonDDOL<TestManager>
     private void Start()
     {
         playerStatHandler = new StatHandler(StatType.Player);
+
+        /// 세트
         TestSoul = new SoulMagician(11000);
         OnUpdateSoulStats?.Invoke();    // 착용 시 패시브 업데이트
+        /// 세트
 
         StatViewUpdate();
     }
