@@ -19,7 +19,7 @@ public class StatHandler
     {
         this.type = type;
 
-        switch(type)
+        switch (type)
         {
             case StatType.Player:
                 baseStat = StatConverter.PlayerStatConvert(key);
@@ -46,8 +46,8 @@ public class StatHandler
                 GameManager.Instance.player.StatHandler = this;
                 break;
             case StatType.Soul:
-                // TODO : 플레이가 레벨업, 장비를 장착할 때 소울들의 정보도 갱신이 되어야 한다.
-                TestManager.Instance.OnUpdateSoulStats += UpdateSoulStats;
+                // TODO : 플레이가 레벨업, 장비를 장착할 때 소울들의 정보도 갱신이 되어야 한다. => 적용 확인 시 주석 삭제
+                GameManager.Instance.player.OnUpdateSoulStats += UpdateSoulStats;
                 UpdateSoulStats();
                 break;
             case StatType.Enemy:
@@ -84,7 +84,7 @@ public class StatHandler
         // 기존에 적용되어 있는 추가 스텟을 해제
         Stat prevStats = new Stat();
 
-        foreach(Stat stat in additionalStats)
+        foreach (Stat stat in additionalStats)
         {
             prevStats += stat;
         }
@@ -127,7 +127,7 @@ public class StatHandler
         {
             itemStats += stat;
         }
-        
+
         return itemStats;
     }
 
