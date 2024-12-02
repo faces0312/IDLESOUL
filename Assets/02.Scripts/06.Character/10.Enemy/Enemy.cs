@@ -35,15 +35,9 @@ public abstract class Enemy : BaseCharacter
         //animator = GetComponent<Animator>();
         //target = GameManager.Instance.player;
         currentHealth = enemyDB.Health;
-    }
-
-    private void Start()
-    {
-        //임의로 작성
         target = GameObject.Find("Player");
-        enemyDB.Distance = 7f;
-
         stateMachine.Initialize();
+        enemyDB.Distance = 7f;
     }
 
     public virtual void Update()
