@@ -44,8 +44,7 @@ public class StageDB
 
 
     /// <summary>
-    /// StageType Int /
-    /// 0 = none, 1 = daily, 2 = EXP, 3 = Upgrade
+    /// StageType Int / 0 = none, 1 = daily, 2 = EXP, 3 = Upgrade
     /// </summary>
     public int StageType;
 

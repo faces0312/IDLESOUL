@@ -1,13 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class RecycleScrollX : MonoBehaviour
 {
@@ -22,13 +17,15 @@ public class RecycleScrollX : MonoBehaviour
     public float contentSpace;
 
     public int rectCnt; //콘텐츠 내부의 최대 갯수
-    public int showCnt; //한 페이지에 보여질 갯수
+    public int showCnt; //한 페이지에 보여질 갯수 예시 오브젝트는 이 수보다 2개 많게 미리 만들어놔야함
 
     private int prevIdx = 0;
     private int totalCnt;
 
     public List<GameObject> objs = new List<GameObject>();
     public List<float> rectPositions = new List<float>();
+
+    public Action<GameObject, int> SetContent;
 
     private void Start()
     {
@@ -40,7 +37,6 @@ public class RecycleScrollX : MonoBehaviour
         float contentX = (prefabWidth + contentSpace) * rectCnt + leftMargin;
         content.GetComponent<RectTransform>().sizeDelta
             = new Vector2(contentX - scrollview.GetComponent<RectTransform>().sizeDelta.x, content.GetComponent<RectTransform>().sizeDelta.y);
-        Debug.Log(content.GetComponent<RectTransform>().sizeDelta);
 
         totalCnt = showCnt + 2;
         for (int i = 0; i < rectCnt; i++)
@@ -54,24 +50,21 @@ public class RecycleScrollX : MonoBehaviour
                 obj.GetComponent<RectTransform>().localPosition
                     = new Vector3(xPos, obj.GetComponent<RectTransform>().localPosition.y);
 
-                SetContent(obj, i.ToString());
+                SetContent?.Invoke(obj, i);
                 objs.Add(obj);
             }
         }
         scrollview.GetComponent<ScrollRect>().onValueChanged.AddListener(GetPosition);
     }
 
-    private void SetContent(GameObject obj, string data)
-    {
-        obj.GetComponentInChildren<TextMeshProUGUI>().text = data;
-    }
-
 
     private void GetPosition(Vector2 delta)
     {
-        int pageCnt = rectCnt - showCnt; //15 - 5 = 10
-        int pageOffset = pageCnt - 2; // 8
+        int pageCnt = rectCnt - showCnt;
+        int pageOffset = pageCnt - 2;
         int curPage = pageCnt - (int)Mathf.Round(delta.x * pageCnt);
+
+        Debug.Log(curPage);
 
         float deltaX = pastPos - delta.x;
 
@@ -91,12 +84,10 @@ public class RecycleScrollX : MonoBehaviour
                 {
                     int on = rectCnt - pageOffset + i;
 
-                    Debug.Log($"on {on},curPage {curPage},previdx {prevIdx},i {i}");
-
                     int idx = i % totalCnt;
                     objs[idx].GetComponent<RectTransform>().localPosition
                         = new Vector3(rectPositions[on], objs[idx].GetComponent<RectTransform>().localPosition.y);
-                    SetContent(objs[idx], on.ToString());
+                    SetContent?.Invoke(objs[idx], on);
                 }
                 prevIdx = temp;
             }
@@ -112,29 +103,13 @@ public class RecycleScrollX : MonoBehaviour
                 {
                     int on = rectCnt - pageOffset + i;
 
-                    Debug.Log($"on {on},curPage {curPage},previdx {prevIdx},i {i}");
-
                     int idx = i % totalCnt;
                     objs[idx].GetComponent<RectTransform>().localPosition
                         = new Vector3(rectPositions[on - (showCnt + 2)], objs[idx].GetComponent<RectTransform>().localPosition.y);
-                    SetContent(objs[idx], (on - (showCnt + 2)).ToString());
+                    SetContent?.Invoke(objs[idx], (on - (showCnt + 2)));
                 }
                 prevIdx = temp;
             }
-        }
-    }
-    private void AddContent(int count)
-    {
-        float contentX = (prefabWidth + contentSpace) * count;
-        content.GetComponent<RectTransform>().sizeDelta = new Vector2(content.GetComponent<RectTransform>().sizeDelta.x + contentX, content.GetComponent<RectTransform>().sizeDelta.y);
-
-        rectCnt += count;
-
-        int passCnt = rectPositions.Count;
-        for (int i = passCnt; i < passCnt + count; i++)
-        {
-            float xPos = -i * (prefabWidth + contentSpace);
-            rectPositions.Add(xPos);
         }
     }
 }

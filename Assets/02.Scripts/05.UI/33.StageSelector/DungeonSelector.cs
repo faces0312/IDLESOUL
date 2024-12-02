@@ -1,8 +1,7 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StageSelectController : MonoBehaviour
+public class DungeonSelector : MonoBehaviour
 {
     public StageSelector StageSelector;
 
@@ -10,9 +9,9 @@ public class StageSelectController : MonoBehaviour
     [SerializeField] private Button exp;
     [SerializeField] private Button upgrade;
 
-    private void Awake()
+    private void Start()
     {
-        StageSelector = GetComponent<StageSelector>();
+        StageSelector = FindObjectOfType<StageSelector>();
         daily.onClick.AddListener(() =>
         {
             StageSelector.SetStageType(Enums.StageType.Daily);
