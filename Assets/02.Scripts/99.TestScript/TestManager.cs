@@ -26,6 +26,7 @@ public class TestManager : SingletonDDOL<TestManager>
     {
         playerStatHandler = new StatHandler(StatType.Player);
         TestSoul = new SoulMagician(11000);
+        OnUpdateSoulStats?.Invoke();    // 착용 시 패시브 업데이트
 
         StatViewUpdate();
     }
@@ -105,5 +106,13 @@ public class TestManager : SingletonDDOL<TestManager>
     public void OnClickRemoveItem(string key)
     {
         inventory.RemoveItem(key);
+    }
+
+    public void OnClickUpgradePassiveSkill()
+    {
+        TestSoul.UpgradeSkill(SkillType.Passive, 1);
+        TestSoul.ApplyPassiveSkill();
+        OnUpdateSoulStats?.Invoke();
+        StatViewUpdate();
     }
 }
