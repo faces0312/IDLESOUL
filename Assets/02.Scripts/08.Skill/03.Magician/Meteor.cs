@@ -40,7 +40,7 @@ public class Meteor : MonoBehaviour
 
         transform.Translate(tempDir * velocity * Time.deltaTime);
 
-        if(transform.position.y < screenCenterWorld.y)
+        if (transform.position.y < screenCenterWorld.y)
             Destroy(gameObject);
     }
 

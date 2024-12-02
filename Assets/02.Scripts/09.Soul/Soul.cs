@@ -14,7 +14,7 @@ public enum JobType
 public abstract class Soul
 {
     protected SoulDB tempDB;
-    public StatHandler statHandler; // 임시로 public 다시 protected 로 돌려놓기
+    protected StatHandler statHandler;
 
     protected string soulName;
     protected string description;
@@ -32,14 +32,29 @@ public abstract class Soul
 
     protected Skill[] skills = new Skill[(int)SkillType.Max];
     public Skill[] Skills { get { return skills; } }
+    public StatHandler StatHandler { get { return statHandler; } }
+
+    // TODO : 소환 중인지 확인 여부의 bool 변수가 필요할 수도 있음
 
     public Soul(int key)
     {
-        // TODO : DB를 들고 있을지, 데이터를 추출해서 개별적으로 들고 있을지
-        // TODO : 기본 공격 타입 : 근거리 원거리
-        tempDB = DataManager.Instance.SoulDB.GetByKey(key);
+        SoulDB db = DataManager.Instance.SoulDB.GetByKey(key);
         statHandler = new StatHandler(StatType.Soul, key);
 
+        soulName = db.Name;
+        description = db.Descripton;
+
+        iD = db.key;
+        maxLevel = db.MaxExp;
+        //levelUpCost = db.
+
+        //upgradeCount = db.
+        //upgradeStack = db.
+
+        job = db.JobType;
+        //attackType = db.AttackType;
+
+        // TODO : 스킬 데이터 넘겨주기
         InitSkills();
     }
 
@@ -51,14 +66,14 @@ public abstract class Soul
         statHandler.LevelUp(level);
     }
 
-    public void UpgradeSkill(Skill skill, int amount)
+    public void UpgradeSkill(SkillType type, int amount)
     {
-        skill.UpgradeSkill(amount);
+        skills[(int)type].UpgradeSkill(amount);
     }
 
     public void ApplyPassiveSkill()
     {
-        // 객체 생성 시 최초 1회 && 패시브 스킬 업그레이드 시 호출
+        // 소울 장착 시 && 패시브 스킬 업그레이드 시 호출
         skills[(int)SkillType.Passive].UseSkill(statHandler);
     }
 
