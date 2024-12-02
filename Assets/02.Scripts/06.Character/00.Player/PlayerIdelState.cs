@@ -4,7 +4,7 @@ public class PlayerIdelState : PlayerBaseState
 {
     //ToDO : 나중에 Json 으로 데이터 뺴야됨
     private static readonly float AttackRange = 5.0f;
-
+    private float idleStateMoveModifter = 0.0f;
 
     public PlayerIdelState(PlayerStateMachine _stateMachine) : base(_stateMachine)
     {
@@ -16,6 +16,8 @@ public class PlayerIdelState : PlayerBaseState
         Debug.Log("Player Idle State Enter");
         string animName = stateMachine._Player.PlayerAnimationController.idleAnimationName;
         stateMachine._Player.PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, true);
+
+        moveSpeedModifier = idleStateMoveModifter;
     }
 
     public override void Exit()
@@ -37,8 +39,18 @@ public class PlayerIdelState : PlayerBaseState
             //적과의 거리가 공격범위보다 작으면 공격 상태로 진입
             if (targetDist <= AttackRange)
             {
-                //공격 상태로 전환
-                stateMachine.ChangeState(stateMachine.AttackState);
+                if(stateMachine._Player.TestDefaultAttackType)
+                {
+                    //근접 공격 상태로 전환
+                    stateMachine.ChangeState(stateMachine.MeleeAttackState);
+                }
+                else
+                {
+                    //원거리 공격 상태로 전환
+                    stateMachine.ChangeState(stateMachine.ShotAttackState);
+                }
+
+                
             }
             else //공격 범위가 아닌경우 적에게 이동  
             {

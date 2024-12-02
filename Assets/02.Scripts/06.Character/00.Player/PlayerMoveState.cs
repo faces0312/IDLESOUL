@@ -4,7 +4,7 @@ public class PlayerMoveState : PlayerBaseState
 {
     //ToDO : 나중에 Json 으로 데이터 뺴야됨
     private static readonly float AttackRange = 5.0f;
-
+    private float moveStateMoveModifter = 1.0f;
     public PlayerMoveState(PlayerStateMachine _stateMachine) : base(_stateMachine)
     {
         stateMachine = _stateMachine;
@@ -15,6 +15,8 @@ public class PlayerMoveState : PlayerBaseState
         Debug.Log("Player Move State Enter");
         string animName = stateMachine._Player.PlayerAnimationController.runAnimationName;
         stateMachine._Player.PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, true);
+
+        moveSpeedModifier = moveStateMoveModifter;
     }
 
     public override void Exit()
@@ -35,7 +37,7 @@ public class PlayerMoveState : PlayerBaseState
             if (targetDist <= AttackRange)
             {
                 //공격 상태로 전환
-                stateMachine.ChangeState(stateMachine.AttackState);
+                //stateMachine.ChangeState(stateMachine.AttackState);
             }
 
         }

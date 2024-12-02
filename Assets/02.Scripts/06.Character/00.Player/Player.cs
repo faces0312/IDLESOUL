@@ -52,6 +52,9 @@ public class Player : BaseCharacter
 {
     private readonly int TestID = 12345678;
 
+    [Header("Debuh : 근접(true) , 원거리(false)")]
+    public bool TestDefaultAttackType;
+
     [Header("Data")]
     private UserData userData;
 
@@ -63,6 +66,7 @@ public class Player : BaseCharacter
 
     [Header("State Machine")]
     private PlayerStateMachine playerStateMachine;
+   
 
     public StatHandler StatHandler { get => base.statHandler; }
     public UserData UserData { get => userData;  }
@@ -70,6 +74,8 @@ public class Player : BaseCharacter
 
     private void Awake()
     {
+        GameManager.Instance.player = this;
+
         if (targetSearch == null)
         {
             targetSearch = GetComponent<TargetSearch>();

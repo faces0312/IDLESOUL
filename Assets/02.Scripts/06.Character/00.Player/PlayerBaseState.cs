@@ -3,8 +3,9 @@ using UnityEngine;
 
 public abstract class PlayerBaseState : IState
 {
-    protected PlayerStateMachine stateMachine;
+    protected float moveSpeedModifier = 1.0f;
 
+    protected PlayerStateMachine stateMachine;
 
     public PlayerBaseState(PlayerStateMachine _stateMachine)
     {
@@ -89,7 +90,7 @@ public abstract class PlayerBaseState : IState
         //float movementSpeed = stateMachine._Player.StatHandler.CurrentStat.moveSpeed;
         float movementSpeed = stateMachine._Player.UserData.stat.moveSpeed;
         //캐릭터컨트롤러 컴포넌트에는 Move라는 내부 메서드가 기본적으로 생성되어있음
-        stateMachine._Player.rb.velocity = ((direction * movementSpeed));
+        stateMachine._Player.rb.velocity = ((direction * movementSpeed)) * moveSpeedModifier;
     }
 
 }
