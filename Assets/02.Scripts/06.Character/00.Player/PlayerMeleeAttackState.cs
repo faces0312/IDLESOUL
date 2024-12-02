@@ -2,7 +2,7 @@
 
 public class PlayerMeleeAttackState : PlayerAttackState
 {
-    private float attackStateMoveModifter = 0.0f;
+    public float defaultAttackRange = 3.0f;
 
     public PlayerMeleeAttackState(PlayerStateMachine _stateMachine) : base(_stateMachine)
     {
@@ -11,15 +11,17 @@ public class PlayerMeleeAttackState : PlayerAttackState
 
     public override void Enter()
     {
-        Debug.Log("Player Melee Attack State Enter");
-        string animName = stateMachine._Player.PlayerAnimationController.AttackAnimationName;
-        stateMachine._Player.PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, true);
+        base.Enter();
 
-        moveSpeedModifier = attackStateMoveModifter;
+        Debug.Log("Player Melee Attack State Enter");
+        string animName = stateMachine._Player.PlayerAnimationController.MeleeAttackAnimationName;
+        stateMachine._Player.PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, true);
     }
 
     public override void Exit()
     {
+        base.Exit();
+
         Debug.Log("Player Melee Attack State Exit");
     }
 
@@ -41,21 +43,5 @@ public class PlayerMeleeAttackState : PlayerAttackState
     public override void FixedUpdate()
     {
     }
-
-    protected void StartAnimation(int animatorHash)
-    {
-        //stateMachine.{객체}.Animator.SetBool(animatorHash, true);
-    }
-
-    protected void StartAnimationTrigger(int animatorHash)
-    {
-        //stateMachine.{객체}r.Animator.SetTrigger(animatorHash);
-    }
-
-    protected void StopAnimation(int animatorHash)
-    {
-        //stateMachine.{객체}.Animator.SetBool(animatorHash, false);
-    }
-
 
 }

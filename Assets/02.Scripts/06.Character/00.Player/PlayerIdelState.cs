@@ -36,21 +36,16 @@ public class PlayerIdelState : PlayerBaseState
         {
             float targetDist = Vector3.Distance(stateMachine._Player.transform.position, stateMachine._Player.targetSearch.ShortEnemyTarget.transform.position);
 
-            //적과의 거리가 공격범위보다 작으면 공격 상태로 진입
-            if (targetDist <= AttackRange)
+            //적과의 거리에 따라 기본 공격 
+            if (stateMachine._Player.TestDefaultAttackType && targetDist <= stateMachine.MeleeAttackState.defaultAttackRange)
             {
-                if(stateMachine._Player.TestDefaultAttackType)
-                {
-                    //근접 공격 상태로 전환
-                    stateMachine.ChangeState(stateMachine.MeleeAttackState);
-                }
-                else
-                {
-                    //원거리 공격 상태로 전환
-                    stateMachine.ChangeState(stateMachine.ShotAttackState);
-                }
-
-                
+                //근접 공격 상태로 전환
+                stateMachine.ChangeState(stateMachine.MeleeAttackState);
+            }
+            else if (!stateMachine._Player.TestDefaultAttackType && targetDist <= stateMachine.ShotAttackState.defaultAttackRange)
+            {
+                //원거리 공격 상태로 전환
+                stateMachine.ChangeState(stateMachine.ShotAttackState);
             }
             else //공격 범위가 아닌경우 적에게 이동  
             {
@@ -58,12 +53,7 @@ public class PlayerIdelState : PlayerBaseState
                 stateMachine.ChangeState(stateMachine.MoveState);
             }
           
-        }
-        
-
-
-        ////공격 상태로 전환
-        //stateMachine.ChangeState(stateMachine.AttackState);
+        }      
     }
 
     public override void FixedUpdate()

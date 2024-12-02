@@ -3,7 +3,7 @@
 public class PlayerAttackState : PlayerBaseState
 {
     protected float attackStateMoveModifter = 0.0f;
-    protected float defaultAttackRange = 0.0f;
+
 
     public PlayerAttackState(PlayerStateMachine _stateMachine) : base(_stateMachine)
     {
@@ -21,6 +21,7 @@ public class PlayerAttackState : PlayerBaseState
 
     public override void Update()
     {
+        base.Update();
     }
 
     public override void FixedUpdate()

@@ -64,8 +64,9 @@ public abstract class PlayerBaseState : IState
         {
             Vector3 TargetPos = stateMachine._Player.targetSearch.ShortEnemyTarget.transform.position;
             Vector3 targetDir = (TargetPos - stateMachine._Player.transform.position).normalized;
-            
-            if(targetDir.x > 0)
+            targetDir.y = 0; //y축 데이터 보정
+
+            if (targetDir.x > 0)
             {
                 FlipCharacter(true);
             }

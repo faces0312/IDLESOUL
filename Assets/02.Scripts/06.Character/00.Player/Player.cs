@@ -67,7 +67,11 @@ public class Player : BaseCharacter
 
     [Header("State Machine")]
     private PlayerStateMachine playerStateMachine;
-   
+
+    [Header("Projectile Object Pool")]
+    [SerializeField] private GameObject playerProjectile;
+
+    private readonly int INITIAL_POOL_SIZE = 100;
 
     public StatHandler StatHandler { get => base.statHandler; set => base.statHandler = value; }    // Set을 추가했습니다. 확인 시 주석 제거
     public UserData UserData { get => userData;  }
@@ -88,12 +92,16 @@ public class Player : BaseCharacter
         if(playerAnimationController == null)
         {
             playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
+            playerAnimationController.Initialize();
         }
         //FSM 초기 상태 설정 (Idle)
         playerStateMachine = new PlayerStateMachine(this);
 
         Initialize();
         GameManager.Instance.player = this;
+
+        ObjectPool playerProjectilePool = new ObjectPool(Utils.POOL_KEY_PLAYERPROJECTILE, INITIAL_POOL_SIZE, "Prefabs/Player/Attack/EnergyBolt");
+        ObjectPoolManager.Instance.AddPool("playerProjectile", playerProjectilePool);
     }
 
     public void Initialize()

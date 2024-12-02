@@ -669,14 +669,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715816226}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2746385, y: 0.000000016544755, z: -0.0000000047255355, w: 0.96154755}
-  m_LocalPosition: {x: 18.2, y: 4.64, z: -6.34}
+  m_LocalRotation: {x: 0.2240146, y: 0.000000018748418, z: -0.00000000430944, w: 0.97458583}
+  m_LocalPosition: {x: 18.2, y: 4.64, z: -8.440001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2041833667}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 36.018, y: 14.4, z: 0}
+  m_LocalEulerAnglesHint: {x: 31.96, y: 0, z: 0}
 --- !u!1 &1342909076
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,8 +763,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342909076}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2746385, y: 0.000000016544755, z: -0.0000000047255355, w: 0.96154755}
-  m_LocalPosition: {x: 18.2, y: 4.64, z: -6.34}
+  m_LocalRotation: {x: 0.2240146, y: 0.000000018748418, z: -0.00000000430944, w: 0.97458583}
+  m_LocalPosition: {x: 18.2, y: 4.64, z: -8.440001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1120,7 +1120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b8bd0ed84d82045b7a6c3b048f35ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4759476246092772857}
 --- !u!4 &1745084603
 Transform:
   m_ObjectHideFlags: 0
@@ -1183,7 +1182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -10}
+  m_FollowOffset: {x: 0, y: 0, z: -12.1}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1557,7 +1556,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -1574,12 +1573,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95accc892bed69b47a4a0e3ce521d752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runAnimationName: run
   idleAnimationName: idle
-  AttackAnimationName: attack
-  idleTurnAnimationName: idle
-  runToIdleAnimationName: run
-  runWalkDuration: 1.5
+  runAnimationName: run
+  MeleeAttackAnimationName: attack
+  ShotAttackAnimationName: attack_ranged
+  VictoryAnimationName: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
