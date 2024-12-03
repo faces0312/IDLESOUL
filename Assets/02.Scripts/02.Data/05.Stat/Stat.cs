@@ -71,12 +71,12 @@ public class Stat
         clacStat.maxHealth = stat1.maxHealth + stat2.maxHealth;
         clacStat.atk = stat1.atk + stat2.atk;
         clacStat.def = stat1.def + stat2.def;
-                
+
         clacStat.moveSpeed = (float)Math.Round(stat1.moveSpeed + stat2.moveSpeed, 1);
         clacStat.atkSpeed = (float)Math.Round(stat1.atkSpeed + stat2.atkSpeed, 1);
-                
+
         clacStat.reduceDamage = (float)Math.Round(stat1.reduceDamage + stat2.reduceDamage, 1);
-                
+
         clacStat.critChance = (float)Math.Round(stat1.critChance + stat2.critChance, 1);
         clacStat.critDamage = (float)Math.Round(stat1.critDamage + stat2.critDamage, 1);
         clacStat.coolDown = (float)Math.Round(stat1.coolDown + stat2.coolDown, 1);

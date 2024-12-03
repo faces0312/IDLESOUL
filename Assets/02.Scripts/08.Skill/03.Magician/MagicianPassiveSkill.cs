@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,7 @@ public class MagicianPassiveSkill : Skill
     {
         passiveStat = new Stat();
         passiveStat.atk = (int)value * level;
-        // TODO : ÇÃ·¹ÀÌ¾î ½ºÅİ ºÒ·¯¿À±â => Àû¿ë È®ÀÎ ½Ã ÁÖ¼® »èÁ¦
+        // TODO : í”Œë ˆì´ì–´ ìŠ¤í…Ÿ ë¶ˆëŸ¬ì˜¤ê¸° => ì ìš© í™•ì¸ ì‹œ ì£¼ì„ ì‚­ì œ
         playerStatHandler = GameManager.Instance.player.StatHandler;
     }
 
@@ -19,16 +19,16 @@ public class MagicianPassiveSkill : Skill
     {
         level += amount;
 
-        // TODO : amount ¸¸Å­ value Áõ°¡
-
+        // ì´ì „ ë ˆë²¨ ëŠ¥ë ¥ì¹˜ í•´ì œ
         playerStatHandler.UnEquipItem(passiveStat);
 
+        // TODO : ë°°ìœ¨ ì¡°ì •
         passiveStat.atk = (int)value * level;
     }
 
     public override void UseSkill(StatHandler statHandler)
     {
-        // °ø°İ·ÂÀÌ »ó½Ã·Î Áõ°¡ÇÔ
+        // ê³µê²©ë ¥ì´ ìƒì‹œë¡œ ì¦ê°€í•¨
         playerStatHandler.EquipItem(passiveStat);
     }
 }

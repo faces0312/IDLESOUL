@@ -14,6 +14,7 @@ public class MagicianDefaultSkill : Skill
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/Explosion");
         range = 5f;
         searchRange = 10f;
+        totalValue = value * (level * upgradeValue);
     }
 
     public override void UpgradeSkill(int amount)
@@ -50,15 +51,13 @@ public class MagicianDefaultSkill : Skill
         if (searchRange * searchRange < closestDistanceSqr)
             closestTarget = null;
 
-        Vector3 targetPos = Vector3.zero;   // TODO : Default값 -> 플레이어 앞 좌표
+        Vector3 targetPos = playerPos;  // 플레이어 상 하 좌 우 에 배치할 것인가?
 
         if (closestTarget != null)
             targetPos = closestTarget.transform.position;
-        else
-            Debug.LogAssertion("Target is null!");
 
         GameObject explosion = Object.Instantiate(skillPrefab, targetPos, Quaternion.identity);
-        if(explosion.TryGetComponent(out Explosion component))
+        if (explosion.TryGetComponent(out Explosion component))
         {
             component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);
         }
