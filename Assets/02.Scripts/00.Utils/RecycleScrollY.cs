@@ -41,7 +41,7 @@ public class RecycleScrollY : MonoBehaviour
         totalCnt = showCnt + 2;
         for (int i = 0; i < rectCnt; i++)
         {
-            float yPos = -i * (prefabHeight + contentSpace) + UpMargin;
+            float yPos = -i * (prefabHeight + contentSpace) - UpMargin;
             rectPositions.Add(yPos);
 
             if (i < totalCnt)
@@ -66,7 +66,7 @@ public class RecycleScrollY : MonoBehaviour
 
         float deltaY = pastPos - delta.y;
 
-        if (delta.y >= 1 || delta.y <= 0) return;
+        if (curPage >= pageCnt || curPage <= 0) return;
 
         if (deltaY == 0)
         {
@@ -102,7 +102,7 @@ public class RecycleScrollY : MonoBehaviour
                     int on = rectCnt - pageOffset + i;
 
                     int idx = i % totalCnt;
-                    objs[idx].GetComponent<RectTransform>().localPosition
+                    objs[idx].GetComponent<RectTransform>().localPosition 
                         = new Vector3(objs[idx].GetComponent<RectTransform>().localPosition.x, rectPositions[on - (showCnt + 2)]);
                     SetContent?.Invoke(objs[idx], (on - (showCnt + 2)));
                 }
