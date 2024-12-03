@@ -62,11 +62,11 @@ public class RecycleScrollY : MonoBehaviour
     {
         int pageCnt = rectCnt - showCnt;
         int pageOffset = pageCnt - 2;
-        int curPage = pageCnt - (int)Mathf.Round(delta.y * pageCnt);
+        int curPage = (int)Mathf.Round(delta.y * pageCnt);
 
         float deltaY = pastPos - delta.y;
 
-        if (curPage < 0 || curPage > 1) return;
+        if (delta.y >= 1 || delta.y <= 0) return;
 
         if (deltaY == 0)
         {
@@ -75,7 +75,7 @@ public class RecycleScrollY : MonoBehaviour
         {
             pastPos = delta.y;
 
-            if (curPage >= pageOffset)
+            if (curPage <= pageOffset)
             {
                 int temp = pageOffset - curPage;
                 for (int i = prevIdx; i < temp + 1; i++)
@@ -94,7 +94,7 @@ public class RecycleScrollY : MonoBehaviour
         {
             pastPos = delta.y;
 
-            if (curPage >= pageOffset + 1)
+            if (curPage <= pageOffset + 1)
             {
                 int temp = pageOffset + 1 - curPage;
                 for (int i = prevIdx; i >= temp; i--)
