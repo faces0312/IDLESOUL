@@ -7,10 +7,14 @@ public class MagicianPassiveSkill : Skill
     Stat passiveStat;
     StatHandler playerStatHandler;
 
+    public float PassiveValue { get; private set; }
+
     public MagicianPassiveSkill(int id) : base(id)
     {
         passiveStat = new Stat();
         passiveStat.atk = (int)value * level;
+        // TODO : 강화 공격용 수치
+        PassiveValue = value * level;
         // TODO : 플레이어 스텟 불러오기 => 적용 확인 시 주석 삭제
         playerStatHandler = GameManager.Instance.player.StatHandler;
     }
@@ -24,6 +28,8 @@ public class MagicianPassiveSkill : Skill
 
         // TODO : 배율 조정
         passiveStat.atk = (int)value * level;
+        // TODO : 강화 공격용 수치
+        PassiveValue = value * level;
     }
 
     public override void UseSkill(StatHandler statHandler)

@@ -19,28 +19,10 @@ public class TestManager : SingletonDDOL<TestManager>
 
     public TestInventoryModel inventory;
 
-    /// <summary>
-    /// 소울관련
-    /// </summary>
-    public Soul currentSoul;
-    public Soul[] soulSlot = new Soul[3];
-    public Dictionary<string, Soul> soulDic = new Dictionary<string, Soul>();
-    public int spawnIndex;
-
     private void Start()
     {
         playerStatHandler = GameManager.Instance.player.StatHandler;
-
-        /// 세트
-        RegisterSoul("마법사 영혼", new SoulMagician(11000));
-        RegisterSoul("전사 영혼", new SoulKnight(11001));
-        EquipSoul("마법사 영혼", 0);
-        EquipSoul("전사 영혼", 1);
-        GameManager.Instance.player.OnUpdateSoulStats?.Invoke();    // 착용 시 패시브 업데이트
-        /// 세트
-
-        SpawnSoul(0);
-        spawnIndex = 0;
+        //TestSoul = GameManager.Instance.player.PlayerSouls.SoulSlot[0];
 
         StatViewUpdate();
     }
@@ -59,17 +41,17 @@ public class TestManager : SingletonDDOL<TestManager>
         playerStats[9].text = playerStatHandler.CurrentStat.critDamage.ToString();
         playerStats[10].text = playerStatHandler.CurrentStat.coolDown.ToString();
 
-        soulStats[0].text = currentSoul.StatHandler.CurrentStat.iD.ToString();
-        soulStats[1].text = currentSoul.StatHandler.CurrentStat.health.ToString();
-        soulStats[2].text = currentSoul.StatHandler.CurrentStat.maxHealth.ToString();
-        soulStats[3].text = currentSoul.StatHandler.CurrentStat.atk.ToString();
-        soulStats[4].text = currentSoul.StatHandler.CurrentStat.def.ToString();
-        soulStats[5].text = currentSoul.StatHandler.CurrentStat.moveSpeed.ToString();
-        soulStats[6].text = currentSoul.StatHandler.CurrentStat.atkSpeed.ToString();
-        soulStats[7].text = currentSoul.StatHandler.CurrentStat.reduceDamage.ToString();
-        soulStats[8].text = currentSoul.StatHandler.CurrentStat.critChance.ToString();
-        soulStats[9].text = currentSoul.StatHandler.CurrentStat.critDamage.ToString();
-        soulStats[10].text = currentSoul.StatHandler.CurrentStat.coolDown.ToString();
+        soulStats[0].text = TestSoul.StatHandler.CurrentStat.iD.ToString();
+        soulStats[1].text = TestSoul.StatHandler.CurrentStat.health.ToString();
+        soulStats[2].text = TestSoul.StatHandler.CurrentStat.maxHealth.ToString();
+        soulStats[3].text = TestSoul.StatHandler.CurrentStat.atk.ToString();
+        soulStats[4].text = TestSoul.StatHandler.CurrentStat.def.ToString();
+        soulStats[5].text = TestSoul.StatHandler.CurrentStat.moveSpeed.ToString();
+        soulStats[6].text = TestSoul.StatHandler.CurrentStat.atkSpeed.ToString();
+        soulStats[7].text = TestSoul.StatHandler.CurrentStat.reduceDamage.ToString();
+        soulStats[8].text = TestSoul.StatHandler.CurrentStat.critChance.ToString();
+        soulStats[9].text = TestSoul.StatHandler.CurrentStat.critDamage.ToString();
+        soulStats[10].text = TestSoul.StatHandler.CurrentStat.coolDown.ToString();
     }
 
     public void OnSpawnEnemy()
@@ -89,12 +71,12 @@ public class TestManager : SingletonDDOL<TestManager>
 
     public void OnUseDefaultSkill()
     {
-        currentSoul.UseSkill(TestSoul.Skills[(int)SkillType.Default]);
+        TestSoul.UseSkill(TestSoul.Skills[(int)SkillType.Default]);
     }
 
     public void OnUseUltimateSkill()
     {
-        currentSoul.UseSkill(TestSoul.Skills[(int)SkillType.Ultimate]);
+        TestSoul.UseSkill(TestSoul.Skills[(int)SkillType.Ultimate]);
     }
 
     public void OnClickPlayerLevelUp(int level)
@@ -108,7 +90,7 @@ public class TestManager : SingletonDDOL<TestManager>
     public void OnClickSoulLevelUp(int level)
     {
         soulLevel += level;
-        currentSoul.StatHandler.LevelUp(soulLevel);
+        TestSoul.StatHandler.LevelUp(soulLevel);
         StatViewUpdate();
     }
 
@@ -124,59 +106,17 @@ public class TestManager : SingletonDDOL<TestManager>
 
     public void OnClickUpgradePassiveSkill()
     {
-        currentSoul.UpgradeSkill(SkillType.Passive, 1);
-        currentSoul.ApplyPassiveSkill();
+        TestSoul.UpgradeSkill(SkillType.Passive, 1);
+        TestSoul.ApplyPassiveSkill();
         GameManager.Instance.player.OnUpdateSoulStats?.Invoke();
         StatViewUpdate();
     }
 
     public void OnClickSwapSoul()
     {
-        spawnIndex = spawnIndex == 0 ? 1 : 0;
-        SpawnSoul(spawnIndex);
+        //int spawnIndex = GameManager.Instance.player.PlayerSouls.spawnIndex;
+        //spawnIndex = spawnIndex == 0 ? 1 : 0;
+        //GameManager.Instance.player.PlayerSouls.SpawnSoul(spawnIndex);
         StatViewUpdate();
     }
-
-    #region 소울 관련 메서드
-    // 소울 등록
-    public void RegisterSoul(string name, Soul soul)
-    {
-        soulDic.Add(name, soul);
-    }
-
-    // 소울 장착
-    public void EquipSoul(string name, int index)
-    {
-        if (soulDic.TryGetValue(name, out Soul soul))
-        {
-            // 슬롯에 소울이 있다면 목록에 담아준다
-            UnEquipSoul(index);
-
-            // index 슬롯에 소울을 장착
-            soulSlot[index] = soul;
-        }
-    }
-
-    // 소울 해제
-    public void UnEquipSoul(int index)
-    {
-        // index 슬롯에 존재하는 소울을 해제
-        if (soulSlot[index] != null)
-        {
-            soulSlot[index] = null;
-        }
-    }
-
-    // 소울 스왑
-    public void SpawnSoul(int index)
-    {
-        // TODO : 소환 중인 소울이 있다면 소환을 해제
-        // 소환을 해제하는 로직
-        currentSoul = null;
-
-        // TODO : 슬롯의 소울을 소환
-        // 소환하는 로직
-        currentSoul = soulSlot[index];
-    }
-    #endregion
 }
