@@ -22,4 +22,13 @@ namespace Enums
         Weapon,
         Soul
     }
+
+    public enum AchievementType
+    {
+        None,
+        Enemy,
+        Gold,
+        CollectSoul,
+        Stage
+    }
 }
