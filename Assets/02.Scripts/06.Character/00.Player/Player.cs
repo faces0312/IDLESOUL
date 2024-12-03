@@ -63,7 +63,9 @@ public class Player : BaseCharacter
     public TargetSearch targetSearch;
     public Rigidbody rb;
     private PlayerAnimationController playerAnimationController;
+    private PlayerSouls playerSouls;
     public PlayerAnimationController PlayerAnimationController { get => playerAnimationController; }
+    public PlayerSouls PlayerSouls { get => playerSouls; }
 
     [Header("State Machine")]
     private PlayerStateMachine playerStateMachine;
@@ -93,6 +95,10 @@ public class Player : BaseCharacter
         {
             playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
             playerAnimationController.Initialize();
+        }
+        if (playerSouls == null)
+        {
+            playerSouls = GetComponent<PlayerSouls>();
         }
         //FSM 초기 상태 설정 (Idle)
         playerStateMachine = new PlayerStateMachine(this);
