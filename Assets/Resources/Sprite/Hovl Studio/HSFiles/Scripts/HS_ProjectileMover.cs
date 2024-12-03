@@ -107,6 +107,7 @@ public class HS_ProjectileMover : MonoBehaviour
                 detachedPS.Stop();
             }
         }
+
         if (notDestroy)
             StartCoroutine(DisableTimer(hitPS.main.duration));
         else
