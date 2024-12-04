@@ -11,10 +11,13 @@ public class EnemyMoveState : EnemyBaseState
     public override void Enter()
     {
         base.Enter();
-        /*animator.SetBool(animatorHashData.IdleParameterHash, false);
-        animator.SetBool(animatorHashData.WalkParameterHash, true);
-        animator.SetTrigger(animatorHashData.AttackParameterHash, false);*/
-        // 이동 애니메이션 시작
+        StartAnimation(animatorHashData.WalkParameterHash);
+        StopAnimation(animatorHashData.IdleParameterHash);
+        /*StopAnimation(animatorHashData.IdleParameterHash);
+        StopAnimation(animatorHashData.AttackParameterHash);
+        StartAnimation(animatorHashData.WalkParameterHash);*/
+        /*StartAnimation(animatorHashData.WalkParameterHash);
+        StopAnimation(animatorHashData.IdleParameterHash);*/
     }
 
     public override void FixedUpdate()
@@ -27,7 +30,7 @@ public class EnemyMoveState : EnemyBaseState
     {
         direction = (stateMachine.Enemy.target.transform.position - stateMachine.Enemy.transform.position).normalized;
         float distanceTmp = Vector3.Distance(stateMachine.Enemy.transform.position, stateMachine.Enemy.target.transform.position);
-        if (distanceTmp > stateMachine.Enemy.enemyDB.Distance)
+        if (distanceTmp > 2f)//stateMachine.Enemy.enemyDB.Distance)
         {
             Vector3 targetVelocity = direction * stateMachine.Enemy.enemyDB.MoveSpeed;
             stateMachine.Enemy.rb.velocity = targetVelocity;
