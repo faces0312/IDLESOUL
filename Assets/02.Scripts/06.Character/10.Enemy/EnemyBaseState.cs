@@ -4,13 +4,13 @@ public class EnemyBaseState : IState
 {
     protected EnemyStateMachine stateMachine;
     protected Enemy enemy;
-    //protected Animator animator;
+    protected Animator animator;
     protected AnimatorHashData animatorHashData;
     public EnemyBaseState(EnemyStateMachine _stateMachine)
     {
         stateMachine = _stateMachine;
         this.enemy = stateMachine.Enemy;
-        //this.animator = enemy.animator;
+        this.animator = enemy.animator;
         this.animatorHashData = enemy.animatorHashData;
     }
 
@@ -32,16 +32,19 @@ public class EnemyBaseState : IState
 
     protected void StartAnimation(int animatorHash)
     {
+        animator.SetBool(animatorHash, true);
         //stateMachine.{객체}.Animator.SetBool(animatorHash, true);
     }
 
     protected void StartAnimationTrigger(int animatorHash)
     {
+        animator.SetTrigger(animatorHash);
         //stateMachine.{객체}r.Animator.SetTrigger(animatorHash);
     }
 
     protected void StopAnimation(int animatorHash)
     {
+        animator.SetBool(animatorHash, false);
         //stateMachine.{객체}.Animator.SetBool(animatorHash, false);
     }
 }

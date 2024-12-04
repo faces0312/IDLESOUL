@@ -11,5 +11,4 @@ public class Boss1 : BossEnemy
             new EnemySkill1(this, stateMachine)
         };
     }
-
 }

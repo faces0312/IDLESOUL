@@ -26,13 +26,11 @@ public class MagicianUltimateSkill : Skill
 
     public override void UseSkill(StatHandler statHandler)
     {
-        // 플레이어 대각 위치에서 생성한다.
+        Vector3 playerPos = GameManager.Instance.player.transform.position;
 
-        Vector2 playerPos = GameManager.Instance.player.transform.position;   // TODO : 플레이어 좌표 => 적용 확인 시 주석 삭제
+        playerPos += skillPrefab.transform.position;
 
-        playerPos += new Vector2(5, 5); // TODO : 생성 할 좌표 수치
-
-        GameObject meteor = Object.Instantiate(skillPrefab, playerPos, Quaternion.identity);
+        GameObject meteor = Object.Instantiate(skillPrefab, playerPos, Quaternion.LookRotation(skillPrefab.transform.forward));
         if (meteor.TryGetComponent(out Meteor component))
         {
             component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);

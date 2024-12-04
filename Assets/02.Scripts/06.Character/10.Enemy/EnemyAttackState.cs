@@ -12,6 +12,8 @@ public class EnemyAttackState : EnemyBaseState
     public override void Enter()
     {
         base.Enter();
+        StopAnimation(animatorHashData.WalkParameterHash);
+        StartAnimation(animatorHashData.IdleParameterHash);
         /*animator.SetBool(animatorHashData.IdleParameterHash, false);
         animator.SetBool(animatorHashData.WalkParameterHash, false);
         animator.SetTrigger(animatorHashData.AttackParameterHash);
@@ -31,7 +33,7 @@ public class EnemyAttackState : EnemyBaseState
         }
 
         float distanceTmp = Vector3.Distance(stateMachine.Enemy.transform.position, stateMachine.Enemy.target.transform.position);
-        if (distanceTmp > stateMachine.Enemy.enemyDB.Distance)
+        if (distanceTmp > 2)//stateMachine.Enemy.enemyDB.Distance)
         {
             stateMachine.ChangeState(stateMachine.MoveState);
         }
@@ -39,13 +41,14 @@ public class EnemyAttackState : EnemyBaseState
 
     public void Attack()
     {
+        StartAnimationTrigger(animatorHashData.AttackParameterHash);
         switch (stateMachine.Enemy.attackType)
         {
             case AttackType.Melee:
                 MeleeAttack();
                 break;
             case AttackType.Ranged:
-                RangedAttack();
+                //Invoke("RangedAttack", 0.45f);
                 break;
         }
     }
@@ -55,11 +58,12 @@ public class EnemyAttackState : EnemyBaseState
         Debug.Log("근거리공격");
     }
 
-    void RangedAttack()
+    public void RangedAttack()
     {
         //Debug.Log("원거리공격");
         //원거리 적의 경우
-        GameObject bulletInstance = Object.Instantiate(stateMachine.Enemy.bulletTest, stateMachine.Enemy.transform.position, Quaternion.Euler(Vector3.zero));
+        GameObject bulletInstance = 
+            Object.Instantiate(stateMachine.Enemy.bulletTest,new Vector3(stateMachine.Enemy.transform.position.x, stateMachine.Enemy.transform.position.y + 1f, stateMachine.Enemy.transform.position.z), Quaternion.Euler(Vector3.zero));
         BulletTest monsterBullet = bulletInstance.GetComponent<BulletTest>();
         monsterBullet.attack = stateMachine.Enemy.enemyDB.Attack;
         monsterBullet.knockbackPower = stateMachine.Enemy.enemyDB.KnockBackPower;

@@ -41,8 +41,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FixedMaskTex:
-        m_Texture: {fileID: 2800000, guid: 29b13744e326a5f44a2d20b257c7c052, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 3884f6410a9f3de4fb40bded1823db3d, type: 3}
+        m_Scale: {x: 4, y: 4}
         m_Offset: {x: 0, y: 0}
     - _LinePassTex:
         m_Texture: {fileID: 0}
@@ -50,7 +50,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 40e0bf021bf66dd4f98db804a3e3c42b, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 1, y: -1}
         m_Offset: {x: 0, y: 0}
     - _MaskDistortion:
         m_Texture: {fileID: 0}
@@ -88,7 +88,7 @@ Material:
     - _BlendDst: 1
     - _BlendSrc: 5
     - _BumpScale: 1
-    - _ColorFactor: 2
+    - _ColorFactor: 1
     - _Culling: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1

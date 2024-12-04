@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -13,6 +14,7 @@ TagManager:
   - UI
   - Player
   - Enemy
+  - Ground
   - 
   - 
   - 
@@ -35,8 +37,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Post Processing
   m_SortingLayers:
   - name: Default
     uniqueID: 0

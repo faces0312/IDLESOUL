@@ -92,7 +92,7 @@ Material:
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
-    - _ColorFactor: 2
+    - _ColorFactor: 1
     - _ColorMode: 0
     - _Cull: 2
     - _Culling: 2

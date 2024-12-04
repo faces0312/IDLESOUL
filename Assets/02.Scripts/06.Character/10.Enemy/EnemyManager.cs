@@ -16,6 +16,7 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         InitializeEnemyPool();
+        StartCoroutine(EnemySpawnCoroutine(1, 5001));
         //StartCoroutine(EnemySpawnCoroutine(1,5006));
         //Invoke("SpawnCycle",1f);
         //EnemySpawn(1, "Goblin", 5000);
@@ -40,8 +41,9 @@ public class EnemyManager : MonoBehaviour
 
     private void InitializeEnemyPool()
     {
-        ObjectPool goblinPool = new ObjectPool(5000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Goblin");
-        ObjectPool goblinPriestPool = new ObjectPool(5001, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinPriest");
+        InitializeEnemyPoolForType(5000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Goblin");
+        InitializeEnemyPoolForType(5001, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinMagician");
+        /*ObjectPool goblinPriestPool = new ObjectPool(5001, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinPriest");
         ObjectPool goblinKingPool = new ObjectPool(5002, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinKing");
         ObjectPool orcPool = new ObjectPool(5003, INITIAL_POOL_SIZE, "Prefabs/Enemy/Orc");
         ObjectPool orcWarriorPool = new ObjectPool(5004, INITIAL_POOL_SIZE, "Prefabs/Enemy/OrcWarrior");
@@ -51,10 +53,9 @@ public class EnemyManager : MonoBehaviour
         ObjectPool snakePool = new ObjectPool(5008, INITIAL_POOL_SIZE, "Prefabs/Enemy/Snake");
 
         ObjectPool goblinBossPool = new ObjectPool(5000, 3, "Prefabs/Enemy/Goblin_Boss");
-        ObjectPool batBossPool = new ObjectPool(5001, 3, "Prefabs/Enemy/Bat_Boss");
+        ObjectPool batBossPool = new ObjectPool(5001, 3, "Prefabs/Enemy/Bat_Boss");*/
 
-        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinPriestPool);
+        /*ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinPriestPool);
         ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinKingPool);
         ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, orcPool);
         ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, orcWarriorPool);
@@ -64,24 +65,38 @@ public class EnemyManager : MonoBehaviour
         ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, snakePool);
 
         ObjectPoolManager.Instance.AddPool(ENEMY_BOSS_POOL_KEY, goblinBossPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_BOSS_POOL_KEY, batBossPool);
+        ObjectPoolManager.Instance.AddPool(ENEMY_BOSS_POOL_KEY, batBossPool);*/
     }
+
+    private void InitializeEnemyPoolForType(int id, int size, string prefabPath)
+    {
+        ObjectPool pool = new ObjectPool(id, size, prefabPath);
+        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, pool);
+
+        for (int i = 0; i < size; i++)
+        {
+            GameObject enemy = pool.GetObject();
+            Enemy tempEnemy = enemy.GetComponent<Enemy>();
+            if (tempEnemy != null)
+            {
+                tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(id);
+            }
+            enemy.SetActive(false); // 오브젝트를 비활성화하여 풀로 반환
+        }
+    }
+
     void SpawnCycle()
     {
-        //EnemySpawn(2, 5000);
-        //StartCoroutine(EnemySpawnCoroutine(2, 5000));
-
         StartCoroutine(EnemyRandomSpawnCoroutine(5));
     }
     
     IEnumerator EnemySpawnCoroutine(int cycle, int id)
     {
+        yield return new WaitForSeconds(0.5f);
         ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_POOL_KEY, id);
         for (int i = 0; i < cycle; i++)
         {
             GameObject enemy = pool.GetObject();
-            Enemy tempEnemy = enemy.GetComponent<RegularEnemy>();
-            tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(id);
             enemy.SetActive(true);
             GameManager.Instance.enemies.Add(enemy);
 
@@ -96,8 +111,6 @@ public class EnemyManager : MonoBehaviour
             int randomID = Random.Range(5000, 5009);
             ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_POOL_KEY, randomID);
             GameObject enemy = pool.GetObject();
-            Enemy tempEnemy = enemy.GetComponent<RegularEnemy>();
-            tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(randomID);
             enemy.SetActive(true);
             GameManager.Instance.enemies.Add(enemy);
             Debug.Log("몬스터 생성");
@@ -120,8 +133,6 @@ public class EnemyManager : MonoBehaviour
 
         ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_BOSS_POOL_KEY, 5000);
         GameObject enemyBoss = pool.GetObject();
-        Enemy tempEnemy = enemyBoss.GetComponent<BossEnemy>();
-        tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(5000);
         enemyBoss.SetActive(true);
         GameManager.Instance.enemies.Add(enemyBoss);
         Debug.Log("보스 생성");
