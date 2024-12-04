@@ -25,7 +25,7 @@ public abstract class Enemy : BaseCharacter
     public EnemyStateMachine stateMachine;
 
     [Header("CurrentStats")]
-    private float currentHealth;
+    public float currentHealth;
 
     private void Awake()
     {
@@ -35,11 +35,15 @@ public abstract class Enemy : BaseCharacter
         animatorHashData.Initialize();
         //target = GameManager.Instance.player;
         stateMachine = new EnemyStateMachine(this);
-        currentHealth = enemyDB.Health;
         target = GameObject.Find("Player");
         enemyDB.Distance = 1f;
 
         stateMachine.Initialize();
+    }
+    private void Start()
+    {
+        Debug.Log(enemyDB.Health);
+        currentHealth = enemyDB.Health;
     }
 
     public virtual void Update()

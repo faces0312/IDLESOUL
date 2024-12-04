@@ -13,7 +13,7 @@ public class EnemyManager : MonoBehaviour
     private const string ENEMY_POOL_KEY = "Enemies";
     private const int INITIAL_POOL_SIZE = 10;
 
-    private void Awake()
+    private void Start()
     {
         InitializeEnemyPool();
         StartCoroutine(EnemySpawnCoroutine(1, 5001));
@@ -41,8 +41,8 @@ public class EnemyManager : MonoBehaviour
 
     private void InitializeEnemyPool()
     {
-        ObjectPool goblinPool = new ObjectPool(5000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Goblin");
-        ObjectPool goblinMagicianPool = new ObjectPool(5001, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinMagician");
+        InitializeEnemyPoolForType(5000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Goblin");
+        InitializeEnemyPoolForType(5001, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinMagician");
         /*ObjectPool goblinPriestPool = new ObjectPool(5001, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinPriest");
         ObjectPool goblinKingPool = new ObjectPool(5002, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinKing");
         ObjectPool orcPool = new ObjectPool(5003, INITIAL_POOL_SIZE, "Prefabs/Enemy/Orc");
@@ -55,8 +55,6 @@ public class EnemyManager : MonoBehaviour
         ObjectPool goblinBossPool = new ObjectPool(5000, 3, "Prefabs/Enemy/Goblin_Boss");
         ObjectPool batBossPool = new ObjectPool(5001, 3, "Prefabs/Enemy/Bat_Boss");*/
 
-        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinMagicianPool);
         /*ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinPriestPool);
         ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinKingPool);
         ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, orcPool);
@@ -69,11 +67,26 @@ public class EnemyManager : MonoBehaviour
         ObjectPoolManager.Instance.AddPool(ENEMY_BOSS_POOL_KEY, goblinBossPool);
         ObjectPoolManager.Instance.AddPool(ENEMY_BOSS_POOL_KEY, batBossPool);*/
     }
+
+    private void InitializeEnemyPoolForType(int id, int size, string prefabPath)
+    {
+        ObjectPool pool = new ObjectPool(id, size, prefabPath);
+        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, pool);
+
+        for (int i = 0; i < size; i++)
+        {
+            GameObject enemy = pool.GetObject();
+            Enemy tempEnemy = enemy.GetComponent<Enemy>();
+            if (tempEnemy != null)
+            {
+                tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(id);
+            }
+            enemy.SetActive(false); // 오브젝트를 비활성화하여 풀로 반환
+        }
+    }
+
     void SpawnCycle()
     {
-        //EnemySpawn(2, 5000);
-        //StartCoroutine(EnemySpawnCoroutine(2, 5000));
-
         StartCoroutine(EnemyRandomSpawnCoroutine(5));
     }
     
@@ -84,8 +97,6 @@ public class EnemyManager : MonoBehaviour
         for (int i = 0; i < cycle; i++)
         {
             GameObject enemy = pool.GetObject();
-            Enemy tempEnemy = enemy.GetComponent<RegularEnemy>();
-            tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(id);
             enemy.SetActive(true);
             GameManager.Instance.enemies.Add(enemy);
 
@@ -100,8 +111,6 @@ public class EnemyManager : MonoBehaviour
             int randomID = Random.Range(5000, 5009);
             ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_POOL_KEY, randomID);
             GameObject enemy = pool.GetObject();
-            Enemy tempEnemy = enemy.GetComponent<RegularEnemy>();
-            tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(randomID);
             enemy.SetActive(true);
             GameManager.Instance.enemies.Add(enemy);
             Debug.Log("몬스터 생성");
@@ -124,8 +133,6 @@ public class EnemyManager : MonoBehaviour
 
         ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_BOSS_POOL_KEY, 5000);
         GameObject enemyBoss = pool.GetObject();
-        Enemy tempEnemy = enemyBoss.GetComponent<BossEnemy>();
-        tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(5000);
         enemyBoss.SetActive(true);
         GameManager.Instance.enemies.Add(enemyBoss);
         Debug.Log("보스 생성");
