@@ -42,6 +42,11 @@ public abstract class Enemy : BaseCharacter
         stateMachine.Initialize();
     }
 
+    public override void TakeDamage(float damage)
+    {
+    
+    }
+
     public virtual void Update()
     {
         stateMachine.Update();

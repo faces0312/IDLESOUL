@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4819818843720310}
   - component: {fileID: 198316187487270594}
   - component: {fileID: 199901496000089600}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BorderLightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4853,7 +4853,7 @@ GameObject:
   - component: {fileID: 4472473557064494}
   - component: {fileID: 198207720701571386}
   - component: {fileID: 199629377902509242}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Darkness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9755,7 +9755,7 @@ GameObject:
   - component: {fileID: 108556751418608030}
   - component: {fileID: 54917258164921374}
   - component: {fileID: 135262430962562618}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnergyBolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9803,6 +9803,7 @@ MonoBehaviour:
   Detached: []
   projectilePS: {fileID: 3284461296996571548}
   notDestroy: 1
+  knockbackPower: 0
   dir: {x: 0, y: 0, z: 0}
   TargetLayer:
     serializedVersion: 2
@@ -9928,7 +9929,7 @@ GameObject:
   - component: {fileID: 4145045361821176}
   - component: {fileID: 198831507450239270}
   - component: {fileID: 199100726335174730}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Borders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14828,7 +14829,7 @@ GameObject:
   - component: {fileID: 1007775842088047103}
   - component: {fileID: 3284461296996571548}
   - component: {fileID: 4204840279633286761}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19729,7 +19730,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8802921755113316326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19765,6 +19766,26 @@ PrefabInstance:
     - target: {fileID: 1270034117851066, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
       propertyPath: m_Name
       value: Hit 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270034117851066, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282939174079792, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375854079939750, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618595498797740, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1751035205502544, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4984850149884908, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
       propertyPath: m_RootOrder
@@ -19885,6 +19906,14 @@ PrefabInstance:
     - target: {fileID: 1024167407391004, guid: 63baf4956cfa45d4aa5cd12cbc8b7689, type: 3}
       propertyPath: m_Name
       value: Flash 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1024167407391004, guid: 63baf4956cfa45d4aa5cd12cbc8b7689, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796995095806556, guid: 63baf4956cfa45d4aa5cd12cbc8b7689, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4684737960746234, guid: 63baf4956cfa45d4aa5cd12cbc8b7689, type: 3}
       propertyPath: m_RootOrder

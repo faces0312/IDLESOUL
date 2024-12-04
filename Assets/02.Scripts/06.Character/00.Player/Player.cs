@@ -17,7 +17,6 @@ public class UserData
     public int MaxExp;
 
     public Stat stat;
-    //public TestStat Tstat;
     public UserData(UserDB userDB)
     {
         UID = userDB.key;
@@ -126,30 +125,20 @@ public class Player : BaseCharacter
         }
 
         statHandler = new StatHandler(StatType.Player);
-        //statHandler.CurrentStat.iD = userData.UID;
-        //statHandler.CurrentStat.health = userData.stat.health;
-        //statHandler.CurrentStat.maxHealth = userData.stat.maxHealth;
-        //statHandler.CurrentStat.atk = userData.stat.atk;
-        //statHandler.CurrentStat.def = userData.stat.def;
-        //statHandler.CurrentStat.moveSpeed = userData.stat.moveSpeed;
-        //statHandler.CurrentStat.atkSpeed = userData.stat.atkSpeed;
-        //statHandler.CurrentStat.reduceDamage = userData.stat.reduceDamage;
-        //statHandler.CurrentStat.critChance = userData.stat.critChance;
-        //statHandler.CurrentStat.critDamage = userData.stat.critDamage;
-        //statHandler.CurrentStat.coolDown = userData.stat.coolDown;
+        statHandler.CurrentStat.iD = userData.UID;
+        statHandler.CurrentStat.health = userData.stat.health;
+        statHandler.CurrentStat.maxHealth = userData.stat.maxHealth;
+        statHandler.CurrentStat.atk = userData.stat.atk;
+        statHandler.CurrentStat.def = userData.stat.def;
+        statHandler.CurrentStat.moveSpeed = userData.stat.moveSpeed;
+        statHandler.CurrentStat.atkSpeed = userData.stat.atkSpeed;
+        statHandler.CurrentStat.reduceDamage = userData.stat.reduceDamage;
+        statHandler.CurrentStat.critChance = userData.stat.critChance;
+        statHandler.CurrentStat.critDamage = userData.stat.critDamage;
+        statHandler.CurrentStat.coolDown = userData.stat.coolDown;
 
         //Controller(FSM ¼¼ÆÃ)
         playerStateMachine.ChangeState(playerStateMachine.IdleState);
-    }
-
-    public override void TakeDamage(float damage)
-    {
-
-    }
-
-    public override void TakeKnockBack(Vector3 direction, float force)
-    {
-
     }
 
     public override void Attack()
@@ -187,9 +176,13 @@ public class Player : BaseCharacter
         }
     }
 
-
     private void FixedUpdate()
     {
         playerStateMachine.FixedUpdateState();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
     }
 }

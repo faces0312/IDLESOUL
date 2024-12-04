@@ -13,10 +13,14 @@ public class EnemyManager : MonoBehaviour
     private const string ENEMY_POOL_KEY = "Enemies";
     private const int INITIAL_POOL_SIZE = 10;
 
+    //TestCode
+    public BoxCollider SpawnArea;
+    //
+
     private void Awake()
     {
         InitializeEnemyPool();
-        StartCoroutine(EnemySpawnCoroutine(1, 5001));
+        StartCoroutine(EnemySpawnCoroutine(10, 5001));
         //StartCoroutine(EnemySpawnCoroutine(1,5006));
         //Invoke("SpawnCycle",1f);
         //EnemySpawn(1, "Goblin", 5000);
@@ -86,10 +90,13 @@ public class EnemyManager : MonoBehaviour
             GameObject enemy = pool.GetObject();
             Enemy tempEnemy = enemy.GetComponent<RegularEnemy>();
             tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(id);
+            //TestCode
+            enemy.transform.position = RandomSpawn();
+            //
             enemy.SetActive(true);
             GameManager.Instance.enemies.Add(enemy);
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
     //TODO :: 몬스터를 구분해서 특정 범위 몬스터들만 생성
@@ -102,11 +109,37 @@ public class EnemyManager : MonoBehaviour
             GameObject enemy = pool.GetObject();
             Enemy tempEnemy = enemy.GetComponent<RegularEnemy>();
             tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(randomID);
+            //TestCode
+            enemy.transform.position = RandomSpawn();
+            //
             enemy.SetActive(true);
             GameManager.Instance.enemies.Add(enemy);
             Debug.Log("몬스터 생성");
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    private Vector3 RandomSpawn()
+    {
+        int maxAttempt = 3;
+        int curAttaempt = 0;
+        Vector3 playerPosition = GameManager.Instance._player.transform.position;
+        // 콜라이더의 사이즈를 가져오는 bound.size 사용
+        float range_X = SpawnArea.bounds.size.x;
+        float range_Z = SpawnArea.bounds.size.z;
+
+        Vector3 RandomPostion;
+        do
+        {
+            curAttaempt++;
+            range_X = UnityEngine.Random.Range((range_X / 2) * -1, range_X / 2);
+            range_Z = UnityEngine.Random.Range((range_Z / 2) * -1, range_Z / 2);
+            RandomPostion = new Vector3(range_X, 1f, range_Z);
+        }
+        while (curAttaempt < maxAttempt && 3.0f >= Vector3.Distance(RandomPostion, playerPosition));
+
+        Vector3 respawnPosition =  RandomPostion;
+        return respawnPosition;
     }
 
     public void BossSpawn()
