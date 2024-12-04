@@ -32,16 +32,7 @@ public class Meteor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // TODO : 사선으로 떨어지는 메테오 구현
-        // 스크린 중앙에 도착하면 파괴
-
-        velocity += gravity * Time.deltaTime;
-        velocity = Mathf.Min(velocity, maxVelocity);
-
-        transform.Translate(tempDir * velocity * Time.deltaTime);
-
-        if (transform.position.y < screenCenterWorld.y)
-            Destroy(gameObject);
+        // TODO : 메테오 폭발 시, 폭발 반경에 데미지 수치 전달
     }
 
     public void InitSettings(BigInteger value, float range)

@@ -1395,7 +1395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!102 &342476476
 TextMesh:
   serializedVersion: 3
@@ -2526,7 +2526,7 @@ GameObject:
   - component: {fileID: 906681499}
   - component: {fileID: 906681501}
   - component: {fileID: 906681500}
-  m_Layer: 8
+  m_Layer: 31
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
