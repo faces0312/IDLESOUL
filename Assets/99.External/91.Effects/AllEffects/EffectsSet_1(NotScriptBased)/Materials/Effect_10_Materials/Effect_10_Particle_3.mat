@@ -92,7 +92,7 @@ Material:
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
-    - _ColorFactor: 6
+    - _ColorFactor: 4
     - _ColorMode: 0
     - _Cull: 2
     - _Culling: 0
@@ -133,6 +133,7 @@ Material:
     - _RimLight: 0
     - _RimScale: 1
     - _RimStrength: 1
+    - _SecondColor: 0
     - _SmoothnessTextureChannel: 0
     - _SoftParticle: 1
     - _SoftParticlesEnabled: 0
