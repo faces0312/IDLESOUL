@@ -33,6 +33,8 @@ public class MoveDestroy : MonoBehaviour
     private bool isHit;
     //private float scalefactor;
 
+    public GameObject MakedObject { get => makedObject; }
+
     private void Start()
     {
         //scalefactor = transform.parent.localScale.x;
