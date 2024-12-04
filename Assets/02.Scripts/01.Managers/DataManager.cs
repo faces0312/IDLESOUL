@@ -15,7 +15,6 @@ public class Inventory
 public class ClearStageData
 {
 
-
 }
 
 public class DataManager : SingletonDDOL<DataManager>
@@ -26,6 +25,7 @@ public class DataManager : SingletonDDOL<DataManager>
     private readonly string jsonStageDBPath = "JSON/StageDB";
     private readonly string jsonSoulDBPath = "JSON/SoulDB";
     private readonly string jsonSkillDBPath = "JSON/SkillDB";
+    private readonly string jsonAchieveDBPath = "JSON/AchieveDB";
     private readonly string jsonUserDBPath = "JSON/UserDB";
 
     private readonly string jsonUserDataPath = "/userdata.json";
@@ -40,6 +40,7 @@ public class DataManager : SingletonDDOL<DataManager>
     private SoulDBLoader soulDB;
     private SkillDBLoader skillDB;
     private UserDBLoader userDB;
+    private AchieveDBLoader achieveDB;
 
     public EnemyDBLoader EnemyDB { get => enemyDB; }
     public ItemDBLoader ItemDB { get => itemDB; }
@@ -48,6 +49,7 @@ public class DataManager : SingletonDDOL<DataManager>
     public SoulDBLoader SoulDB { get => soulDB; }
     public SkillDBLoader SkillDB { get => skillDB; }
     public UserDBLoader UserDB { get => userDB;}
+    public AchieveDBLoader AchieveDB { get => achieveDB; }
 
     private UserDB userData;
     public UserDB UserData { get => userData; set => userData = value; }
@@ -68,6 +70,7 @@ public class DataManager : SingletonDDOL<DataManager>
         soulDB = new SoulDBLoader(jsonSoulDBPath);
         skillDB = new SkillDBLoader(jsonSkillDBPath);
         userDB = new UserDBLoader(jsonUserDBPath);
+        achieveDB = new AchieveDBLoader(jsonAchieveDBPath);
 
         inventory.Items = new List<ItemDB>();
         inventory.Items.Add(itemDB.GetByKey(1000));
@@ -93,5 +96,4 @@ public class DataManager : SingletonDDOL<DataManager>
        
         return userData;
     }
-
 }

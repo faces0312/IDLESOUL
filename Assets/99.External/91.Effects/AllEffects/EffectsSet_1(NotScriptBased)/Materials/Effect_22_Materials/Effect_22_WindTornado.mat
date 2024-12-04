@@ -9,9 +9,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Effect_22_WindTornado
   m_Shader: {fileID: 4800000, guid: 1d58a8e283100ea4f8435e923e54553e, type: 3}
-  m_ShaderKeywords: IS_MASK_FADE IS_NORMAL_ANIMATE IS_NORMAL_DISTORTION IS_SOFT_PARTICLES
-    IS_TEXCOORD_MOVE IS_TEXTURE_ANIMATE IS_UNITY_PARTICLE_INSTANCING_ENABLED IS_USE_TEXANIMATION
-    IS_VERTEXANIMATION _ALPHAPREMULTIPLY_ON
+  m_ShaderKeywords: IS_MASK_FADE IS_NORMAL_ANIMATE IS_SOFT_PARTICLES IS_TEXCOORD_MOVE
+    IS_TEXTURE_ANIMATE IS_UNITY_PARTICLE_INSTANCING_ENABLED IS_USE_TEXANIMATION IS_VERTEXANIMATION
+    _ALPHAPREMULTIPLY_ON
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -51,10 +51,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 67b8806fa9373774088013c2e7a9a59c, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 5, y: 5}
         m_Offset: {x: 0, y: 0}
     - _MaskDistortion:
-        m_Texture: {fileID: 2800000, guid: 4dc31e0e4a3cb0e40986e1482a3d6686, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -93,7 +93,7 @@ Material:
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
-    - _ColorFactor: 5
+    - _ColorFactor: 1.5
     - _ColorMode: 0
     - _Cull: 2
     - _Culling: 0
@@ -126,7 +126,7 @@ Material:
     - _NoiseScale: 0.05
     - _NormalAnimate: 1
     - _NormalAnimateSpeed: 1
-    - _NormalDistortion: 1
+    - _NormalDistortion: 0
     - _NormalDistortionFactor: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02

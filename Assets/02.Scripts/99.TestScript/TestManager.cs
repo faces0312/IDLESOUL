@@ -9,6 +9,11 @@ public class TestManager : SingletonDDOL<TestManager>
     // 여러 기능들을 테스트 하기 위한 목적의 매니저 클래스
     // 형식을 신경쓰지 않고, 자유롭게 사용
 
+    [SerializeField] public GameObject effectPrefab;
+    [SerializeField] public GameObject effectPrefab2;
+
+    [SerializeField] private GameObject enemy;
+
     public Soul TestSoul;
     public StatHandler playerStatHandler;
     public int playerLevel = 1;
@@ -21,10 +26,7 @@ public class TestManager : SingletonDDOL<TestManager>
 
     private void Start()
     {
-        playerStatHandler = GameManager.Instance.player.StatHandler;
-        //TestSoul = GameManager.Instance.player.PlayerSouls.SoulSlot[0];
-
-        StatViewUpdate();
+        GameManager.Instance.enemies.Add(enemy);
     }
 
     public void StatViewUpdate()
@@ -52,21 +54,6 @@ public class TestManager : SingletonDDOL<TestManager>
         soulStats[8].text = TestSoul.StatHandler.CurrentStat.critChance.ToString();
         soulStats[9].text = TestSoul.StatHandler.CurrentStat.critDamage.ToString();
         soulStats[10].text = TestSoul.StatHandler.CurrentStat.coolDown.ToString();
-    }
-
-    public void OnSpawnEnemy()
-    {
-        GameObject prefab = Resources.Load<GameObject>("Prefabs/Enemy/TestEnemy");
-
-        GameObject testEnemy = Instantiate(prefab, Vector2.right * 7.5f, Quaternion.identity);
-        GameObject testEnemy2 = Instantiate(prefab, Vector2.left * 5f, Quaternion.identity);
-        GameObject testEnemy3 = Instantiate(prefab, Vector2.up * 2f, Quaternion.identity);
-        GameObject testEnemy4 = Instantiate(prefab, Vector2.down * 3.5f, Quaternion.identity);
-
-        GameManager.Instance.enemies.Add(testEnemy);
-        GameManager.Instance.enemies.Add(testEnemy2);
-        GameManager.Instance.enemies.Add(testEnemy3);
-        GameManager.Instance.enemies.Add(testEnemy4);
     }
 
     public void OnUseDefaultSkill()
@@ -114,9 +101,33 @@ public class TestManager : SingletonDDOL<TestManager>
 
     public void OnClickSwapSoul()
     {
-        //int spawnIndex = GameManager.Instance.player.PlayerSouls.spawnIndex;
-        //spawnIndex = spawnIndex == 0 ? 1 : 0;
-        //GameManager.Instance.player.PlayerSouls.SpawnSoul(spawnIndex);
+        int spawnIndex = GameManager.Instance.player.PlayerSouls.spawnIndex;
+        spawnIndex = spawnIndex == 0 ? 1 : 0;
+        GameManager.Instance.player.PlayerSouls.SpawnSoul(spawnIndex);
         StatViewUpdate();
+    }
+
+    public void OnClickRegisterSoul()
+    {
+        GameManager.Instance.player.PlayerSouls.RegisterSoul("마법사 영혼", new SoulMagician(11000));
+        GameManager.Instance.player.PlayerSouls.RegisterSoul("전사 영혼", new SoulKnight(11001));
+        GameManager.Instance.player.PlayerSouls.EquipSoul("마법사 영혼", 0);
+        GameManager.Instance.player.PlayerSouls.EquipSoul("전사 영혼", 1);
+        GameManager.Instance.player.OnUpdateSoulStats?.Invoke();    // 착용 시 패시브 업데이트
+
+        GameManager.Instance.player.PlayerSouls.SpawnSoul(0);
+        GameManager.Instance.player.PlayerSouls.spawnIndex = 0;
+
+        playerStatHandler = GameManager.Instance.player.StatHandler;
+        TestSoul = GameManager.Instance.player.PlayerSouls.CurrentSoul;
+
+        StatViewUpdate();
+    }
+
+    public void OnClickCreateEffect()
+    {
+        //Instantiate(effectPrefab);
+        Vector3 pos = GameManager.Instance.player.transform.position;
+        Instantiate(effectPrefab2, pos, Quaternion.LookRotation(effectPrefab2.transform.forward));
     }
 }
