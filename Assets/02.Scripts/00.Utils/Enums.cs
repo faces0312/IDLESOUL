@@ -23,12 +23,28 @@ namespace Enums
         Soul
     }
 
+    public enum Channel
+    {
+        None,
+        Achievement
+    }
+
     public enum AchievementType
     {
         None,
-        Enemy,
-        Gold,
+        KillMonster,
+        ClearStage,
+        CollectGold,
         CollectSoul,
-        Stage
+        Time
+    }
+
+    public enum ActionType
+    {
+        Kill,
+        Gold,
+        Stage,
+        Soul,
+        Time
     }
 }

@@ -1,0 +1,124 @@
+{
+  "Items": [
+    {
+      "key": 1,
+      "ID": 1,
+      "Name": "신입 모험가",
+      "Description": "게임을 1시간 동안 플레이했다.",
+      "progress": 0,
+      "Goal": 3600,
+      "iconPath": "",
+      "AchievementType": 5
+    },
+    {
+      "key": 2,
+      "ID": 2,
+      "Name": "베테랑 모험가",
+      "Description": "게임을 10시간 동안 플레이했다.",
+      "progress": 0,
+      "Goal": 36000,
+      "iconPath": "",
+      "AchievementType": 5
+    },
+    {
+      "key": 3,
+      "ID": 3,
+      "Name": "몬스터 헌터",
+      "Description": "처음으로 몬스터를 잡았다.",
+      "progress": 0,
+      "Goal": 1,
+      "iconPath": "",
+      "AchievementType": 5
+    },
+    {
+      "key": 4,
+      "ID": 4,
+      "Name": "몬스터 혐오자",
+      "Description": "몬스터를 1000마리 처치했다.",
+      "progress": 0,
+      "Goal": 1000,
+      "iconPath": "",
+      "AchievementType": 1
+    },
+    {
+      "key": 5,
+      "ID": 5,
+      "Name": "몬스터 학살자",
+      "Description": "몬스터를 10000마리 처치했다.",
+      "progress": 0,
+      "Goal": 10000,
+      "iconPath": "",
+      "AchievementType": 1
+    },
+    {
+      "key": 6,
+      "ID": 6,
+      "Name": "몬스터의 종말",
+      "Description": "몬스터를 100000마리 처치했다.",
+      "progress": 0,
+      "Goal": 100000,
+      "iconPath": "",
+      "AchievementType": 1
+    },
+    {
+      "key": 7,
+      "ID": 7,
+      "Name": "몰살 루트",
+      "Description": "몬스터를 1000000마리 처치했다.",
+      "progress": 0,
+      "Goal": 1000000,
+      "iconPath": "",
+      "AchievementType": 1
+    },
+    {
+      "key": 8,
+      "ID": 8,
+      "Name": "해치웠나",
+      "Description": "챕터 1을 클리어했다.",
+      "progress": 0,
+      "Goal": 1,
+      "iconPath": "",
+      "AchievementType": 2
+    },
+    {
+      "key": 9,
+      "ID": 9,
+      "Name": "무찔렀나",
+      "Description": "챕터 2를 클리어했다.",
+      "progress": 0,
+      "Goal": 2,
+      "iconPath": "",
+      "AchievementType": 2
+    },
+    {
+      "key": 10,
+      "ID": 10,
+      "Name": "이걸로 끝인가",
+      "Description": "챕터 3을 클리어했다.",
+      "progress": 0,
+      "Goal": 3,
+      "iconPath": "",
+      "AchievementType": 2
+    },
+    {
+      "key": 11,
+      "ID": 11,
+      "Name": "빙의",
+      "Description": "첫 소울을 획득했다.",
+      "progress": 0,
+      "Goal": 1,
+      "iconPath": "",
+      "AchievementType": 4
+    },
+    {
+      "key": 12,
+      "ID": 12,
+      "Name": "전환은 자유자재",
+      "Description": "서로 다른 소울 3개를 보유했다.",
+      "progress": 0,
+      "Goal": 3,
+      "iconPath": "",
+      "AchievementType": 4
+    }
+  ]
+}
