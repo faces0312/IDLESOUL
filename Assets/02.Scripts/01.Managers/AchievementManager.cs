@@ -41,6 +41,6 @@ public class AchievementManager : SingletonDDOL<AchievementManager>
 
     public List<AchieveData> MakeAchieveList()
     {
-
+        return null; //반환값 수정 필요
     }
 }
