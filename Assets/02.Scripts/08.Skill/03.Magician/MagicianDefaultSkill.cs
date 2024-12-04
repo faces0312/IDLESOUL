@@ -8,13 +8,15 @@ public class MagicianDefaultSkill : Skill
     private float range;
     private float searchRange;
     private float totalValue;
+    Transform playerTransform;
 
     public MagicianDefaultSkill(int id) : base(id)
     {
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/Explosion");
-        range = 5f;
-        searchRange = 10f;
+        range = 10f;
+        searchRange = 15f;
         totalValue = value * (level * upgradeValue);
+        playerTransform = GameManager.Instance.player.transform;
     }
 
     public override void UpgradeSkill(int amount)
@@ -34,11 +36,11 @@ public class MagicianDefaultSkill : Skill
         GameObject closestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
 
-        Vector2 playerPos = GameManager.Instance.player.transform.position;   // TODO : 플레이어 좌표 => 적용 확인 시 주석 삭제
+        Vector3 playerPos = playerTransform.position;
 
         foreach (GameObject target in targets)
         {
-            float distanceSqr = (playerPos - (Vector2)target.transform.position).sqrMagnitude;
+            float distanceSqr = (playerPos - target.transform.position).sqrMagnitude;
 
             if (distanceSqr < closestDistanceSqr)
             {
@@ -51,12 +53,26 @@ public class MagicianDefaultSkill : Skill
         if (searchRange * searchRange < closestDistanceSqr)
             closestTarget = null;
 
-        Vector3 targetPos = playerPos;  // 플레이어 상 하 좌 우 에 배치할 것인가?
+        Vector3 targetPos = playerPos;
 
         if (closestTarget != null)
+        {
             targetPos = closestTarget.transform.position;
+        }
+        else
+        {
+            if (GameManager.Instance.player.PlayerAnimationController.skeleton.ScaleX > 0)
+            {
+                targetPos += playerTransform.right * 5f;
+            }
+            else
+            {
+                targetPos -= playerTransform.right * 5f;
+            }
+        }
+        
 
-        GameObject explosion = Object.Instantiate(skillPrefab, targetPos, Quaternion.identity);
+        GameObject explosion = Object.Instantiate(skillPrefab, targetPos, Quaternion.LookRotation(skillPrefab.transform.forward));
         if (explosion.TryGetComponent(out Explosion component))
         {
             component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);

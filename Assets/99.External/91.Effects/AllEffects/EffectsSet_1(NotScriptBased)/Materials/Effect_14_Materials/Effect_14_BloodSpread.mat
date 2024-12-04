@@ -88,7 +88,7 @@ Material:
     - _BlendDst: 10
     - _BlendSrc: 5
     - _BumpScale: 1
-    - _ColorFactor: 25
+    - _ColorFactor: 10
     - _Culling: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -120,10 +120,12 @@ Material:
     - _RimLight: 0
     - _RimScale: 1
     - _RimStrength: 1
+    - _SecondColor: 0
     - _SmoothnessTextureChannel: 0
     - _SoftParticle: 1
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _TexLength: 1
     - _TexPath: 1
     - _TexPosMove: 0
     - _TexcoordMove: 0
@@ -147,3 +149,4 @@ Material:
     - _NoiseValue: {r: 1, g: 1, b: 1, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _TintColor: {r: 0.5385837, g: 0, b: 0.00563962, a: 1}
+    - _TintColor2: {r: 1, g: 1, b: 1, a: 1}

@@ -92,7 +92,7 @@ Material:
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
-    - _ColorFactor: 1.2
+    - _ColorFactor: 1
     - _ColorMode: 0
     - _Cull: 2
     - _Culling: 0
@@ -173,6 +173,6 @@ Material:
     - _NoiseValue: {r: 1, g: 1, b: 1, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
-    - _TintColor: {r: 1.3158331, g: 3.936751, b: 9.619192, a: 1}
+    - _TintColor: {r: 0.29948053, g: 0.87625784, b: 2.1185474, a: 1}
     - _TintColor2: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

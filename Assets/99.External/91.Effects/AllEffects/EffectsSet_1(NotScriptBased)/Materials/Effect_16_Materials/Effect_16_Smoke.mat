@@ -92,7 +92,7 @@ Material:
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
-    - _ColorFactor: 4.5
+    - _ColorFactor: 3
     - _ColorMode: 0
     - _Cull: 2
     - _Culling: 0
@@ -126,7 +126,7 @@ Material:
     - _NormalAnimate: 0
     - _NormalAnimateSpeed: 1
     - _NormalDistortion: 1
-    - _NormalDistortionFactor: 0.03
+    - _NormalDistortionFactor: 0.005
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _ParticleInstancing: 1

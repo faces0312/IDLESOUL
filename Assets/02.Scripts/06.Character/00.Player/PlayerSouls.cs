@@ -13,16 +13,9 @@ public class PlayerSouls : MonoBehaviour
     public Soul CurrentSoul { get; private set; }
     public Soul[] SoulSlot { get { return soulSlot; } }
 
-    private void Start()
+    private void Awake()
     {
-        RegisterSoul("마법사 영혼", new SoulMagician(11000));
-        RegisterSoul("전사 영혼", new SoulKnight(11001));
-        EquipSoul("마법사 영혼", 0);
-        EquipSoul("전사 영혼", 1);
-        GameManager.Instance.player.OnUpdateSoulStats?.Invoke();    // 착용 시 패시브 업데이트
-
-        SpawnSoul(0);
-        spawnIndex = 0;
+        
     }
 
     // 소울 등록
