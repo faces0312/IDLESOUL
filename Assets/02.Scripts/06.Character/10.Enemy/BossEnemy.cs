@@ -15,6 +15,7 @@ public class BossEnemy : Enemy
         base.Update();
 
         skillSpeedTmp += Time.deltaTime;
+        //TODO :: skillSpeed 설정후 그 값으로 변경
         if (skillSpeedTmp >= 5f)
         {
             stateMachine.ChangeState(stateMachine.SkillState);
