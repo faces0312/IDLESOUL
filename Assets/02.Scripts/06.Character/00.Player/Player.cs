@@ -61,7 +61,7 @@ public class Player : BaseCharacter
 
     [Header("References")]
     public TargetSearch targetSearch;
-    public Rigidbody rb;
+    //public Rigidbody rb;
     private PlayerAnimationController playerAnimationController;
     private PlayerSouls playerSouls;
     public PlayerAnimationController PlayerAnimationController { get => playerAnimationController; }
@@ -165,6 +165,7 @@ public class Player : BaseCharacter
             string animName = PlayerAnimationController.DeathAnimationName;
             PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, false);
 
+            rb.velocity = Vector3.zero; //캐릭터 이동되지않게 속도를 0으로 수정
             enabled = false;
         }
     }

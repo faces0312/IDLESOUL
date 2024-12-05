@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
+using ScottGarland;
 
 public class EnemyProjectile : BaseProjectile
 {
@@ -22,14 +22,27 @@ public class EnemyProjectile : BaseProjectile
     {
         base.FixedUpdate();
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (TargetLayer == ((1 << collision.gameObject.layer) | TargetLayer))
-        {
-            Debug.Log($"공격이 {collision.gameObject.name}에 충돌");
-            DamageCaculate(collision.gameObject, 100 * value);
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (TargetLayer == ((1 << collision.gameObject.layer) | TargetLayer))
+    //    {
+    //        Debug.Log($"공격이 {collision.gameObject.name}에 충돌");
+    //        DamageCaculate(collision.gameObject, 100 * value);
 
-            base.ProjectileCollison(collision);
+    //        base.ProjectileCollison(collision);
+    //    }
+    //}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (TargetLayer == ((1 << other.gameObject.layer) | TargetLayer))
+        {
+            int Atk = BigInteger.ToInt32(GameManager.Instance._player.UserData.stat.atk);
+
+            Debug.Log($"공격이 {other.gameObject.name}에 충돌");
+            DamageCaculate(other.gameObject, Atk * value);
+            KnockBackCaculate(other.gameObject, 3.0f);
+            base.ProjectileCollison(other);
         }
     }
 }

@@ -8,6 +8,7 @@ public abstract class BaseCharacter : MonoBehaviour, ITakeDamageAble
     //protected CharacterController characterController; //캐릭터 컨트롤러
 
     [SerializeField]protected BaseHpSystem baseHpSystem; //체력 계산해주는 클래스 
+    public Rigidbody rb;
 
     public abstract void Attack();
     public abstract void Move();
@@ -27,6 +28,6 @@ public abstract class BaseCharacter : MonoBehaviour, ITakeDamageAble
 
     public virtual void TakeKnockBack(Vector3 direction, float force)
     {
-        
+        rb.AddForce(direction * force, ForceMode.Impulse);
     }
 }

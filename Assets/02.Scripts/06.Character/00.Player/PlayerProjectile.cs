@@ -22,16 +22,29 @@ public class PlayerProjectile : BaseProjectile
         base.FixedUpdate();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (TargetLayer == ((1 << collision.gameObject.layer) | TargetLayer))
+    //    {
+    //        int Atk = BigInteger.ToInt32(GameManager.Instance._player.UserData.stat.atk);
+
+    //        Debug.Log($"공격이 {collision.gameObject.name}에 충돌");
+    //        DamageCaculate(collision.gameObject , Atk * value);
+
+    //        base.ProjectileCollison(collision);
+    //    }
+    //}
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (TargetLayer == ((1 << collision.gameObject.layer) | TargetLayer))
+        if (TargetLayer == ((1 << other.gameObject.layer) | TargetLayer))
         {
             int Atk = BigInteger.ToInt32(GameManager.Instance._player.UserData.stat.atk);
 
-            Debug.Log($"공격이 {collision.gameObject.name}에 충돌");
-            DamageCaculate(collision.gameObject , Atk * value);
-
-            base.ProjectileCollison(collision);
+            Debug.Log($"공격이 {other.gameObject.name}에 충돌");
+            DamageCaculate(other.gameObject, Atk * value);
+            KnockBackCaculate(other.gameObject, 1.0f);
+            base.ProjectileCollison(other);
         }
     }
 }

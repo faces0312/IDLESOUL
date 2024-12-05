@@ -18,7 +18,7 @@ public abstract class Enemy : BaseCharacter
 
     [Header("References")]
     public GameObject target;
-    public Rigidbody rb;
+    //public Rigidbody rb;
     public AnimatorHashData animatorHashData;
     public Animator animator;
     public GameObject bulletTest;
