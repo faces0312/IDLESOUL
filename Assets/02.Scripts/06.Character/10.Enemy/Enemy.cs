@@ -46,6 +46,8 @@ public abstract class Enemy : BaseCharacter
         stateMachine = new EnemyStateMachine(this);
         target = GameObject.Find("Player");
         enemyDB.Distance = 5f;
+
+       
     }
     private void Start()
     {
@@ -55,6 +57,8 @@ public abstract class Enemy : BaseCharacter
 
     public void Initialize()
     {
+        OnEventTargetRemove += GameManager.Instance._player.targetSearch.TargetClear;
+
         statHandler = new StatHandler(StatType.Enemy, enemyDB.key);
 
         statHandler.CurrentStat.iD = enemyDB.key;
