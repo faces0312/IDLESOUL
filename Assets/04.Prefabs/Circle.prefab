@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5308771552019383490}
   - component: {fileID: 2570258446843208445}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2996810508174558394}
   - component: {fileID: 7451766622255071258}
   - component: {fileID: 5422886658131306346}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   targetLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!54 &7451766622255071258
 Rigidbody:
   m_ObjectHideFlags: 0

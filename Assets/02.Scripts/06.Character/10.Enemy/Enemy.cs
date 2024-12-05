@@ -36,7 +36,7 @@ public abstract class Enemy : BaseCharacter
         //target = GameManager.Instance.player;
         stateMachine = new EnemyStateMachine(this);
         target = GameObject.Find("Player");
-        enemyDB.Distance = 1f;
+        enemyDB.Distance = 5f;
 
         stateMachine.Initialize();
     }
@@ -44,6 +44,11 @@ public abstract class Enemy : BaseCharacter
     {
         Debug.Log(enemyDB.Health);
         currentHealth = enemyDB.Health;
+    }
+
+    public override void TakeDamage(float damage)
+    {
+    
     }
 
     public virtual void Update()

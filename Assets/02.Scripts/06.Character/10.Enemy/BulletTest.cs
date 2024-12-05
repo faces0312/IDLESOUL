@@ -30,7 +30,8 @@ public class BulletTest : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if ((targetLayers & 1 << collision.gameObject.layer) != 0)
+        //if ((targetLayers & 1 << collision.gameObject.layer) != 0)
+        if ((targetLayers | 1 << collision.gameObject.layer) == targetLayers)
         {
             ITakeDamageAble damageable = collision.gameObject.GetComponent<ITakeDamageAble>();
             //TODO :: 무적시간이 아닐때에도 조건에 추가해야됨
@@ -43,4 +44,21 @@ public class BulletTest : MonoBehaviour
             DestroyBullet();
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        //if ((targetLayers & 1 << collision.gameObject.layer) != 0)
+        if ((targetLayers | 1 << other.gameObject.layer) == targetLayers)
+        {
+            ITakeDamageAble damageable = other.gameObject.GetComponent<ITakeDamageAble>();
+            //TODO :: 무적시간이 아닐때에도 조건에 추가해야됨
+            if (damageable != null)
+            {
+                damageable.TakeDamage(attack);
+                Vector3 directionKnockBack = other.gameObject.transform.position - transform.position;
+                damageable.TakeKnockBack(directionKnockBack, knockbackPower);
+            }
+            DestroyBullet();
+        }
+    }
+
 }
