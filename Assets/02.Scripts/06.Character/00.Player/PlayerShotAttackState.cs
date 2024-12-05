@@ -35,7 +35,7 @@ public class PlayerShotAttackState : PlayerAttackState
         //추격할 타겟이 있으면 공격 진행 
         if (stateMachine._Player.targetSearch.ShortEnemyTarget != null)
         {
-            Debug.Log("Player Shot Attack Start");
+            //Debug.Log("Player Shot Attack Start");
 
             if(stateMachine._Player.UserData.stat.atkSpeed <= currentAttackTimer)
             {

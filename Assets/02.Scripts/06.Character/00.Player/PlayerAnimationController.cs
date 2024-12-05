@@ -23,6 +23,9 @@ public class PlayerAnimationController : MonoBehaviour
     [SpineAnimation]
     public string VictoryAnimationName;
 
+    [SpineAnimation]
+    public string DeathAnimationName;
+
     //[Header("Transitions")]
     //[SpineAnimation]
     //public string idleTurnAnimationName;

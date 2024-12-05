@@ -30,7 +30,7 @@ public class EnemyMoveState : EnemyBaseState
     {
         direction = (stateMachine.Enemy.target.transform.position - stateMachine.Enemy.transform.position).normalized;
         float distanceTmp = Vector3.Distance(stateMachine.Enemy.transform.position, stateMachine.Enemy.target.transform.position);
-        if (distanceTmp > 2f)//stateMachine.Enemy.enemyDB.Distance)
+        if (distanceTmp > stateMachine.Enemy.enemyDB.Distance)
         {
             Vector3 targetVelocity = direction * stateMachine.Enemy.enemyDB.MoveSpeed;
             stateMachine.Enemy.rb.velocity = targetVelocity;

@@ -26,7 +26,7 @@ public class TestManager : SingletonDDOL<TestManager>
 
     private void Start()
     {
-        GameManager.Instance.enemies.Add(enemy);
+        //GameManager.Instance.enemies.Add(enemy);
     }
 
     public void StatViewUpdate()
@@ -121,13 +121,14 @@ public class TestManager : SingletonDDOL<TestManager>
         playerStatHandler = GameManager.Instance.player.StatHandler;
         TestSoul = GameManager.Instance.player.PlayerSouls.CurrentSoul;
 
-        StatViewUpdate();
+        //StatViewUpdate();
     }
 
     public void OnClickCreateEffect()
     {
         //Instantiate(effectPrefab);
         Vector3 pos = GameManager.Instance.player.transform.position;
+        pos += effectPrefab2.transform.position;
         Instantiate(effectPrefab2, pos, Quaternion.LookRotation(effectPrefab2.transform.forward));
     }
 }

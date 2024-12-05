@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Spine.Unity;
 using System;
+using UnityEditorInternal;
 
 public class UserData
 {
@@ -60,7 +61,7 @@ public class Player : BaseCharacter
 
     [Header("References")]
     public TargetSearch targetSearch;
-    public Rigidbody rb;
+    //public Rigidbody rb;
     private PlayerAnimationController playerAnimationController;
     private PlayerSouls playerSouls;
     public PlayerAnimationController PlayerAnimationController { get => playerAnimationController; }
@@ -80,8 +81,10 @@ public class Player : BaseCharacter
     public Action OnUpdateSoulStats;
 
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         if (targetSearch == null)
         {
             targetSearch = GetComponent<TargetSearch>();
@@ -103,7 +106,10 @@ public class Player : BaseCharacter
         playerStateMachine = new PlayerStateMachine(this);
 
         GameManager.Instance.player = this;
+
         Initialize();
+        //Debug 소울 초기화 -> 리팩토링 및 호출 시점 재조정 필요
+        TestManager.Instance.OnClickRegisterSoul();
 
         ObjectPool playerProjectilePool = new ObjectPool(Utils.POOL_KEY_PLAYERPROJECTILE, INITIAL_POOL_SIZE, "Prefabs/Player/Attack/EnergyBolt");
         ObjectPoolManager.Instance.AddPool("playerProjectile", playerProjectilePool);
@@ -111,6 +117,8 @@ public class Player : BaseCharacter
 
     public void Initialize()
     {
+        baseHpSystem.IsDead = false; 
+
         //Model(UserData) 세팅
         if (DataManager.Instance.LoadUserData() == null)
         {
@@ -140,6 +148,31 @@ public class Player : BaseCharacter
         //Controller(FSM 세팅)
         playerStateMachine.ChangeState(playerStateMachine.IdleState);
     }
+
+    public override void TakeDamage(float damage)
+    {
+        baseHpSystem.TakeDamage(damage, statHandler);
+
+        if (statHandler.CurrentStat.health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        if (!baseHpSystem.IsDead)
+        {
+            baseHpSystem.IsDead = true;
+            Debug.Log("Player Die!!! ");
+            string animName = PlayerAnimationController.DeathAnimationName;
+            PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, false);
+
+            rb.velocity = Vector3.zero; //캐릭터 이동되지않게 속도를 0으로 수정
+            enabled = false;
+        }
+    }
+
 
     public override void Attack()
     {

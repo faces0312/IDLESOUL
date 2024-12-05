@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2434423925942292171}
   - component: {fileID: -1879314316548070299}
   - component: {fileID: 4275705887745751539}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MeteorHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 1919731912046776915}
   - component: {fileID: 4967009316742810965}
   - component: {fileID: 8650908043638088543}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_49_ImpactHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4985,7 +4985,7 @@ GameObject:
   - component: {fileID: 2282050286962149981}
   - component: {fileID: 2282050286962149983}
   - component: {fileID: 2282050286962149980}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_49_Explosion_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9885,7 +9885,7 @@ GameObject:
   - component: {fileID: 1441769475992612023}
   - component: {fileID: 5377857699825639042}
   - component: {fileID: 4557343545091605322}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_49_ImpactHit_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14785,7 +14785,7 @@ GameObject:
   - component: {fileID: 3946659213012605065}
   - component: {fileID: 2178221527325310787}
   - component: {fileID: 6222391548632439264}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_49_Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19685,7 +19685,7 @@ GameObject:
   - component: {fileID: 8437516456924867763}
   - component: {fileID: 8437516456924867757}
   - component: {fileID: 8437516456924867756}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_49_Particle_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24585,7 +24585,7 @@ GameObject:
   - component: {fileID: 8437516457194747342}
   - component: {fileID: 8437516457194747336}
   - component: {fileID: 8437516457194747343}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_49_Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29485,7 +29485,7 @@ GameObject:
   - component: {fileID: 2241468838518433420}
   - component: {fileID: 5336130200289616058}
   - component: {fileID: 8104121828165816988}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_49_Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}

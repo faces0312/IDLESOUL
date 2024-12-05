@@ -1,9 +1,9 @@
-ï»¿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using ScottGarland;
+using UnityEngine;
 
-public class SpinSword : MonoBehaviour
+public class SlashDance : MonoBehaviour
 {
     [SerializeField] private float lifeTime;
     [SerializeField] private float tickTime = 0.5f;
@@ -37,15 +37,15 @@ public class SpinSword : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // TODO : í”Œë ˆì´ì–´ë¥¼ ê³„ì† ë”°ë¼ë‹¤ë…€ì•¼í•¨
+        // TODO : ÇÃ·¹ÀÌ¾î¸¦ °è¼Ó µû¶ó´Ù³à¾ßÇÔ
         transform.position = OriginPos + playerTransform.position;
 
-        // ì§€ì† ì‹œê°„ í›„, ì½œë¼ì´ë” Off
+        // Áö¼Ó ½Ã°£ ÈÄ, Äİ¶óÀÌ´õ Off
         if (Time.time > curTime + lifeTime)
         {
-            myCollider.enabled = false;     // TODO : ì˜¤ë¸Œì íŠ¸ í’€ë§ ì‚¬ìš© ì‹œ, ë‹¤ì‹œ ì¼œì•¼í•œë‹¤
+            myCollider.enabled = false;     // TODO : ¿ÀºêÁ§Æ® Ç®¸µ »ç¿ë ½Ã, ´Ù½Ã ÄÑ¾ßÇÑ´Ù
 
-            if(curCorutine != null)
+            if (curCorutine != null)
                 StopCoroutine(curCorutine);
             Destroy(gameObject);
         }
@@ -61,13 +61,13 @@ public class SpinSword : MonoBehaviour
     {
         if (Utils.IsInLayerMask(other.gameObject.layer, layerMask))
         {
-            // TODO : Enemy í”¼ê²© ì²˜ë¦¬
+            // TODO : Enemy ÇÇ°İ Ã³¸®
 
-            //GameManager.Instance.enemies.Remove(collision.gameObject);  // ì„ì‹œë¡œ ì œê±°
+            //GameManager.Instance.enemies.Remove(collision.gameObject);  // ÀÓ½Ã·Î Á¦°Å
             //Destroy(collision.gameObject);
             Debug.LogAssertion("Enemy Destroy");
 
-            if(curCorutine == null)
+            if (curCorutine == null)
                 curCorutine = StartCoroutine(CoroutineTickDamage());
 
         }
@@ -77,7 +77,7 @@ public class SpinSword : MonoBehaviour
     {
         while (true)
         {
-            // TODO : Enemy í”¼ê²© ì²˜ë¦¬
+            // TODO : Enemy ÇÇ°İ Ã³¸®
 
             Debug.LogAssertion("Spin Damage!");
             yield return coroutineTime;
