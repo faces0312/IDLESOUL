@@ -1,10 +1,8 @@
 using Enums;
 using System;
-using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-public class AchieveData : MonoBehaviour
+[Serializable]
+public class AchieveData
 {
     public string Name;
     public string Description;
@@ -17,6 +15,8 @@ public class AchieveData : MonoBehaviour
 
     public Enums.ActionType Action;
     public AchievementType AchievementType;
+
+    public bool isClear;
 
     public AchieveData(AchieveData data)
     {
@@ -49,5 +49,9 @@ public class AchieveData : MonoBehaviour
     public void AddProgress(float value)
     {
         progress += value;
+        if (progress >= Goal)
+        {
+            isClear = true;
+        }
     }
 }

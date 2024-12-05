@@ -39,8 +39,10 @@ namespace Enums
         Time
     }
 
+
     public enum ActionType
     {
+        None,
         Kill,
         Gold,
         Stage,
