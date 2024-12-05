@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class BaseHpSystem : MonoBehaviour
 {
+    public bool IsDead; 
+
     void Start()
     {
         HpUpdate();
@@ -17,20 +19,17 @@ public class BaseHpSystem : MonoBehaviour
         Debug.Log($"{gameObject.name} 피격됨! 데미지 : {damage} , 체력 상태 : {curHelth}");
 
         HpUpdate();
-        if (statHandler.CurrentStat.health <= 0)
-        {
-            Die();
-        }
     }
 
     public void TakeKnockBack(Vector3 direction, float force)
     {
     }
 
-    public void Die()
+    protected virtual void Die()
     {
         gameObject.SetActive(false);
         Debug.Log($"{gameObject.name} 사망!!");
+        IsDead = true;
         //TODO :: 점수 증가
     }
 

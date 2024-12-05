@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Spine.Unity;
 using System;
+using UnityEditorInternal;
 
 public class UserData
 {
@@ -113,6 +114,8 @@ public class Player : BaseCharacter
 
     public void Initialize()
     {
+        baseHpSystem.IsDead = false; 
+
         //Model(UserData) 세팅
         if (DataManager.Instance.LoadUserData() == null)
         {
@@ -142,6 +145,30 @@ public class Player : BaseCharacter
         //Controller(FSM 세팅)
         playerStateMachine.ChangeState(playerStateMachine.IdleState);
     }
+
+    public override void TakeDamage(float damage)
+    {
+        baseHpSystem.TakeDamage(damage, statHandler);
+
+        if (statHandler.CurrentStat.health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        if (!baseHpSystem.IsDead)
+        {
+            baseHpSystem.IsDead = true;
+            Debug.Log("Player Die!!! ");
+            string animName = PlayerAnimationController.DeathAnimationName;
+            PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, false);
+
+            enabled = false;
+        }
+    }
+
 
     public override void Attack()
     {
