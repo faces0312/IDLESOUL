@@ -63,14 +63,16 @@ public class EnemyAttackState : EnemyBaseState
         //Debug.Log("원거리공격");
         //원거리 적의 경우
         GameObject bulletInstance = 
-            Object.Instantiate(stateMachine.Enemy.bulletTest,new Vector3(stateMachine.Enemy.transform.position.x, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(Vector3.zero));
-        EnemyProjectile monsterBullet = bulletInstance.GetComponent<EnemyProjectile>();
-        monsterBullet.attack = stateMachine.Enemy.enemyDB.Attack;
-        monsterBullet.knockbackPower = stateMachine.Enemy.enemyDB.KnockBackPower;
+        Object.Instantiate(stateMachine.Enemy.bulletTest,new Vector3(stateMachine.Enemy.transform.position.x, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(Vector3.zero));
+        //EnemyProjectile monsterBullet = bulletInstance.GetComponent<EnemyProjectile>();
+        //monsterBullet.attack = stateMachine.Enemy.enemyDB.Attack;
+        //monsterBullet.knockbackPower = stateMachine.Enemy.enemyDB.KnockBackPower;
+
 
         Vector3 playerProjection = new Vector3(stateMachine.Enemy.target.transform.position.x, stateMachine.Enemy.target.transform.position.y, stateMachine.Enemy.target.transform.position.z);
         Vector3 selfProjection = new Vector3(stateMachine.Enemy. transform.position.x, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z);
 
-        monsterBullet.dir = (playerProjection - selfProjection).normalized;
+        bulletInstance.GetComponent<EnemyProjectile>().dir = (playerProjection - selfProjection).normalized;
+        //monsterBullet.dir = (playerProjection - selfProjection).normalized;
     }
 }

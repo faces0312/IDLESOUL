@@ -1817,7 +1817,7 @@ MonoBehaviour:
   target: {fileID: 0}
   rb: {fileID: 0}
   animator: {fileID: 0}
-  bulletTest: {fileID: 7331459659348895967, guid: c066ec948ba440747820b2a0bafe2f1c, type: 3}
+  bulletTest: {fileID: 1595252117517162, guid: e8be27b2565d15b40823999a1d6b61f1, type: 3}
   healthBar: {fileID: 0}
   currentHealth: 0
 --- !u!114 &7912652396146340021
@@ -1845,6 +1845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 164b39011a9abb34dbd64745a956cc25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsDead: 0
 --- !u!1 &5789038514630428539
 GameObject:
   m_ObjectHideFlags: 0
