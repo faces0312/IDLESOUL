@@ -27,7 +27,20 @@ public class Achievement : MonoBehaviour
         icon.sprite = Resources.Load<Sprite>(AData.iconPath);
         aName.text = AData.Name;
         aDescription.text = AData.Description;
-        if (AData.isClear is true && receive.onClick == null)
+        if (AData.isClear == true && receive.onClick == null)
+        {
+            receive.gameObject.SetActive(true);
+            receive.onClick.AddListener(Prize);
+        }
+    }
+
+    public void SetContent(AchieveData data)
+    {
+        AData = new AchieveData(data);
+        icon.sprite = Resources.Load<Sprite>(AData.iconPath);
+        aName.text = AData.Name;
+        aDescription.text = AData.Description;
+        if (AData.isClear == true && receive.onClick == null)
         {
             receive.gameObject.SetActive(true);
             receive.onClick.AddListener(Prize);

@@ -8,8 +8,9 @@ using Unity.VisualScripting;
 
 public class AchievementManager : SingletonDDOL<AchievementManager>
 {
-    private Dictionary<AchievementType, List<AchieveData>> achievements; //도전과제 리스트
+    public Dictionary<AchievementType, List<AchieveData>> achievements; //도전과제 리스트
     private List<AchieveDB> achievementDB; //도전과제 DB
+    public List<AchieveData> aDatas = new List<AchieveData>();
 
     protected void Start()
     {
@@ -25,28 +26,21 @@ public class AchievementManager : SingletonDDOL<AchievementManager>
             }
             achievements[(AchievementType)item.AchievementType].Add(data);
         }
-        foreach (KeyValuePair<AchievementType, List<AchieveData>> pair in achievements)
-        {
-            foreach (var item in pair.Value)
-            {
-                EventManager.Instance.Subscribe<AchieveEvent>(Channel.Achievement, OnTriggerAction);
-            }
-        }
+        EventManager.Instance.Subscribe<AchieveEvent>(Channel.Achievement, OnTriggerAction);
     }
 
     public void OnTriggerAction(AchieveEvent data)
     {
+        aDatas.Clear();
         if ((int)data.Action == 0 || (int)data.Type == 0) return;
         foreach (AchieveData aData in EventToData(data.Action, data.Type))
         {
             aData.AddProgress(data.Value);
-            return;
         }
     }
 
     public List<AchieveData> EventToData(ActionType action, AchievementType type)
     {
-        List<AchieveData> aDatas = new List<AchieveData>();
         foreach (AchieveData aData in achievements[type])
         {
             if (aData.Action == action)
@@ -55,10 +49,5 @@ public class AchievementManager : SingletonDDOL<AchievementManager>
             }
         }
         return aDatas;
-    }
-
-    public void Publish(AchieveEvent param)
-    {
-        EventManager.Instance.Publish(Channel.Achievement, param);
     }
 }

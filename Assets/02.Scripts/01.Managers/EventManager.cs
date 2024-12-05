@@ -8,7 +8,7 @@ using System;
 
 public class EventManager : SingletonDDOL<EventManager>
 {
-    private Dictionary<Channel, List<Delegate>> Events = new Dictionary<Channel, List<Delegate>>();
+    public Dictionary<Channel, List<Delegate>> Events = new Dictionary<Channel, List<Delegate>>();
 
     public void Subscribe(Channel channel, UnityAction listener)
     {
