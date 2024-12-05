@@ -20,7 +20,7 @@ public class EventManager : SingletonDDOL<EventManager>
         Events?[channel].Add(listener);
     }
 
-    public void Subscribe<T>(Channel channel, UnityAction<T> listener) where T : UnityEngine.Object
+    public void Subscribe<T>(Channel channel, UnityAction<T> listener) where T : IEventObject
     {
         if (Events?.ContainsKey(channel) == false)
         {
@@ -38,7 +38,7 @@ public class EventManager : SingletonDDOL<EventManager>
         }
     }
 
-    public void Unsubscribe<T>(Channel channel, UnityAction<T> listener) where T : UnityEngine.Object
+    public void Unsubscribe<T>(Channel channel, UnityAction<T> listener) where T : IEventObject
     {
         if (Events.TryGetValue(channel, out var UnityActions))
         {

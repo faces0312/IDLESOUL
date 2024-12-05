@@ -16,8 +16,8 @@ public class RecycleScrollY : MonoBehaviour
     public float UpMargin;
     public float contentSpace;
 
-    public int rectCnt; //콘텐츠 내부의 최대 갯수
-    public int showCnt; //한 페이지에 보여질 갯수 예시 오브젝트는 이 수보다 2개 많게 미리 만들어놔야함
+    private int rectCnt; //콘텐츠 내부의 최대 갯수
+    private int showCnt; //한 페이지에 보여질 갯수 예시 오브젝트는 이 수보다 2개 많게 미리 만들어놔야함
 
     private int prevIdx = 0;
     private int totalCnt;
@@ -27,7 +27,7 @@ public class RecycleScrollY : MonoBehaviour
 
     public Action<GameObject, int> SetContent;
 
-    private void Start()
+    private void OnEnable()
     {
         pastPos = 0;
 
@@ -57,7 +57,6 @@ public class RecycleScrollY : MonoBehaviour
         scrollview.GetComponent<ScrollRect>().onValueChanged.AddListener(GetPosition);
     }
 
-
     private void GetPosition(Vector2 delta)
     {
         int pageCnt = rectCnt - showCnt;
@@ -66,7 +65,7 @@ public class RecycleScrollY : MonoBehaviour
 
         float deltaY = pastPos - delta.y;
 
-        if (curPage >= pageCnt || curPage <= 0) return;
+        if (delta.y >= 1 || delta.y <= 0) return;
 
         if (deltaY == 0)
         {
@@ -80,7 +79,7 @@ public class RecycleScrollY : MonoBehaviour
                 int temp = pageOffset - curPage;
                 for (int i = prevIdx; i < temp + 1; i++)
                 {
-                    int on = rectCnt - pageOffset + i;
+                    int on = rectCnt - pageOffset + i - 1;
 
                     int idx = i % totalCnt;
                     objs[idx].GetComponent<RectTransform>().localPosition
@@ -109,5 +108,10 @@ public class RecycleScrollY : MonoBehaviour
                 prevIdx = temp;
             }
         }
+    }
+    public void SetRectsCount(int a, int b)
+    {
+        rectCnt = a;
+        showCnt = b;
     }
 }
