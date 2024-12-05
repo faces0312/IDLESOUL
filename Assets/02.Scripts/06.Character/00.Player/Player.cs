@@ -82,6 +82,8 @@ public class Player : BaseCharacter
 
     private void Awake()
     {
+        base.Awake();
+
         if (targetSearch == null)
         {
             targetSearch = GetComponent<TargetSearch>();

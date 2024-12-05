@@ -11,7 +11,7 @@ public class SceneDataManager : SingletonDDOL<SceneDataManager>
     protected override void Awake()
     {
         base.Awake();
-    }
+    }   
 
     public void LoadScene(string nextScene)
     {
