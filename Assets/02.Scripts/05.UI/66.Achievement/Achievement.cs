@@ -49,6 +49,6 @@ public class Achievement : MonoBehaviour
 
     private void Prize()
     {
-        
+        receive.gameObject.SetActive(false);
     }
 }

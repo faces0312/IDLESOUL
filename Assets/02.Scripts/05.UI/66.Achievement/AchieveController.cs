@@ -9,7 +9,7 @@ public class AchieveController : MonoBehaviour
     private void OnEnable()
     {
         recycleScroll = GetComponent<RecycleScrollY>();
-        recycleScroll.SetRectsCount(DataManager.Instance.AchieveDB.AchieveList.Count, 5);
+        recycleScroll.SetRectsCount(DataManager.Instance.AchieveDB.AchieveList.Count, 6);
     }
 
     private void Start()
