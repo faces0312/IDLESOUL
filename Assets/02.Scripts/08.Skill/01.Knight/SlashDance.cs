@@ -1,52 +1,30 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using ScottGarland;
 using UnityEngine;
 
 public class SlashDance : MonoBehaviour
 {
+    [SerializeField] private GameObject hitObj;
     [SerializeField] private float lifeTime;
-    [SerializeField] private float tickTime = 0.5f;
 
     private float curTime;
 
     private BigInteger value;
     private float range;
 
-    private Collider myCollider;
-    private LayerMask layerMask;
-
-    private Transform playerTransform;
-
-    private Coroutine curCorutine;
-    private WaitForSecondsRealtime coroutineTime;
-
-    public Vector3 OriginPos { get; set; }
-
-    // Start is called before the first frame update
     void Start()
     {
         curTime = Time.time;
-        myCollider = GetComponent<Collider>();
-        layerMask = 1 << LayerMask.NameToLayer("Enemy");
-        //transform.localScale = new Vector3(range, range, range);
-        playerTransform = GameManager.Instance.player.transform;
-        coroutineTime = new WaitForSecondsRealtime(tickTime);
+
+        Invoke("CreateHitObj", 1f);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // TODO : ÇÃ·¹ÀÌ¾î¸¦ °è¼Ó µû¶ó´Ù³à¾ßÇÔ
-        transform.position = OriginPos + playerTransform.position;
-
-        // Áö¼Ó ½Ã°£ ÈÄ, ÄÝ¶óÀÌ´õ Off
+        // ì§€ì† ì‹œê°„ í›„ ì‚­ì œ
         if (Time.time > curTime + lifeTime)
         {
-            myCollider.enabled = false;     // TODO : ¿ÀºêÁ§Æ® Ç®¸µ »ç¿ë ½Ã, ´Ù½Ã ÄÑ¾ßÇÑ´Ù
-
-            if (curCorutine != null)
-                StopCoroutine(curCorutine);
             Destroy(gameObject);
         }
     }
@@ -57,30 +35,12 @@ public class SlashDance : MonoBehaviour
         this.range = range;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void CreateHitObj()
     {
-        if (Utils.IsInLayerMask(other.gameObject.layer, layerMask))
+        var obj = Instantiate(hitObj, GameManager.Instance.player.transform.position, Quaternion.identity);
+        if (obj.TryGetComponent(out SlashDanceHit hit))
         {
-            // TODO : Enemy ÇÇ°Ý Ã³¸®
-
-            //GameManager.Instance.enemies.Remove(collision.gameObject);  // ÀÓ½Ã·Î Á¦°Å
-            //Destroy(collision.gameObject);
-            Debug.LogAssertion("Enemy Destroy");
-
-            if (curCorutine == null)
-                curCorutine = StartCoroutine(CoroutineTickDamage());
-
-        }
-    }
-
-    private IEnumerator CoroutineTickDamage()
-    {
-        while (true)
-        {
-            // TODO : Enemy ÇÇ°Ý Ã³¸®
-
-            Debug.LogAssertion("Spin Damage!");
-            yield return coroutineTime;
+            hit.InitSettings(value, lifeTime);
         }
     }
 }

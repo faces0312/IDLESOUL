@@ -15,7 +15,7 @@ public class TargetSearch : MonoBehaviour
 
     private void Start()
     {
-        TestEnemySMS.OnEventTargetRemove += TargetClear;
+        //TestEnemySMS.OnEventTargetRemove += TargetClear;
     }
 
     public void OnTargetSearch()

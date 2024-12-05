@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2631319394171226004}
   - component: {fileID: 2631319394171226003}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_11_MakeSlash_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_startDelay: 1
   m_makeCount: 50
   m_makeDelay: 0.02
-  m_randomPos: {x: 10, y: 2, z: 0}
+  m_randomPos: {x: 7.5, y: 2, z: 0}
   m_randomRot: {x: 0, y: 15, z: 90}
   m_randomScale: {x: 2, y: 1.5, z: 0}
   isObjectAttachToParent: 1
@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 2631319394416397089}
   - component: {fileID: 8057085129335595813}
   - component: {fileID: -3868061572605042573}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SlashDance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,6 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b5b8e60d16188468dab2a216bdc5d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitObj: {fileID: 5395853469459044514, guid: 4018ee61ceb91134695354ef0d70af6a, type: 3}
+  lifeTime: 3.3
 --- !u!1 &2868826850520349356
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2868826850520349357}
   - component: {fileID: 2868826850520349362}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_11_MakeSlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
