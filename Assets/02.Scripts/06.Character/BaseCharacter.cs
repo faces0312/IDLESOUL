@@ -12,11 +12,11 @@ public abstract class BaseCharacter : MonoBehaviour, ITakeDamageAble
     public abstract void Attack();
     public abstract void Move();
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         if(baseHpSystem == null)
         {
-            baseHpSystem.GetComponent<BaseHpSystem>();
+            baseHpSystem = GetComponent<BaseHpSystem>();
         }
     }
 

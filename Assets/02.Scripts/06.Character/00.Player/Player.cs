@@ -80,7 +80,7 @@ public class Player : BaseCharacter
     public Action OnUpdateSoulStats;
 
 
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
 
