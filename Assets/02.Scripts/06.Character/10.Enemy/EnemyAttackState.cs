@@ -63,13 +63,13 @@ public class EnemyAttackState : EnemyBaseState
         //Debug.Log("원거리공격");
         //원거리 적의 경우
         GameObject bulletInstance = 
-            Object.Instantiate(stateMachine.Enemy.bulletTest,new Vector3(stateMachine.Enemy.transform.position.x, stateMachine.Enemy.transform.position.y + 1f, stateMachine.Enemy.transform.position.z), Quaternion.Euler(Vector3.zero));
+            Object.Instantiate(stateMachine.Enemy.bulletTest,new Vector3(stateMachine.Enemy.transform.position.x, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(Vector3.zero));
         BulletTest monsterBullet = bulletInstance.GetComponent<BulletTest>();
         monsterBullet.attack = stateMachine.Enemy.enemyDB.Attack;
         monsterBullet.knockbackPower = stateMachine.Enemy.enemyDB.KnockBackPower;
 
-        Vector3 playerProjection = new Vector3(stateMachine.Enemy.target.transform.position.x, stateMachine.Enemy.target.transform.position.y, 0.0f);
-        Vector3 selfProjection = new Vector3(stateMachine.Enemy. transform.position.x, stateMachine.Enemy.transform.position.y, 0.0f);
+        Vector3 playerProjection = new Vector3(stateMachine.Enemy.target.transform.position.x, stateMachine.Enemy.target.transform.position.y, stateMachine.Enemy.target.transform.position.z);
+        Vector3 selfProjection = new Vector3(stateMachine.Enemy. transform.position.x, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z);
 
         Vector3 direction = (playerProjection - selfProjection).normalized;
         monsterBullet.Initialize(direction);

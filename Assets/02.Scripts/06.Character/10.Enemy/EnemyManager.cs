@@ -21,10 +21,6 @@ public class EnemyManager : MonoBehaviour
     {
         InitializeEnemyPool();
         StartCoroutine(EnemySpawnCoroutine(10, 5001));
-        //StartCoroutine(EnemySpawnCoroutine(1,5006));
-        //Invoke("SpawnCycle",1f);
-        //EnemySpawn(1, "Goblin", 5000);
-        //EnemySpawn(2, "Orc", 5003);
     }
 
     private void Update()
@@ -47,37 +43,12 @@ public class EnemyManager : MonoBehaviour
     {
         ObjectPool goblinPool = new ObjectPool(5000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Goblin");
         ObjectPool goblinMagicianPool = new ObjectPool(5001, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinMagician");
-        /*ObjectPool goblinPriestPool = new ObjectPool(5001, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinPriest");
-        ObjectPool goblinKingPool = new ObjectPool(5002, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinKing");
-        ObjectPool orcPool = new ObjectPool(5003, INITIAL_POOL_SIZE, "Prefabs/Enemy/Orc");
-        ObjectPool orcWarriorPool = new ObjectPool(5004, INITIAL_POOL_SIZE, "Prefabs/Enemy/OrcWarrior");
-        ObjectPool orcGuardPool = new ObjectPool(5005, INITIAL_POOL_SIZE, "Prefabs/Enemy/OrcGuard");
-        ObjectPool batPool = new ObjectPool(5006, INITIAL_POOL_SIZE, "Prefabs/Enemy/Bat");
-        ObjectPool spiderPool = new ObjectPool(5007, INITIAL_POOL_SIZE, "Prefabs/Enemy/Spider");
-        ObjectPool snakePool = new ObjectPool(5008, INITIAL_POOL_SIZE, "Prefabs/Enemy/Snake");
-
-        ObjectPool goblinBossPool = new ObjectPool(5000, 3, "Prefabs/Enemy/Goblin_Boss");
-        ObjectPool batBossPool = new ObjectPool(5001, 3, "Prefabs/Enemy/Bat_Boss");*/
 
         ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinPool);
         ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinMagicianPool);
-        /*ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinPriestPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinKingPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, orcPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, orcWarriorPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, orcGuardPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, batPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, spiderPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, snakePool);
-
-        ObjectPoolManager.Instance.AddPool(ENEMY_BOSS_POOL_KEY, goblinBossPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_BOSS_POOL_KEY, batBossPool);*/
     }
     void SpawnCycle()
     {
-        //EnemySpawn(2, 5000);
-        //StartCoroutine(EnemySpawnCoroutine(2, 5000));
-
         StartCoroutine(EnemyRandomSpawnCoroutine(5));
     }
     

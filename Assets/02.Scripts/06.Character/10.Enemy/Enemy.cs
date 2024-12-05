@@ -36,7 +36,7 @@ public abstract class Enemy : BaseCharacter
         //target = GameManager.Instance.player;
         stateMachine = new EnemyStateMachine(this);
         target = GameObject.Find("Player");
-        enemyDB.Distance = 1f;
+        enemyDB.Distance = 5f;
 
         stateMachine.Initialize();
     }
