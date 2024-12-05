@@ -128,6 +128,7 @@ public class TestManager : SingletonDDOL<TestManager>
     {
         //Instantiate(effectPrefab);
         Vector3 pos = GameManager.Instance.player.transform.position;
+        pos += effectPrefab2.transform.position;
         Instantiate(effectPrefab2, pos, Quaternion.LookRotation(effectPrefab2.transform.forward));
     }
 }
