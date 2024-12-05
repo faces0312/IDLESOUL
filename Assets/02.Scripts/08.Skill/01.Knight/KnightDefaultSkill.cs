@@ -27,12 +27,13 @@ public class KnightDefaultSkill : Skill
     {
         Vector3 playerPos = GameManager.Instance.player.transform.position;
 
-        //playerPos += skillPrefab.transform.position;
+        playerPos += skillPrefab.transform.position;
 
         GameObject spinSword = Object.Instantiate(skillPrefab, playerPos, Quaternion.LookRotation(skillPrefab.transform.forward));
         if (spinSword.TryGetComponent(out SpinSword component))
         {
             component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);
+            component.OriginPos = skillPrefab.transform.position;
         }
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4595628488059796752}
   - component: {fileID: 4499177409576599303}
   - component: {fileID: 2816651708423858305}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_21_Distort
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4911,7 +4911,7 @@ GameObject:
   - component: {fileID: 1761588339828286798}
   - component: {fileID: 1761588339828286793}
   - component: {fileID: 1761588339828286792}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_21_Particle_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9813,7 +9813,7 @@ GameObject:
   - component: {fileID: 1761588340306672094}
   - component: {fileID: 1761588340306672089}
   - component: {fileID: 2035248129798850201}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_21_Decal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9936,7 +9936,7 @@ GameObject:
   - component: {fileID: 1761588340393008368}
   - component: {fileID: 1761588340393008374}
   - component: {fileID: 1761588340393008369}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_21_Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14836,7 +14836,7 @@ GameObject:
   - component: {fileID: 1761588340603386585}
   - component: {fileID: 1761588340603386584}
   - component: {fileID: 1761588340603386587}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_21_Explosion_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19736,7 +19736,7 @@ GameObject:
   - component: {fileID: 1761588340820559390}
   - component: {fileID: 1761588340820559385}
   - component: {fileID: 1761588340820559384}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_21_Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24636,7 +24636,7 @@ GameObject:
   - component: {fileID: 1761588341216552579}
   - component: {fileID: 1761588341216552577}
   - component: {fileID: 1761588341216552576}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_21_Particle_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29534,7 +29534,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1761588341219571025}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_21_Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29574,7 +29574,7 @@ GameObject:
   - component: {fileID: 1761588341453957574}
   - component: {fileID: 1761588341453957569}
   - component: {fileID: 1761588341453957568}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_21_Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34472,7 +34472,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1761588341468158750}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_21_AFterImages
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34508,7 +34508,7 @@ GameObject:
   - component: {fileID: 1761588341575814525}
   - component: {fileID: 1761588341575814275}
   - component: {fileID: 1761588341575814274}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_21_Shockwave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39408,7 +39408,7 @@ GameObject:
   - component: {fileID: 1761588341605064281}
   - component: {fileID: 1761588341605064287}
   - component: {fileID: 1761588341605064286}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_21_Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44308,7 +44308,7 @@ GameObject:
   - component: {fileID: 3160799996726113980}
   - component: {fileID: -6597143760083604291}
   - component: {fileID: 7704059784410407404}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

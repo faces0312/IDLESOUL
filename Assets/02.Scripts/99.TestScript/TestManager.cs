@@ -115,7 +115,7 @@ public class TestManager : SingletonDDOL<TestManager>
         GameManager.Instance.player.PlayerSouls.EquipSoul("전사 영혼", 1);
         GameManager.Instance.player.OnUpdateSoulStats?.Invoke();    // 착용 시 패시브 업데이트
 
-        GameManager.Instance.player.PlayerSouls.SpawnSoul(0);
+        GameManager.Instance.player.PlayerSouls.SpawnSoul(1);
         GameManager.Instance.player.PlayerSouls.spawnIndex = 0;
 
         playerStatHandler = GameManager.Instance.player.StatHandler;
