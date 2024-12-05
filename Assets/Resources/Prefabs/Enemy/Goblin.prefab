@@ -85,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2258359614026421618}
   - component: {fileID: 2258359614026421619}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2258359614118698309}
   - component: {fileID: 2258359614118698310}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: body_bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 2258359614143254500}
   - component: {fileID: 2258359614143254503}
   - component: {fileID: 2258359614143254501}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hand_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 2258359614204998395}
   - component: {fileID: 2258359614204998374}
   - component: {fileID: 2258359614204998372}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hand_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2258359614234503995}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2258359614246171849}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 2258359614254883237}
   - component: {fileID: 2258359614254883232}
   - component: {fileID: 2258359614254883238}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wepon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +576,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2258359614365771696}
   - component: {fileID: 2258359614365771697}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: body_upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2258359614433880461}
   - component: {fileID: 2258359614433880462}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -683,7 +683,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2258359614452025848}
   - component: {fileID: 2258359614452025849}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +731,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2258359614460924606}
   - component: {fileID: 2258359614460924607}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: leg_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -780,7 +780,7 @@ GameObject:
   - component: {fileID: 2258359614496649265}
   - component: {fileID: 2258359614496649276}
   - component: {fileID: 2258359614496649266}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -886,7 +886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2258359614526630896}
   - component: {fileID: 2258359614526630897}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: leg_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -935,7 +935,7 @@ GameObject:
   - component: {fileID: 2258359614617304050}
   - component: {fileID: 2258359614617304061}
   - component: {fileID: 2258359614617304051}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: leg_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1041,7 +1041,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2258359614867556457}
   - component: {fileID: 2258359614867556458}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1090,7 +1090,7 @@ GameObject:
   - component: {fileID: 2258359615143143069}
   - component: {fileID: 2258359615143143064}
   - component: {fileID: 2258359615143143070}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: upperbody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1197,7 +1197,7 @@ GameObject:
   - component: {fileID: 2258359615251291639}
   - component: {fileID: 2258359615251291634}
   - component: {fileID: 2258359615251291632}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: leg_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1303,7 +1303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2258359615469273140}
   - component: {fileID: 2258359615469273141}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hand_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1352,7 +1352,7 @@ GameObject:
   - component: {fileID: 2258359615602813106}
   - component: {fileID: 2258359615602813117}
   - component: {fileID: 2258359615602813107}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1458,7 +1458,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2258359615767723346}
   - component: {fileID: 2258359615767723347}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hand_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1772,7 +1772,8 @@ GameObject:
   - component: {fileID: 6919928748636764415}
   - component: {fileID: 7699591755769845695}
   - component: {fileID: 7522472972209169311}
-  - component: {fileID: 7025105913635187136}
+  - component: {fileID: 5835875655679491700}
+  - component: {fileID: 3186178141203442221}
   m_Layer: 7
   m_Name: Goblin
   m_TagString: Untagged
@@ -1859,6 +1860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0af86195ee2bef4aaac4d1cd8280dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseHpSystem: {fileID: 0}
   attackType: 0
   enemyDB:
     key: 0
@@ -1882,7 +1884,7 @@ MonoBehaviour:
   animator: {fileID: 2258359614433880462}
   bulletTest: {fileID: 0}
   currentHealth: 0
---- !u!114 &7025105913635187136
+--- !u!114 &5835875655679491700
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1891,11 +1893,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 5346500510400555959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96e7456116b1a464bb84aec8e3b22860, type: 3}
+  m_Script: {fileID: 11500000, guid: c51fb6318da1d8b4c9f105d7701e68a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
-  healthBar: {fileID: 7605842529889700067}
+  enemy: {fileID: 7522472972209169311}
+--- !u!114 &3186178141203442221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5346500510400555959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164b39011a9abb34dbd64745a956cc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6128651117258545400
 GameObject:
   m_ObjectHideFlags: 0

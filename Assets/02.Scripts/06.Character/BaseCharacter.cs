@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using ScottGarland;
+
 using UnityEngine;
 
 public abstract class BaseCharacter : MonoBehaviour, ITakeDamageAble
@@ -9,19 +7,27 @@ public abstract class BaseCharacter : MonoBehaviour, ITakeDamageAble
     //protected Animator characterAnimator; //애니메이션 관련 컨트롤러
     //protected CharacterController characterController; //캐릭터 컨트롤러
 
+    [SerializeField]protected BaseHpSystem baseHpSystem; //체력 계산해주는 클래스 
+    public Rigidbody rb;
+
     public abstract void Attack();
     public abstract void Move();
 
+    protected virtual void Awake()
+    {
+        if(baseHpSystem == null)
+        {
+            baseHpSystem = GetComponent<BaseHpSystem>();
+        }
+    }
+
     public virtual void TakeDamage(float damage)
     {
-        int maxHelth = BigInteger.ToInt32(statHandler.CurrentStat.maxHealth);
-        int curHelth = BigInteger.ToInt32(statHandler.CurrentStat.health);
-        statHandler.CurrentStat.health = Mathf.Clamp(curHelth - (int)damage, 0, maxHelth);
-
-        Debug.Log($"{gameObject.name} 피격됨! 데미지 : {damage} , 체력 상태 : {curHelth}");
+        baseHpSystem.TakeDamage(damage, statHandler);
     }
 
     public virtual void TakeKnockBack(Vector3 direction, float force)
     {
+        rb.AddForce(direction * force, ForceMode.Impulse);
     }
 }
