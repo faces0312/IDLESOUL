@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.UI;
 
 public enum AttackType
 {
@@ -25,10 +27,16 @@ public abstract class Enemy : BaseCharacter
     public EnemyStateMachine stateMachine;
 
     [Header("CurrentStats")]
+    public Slider healthBar;
     public float currentHealth;
 
-    private void Awake()
+    public StatHandler StatHandler { get => base.statHandler; set => base.statHandler = value; }
+
+    public event Action OnDieEvent;
+
+    protected override void Awake()
     {
+        base.Awake();
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         animatorHashData = new AnimatorHashData();
@@ -42,13 +50,28 @@ public abstract class Enemy : BaseCharacter
     }
     private void Start()
     {
-        Debug.Log(enemyDB.Health);
-        currentHealth = enemyDB.Health;
+        Initialize();
+        Debug.Log(statHandler.CurrentStat.health);
+    }
+
+    public void Initialize()
+    {
+        statHandler = new StatHandler(StatType.Enemy, enemyDB.key);
+
+        statHandler.CurrentStat.iD = enemyDB.key;
+        statHandler.CurrentStat.health = new ScottGarland.BigInteger((long)enemyDB.Health);
+        statHandler.CurrentStat.maxHealth = new ScottGarland.BigInteger((long)enemyDB.Health);
+        statHandler.CurrentStat.atk = new ScottGarland.BigInteger((long)enemyDB.Attack);
+        statHandler.CurrentStat.def = new ScottGarland.BigInteger((long)enemyDB.Defence);
+        statHandler.CurrentStat.moveSpeed = enemyDB.MoveSpeed;
+        statHandler.CurrentStat.atkSpeed = enemyDB.AttackSpeed;
+        statHandler.CurrentStat.critChance = enemyDB.CritChance;
+        statHandler.CurrentStat.critDamage = enemyDB.CritDamage;
     }
 
     public override void TakeDamage(float damage)
     {
-    
+        base.TakeDamage(damage);
     }
 
     public virtual void Update()

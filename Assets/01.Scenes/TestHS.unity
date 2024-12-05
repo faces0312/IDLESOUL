@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b0a477d3332914c9c09444ce85a241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  _player: {fileID: 736679288}
   score: 0
   isTryBoss: 0
   objectPool:
@@ -3166,6 +3166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c22d9e9a4435e84fa7a1d49858ef965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseHpSystem: {fileID: 0}
   TestDefaultAttackType: 0
   targetSearch: {fileID: 0}
   rb: {fileID: 0}
@@ -3212,7 +3213,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
