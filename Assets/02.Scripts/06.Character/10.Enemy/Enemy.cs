@@ -33,6 +33,7 @@ public abstract class Enemy : BaseCharacter
     public StatHandler StatHandler { get => base.statHandler; set => base.statHandler = value; }
 
     public event Action OnDieEvent;
+    public static event Action OnEventTargetRemove;
 
     protected override void Awake()
     {
@@ -45,13 +46,11 @@ public abstract class Enemy : BaseCharacter
         stateMachine = new EnemyStateMachine(this);
         target = GameObject.Find("Player");
         enemyDB.Distance = 5f;
-
-        stateMachine.Initialize();
     }
     private void Start()
     {
         Initialize();
-        Debug.Log(statHandler.CurrentStat.health);
+        stateMachine.Initialize();
     }
 
     public void Initialize()
@@ -72,6 +71,19 @@ public abstract class Enemy : BaseCharacter
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
+
+        if (statHandler.CurrentStat.health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        OnEventTargetRemove?.Invoke();
+        OnDieEvent?.Invoke();
+        gameObject.SetActive(false);
+        Debug.Log($"{gameObject.name} »ç¸Á!!");
     }
 
     public virtual void Update()
