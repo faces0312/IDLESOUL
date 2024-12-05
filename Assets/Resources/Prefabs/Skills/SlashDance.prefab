@@ -49,7 +49,7 @@ MonoBehaviour:
   m_startDelay: 1
   m_makeCount: 50
   m_makeDelay: 0.02
-  m_randomPos: {x: 10, y: 2, z: 0}
+  m_randomPos: {x: 7.5, y: 2, z: 0}
   m_randomRot: {x: 0, y: 15, z: 90}
   m_randomScale: {x: 2, y: 1.5, z: 0}
   isObjectAttachToParent: 1

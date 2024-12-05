@@ -58,12 +58,12 @@ public class TestManager : SingletonDDOL<TestManager>
 
     public void OnUseDefaultSkill()
     {
-        TestSoul.UseSkill(TestSoul.Skills[(int)SkillType.Default]);
+        GameManager.Instance.player.PlayerSouls.CurrentSoul.UseSkill(GameManager.Instance.player.PlayerSouls.CurrentSoul.Skills[(int)SkillType.Default]);
     }
 
     public void OnUseUltimateSkill()
     {
-        TestSoul.UseSkill(TestSoul.Skills[(int)SkillType.Ultimate]);
+        GameManager.Instance.player.PlayerSouls.CurrentSoul.UseSkill(GameManager.Instance.player.PlayerSouls.CurrentSoul.Skills[(int)SkillType.Ultimate]);
     }
 
     public void OnClickPlayerLevelUp(int level)
@@ -99,14 +99,6 @@ public class TestManager : SingletonDDOL<TestManager>
         StatViewUpdate();
     }
 
-    public void OnClickSwapSoul()
-    {
-        int spawnIndex = GameManager.Instance.player.PlayerSouls.spawnIndex;
-        spawnIndex = spawnIndex == 0 ? 1 : 0;
-        GameManager.Instance.player.PlayerSouls.SpawnSoul(spawnIndex);
-        StatViewUpdate();
-    }
-
     public void OnClickRegisterSoul()
     {
         GameManager.Instance.player.PlayerSouls.RegisterSoul("마법사 영혼", new SoulMagician(11000));
@@ -115,11 +107,9 @@ public class TestManager : SingletonDDOL<TestManager>
         GameManager.Instance.player.PlayerSouls.EquipSoul("전사 영혼", 1);
         GameManager.Instance.player.OnUpdateSoulStats?.Invoke();    // 착용 시 패시브 업데이트
 
-        GameManager.Instance.player.PlayerSouls.SpawnSoul(1);
-        GameManager.Instance.player.PlayerSouls.spawnIndex = 0;
+        GameManager.Instance.player.PlayerSouls.SpawnSoul(0);
 
         playerStatHandler = GameManager.Instance.player.StatHandler;
-        TestSoul = GameManager.Instance.player.PlayerSouls.CurrentSoul;
 
         //StatViewUpdate();
     }
@@ -130,5 +120,10 @@ public class TestManager : SingletonDDOL<TestManager>
         Vector3 pos = GameManager.Instance.player.transform.position;
         pos += effectPrefab2.transform.position;
         Instantiate(effectPrefab2, pos, Quaternion.LookRotation(effectPrefab2.transform.forward));
+    }
+
+    public void OnClickSpawnSoul(int index)
+    {
+        GameManager.Instance.player.PlayerSouls.SpawnSoul(index);
     }
 }

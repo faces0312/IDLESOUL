@@ -6,16 +6,19 @@ public class PlayerSouls : MonoBehaviour
 {
     private const int MAX_SOUL = 3;
 
-    public int spawnIndex;
+    private int spawnIndex = -1;
     private Soul[] soulSlot = new Soul[MAX_SOUL];
     private Dictionary<string, Soul> soulDic = new Dictionary<string, Soul>();
+
+    private GameObject[] spawnEffects = new GameObject[MAX_SOUL];
 
     public Soul CurrentSoul { get; private set; }
     public Soul[] SoulSlot { get { return soulSlot; } }
 
     private void Awake()
     {
-        
+        // TODO : 임시
+        LoadSpawnEffects();
     }
 
     // 소울 등록
@@ -50,6 +53,9 @@ public class PlayerSouls : MonoBehaviour
     // 소울 스왑
     public void SpawnSoul(int index)
     {
+        // 현재 소환중인 소울과 같은 경우
+        if (spawnIndex == index) return;
+
         // TODO : 소환 중인 소울이 있다면 소환을 해제
         // 소환을 해제하는 로직
         CurrentSoul = null;
@@ -57,5 +63,19 @@ public class PlayerSouls : MonoBehaviour
         // TODO : 슬롯의 소울을 소환
         // 소환하는 로직
         CurrentSoul = soulSlot[index];
+        spawnIndex = index;
+
+        // TODO : 소울의 속성에 따라 소환 이펙트 변경 / 임시로 고정해둠
+        if (spawnEffects[spawnIndex] == null)
+            LoadSpawnEffects();
+
+        Instantiate(spawnEffects[spawnIndex], transform.position, Quaternion.identity);
+    }
+
+    private void LoadSpawnEffects()
+    {
+        spawnEffects[0] = Resources.Load<GameObject>("Prefabs/Skills/SoulSpawn_Red");
+        spawnEffects[1] = Resources.Load<GameObject>("Prefabs/Skills/SoulSpawn_Blue");
+        spawnEffects[2] = Resources.Load<GameObject>("Prefabs/Skills/SoulSpawn_Yellow");
     }
 }
