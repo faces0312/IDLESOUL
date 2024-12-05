@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ScottGarland;
 using UnityEngine;
 
 public class SlashDance : MonoBehaviour
