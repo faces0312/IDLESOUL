@@ -4,7 +4,7 @@ using Enums;
 using UnityEngine.Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Progress;
+using Unity.VisualScripting;
 
 public class AchievementManager : SingletonDDOL<AchievementManager>
 {
@@ -36,11 +36,10 @@ public class AchievementManager : SingletonDDOL<AchievementManager>
     public void OnTriggerAction(AchieveEvent data)
     {
         
-        
     }
 
-    public List<AchieveData> MakeAchieveList()
+    public List<AchieveData> MakeAchieveList(ActionType action, AchievementType type, int key)
     {
-
+        return null;
     }
 }

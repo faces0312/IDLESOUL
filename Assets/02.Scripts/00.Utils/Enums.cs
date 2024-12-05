@@ -41,6 +41,7 @@ namespace Enums
 
     public enum ActionType
     {
+        None,
         Kill,
         Gold,
         Stage,
