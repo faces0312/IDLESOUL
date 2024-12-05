@@ -17,10 +17,10 @@ public class EnemyManager : MonoBehaviour
     public BoxCollider SpawnArea;
     //
 
-    private void Awake()
+    private void Start()
     {
         InitializeEnemyPool();
-        StartCoroutine(EnemySpawnCoroutine(10, 5001));
+        StartCoroutine(EnemySpawnCoroutine(10, 5000));
     }
 
     private void Update()
