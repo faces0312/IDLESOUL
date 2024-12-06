@@ -61,3 +61,9 @@ public class GameManager : SingletonDDOL<GameManager>
         SceneManager.LoadScene("TestHS");
     }
 }
+
+public class Wait : MonoBehaviour
+{
+    public static WaitForSeconds Wait1s = new WaitForSeconds(1);
+    public static WaitForSeconds Wait3s = new WaitForSeconds(3);
+}
