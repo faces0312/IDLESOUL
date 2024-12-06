@@ -159,6 +159,7 @@ public class Player : BaseCharacter
         }
     }
 
+    [ContextMenu("PlayerDie")]
     public void Die()
     {
         if (!baseHpSystem.IsDead)
@@ -169,6 +170,7 @@ public class Player : BaseCharacter
             PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, false);
 
             rb.velocity = Vector3.zero; //캐릭터 이동되지않게 속도를 0으로 수정
+            GameManager.Instance.GameOver();
             enabled = false;
         }
     }

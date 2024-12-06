@@ -11,7 +11,7 @@ public class EnemyManager : MonoBehaviour
     //ObjectPoolManager¿« Dictionary id
     private const string ENEMY_BOSS_POOL_KEY = "EnemyBoss";
     private const string ENEMY_POOL_KEY = "Enemies";
-    private const int INITIAL_POOL_SIZE = 10;
+    private const int INITIAL_POOL_SIZE = 120;
 
     //TestCode
     public BoxCollider SpawnArea;
