@@ -13,7 +13,7 @@ public class MagicianDefaultSkill : Skill
     public MagicianDefaultSkill(int id) : base(id)
     {
         // TODO : DB 에서 받아 넣기
-        coolTime = 5f;
+        coolTime = 3f;
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/Explosion");
         range = 10f;
         searchRange = 15f;

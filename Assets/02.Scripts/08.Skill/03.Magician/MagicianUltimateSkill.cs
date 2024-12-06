@@ -12,7 +12,7 @@ public class MagicianUltimateSkill : Skill
     public MagicianUltimateSkill(int id) : base(id)
     {
         // TODO : DB 에서 받아 넣기
-        coolTime = 10f;
+        coolTime = 1f;
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/Meteor");
         range = 10f;
         totalValue = value * (level * upgradeValue);
@@ -33,6 +33,13 @@ public class MagicianUltimateSkill : Skill
         playerPos += skillPrefab.transform.position;
 
         GameObject meteor = Object.Instantiate(skillPrefab, playerPos, Quaternion.LookRotation(skillPrefab.transform.forward));
+
+        if (GameManager.Instance.player.PlayerAnimationController.skeleton.ScaleX > 0)
+        {
+            meteor.transform.position -= new Vector3(skillPrefab.transform.position.x * 2f, 0, 0);
+            meteor.transform.Rotate(new Vector3(90f, 0, 0));
+        }
+
         if (meteor.TryGetComponent(out Meteor component))
         {
             component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);
