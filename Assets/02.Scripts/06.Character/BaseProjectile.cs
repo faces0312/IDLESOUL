@@ -156,10 +156,7 @@ public class BaseProjectile : MonoBehaviour
         projectilePS.Stop();
         projectilePS.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
 
-        //ContactPoint contact = collision.contacts[0];
         Vector3 closetPoint = other.ClosestPoint(other.transform.position);
-        //Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-        //Vector3 pos = contact.point + contact.normal * hitOffset;
 
         //Spawn hit effect on collision
         if (hit != null)
@@ -190,8 +187,6 @@ public class BaseProjectile : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-
-        ObjectPoolManager.Instance.GetPool("playerProjectile", Utils.POOL_KEY_PLAYERPROJECTILE).GetObject();
     }
 
 }

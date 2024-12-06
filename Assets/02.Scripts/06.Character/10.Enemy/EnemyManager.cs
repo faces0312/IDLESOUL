@@ -20,7 +20,7 @@ public class EnemyManager : MonoBehaviour
     private void Awake()
     {
         InitializeEnemyPool();
-        StartCoroutine(EnemySpawnCoroutine(10, 5001));
+        StartCoroutine(EnemySpawnCoroutine(100, 5001));
     }
 
     private void Update()
