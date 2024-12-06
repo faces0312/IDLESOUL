@@ -90,6 +90,11 @@ public class SoulDB
     /// AttackType
     /// </summary>
     public AttackType AttackType;
+
+    /// <summary>
+    /// CoolTime
+    /// </summary>
+    public float CoolTime;
 }
 public class SoulDBLoader
 {

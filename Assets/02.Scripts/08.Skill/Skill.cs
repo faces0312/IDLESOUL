@@ -34,11 +34,18 @@ public abstract class Skill : ISkill
 
     protected SkillType type;
 
+    protected float coolTime;
+
+    protected Sprite skillSpr;
+
+    public float CoolTime { get => coolTime; }
+    public Sprite SkillSpr { get => skillSpr; }
+
     // 생성자에서 데이터 적용
     public Skill(int id)
     {
         SkillDB db = DataManager.Instance.SkillDB.GetByKey(id);
-
+        
         this.id = id;
         this.skillName = db.Name;
         this.description = db.Descripton;
@@ -48,6 +55,9 @@ public abstract class Skill : ISkill
         this.upgradeValue = db.UpgradeValue;
         this.upgradeCost = db.UpgradeCost;
         this.type = db.SkillType;
+
+        // 스킬 ID 값에 따른 스킬 스프라이트 로드
+        skillSpr = Resources.Load<Sprite>($"Prefabs/Sprites/Skills/{this.id}");
     }
 
     public abstract void UseSkill(StatHandler statHandler);
