@@ -7,6 +7,8 @@ public class SpawnCoolTime : MonoBehaviour
 {
     public event Action OnUpdateCoolTime;
 
+    public bool IsSpawn { get; set; }
+
     public void StartCoolTime()
     {
         OnUpdateCoolTime?.Invoke();

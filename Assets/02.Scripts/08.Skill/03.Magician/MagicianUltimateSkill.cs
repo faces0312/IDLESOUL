@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
@@ -11,8 +11,8 @@ public class MagicianUltimateSkill : Skill
 
     public MagicianUltimateSkill(int id) : base(id)
     {
-        // TODO : DB ø°º≠ πﬁæ∆ ≥÷±‚
-        coolTime = 1f;
+        // TODO : DB ÏóêÏÑú Î∞õÏïÑ ÎÑ£Í∏∞
+        coolTime = 5f;
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/Meteor");
         range = 10f;
         totalValue = value * (level * upgradeValue);
@@ -22,7 +22,7 @@ public class MagicianUltimateSkill : Skill
     {
         level += amount;
 
-        // TODO : πË¿≤ ¡∂¡§
+        // TODO : Î∞∞Ïú® Ï°∞Ï†ï
         totalValue = value * (level * upgradeValue);
     }
 

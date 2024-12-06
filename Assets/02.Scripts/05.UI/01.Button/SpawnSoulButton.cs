@@ -38,16 +38,16 @@ public class SpawnSoulButton : MonoBehaviour
             spawnCoolTime.OnUpdateCoolTime += CalcCoolTime;
         }
 
-        isSpawn = true;
+        spawnCoolTime.IsSpawn = true;
         StartCoroutine(CoroutineCoolTime());
     }
 
     private void OnClickSpawnSoulButton()
     {
-        if (isSpawn) return;
+        if (spawnCoolTime.IsSpawn) return;
         if (GameManager.Instance.player.PlayerSouls.SpawnIndex == index) return;
-        isSpawn = true;
-        textBackground.SetActive(isSpawn);
+        spawnCoolTime.IsSpawn = true;
+        textBackground.SetActive(spawnCoolTime.IsSpawn);
 
         GameManager.Instance.player.PlayerSouls.SpawnSoul(index);
 
@@ -76,7 +76,7 @@ public class SpawnSoulButton : MonoBehaviour
 
         fiilAmount = 0f;
         timeText.text = string.Empty;
-        isSpawn = false;
+        spawnCoolTime.IsSpawn = false;
         textBackground.SetActive(isSpawn);
     }
 }
