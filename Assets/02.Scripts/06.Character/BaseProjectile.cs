@@ -224,7 +224,8 @@ public class BaseProjectile : MonoBehaviour
             }
         }
 
-        StartCoroutine(DisableTimer(projectilePS.main.duration));
+        if(gameObject.activeSelf == true)
+            StartCoroutine(DisableTimer(projectilePS.main.duration));
     }
 
 }

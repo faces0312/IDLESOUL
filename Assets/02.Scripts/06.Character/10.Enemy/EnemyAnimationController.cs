@@ -16,8 +16,13 @@ public class EnemyAnimationController : MonoBehaviour
         enemy.stateMachine.AttackState.MeleeAttack();
     }
 
+    public void MeleeAttackBoss()
+    {
+        enemy.stateMachine.AttackState.MeleeAttackBoss();
+    }
+
     public void MeleeAttackEnd()
     {
-        
+        enemy.stateMachine.AttackState.meleeAttack.SetActive(false);
     }
 }

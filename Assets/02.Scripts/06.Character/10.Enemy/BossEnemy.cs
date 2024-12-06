@@ -10,7 +10,7 @@ public class BossEnemy : Enemy
     public float skillSpeed;
     public float skillSpeedTmp;
 
-    public override void Update()
+    /*public override void Update()
     {
         base.Update();
 
@@ -20,6 +20,19 @@ public class BossEnemy : Enemy
         {
             stateMachine.ChangeState(stateMachine.SkillState);
             skillSpeedTmp = 0f;
+        }
+    }*/
+
+    public override void Update()
+    {
+        base.Update();
+        if (target.transform.position.x - transform.position.x < 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (target.transform.position.x - transform.position.x > 0) // 플레이어가 오른쪽에 있을 때
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 

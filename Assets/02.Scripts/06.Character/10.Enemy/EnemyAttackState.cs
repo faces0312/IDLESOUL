@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyAttackState : EnemyBaseState
 {
+    public GameObject meleeAttack;
     private float attackSpeedTmp;
     public EnemyAttackState(EnemyStateMachine _stateMachine) : base(_stateMachine)
     {
@@ -55,12 +56,18 @@ public class EnemyAttackState : EnemyBaseState
 
     public void MeleeAttack()
     {
-        GameObject meleeAttack;
         if (stateMachine.Enemy.transform.localScale.x > 0)
             meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(6000, new Vector3(stateMachine.Enemy.transform.position.x - 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 0, 90));
         else
             meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(6000, new Vector3(stateMachine.Enemy.transform.position.x + 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 180, 90));
+    }
 
+    public void MeleeAttackBoss()
+    {
+        if (stateMachine.Enemy.transform.localScale.x > 0)
+            meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(6002, new Vector3(stateMachine.Enemy.transform.position.x - 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 0, 90));
+        else
+            meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(6002, new Vector3(stateMachine.Enemy.transform.position.x + 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 180, 90));
     }
 
     public void RangedAttack()

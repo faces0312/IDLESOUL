@@ -48,7 +48,7 @@ public abstract class Enemy : BaseCharacter
 
        
     }
-    private void Start()
+    protected virtual void Start()
     {
         Initialize();
         stateMachine.Initialize();

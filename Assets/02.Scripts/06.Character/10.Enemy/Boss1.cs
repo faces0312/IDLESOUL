@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Boss1 : BossEnemy
 {
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         skill = new List<EnemySkillBase>
         {
             new EnemySkill1(this, stateMachine)
