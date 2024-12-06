@@ -45,7 +45,7 @@ public class EnemyAttackState : EnemyBaseState
         switch (stateMachine.Enemy.attackType)
         {
             case AttackType.Melee:
-                MeleeAttack();
+                //MeleeAttack();
                 break;
             case AttackType.Ranged:
                 //Invoke("RangedAttack", 0.45f);
@@ -53,9 +53,10 @@ public class EnemyAttackState : EnemyBaseState
         }
     }
 
-    void MeleeAttack()
+    public void MeleeAttack()
     {
-        Debug.Log("근거리공격");
+        GameObject bulletInstance =
+        Object.Instantiate(stateMachine.Enemy.bulletTest, new Vector3(stateMachine.Enemy.transform.position.x, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 0, 90));
     }
 
     public void RangedAttack()

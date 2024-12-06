@@ -9,9 +9,14 @@ public class DungeonSelector : MonoBehaviour
     [SerializeField] private Button exp;
     [SerializeField] private Button upgrade;
 
-    private void Start()
+    private void Awake()
     {
         StageSelector = FindObjectOfType<StageSelector>();
+    }
+
+    private void Start()
+    {
+        this.gameObject.SetActive(false);
         daily.onClick.AddListener(() =>
         {
             StageSelector.SetStageType(Enums.StageType.Daily);

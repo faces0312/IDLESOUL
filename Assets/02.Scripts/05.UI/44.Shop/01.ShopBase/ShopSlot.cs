@@ -19,7 +19,7 @@ public class ShopSlot : MonoBehaviour
         //this.itemData = DataManager.Instance.SellItemDB.GetByKey(ItemKey);
         click = GetComponent<Button>();
         click.onClick.AddListener(SendData);
-        itemIcon.sprite = Resources.Load<Sprite>(itemData.IconPath);
+        //itemIcon.sprite = Resources.Load<Sprite>(itemData.IconPath);
     }
 
     public ShopSlot(int itemKey, int price)

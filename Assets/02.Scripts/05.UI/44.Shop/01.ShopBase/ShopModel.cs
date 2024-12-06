@@ -21,6 +21,11 @@ public class ShopModel : UIModel
         SoulGachaList = new Dictionary<string, List<testSoul>>();
     }
 
+    private void Start()
+    {
+        this.gameObject.SetActive(false);
+    }
+
     public void DiamondGacha<T>(string Pickup) where T : IGachable
     {
         string t = typeof(T).ToString();

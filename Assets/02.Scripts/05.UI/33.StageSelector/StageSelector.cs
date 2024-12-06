@@ -17,7 +17,7 @@ public class StageSelector : MonoBehaviour
         sortedData = new List<StageDB>();
         stageData = DataManager.Instance.StageDB.ItemsList;
         recycleScroll = GetComponent<RecycleScrollX>();
-        recycleScroll.SetContent += SetStage;
+        //recycleScroll.SetContent += SetStage;
     }
 
     public void SetStageType(StageType stageType)

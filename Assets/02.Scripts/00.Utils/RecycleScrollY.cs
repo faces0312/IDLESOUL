@@ -27,7 +27,7 @@ public class RecycleScrollY : MonoBehaviour
 
     public Action<GameObject, int> SetContent;
 
-    private void OnEnable()
+    private void Start()
     {
         pastPos = 0;
 
@@ -36,7 +36,7 @@ public class RecycleScrollY : MonoBehaviour
 
         float contentY = (prefabHeight + contentSpace) * rectCnt + UpMargin;
         content.GetComponent<RectTransform>().sizeDelta
-            = new Vector2(content.GetComponent<RectTransform>().sizeDelta.x, contentY - scrollview.GetComponent<RectTransform>().sizeDelta.y);
+            = new Vector2(content.GetComponent<RectTransform>().sizeDelta.x, contentY);
 
         totalCnt = showCnt + 2;
         for (int i = 0; i < rectCnt; i++)
@@ -109,9 +109,9 @@ public class RecycleScrollY : MonoBehaviour
             }
         }
     }
-    public void SetRectsCount(int a, int b)
+    public void SetRectsCount(int rect, int show)
     {
-        rectCnt = a;
-        showCnt = b;
+        rectCnt = rect;
+        showCnt = show;
     }
 }

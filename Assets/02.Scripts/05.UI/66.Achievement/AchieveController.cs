@@ -5,28 +5,32 @@ using UnityEngine;
 public class AchieveController : MonoBehaviour
 {
     private RecycleScrollY recycleScroll;
-    private List<Achievement> cleared;
 
     private void OnEnable()
     {
         recycleScroll = GetComponent<RecycleScrollY>();
-        recycleScroll.SetRectsCount(DataManager.Instance.AchieveDB.AchieveList.Count, 5);
+        recycleScroll.SetRectsCount(DataManager.Instance.AchieveDB.AchieveList.Count, 6);
     }
 
     private void Start()
     {
         recycleScroll.SetContent += SetContent;
-        if(this.gameObject.activeSelf == true)
-            this.gameObject.SetActive(false);
+        if (this.gameObject.activeSelf == true) this.gameObject.SetActive(false);
     }
 
     private void SetContent(GameObject obj, int arg)
     {
-        if (obj.TryGetComponent<Achievement>(out Achievement objData))
+        if(obj.TryGetComponent<Achievement>(out Achievement objData))
         {
-            if (DataManager.Instance.AchieveDB.GetByKey(arg) != null)
-                objData.SetContent(DataManager.Instance.AchieveDB.GetByKey(arg));
-            else return;
+            objData.SetContent(DataManager.Instance.AchieveDB.GetByKey(arg));
+            foreach(AchieveData data in AchievementManager.Instance.aDatas)
+            {
+                if(data.ID == objData.AData.ID)
+                {
+                    objData.AData.progress = data.progress;
+                    objData.AData.isClear = data.isClear;
+                }
+            }
         }
         else
         {
@@ -36,6 +40,6 @@ public class AchieveController : MonoBehaviour
 
     public void Publish()
     {
-        AchievementManager.Instance.Publish(new AchieveEvent(AchievementType.KillMonster, ActionType.Kill, 1));
+        EventManager.Instance.Publish<AchieveEvent>(Channel.Achievement, new AchieveEvent(AchievementType.KillMonster, ActionType.Kill, 1));
     }
 }
