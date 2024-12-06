@@ -11,6 +11,7 @@ public class TestManager : SingletonDDOL<TestManager>
 
     [SerializeField] public GameObject effectPrefab;
     [SerializeField] public GameObject effectPrefab2;
+    [SerializeField] public GameObject statPanel;
 
     [SerializeField] private GameObject enemy;
 
@@ -27,10 +28,15 @@ public class TestManager : SingletonDDOL<TestManager>
     private void Start()
     {
         //GameManager.Instance.enemies.Add(enemy);
+
+        if(statPanel != null)
+            statPanel.SetActive(false);
     }
 
     public void StatViewUpdate()
     {
+        TestSoul = GameManager.Instance.player.PlayerSouls.CurrentSoul;
+
         playerStats[0].text = playerStatHandler.CurrentStat.iD.ToString();
         playerStats[1].text = playerStatHandler.CurrentStat.health.ToString();
         playerStats[2].text = playerStatHandler.CurrentStat.maxHealth.ToString();
@@ -125,5 +131,10 @@ public class TestManager : SingletonDDOL<TestManager>
     public void OnClickSpawnSoul(int index)
     {
         GameManager.Instance.player.PlayerSouls.SpawnSoul(index);
+    }
+
+    public void OnClickViewUpdate()
+    {
+        StatViewUpdate();
     }
 }

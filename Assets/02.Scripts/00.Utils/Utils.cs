@@ -45,4 +45,9 @@ public static class Utils
                    .SetEase(ease); // Ease 그래프 적용
     }
 
+    public static float Percent(float current, float max)
+    {
+        return current != 0 && max != 0 ? current / max : 0;
+    }
+
 }

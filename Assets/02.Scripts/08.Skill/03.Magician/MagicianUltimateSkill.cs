@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
@@ -11,6 +11,8 @@ public class MagicianUltimateSkill : Skill
 
     public MagicianUltimateSkill(int id) : base(id)
     {
+        // TODO : DB ÏóêÏÑú Î∞õÏïÑ ÎÑ£Í∏∞
+        coolTime = 5f;
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/Meteor");
         range = 10f;
         totalValue = value * (level * upgradeValue);
@@ -20,7 +22,7 @@ public class MagicianUltimateSkill : Skill
     {
         level += amount;
 
-        // TODO : πË¿≤ ¡∂¡§
+        // TODO : Î∞∞Ïú® Ï°∞Ï†ï
         totalValue = value * (level * upgradeValue);
     }
 
@@ -31,6 +33,13 @@ public class MagicianUltimateSkill : Skill
         playerPos += skillPrefab.transform.position;
 
         GameObject meteor = Object.Instantiate(skillPrefab, playerPos, Quaternion.LookRotation(skillPrefab.transform.forward));
+
+        if (GameManager.Instance.player.PlayerAnimationController.skeleton.ScaleX > 0)
+        {
+            meteor.transform.position -= new Vector3(skillPrefab.transform.position.x * 2f, 0, 0);
+            meteor.transform.Rotate(new Vector3(90f, 0, 0));
+        }
+
         if (meteor.TryGetComponent(out Meteor component))
         {
             component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);

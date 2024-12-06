@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,8 +13,17 @@ public class PlayerSouls : MonoBehaviour
 
     private GameObject[] spawnEffects = new GameObject[MAX_SOUL];
 
+    public event Action<Sprite> OnUpdateDefaultSprite;
+    public event Action<Sprite> OnUpdateUltimateSprite;
+
+    public int SpawnIndex { get => spawnIndex; }
     public Soul CurrentSoul { get; private set; }
     public Soul[] SoulSlot { get { return soulSlot; } }
+
+    public Sprite DefaultSkillSpr { get; set; }
+    public Sprite DefaultSkillCoolSpr { get; set; }
+    public Sprite UltimateSkillSpr { get; set; }
+    public Sprite UltimateSkillCoolSpr { get; set; }
 
     private void Awake()
     {
@@ -70,12 +80,23 @@ public class PlayerSouls : MonoBehaviour
             LoadSpawnEffects();
 
         Instantiate(spawnEffects[spawnIndex], transform.position, Quaternion.identity);
+
+        // TODO : 스킬의 이미지가 변경
+        UpdateSkillSprite();
     }
 
     private void LoadSpawnEffects()
     {
+        // TODO : Sprite 처럼 변경하기
         spawnEffects[0] = Resources.Load<GameObject>("Prefabs/Skills/SoulSpawn_Red");
         spawnEffects[1] = Resources.Load<GameObject>("Prefabs/Skills/SoulSpawn_Blue");
         spawnEffects[2] = Resources.Load<GameObject>("Prefabs/Skills/SoulSpawn_Yellow");
+    }
+
+    // TODO : 추후 private으로
+    public void UpdateSkillSprite()
+    {
+        OnUpdateDefaultSprite?.Invoke(CurrentSoul.Skills[(int)SkillType.Default].SkillSpr);
+        OnUpdateUltimateSprite?.Invoke(CurrentSoul.Skills[(int)SkillType.Ultimate].SkillSpr);
     }
 }

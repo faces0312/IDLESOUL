@@ -2,25 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager : Singleton<EnemyManager>
 {
     [SerializeField] private bool isBoss;
     [SerializeField] private float spawnTime;
     private float spawnTimer;
 
+
     //ObjectPoolManager의 Dictionary id
+    private Dictionary<int, Enemy> enemyPrefabs = new Dictionary<int, Enemy>();
     private const string ENEMY_BOSS_POOL_KEY = "EnemyBoss";
     private const string ENEMY_POOL_KEY = "Enemies";
-    private const int INITIAL_POOL_SIZE = 120;
+    private const string ENEMY_EFFECT_POOL_KEY = "EnemyEffect";
+    private const int INITIAL_POOL_SIZE = 30;
 
     //TestCode
     public BoxCollider SpawnArea;
     //
 
-    private void Awake()
+    private void Start()
     {
         InitializeEnemyPool();
-        StartCoroutine(EnemySpawnCoroutine(100, 5001));
+        BossSpawn(5000);
+        //StartCoroutine(EnemySpawnCoroutine(1, 5000));
     }
 
     private void Update()
@@ -33,7 +37,7 @@ public class EnemyManager : MonoBehaviour
             }
             else
             {
-                SpawnCycle();
+                //SpawnCycle();
                 spawnTimer = spawnTime;
             }
         }
@@ -41,53 +45,51 @@ public class EnemyManager : MonoBehaviour
 
     private void InitializeEnemyPool()
     {
+        InitializeEnemyPrefab(5000, "Prefabs/Enemy/Goblin");
+        InitializeEnemyPrefab(5001, "Prefabs/Enemy/GoblinMagician");
+
         ObjectPool goblinPool = new ObjectPool(5000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Goblin");
         ObjectPool goblinMagicianPool = new ObjectPool(5001, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinMagician");
 
+        ObjectPool slashPool = new ObjectPool(6000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/Slash");
+        ObjectPool energyBoltPool = new ObjectPool(6001, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/EnergyBolt");
+        ObjectPool slashBossPool = new ObjectPool(6002, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/SlashBoss");
+
+        ObjectPool goblinBossPool = new ObjectPool(5000, 3, "Prefabs/Enemy/GoblinBoss");
+
         ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinPool);
         ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinMagicianPool);
-    }
-    void SpawnCycle()
-    {
-        StartCoroutine(EnemyRandomSpawnCoroutine(5));
-    }
-    
-    IEnumerator EnemySpawnCoroutine(int cycle, int id)
-    {
-        yield return new WaitForSeconds(0.5f);
-        ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_POOL_KEY, id);
-        for (int i = 0; i < cycle; i++)
-        {
-            GameObject enemy = pool.GetObject();
-            Enemy tempEnemy = enemy.GetComponent<RegularEnemy>();
-            tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(id);
-            //TestCode
-            enemy.transform.position = RandomSpawn();
-            //
-            enemy.SetActive(true);
-            GameManager.Instance.enemies.Add(enemy);
 
-            yield return new WaitForSeconds(0.5f);
+        ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, slashPool);
+        ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, energyBoltPool);
+        ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, slashBossPool);
+
+        ObjectPoolManager.Instance.AddPool(ENEMY_BOSS_POOL_KEY, goblinBossPool);
+    }
+
+    private void InitializeEnemyPrefab(int id, string prefabPath)
+    {
+        GameObject prefab = Resources.Load<GameObject>(prefabPath);
+        if (prefab != null)
+        {
+            RegularEnemy enemy = prefab.GetComponent<RegularEnemy>();
+            if (enemy == null)
+            {
+                enemy = prefab.AddComponent<RegularEnemy>();
+            }
+
+            enemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(id);
+            enemyPrefabs[id] = enemy;
         }
     }
-    //TODO :: 몬스터를 구분해서 특정 범위 몬스터들만 생성
-    IEnumerator EnemyRandomSpawnCoroutine(int cycle)
+
+    private Enemy GetInitializedEnemy(int id)
     {
-        for (int i = 0; i < cycle; i++)
+        if (enemyPrefabs.TryGetValue(id, out Enemy prefab))
         {
-            int randomID = Random.Range(5000, 5009);
-            ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_POOL_KEY, randomID);
-            GameObject enemy = pool.GetObject();
-            Enemy tempEnemy = enemy.GetComponent<RegularEnemy>();
-            tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(randomID);
-            //TestCode
-            enemy.transform.position = RandomSpawn();
-            //
-            enemy.SetActive(true);
-            GameManager.Instance.enemies.Add(enemy);
-            Debug.Log("몬스터 생성");
-            yield return new WaitForSeconds(0.1f);
+            return prefab;
         }
+        return null;
     }
 
     private Vector3 RandomSpawn()
@@ -113,7 +115,29 @@ public class EnemyManager : MonoBehaviour
         return respawnPosition;
     }
 
-    public void BossSpawn()
+    IEnumerator EnemySpawnCoroutine(int cycle, int id)
+    {
+        yield return new WaitForSeconds(0.1f);
+        ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_POOL_KEY, id);
+
+        Enemy prefabEnemy = GetInitializedEnemy(id);
+        for (int i = 0; i < cycle; i++)
+        {
+            GameObject enemyObject = pool.GetObject();
+            if (enemyObject.TryGetComponent(out RegularEnemy enemy))
+            {
+                enemy.enemyDB = prefabEnemy.enemyDB;
+            }
+
+            enemyObject.transform.position = RandomSpawn();
+            enemyObject.SetActive(true);
+            GameManager.Instance.enemies.Add(enemyObject);
+
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    public void BossSpawn(int id)
     {
         isBoss = true;
         GameManager.Instance.isTryBoss = true;
@@ -126,12 +150,31 @@ public class EnemyManager : MonoBehaviour
         }
         GameManager.Instance.enemies.Clear();
 
-        ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_BOSS_POOL_KEY, 5000);
+        ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_BOSS_POOL_KEY, id);
         GameObject enemyBoss = pool.GetObject();
         Enemy tempEnemy = enemyBoss.GetComponent<BossEnemy>();
-        tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(5000);
+        tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(id);
+        enemyBoss.transform.position = RandomSpawn();
         enemyBoss.SetActive(true);
         GameManager.Instance.enemies.Add(enemyBoss);
         Debug.Log("보스 생성");
+    }
+
+    public GameObject EnemyAttackSpawn(int id, Vector3 position, Quaternion rotation)
+    {
+        ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_EFFECT_POOL_KEY, id);
+        if (pool != null)
+        {
+            GameObject attackEffect = pool.GetObject();
+            if (attackEffect != null)
+            {
+                attackEffect.transform.position = position;
+                attackEffect.transform.rotation = rotation;
+                attackEffect.SetActive(true);
+                return attackEffect;
+            }
+        }
+        return null;
+
     }
 }
