@@ -11,4 +11,9 @@ public static class Utils
 
     public static readonly int POOL_KEY_PLAYERPROJECTILE = 10;
 
+    public static float Percent(float current, float max)
+    {
+        return current != 0 && max != 0 ? current / max : 0;
+    }
+
 }
