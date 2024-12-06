@@ -1,16 +1,15 @@
-using System;
 using System.Collections.Generic;
 using Enums;
-using UnityEngine.Events;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using Unity.VisualScripting;
+using System.Collections;
 
 public class AchievementManager : SingletonDDOL<AchievementManager>
 {
     public Dictionary<AchievementType, List<AchieveData>> achievements; //도전과제 리스트
     private List<AchieveDB> achievementDB; //도전과제 DB
     public List<AchieveData> aDatas = new List<AchieveData>();
+
+    [SerializeField] private AchieveAlarm alarm;
 
     protected void Start()
     {
@@ -36,6 +35,11 @@ public class AchievementManager : SingletonDDOL<AchievementManager>
         foreach (AchieveData aData in EventToData(data.Action, data.Type))
         {
             aData.AddProgress(data.Value);
+            if(aData.isClear == true && aData.isPublished == false)
+            {
+                aData.isPublished = true;
+                StartCoroutine(CoAlarm(aData));
+            }
         }
     }
 
@@ -49,5 +53,13 @@ public class AchievementManager : SingletonDDOL<AchievementManager>
             }
         }
         return aDatas;
+    }
+
+    public IEnumerator CoAlarm(AchieveData data)
+    {
+        alarm.gameObject.SetActive(true);
+        alarm.SetContent(data);
+        yield return Wait.Wait3s;
+        alarm.gameObject.SetActive(false);
     }
 }
