@@ -4,11 +4,11 @@ using UnityEngine;
 
 public interface IGachable
 {
-    Enums.Grade GetGrade();
-
     int GetID();
 
     string GetName();
+
+    string GetDescription();
 }
 
 public class GachaView : MonoBehaviour, IUIBase

@@ -10,4 +10,14 @@ public class EnemyAnimationController : MonoBehaviour
     {
         enemy.stateMachine.AttackState.RangedAttack();
     }
+
+    public void MeleeAttackStart()
+    {
+        enemy.stateMachine.AttackState.MeleeAttack();
+    }
+
+    public void MeleeAttackEnd()
+    {
+        
+    }
 }

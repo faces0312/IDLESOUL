@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Enums;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public enum JobType
     None
 }
 
-public abstract class Soul
+public abstract class Soul : IGachable
 {
     protected SoulDB tempDB;
     protected StatHandler statHandler;
@@ -80,5 +81,20 @@ public abstract class Soul
     public void UseSkill(Skill skill)
     {
         skill.UseSkill(statHandler);
+    }
+
+    public int GetID()
+    {
+        return this.iD;
+    }
+
+    public string GetName()
+    {
+        return this.soulName;
+    }
+
+    public string GetDescription()
+    {
+        return this.description;
     }
 }

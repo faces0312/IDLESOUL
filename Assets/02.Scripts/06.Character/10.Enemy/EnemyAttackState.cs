@@ -45,7 +45,7 @@ public class EnemyAttackState : EnemyBaseState
         switch (stateMachine.Enemy.attackType)
         {
             case AttackType.Melee:
-                MeleeAttack();
+                //MeleeAttack();
                 break;
             case AttackType.Ranged:
                 //Invoke("RangedAttack", 0.45f);
@@ -53,14 +53,31 @@ public class EnemyAttackState : EnemyBaseState
         }
     }
 
-    void MeleeAttack()
+    public void MeleeAttack()
     {
-        Debug.Log("근거리공격");
+        GameObject meleeAttack;
+        if (stateMachine.Enemy.transform.localScale.x > 0)
+            meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(6000, new Vector3(stateMachine.Enemy.transform.position.x - 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 0, 90));
+        else
+            meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(6000, new Vector3(stateMachine.Enemy.transform.position.x + 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 180, 90));
+
     }
 
     public void RangedAttack()
     {
-        //Debug.Log("원거리공격");
+        GameObject rangedAttack = EnemyManager.Instance.EnemyAttackSpawn(6001, stateMachine.Enemy.transform.position, Quaternion.Euler(Vector3.zero));
+
+        if (rangedAttack != null)
+        {
+            // 필요한 경우 추가 설정
+            EnemyProjectile projectile = rangedAttack.GetComponent<EnemyProjectile>();
+            if (projectile != null)
+            {
+                Vector3 targetPosition = GameManager.Instance._player.transform.position;
+                projectile.dir = (targetPosition - rangedAttack.transform.position).normalized;
+            }
+        }
+        /*//Debug.Log("원거리공격");
         //원거리 적의 경우
         GameObject bulletInstance = 
         Object.Instantiate(stateMachine.Enemy.bulletTest,new Vector3(stateMachine.Enemy.transform.position.x, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(Vector3.zero));
@@ -73,6 +90,6 @@ public class EnemyAttackState : EnemyBaseState
         Vector3 selfProjection = new Vector3(stateMachine.Enemy. transform.position.x, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z);
 
         bulletInstance.GetComponent<EnemyProjectile>().dir = (playerProjection - selfProjection).normalized;
-        //monsterBullet.dir = (playerProjection - selfProjection).normalized;
+        //monsterBullet.dir = (playerProjection - selfProjection).normalized;*/
     }
 }

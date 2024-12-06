@@ -5,6 +5,7 @@ using ScottGarland;
 
 public class EnemyProjectile : BaseProjectile
 {
+    public bool isMelee;
     public float attack;
     [SerializeField] private float value = 0.1f; // 해당 투사체의 계수
 
@@ -42,7 +43,13 @@ public class EnemyProjectile : BaseProjectile
             Debug.Log($"공격이 {other.gameObject.name}에 충돌");
             DamageCaculate(other.gameObject, Atk * value);
             KnockBackCaculate(other.gameObject, 3.0f);
-            base.ProjectileCollison(other);
+
+            if(isMelee == true)
+                base.ProjectileMeleeCollison(other);
+            else
+                base.ProjectileCollison(other);
+
+            //ObjectPoolManager.Instance.GetPool("playerProjectile", Utils.POOL_KEY_PLAYERPROJECTILE).GetObject();
         }
     }
 }

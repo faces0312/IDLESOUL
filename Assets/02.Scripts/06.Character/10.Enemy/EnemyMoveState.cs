@@ -13,11 +13,6 @@ public class EnemyMoveState : EnemyBaseState
         base.Enter();
         StartAnimation(animatorHashData.WalkParameterHash);
         StopAnimation(animatorHashData.IdleParameterHash);
-        /*StopAnimation(animatorHashData.IdleParameterHash);
-        StopAnimation(animatorHashData.AttackParameterHash);
-        StartAnimation(animatorHashData.WalkParameterHash);*/
-        /*StartAnimation(animatorHashData.WalkParameterHash);
-        StopAnimation(animatorHashData.IdleParameterHash);*/
     }
 
     public override void FixedUpdate()

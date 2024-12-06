@@ -156,10 +156,7 @@ public class BaseProjectile : MonoBehaviour
         projectilePS.Stop();
         projectilePS.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
 
-        //ContactPoint contact = collision.contacts[0];
         Vector3 closetPoint = other.ClosestPoint(other.transform.position);
-        //Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-        //Vector3 pos = contact.point + contact.normal * hitOffset;
 
         //Spawn hit effect on collision
         if (hit != null)
@@ -190,8 +187,44 @@ public class BaseProjectile : MonoBehaviour
             gameObject.SetActive(false);
         }
 
+    }
 
-        ObjectPoolManager.Instance.GetPool("playerProjectile", Utils.POOL_KEY_PLAYERPROJECTILE).GetObject();
+    protected void ProjectileMeleeCollison(Collider other)
+    {
+        //Lock all axes movement and rotation
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+        //speed = 0;
+        if (lightSourse != null)
+            lightSourse.enabled = false;
+        col.enabled = false;
+        //projectilePS.Stop();
+        //projectilePS.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
+        Vector3 closetPoint = other.ClosestPoint(other.transform.position);
+
+        //Spawn hit effect on collision
+        if (hit != null)
+        {
+            //hit.transform.rotation = rot;
+            hit.transform.position = closetPoint;
+            if (UseFirePointRotation) { hit.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0); }
+            else if (rotationOffset != Vector3.zero) { hit.transform.rotation = Quaternion.Euler(rotationOffset); }
+            //else { hit.transform.LookAt(contact.point + contact.normal); }
+            else { hit.transform.LookAt(closetPoint); }
+            hitPS.Play();
+        }
+
+        //Removing trail from the projectile on cillision enter or smooth removing. Detached elements must have "AutoDestroying script"
+        foreach (var detachedPrefab in Detached)
+        {
+            if (detachedPrefab != null)
+            {
+                ParticleSystem detachedPS = detachedPrefab.GetComponent<ParticleSystem>();
+                detachedPS.Stop();
+            }
+        }
+
+        StartCoroutine(DisableTimer(projectilePS.main.duration));
     }
 
 }

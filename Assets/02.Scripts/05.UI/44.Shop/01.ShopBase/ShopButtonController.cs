@@ -79,10 +79,10 @@ public class ShopButtonController : MonoBehaviour
             switch (GachaType)
             {
                 case GachaType.Soul:
-                    shop.DiamondGacha<testSoul>("SSS");
+                    shop.DiamondGacha<Soul>("SSS");
                     break;
                 case GachaType.Weapon:
-                    shop.DiamondGacha<testItem>("GoldenSword");
+                    shop.DiamondGacha<Item>("GoldenSword");
                     break;
             }
         }
@@ -97,10 +97,10 @@ public class ShopButtonController : MonoBehaviour
             switch (GachaType)
             {
                 case GachaType.Soul:
-                    shop.DiamondGacha<testSoul>("SSS");
+                    shop.DiamondGacha<Soul>("SSS");
                     break;
                 case GachaType.Weapon:
-                    shop.DiamondGacha<testItem>("GoldenSword");
+                    shop.DiamondGacha<Item>("GoldenSword");
                     break;
             }
         }
