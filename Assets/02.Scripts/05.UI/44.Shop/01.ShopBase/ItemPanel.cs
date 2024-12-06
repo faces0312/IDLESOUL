@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,10 +20,6 @@ public class ItemPanel : MonoBehaviour
         Buy.onClick.AddListener(BuyItem);
         Cancel.onClick.AddListener(Quit);
     }
-    private void Start()
-    {
-    }
-
     public void SetItemDB(SellItemDB item)
     {
         this.curItem = item;
@@ -35,6 +32,10 @@ public class ItemPanel : MonoBehaviour
 
     private void BuyItem()
     {
-        //inventory.AddItem(curItem.key.ToString());
+        if(DataManager.Instance.UserData.Gold >= curItem.Price)
+        {
+            DataManager.Instance.UserData.Gold -= curItem.Price;
+            inventory.AddItem(curItem.key.ToString());
+        }
     }
 }
