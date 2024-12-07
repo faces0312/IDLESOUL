@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class SkillButton : MonoBehaviour
 {
+    private const int MAX_SOUL = 3;
+
     [Header("Type")]
     [SerializeField] private SkillType skillType;
 
@@ -21,6 +23,13 @@ public class SkillButton : MonoBehaviour
     private float coolTime;
     private float curTime;
     private bool isUse;
+
+    private float[] fillAmounts = new float[MAX_SOUL];
+    private float[] coolTimes = new float[MAX_SOUL];
+    private float[] curTimes = new float[MAX_SOUL];
+    private bool[] isUses = new bool[MAX_SOUL];
+
+    public int CurSoulIndex { get; set; }
 
     private void Awake()
     {
@@ -46,40 +55,62 @@ public class SkillButton : MonoBehaviour
 
         // TODO : 추후 제거
         GameManager.Instance.player.PlayerSouls.UpdateSkillSprite();
+
+        CurSoulIndex = GameManager.Instance.player.PlayerSouls.SpawnIndex;
+    }
+
+    private void Update()
+    {
+        if (isUses[CurSoulIndex])
+        {
+            fillAmounts[CurSoulIndex] = 1f - Utils.Percent(curTimes[CurSoulIndex], coolTimes[CurSoulIndex]);
+            timeText.text = $"{coolTimes[CurSoulIndex] - curTimes[CurSoulIndex]:F1}";
+        }
+        else
+        {
+            fillAmounts[CurSoulIndex] = 0f;
+            timeText.text = string.Empty;
+            textBackground.SetActive(isUses[CurSoulIndex]);
+        }
+
+        cooldownImg.fillAmount = fillAmounts[CurSoulIndex];
     }
 
     private void OnClickSkillButton()
     {
-        if (isUse) return;
-        isUse = true;
-        textBackground.SetActive(isUse);
+        CurSoulIndex = GameManager.Instance.player.PlayerSouls.SpawnIndex;
+
+        if (isUses[CurSoulIndex]) return;
+        isUses[CurSoulIndex] = true;
+        textBackground.SetActive(isUses[CurSoulIndex]);
 
         Soul soul = GameManager.Instance.player.PlayerSouls.CurrentSoul;
         soul.UseSkill(soul.Skills[(int)skillType]);
 
-        coolTime = soul.Skills[(int)skillType].CoolTime;
+        coolTimes[CurSoulIndex] = soul.Skills[(int)skillType].CoolTime;
         StartCoroutine(CoroutineCoolTime());
     }
 
     private IEnumerator CoroutineCoolTime()
     {
         float startTime = Time.time;
-        float fiilAmount = 1f;
+        int soulIndex = CurSoulIndex;
+        fillAmounts[soulIndex] = 1f;
 
-        while (fiilAmount > 0f)
+        while (fillAmounts[soulIndex] > 0f)
         {
-            curTime = Time.time - startTime;
+            curTimes[soulIndex] = Time.time - startTime;
 
-            fiilAmount = 1f - Utils.Percent(curTime, coolTime);
-            cooldownImg.fillAmount = fiilAmount;
-            timeText.text = $"{coolTime - curTime:F1}";
+            //fillAmount = 1f - Utils.Percent(curTimes[curSoulIndex], coolTimes[curSoulIndex]);
+            //cooldownImg.fillAmount = fillAmount;
+            //timeText.text = $"{coolTimes[curSoulIndex] - curTimes[curSoulIndex]:F1}";
             yield return null;
         }
-        
-        fiilAmount = 0f;
-        timeText.text = string.Empty;
-        isUse = false;
-        textBackground.SetActive(isUse);
+
+        //fillAmount = 0f;
+        //timeText.text = string.Empty;
+        isUses[soulIndex] = false;
+        //textBackground.SetActive(isUses[curSoulIndex]);
     }
 
     private void UpdateSkillImage(Sprite sprite)

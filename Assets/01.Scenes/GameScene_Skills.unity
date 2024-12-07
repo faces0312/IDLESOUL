@@ -1696,7 +1696,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715816226}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2240146, y: -0.000000018748418, z: 0.00000000430944, w: 0.97458583}
+  m_LocalRotation: {x: 0.2240146, y: 0.000000018748418, z: -0.00000000430944, w: 0.97458583}
   m_LocalPosition: {x: 0, y: 5.64, z: -8.440001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1920,6 +1920,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8920558396889582177, guid: 0eca1eacbd7283e4d8b1cea82dc47614, type: 3}
   m_PrefabInstance: {fileID: 4434661412176495908}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &858172862 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8190743250975977701, guid: 0eca1eacbd7283e4d8b1cea82dc47614, type: 3}
+  m_PrefabInstance: {fileID: 4434661412176495908}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33273b81d92366b4b9e455122faa70e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &859920463
 GameObject:
   m_ObjectHideFlags: 0
@@ -2976,7 +2987,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342909076}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2240146, y: -0.000000018748418, z: 0.00000000430944, w: 0.97458583}
+  m_LocalRotation: {x: 0.2240146, y: 0.000000018748418, z: -0.00000000430944, w: 0.97458583}
   m_LocalPosition: {x: 0, y: 5.64, z: -8.440001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4737,11 +4748,7 @@ MonoBehaviour:
   _player: {fileID: 0}
   score: 0
   isTryBoss: 0
-  objectPool:
-    Id: 0
-    Size: 0
-    Path: 
-    Prefab: {fileID: 0}
+  StageProgressModel: {fileID: 0}
   enemies: []
 --- !u!4 &2081515315
 Transform:
@@ -5035,6 +5042,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1774984878}
     m_Modifications:
+    - target: {fileID: 572120475888138080, guid: ca7fc6d8046b6eb46a699e21b392d0f1, type: 3}
+      propertyPath: defaultBtn
+      value: 
+      objectReference: {fileID: 858172862}
+    - target: {fileID: 572120475888138080, guid: ca7fc6d8046b6eb46a699e21b392d0f1, type: 3}
+      propertyPath: ultimateBtn
+      value: 
+      objectReference: {fileID: 1158076547}
     - target: {fileID: 3710735323168790515, guid: ca7fc6d8046b6eb46a699e21b392d0f1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8793,6 +8808,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1774984878}
     m_Modifications:
+    - target: {fileID: 401905983649425201, guid: 0eca1eacbd7283e4d8b1cea82dc47614, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4222545304555779379, guid: 0eca1eacbd7283e4d8b1cea82dc47614, type: 3}
       propertyPath: m_Name
       value: SkillBtn1
