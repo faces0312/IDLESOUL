@@ -147,12 +147,12 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public void BossSpawn(int id)
     {
-        foreach(Coroutine spawnCoroutine in enemySpawnCoroutines)
+        GameManager.Instance.IsBoss = true;
+
+        foreach (Coroutine spawnCoroutine in enemySpawnCoroutines)
         {
             StopCoroutine(spawnCoroutine);
         }
-
-       
 
         isBoss = true;
         GameManager.Instance.isTryBoss = true;

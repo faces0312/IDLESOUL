@@ -19,6 +19,7 @@ public class GameManager : SingletonDDOL<GameManager>
     public CinemachineVirtualCamera virtualCamera;
 
     public int score;//점수
+    public bool IsBoss;//현재 Boss가 필드에 있는지를 체크하는 변수 
     public bool isTryBoss;//보스를 트라이 한적이 있는지
 
     public UIStageProgressBarModel StageProgressModel;
@@ -46,7 +47,7 @@ public class GameManager : SingletonDDOL<GameManager>
     private void Start()
     {
         //StageDB에서 외부데이터 호출하여 초기화하기
-        StageProgressModel.Initialize(1000);
+        StageProgressModel.Initialize(10);
         
         
         if (!isTryBoss)
@@ -88,6 +89,7 @@ public class GameManager : SingletonDDOL<GameManager>
         //GameManager.Instance.OnGameClearEvent += 게임클리어페이지를 선언할 수 있음
         isTryBoss = false;
         OnGameClearEvent?.Invoke();
+        Debug.Log("게임 클리어!!");
     }
 
     //다음 스테이지 혹은 현재 스테이지에 
