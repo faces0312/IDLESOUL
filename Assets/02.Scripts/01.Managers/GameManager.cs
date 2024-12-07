@@ -43,8 +43,12 @@ public class GameManager : SingletonDDOL<GameManager>
     {
         //StageDB에서 외부데이터 호출하여 초기화하기
         StageProgressModel.Initialize(10);
-
-        UIManager.Instance.ShowUI("StageProgress");
+        
+        
+        if (!isTryBoss)
+        {
+            UIManager.Instance.ShowUI("StageProgress");
+        }
     }
 
     private void Update()

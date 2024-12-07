@@ -8,13 +8,14 @@ public class EnemyManager : Singleton<EnemyManager>
     [SerializeField] private float spawnTime;
     private float spawnTimer;
 
+    private List<Coroutine> enemySpawnCoroutines = new List<Coroutine>();
 
     //ObjectPoolManager¿« Dictionary id
     private Dictionary<int, Enemy> enemyPrefabs = new Dictionary<int, Enemy>();
     private const string ENEMY_BOSS_POOL_KEY = "EnemyBoss";
     private const string ENEMY_POOL_KEY = "Enemies";
     private const string ENEMY_EFFECT_POOL_KEY = "EnemyEffect";
-    private const int INITIAL_POOL_SIZE = 30;
+    private const int INITIAL_POOL_SIZE = 120;
 
     //TestCode
     public BoxCollider SpawnArea;
@@ -23,10 +24,12 @@ public class EnemyManager : Singleton<EnemyManager>
     private void Start()
     {
         InitializeEnemyPool();
-        BossSpawn(5000);
-        //StartCoroutine(EnemySpawnCoroutine(1, 5000));
-    }
+        //BossSpawn(5000);
 
+        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5000)));
+        //enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5001)));
+    }
+       
     private void Update()
     {
         if (isBoss == false)
@@ -139,6 +142,11 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public void BossSpawn(int id)
     {
+        foreach(Coroutine spawnCoroutine in enemySpawnCoroutines)
+        {
+            StopCoroutine(spawnCoroutine);
+        }
+
         isBoss = true;
         GameManager.Instance.isTryBoss = true;
         foreach (GameObject enemyTmp in GameManager.Instance.enemies)

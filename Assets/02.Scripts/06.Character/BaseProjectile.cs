@@ -94,6 +94,7 @@ public class BaseProjectile : MonoBehaviour
 
             Vector3 directionKnockBack = (hitObject.transform.position - transform.position).normalized;
             //damageable.TakeKnockBack(directionKnockBack, knockbackPower);
+            directionKnockBack.y = 0; // y축 보정
             damageable.TakeKnockBack(directionKnockBack, Power);
         }
     }
