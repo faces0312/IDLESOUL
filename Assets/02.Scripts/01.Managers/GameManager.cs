@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using Cinemachine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameManager : SingletonDDOL<GameManager>
 {
@@ -13,6 +15,8 @@ public class GameManager : SingletonDDOL<GameManager>
         get { return _player; }
         set { _player = value; }
     }
+
+    public CinemachineVirtualCamera virtualCamera;
 
     public int score;//점수
     public bool isTryBoss;//보스를 트라이 한적이 있는지
@@ -42,12 +46,33 @@ public class GameManager : SingletonDDOL<GameManager>
     private void Start()
     {
         //StageDB에서 외부데이터 호출하여 초기화하기
-        StageProgressModel.Initialize(10);
+        StageProgressModel.Initialize(1000);
         
         
         if (!isTryBoss)
         {
             UIManager.Instance.ShowUI("StageProgress");
+        }
+    }
+
+    //
+    public void ToggleFollowTarget(Transform newFollowTr)
+    {
+        if (virtualCamera != null)
+        {
+            virtualCamera.Follow = newFollowTr;
+            virtualCamera.LookAt = newFollowTr;
+
+            Invoke("ResetFollowTarget", 3.0f);
+        }
+    }
+
+    public void ResetFollowTarget()
+    {
+        if (virtualCamera != null)
+        {
+            virtualCamera.Follow = _player.CamarePivot.transform;
+            virtualCamera.LookAt = _player.transform;
         }
     }
 

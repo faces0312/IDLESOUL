@@ -26,8 +26,8 @@ public class EnemyManager : Singleton<EnemyManager>
         InitializeEnemyPool();
         //BossSpawn(5000);
 
-        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5000)));
-        //enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5001)));
+        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5000,1.0f)));
+        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5001,2.0f)));
     }
        
     private void Update()
@@ -97,28 +97,27 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private Vector3 RandomSpawn()
     {
-        int maxAttempt = 3;
+        int maxAttempt = 10;
         int curAttaempt = 0;
         Vector3 playerPosition = GameManager.Instance._player.transform.position;
         // 콜라이더의 사이즈를 가져오는 bound.size 사용
-        float range_X = SpawnArea.bounds.size.x;
-        float range_Z = SpawnArea.bounds.size.z;
-
+        float range_X, range_Z;
+        float offsetX = SpawnArea.center.x, offsetZ = SpawnArea.center.z; // SpawnArea Class 만들어서 offset 받아오게 설정할것 
         Vector3 RandomPostion;
         do
         {
             curAttaempt++;
-            range_X = UnityEngine.Random.Range((range_X / 2) * -1, range_X / 2);
-            range_Z = UnityEngine.Random.Range((range_Z / 2) * -1, range_Z / 2);
-            RandomPostion = new Vector3(range_X, 1f, range_Z);
+            range_X = UnityEngine.Random.Range((SpawnArea.bounds.size.x / 2) * -1, SpawnArea.bounds.size.x / 2);
+            range_Z = UnityEngine.Random.Range((SpawnArea.bounds.size.z / 2) * -1, SpawnArea.bounds.size.z / 2);
+            RandomPostion = new Vector3(range_X + offsetX, 1f, range_Z + offsetZ);
         }
-        while (curAttaempt < maxAttempt && 3.0f >= Vector3.Distance(RandomPostion, playerPosition));
+        while (curAttaempt < maxAttempt && 4.0f >= Vector3.Distance(RandomPostion, playerPosition));
 
         Vector3 respawnPosition =  RandomPostion;
         return respawnPosition;
     }
 
-    IEnumerator EnemySpawnCoroutine(int cycle, int id)
+    IEnumerator EnemySpawnCoroutine(int cycle, int id,float summonCoolTime)
     {
         yield return new WaitForSeconds(0.1f);
         ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_POOL_KEY, id);
@@ -136,7 +135,13 @@ public class EnemyManager : Singleton<EnemyManager>
             enemyObject.SetActive(true);
             GameManager.Instance.enemies.Add(enemyObject);
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(summonCoolTime);
+
+            //Test : 시간이 지날수록 점점 소환주기가 빨라지는것을 구현 
+            if (summonCoolTime >= 0.5f)
+            {
+                summonCoolTime *= 0.9f;
+            }
         }
     }
 
@@ -146,6 +151,8 @@ public class EnemyManager : Singleton<EnemyManager>
         {
             StopCoroutine(spawnCoroutine);
         }
+
+       
 
         isBoss = true;
         GameManager.Instance.isTryBoss = true;
@@ -166,6 +173,8 @@ public class EnemyManager : Singleton<EnemyManager>
         enemyBoss.SetActive(true);
         GameManager.Instance.enemies.Add(enemyBoss);
         Debug.Log("보스 생성");
+
+        GameManager.Instance.ToggleFollowTarget(tempEnemy.transform);
     }
 
     public GameObject EnemyAttackSpawn(int id, Vector3 position, Quaternion rotation)

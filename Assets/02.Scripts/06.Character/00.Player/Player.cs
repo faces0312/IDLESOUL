@@ -64,6 +64,7 @@ public class Player : BaseCharacter
     //public Rigidbody rb;
     private PlayerAnimationController playerAnimationController;
     private PlayerSouls playerSouls;
+    public GameObject CamarePivot;
     public PlayerAnimationController PlayerAnimationController { get => playerAnimationController; }
     public PlayerSouls PlayerSouls { get => playerSouls; }
 
