@@ -37,7 +37,7 @@ public class PlayerShotAttackState : PlayerAttackState
         {
             //Debug.Log("Player Shot Attack Start");
 
-            /*if (stateMachine._Player.UserData.stat.atkSpeed <= currentAttackTimer)
+            if (stateMachine._Player.UserData.stat.atkSpeed <= currentAttackTimer)
             {
                 string animName = stateMachine._Player.PlayerAnimationController.ShotAttackAnimationName;
                 stateMachine._Player.PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, false);
@@ -54,7 +54,7 @@ public class PlayerShotAttackState : PlayerAttackState
             else
             {
                 currentAttackTimer += Time.deltaTime * 2;
-            }*/
+            }
 
         }
         else //타겟이 없어지면 대기상태로 전환

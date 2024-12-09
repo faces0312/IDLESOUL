@@ -49,7 +49,7 @@ public class UIStageProgressBarController : UIController
         {
             
             Debug.Log($"보스 등장 조건을 만족 합니다.");
-            EnemyManager.Instance.BossSpawn(5000); // Debug ID값 고정시켜 사용
+            EnemyManager.Instance.BossSpawn(5500); // Debug ID값 고정시켜 사용
             OnHide();
         }
     }
