@@ -95,6 +95,11 @@ public class SoulDB : IGachableDB
     /// CoolTime
     /// </summary>
     public float CoolTime;
+
+    public int GetKey()
+    {
+        return key;
+    }
 }
 public class SoulDBLoader
 {
