@@ -46,7 +46,7 @@ public abstract class Enemy : BaseCharacter
         stateMachine = new EnemyStateMachine(this);
         target = GameObject.Find("Player");
 
-       
+       //HP ∞‘¿”
     }
     protected virtual void Start()
     {
