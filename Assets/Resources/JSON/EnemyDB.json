@@ -161,6 +161,24 @@
       "Distance": 5,
       "KnockBackPower": 10,
       "KnockBackResistance": 1
+    },
+    {
+      "key": 5500,
+      "Name": "고블린보스",
+      "Descripton": "고블린 설명",
+      "DropGold": 100,
+      "DropDia": 10,
+      "Attack": 5,
+      "AttackSpeed": 1,
+      "AttackDistance": 5,
+      "Defence": 0,
+      "MoveSpeed": 1,
+      "Health": 1000,
+      "CritChance": 1,
+      "CritDamage": 100,
+      "Distance": 5,
+      "KnockBackPower": 10,
+      "KnockBackResistance": 1
     }
   ]
 }
