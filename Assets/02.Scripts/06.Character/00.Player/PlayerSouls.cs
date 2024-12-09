@@ -85,6 +85,11 @@ public class PlayerSouls : MonoBehaviour
         UpdateSkillSprite();
     }
 
+    public void LevelUp()
+    {
+        
+    }
+
     private void LoadSpawnEffects()
     {
         // TODO : Sprite 처럼 변경하기
