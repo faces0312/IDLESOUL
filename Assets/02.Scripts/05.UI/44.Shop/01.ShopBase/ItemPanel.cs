@@ -1,41 +1,74 @@
 ﻿using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Enums;
 
 public class ItemPanel : MonoBehaviour
 {
-    public Image Icon;
-    public TextMeshProUGUI Name;
-    public TextMeshProUGUI Description;
-    public Button Buy;
-    public Button Cancel;
-    public SellItemDB curItem;
-    private TestInventoryModel inventory;
+    public SellItemDB CurItem;
+    [SerializeField] private Image icon;
+    [SerializeField] private TextMeshProUGUI _name;
+    [SerializeField] private TextMeshProUGUI description;
+    [SerializeField] private Button confirm;
+    [SerializeField] private Button cancel;
 
     private void OnEnable()
     {
-        Name.text = curItem.ProductName;
-        Description.text = curItem.ProductDescription;
-        Buy.onClick.AddListener(BuyItem);
-        Cancel.onClick.AddListener(Quit);
-    }
-    public void SetItemDB(SellItemDB item)
-    {
-        this.curItem = item;
+        EventManager.Instance.Subscribe<ItemEvent>(Channel.Shop, SetItem);
     }
 
-    private void Quit()
+    private void OnDisable()
     {
-        this.gameObject.SetActive(false);
+        EventManager.Instance.Unsubscribe<ItemEvent>(Channel.Shop, SetItem);
     }
 
-    private void BuyItem()
+    private void Start()
     {
-        if(DataManager.Instance.UserData.Gold >= curItem.Price)
+        confirm.onClick.AddListener(() =>
         {
-            DataManager.Instance.UserData.Gold -= curItem.Price;
-            inventory.AddItem(curItem.key.ToString());
-        }
+            switch (CurItem.PriceType)
+            {
+                case (int)PriceType.Diamond:
+                    if (DataManager.Instance.UserData.Diamonds >= CurItem.Price)
+                    {
+                        DataManager.Instance.UserData.Diamonds -= CurItem.Price;
+                        TestManager.Instance.inventory.AddItem(CurItem.key.ToString());
+                    }
+                    break;
+                case (int)PriceType.Gold:
+                    if (DataManager.Instance.UserData.Gold >= CurItem.Price)
+                    {
+                        DataManager.Instance.UserData.Gold -= CurItem.Price;
+                        TestManager.Instance.inventory.AddItem(CurItem.key.ToString());
+                    }
+                    break;
+            }
+            TestManager.Instance.inventory.AddItem(CurItem.key.ToString());
+        });
+
+        cancel.onClick.AddListener(() =>
+        {
+            this.gameObject.SetActive(false);
+        });
+    }
+
+    public void SetItem(SellItemDB item)
+    {
+        this.CurItem = item;
+        SetContent();
+    }
+
+    public void SetItem(ItemEvent item)
+    {
+        this.CurItem = DataManager.Instance.SellItemDB.GetByKey(item.Key);
+        SetContent();
+    }
+
+    public void SetContent()
+    {
+        this.icon.sprite = Resources.Load<Sprite>(CurItem.IconPath);
+        this._name.text = CurItem.ProductName;
+        this.description.text = CurItem.ProductDescription;
     }
 }
+

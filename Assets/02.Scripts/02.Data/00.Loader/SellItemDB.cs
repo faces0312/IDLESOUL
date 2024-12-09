@@ -1,3 +1,4 @@
+using Enums;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,7 +30,7 @@ public class SellItemDB
     /// <summary>
     /// PriceType
     /// </summary>
-    public string PriceType;
+    public int PriceType;
 
     /// <summary>
     /// Price
