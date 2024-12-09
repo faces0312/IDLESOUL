@@ -16,7 +16,7 @@ public class UIStageProgressBar : MonoBehaviour
     [SerializeField]private UIStageProgressBarView view;
     private UIStageProgressBarController controller;
 
-    private void Start()
+    private void Awake()
     {
         model = new UIStageProgressBarModel();
         GameManager.Instance.StageProgressModel = model;

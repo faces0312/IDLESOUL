@@ -17,6 +17,8 @@ public class EnemyManager : Singleton<EnemyManager>
     private const string ENEMY_EFFECT_POOL_KEY = "EnemyEffect";
     private const int INITIAL_POOL_SIZE = 60;
 
+    [SerializeField] private float bossCameraCloseUpTime = 3.0f; // 보스 카메라 연출 지속시간
+
     //TestCode
     public BoxCollider SpawnArea;
     //
@@ -25,11 +27,14 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         InitializeEnemyPool();
 
-        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5000, 1.0f)));
-        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5001, 2.0f)));
-
         //BossSpawn(5500);
         //StartCoroutine(EnemySpawnCoroutine(30, 5001));
+    }
+
+    public void EnemySpawnStart()
+    {
+        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5000, 1.0f)));
+        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5001, 2.0f)));
     }
 
     private void Update()
@@ -152,14 +157,16 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public void BossSpawn(int id)
     {
-        GameManager.Instance.IsBoss = true;
         foreach (Coroutine spawnCoroutine in enemySpawnCoroutines)
         {
             StopCoroutine(spawnCoroutine);
         }
 
+        GameManager.Instance._player.enabled = false;
+        GameManager.Instance.IsBoss = true;
         isBoss = true;
         GameManager.Instance.isTryBoss = true;
+
         foreach (GameObject enemyTmp in GameManager.Instance.enemies)
         {
             if (enemyTmp != null)
@@ -167,6 +174,7 @@ public class EnemyManager : Singleton<EnemyManager>
                 enemyTmp.SetActive(false);
             }
         }
+
         GameManager.Instance.enemies.Clear();
 
         ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_BOSS_POOL_KEY, id);
@@ -179,7 +187,7 @@ public class EnemyManager : Singleton<EnemyManager>
         Debug.Log("보스 생성");
 
 
-        GameManager.Instance.ToggleFollowTarget(tempEnemy.transform);
+        GameManager.Instance.cameraController.ToggleFollowTarget(tempEnemy.transform , bossCameraCloseUpTime);
     }
 
     public GameObject EnemyAttackSpawn(int id, Vector3 position, Quaternion rotation)

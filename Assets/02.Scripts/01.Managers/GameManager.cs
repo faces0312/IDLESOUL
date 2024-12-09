@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
-using Cinemachine;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 public class GameManager : SingletonDDOL<GameManager>
 {
@@ -16,7 +15,7 @@ public class GameManager : SingletonDDOL<GameManager>
         set { _player = value; }
     }
 
-    public CinemachineVirtualCamera virtualCamera;
+    public CameraController cameraController;
 
     public int score;//점수
     public bool IsBoss;//현재 Boss가 필드에 있는지를 체크하는 변수 
@@ -36,52 +35,33 @@ public class GameManager : SingletonDDOL<GameManager>
     protected override void Awake()
     {
         base.Awake();
+    }
+
+    public void StartGame()
+    {
+        if (cameraController == null)
+        {
+            cameraController = GetComponentInChildren<CameraController>();
+        }
 
         var fader = Instantiate(Resources.Load<Fader>("Prefabs/UI/UIFade"));
         fader.FadeTo(1f, 0f, 0.3f).OnComplete(fader.Release);
 
-        //TodoCode : StageDB에서 데이터값을 받아와야됨
-        //BossTriggerEnemySlayerCount = 100;
-    }
 
-    private void Start()
-    {
         //StageDB에서 외부데이터 호출하여 초기화하기
         StageProgressModel.Initialize(10);
-        
-        
+        cameraController.Initialize();
+        _player.enabled = true;
+
         if (!isTryBoss)
         {
             UIManager.Instance.ShowUI("StageProgress");
         }
+
+        EnemyManager.Instance.EnemySpawnStart();
     }
 
-    //
-    public void ToggleFollowTarget(Transform newFollowTr)
-    {
-        if (virtualCamera != null)
-        {
-            virtualCamera.Follow = newFollowTr;
-            virtualCamera.LookAt = newFollowTr;
-
-            Invoke("ResetFollowTarget", 3.0f);
-        }
-    }
-
-    public void ResetFollowTarget()
-    {
-        if (virtualCamera != null)
-        {
-            virtualCamera.Follow = _player.CamarePivot.transform;
-            virtualCamera.LookAt = _player.transform;
-        }
-    }
-
-    private void Update()
-    {
-
-    }
-
+    [ContextMenu("GameClear")]
     //보스의 체력이 0이 되면 호출
     public void GameClear()
     {
@@ -90,6 +70,15 @@ public class GameManager : SingletonDDOL<GameManager>
         isTryBoss = false;
         OnGameClearEvent?.Invoke();
         Debug.Log("게임 클리어!!");
+
+        //Utils.StartFadeOut();
+        Invoke("NextStage", 3.0f);
+       
+    }
+
+    public void NextStage()
+    {
+        SceneManager.LoadScene("GameScene_SMS");
     }
 
     //다음 스테이지 혹은 현재 스테이지에 
