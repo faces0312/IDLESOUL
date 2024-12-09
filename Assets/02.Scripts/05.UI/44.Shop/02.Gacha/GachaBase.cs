@@ -2,80 +2,114 @@ using Enums;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public interface IGachable
+public interface IGachableDB
 {
-    int GetID();
-
-    string GetName();
-
-    string GetDescription();
 }
 
 public class GachaBase : MonoBehaviour
 {
     [SerializeField] private GameObject gachaPanel;
-    private List<IGachable> gachaList;
+    [SerializeField] private GachaResult result;
+    private List<IGachableDB> gachaList;
+    private List<IGachableDB> tempList;
+    private List<ItemDB> items;
+    private List<SoulDB> souls;
 
     private void OnEnable()
     {
-        EventManager.Instance.Subscribe(Enums.Channel.Shop, Gacha);
+        EventManager.Instance.Subscribe<GachaEvent>(Channel.Shop, Gacha);
+    }
+
+    private void Start()
+    {
+        items = DataManager.Instance.ItemDB.ItemsList;
+        souls = DataManager.Instance.SoulDB.ItemsList;
+        tempList = new List<IGachableDB>();
     }
 
     private void OnDisable()
     {
-        EventManager.Instance.Unsubscribe(Enums.Channel.Shop, Gacha);
+        EventManager.Instance.Unsubscribe<GachaEvent>(Channel.Shop, Gacha);
     }
 
-    private void Gacha()
+    private void Gacha(GachaEvent arg)
     {
-        
+        if(gachaList == null) gachaList = new List<IGachableDB>();
+        tempList.Clear();
+        gachaList.Clear();
+        if (arg.type == GachaType.Weapon)
+        {
+            foreach (ItemDB item in items)
+            {
+                gachaList.Add(item);
+            }
+        }
+        else if (arg.type == GachaType.Soul)
+        {
+            foreach (SoulDB soul in souls)
+            {
+                gachaList.Add(soul);
+            }
+        }
+        for (int i = 0; i < arg.count; i ++)
+        {
+            int rand = UnityEngine.Random.Range(0, gachaList.Count);
+            tempList.Add(gachaList[rand]);
+        }
+        result.SetList(tempList);
     }
 }
 
 public class GachaResult
 {
-    private List<IGachable> gachaResultList;
     [SerializeField] private Sprite ResultSprite;
+    [SerializeField] private TextMeshProUGUI name;
+    [SerializeField] private TextMeshProUGUI description;
+
+    private List<IGachableDB> gachaResultList;
+    private List<GachaSlot> slots;
+
 
     public IEnumerator CoResult()
     {
-        foreach(IGachable gacha in gachaResultList)
+        foreach(IGachableDB gacha in gachaResultList)
         {
+            //전환 효과
+            
             yield return (Input.GetMouseButtonDown(0) || Input.GetTouch(0).phase == TouchPhase.Began);
         }
         yield return null;
     }
+
+    public void SetList(List<IGachableDB> dbs)
+    {
+        gachaResultList = dbs;
+    }
 }
 
-public class GachaEvent
+internal class GachaSlot
+{
+    private Image icon;
+
+}
+
+
+public class GachaEvent : IEventObject
 {
     public int key;
     public GachaType type;
+    public int count;
+    
 
-    public GachaEvent(int key)
-    {
-        this.key = key;
-    }
-
-    public GachaEvent(int key, GachaType type)
+    public GachaEvent SetEvent(int key, GachaType type, int count = 1)
     {
         this.key = key;
         this.type = type;
-    }
-
-    public GachaEvent SetEvent(int key)
-    {
-        this.key = key;
+        this.count = count;
         return this;
     }
-
-    public GachaEvent SetEvent(int key, GachaType type)
-    {
-        this.key = key;
-        this.type = type;
-        return this;
-    }
-
 }

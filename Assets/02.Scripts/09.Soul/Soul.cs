@@ -12,7 +12,7 @@ public enum JobType
     None
 }
 
-public abstract class Soul : IGachable
+public abstract class Soul
 {
     protected SoulDB tempDB;
     protected StatHandler statHandler;
@@ -83,18 +83,4 @@ public abstract class Soul : IGachable
         skill.UseSkill(statHandler);
     }
 
-    public int GetID()
-    {
-        return this.iD;
-    }
-
-    public string GetName()
-    {
-        return this.soulName;
-    }
-
-    public string GetDescription()
-    {
-        return this.description;
-    }
 }
