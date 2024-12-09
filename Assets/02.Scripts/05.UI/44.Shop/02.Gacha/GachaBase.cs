@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public interface IGachableDB
 {
+    public int GetKey();
 }
 
 public class GachaBase : MonoBehaviour
@@ -61,6 +62,7 @@ public class GachaBase : MonoBehaviour
             tempList.Add(gachaList[rand]);
         }
         result.SetList(tempList);
+        StartCoroutine(result.CoResult());
     }
 }
 
@@ -78,6 +80,7 @@ public class GachaResult
     {
         foreach(IGachableDB gacha in gachaResultList)
         {
+            
             //전환 효과
             
             yield return (Input.GetMouseButtonDown(0) || Input.GetTouch(0).phase == TouchPhase.Began);
@@ -95,6 +98,10 @@ internal class GachaSlot
 {
     private Image icon;
 
+    public void SetContent(Sprite sprite)
+    {
+        this.icon.sprite = sprite;
+    }
 }
 
 
