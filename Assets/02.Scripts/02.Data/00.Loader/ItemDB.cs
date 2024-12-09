@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 
 [Serializable]
-public class ItemDB
+public class ItemDB : IGachableDB
 {
     /// <summary>
     /// ID

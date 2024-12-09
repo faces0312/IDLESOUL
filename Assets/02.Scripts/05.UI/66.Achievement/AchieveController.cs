@@ -40,6 +40,7 @@ public class AchieveController : MonoBehaviour
 
     public void Publish()
     {
-        EventManager.Instance.Publish<AchieveEvent>(Channel.Achievement, new AchieveEvent(AchievementType.KillMonster, ActionType.Kill, 1));
+        EventManager.Instance.Publish<AchieveEvent>(Channel.Achievement,
+            new AchieveEvent(AchievementType.KillMonster, ActionType.Kill, 1));
     }
 }

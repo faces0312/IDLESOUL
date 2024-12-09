@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 
 [Serializable]
-public class SoulDB
+public class SoulDB : IGachableDB
 {
     /// <summary>
     /// ID

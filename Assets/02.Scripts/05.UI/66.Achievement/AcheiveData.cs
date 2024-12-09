@@ -17,6 +17,7 @@ public class AchieveData
     public AchievementType AchievementType;
 
     public bool isClear;
+    public bool isPublished;
 
     public AchieveData(AchieveData data)
     {
