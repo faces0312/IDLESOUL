@@ -1,35 +1,20 @@
-using System;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class ShopSlot : MonoBehaviour
+public class ShopSlot
 {
-    public int ItemKey;
-    public int Price;
-    private SellItemDB itemData;
-    private Button click;
-    [SerializeField] private TextMeshProUGUI itemText;
-    [SerializeField] private Image itemIcon;
-    [SerializeField] private ItemPanel itemPanel;
-    
+    [SerializeField] private Image icon;
+    [SerializeField] private TextMeshProUGUI text;
+    private SellItemDB item;
 
-    private void Awake()
+    public void SetItem(SellItemDB item)
     {
-        //this.itemData = DataManager.Instance.SellItemDB.GetByKey(ItemKey);
-        click = GetComponent<Button>();
-        click.onClick.AddListener(SendData);
-        //itemIcon.sprite = Resources.Load<Sprite>(itemData.IconPath);
+        this.item = item;
     }
 
-    public ShopSlot(int itemKey, int price)
+    public SellItemDB GetItem()
     {
-        this.ItemKey = itemKey;
-    }
-
-    private void SendData()
-    {
-        itemPanel.gameObject.SetActive(true);
-        itemPanel.SetItemDB(itemData);
+        return item;
     }
 }

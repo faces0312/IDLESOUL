@@ -45,10 +45,11 @@ public class UIStageProgressBarController : UIController
 
     public void BossTriggerCheck()
     {
-        if (stageProgressBarModel.CurEnemySlayerCount >= stageProgressBarModel.BossTriggerEnemySlayerCount)
+        if (!GameManager.Instance.IsBoss && stageProgressBarModel.CurEnemySlayerCount >= stageProgressBarModel.BossTriggerEnemySlayerCount)
         {
+            
             Debug.Log($"보스 등장 조건을 만족 합니다.");
-            GameManager.Instance.isTryBoss = true;
+            EnemyManager.Instance.BossSpawn(5500); // Debug ID값 고정시켜 사용
             OnHide();
         }
     }

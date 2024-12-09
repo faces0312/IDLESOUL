@@ -20,6 +20,21 @@ public class EnemyAnimationController : MonoBehaviour
     {
         enemy.stateMachine.AttackState.MeleeAttackBoss();
     }
+    public void MeleeSkillBossCharging()
+    {
+        enemy.stateMachine.SkillState.bossEnemy.StartSkillCoroutine(enemy.stateMachine.SkillState.PerformSkill());
+    }
+
+    public void MeleeSkillBossStart()
+    {
+        enemy.stateMachine.SkillState.MeleeSkillBossStart();
+    }
+
+    public void MeleeSkillBossEnd()
+    {
+        enemy.stateMachine.AttackState.meleeAttack.SetActive(false);
+        enemy.stateMachine.ChangeState(enemy.stateMachine.MoveState);
+    }
 
     public void MeleeAttackEnd()
     {

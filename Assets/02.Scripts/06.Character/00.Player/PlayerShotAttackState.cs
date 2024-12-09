@@ -46,7 +46,7 @@ public class PlayerShotAttackState : PlayerAttackState
                 Vector3 TargetPos = stateMachine._Player.targetSearch.ShortEnemyTarget.transform.position;
                 Vector3 targetDir = (TargetPos - stateMachine._Player.transform.position).normalized;
                 targetDir.y = 0f; //y축 보정
-                obj.transform.position = stateMachine._Player.transform.position + Vector3.up;
+                obj.transform.position = stateMachine._Player.transform.position;
                 obj.GetComponent<PlayerProjectile>().dir = targetDir;
                 obj.SetActive(true);
                 currentAttackTimer = 0f;

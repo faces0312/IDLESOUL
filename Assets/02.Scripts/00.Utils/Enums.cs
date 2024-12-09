@@ -26,7 +26,8 @@ namespace Enums
     public enum Channel
     {
         None,
-        Achievement
+        Achievement,
+        Shop
     }
 
     public enum AchievementType
@@ -39,7 +40,6 @@ namespace Enums
         Time
     }
 
-
     public enum ActionType
     {
         None,
@@ -48,5 +48,19 @@ namespace Enums
         Stage,
         Soul,
         Time
+    }
+
+    public enum PriceType
+    {
+        None,
+        Gold,
+        Diamond
+    }
+
+    public enum ShopAction
+    {
+        None,
+        Sell,
+        Buy
     }
 }

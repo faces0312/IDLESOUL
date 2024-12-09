@@ -4809,7 +4809,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 150
   m_RenderMode: 1
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -9709,7 +9709,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 150
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -9808,6 +9808,7 @@ MonoBehaviour:
   TargetLayer:
     serializedVersion: 2
     m_Bits: 128
+  value: 0.1
 --- !u!108 &108556751418608030
 Light:
   m_ObjectHideFlags: 0
@@ -9821,7 +9822,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.660454, g: 0.47450984, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 5
+  m_Range: 1.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -9916,7 +9917,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.2
+  m_Radius: 0.48
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1809088009161248
 GameObject:
@@ -14785,7 +14786,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 150
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -19688,7 +19689,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 150
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -19852,20 +19853,40 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 199253029946207220, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
+      propertyPath: m_SortingOrder
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 199253029946207220, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199482176484518440, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
+      propertyPath: m_SortingOrder
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 199482176484518440, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 199573146621024936, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
+      propertyPath: m_SortingOrder
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 199573146621024936, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 199584286218479150, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
+      propertyPath: m_SortingOrder
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 199584286218479150, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199785928810256940, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
+      propertyPath: m_SortingOrder
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 199785928810256940, guid: e46e60dfd73d7ed4fa8a4ef323af2e69, type: 3}
       propertyPath: m_Materials.Array.size
@@ -19958,6 +19979,14 @@ PrefabInstance:
     - target: {fileID: 4684737960746234, guid: 63baf4956cfa45d4aa5cd12cbc8b7689, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199738323929166582, guid: 63baf4956cfa45d4aa5cd12cbc8b7689, type: 3}
+      propertyPath: m_SortingOrder
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 199930829537096064, guid: 63baf4956cfa45d4aa5cd12cbc8b7689, type: 3}
+      propertyPath: m_SortingOrder
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
