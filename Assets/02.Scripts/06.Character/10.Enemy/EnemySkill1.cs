@@ -26,13 +26,10 @@ public class EnemySkill1 : EnemySkillBase
             yield return null;
         }
 
-        foreach (Transform child in bossEnemy.skillZone.transform)
+        /*foreach (Transform child in bossEnemy.skillZone.transform)
             child.gameObject.SetActive(false);
 
-        SkillAttack1();
-
-        stateMachine.ChangeState(stateMachine.MoveState);
-        Debug.Log("스킬1종료");
+        SkillAttack1();*/
     }
 
     public void SkillAttack1()
@@ -44,18 +41,22 @@ public class EnemySkill1 : EnemySkillBase
         for (int i = 0; i < bulletCount; i++)
         {
             float angle = i * angleStep; // 0도부터 시작하여 45도씩 증가
-            Quaternion rotation = Quaternion.Euler(0, 0, angle);
+            Quaternion rotation = Quaternion.Euler(0, angle, 0);
 
-            bulletInstances[i] = Object.Instantiate(stateMachine.Enemy.bulletTest, stateMachine.Enemy.transform.position, rotation);
+            bulletInstances[i] = EnemyManager.Instance.EnemyAttackSpawn(6003, new Vector3(stateMachine.Enemy.transform.position.x, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), rotation);
 
-            BulletTest monsterBullet = bulletInstances[i].GetComponent<BulletTest>();
+            EnemyProjectile projectile = bulletInstances[i].GetComponent<EnemyProjectile>();
             //skill 데미지로 설정
-            monsterBullet.attack = stateMachine.Enemy.enemyDB.Attack;
-            monsterBullet.knockbackPower = stateMachine.Enemy.enemyDB.KnockBackPower;
+            projectile.attack = stateMachine.Enemy.enemyDB.Attack;
+            projectile.knockbackPower = stateMachine.Enemy.enemyDB.KnockBackPower;
 
-            // 각 총알의 방향을 계산
+            if (projectile != null)
+            {
+                projectile.dir = rotation * Vector3.right;//rotation.eulerAngles;
+            }
+            /*// 각 총알의 방향을 계산
             Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.right;
-            monsterBullet.Initialize(direction);
+            monsterBullet.Initialize(direction);*/
         }
     }
 }

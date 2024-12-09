@@ -53,6 +53,7 @@ public abstract class Enemy : BaseCharacter
         Initialize();
         stateMachine.Initialize();
         enemyDB.Distance = 5f;
+        Debug.Log(statHandler.CurrentStat.health);
     }
 
     public void Initialize()

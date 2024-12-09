@@ -23,8 +23,8 @@ public class EnemyManager : Singleton<EnemyManager>
     private void Start()
     {
         InitializeEnemyPool();
-        BossSpawn(5000);
-        //StartCoroutine(EnemySpawnCoroutine(1, 5000));
+        BossSpawn(5500);
+        //StartCoroutine(EnemySpawnCoroutine(3, 5001));
     }
 
     private void Update()
@@ -54,8 +54,9 @@ public class EnemyManager : Singleton<EnemyManager>
         ObjectPool slashPool = new ObjectPool(6000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/Slash");
         ObjectPool energyBoltPool = new ObjectPool(6001, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/EnergyBolt");
         ObjectPool slashBossPool = new ObjectPool(6002, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/SlashBoss");
+        ObjectPool skillBoss1Pool = new ObjectPool(6003, 10, "Prefabs/Enemy/Effects/SkillBoss1");
 
-        ObjectPool goblinBossPool = new ObjectPool(5000, 3, "Prefabs/Enemy/GoblinBoss");
+        ObjectPool goblinBossPool = new ObjectPool(5500, 3, "Prefabs/Enemy/GoblinBoss");
 
         ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinPool);
         ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinMagicianPool);
@@ -63,6 +64,7 @@ public class EnemyManager : Singleton<EnemyManager>
         ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, slashPool);
         ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, energyBoltPool);
         ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, slashBossPool);
+        ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, skillBoss1Pool);
 
         ObjectPoolManager.Instance.AddPool(ENEMY_BOSS_POOL_KEY, goblinBossPool);
     }

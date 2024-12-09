@@ -191,6 +191,7 @@ public class BaseProjectile : MonoBehaviour
 
     protected void ProjectileMeleeCollison(Collider other)
     {
+        Debug.Log("aaa");
         //Lock all axes movement and rotation
         rb.constraints = RigidbodyConstraints.FreezeAll;
         //speed = 0;
@@ -224,8 +225,47 @@ public class BaseProjectile : MonoBehaviour
             }
         }
 
-        if(gameObject.activeSelf == true)
+        if (gameObject.activeSelf == true)
             StartCoroutine(DisableTimer(projectilePS.main.duration));
+    }
+
+    protected void ProjectileRangeCollison(Collider other)
+    {
+        //Lock all axes movement and rotation
+        //rb.constraints = RigidbodyConstraints.FreezeAll;
+        //speed = 0;
+        /*if (lightSourse != null)
+            lightSourse.enabled = false;*/
+        //col.enabled = false;
+        //projectilePS.Stop();
+        //projectilePS.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
+        /*Vector3 closetPoint = other.ClosestPoint(other.transform.position);
+
+        //Spawn hit effect on collision
+        if (hit != null)
+        {
+            //hit.transform.rotation = rot;
+            hit.transform.position = closetPoint;
+            if (UseFirePointRotation) { hit.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0); }
+            else if (rotationOffset != Vector3.zero) { hit.transform.rotation = Quaternion.Euler(rotationOffset); }
+            //else { hit.transform.LookAt(contact.point + contact.normal); }
+            else { hit.transform.LookAt(closetPoint); }
+            hitPS.Play();
+        }*/
+
+        //Removing trail from the projectile on cillision enter or smooth removing. Detached elements must have "AutoDestroying script"
+        /*foreach (var detachedPrefab in Detached)
+        {
+            if (detachedPrefab != null)
+            {
+                ParticleSystem detachedPS = detachedPrefab.GetComponent<ParticleSystem>();
+                detachedPS.Stop();
+            }
+        }*/
+
+        if (gameObject.activeSelf == true)
+            StartCoroutine(DisableTimer(5f));
     }
 
 }
