@@ -62,19 +62,19 @@ public class SpawnSoulButton : MonoBehaviour
     private IEnumerator CoroutineCoolTime()
     {
         float startTime = Time.time;
-        float fiilAmount = 1f;
+        float fillAmount = 1f;
 
-        while (fiilAmount > 0f)
+        while (fillAmount > 0f)
         {
             curTime = Time.time - startTime;
 
-            fiilAmount = 1f - Utils.Percent(curTime, coolTime);
-            cooldownImg.fillAmount = fiilAmount;
+            fillAmount = 1f - Utils.Percent(curTime, coolTime);
+            cooldownImg.fillAmount = fillAmount;
             timeText.text = $"{coolTime - curTime:F1}";
             yield return null;
         }
 
-        fiilAmount = 0f;
+        fillAmount = 0f;
         timeText.text = string.Empty;
         spawnCoolTime.IsSpawn = false;
         textBackground.SetActive(isSpawn);

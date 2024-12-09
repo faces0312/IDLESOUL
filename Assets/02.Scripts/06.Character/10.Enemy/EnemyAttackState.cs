@@ -27,7 +27,7 @@ public class EnemyAttackState : EnemyBaseState
         base.Update();
         attackSpeedTmp += Time.deltaTime;
 
-        if (attackSpeedTmp >= stateMachine.Enemy.enemyDB.AttackSpeed)
+        if (attackSpeedTmp >= 3f)//stateMachine.Enemy.enemyDB.AttackSpeed)
         {
             Attack();
             attackSpeedTmp = 0f;

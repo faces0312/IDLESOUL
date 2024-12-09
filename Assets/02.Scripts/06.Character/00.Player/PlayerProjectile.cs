@@ -43,7 +43,7 @@ public class PlayerProjectile : BaseProjectile
 
             Debug.Log($"공격이 {other.gameObject.name}에 충돌");
             DamageCaculate(other.gameObject, Atk * value);
-            KnockBackCaculate(other.gameObject, 1.0f);
+            KnockBackCaculate(other.gameObject, 0.0f);
             base.ProjectileCollison(other);
 
             ObjectPoolManager.Instance.GetPool("playerProjectile", Utils.POOL_KEY_PLAYERPROJECTILE).GetObject();
