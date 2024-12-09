@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using ScottGarland;
 using UnityEngine.UI;
 
 public enum AttackType
@@ -52,8 +53,9 @@ public abstract class Enemy : BaseCharacter
     {
         Initialize();
         stateMachine.Initialize();
+        HpUpdate();
         enemyDB.Distance = 5f;
-        Debug.Log(statHandler.CurrentStat.health);
+        //Debug.Log(statHandler.CurrentStat.health);
     }
 
     public void Initialize()
@@ -63,10 +65,10 @@ public abstract class Enemy : BaseCharacter
         statHandler = new StatHandler(StatType.Enemy, enemyDB.key);
 
         statHandler.CurrentStat.iD = enemyDB.key;
-        statHandler.CurrentStat.health = new ScottGarland.BigInteger((long)enemyDB.Health);
-        statHandler.CurrentStat.maxHealth = new ScottGarland.BigInteger((long)enemyDB.Health);
-        statHandler.CurrentStat.atk = new ScottGarland.BigInteger((long)enemyDB.Attack);
-        statHandler.CurrentStat.def = new ScottGarland.BigInteger((long)enemyDB.Defence);
+        statHandler.CurrentStat.health = new  BigInteger((long)enemyDB.Health);
+        statHandler.CurrentStat.maxHealth = new BigInteger((long)enemyDB.Health);
+        statHandler.CurrentStat.atk = new BigInteger((long)enemyDB.Attack);
+        statHandler.CurrentStat.def = new BigInteger((long)enemyDB.Defence);
         statHandler.CurrentStat.moveSpeed = enemyDB.MoveSpeed;
         statHandler.CurrentStat.atkSpeed = enemyDB.AttackSpeed;
         statHandler.CurrentStat.critChance = enemyDB.CritChance;
@@ -76,11 +78,23 @@ public abstract class Enemy : BaseCharacter
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
-
+        HpUpdate();
         if (statHandler.CurrentStat.health <= 0)
         {
             Die();
         }
+    }
+
+    public void HpUpdate()
+    {
+        float maxHelth = BigInteger.ToInt32(statHandler.CurrentStat.maxHealth);
+        float curHelth = BigInteger.ToInt32(statHandler.CurrentStat.health);
+        healthBar.value = curHelth/maxHelth;
+
+        if (healthBar.value < 1 && healthBar.value > 0)
+            healthBar.gameObject.SetActive(true);
+        else
+            healthBar.gameObject.SetActive(false);
     }
 
     public void Die()
@@ -88,7 +102,7 @@ public abstract class Enemy : BaseCharacter
         OnEventTargetRemove?.Invoke();
         OnDieEvent?.Invoke();
         gameObject.SetActive(false);
-        Debug.Log($"{gameObject.name} »ç¸Á!!");
+        Debug.Log($"{gameObject.name} »ç¸Á!!aaaaa");
     }
 
     public virtual void Update()
