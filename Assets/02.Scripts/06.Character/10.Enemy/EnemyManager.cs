@@ -25,8 +25,8 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         InitializeEnemyPool();
 
-        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5000, 1.0f)));
-        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5001, 2.0f)));
+        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5000, 10)));
+        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5001, 10)));
 
         //BossSpawn(5500);
         //StartCoroutine(EnemySpawnCoroutine(30, 5001));
@@ -53,8 +53,8 @@ public class EnemyManager : Singleton<EnemyManager>
         InitializeEnemyPrefab(5000, "Prefabs/Enemy/Goblin");
         InitializeEnemyPrefab(5001, "Prefabs/Enemy/GoblinMagician");
 
-        ObjectPool goblinPool = new ObjectPool(5000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Goblin");
-        ObjectPool goblinMagicianPool = new ObjectPool(5001, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinMagician");
+        ObjectPool goblinPool = new ObjectPool(5000, 1, "Prefabs/Enemy/Goblin");
+        ObjectPool goblinMagicianPool = new ObjectPool(5001, 1, "Prefabs/Enemy/GoblinMagician");
 
         ObjectPool slashPool = new ObjectPool(6000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/Slash");
         ObjectPool energyBoltPool = new ObjectPool(6001, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/EnergyBolt");
@@ -134,8 +134,9 @@ public class EnemyManager : Singleton<EnemyManager>
             if (enemyObject.TryGetComponent(out RegularEnemy enemy))
             {
                 enemy.enemyDB = prefabEnemy.enemyDB;
+                enemy.Initialize();
             }
-
+            
             enemyObject.transform.position = RandomSpawn();
             enemyObject.SetActive(true);
             GameManager.Instance.enemies.Add(enemyObject);
@@ -173,6 +174,7 @@ public class EnemyManager : Singleton<EnemyManager>
         GameObject enemyBoss = pool.GetObject();
         Enemy tempEnemy = enemyBoss.GetComponent<BossEnemy>();
         tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(id);
+        tempEnemy.Initialize();
         enemyBoss.transform.position = RandomSpawn();
         enemyBoss.SetActive(true);
         GameManager.Instance.enemies.Add(enemyBoss);
