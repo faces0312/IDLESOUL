@@ -42,7 +42,7 @@ public class PlayerShotAttackState : PlayerAttackState
                 string animName = stateMachine._Player.PlayerAnimationController.ShotAttackAnimationName;
                 stateMachine._Player.PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, false);
 
-                GameObject obj = ObjectPoolManager.Instance.GetPool("playerProjectile", Const.POOL_KEY_PLAYERPROJECTILE).GetObject();
+                GameObject obj = ObjectPoolManager.Instance.GetPool(Const.PLAYER_PROJECTILE_ENERGYBOLT_KEY, Const.POOL_KEY_PLAYERPROJECTILE).GetObject();
                 Vector3 TargetPos = stateMachine._Player.targetSearch.ShortEnemyTarget.transform.position;
                 Vector3 targetDir = (TargetPos - stateMachine._Player.transform.position).normalized;
                 targetDir.y = 0f; //y축 보정
