@@ -1,13 +1,14 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SoulInventory : MonoBehaviour
 {
-    [SerializeField] private SoulInventoryView soulInventoryView;
     [SerializeField] private GameObject Slots;
+    [SerializeField] private SoulInventoryView soulInventoryView;
     private SoulInventoryController soulInventoryController;
-    private SoulInventoryModel soulInventoryModel;
+    // TODO : 완성 후 SerializeField 제거
+    [SerializeField] private SoulInventoryModel soulInventoryModel;
 
     private string uiKey;
 
@@ -24,6 +25,11 @@ public class SoulInventory : MonoBehaviour
 
             Initialize();
         }
+
+        GameManager.Instance.player.PlayerSouls.SoulInventory = this;
+        // TODO : 호출시점 재조정
+        TestManager.Instance.OnClickRegisterSoul();
+        gameObject.SetActive(false);
     }
 
     private void Initialize()
@@ -32,8 +38,14 @@ public class SoulInventory : MonoBehaviour
         {
             if(Slots.transform.GetChild(i).TryGetComponent(out SoulSlot slot))
             {
-                soulInventoryModel.AddSoul(slot);
+                slot.index = i;
+                soulInventoryModel.AddSlot(slot);
             }
         }
+    }
+
+    public void AddSoul(Soul soul)
+    {
+        soulInventoryModel.AddSoul(soul);
     }
 }

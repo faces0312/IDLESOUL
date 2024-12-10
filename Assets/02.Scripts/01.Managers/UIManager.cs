@@ -45,4 +45,14 @@ public class UIManager : Singleton<UIManager>
             controller.UpdateView();
         }
     }
+
+    public UIController GetController(string key)
+    {
+        if (controllers.TryGetValue(key, out UIController controller))
+        {
+            return controller;
+        }
+
+        return null;
+    }
 }
