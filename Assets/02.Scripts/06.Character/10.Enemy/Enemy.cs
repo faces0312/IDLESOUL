@@ -19,6 +19,7 @@ public abstract class Enemy : BaseCharacter
 
     [Header("References")]
     public GameObject target;
+    private CapsuleCollider collider;
     //public Rigidbody rb;
     public AnimatorHashData animatorHashData;
     public Animator animator;
@@ -40,26 +41,26 @@ public abstract class Enemy : BaseCharacter
     {
         base.Awake();
         rb = GetComponent<Rigidbody>();
+        collider = GetComponent<CapsuleCollider>();
         animator = GetComponentInChildren<Animator>();
         animatorHashData = new AnimatorHashData();
         animatorHashData.Initialize();
-        //target = GameManager.Instance.player;
         stateMachine = new EnemyStateMachine(this);
-        target = GameObject.Find("Player");
+        target = GameManager.Instance.player.gameObject;
 
-       //HP ∞‘¿”
+        //HP ∞‘¿”
     }
     protected virtual void Start()
     {
         Initialize();
         stateMachine.Initialize();
         HpUpdate();
-        enemyDB.Distance = 5f;
         //Debug.Log(statHandler.CurrentStat.health);
     }
 
     public void Initialize()
     {
+        collider.enabled = true;
         OnEventTargetRemove += GameManager.Instance._player.targetSearch.TargetClear;
 
         statHandler = new StatHandler(StatType.Enemy, enemyDB.key);
@@ -77,11 +78,17 @@ public abstract class Enemy : BaseCharacter
 
     public override void TakeDamage(float damage)
     {
+        if (statHandler.CurrentStat.health <= 0)
+            return;
+
         base.TakeDamage(damage);
         HpUpdate();
         if (statHandler.CurrentStat.health <= 0)
         {
-            Die();
+            GameManager.Instance.enemies.Remove(gameObject);
+            OnEventTargetRemove?.Invoke();
+            collider.enabled = false;
+            animator.SetTrigger("Die");
         }
     }
 
@@ -102,7 +109,7 @@ public abstract class Enemy : BaseCharacter
         OnEventTargetRemove?.Invoke();
         OnDieEvent?.Invoke();
         gameObject.SetActive(false);
-        Debug.Log($"{gameObject.name} ªÁ∏¡!!aaaaa");
+        Debug.Log($"{gameObject.name} ªÁ∏¡!!");
     }
 
     public virtual void Update()

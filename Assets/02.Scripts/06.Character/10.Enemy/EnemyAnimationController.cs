@@ -36,6 +36,17 @@ public class EnemyAnimationController : MonoBehaviour
         enemy.stateMachine.ChangeState(enemy.stateMachine.MoveState);
     }
 
+    public void EnemyBossDie()
+    {
+        enemy.Die();
+        GameManager.Instance.GameClear();
+    }
+
+    public void EnemyDie()
+    {
+        enemy.Die();
+    }
+
     public void MeleeAttackEnd()
     {
         enemy.stateMachine.AttackState.meleeAttack.SetActive(false);

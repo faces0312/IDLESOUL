@@ -45,6 +45,7 @@ public class EnemySkillState : EnemyBaseState
         else
             stateMachine.AttackState.meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(6002, new Vector3(stateMachine.Enemy.transform.position.x + 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 180, 90));
 
+        bossEnemy.skillChargingEffect.SetActive(false);
         foreach (Transform child in bossEnemy.skillZone.transform)
             child.gameObject.SetActive(false);
 

@@ -139,8 +139,8 @@ public class EnemyManager : Singleton<EnemyManager>
             if (enemyObject.TryGetComponent(out RegularEnemy enemy))
             {
                 enemy.enemyDB = prefabEnemy.enemyDB;
+                enemy.Initialize();
             }
-
             enemyObject.transform.position = RandomSpawn();
             enemyObject.SetActive(true);
             GameManager.Instance.enemies.Add(enemyObject);

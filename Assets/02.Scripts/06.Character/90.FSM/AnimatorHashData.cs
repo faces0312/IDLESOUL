@@ -8,6 +8,7 @@ public class AnimatorHashData
     [SerializeField] private string attackSpeedParameterName = "AttackSpeed";
     [SerializeField] private string walkParameterName = "Walk";
     [SerializeField] private string skillParameterName = "Skill";
+    [SerializeField] private string dieParameterName = "Die";
 
 
     public int GrabbedParameterHash { get; private set; }
@@ -16,6 +17,7 @@ public class AnimatorHashData
     public int AttackSpeedParameterHash { get; private set; }
     public int WalkParameterHash { get; private set; }
     public int SkillParameterHash { get; private set; }
+    public int DieParameterHash { get; private set; }
 
 
     public void Initialize()
@@ -26,5 +28,6 @@ public class AnimatorHashData
         AttackSpeedParameterHash = Animator.StringToHash(attackSpeedParameterName);
         WalkParameterHash = Animator.StringToHash(walkParameterName);
         SkillParameterHash = Animator.StringToHash(skillParameterName);
+        DieParameterHash = Animator.StringToHash(dieParameterName);
     }
 }

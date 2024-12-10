@@ -10,6 +10,7 @@ public class EnemySkill1 : EnemySkillBase
 
     public override IEnumerator PerformSkill()
     {
+        bossEnemy.skillChargingEffect.SetActive(true);
         Debug.Log("스킬1시작");
         Vector3 originalScale = new Vector3(30, 0, 1);
 
