@@ -2,25 +2,27 @@
 
 public class GameSceneTigger : MonoBehaviour
 {
-    private const string ENEMY_BOSS_POOL_KEY = "EnemyBoss";
-    private const string ENEMY_POOL_KEY = "Enemies";
-    private const string ENEMY_EFFECT_POOL_KEY = "EnemyEffect";
+
 
     private void Start()
     {
-        ObjectPoolSetting();
+        ObjectPoolManager.Instance.ObjectPoolAllClear();
+
+        PlayerObjectPoolSetting();
+        EnemyObjectPoolSetting();
 
         GameManager.Instance.StartGame();
     }
 
-    private void ObjectPoolSetting()
+    private void PlayerObjectPoolSetting()
     {
-        ObjectPoolManager.Instance.ObjectPoolAllClear();
+        ObjectPool playerProjectilePool = new ObjectPool(Const.POOL_KEY_PLAYERPROJECTILE, Const.PLAYER_INITIAL_POOL_SIZE, Const.PLAYER_PROJECTILE_ENERGYBOLT_PATH);
+        ObjectPoolManager.Instance.AddPool(Const.PLAYER_PROJECTILE_ENERGYBOLT_KEY, playerProjectilePool);
+    }
 
-        ObjectPool playerProjectilePool = new ObjectPool(Utils.POOL_KEY_PLAYERPROJECTILE, 60, "Prefabs/Player/Attack/EnergyBolt");
-        ObjectPoolManager.Instance.AddPool("playerProjectile", playerProjectilePool);
-
-        ObjectPool goblinPool = new ObjectPool(5000, 60, "Prefabs/Enemy/Goblin");
+    private void EnemyObjectPoolSetting()
+    {
+        ObjectPool goblinPool = new ObjectPool(5000, 60, Const.ENEMY_PREFEB_GOBLIN_PATH);
         ObjectPool goblinMagicianPool = new ObjectPool(5001, 60, "Prefabs/Enemy/GoblinMagician");
 
         ObjectPool slashPool = new ObjectPool(6000, 60, "Prefabs/Enemy/Effects/Slash");
@@ -30,15 +32,14 @@ public class GameSceneTigger : MonoBehaviour
 
         ObjectPool goblinBossPool = new ObjectPool(5500, 3, "Prefabs/Enemy/GoblinBoss");
 
-        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinMagicianPool);
+        ObjectPoolManager.Instance.AddPool(Const.ENEMY_POOL_KEY, goblinPool);
+        ObjectPoolManager.Instance.AddPool(Const.ENEMY_POOL_KEY, goblinMagicianPool);
 
-        ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, slashPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, energyBoltPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, slashBossPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, skillBoss1Pool);
+        ObjectPoolManager.Instance.AddPool(Const.ENEMY_EFFECT_POOL_KEY, slashPool);
+        ObjectPoolManager.Instance.AddPool(Const.ENEMY_EFFECT_POOL_KEY, energyBoltPool);
+        ObjectPoolManager.Instance.AddPool(Const.ENEMY_EFFECT_POOL_KEY, slashBossPool);
+        ObjectPoolManager.Instance.AddPool(Const.ENEMY_EFFECT_POOL_KEY, skillBoss1Pool);
 
-        ObjectPoolManager.Instance.AddPool(ENEMY_BOSS_POOL_KEY, goblinBossPool);
-
+        ObjectPoolManager.Instance.AddPool(Const.ENEMY_BOSS_POOL_KEY, goblinBossPool);
     }
 }

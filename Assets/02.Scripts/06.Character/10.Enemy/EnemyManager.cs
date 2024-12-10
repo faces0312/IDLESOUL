@@ -12,10 +12,10 @@ public class EnemyManager : Singleton<EnemyManager>
 
     //ObjectPoolManager의 Dictionary id
     private Dictionary<int, Enemy> enemyPrefabs = new Dictionary<int, Enemy>();
-    private const string ENEMY_BOSS_POOL_KEY = "EnemyBoss";
-    private const string ENEMY_POOL_KEY = "Enemies";
-    private const string ENEMY_EFFECT_POOL_KEY = "EnemyEffect";
-    private const int INITIAL_POOL_SIZE = 60;
+    //private const string ENEMY_BOSS_POOL_KEY = "EnemyBoss";
+    //private const string ENEMY_POOL_KEY = "Enemies";
+    //private const string ENEMY_EFFECT_POOL_KEY = "EnemyEffect";
+    //private const int INITIAL_POOL_SIZE = 60;
 
     [SerializeField] private float bossCameraCloseUpTime = 3.0f; // 보스 카메라 연출 지속시간
 
@@ -130,7 +130,7 @@ public class EnemyManager : Singleton<EnemyManager>
     IEnumerator EnemySpawnCoroutine(int cycle, int id, float summonCoolTime)
     {
         yield return new WaitForSeconds(0.1f);
-        ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_POOL_KEY, id);
+        ObjectPool pool = ObjectPoolManager.Instance.GetPool(Const.ENEMY_POOL_KEY, id);
 
         Enemy prefabEnemy = GetInitializedEnemy(id);
         for (int i = 0; i < cycle; i++)
@@ -177,7 +177,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
         GameManager.Instance.enemies.Clear();
 
-        ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_BOSS_POOL_KEY, id);
+        ObjectPool pool = ObjectPoolManager.Instance.GetPool(Const.ENEMY_BOSS_POOL_KEY, id);
         GameObject enemyBoss = pool.GetObject();
         Enemy tempEnemy = enemyBoss.GetComponent<BossEnemy>();
         tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(id);
@@ -192,7 +192,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public GameObject EnemyAttackSpawn(int id, Vector3 position, Quaternion rotation)
     {
-        ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_EFFECT_POOL_KEY, id);
+        ObjectPool pool = ObjectPoolManager.Instance.GetPool(Const.ENEMY_EFFECT_POOL_KEY, id);
         if (pool != null)
         {
             GameObject attackEffect = pool.GetObject();

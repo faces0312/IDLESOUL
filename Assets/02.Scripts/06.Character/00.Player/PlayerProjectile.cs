@@ -46,7 +46,7 @@ public class PlayerProjectile : BaseProjectile
             KnockBackCaculate(other.gameObject, 0.0f);
             base.ProjectileCollison(other);
 
-            ObjectPoolManager.Instance.GetPool("playerProjectile", Utils.POOL_KEY_PLAYERPROJECTILE).GetObject();
+            ObjectPoolManager.Instance.GetPool("playerProjectile", Const.POOL_KEY_PLAYERPROJECTILE).GetObject();
         }
     }
 }
