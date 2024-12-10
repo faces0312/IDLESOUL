@@ -14,7 +14,7 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
         poolDict = new Dictionary<string, List<ObjectPool>>();
     }
 
-   
+
     /// <summary>
     /// 오브젝트 풀 딕셔너리 내부의 풀 리스트를 반환
     /// </summary>
@@ -58,6 +58,14 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
         else
         {
             poolDict[id].Add(pool);
+        }
+    }
+
+    public void ObjectPoolAllClear()
+    {
+        foreach(KeyValuePair<string, List<ObjectPool>> pool in poolDict)
+        {
+            pool.Value.Clear();
         }
     }
 

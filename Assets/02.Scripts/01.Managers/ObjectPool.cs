@@ -221,4 +221,12 @@ public class ObjectPool
         }
     }
 
+    public void PoolClear()
+    {
+        for (int i = 0; i < Size; i++)
+        {
+            Pool.Dequeue();
+        }
+    }
+
 }

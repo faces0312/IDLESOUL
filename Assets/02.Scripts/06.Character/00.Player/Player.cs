@@ -112,8 +112,8 @@ public class Player : BaseCharacter
         //Debug 소울 초기화 -> 리팩토링 및 호출 시점 재조정 필요
         TestManager.Instance.OnClickRegisterSoul();
 
-        ObjectPool playerProjectilePool = new ObjectPool(Utils.POOL_KEY_PLAYERPROJECTILE, INITIAL_POOL_SIZE, "Prefabs/Player/Attack/EnergyBolt");
-        ObjectPoolManager.Instance.AddPool("playerProjectile", playerProjectilePool);
+        //ObjectPool playerProjectilePool = new ObjectPool(Utils.POOL_KEY_PLAYERPROJECTILE, INITIAL_POOL_SIZE, "Prefabs/Player/Attack/EnergyBolt");
+        //ObjectPoolManager.Instance.AddPool("playerProjectile", playerProjectilePool);
     }
 
     public void Initialize()
@@ -217,8 +217,4 @@ public class Player : BaseCharacter
         playerStateMachine.FixedUpdateState();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-
-    }
 }

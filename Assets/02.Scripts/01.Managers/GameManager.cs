@@ -53,10 +53,10 @@ public class GameManager : SingletonDDOL<GameManager>
         cameraController.Initialize();
         _player.enabled = true;
 
-        if (!isTryBoss)
-        {
+        //if (!isTryBoss)
+        //{
             UIManager.Instance.ShowUI("StageProgress");
-        }
+        //}
 
         EnemyManager.Instance.EnemySpawnStart();
     }
@@ -65,11 +65,15 @@ public class GameManager : SingletonDDOL<GameManager>
     //보스의 체력이 0이 되면 호출
     public void GameClear()
     {
+        enemies.Clear();
         //이벤트 등록을 통해
         //GameManager.Instance.OnGameClearEvent += 게임클리어페이지를 선언할 수 있음
         isTryBoss = false;
+        IsBoss = false;
         OnGameClearEvent?.Invoke();
         Debug.Log("게임 클리어!!");
+
+        StageProgressModel.CurCountDataClear();
 
         //Utils.StartFadeOut();
         Invoke("NextStage", 3.0f);
@@ -95,10 +99,11 @@ public class GameManager : SingletonDDOL<GameManager>
         OnGameOverEvent = null;
     }
 
-    
+    [ContextMenu("GameOver")]
     //플레이어의 체력이 0이 되면 호출
     public void GameOver()
     {
+        enemies.Clear();
         //이벤트 등록을 통해
         //GameManager.Instance.OnGameOverEvent += 게임종료페이지를 선언할 수 있음
         OnGameOverEvent?.Invoke();
@@ -106,6 +111,10 @@ public class GameManager : SingletonDDOL<GameManager>
         var fader = Instantiate(Resources.Load<Fader>("Prefabs/UI/UIFade"));
         fader.FadeTo(0f, 1f, 2.0f).OnComplete(fader.Release);
 
+        StageProgressModel.CurCountDataClear();
+
+        IsBoss = false;
+        Invoke("NextStage", 2.0f);
     }
 
     public void Test()
