@@ -12,9 +12,31 @@ public enum LevelType
     Soul
 }
 
+public enum StatusType
+{
+    Hp,
+    Atk,
+    Def,
+    MoveSpeed,
+    AtkSpeed,
+    ReduceDamage,
+    CritChance,
+    CritDamage,
+    CoolDown
+}
+
 public class SoulInfoView : MonoBehaviour, IUIBase
 {
     [SerializeField] private GameObject invenPanel;
+
+    [Header("Scroll")]
+    [SerializeField] private RectTransform scrollTransform;
+
+    [Header("Status")]
+    [SerializeField] private GameObject statusBundle;
+    [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private TextMeshProUGUI powerText;
+    private TextMeshProUGUI[] statusText;
 
     [Header("Skills")]
     [SerializeField] private GameObject defaultSkill;
@@ -37,12 +59,20 @@ public class SoulInfoView : MonoBehaviour, IUIBase
 
     public void Initialize()
     {
-        
+        statusText = new TextMeshProUGUI[statusBundle.transform.childCount];
+
+        for (int i = 0; i < statusBundle.transform.childCount; ++i)
+        {
+            statusText[i] = statusBundle.transform.GetChild(i).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        }
     }
 
     public void ShowUI()
     {
         invenPanel.SetActive(true);
+
+        // 스크롤 뷰 포지션 초기화
+        scrollTransform.position = Vector3.zero;
 
         ConnectSoul();
 
@@ -61,6 +91,9 @@ public class SoulInfoView : MonoBehaviour, IUIBase
     {
         Debug.LogAssertion("소울 인포 UI 업데이트");
         levelTexts[(int)LevelType.Soul].text = $"Lv. {soul.level}";
+
+        // TODO : 소울 스텟도 업데이트 되어야함
+        UpdateStatus();
     }
 
     public void UpdateDefault()
@@ -79,6 +112,9 @@ public class SoulInfoView : MonoBehaviour, IUIBase
     {
         Debug.LogAssertion("소울 인포 패시브 업데이트");
         levelTexts[(int)LevelType.Passive].text = $"Lv. {soul.Skills[(int)SkillType.Passive].level}";
+
+        // TODO : 소울 스텟도 업데이트 되어야함
+        UpdateStatus();
     }
 
     private void ConnectSoul()
@@ -107,5 +143,20 @@ public class SoulInfoView : MonoBehaviour, IUIBase
         skillDescriptionTexts[(int)LevelType.Default].text = $"Lv. {soul.Skills[(int)SkillType.Default].description}";
         skillDescriptionTexts[(int)LevelType.Ultimate].text = $"Lv. {soul.Skills[(int)SkillType.Ultimate].description}";
         skillDescriptionTexts[(int)LevelType.Passive].text = $"Lv. {soul.Skills[(int)SkillType.Passive].description}";
+    }
+
+    private void UpdateStatus()
+    {
+        levelText.text = $"Lv. {soul.level}";
+        powerText.text = Utils.FormatBigInteger(soul.statHandler.CurrentStat.totalDamage);
+        statusText[(int)StatusType.Hp].text = Utils.FormatBigInteger(soul.statHandler.CurrentStat.maxHealth);
+        statusText[(int)StatusType.Atk].text = Utils.FormatBigInteger(soul.statHandler.CurrentStat.atk);
+        statusText[(int)StatusType.Def].text = Utils.FormatBigInteger(soul.statHandler.CurrentStat.def);
+        statusText[(int)StatusType.MoveSpeed].text = $"{soul.statHandler.CurrentStat.moveSpeed + 100f}%";
+        statusText[(int)StatusType.AtkSpeed].text = $"{soul.statHandler.CurrentStat.atkSpeed + 100f}%";
+        statusText[(int)StatusType.ReduceDamage].text = soul.statHandler.CurrentStat.reduceDamage.ToString();
+        statusText[(int)StatusType.CritChance].text = $"{soul.statHandler.CurrentStat.critChance}%";
+        statusText[(int)StatusType.CritDamage].text = $"{soul.statHandler.CurrentStat.critDamage}%";
+        statusText[(int)StatusType.CoolDown].text = $"{soul.statHandler.CurrentStat.coolDown}%";
     }
 }

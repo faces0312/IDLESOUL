@@ -33,6 +33,7 @@ public class SoulInfoModel : UIModel
     public void PassiveLevelUp(int amount)
     {
         soul.UpgradeSkill(SkillType.Passive, amount);
+        soul.ApplyPassiveSkill();
         OnPassiveSkillChanged?.Invoke();
     }
 }

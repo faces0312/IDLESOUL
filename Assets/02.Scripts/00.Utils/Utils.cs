@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using ScottGarland;
 
 public static class Utils
 {
@@ -48,4 +49,40 @@ public static class Utils
         return current != 0 && max != 0 ? current / max : 0;
     }
 
+    /// <summary>
+    /// BigInteger 1만 단위 표기
+    /// </summary>
+    private static readonly string[] UNITS = { "", "만", "억", "조", "경", "해" };
+
+    public static string FormatBigInteger(BigInteger value)
+    {
+        int unitIndex = 0;
+        BigInteger threshold = 10000;
+
+        string convert = string.Empty;
+
+        // 자릿수 계산하기
+        while (value >= threshold && unitIndex < UNITS.Length - 1)
+        {
+            BigInteger mod = value % 10000;
+
+            string temp = convert;
+
+            if (mod != 0)
+                convert = $"{mod}{UNITS[unitIndex]}";
+            else
+                convert = string.Empty;
+
+            convert += temp;
+
+            value /= 10000;
+            unitIndex++;
+        }
+
+        string result = $"{value}{UNITS[unitIndex]}";
+
+        result += convert;
+
+        return result;
+    }
 }

@@ -15,7 +15,7 @@ public enum JobType
 public abstract class Soul
 {
     protected SoulDB tempDB;
-    protected StatHandler statHandler;
+    public StatHandler statHandler;
 
     public string soulName;
     public string description;
