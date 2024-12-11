@@ -111,13 +111,18 @@ public class Player : BaseCharacter
 
     public void OnClickRegisterSoul()
     {
-        GameManager.Instance.player.PlayerSouls.RegisterSoul("마법사 영혼", new SoulMagician(11000));
-        GameManager.Instance.player.PlayerSouls.RegisterSoul("전사 영혼", new SoulKnight(11001));
-        GameManager.Instance.player.PlayerSouls.EquipSoul("마법사 영혼", 0);
-        GameManager.Instance.player.PlayerSouls.EquipSoul("전사 영혼", 1);
-        GameManager.Instance.player.OnUpdateSoulStats?.Invoke();    // 착용 시 패시브 업데이트
+        //GameManager.Instance.player.PlayerSouls.RegisterSoul("마법사 영혼", new SoulMagician(11000));
+        PlayerSouls.RegisterSoul("마법사 영혼", new SoulMagician(11000));
+        //GameManager.Instance.player.PlayerSouls.RegisterSoul("전사 영혼", new SoulKnight(11001));
+        PlayerSouls.RegisterSoul("전사 영혼", new SoulKnight(11001));
 
-        GameManager.Instance.player.PlayerSouls.SpawnSoul(0);
+        //GameManager.Instance.player.PlayerSouls.EquipSoul("마법사 영혼", 0);
+        PlayerSouls.EquipSoul("마법사 영혼", 0);
+        //GameManager.Instance.player.PlayerSouls.EquipSoul("전사 영혼", 1);
+        PlayerSouls.EquipSoul("전사 영혼", 1);
+        OnUpdateSoulStats?.Invoke();    // 착용 시 패시브 업데이트
+
+        PlayerSouls.SpawnSoul(0);
 
         //StatViewUpdate();
     }
