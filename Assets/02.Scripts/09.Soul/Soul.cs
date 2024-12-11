@@ -15,13 +15,13 @@ public enum JobType
 public abstract class Soul
 {
     protected SoulDB tempDB;
-    protected StatHandler statHandler;
+    public StatHandler statHandler;
 
-    protected string soulName;
-    protected string description;
+    public string soulName;
+    public string description;
 
     protected int iD;
-    protected int level = 1;
+    public int level = 1;
     protected int maxLevel = 100;
     protected int levelUpCost;
 

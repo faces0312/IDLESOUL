@@ -13,6 +13,8 @@ public class PlayerSouls : MonoBehaviour
 
     private GameObject[] spawnEffects = new GameObject[MAX_SOUL];
 
+    public SoulInventory SoulInventory { get; set; }
+
     public event Action<Sprite> OnUpdateDefaultSprite;
     public event Action<Sprite> OnUpdateUltimateSprite;
 
@@ -35,6 +37,7 @@ public class PlayerSouls : MonoBehaviour
     public void RegisterSoul(string name, Soul soul)
     {
         soulDic.Add(name, soul);
+        SoulInventory.AddSoul(soul);
     }
 
     // 소울 장착

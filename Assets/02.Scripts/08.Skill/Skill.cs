@@ -21,10 +21,10 @@ public abstract class Skill : ISkill
 {
     protected int id;
 
-    protected string skillName;
-    protected string description;
+    public string skillName;
+    public string description;
 
-    protected int level = 1;
+    public int level = 1;
     protected int maxLevel;
     protected int upgradeCost;
 

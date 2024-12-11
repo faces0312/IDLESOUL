@@ -11,7 +11,6 @@ public class KnightPassiveSkill : Skill
     {
         passiveStat = new Stat();
         passiveStat.def = (int)value * level;
-        // TODO : 플레이어 스텟 불러오기 => 적용 확인 시 주석 삭제
         playerStatHandler = GameManager.Instance.player.StatHandler;
     }
 

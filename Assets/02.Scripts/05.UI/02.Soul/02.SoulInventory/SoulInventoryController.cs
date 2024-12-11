@@ -16,13 +16,13 @@ public class SoulInventoryController : UIController
 
     public override void OnShow()
     {
-        view.HideUI();
+        view.ShowUI();
+        UpdateView();
     }
 
     public override void OnHide()
     {
-        view.ShowUI();
-        UpdateView();
+        view.HideUI();
     }
 
     public override void UpdateView()

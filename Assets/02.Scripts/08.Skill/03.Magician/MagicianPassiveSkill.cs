@@ -15,7 +15,6 @@ public class MagicianPassiveSkill : Skill
         passiveStat.atk = (int)value * level;
         // TODO : 강화 공격용 수치
         PassiveValue = value * level;
-        // TODO : 플레이어 스텟 불러오기 => 적용 확인 시 주석 삭제
         playerStatHandler = GameManager.Instance.player.StatHandler;
     }
 

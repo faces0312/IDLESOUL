@@ -95,22 +95,22 @@ public class StatHandler
         // 추가 스텟을 새로 계산해서 추가
         Stat calcStat = new Stat();
 
-        calcStat.health = BigInteger.Add(currentStat.maxHealth, BigInteger.Divide(BigInteger.Multiply(currentStat.maxHealth, playerStat.maxHealth), 100));
+        //calcStat.health = BigInteger.Add(currentStat.maxHealth, BigInteger.Divide(BigInteger.Multiply(currentStat.maxHealth, playerStat.maxHealth), 100));
+        calcStat.health = BigInteger.Divide(BigInteger.Multiply(currentStat.maxHealth, playerStat.maxHealth), 100);
         calcStat.maxHealth = calcStat.health;
-        calcStat.atk = BigInteger.Add(currentStat.atk, BigInteger.Divide(BigInteger.Multiply(currentStat.atk, playerStat.atk), 100));
+        calcStat.atk = BigInteger.Divide(BigInteger.Multiply(currentStat.atk, playerStat.atk), 100);
 
         BigInteger mul = BigInteger.Multiply(currentStat.def, playerStat.def);
         BigInteger div = BigInteger.Divide(mul, 100);
+        calcStat.def = div;
 
-        calcStat.def = BigInteger.Add(currentStat.def, div);
+        calcStat.reduceDamage = currentStat.reduceDamage + (playerStat.reduceDamage * 0.01f + 1);
+        calcStat.critChance = currentStat.critChance + (playerStat.critChance * 0.01f + 1);
+        calcStat.critDamage = currentStat.critDamage + (playerStat.critDamage * 0.01f + 1);
 
-        calcStat.reduceDamage = currentStat.reduceDamage * (playerStat.reduceDamage * 0.01f + 1);
-        calcStat.critChance = currentStat.critChance * (playerStat.critChance * 0.01f + 1);
-        calcStat.critDamage = currentStat.critDamage * (playerStat.critDamage * 0.01f + 1);
-
-        calcStat.atkSpeed = currentStat.atkSpeed * (playerStat.atkSpeed * 0.01f + 1);
-        calcStat.moveSpeed = currentStat.moveSpeed * (playerStat.moveSpeed * 0.01f + 1);
-        calcStat.coolDown = currentStat.coolDown * (playerStat.coolDown * 0.01f + 1);   // TODO : 0 일때 처리
+        calcStat.atkSpeed = currentStat.atkSpeed + (playerStat.atkSpeed * 0.01f + 1);
+        calcStat.moveSpeed = currentStat.moveSpeed + (playerStat.moveSpeed * 0.01f + 1);
+        calcStat.coolDown = currentStat.coolDown + (playerStat.coolDown * 0.01f + 1);   // TODO : 0 일때 처리
 
         calcStat -= currentStat;
 

@@ -6,16 +6,6 @@ public class EnemyAnimationController : MonoBehaviour
 {
     public Enemy enemy;
 
-    public void RangedAttack()
-    {
-        enemy.stateMachine.AttackState.RangedAttack();
-    }
-
-    public void MeleeAttackStart()
-    {
-        enemy.stateMachine.AttackState.MeleeAttack();
-    }
-
     public void MeleeAttackBoss()
     {
         enemy.stateMachine.AttackState.MeleeAttackBoss();
@@ -54,8 +44,27 @@ public class EnemyAnimationController : MonoBehaviour
         enemy.Die();
     }
 
+    public void GoblinAttackStart()
+    {
+        enemy.stateMachine.AttackState.MeleeAttack(6000);
+    }
+    public void SkeletonAttackStart()
+    {
+        enemy.stateMachine.AttackState.MeleeAttack(6004);
+    }
+
     public void MeleeAttackEnd()
     {
         enemy.stateMachine.AttackState.meleeAttack.SetActive(false);
+    }
+
+    public void EnergyBoltRangedAttack()
+    {
+        enemy.stateMachine.AttackState.RangedAttack(6001);
+    }
+
+    public void ArrowRangedAttack()
+    {
+        enemy.stateMachine.AttackState.RangedAttack(6005);
     }
 }

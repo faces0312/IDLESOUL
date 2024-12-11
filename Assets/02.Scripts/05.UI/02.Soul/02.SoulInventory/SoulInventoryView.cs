@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +23,6 @@ public class SoulInventoryView : MonoBehaviour, IUIBase
 
     public void UpdateUI()
     {
-        Debug.LogAssertion("¼Ò¿ï ÀÎº¥Åä¸® UI ¾÷µ¥ÀÌÆ®");
+        Debug.LogAssertion("ì†Œìš¸ ì¸ë²¤í† ë¦¬ UI ì—…ë°ì´íŠ¸");
     }
 }
