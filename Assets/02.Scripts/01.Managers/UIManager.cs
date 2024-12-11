@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -44,5 +45,15 @@ public class UIManager : Singleton<UIManager>
         {
             controller.UpdateView();
         }
+    }
+
+    public T GetUIController<T> (string key) where T : UIController
+    {
+        if (controllers.TryGetValue(key, out UIController controller))
+        {
+            return controller as T;
+        }
+
+        return null;
     }
 }
