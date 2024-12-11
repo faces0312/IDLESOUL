@@ -23243,7 +23243,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lv. 99
+  m_text: "\uB808\uBCA8 \uC5C5"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aedbfb48c6da0484686b4ef9f1c5118a, type: 2}
   m_sharedMaterial: {fileID: 7692690509805904559, guid: aedbfb48c6da0484686b4ef9f1c5118a, type: 2}
@@ -33646,11 +33646,23 @@ MonoBehaviour:
   defaultSkill: {fileID: 259024499678937858}
   ultimateSkill: {fileID: 1324065543766964345}
   passiveSkill: {fileID: 3945976792185764332}
-  levelText:
-  - {fileID: 2505917361242366285}
+  levelTexts:
   - {fileID: 7191267874808758017}
   - {fileID: 1089695713751448683}
   - {fileID: 6434776000971957912}
+  - {fileID: 1793713780855805670}
+  icons:
+  - {fileID: 4184960253466959698}
+  - {fileID: 2959001755524088887}
+  - {fileID: 6675220231007521559}
+  skillNameTexts:
+  - {fileID: 2498500234224041442}
+  - {fileID: 2107850722846967800}
+  - {fileID: 893052839408268411}
+  skillDescriptionTexts:
+  - {fileID: 5525477099368979163}
+  - {fileID: 5695886907075565288}
+  - {fileID: 3185421043550409024}
 --- !u!114 &8625497983166026705
 MonoBehaviour:
   m_ObjectHideFlags: 0
