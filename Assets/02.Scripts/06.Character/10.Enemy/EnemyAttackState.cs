@@ -46,12 +46,12 @@ public class EnemyAttackState : EnemyBaseState
         StartAnimationTrigger(animatorHashData.AttackParameterHash);
     }
 
-    public void MeleeAttack()
+    public void MeleeAttack(int id)
     {
         if (stateMachine.Enemy.transform.localScale.x > 0)
-            meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(6000, new Vector3(stateMachine.Enemy.transform.position.x - 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 0, 90));
+            meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(id, new Vector3(stateMachine.Enemy.transform.position.x - 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 0, 90));
         else
-            meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(6000, new Vector3(stateMachine.Enemy.transform.position.x + 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 180, 90));
+            meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(id, new Vector3(stateMachine.Enemy.transform.position.x + 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 180, 90));
 
         EnemyProjectile projectile = meleeAttack.GetComponent<EnemyProjectile>();
         projectile.attack = BigInteger.ToInt32(stateMachine.Enemy.StatHandler.CurrentStat.atk);
@@ -68,9 +68,9 @@ public class EnemyAttackState : EnemyBaseState
         projectile.attack = BigInteger.ToInt32(stateMachine.Enemy.StatHandler.CurrentStat.atk);
     }
 
-    public void RangedAttack()
+    public void RangedAttack(int id)
     {
-        GameObject rangedAttack = EnemyManager.Instance.EnemyAttackSpawn(6001, stateMachine.Enemy.transform.position, Quaternion.Euler(Vector3.zero));
+        GameObject rangedAttack = EnemyManager.Instance.EnemyAttackSpawn(id, stateMachine.Enemy.transform.position, Quaternion.Euler(Vector3.zero));
 
         if (rangedAttack != null)
         {
