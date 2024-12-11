@@ -3,9 +3,11 @@ using Enums;
 using System.Collections.Generic;
 using System;
 using TMPro;
+using UnityEngine.UI;
 
 public class StageSelector : MonoBehaviour
 {
+    [SerializeField] private Button exit;
     private RecycleScrollX recycleScroll;
     private List<StageDB> stageData;
     private List<StageDB> sortedData;
@@ -13,11 +15,15 @@ public class StageSelector : MonoBehaviour
 
     private void Start()
     {
-        this.gameObject.SetActive(false);
+        exit.onClick.AddListener(() =>
+        {
+            this.gameObject.SetActive(false);
+        });
         sortedData = new List<StageDB>();
         stageData = DataManager.Instance.StageDB.ItemsList;
         recycleScroll = GetComponent<RecycleScrollX>();
         //recycleScroll.SetContent += SetStage;
+        this.gameObject.SetActive(false);
     }
 
     public void SetStageType(StageType stageType)

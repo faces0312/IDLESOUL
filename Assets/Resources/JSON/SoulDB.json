@@ -2,9 +2,9 @@
   "Items": [
     {
       "key": 11000,
-      "Name": "딜러영혼",
-      "Descripton": "딜러 영혼이다.",
-      "JobType": 0,
+      "Name": "클라리스",
+      "Descripton": "어디선가 누군가의 눈물이 마를 때. 그곳에 제가 있을 거에요.",
+      "JobType": 1,
       "Health": 100,
       "Attack": 50,
       "Defence": 25,
@@ -15,13 +15,15 @@
       "AtkSpeed": 1.2,
       "MoveSpeed": 1,
       "CoolDown": 0,
-      "MaxExp": 100
+      "MaxExp": 100,
+      "IconPath": "Sprite/SoulSprite/SoulIcon/Claris",
+      "SpritePath": "Sprite/SoulSprite/SoulFull/Claris"
     },
     {
       "key": 11001,
-      "Name": "탱커영혼",
-      "Descripton": "탱커 영혼이다.",
-      "JobType": 1,
+      "Name": "플뢰르",
+      "Descripton": "밤은 나의 무대야. 그리고 너는 그 무대의 관객이 될꺼야",
+      "JobType": 2,
       "Health": 200,
       "Attack": 25,
       "Defence": 50,
@@ -32,13 +34,15 @@
       "AtkSpeed": 0.8,
       "MoveSpeed": 0.7,
       "CoolDown": 0,
-      "MaxExp": 100
+      "MaxExp": 100,
+      "IconPath": "Sprite/SoulSprite/SoulIcon/Fleur",
+      "SpritePath": "Sprite/SoulSprite/SoulFull/Fleur"
     },
     {
       "key": 11002,
-      "Name": "힐러영혼",
-      "Descripton": "힐러 영혼이다.",
-      "JobType": 2,
+      "Name": "루엔",
+      "Descripton": "숲의 심장이 멈춘 날 내 생명도 그곳에 묻혔지 그러나 자연은 나를 버리지 않았어",
+      "JobType": 3,
       "Health": 80,
       "Attack": 10,
       "Defence": 15,
@@ -49,7 +53,28 @@
       "AtkSpeed": 1,
       "MoveSpeed": 1.2,
       "CoolDown": 0,
-      "MaxExp": 100
+      "MaxExp": 100,
+      "IconPath": "Sprite/SoulSprite/SoulIcon/Luen",
+      "SpritePath": "Sprite/SoulSprite/SoulFull/Luen"
+    },
+    {
+      "key": 11003,
+      "Name": "카르밀라",
+      "Descripton": "얼음 속에서 시들어가는 장미의 가시가 얼마나 억센 줄 알아? 지금 보여줄게",
+      "JobType": 1,
+      "Health": 100,
+      "Attack": 50,
+      "Defence": 25,
+      "ReduceDamage": 5,
+      "AttackSpeed": 3,
+      "CriticalRate": 15,
+      "CriticalDamage": 110,
+      "AtkSpeed": 1.2,
+      "MoveSpeed": 1,
+      "CoolDown": 0,
+      "MaxExp": 100,
+      "IconPath": "Sprite/SoulSprite/SoulIcon/Carmilla",
+      "SpritePath": "Sprite/SoulSprite/SoulFull/Carmilla"
     }
   ]
 }

@@ -96,6 +96,16 @@ public class SoulDB : IGachableDB
     /// </summary>
     public float CoolTime;
 
+    /// <summary>
+    /// IconPath
+    /// </summary>
+    public string IconPath;
+
+    /// <summary>
+    /// SpritePath
+    /// </summary>
+    public string SpritePath;
+
     public int GetKey()
     {
         return key;

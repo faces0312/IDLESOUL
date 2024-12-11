@@ -8,6 +8,7 @@ public class DungeonSelector : MonoBehaviour
     [SerializeField] private Button daily;
     [SerializeField] private Button exp;
     [SerializeField] private Button upgrade;
+    [SerializeField] private Button exit;
 
     private void Awake()
     {
@@ -31,6 +32,10 @@ public class DungeonSelector : MonoBehaviour
         {
             StageSelector.SetStageType(Enums.StageType.Upgrade);
             StageSelector.gameObject.SetActive(true);
+        });
+        exit.onClick.AddListener(() =>
+        {
+            this.gameObject.SetActive(false);
         });
     }
 }

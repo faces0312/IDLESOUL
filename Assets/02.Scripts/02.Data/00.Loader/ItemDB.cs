@@ -101,6 +101,11 @@ public class ItemDB : IGachableDB
     /// </summary>
     public string IconPath;
 
+    /// <summary>
+    /// SpritePath
+    /// </summary>
+    public string SpritePath;
+
     public int GetKey()
     {
         return key;
