@@ -11,7 +11,7 @@ public interface IUIBase
     void UpdateUI();
 }
 
-public class UIModel : MonoBehaviour
+public class UIModel
 {
     // 상태 관리
     // 공통 데이터

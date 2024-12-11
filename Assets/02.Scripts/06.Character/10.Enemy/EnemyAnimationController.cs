@@ -36,6 +36,24 @@ public class EnemyAnimationController : MonoBehaviour
         enemy.stateMachine.ChangeState(enemy.stateMachine.MoveState);
     }
 
+    public void EnemyBossDie()
+    {
+        if (enemy is BossEnemy bossEnemy)
+        {
+            // skillZone 비활성화
+            foreach (Transform child in bossEnemy.skillZone.transform)
+                child.gameObject.SetActive(false);
+            bossEnemy.skillChargingEffect.SetActive(false);
+        }
+        enemy.Die();
+        GameManager.Instance.GameClear();
+    }
+
+    public void EnemyDie()
+    {
+        enemy.Die();
+    }
+
     public void MeleeAttackEnd()
     {
         enemy.stateMachine.AttackState.meleeAttack.SetActive(false);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using ScottGarland;
 using UnityEngine.UI;
 
 public enum AttackType
@@ -18,6 +19,7 @@ public abstract class Enemy : BaseCharacter
 
     [Header("References")]
     public GameObject target;
+    private CapsuleCollider collider;
     //public Rigidbody rb;
     public AnimatorHashData animatorHashData;
     public Animator animator;
@@ -39,34 +41,35 @@ public abstract class Enemy : BaseCharacter
     {
         base.Awake();
         rb = GetComponent<Rigidbody>();
+        collider = GetComponent<CapsuleCollider>();
         animator = GetComponentInChildren<Animator>();
         animatorHashData = new AnimatorHashData();
         animatorHashData.Initialize();
-        //target = GameManager.Instance.player;
         stateMachine = new EnemyStateMachine(this);
-        target = GameObject.Find("Player");
+        target = GameManager.Instance.player.gameObject;
 
-       //HP 게임
+        //HP 게임
     }
     protected virtual void Start()
     {
         Initialize();
         stateMachine.Initialize();
-        enemyDB.Distance = 5f;
-        Debug.Log(statHandler.CurrentStat.health);
+        HpUpdate();
+        //Debug.Log(statHandler.CurrentStat.health);
     }
 
     public void Initialize()
     {
+        collider.enabled = true;
         OnEventTargetRemove += GameManager.Instance._player.targetSearch.TargetClear;
 
         statHandler = new StatHandler(StatType.Enemy, enemyDB.key);
 
         statHandler.CurrentStat.iD = enemyDB.key;
-        statHandler.CurrentStat.health = new ScottGarland.BigInteger((long)enemyDB.Health);
-        statHandler.CurrentStat.maxHealth = new ScottGarland.BigInteger((long)enemyDB.Health);
-        statHandler.CurrentStat.atk = new ScottGarland.BigInteger((long)enemyDB.Attack);
-        statHandler.CurrentStat.def = new ScottGarland.BigInteger((long)enemyDB.Defence);
+        statHandler.CurrentStat.health = new  BigInteger((long)enemyDB.Health);
+        statHandler.CurrentStat.maxHealth = new BigInteger((long)enemyDB.Health);
+        statHandler.CurrentStat.atk = new BigInteger((long)enemyDB.Attack);
+        statHandler.CurrentStat.def = new BigInteger((long)enemyDB.Defence);
         statHandler.CurrentStat.moveSpeed = enemyDB.MoveSpeed;
         statHandler.CurrentStat.atkSpeed = enemyDB.AttackSpeed;
         statHandler.CurrentStat.critChance = enemyDB.CritChance;
@@ -75,12 +78,30 @@ public abstract class Enemy : BaseCharacter
 
     public override void TakeDamage(float damage)
     {
-        base.TakeDamage(damage);
+        if (statHandler.CurrentStat.health <= 0)
+            return;
 
+        base.TakeDamage(damage);
+        HpUpdate();
         if (statHandler.CurrentStat.health <= 0)
         {
-            Die();
+            GameManager.Instance.enemies.Remove(gameObject);
+            OnEventTargetRemove?.Invoke();
+            collider.enabled = false;
+            animator.SetTrigger("Die");
         }
+    }
+
+    public void HpUpdate()
+    {
+        float maxHelth = BigInteger.ToInt32(statHandler.CurrentStat.maxHealth);
+        float curHelth = BigInteger.ToInt32(statHandler.CurrentStat.health);
+        healthBar.value = curHelth/maxHelth;
+
+        if (healthBar.value < 1 && healthBar.value > 0)
+            healthBar.gameObject.SetActive(true);
+        else
+            healthBar.gameObject.SetActive(false);
     }
 
     public void Die()

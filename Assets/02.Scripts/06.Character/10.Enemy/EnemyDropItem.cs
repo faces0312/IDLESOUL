@@ -15,10 +15,10 @@ public class EnemyDropItem : MonoBehaviour
     private void DropItem()
     {
         //골드, 다이아 드롭
-        Debug.Log(GameManager.Instance.player.UserData.Gold);
+        //Debug.Log(GameManager.Instance.player.UserData.Gold);
         GameManager.Instance.player.UserData.Gold += enemy.enemyDB.DropGold;
         GameManager.Instance.player.UserData.Diamonds += enemy.enemyDB.DropDia;
-        Debug.Log(GameManager.Instance.player.UserData.Gold);
+        //Debug.Log(GameManager.Instance.player.UserData.Gold);
 
         GameManager.Instance.StageProgressModel.AddCurEnemyCount(1);
     }

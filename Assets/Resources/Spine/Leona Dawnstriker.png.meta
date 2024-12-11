@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -147,7 +147,1078 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Leona Dawnstriker_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 666
+        width: 383
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dc8b20e29a8212488557e62e31fe4e4
+      internalID: -1597689632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_1
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 665
+        width: 368
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d72146bb723639940a0c8f8bf06fe26d
+      internalID: -204251263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_2
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 632
+        width: 404
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9875f03d44f585d4199ee8f3c447c033
+      internalID: 381318448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_3
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 403
+        width: 131
+        height: 372
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6ac1caac1dc43c4c980c4a42a93e504
+      internalID: -725817363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_4
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 526
+        width: 75
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f07519c88d2dbdd4e9cb334fac48d2f9
+      internalID: 1802679175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_5
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 526
+        width: 75
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 162c6359041744d4b83421261875c4da
+      internalID: -2053958437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_6
+      rect:
+        serializedVersion: 2
+        x: 1450
+        y: 608
+        width: 79
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38b10778cb0811e419303fcf11d3f65c
+      internalID: 1257939303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_7
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 109
+        height: 662
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66b5227cb69e23242a7538a0f7371efd
+      internalID: -1613699144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_8
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 542
+        width: 292
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c00d7b31b2d7a254a893de6580d7d073
+      internalID: -1020742971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_9
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 482
+        width: 182
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8dd4b8a0b81cee44a8b5554532bd35c
+      internalID: 819779159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_10
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 632
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fcd0f250d07f1248b1a8a9dc000515d
+      internalID: 1734931319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_11
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 632
+        width: 34
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39e0e56a46517864684d300ef57b19c6
+      internalID: -2095847070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_12
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 632
+        width: 34
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c1d7b7866c053247a983fc428a68761
+      internalID: 96392682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_13
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 632
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58b34a2594a93a94bbd42d8ad3de6f70
+      internalID: 1854919690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_14
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 648
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4343dd82f25efa44d8fefe5e9da0dec3
+      internalID: 1550624963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_15
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 632
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 073d92efa58efe34c9a08f604ef945c0
+      internalID: -920731518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_16
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 2
+        width: 83
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31643046df43b574ea9614478a5ebd7e
+      internalID: 1436348180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_17
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 2
+        width: 114
+        height: 535
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55ddccfc927ef3745997917a10ad42b7
+      internalID: -255682520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_18
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 522
+        width: 26
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfd2e4b6f4e00724ca81fae459af4f60
+      internalID: 16246521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_19
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 520
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e49825ee28c2cbe4cad0db5dafe02551
+      internalID: -2017356206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_20
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 516
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12a968fd10963834b9a6caae2c552df3
+      internalID: -2035814087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_21
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 479
+        width: 390
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8be98467e96cc7d4c8bcbbdae59513a6
+      internalID: -962001468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_22
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 475
+        width: 151
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a53463b90121174c8edc2ba75a6b73a
+      internalID: -574637338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_23
+      rect:
+        serializedVersion: 2
+        x: 1450
+        y: 526
+        width: 198
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f90da804da7bb04a82aaa61fce3daa0
+      internalID: 238444420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_24
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 482
+        width: 23
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 872864b9155c0ce4796e361b05cbe5a1
+      internalID: -706134166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_25
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 482
+        width: 34
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fedd0329135f394fab859f48d473b4e
+      internalID: 706168796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_26
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 482
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef2cc07654ae3e94d8c847dca2babce3
+      internalID: -1329241880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_27
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 457
+        width: 228
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46bbd6701aee184439821443014bcdcb
+      internalID: 758074538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_28
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 507
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c5b4274606bcdf459e067536a5c4a78
+      internalID: 834864218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_29
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 2
+        width: 194
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4874b93aa3ec824ba294af4b72f88cc
+      internalID: 1493051513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_30
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 2
+        width: 105
+        height: 475
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab9312e62f6c84349bb59bc3a6620e1d
+      internalID: -1411846129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_31
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 426
+        width: 239
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84c12c53e3f8f8b49b4150b16f871c6d
+      internalID: -1005163379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_32
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 456
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26e50397af1a37448bc321f2eccb4ada
+      internalID: 691466646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_33
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 413
+        width: 191
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cd4aa7f61622eb43a373c4810132ad1
+      internalID: -2071743138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_34
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 455
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49342bb4c15f8214181a56f191178bf3
+      internalID: 1343513724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_35
+      rect:
+        serializedVersion: 2
+        x: 1544
+        y: 289
+        width: 94
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0782a18ab798754c98435b780c82d07
+      internalID: 817157313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_36
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 2
+        width: 113
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77da3742e89748e4bbbbd8bf22fe41f1
+      internalID: -767623664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_37
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 2
+        width: 96
+        height: 419
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97c1cf8f4f1b18849b0bc2771460ffa1
+      internalID: 532439189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_38
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 2
+        width: 101
+        height: 409
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69d4c9f95664f2c479e1d8481cd19baf
+      internalID: 835995465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_39
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 2
+        width: 81
+        height: 406
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e710627e5582d0847aace750f6cde924
+      internalID: 1737000351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_40
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 2
+        width: 132
+        height: 399
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 012b0aa07cc09a343b0ffe368b0278e2
+      internalID: -13583744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_41
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 2
+        width: 122
+        height: 380
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8d1fea95cdcea14eaf6d0fa7c230843
+      internalID: -1348489875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_42
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 375
+        width: 231
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1148a1747f2e8d64393a0911a5c2c5ee
+      internalID: 899581863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_43
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 299
+        width: 233
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ab2d103547513249a11ab0e9de4389b
+      internalID: 1904416572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_44
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 299
+        width: 22
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b1f90f7bfcd6b546a3014934b6b11e7
+      internalID: 1287164522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_45
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 252
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00e4fa032a17f2f4fbc0e39e3615eeed
+      internalID: -132501214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_46
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 225
+        width: 216
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f769d8242912014f99d4f46c685371f
+      internalID: 2130112390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_47
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 140
+        width: 147
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 840d1d75064de7241897ce0a3fa010c9
+      internalID: -1210058522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_48
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 140
+        width: 244
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 849be58c33a742642ad740e9e29ad7d6
+      internalID: -616059273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_49
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 73
+        width: 326
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d17683fb26393b41ae76901bd64ffa2
+      internalID: -1795962687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leona Dawnstriker_50
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 2
+        width: 372
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c228a2be54e0ba4eab81929d0a38e4c
+      internalID: 1348228820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -158,7 +1229,58 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Leona Dawnstriker_0: -1597689632
+      Leona Dawnstriker_1: -204251263
+      Leona Dawnstriker_10: 1734931319
+      Leona Dawnstriker_11: -2095847070
+      Leona Dawnstriker_12: 96392682
+      Leona Dawnstriker_13: 1854919690
+      Leona Dawnstriker_14: 1550624963
+      Leona Dawnstriker_15: -920731518
+      Leona Dawnstriker_16: 1436348180
+      Leona Dawnstriker_17: -255682520
+      Leona Dawnstriker_18: 16246521
+      Leona Dawnstriker_19: -2017356206
+      Leona Dawnstriker_2: 381318448
+      Leona Dawnstriker_20: -2035814087
+      Leona Dawnstriker_21: -962001468
+      Leona Dawnstriker_22: -574637338
+      Leona Dawnstriker_23: 238444420
+      Leona Dawnstriker_24: -706134166
+      Leona Dawnstriker_25: 706168796
+      Leona Dawnstriker_26: -1329241880
+      Leona Dawnstriker_27: 758074538
+      Leona Dawnstriker_28: 834864218
+      Leona Dawnstriker_29: 1493051513
+      Leona Dawnstriker_3: -725817363
+      Leona Dawnstriker_30: -1411846129
+      Leona Dawnstriker_31: -1005163379
+      Leona Dawnstriker_32: 691466646
+      Leona Dawnstriker_33: -2071743138
+      Leona Dawnstriker_34: 1343513724
+      Leona Dawnstriker_35: 817157313
+      Leona Dawnstriker_36: -767623664
+      Leona Dawnstriker_37: 532439189
+      Leona Dawnstriker_38: 835995465
+      Leona Dawnstriker_39: 1737000351
+      Leona Dawnstriker_4: 1802679175
+      Leona Dawnstriker_40: -13583744
+      Leona Dawnstriker_41: -1348489875
+      Leona Dawnstriker_42: 899581863
+      Leona Dawnstriker_43: 1904416572
+      Leona Dawnstriker_44: 1287164522
+      Leona Dawnstriker_45: -132501214
+      Leona Dawnstriker_46: 2130112390
+      Leona Dawnstriker_47: -1210058522
+      Leona Dawnstriker_48: -616059273
+      Leona Dawnstriker_49: -1795962687
+      Leona Dawnstriker_5: -2053958437
+      Leona Dawnstriker_50: 1348228820
+      Leona Dawnstriker_6: 1257939303
+      Leona Dawnstriker_7: -1613699144
+      Leona Dawnstriker_8: -1020742971
+      Leona Dawnstriker_9: 819779159
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

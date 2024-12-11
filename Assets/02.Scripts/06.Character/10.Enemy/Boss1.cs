@@ -10,6 +10,7 @@ public class Boss1 : BossEnemy
     protected override void Start()
     {
         base.Start();
+        healthBar.gameObject.SetActive(true);
         skill = new List<EnemySkillBase>
         {
             new EnemySkill1(this, stateMachine)

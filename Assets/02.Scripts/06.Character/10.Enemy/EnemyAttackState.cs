@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ScottGarland;
 
 public class EnemyAttackState : EnemyBaseState
 {
@@ -27,7 +28,7 @@ public class EnemyAttackState : EnemyBaseState
         base.Update();
         attackSpeedTmp += Time.deltaTime;
 
-        if (attackSpeedTmp >= 3f)//stateMachine.Enemy.enemyDB.AttackSpeed)
+        if (attackSpeedTmp >= stateMachine.Enemy.StatHandler.CurrentStat.atkSpeed)
         {
             Attack();
             attackSpeedTmp = 0f;
@@ -43,15 +44,6 @@ public class EnemyAttackState : EnemyBaseState
     public void Attack()
     {
         StartAnimationTrigger(animatorHashData.AttackParameterHash);
-        switch (stateMachine.Enemy.attackType)
-        {
-            case AttackType.Melee:
-                //MeleeAttack();
-                break;
-            case AttackType.Ranged:
-                //Invoke("RangedAttack", 0.45f);
-                break;
-        }
     }
 
     public void MeleeAttack()
@@ -60,6 +52,9 @@ public class EnemyAttackState : EnemyBaseState
             meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(6000, new Vector3(stateMachine.Enemy.transform.position.x - 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 0, 90));
         else
             meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(6000, new Vector3(stateMachine.Enemy.transform.position.x + 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 180, 90));
+
+        EnemyProjectile projectile = meleeAttack.GetComponent<EnemyProjectile>();
+        projectile.attack = BigInteger.ToInt32(stateMachine.Enemy.StatHandler.CurrentStat.atk);
     }
 
     public void MeleeAttackBoss()
@@ -68,6 +63,9 @@ public class EnemyAttackState : EnemyBaseState
             meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(6002, new Vector3(stateMachine.Enemy.transform.position.x - 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 0, 90));
         else
             meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(6002, new Vector3(stateMachine.Enemy.transform.position.x + 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 180, 90));
+
+        EnemyProjectile projectile = meleeAttack.GetComponent<EnemyProjectile>();
+        projectile.attack = BigInteger.ToInt32(stateMachine.Enemy.StatHandler.CurrentStat.atk);
     }
 
     public void RangedAttack()
@@ -78,6 +76,7 @@ public class EnemyAttackState : EnemyBaseState
         {
             // 필요한 경우 추가 설정
             EnemyProjectile projectile = rangedAttack.GetComponent<EnemyProjectile>();
+            projectile.attack = BigInteger.ToInt32(stateMachine.Enemy.StatHandler.CurrentStat.atk);
             if (projectile != null)
             {
                 Vector3 targetPosition = GameManager.Instance._player.transform.position;

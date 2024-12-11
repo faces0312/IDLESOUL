@@ -12,10 +12,12 @@ public class EnemyManager : Singleton<EnemyManager>
 
     //ObjectPoolManager의 Dictionary id
     private Dictionary<int, Enemy> enemyPrefabs = new Dictionary<int, Enemy>();
-    private const string ENEMY_BOSS_POOL_KEY = "EnemyBoss";
-    private const string ENEMY_POOL_KEY = "Enemies";
-    private const string ENEMY_EFFECT_POOL_KEY = "EnemyEffect";
-    private const int INITIAL_POOL_SIZE = 60;
+    //private const string ENEMY_BOSS_POOL_KEY = "EnemyBoss";
+    //private const string ENEMY_POOL_KEY = "Enemies";
+    //private const string ENEMY_EFFECT_POOL_KEY = "EnemyEffect";
+    //private const int INITIAL_POOL_SIZE = 60;
+
+    [SerializeField] private float bossCameraCloseUpTime = 3.0f; // 보스 카메라 연출 지속시간
 
     //TestCode
     public BoxCollider SpawnArea;
@@ -25,11 +27,14 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         InitializeEnemyPool();
 
-        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5000, 1.0f)));
-        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5001, 2.0f)));
-
         //BossSpawn(5500);
         //StartCoroutine(EnemySpawnCoroutine(30, 5001));
+    }
+
+    public void EnemySpawnStart()
+    {
+        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5000, 1.0f)));
+        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5001, 2.0f)));
     }
 
     private void Update()
@@ -50,28 +55,28 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private void InitializeEnemyPool()
     {
-        InitializeEnemyPrefab(5000, "Prefabs/Enemy/Goblin");
-        InitializeEnemyPrefab(5001, "Prefabs/Enemy/GoblinMagician");
+        InitializeEnemyPrefab(5000, Const.ENEMY_PREFEB_GOBLIN_PATH);
+        InitializeEnemyPrefab(5001, Const.ENEMY_PREFEB_GOBLINMAGICIAN_PATH);
 
-        ObjectPool goblinPool = new ObjectPool(5000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Goblin");
-        ObjectPool goblinMagicianPool = new ObjectPool(5001, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinMagician");
+        //ObjectPool goblinPool = new ObjectPool(5000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Goblin");
+        //ObjectPool goblinMagicianPool = new ObjectPool(5001, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinMagician");
 
-        ObjectPool slashPool = new ObjectPool(6000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/Slash");
-        ObjectPool energyBoltPool = new ObjectPool(6001, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/EnergyBolt");
-        ObjectPool slashBossPool = new ObjectPool(6002, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/SlashBoss");
-        ObjectPool skillBoss1Pool = new ObjectPool(6003, 10, "Prefabs/Enemy/Effects/SkillBoss1");
+        //ObjectPool slashPool = new ObjectPool(6000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/Slash");
+        //ObjectPool energyBoltPool = new ObjectPool(6001, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/EnergyBolt");
+        //ObjectPool slashBossPool = new ObjectPool(6002, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/SlashBoss");
+        //ObjectPool skillBoss1Pool = new ObjectPool(6003, 10, "Prefabs/Enemy/Effects/SkillBoss1");
 
-        ObjectPool goblinBossPool = new ObjectPool(5500, 3, "Prefabs/Enemy/GoblinBoss");
+        //ObjectPool goblinBossPool = new ObjectPool(5500, 3, "Prefabs/Enemy/GoblinBoss");
 
-        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinMagicianPool);
+        //ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinPool);
+        //ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinMagicianPool);
 
-        ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, slashPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, energyBoltPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, slashBossPool);
-        ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, skillBoss1Pool);
+        //ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, slashPool);
+        //ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, energyBoltPool);
+        //ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, slashBossPool);
+        //ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, skillBoss1Pool);
 
-        ObjectPoolManager.Instance.AddPool(ENEMY_BOSS_POOL_KEY, goblinBossPool);
+        //ObjectPoolManager.Instance.AddPool(ENEMY_BOSS_POOL_KEY, goblinBossPool);
     }
 
     private void InitializeEnemyPrefab(int id, string prefabPath)
@@ -125,7 +130,7 @@ public class EnemyManager : Singleton<EnemyManager>
     IEnumerator EnemySpawnCoroutine(int cycle, int id, float summonCoolTime)
     {
         yield return new WaitForSeconds(0.1f);
-        ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_POOL_KEY, id);
+        ObjectPool pool = ObjectPoolManager.Instance.GetPool(Const.ENEMY_POOL_KEY, id);
 
         Enemy prefabEnemy = GetInitializedEnemy(id);
         for (int i = 0; i < cycle; i++)
@@ -134,8 +139,8 @@ public class EnemyManager : Singleton<EnemyManager>
             if (enemyObject.TryGetComponent(out RegularEnemy enemy))
             {
                 enemy.enemyDB = prefabEnemy.enemyDB;
+                enemy.Initialize();
             }
-
             enemyObject.transform.position = RandomSpawn();
             enemyObject.SetActive(true);
             GameManager.Instance.enemies.Add(enemyObject);
@@ -152,14 +157,16 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public void BossSpawn(int id)
     {
-        GameManager.Instance.IsBoss = true;
         foreach (Coroutine spawnCoroutine in enemySpawnCoroutines)
         {
             StopCoroutine(spawnCoroutine);
         }
 
+        GameManager.Instance._player.enabled = false;
+        GameManager.Instance.IsBoss = true;
         isBoss = true;
         GameManager.Instance.isTryBoss = true;
+
         foreach (GameObject enemyTmp in GameManager.Instance.enemies)
         {
             if (enemyTmp != null)
@@ -167,9 +174,10 @@ public class EnemyManager : Singleton<EnemyManager>
                 enemyTmp.SetActive(false);
             }
         }
+
         GameManager.Instance.enemies.Clear();
 
-        ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_BOSS_POOL_KEY, id);
+        ObjectPool pool = ObjectPoolManager.Instance.GetPool(Const.ENEMY_BOSS_POOL_KEY, id);
         GameObject enemyBoss = pool.GetObject();
         Enemy tempEnemy = enemyBoss.GetComponent<BossEnemy>();
         tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(id);
@@ -179,12 +187,12 @@ public class EnemyManager : Singleton<EnemyManager>
         Debug.Log("보스 생성");
 
 
-        GameManager.Instance.ToggleFollowTarget(tempEnemy.transform);
+        GameManager.Instance.cameraController.ToggleFollowTarget(tempEnemy.transform , bossCameraCloseUpTime);
     }
 
     public GameObject EnemyAttackSpawn(int id, Vector3 position, Quaternion rotation)
     {
-        ObjectPool pool = ObjectPoolManager.Instance.GetPool(ENEMY_EFFECT_POOL_KEY, id);
+        ObjectPool pool = ObjectPoolManager.Instance.GetPool(Const.ENEMY_EFFECT_POOL_KEY, id);
         if (pool != null)
         {
             GameObject attackEffect = pool.GetObject();

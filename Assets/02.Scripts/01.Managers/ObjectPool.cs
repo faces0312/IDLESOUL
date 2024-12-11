@@ -220,4 +220,13 @@ public class ObjectPool
             Pool.Enqueue(obj);
         }
     }
+
+    public void PoolClear()
+    {
+        for (int i = 0; i < Size; i++)
+        {
+            Pool.Dequeue();
+        }
+    }
+
 }
