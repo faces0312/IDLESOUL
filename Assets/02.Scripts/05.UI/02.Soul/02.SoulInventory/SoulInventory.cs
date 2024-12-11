@@ -12,6 +12,8 @@ public class SoulInventory : MonoBehaviour
 
     private string uiKey;
 
+    public SoulSquadSlot SoulSquadSlot { get; set; }
+
     private void Awake()
     {
         uiKey = "SoulInventory";

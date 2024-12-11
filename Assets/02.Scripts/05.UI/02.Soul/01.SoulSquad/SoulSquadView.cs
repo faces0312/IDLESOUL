@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -24,6 +24,6 @@ public class SoulSquadView : MonoBehaviour, IUIBase
 
     public void UpdateUI()
     {
-        Debug.LogAssertion("¼Ò¿ï ½ºÄõµå UI ¾÷µ¥ÀÌÆ®");
+        Debug.LogAssertion("ì†Œìš¸ ìŠ¤ì¿¼ë“œ UI ì—…ë°ì´íŠ¸");
     }
 }
