@@ -6,10 +6,10 @@ using UnityEngine;
 
 public enum JobType
 {
+    None,
     Attacker,
     Tanker,
     Healer,
-    None
 }
 
 public abstract class Soul

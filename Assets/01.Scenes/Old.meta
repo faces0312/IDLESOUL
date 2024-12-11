@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Models/New Folder.meta
+guid: 0934c142c20e6d5439f2a136f70fd053
+========
 guid: 778dcaf6e1fb35a4b8cb2dea37b5d9a9
+>>>>>>>> Dev:Assets/01.Scenes/Old.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

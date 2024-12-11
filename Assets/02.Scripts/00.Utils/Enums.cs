@@ -8,14 +8,6 @@ namespace Enums
         Upgrade
     }
 
-    public enum Grade
-    {
-        None,
-        Normal,
-        Rare,
-        Legendary
-    }
-
     public enum GachaType
     {
         None,
@@ -27,7 +19,8 @@ namespace Enums
     {
         None,
         Achievement,
-        Shop
+        Shop,
+        Gacha
     }
 
     public enum AchievementType
