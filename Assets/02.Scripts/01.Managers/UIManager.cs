@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -47,11 +46,11 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    public T GetUIController<T> (string key) where T : UIController
+    public UIController GetController(string key)
     {
         if (controllers.TryGetValue(key, out UIController controller))
         {
-            return controller as T;
+            return controller;
         }
 
         return null;

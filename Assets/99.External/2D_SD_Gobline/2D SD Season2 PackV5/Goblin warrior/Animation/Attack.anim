@@ -1388,7 +1388,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.5
-    functionName: MeleeAttackStart
+    functionName: GoblinAttackStart
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

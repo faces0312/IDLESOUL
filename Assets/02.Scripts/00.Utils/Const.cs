@@ -20,7 +20,20 @@ public static class Const
     public static readonly int PLAYER_INITIAL_POOL_SIZE = 60;
 
     public static readonly string ENEMY_PREFEB_GOBLIN_PATH = "Prefabs/Enemy/Goblin";
-   
+    public static readonly string ENEMY_PREFEB_GOBLINMAGICIAN_PATH = "Prefabs/Enemy/GoblinMagician";
+    public static readonly string ENEMY_PREFEB_SKELETON_PATH = "Prefabs/Enemy/Skeleton";
+    public static readonly string ENEMY_PREFEB_SKELETONARCHER_PATH = "Prefabs/Enemy/SkeletonArcher";
+
+    public static readonly string ENEMY_PREFEB_GOBLINBOSS_PATH = "Prefabs/Enemy/GoblinBoss";
+    public static readonly string ENEMY_PREFEB_SKELETONBOSS_PATH = "Prefabs/Enemy/SkeletonBoss";
+
+    public static readonly string ENEMY_PREFEB_GOBLINSLASH_PATH = "Prefabs/Enemy/Effects/Slash";
+    public static readonly string ENEMY_PREFEB_GOBLINEENERGYBOLT_PATH = "Prefabs/Enemy/Effects/EnergyBolt";
+    public static readonly string ENEMY_PREFEB_GOBLINSLASHBOSS_PATH = "Prefabs/Enemy/Effects/SlashBoss";
+    public static readonly string ENEMY_PREFEB_GOBLINSKILLBOSS1_PATH = "Prefabs/Enemy/Effects/SkillBoss1";
+    public static readonly string ENEMY_PREFEB_SKELETONSLASH_PATH = "Prefabs/Enemy/Effects/SlashSkeleton";
+    public static readonly string ENEMY_PREFEB_SKELETONARROW_PATH = "Prefabs/Enemy/Effects/ArrowSkeleton";
+
     public static readonly string ENEMY_BOSS_POOL_KEY = "EnemyBoss";
     public static readonly string ENEMY_POOL_KEY = "Enemies";
     public static readonly string ENEMY_EFFECT_POOL_KEY = "EnemyEffect";

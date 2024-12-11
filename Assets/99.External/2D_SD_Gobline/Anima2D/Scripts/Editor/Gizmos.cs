@@ -209,7 +209,7 @@ namespace Anima2D
 								GUI.enabled = !IsLocked(control.gameObject);
 
 #if UNITY_5_6_OR_NEWER
-								var fmh_212_74_638688432244670737 = transform.rotation; Vector3 newPosition = Handles.FreeMoveHandle(transform.position, size, Vector3.zero, Handles.RectangleHandleCap);
+								var fmh_212_74_638695101860811402 = transform.rotation; Vector3 newPosition = Handles.FreeMoveHandle(transform.position, size, Vector3.zero, Handles.RectangleHandleCap);
 #else
 								Vector3 newPosition = Handles.FreeMoveHandle(transform.position, transform.rotation, size, Vector3.zero, Handles.RectangleCap);
 #endif

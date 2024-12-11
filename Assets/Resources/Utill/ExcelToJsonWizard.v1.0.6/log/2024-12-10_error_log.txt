@@ -1,0 +1,4 @@
+2024-12-10 오후 4:30:14: Error processing sheet SoulDB in file excel_files\SoulDB.xlsx: Enum type 'JobType' not found in Enum definitions.
+   at ExcelToJsonWizard.Program.GenerateClassAndJsonFromExcel(String excelPath, String loaderDir, String jsonDir, String logFilePath, Boolean allowMultipleSheets, Boolean useResources, String resourcesInternalPath)
+2024-12-10 오후 4:31:18: Error processing sheet SoulDB in file excel_files\SoulDB.xlsx: Enum type 'JobType' not found in Enum definitions.
+   at ExcelToJsonWizard.Program.GenerateClassAndJsonFromExcel(String excelPath, String loaderDir, String jsonDir, String logFilePath, Boolean allowMultipleSheets, Boolean useResources, String resourcesInternalPath)

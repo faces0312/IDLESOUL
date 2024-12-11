@@ -1,10 +1,12 @@
 using Enums;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AchieveController : MonoBehaviour
 {
     private RecycleScrollY recycleScroll;
+    [SerializeField] private Button exit;
 
     private void OnEnable()
     {
@@ -15,6 +17,10 @@ public class AchieveController : MonoBehaviour
     private void Start()
     {
         recycleScroll.SetContent += SetContent;
+        exit.onClick.AddListener(() =>
+        {
+            this.gameObject.SetActive(false);
+        });
         if (this.gameObject.activeSelf == true) this.gameObject.SetActive(false);
     }
 

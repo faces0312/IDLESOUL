@@ -23,9 +23,10 @@ public class ShopButtonController : MonoBehaviour
     [SerializeField] private Button gachaOnce;
     [SerializeField] private Button gacha10;
 
-    private UserData userData; //= DataManager.Instance.UserData
     [SerializeField] private ItemPanel buyPanel;
     [SerializeField] private Button exitButton;
+
+    private GachaEvent gachaEvent;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class ShopButtonController : MonoBehaviour
         gachaOnce.onClick.AddListener(PlayGachaOnce);
         gacha10.onClick.AddListener(PlayGacha10);
         exitButton.onClick.AddListener(Exit);
+        gachaEvent = new GachaEvent();
     }
 
     private void Exit()
@@ -65,7 +67,7 @@ public class ShopButtonController : MonoBehaviour
     private void SoulGacha()
     {
         GachaType = GachaType.Soul;
-        pickupImage.sprite = Resources.Load<Sprite>("Prefabs/Sample/CurSoulPickup");
+        pickupImage.sprite = Resources.Load<Sprite>("Sprite/SoulSprite/Pickup/Carmilla");
     }
 
     private void ItemGacha()
@@ -77,33 +79,38 @@ public class ShopButtonController : MonoBehaviour
     private void PlayGachaOnce()
     {
         int price = 150;
-        if(userData.Diamonds >= price)
+        if(DataManager.Instance.UserData.Diamonds >= price)
         {
-            userData.Diamonds -= price;
+            //DataManager.Instance.UserData.Diamonds -= price;
             switch (GachaType)
             {
                 case GachaType.Soul:
+                    EventManager.Instance.Publish<GachaEvent>(Channel.Gacha, gachaEvent.SetEvent(GachaType.Soul));
                     break;
                 case GachaType.Weapon:
+                    EventManager.Instance.Publish<GachaEvent>(Channel.Gacha, gachaEvent.SetEvent(GachaType.Weapon));
                     break;
             }
         }
+        else Debug.LogAssertion("돈이 모자라요");
     }
 
     private void PlayGacha10()
     {
         int price = 1350;
-        if(userData.Diamonds >= price)
+        if (DataManager.Instance.UserData.Diamonds >= price)
         {
-            userData.Diamonds -= price;
-            for(int i = 0; i < 10; i++)
+            //DataManager.Instance.UserData.Diamonds -= price;
             switch (GachaType)
             {
                 case GachaType.Soul:
+                    EventManager.Instance.Publish<GachaEvent>(Channel.Gacha, gachaEvent.SetEvent(GachaType.Soul, 10));
                     break;
                 case GachaType.Weapon:
+                    EventManager.Instance.Publish<GachaEvent>(Channel.Gacha, gachaEvent.SetEvent(GachaType.Weapon, 10));
                     break;
             }
         }
+        else Debug.LogAssertion("돈이 모자라요");
     }
 }
