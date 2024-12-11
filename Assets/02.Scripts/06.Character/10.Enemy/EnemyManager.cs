@@ -33,11 +33,11 @@ public class EnemyManager : Singleton<EnemyManager>
 
     public void EnemySpawnStart()
     {
-        /*enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5000, 1.0f)));
-        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5001, 2.0f)));*/
+        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5000, 1.0f)));
+        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5001, 2.0f)));
         //enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5002, 1.0f)));
         //enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5003, 1.0f)));
-        BossSpawn(5501);
+        //BossSpawn(5501);
     }
 
     private void Update()
