@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public interface IGachableDB
 {
     public int GetKey();
+    public int GetRairity();
 }
 
 public class GachaBase : MonoBehaviour

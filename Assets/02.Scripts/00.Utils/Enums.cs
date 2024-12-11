@@ -8,14 +8,6 @@ namespace Enums
         Upgrade
     }
 
-    public enum Grade
-    {
-        None,
-        Normal,
-        Rare,
-        Legendary
-    }
-
     public enum GachaType
     {
         None,

@@ -110,6 +110,11 @@ public class SoulDB : IGachableDB
     {
         return key;
     }
+
+    public int GetRairity()
+    {
+        throw new NotImplementedException();
+    }
 }
 public class SoulDBLoader
 {

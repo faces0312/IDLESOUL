@@ -16,6 +16,11 @@ public class GachaItemDB : IGachableDB
     {
         return key;
     }
+
+    public int GetRairity()
+    {
+        throw new NotImplementedException();
+    }
 }
 public class GachaItemDBLoader
 {
