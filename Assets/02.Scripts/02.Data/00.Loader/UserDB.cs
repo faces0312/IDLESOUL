@@ -97,6 +97,16 @@ public class UserDB
     /// </summary>
     public int PlayTimeInSeconds;
 
+    /// <summary>
+    /// CurChapter
+    /// </summary>
+    public int CurChapter;
+
+    /// <summary>
+    /// CurStageNum
+    /// </summary>
+    public int CurStageNum;
+
     public void JsonDataConvert(UserData userData)
     {
         key = userData.UID;

@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -61,26 +61,21 @@ public class Player : BaseCharacter
 
     [Header("References")]
     public TargetSearch targetSearch;
-    //public Rigidbody rb;
     private PlayerAnimationController playerAnimationController;
     private PlayerSouls playerSouls;
     public GameObject CamarePivot;
-    public PlayerAnimationController PlayerAnimationController { get => playerAnimationController; }
-    public PlayerSouls PlayerSouls { get => playerSouls; }
+    public InventoryModel Inventory; //플레이어 인벤토리 데이터
 
     [Header("State Machine")]
     private PlayerStateMachine playerStateMachine;
 
-    [Header("Projectile Object Pool")]
-    [SerializeField] private GameObject playerProjectile;
 
-    private readonly int INITIAL_POOL_SIZE = 100;
-
+    public PlayerAnimationController PlayerAnimationController { get => playerAnimationController; }
+    public PlayerSouls PlayerSouls { get => playerSouls; }
     public StatHandler StatHandler { get => base.statHandler; set => base.statHandler = value; }
     public UserData UserData { get => userData;  }
 
     public Action OnUpdateSoulStats;
-
 
     protected override void Awake()
     {
@@ -109,11 +104,22 @@ public class Player : BaseCharacter
         GameManager.Instance.player = this;
 
         Initialize();
-        //Debug 소울 초기화 -> 리팩토링 및 호출 시점 재조정 필요
-        TestManager.Instance.OnClickRegisterSoul();
 
         //ObjectPool playerProjectilePool = new ObjectPool(Utils.POOL_KEY_PLAYERPROJECTILE, INITIAL_POOL_SIZE, "Prefabs/Player/Attack/EnergyBolt");
         //ObjectPoolManager.Instance.AddPool("playerProjectile", playerProjectilePool);
+    }
+
+    public void OnClickRegisterSoul()
+    {
+        GameManager.Instance.player.PlayerSouls.RegisterSoul("마법사 영혼", new SoulMagician(11000));
+        GameManager.Instance.player.PlayerSouls.RegisterSoul("전사 영혼", new SoulKnight(11001));
+        GameManager.Instance.player.PlayerSouls.EquipSoul("마법사 영혼", 0);
+        GameManager.Instance.player.PlayerSouls.EquipSoul("전사 영혼", 1);
+        GameManager.Instance.player.OnUpdateSoulStats?.Invoke();    // 착용 시 패시브 업데이트
+
+        GameManager.Instance.player.PlayerSouls.SpawnSoul(0);
+
+        //StatViewUpdate();
     }
 
     public void Initialize()
@@ -148,6 +154,9 @@ public class Player : BaseCharacter
 
         //Controller(FSM 세팅)
         playerStateMachine.ChangeState(playerStateMachine.IdleState);
+
+        //Debug 소울 초기화 -> 리팩토링 및 호출 시점 재조정 필요
+        OnClickRegisterSoul();
     }
 
     public override void TakeDamage(float damage)

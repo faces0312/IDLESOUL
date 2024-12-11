@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class GameSceneTigger : MonoBehaviour
 {
@@ -10,8 +11,13 @@ public class GameSceneTigger : MonoBehaviour
 
         PlayerObjectPoolSetting();
         EnemyObjectPoolSetting();
+        InventoryObjectPoolSetting();
 
         GameManager.Instance.StartGame();
+    }
+
+    private void InventoryObjectPoolSetting()
+    {
     }
 
     private void PlayerObjectPoolSetting()

@@ -19,17 +19,6 @@ public class ClearStageData
 
 public class DataManager : SingletonDDOL<DataManager>
 {
-    private readonly string jsonItemDBPath = "JSON/ItemDB";
-    private readonly string jsonSellItemDBPath = "JSON/SellItemDB";
-    private readonly string jsonEnemyDBPath = "JSON/EnemyDB";
-    private readonly string jsonStageDBPath = "JSON/StageDB";
-    private readonly string jsonSoulDBPath = "JSON/SoulDB";
-    private readonly string jsonSkillDBPath = "JSON/SkillDB";
-    private readonly string jsonAchieveDBPath = "JSON/AchieveDB";
-    private readonly string jsonUserDBPath = "JSON/UserDB";
-
-    private readonly string jsonUserDataPath = "/userdata.json";
-
     private StringBuilder strBuilder = new StringBuilder();
     public JsonController JsonController = new JsonController();
 
@@ -63,14 +52,14 @@ public class DataManager : SingletonDDOL<DataManager>
     {
         base.Awake();
 
-        enemyDB = new EnemyDBLoader(jsonEnemyDBPath);
-        itemDB = new ItemDBLoader(jsonItemDBPath);
-        sellItemDB = new SellItemDBLoader(jsonSellItemDBPath);
-        stageDB = new StageDBLoader(jsonStageDBPath);
-        soulDB = new SoulDBLoader(jsonSoulDBPath);
-        skillDB = new SkillDBLoader(jsonSkillDBPath);
-        userDB = new UserDBLoader(jsonUserDBPath);
-        achieveDB = new AchieveDBLoader(jsonAchieveDBPath);
+        enemyDB = new EnemyDBLoader(Const.JsonEnemyDBPath);
+        itemDB = new ItemDBLoader(Const.JsonItemDBPath);
+        sellItemDB = new SellItemDBLoader(Const.JsonSellItemDBPath);
+        stageDB = new StageDBLoader(Const.JsonStageDBPath);
+        soulDB = new SoulDBLoader(Const.JsonSoulDBPath);
+        skillDB = new SkillDBLoader(Const.JsonSkillDBPath);
+        userDB = new UserDBLoader(Const.JsonUserDBPath);
+        achieveDB = new AchieveDBLoader(Const.JsonAchieveDBPath);
 
         inventory.Items = new List<ItemDB>();
         inventory.Items.Add(itemDB.GetByKey(1000));
@@ -87,12 +76,12 @@ public class DataManager : SingletonDDOL<DataManager>
         UserDB saveData = userDB.GetByKey(userData.UID);
         saveData.JsonDataConvert(userData);
 
-        JsonController.SaveUserData(saveData, jsonUserDataPath);
+        JsonController.SaveUserData(saveData, Const.JsonUserDataPath);
     }
 
     public UserDB LoadUserData() // 유저 데이터 로드
     {
-        userData = JsonController.LoadUserData(jsonUserDataPath);
+        userData = JsonController.LoadUserData(Const.JsonUserDataPath);
        
         return userData;
     }

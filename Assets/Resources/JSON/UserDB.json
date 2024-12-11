@@ -3,22 +3,24 @@
     {
       "key": 12345678,
       "Nickname": "지존감자탕",
-      "Level": 10,
-      "Health": 2000,
-      "MaxHealth": 2000,
-      "Atk": 20,
-      "Def": 20,
-      "ReduceDamage": 5,
-      "CriticalRate": 10,
+      "Level": 1,
+      "Health": 100,
+      "MaxHealth": 100,
+      "Atk": 10,
+      "Def": 10,
+      "ReduceDamage": 0,
+      "CriticalRate": 1,
       "CriticalDamage": 100,
       "atkSpeed": 1,
       "moveSpeed": 1,
       "coolDown": 0,
       "Exp": 0,
-      "MaxExp": 1000,
-      "Gold": 5000,
-      "Diamonds": 5000,
-      "PlayTimeInSeconds": 0
+      "MaxExp": 100,
+      "Gold": 100,
+      "Diamonds": 100,
+      "PlayTimeInSeconds": 0,
+      "CurChapter": 1,
+      "CurStageNum": 1
     }
   ]
 }

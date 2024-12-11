@@ -21,6 +21,11 @@ public class GameManager : SingletonDDOL<GameManager>
     public bool IsBoss;//현재 Boss가 필드에 있는지를 체크하는 변수 
     public bool isTryBoss;//보스를 트라이 한적이 있는지
 
+    [Header("StageData")]
+    //UserData에 들어가야할 필드
+    public int curStageNum;
+    public int curChapterNum;
+
     public UIStageProgressBarModel StageProgressModel;
 
     public event Action OnEventBossSummon;

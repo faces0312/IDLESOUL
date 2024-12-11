@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Player_Weapon_Sword
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 2
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 1493051513, guid: 68d63138f586e214588e51105207d6c3, type: 3}
+    - {fileID: -1411846129, guid: 68d63138f586e214588e51105207d6c3, type: 3}
+    - {fileID: -767623664, guid: 68d63138f586e214588e51105207d6c3, type: 3}
+    - {fileID: 532439189, guid: 68d63138f586e214588e51105207d6c3, type: 3}
+    - {fileID: 835995465, guid: 68d63138f586e214588e51105207d6c3, type: 3}
+    - {fileID: 1737000351, guid: 68d63138f586e214588e51105207d6c3, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 68d63138f586e214588e51105207d6c3: 1493051513
+    - 68d63138f586e214588e51105207d6c3: 835995465
+    - 68d63138f586e214588e51105207d6c3: 1737000351
+    - 68d63138f586e214588e51105207d6c3: -767623664
+    - 68d63138f586e214588e51105207d6c3: 532439189
+    - 68d63138f586e214588e51105207d6c3: -1411846129
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 1493051513, guid: 68d63138f586e214588e51105207d6c3, type: 3}
+  - {fileID: 835995465, guid: 68d63138f586e214588e51105207d6c3, type: 3}
+  - {fileID: 1737000351, guid: 68d63138f586e214588e51105207d6c3, type: 3}
+  - {fileID: -767623664, guid: 68d63138f586e214588e51105207d6c3, type: 3}
+  - {fileID: 532439189, guid: 68d63138f586e214588e51105207d6c3, type: 3}
+  - {fileID: -1411846129, guid: 68d63138f586e214588e51105207d6c3, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Leona Dawnstriker_29
+  - Leona Dawnstriker_38
+  - Leona Dawnstriker_39
+  - Leona Dawnstriker_36
+  - Leona Dawnstriker_37
+  - Leona Dawnstriker_30
+  m_RenderDataMap: {}
+  m_Tag: Player_Weapon_Sword
+  m_IsVariant: 0

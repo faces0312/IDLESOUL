@@ -3,6 +3,17 @@
 
 public static class Const
 {
+    public static readonly string JsonItemDBPath = "JSON/ItemDB";
+    public static readonly string JsonSellItemDBPath = "JSON/SellItemDB";
+    public static readonly string JsonEnemyDBPath = "JSON/EnemyDB";
+    public static readonly string JsonStageDBPath = "JSON/StageDB";
+    public static readonly string JsonSoulDBPath = "JSON/SoulDB";
+    public static readonly string JsonSkillDBPath = "JSON/SkillDB";
+    public static readonly string JsonAchieveDBPath = "JSON/AchieveDB";
+    public static readonly string JsonUserDBPath = "JSON/UserDB";
+
+    public static readonly string JsonUserDataPath = "/userdata.json";
+
     public static readonly int POOL_KEY_PLAYERPROJECTILE = 10;
     public static readonly string PLAYER_PROJECTILE_ENERGYBOLT_PATH = "Prefabs/Player/Attack/EnergyBolt";
     public static readonly string PLAYER_PROJECTILE_ENERGYBOLT_KEY = "PlayerProjectile";
