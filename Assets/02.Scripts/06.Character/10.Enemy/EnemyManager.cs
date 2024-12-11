@@ -55,8 +55,8 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private void InitializeEnemyPool()
     {
-        InitializeEnemyPrefab(5000, "Prefabs/Enemy/Goblin");
-        InitializeEnemyPrefab(5001, "Prefabs/Enemy/GoblinMagician");
+        InitializeEnemyPrefab(5000, Const.ENEMY_PREFEB_GOBLIN_PATH);
+        InitializeEnemyPrefab(5001, Const.ENEMY_PREFEB_GOBLINMAGICIAN_PATH);
 
         //ObjectPool goblinPool = new ObjectPool(5000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Goblin");
         //ObjectPool goblinMagicianPool = new ObjectPool(5001, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinMagician");
@@ -139,8 +139,8 @@ public class EnemyManager : Singleton<EnemyManager>
             if (enemyObject.TryGetComponent(out RegularEnemy enemy))
             {
                 enemy.enemyDB = prefabEnemy.enemyDB;
+                enemy.Initialize();
             }
-
             enemyObject.transform.position = RandomSpawn();
             enemyObject.SetActive(true);
             GameManager.Instance.enemies.Add(enemyObject);

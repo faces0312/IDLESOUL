@@ -23,14 +23,14 @@ public class GameSceneTigger : MonoBehaviour
     private void EnemyObjectPoolSetting()
     {
         ObjectPool goblinPool = new ObjectPool(5000, 60, Const.ENEMY_PREFEB_GOBLIN_PATH);
-        ObjectPool goblinMagicianPool = new ObjectPool(5001, 60, "Prefabs/Enemy/GoblinMagician");
+        ObjectPool goblinMagicianPool = new ObjectPool(5001, 60, Const.ENEMY_PREFEB_GOBLINMAGICIAN_PATH);
 
-        ObjectPool slashPool = new ObjectPool(6000, 60, "Prefabs/Enemy/Effects/Slash");
-        ObjectPool energyBoltPool = new ObjectPool(6001, 60, "Prefabs/Enemy/Effects/EnergyBolt");
-        ObjectPool slashBossPool = new ObjectPool(6002, 60, "Prefabs/Enemy/Effects/SlashBoss");
-        ObjectPool skillBoss1Pool = new ObjectPool(6003, 10, "Prefabs/Enemy/Effects/SkillBoss1");
+        ObjectPool slashPool = new ObjectPool(6000, 60, Const.ENEMY_PREFEB_GOBLINSLASH_PATH);
+        ObjectPool energyBoltPool = new ObjectPool(6001, 60, Const.ENEMY_PREFEB_GOBLINEENERGYBOLT_PATH);
+        ObjectPool slashBossPool = new ObjectPool(6002, 60, Const.ENEMY_PREFEB_GOBLINSLASHBOSS_PATH);
+        ObjectPool skillBoss1Pool = new ObjectPool(6003, 10, Const.ENEMY_PREFEB_GOBLINSKILLBOSS1_PATH);
 
-        ObjectPool goblinBossPool = new ObjectPool(5500, 3, "Prefabs/Enemy/GoblinBoss");
+        ObjectPool goblinBossPool = new ObjectPool(5500, 3, Const.ENEMY_PREFEB_GOBLINBOSS_PATH);
 
         ObjectPoolManager.Instance.AddPool(Const.ENEMY_POOL_KEY, goblinPool);
         ObjectPoolManager.Instance.AddPool(Const.ENEMY_POOL_KEY, goblinMagicianPool);
