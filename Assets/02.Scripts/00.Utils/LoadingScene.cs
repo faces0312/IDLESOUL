@@ -3,18 +3,26 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LoadingScene : MonoBehaviour
 {
     private static string nextScene;
     public GameObject gauge;
     public TextMeshProUGUI percent;
+    public Image LoadingSceneImage;
+    private Sprite[] Sprites;
     private readonly WaitForSeconds wait1s = new WaitForSeconds(1);
 
     private void Awake()
     {
-        gauge.transform.DOScaleX(0, 0f);
         nextScene = SceneDataManager.Instance.NextScene;
+        Sprites = Resources.LoadAll<Sprite>("Sprite/LoadingSceneSprite");
+    }
+
+    private void OnEnable()
+    {
+        gauge.transform.DOScaleX(0, 0f);
         StartCoroutine(CoLoading());
     }
 

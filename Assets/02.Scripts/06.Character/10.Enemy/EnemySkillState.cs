@@ -8,11 +8,13 @@ public class EnemySkillState : EnemyBaseState
     public BossEnemy bossEnemy; 
     private int currentSkillIndex = 0;
     private EnemySkill1 bossSkill1; // EnemySkill1 인스턴스를 저장할 필드
+    public EnemySkill2 bossSkill2; // EnemySkill1 인스턴스를 저장할 필드
 
     public EnemySkillState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
         bossEnemy = stateMachine.Enemy as BossEnemy;
         bossSkill1 = new EnemySkill1(bossEnemy, stateMachine);
+        bossSkill2 = new EnemySkill2(bossEnemy, stateMachine);
     }
 
     public override void Enter()
@@ -50,5 +52,14 @@ public class EnemySkillState : EnemyBaseState
             child.gameObject.SetActive(false);
 
         bossSkill1.SkillAttack1();
+    }
+
+    public void SkeletonSkillBossStart()
+    {
+        bossEnemy.skillChargingEffect.SetActive(false);
+        foreach (Transform child in bossEnemy.skillZone.transform)
+            child.gameObject.SetActive(false);
+
+        bossSkill2.SkillAttack2();
     }
 }

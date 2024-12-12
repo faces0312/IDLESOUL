@@ -23,7 +23,6 @@ public abstract class Enemy : BaseCharacter
     //public Rigidbody rb;
     public AnimatorHashData animatorHashData;
     public Animator animator;
-    public GameObject bulletTest;
 
     [Header("State Machine")]
     public EnemyStateMachine stateMachine;
@@ -87,6 +86,7 @@ public abstract class Enemy : BaseCharacter
         {
             GameManager.Instance.enemies.Remove(gameObject);
             OnEventTargetRemove?.Invoke();
+            OnDieEvent?.Invoke();
             collider.enabled = false;
             animator.SetTrigger("Die");
         }
@@ -106,8 +106,8 @@ public abstract class Enemy : BaseCharacter
 
     public void Die()
     {
-        OnEventTargetRemove?.Invoke();
-        OnDieEvent?.Invoke();
+        //OnEventTargetRemove?.Invoke();
+        //OnDieEvent?.Invoke();
         gameObject.SetActive(false);
         Debug.Log($"{gameObject.name} »ç¸Á!!");
     }
