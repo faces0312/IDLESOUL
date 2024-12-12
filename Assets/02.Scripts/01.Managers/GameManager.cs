@@ -127,8 +127,6 @@ public class GameManager : SingletonDDOL<GameManager>
         ClearManager();
         SceneManager.LoadScene("TestHS");
     }
-
-
 }
 public static class Wait
 {
