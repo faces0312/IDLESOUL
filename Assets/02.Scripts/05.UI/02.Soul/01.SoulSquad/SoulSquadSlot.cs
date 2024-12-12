@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class SoulSquadSlot : MonoBehaviour
 {
-    [SerializeField] private SoulInventory soulInventory;
+    private SoulSquad soulSquad;
+    private SoulInventory soulInventory;
 
     private Image thumbnail;
     private Button button;
@@ -23,7 +24,25 @@ public class SoulSquadSlot : MonoBehaviour
 
     private void OnClickSlot()
     {
+        if(soulSquad == null)
+            soulSquad = GameManager.Instance.player.PlayerSouls.SoulSquad;
+        if (soulInventory == null)
+            soulInventory = GameManager.Instance.player.PlayerSouls.SoulInventory;
+        soulSquad.curIndex = index;
         soulInventory.SoulSquadSlot = this;
+        soulInventory.UpdateThumbnail();
         UIManager.Instance.ShowUI("SoulInventory");
+    }
+
+    public void EquipSoul(Soul soul)
+    {
+        GameManager.Instance.player.PlayerSouls.EquipSoul(soul.soulName, index);
+    }
+
+    public void UnEquipSoul()
+    {
+        soul = null;
+        soulName = string.Empty;
+        GameManager.Instance.player.PlayerSouls.UnEquipSoul(index);
     }
 }

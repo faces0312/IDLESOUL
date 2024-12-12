@@ -39,6 +39,8 @@ public static class Const
     public static readonly string ENEMY_EFFECT_POOL_KEY = "EnemyEffect";
 
     public static readonly int INITIAL_POOL_SIZE = 60;
+
+    public const int MAX_SOUL = 3;
 }
   
 

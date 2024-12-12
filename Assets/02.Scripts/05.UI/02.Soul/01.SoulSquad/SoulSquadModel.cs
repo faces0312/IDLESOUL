@@ -7,54 +7,31 @@ public class SoulSquadModel : UIModel
 {
     public event Action OnSquadChanged;
 
-    private List<SoulSquadSlot> slots = new List<SoulSquadSlot>();
+    private SoulSquadSlot[] slots = new SoulSquadSlot[Const.MAX_SOUL];
 
-    public void AddSlot(SoulSquadSlot slot)
+    public void AddSlot(int index, SoulSquadSlot slot)
     {
-        slots.Add(slot);
-        Debug.LogAssertion("슬롯 추가!");
-        //OnInventoryChanged?.Invoke();
+        slots[index] = slot;
     }
 
-    public void RemoveSlot(SoulSquadSlot slot)
+    public void EquipSoul(int index, Soul soul)
     {
-        if (slots.Remove(slot))
+        if (slots[index].soul != null)
         {
-            Debug.LogAssertion("슬롯 제거!");
-            OnSquadChanged?.Invoke();
+            UnEquipSoul(index);
         }
-        else
-        {
-            Debug.LogAssertion($"해당 슬롯은 존재하지 않습니다.");
-        }
+
+        slots[index].soul = soul;
+        slots[index].index = index;
+        slots[index].soulName = soul.soulName;
+        OnSquadChanged?.Invoke();
     }
 
-    public void EquipSoul(Soul soul)
+    public void UnEquipSoul(int index)
     {
-        // TODO : 소울 슬롯에 장착 구현
-
-        //SoulSquadSlot emptySlot = GetEmptySlot();
-
-        //if (emptySlot != null)
-        //{
-        //    emptySlot.soul = soul;
-        //    emptySlot.soulName = soul.soulName;
-        //    OnSquadChanged?.Invoke();
-        //    Debug.LogAssertion("소울 장착!");
-        //    return;
-        //}
+        slots[index].soul = null;
+        slots[index].index = -1;
+        slots[index].soulName = string.Empty;
+        OnSquadChanged?.Invoke();
     }
-
-    //private SoulSquadSlot GetEmptySlot()
-    //{
-    //    for (int i = 0; i < slots.Count; i++)
-    //    {
-    //        if (slots[i].soul == null)
-    //        {
-    //            return slots[i];
-    //        }
-    //    }
-
-    //    return null;
-    //}
 }

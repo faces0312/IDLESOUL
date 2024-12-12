@@ -13,6 +13,7 @@ public class SoulInventory : MonoBehaviour
     private string uiKey;
 
     public SoulSquadSlot SoulSquadSlot { get; set; }
+    public SoulSlot SoulSlot { get; set; }
 
     private void Awake()
     {
@@ -49,5 +50,20 @@ public class SoulInventory : MonoBehaviour
     public void AddSoul(Soul soul)
     {
         soulInventoryModel.AddSoul(soul);
+    }
+
+    public void UpdateThumbnail()
+    {
+        soulInventoryModel.UpdateThumbnail(SoulSquadSlot.soulName);
+    }
+
+    public void OnEquipSoul()
+    {
+        SoulSquadSlot.EquipSoul(SoulSlot.soul);
+    }
+
+    public void OnUnEquipSoul()
+    {
+        SoulSquadSlot.UnEquipSoul();
     }
 }

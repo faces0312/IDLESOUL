@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SkillButton : MonoBehaviour
 {
-    private const int MAX_SOUL = 3;
+    //private const int MAX_SOUL = 3;
 
     [Header("Type")]
     [SerializeField] private SkillType skillType;
@@ -24,10 +24,10 @@ public class SkillButton : MonoBehaviour
     private float curTime;
     private bool isUse;
 
-    private float[] fillAmounts = new float[MAX_SOUL];
-    private float[] coolTimes = new float[MAX_SOUL];
-    private float[] curTimes = new float[MAX_SOUL];
-    private bool[] isUses = new bool[MAX_SOUL];
+    private float[] fillAmounts = new float[Const.MAX_SOUL];
+    private float[] coolTimes = new float[Const.MAX_SOUL];
+    private float[] curTimes = new float[Const.MAX_SOUL];
+    private bool[] isUses = new bool[Const.MAX_SOUL];
 
     public int CurSoulIndex { get; set; }
 
