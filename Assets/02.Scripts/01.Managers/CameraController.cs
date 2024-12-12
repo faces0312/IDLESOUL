@@ -7,12 +7,12 @@ using System.Collections;
 public class CameraController : MonoBehaviour
 {
     public CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private Camera minimapCamera;
 
     public void Initialize()
     {
         virtualCamera.Follow = GameManager.Instance._player.CamarePivot.transform;
         virtualCamera.LookAt = GameManager.Instance._player.transform;
-
     }
 
     public void ToggleFollowTarget(Transform newFollowTr , float closeUpTime)
