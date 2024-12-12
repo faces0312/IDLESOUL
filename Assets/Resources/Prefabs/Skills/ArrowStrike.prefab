@@ -4847,8 +4847,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cd2bec56f631b3a4d8bf5a72c5c5fa24, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 063d68670b534fb4ebcd619563b424cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4868,7 +4867,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -9748,7 +9747,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cd2bec56f631b3a4d8bf5a72c5c5fa24, type: 2}
+  - {fileID: 2100000, guid: 063d68670b534fb4ebcd619563b424cc, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -9769,7 +9768,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -9828,7 +9827,7 @@ Transform:
   m_GameObject: {fileID: 3870527770307888434}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 21.66, z: 6.16}
+  m_LocalPosition: {x: 0, y: 21.66, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9847,8 +9846,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_makeObjs:
-  - {fileID: 8956526843649204478, guid: ce66569ff72e23e4ea49efad1341c4e6, type: 3}
-  m_startDelay: 1
+  - {fileID: 8956526843649204478, guid: 6f3f87f399a65f9409db9b8347ee1fb3, type: 3}
+  m_startDelay: 2
   m_makeCount: 200
   m_makeDelay: 0.01
   m_randomPos: {x: 2, y: 2, z: 2}
@@ -14702,8 +14701,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8d2f632cbf4aab147ae31f65bc388983, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 0d985edf2e3a6f54389dd56396872da9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14723,7 +14721,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -19603,7 +19601,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cd2bec56f631b3a4d8bf5a72c5c5fa24, type: 2}
+  - {fileID: 2100000, guid: 063d68670b534fb4ebcd619563b424cc, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -19624,7 +19622,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -24504,7 +24502,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8d2f632cbf4aab147ae31f65bc388983, type: 2}
+  - {fileID: 2100000, guid: 0d985edf2e3a6f54389dd56396872da9, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -24525,7 +24523,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -29405,7 +29403,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8d2f632cbf4aab147ae31f65bc388983, type: 2}
+  - {fileID: 2100000, guid: 0d985edf2e3a6f54389dd56396872da9, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -29426,7 +29424,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -34306,7 +34304,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cd2bec56f631b3a4d8bf5a72c5c5fa24, type: 2}
+  - {fileID: 2100000, guid: 063d68670b534fb4ebcd619563b424cc, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -34327,7 +34325,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -34411,7 +34409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_makeObjs:
-  - {fileID: 5473417342477334856, guid: 2d5b12ed73c9e584cbae994cc72da4be, type: 3}
+  - {fileID: 5473417342477334856, guid: c608653527f124742a1ac916a4bbe2e1, type: 3}
   m_startDelay: 0.3
   m_makeCount: 25
   m_makeDelay: 0.005
@@ -39285,7 +39283,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8d2f632cbf4aab147ae31f65bc388983, type: 2}
+  - {fileID: 2100000, guid: 0d985edf2e3a6f54389dd56396872da9, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -39306,7 +39304,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -44186,7 +44184,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cd2bec56f631b3a4d8bf5a72c5c5fa24, type: 2}
+  - {fileID: 2100000, guid: 063d68670b534fb4ebcd619563b424cc, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -44207,7 +44205,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -49087,8 +49085,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8d2f632cbf4aab147ae31f65bc388983, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 0d985edf2e3a6f54389dd56396872da9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -49108,7 +49105,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -53988,7 +53985,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8d2f632cbf4aab147ae31f65bc388983, type: 2}
+  - {fileID: 2100000, guid: 0d985edf2e3a6f54389dd56396872da9, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -54009,7 +54006,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -54067,8 +54064,8 @@ Transform:
   m_GameObject: {fileID: 3870527771692531936}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 3.34, z: 1.84}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.5, y: 2.84, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3870527771832311327}
@@ -58924,8 +58921,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cd2bec56f631b3a4d8bf5a72c5c5fa24, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 063d68670b534fb4ebcd619563b424cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -58945,7 +58941,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -59029,7 +59025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_makeObjs:
-  - {fileID: 5473417342477334856, guid: 2d5b12ed73c9e584cbae994cc72da4be, type: 3}
+  - {fileID: 5473417342477334856, guid: c608653527f124742a1ac916a4bbe2e1, type: 3}
   m_startDelay: 0
   m_makeCount: 25
   m_makeDelay: 0.005
@@ -63901,7 +63897,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8d2f632cbf4aab147ae31f65bc388983, type: 2}
+  - {fileID: 2100000, guid: 0d985edf2e3a6f54389dd56396872da9, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -63922,7 +63918,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -68802,7 +68798,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8d2f632cbf4aab147ae31f65bc388983, type: 2}
+  - {fileID: 2100000, guid: 0d985edf2e3a6f54389dd56396872da9, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -68823,7 +68819,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -68907,7 +68903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_makeObjs:
-  - {fileID: 5473417342477334856, guid: 2d5b12ed73c9e584cbae994cc72da4be, type: 3}
+  - {fileID: 5473417342477334856, guid: c608653527f124742a1ac916a4bbe2e1, type: 3}
   m_startDelay: 0.6
   m_makeCount: 25
   m_makeDelay: 0.005
@@ -73781,8 +73777,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8d2f632cbf4aab147ae31f65bc388983, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 0d985edf2e3a6f54389dd56396872da9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -73802,7 +73797,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0

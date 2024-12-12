@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Effect_32_Arrow
+  m_Name: Effect_41_Arrow
   m_Shader: {fileID: 4800000, guid: 1d58a8e283100ea4f8435e923e54553e, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -97,7 +97,7 @@ Material:
     - _BlendDst: 1
     - _BlendSrc: 5
     - _BumpScale: 1
-    - _ColorFactor: 1
+    - _ColorFactor: 3
     - _Culling: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -163,6 +163,6 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _NoiseValue: {r: 1, g: 1, b: 1, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TintColor: {r: 0.12014947, g: 0.51345015, b: 2.8301888, a: 1}
+    - _TintColor: {r: 1.5283018, g: 1.0642102, b: 0.07201422, a: 1}
     - _TintColor2: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

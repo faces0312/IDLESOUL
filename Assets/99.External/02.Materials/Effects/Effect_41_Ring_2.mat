@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Effect_32_Arrow
+  m_Name: Effect_41_Ring_2
   m_Shader: {fileID: 4800000, guid: 1d58a8e283100ea4f8435e923e54553e, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -15,13 +15,13 @@ Material:
   - IS_MASK_FADE
   - IS_NORMAL_ANIMATE
   - IS_SOFT_PARTICLES
-  - IS_TEXCOORD_MOVE
+  - IS_TEXCOORD_MOVE_USING_CUSTOM
   m_InvalidKeywords:
   - IS_UNITY_PARTICLE_INSTANCING_ENABLED
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2999
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -50,10 +50,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _FixedMaskTex:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: -1}
+        m_Scale: {x: 1, y: 0}
         m_Offset: {x: 0, y: 0}
     - _LinePassTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 64acc315cec9d9944b17747525225440, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -61,13 +61,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskDistortion:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 9a9498ac1b0e2484dbe7cdeee7973e50, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 0, y: 0}
-        m_Offset: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: a52f2fbe139f7c24a89d8999c8632dec, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -81,7 +81,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
-        m_Texture: {fileID: 2800000, guid: 69155df4fe31f9e4bad207408eca3bb0, type: 3}
+        m_Texture: {fileID: 2800000, guid: f67ee81beb3f2e54698fd99ee323ad36, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -94,10 +94,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AlphaMultiplier: 1
     - _BlendDst: 1
     - _BlendSrc: 5
     - _BumpScale: 1
-    - _ColorFactor: 1
+    - _ColorFactor: 15
     - _Culling: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -114,7 +115,9 @@ Material:
     - _MaskAnimatedSpeed: 1
     - _MaskCutOut: 1
     - _MaskFade: 1
-    - _MaskOffsetFactor: 1
+    - _MaskOffsetFactor: -0.2
+    - _MaskPowFactor: 1
+    - _MaskPowMultiplier: 1.5
     - _MaxIndex: 2
     - _Metallic: 0
     - _MixedMove: 0
@@ -122,9 +125,9 @@ Material:
     - _NoiseNormalFactor: 1
     - _NoiseScale: 1
     - _NormalAnimate: 1
-    - _NormalAnimateSpeed: 5
+    - _NormalAnimateSpeed: 1
     - _NormalDistortion: 0
-    - _NormalDistortionFactor: 2
+    - _NormalDistortionFactor: 15
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _ParticleInstancing: 1
@@ -137,12 +140,12 @@ Material:
     - _SoftParticle: 1
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TexLength: 1
+    - _TexLength: 0
     - _TexPosMove: 0.96
-    - _TexcoordMove: 1
+    - _TexcoordMove: 0
     - _TexcoordMoveLimit: 0
-    - _TexcoordMoveStrength: 25
-    - _TexcoordMoveUsingCustom: 0
+    - _TexcoordMoveStrength: 10
+    - _TexcoordMoveUsingCustom: 1
     - _TextureAnimate: 0
     - _TextureAnimateAdvanced: 0
     - _TextureAnimateSpeed: 5
@@ -156,13 +159,13 @@ Material:
     - _ZWrite: 0
     - _xTexcoordMove: 1
     - _xTexcoordMoveLimit: 0
-    - _yTexcoordMove: 0
+    - _yTexcoordMove: -1
     - _yTexcoordMoveLimit: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _NoiseValue: {r: 1, g: 1, b: 1, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TintColor: {r: 0.12014947, g: 0.51345015, b: 2.8301888, a: 1}
+    - _TintColor: {r: 1.0105488, g: 0.7052156, b: 0.052434143, a: 1}
     - _TintColor2: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
