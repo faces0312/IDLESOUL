@@ -45,4 +45,5 @@ public class UIStageProgressBarView : MonoBehaviour, IUIBase
     {
         curStageProgress.localScale = new Vector3(resultProgress, 1, 1);
     }
+
 }

@@ -20,12 +20,12 @@ public class ItemSlot : MonoBehaviour
         itemIconImage.sprite = Resources.Load<Sprite>(item.ItemData.IconPath);
 
         itemStatusOpenPopUpBtn.onClick.AddListener(ItemStatusData);
-        itemStatusOpenPopUpBtn.onClick.AddListener(() => UIManager.Instance.UpdateUI("ItemStatus"));
         itemStatusOpenPopUpBtn.onClick.AddListener(() => UIManager.Instance.ShowUI("ItemStatus"));
     }
 
     private void ItemStatusData()
     {
-        UIManager.Instance.UpdateUI("ItemStatus");
+       ItemStatusController itemStatus = UIManager.Instance.GetController("ItemStatus") as ItemStatusController;
+       itemStatus.SelectItem = item;
     }
 }
