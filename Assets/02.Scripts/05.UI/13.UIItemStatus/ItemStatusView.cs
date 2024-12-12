@@ -17,12 +17,21 @@ public class ItemStatusView : MonoBehaviour, IUIBase
     [SerializeField] private Button DisEquipBtn;
 
 
+    public Button EquipButton { get => EquipBtn; }
+    public Button DisEquipButton { get => DisEquipBtn; }
+    public Button UpgradeButton { get => UpgradeBtn; }
+
     public void Initialize()
     {
-        
+        //UpgradeBtn.onClick.AddListener(() => Debug.Log("아이템 강화"));
+        //EquipBtn.onClick.AddListener(() => Debug.Log("아이템 장착"));
+        //DisEquipBtn.onClick.AddListener(() => Debug.Log("아이템 장착해지"));
     }
+
     public void ShowUI()
     {
+
+
         gameObject.SetActive(true);
     }
 

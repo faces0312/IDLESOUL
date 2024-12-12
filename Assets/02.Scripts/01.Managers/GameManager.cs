@@ -54,7 +54,7 @@ public class GameManager : SingletonDDOL<GameManager>
 
 
         //StageDB에서 외부데이터 호출하여 초기화하기
-        StageProgressModel.Initialize(10);
+        StageProgressModel.Initialize(1000);
         cameraController.Initialize();
         _player.enabled = true;
 
