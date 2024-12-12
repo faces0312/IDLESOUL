@@ -29,9 +29,7 @@ public class ItemStatusController : UIController
 
     public override void UpdateView()
     {
-
-
-
+        itemStatusView.PrintData(SelectItem.ItemData);
         // Model 데이터를 기반으로 View 갱신
         view.UpdateUI();
     }

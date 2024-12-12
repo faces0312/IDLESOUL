@@ -25,9 +25,32 @@ public class ItemStatusView : MonoBehaviour, IUIBase
     {
         gameObject.SetActive(true);
     }
+
     public void HideUI()
     {
         gameObject.SetActive(false);
+    }
+
+    public void PrintData(ItemDB data)
+    {
+        curUpgradeLevelText.text = "0";
+        maxUpgradeLeveText.text = "100";
+        UpgradeCostText.text = "100";
+
+        itemPassiveEffectText.text = 
+            $"공격력 + {data.Attack} " +
+            $"방어력 + {data.Defence} " +
+            $"HP + {data.Health} \n" +
+            $"크리티컬 + {data.CritChance}% " +
+            $"크리티컬 데미지 + {data.CritDamage}% ";
+
+        itemEquipEffectText.text =
+            $"공격력 + {data.Attack} " +
+            $"방어력 + {data.Defence} " +
+            $"HP + {data.Health} \n" +
+            $"크리티컬 + {data.CritChance}% " +
+            $"크리티컬 데미지 + {data.CritDamage}% ";
+        ItemIcon.sprite = Resources.Load<Sprite>(data.IconPath);
     }
 
     public void UpdateUI()
