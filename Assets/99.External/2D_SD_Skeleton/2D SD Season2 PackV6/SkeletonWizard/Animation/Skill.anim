@@ -2750,21 +2750,21 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.35
-    functionName: MeleeSkillBossCharging
+    functionName: SkeletonBossSkillCharging
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 2.3333333
-    functionName: MeleeSkillBossStart
+    functionName: SkeletonBossSkillStart
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 2.6666667
-    functionName: MeleeSkillBossEnd
+    functionName: SkeletonBossSkillEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

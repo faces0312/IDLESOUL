@@ -3227,6 +3227,7 @@ MonoBehaviour:
   daily: {fileID: 2053484010}
   exp: {fileID: 925715875}
   upgrade: {fileID: 937805625}
+  exit: {fileID: 0}
 --- !u!114 &218534106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10477,7 +10478,6 @@ MonoBehaviour:
   TestDefaultAttackType: 0
   targetSearch: {fileID: 0}
   CamarePivot: {fileID: 2111682197}
-  playerProjectile: {fileID: 2014622578}
 --- !u!114 &748072569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13856,6 +13856,8 @@ MonoBehaviour:
   score: 0
   IsBoss: 0
   isTryBoss: 0
+  curStageNum: 0
+  curChapterNum: 0
   enemies: []
 --- !u!4 &976275327
 Transform:
@@ -18223,6 +18225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225da9efedf120043b2690f296c437ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exit: {fileID: 0}
 --- !u!114 &1301530918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22725,6 +22728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e72fbb6c716aa024ca12682586c0131d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exit: {fileID: 0}
 --- !u!114 &1572773084
 MonoBehaviour:
   m_ObjectHideFlags: 0
