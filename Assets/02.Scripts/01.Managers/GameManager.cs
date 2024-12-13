@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : SingletonDDOL<GameManager>
 {
     //플레이어 접근
-    public Player _player;
+    private Player _player;
     public Player player
     {
         get { return _player; }
@@ -32,38 +32,36 @@ public class GameManager : SingletonDDOL<GameManager>
     public event Action OnGameOverEvent;
     public event Action OnGameClearEvent;
 
-    //오브젝트 풀에 접근
-    //public ObjectPool objectPool;
     //현재 맵에 활성화되어 있는 적 리스트
     public List<GameObject> enemies = new List<GameObject>();
 
     protected override void Awake()
     {
         base.Awake();
+        _player = Resources.Load<Player>("Prefabs/Player/Player_Origin");
+        cameraController = Resources.Load<CameraController>("Prefabs/Managers/CameraController");
     }
 
-    public void StartGame()
+    public void Init()
     {
+        Instantiate(_player);
+
         if (cameraController == null)
         {
             cameraController = GetComponentInChildren<CameraController>();
         }
 
-        var fader = Instantiate(Resources.Load<Fader>("Prefabs/UI/UIFade"));
-        fader.FadeTo(1f, 0f, 0.3f).OnComplete(fader.Release);
-
-
         //StageDB에서 외부데이터 호출하여 초기화하기
-        StageProgressModel.Initialize(1000);
-        cameraController.Initialize();
+        //StageProgressModel.Initialize(30);//Debug - 까먹지 말고 UI매니저 초기화할때 꼭 집어넣을것
+        cameraController.Initialize(_player.CamarePivot.transform ,_player.transform);
         _player.enabled = true;
+
+        Utils.fader.FadeTo(1f, 0f, 0.3f).OnComplete(Utils.fader.Release);
 
         //if (!isTryBoss)
         //{
-            UIManager.Instance.ShowUI("StageProgress");
+        //UIManager.Instance.ShowUI("StageProgress"); //Debug - 까먹지 말고 UI매니저 초기화할때 꼭 집어넣을것
         //}
-
-        EnemyManager.Instance.EnemySpawnStart();
     }
 
     [ContextMenu("GameClear")]
@@ -113,8 +111,7 @@ public class GameManager : SingletonDDOL<GameManager>
         //GameManager.Instance.OnGameOverEvent += 게임종료페이지를 선언할 수 있음
         OnGameOverEvent?.Invoke();
 
-        var fader = Instantiate(Resources.Load<Fader>("Prefabs/UI/UIFade"));
-        fader.FadeTo(0f, 1f, 2.0f).OnComplete(fader.Release);
+        Utils.fader.FadeTo(0f, 1f, 2.0f).OnComplete(Utils.fader.Release);
 
         StageProgressModel.CurCountDataClear();
 

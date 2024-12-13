@@ -15,7 +15,7 @@ public class SingletonDDOL<T> : MonoBehaviour where T : MonoBehaviour
                 if (instance == null)
                 {
                     GameObject obj = new GameObject();
-                    obj.name = typeof(T) + "auto";
+                    obj.name = typeof(T) + "_auto";
                     instance = obj.AddComponent<T>();
 
                     //instance?.GetComponent<T>();

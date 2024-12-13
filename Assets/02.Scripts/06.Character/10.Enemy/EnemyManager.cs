@@ -113,7 +113,7 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         int maxAttempt = 10;
         int curAttaempt = 0;
-        Vector3 playerPosition = GameManager.Instance._player.transform.position;
+        Vector3 playerPosition = GameManager.Instance.player.transform.position;
         // 콜라이더의 사이즈를 가져오는 bound.size 사용
         float range_X, range_Z;
         float offsetX = SpawnArea.center.x, offsetZ = SpawnArea.center.z;
@@ -167,7 +167,7 @@ public class EnemyManager : Singleton<EnemyManager>
             StopCoroutine(spawnCoroutine);
         }
 
-        GameManager.Instance._player.enabled = false;
+        GameManager.Instance.player.enabled = false;
         GameManager.Instance.IsBoss = true;
         isBoss = true;
         GameManager.Instance.isTryBoss = true;

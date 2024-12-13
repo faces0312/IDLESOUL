@@ -14,16 +14,19 @@ public class SoundManager : SingletonDDOL<SoundManager>
 
     protected override void Awake()
     {
-        base.Awake();
-
-        audioSource = gameObject.GetComponent<AudioSource>();
-        audioSource.loop = true; 
+        base.Awake(); 
     }
 
-    private void Start()
+    public void Init()
     {
+        //audioSource = Resources.Load<AudioSource>("Prefebs/Sample/AudioSource"); // 1
+        audioSource = gameObject.AddComponent<AudioSource>(); // 2
+        audioSource.loop = true; //BGM이기에 true
+
         SetBGMVolume(musicVolume);
         SetSoundEffectVolume(soundEffectVolume);
+
+        Debug.Log("SoundManager Init 완료!!");
     }
 
     //씬바뀔때 BGM 바꾸기

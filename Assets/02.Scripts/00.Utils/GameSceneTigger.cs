@@ -1,17 +1,47 @@
 ﻿using System;
 using UnityEngine;
 
+/*
+ 호출 시점 정리
+
+씬데이터매니저(-,보류)
+
+TitleSceneTrigger
+데이터매니저 (1) DDOL
+사운드매니저 (2) DDOL
+
+GameSceneTrigger
+오브젝트풀매니저(1) DDOL
+게임매니저(Player 내부 포함)(2)  DDOL
+Enemy매니저(3)
+이벤트매니저 (4) DDOL
+도전과제매니저 (5) DDOL
+UI매니저 (6) DDOL
+
+DDOL : DontDestroyOnLoad
+ */
+
 public class GameSceneTigger : MonoBehaviour
 {
     private void Start()
     {
-        ObjectPoolManager.Instance.ObjectPoolAllClear();
+        //TitleSceneTrigger로 이동 예정
+        DataManager.Instance.Init();
+        //SoundManager.Instance.Init();
+        //
 
+        //ObjectPoolManager 초기화 및 Scene에서 필요한 오브젝트 풀링 세팅
+        ObjectPoolManager.Instance.Init();
         PlayerObjectPoolSetting();
         EnemyObjectPoolSetting();
         InventoryObjectPoolSetting();
+        Debug.Log("Scene 오브젝트 풀링 세팅 완료!!");
 
-        GameManager.Instance.StartGame();
+        //GameManager 초기화 및 
+        GameManager.Instance.Init();
+
+        //EnemyManager 초기화
+        //EnemyManager.Instance.EnemySpawnStart();
     }
 
     private void InventoryObjectPoolSetting()

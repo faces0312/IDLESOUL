@@ -1,19 +1,21 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine.UIElements;
+using UnityEngine;
 
 public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
 {
     private Dictionary<string, List<ObjectPool>> poolDict;
-    //private Dictionary<int, List<ObjectPool>> poolDict;
 
     protected override void Awake()
     {
         base.Awake();
-        poolDict = new Dictionary<string, List<ObjectPool>>();
     }
 
+    public void Init()
+    {
+        poolDict = new Dictionary<string, List<ObjectPool>>();
+        ObjectPoolAllClear();
+        Debug.Log("ObjectPoolManager Init 완료!!");
+    }
 
     /// <summary>
     /// 오브젝트 풀 딕셔너리 내부의 풀 리스트를 반환
@@ -61,7 +63,7 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
         }
     }
 
-    public void ObjectPoolAllClear()
+    private void ObjectPoolAllClear()
     {
         foreach(KeyValuePair<string, List<ObjectPool>> pool in poolDict)
         {

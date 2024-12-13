@@ -60,7 +60,7 @@ public abstract class Enemy : BaseCharacter
     public void Initialize()
     {
         collider.enabled = true;
-        OnEventTargetRemove += GameManager.Instance._player.targetSearch.TargetClear;
+        OnEventTargetRemove += GameManager.Instance.player.targetSearch.TargetClear;
 
         statHandler = new StatHandler(StatType.Enemy, enemyDB.key);
 

@@ -1,15 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using System.IO;
-
-[Serializable]
-public class Inventory
-{
-    public List<ItemDB> Items;
-    //public Equipment Equipment;
-}
 
 [Serializable]
 public class ClearStageData
@@ -43,15 +34,13 @@ public class DataManager : SingletonDDOL<DataManager>
     private UserDB userData;
     public UserDB UserData { get => userData; set => userData = value; }
 
-    private Inventory inventory = new Inventory();
-
-    //public static event Action<UserDB> OnEventSaveUserData;
-    //public static event Action OnEventLoadUserData;
-
     protected override void Awake()
     {
         base.Awake();
+    }
 
+    public void Init()
+    {
         enemyDB = new EnemyDBLoader(Const.JsonEnemyDBPath);
         itemDB = new ItemDBLoader(Const.JsonItemDBPath);
         sellItemDB = new SellItemDBLoader(Const.JsonSellItemDBPath);
@@ -61,14 +50,7 @@ public class DataManager : SingletonDDOL<DataManager>
         userDB = new UserDBLoader(Const.JsonUserDBPath);
         achieveDB = new AchieveDBLoader(Const.JsonAchieveDBPath);
 
-        inventory.Items = new List<ItemDB>();
-        inventory.Items.Add(itemDB.GetByKey(1000));
-        inventory.Items.Add(itemDB.GetByKey(2000));
-
-
-
-        //OnEventSaveUserData += SaveUserData;
-        //OnEventLoadUserData += LoadUserData;
+        Debug.Log("DataManager Init 완료!!");
     }
 
     public void SaveUserData(UserData userData) // 유저 데이터 세이브
