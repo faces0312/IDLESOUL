@@ -8,7 +8,7 @@ using UnityEngine.UI;
 [Serializable]
 public class SoulSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    [SerializeField] private Image thumbnail;
+    [SerializeField] private SoulInventoryView sounInventoryView;
     private Image icon;
     private Button button;
 
@@ -50,11 +50,12 @@ public class SoulSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         Debug.Log($"소울 이름 : {soulInfoModel.soul.soulName}");
     }
 
-    private void OnUpdateThumbnail()
+    public void OnUpdateThumbnail()
     {
-        // TODO : 클릭 시 썸네일 이미지 변경
-        // thumbnail.sprite = 
-
-        Debug.Log($"썸네일 변경 : {index}번");
+        GameManager.Instance.player.PlayerSouls.SoulInventory.SoulSlot = this;
+        // TODO : 소울 스프라이트 전달
+        // or 소울 ID를 전달해서 ID에 맞는 스프라이트 View에서 로드해서 사용
+        //sounInventoryView.sprite = null;
+        sounInventoryView.UpdateUI();
     }
 }

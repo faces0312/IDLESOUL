@@ -185,7 +185,7 @@ public class Player : BaseCharacter
         playerStateMachine.ChangeState(playerStateMachine.IdleState);
 
         //Debug 소울 초기화 -> 리팩토링 및 호출 시점 재조정 필요
-        OnClickRegisterSoul();
+        //OnClickRegisterSoul();
     }
 
     public override void TakeDamage(float damage)

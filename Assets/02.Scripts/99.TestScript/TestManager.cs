@@ -107,10 +107,12 @@ public class TestManager : SingletonDDOL<TestManager>
 
     public void OnClickRegisterSoul()
     {
-        GameManager.Instance.player.PlayerSouls.RegisterSoul("마법사 영혼", new SoulMagician(11000));
-        GameManager.Instance.player.PlayerSouls.RegisterSoul("전사 영혼", new SoulKnight(11001));
-        GameManager.Instance.player.PlayerSouls.EquipSoul("마법사 영혼", 0);
-        GameManager.Instance.player.PlayerSouls.EquipSoul("전사 영혼", 1);
+        GameManager.Instance.player.PlayerSouls.RegisterSoul("클라리스", new SoulMagician(11000));
+        GameManager.Instance.player.PlayerSouls.RegisterSoul("플뢰르", new SoulKnight(11001));
+        GameManager.Instance.player.PlayerSouls.RegisterSoul("루엔", new SoulArcher(11002));
+        GameManager.Instance.player.PlayerSouls.EquipSoul("클라리스", 0);
+        GameManager.Instance.player.PlayerSouls.EquipSoul("플뢰르", 1);
+        GameManager.Instance.player.PlayerSouls.EquipSoul("루엔", 2);
         GameManager.Instance.player.OnUpdateSoulStats?.Invoke();    // 착용 시 패시브 업데이트
 
         GameManager.Instance.player.PlayerSouls.SpawnSoul(0);

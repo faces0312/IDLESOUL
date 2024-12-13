@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class PlayerSouls : MonoBehaviour
 {
-    private const int MAX_SOUL = 3;
+    //private const int MAX_SOUL = 3;
 
     private int spawnIndex = -1;
-    private Soul[] soulSlot = new Soul[MAX_SOUL];
+    private Soul[] soulSlot = new Soul[Const.MAX_SOUL];
     private Dictionary<string, Soul> soulDic = new Dictionary<string, Soul>();
 
-    private GameObject[] spawnEffects = new GameObject[MAX_SOUL];
+    private GameObject[] spawnEffects = new GameObject[Const.MAX_SOUL];
 
+    public SoulSquad SoulSquad { get; set; }
     public SoulInventory SoulInventory { get; set; }
 
     public event Action<Sprite> OnUpdateDefaultSprite;
@@ -50,6 +51,9 @@ public class PlayerSouls : MonoBehaviour
 
             // 해당하는 index에 소울을 장착
             soulSlot[index] = soul;
+
+            // 소울스쿼드에 등록
+            SoulSquad.EquipSoul(index, soul);
         }
     }
 
@@ -61,6 +65,8 @@ public class PlayerSouls : MonoBehaviour
         {
             soulSlot[index] = null;
         }
+
+        // TODO : 소울스쿼드에서도 해제
     }
 
     // 소울 스왑
