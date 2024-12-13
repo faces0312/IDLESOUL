@@ -33,6 +33,11 @@ public class InventoryView : MonoBehaviour, IUIBase
         Vector2 size = itemSlotBoundary.sizeDelta;
         size.y = 135 * ((itemSlots.Count / 4) + 1);
         itemSlotBoundary.sizeDelta = size;
+
+        for (int i = 0; i < Controller.Model.Items.Count; i++)
+        {
+            itemSlots[i].UIUpdate();    
+        }
     }
 
     public void HideUI()

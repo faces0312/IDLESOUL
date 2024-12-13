@@ -12,7 +12,7 @@ public class PlayerMoveState : PlayerBaseState
 
     public override void Enter()
     {
-        Debug.Log("Player Move State Enter");
+        //Debug.Log("Player Move State Enter");
         string animName = stateMachine._Player.PlayerAnimationController.runAnimationName;
         stateMachine._Player.PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, true);
 
@@ -21,7 +21,7 @@ public class PlayerMoveState : PlayerBaseState
 
     public override void Exit()
     {
-        Debug.Log("Player Move State Exit");
+        //Debug.Log("Player Move State Exit");
     }
 
     public override void Update()

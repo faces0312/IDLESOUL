@@ -14,8 +14,6 @@ public class SoulInventoryModel : UIModel
     public void AddSlot(SoulSlot slot)
     {
         slots.Add(slot);
-        Debug.LogAssertion("슬롯 추가!");
-        //OnInventoryChanged?.Invoke();
     }
 
     public void RemoveSlot(SoulSlot slot)
@@ -59,5 +57,16 @@ public class SoulInventoryModel : UIModel
         }
         
         return null;
+    }
+
+    public void UpdateThumbnail(string name)
+    {
+        foreach (var slot in slots)
+        {
+            if(slot.soulName == name && slot.soulName != string.Empty)
+            {
+                slot.OnUpdateThumbnail();
+            }
+        }
     }
 }

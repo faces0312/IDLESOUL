@@ -33,12 +33,16 @@ public static class Const
     public static readonly string ENEMY_PREFEB_GOBLINSKILLBOSS1_PATH = "Prefabs/Enemy/Effects/SkillBoss1";
     public static readonly string ENEMY_PREFEB_SKELETONSLASH_PATH = "Prefabs/Enemy/Effects/SlashSkeleton";
     public static readonly string ENEMY_PREFEB_SKELETONARROW_PATH = "Prefabs/Enemy/Effects/ArrowSkeleton";
+    public static readonly string ENEMY_PREFEB_SKELETONENERGYBOLTBOSS_PATH = "Prefabs/Enemy/Effects/EnergyBoltBoss";
+    public static readonly string ENEMY_PREFEB_SKELETONSKILLBOSS2_PATH = "Prefabs/Enemy/Effects/SkillBoss2";
 
     public static readonly string ENEMY_BOSS_POOL_KEY = "EnemyBoss";
     public static readonly string ENEMY_POOL_KEY = "Enemies";
     public static readonly string ENEMY_EFFECT_POOL_KEY = "EnemyEffect";
 
     public static readonly int INITIAL_POOL_SIZE = 60;
+
+    public const int MAX_SOUL = 3;
 }
   
 

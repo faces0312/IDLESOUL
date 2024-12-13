@@ -36,7 +36,7 @@ public class TargetSearch : MonoBehaviour
                         shortEnemyTarget = col.gameObject;
                     }
                 }
-                Debug.Log($"가까운 Enemy 타겟 : {shortEnemyTarget.name} ");
+                //Debug.Log($"가까운 Enemy 타겟 : {shortEnemyTarget.name} ");
                 return;
             }
         }
