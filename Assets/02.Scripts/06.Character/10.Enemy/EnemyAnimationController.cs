@@ -26,17 +26,29 @@ public class EnemyAnimationController : MonoBehaviour
         enemy.stateMachine.ChangeState(enemy.stateMachine.MoveState);
     }
 
-    public void EnemyBossDie()
+    public void SkeletonBossAttack()
     {
-        if (enemy is BossEnemy bossEnemy)
-        {
-            // skillZone 비활성화
-            foreach (Transform child in bossEnemy.skillZone.transform)
-                child.gameObject.SetActive(false);
-            bossEnemy.skillChargingEffect.SetActive(false);
-        }
-        enemy.Die();
-        GameManager.Instance.GameClear();
+        enemy.stateMachine.AttackState.RangedAttack(6006);
+    }
+    public void SkeletonBossSkillCharging()
+    {
+        enemy.stateMachine.SkillState.bossEnemy.StartSkillCoroutine(enemy.stateMachine.SkillState.PerformSkill());
+    }
+
+    public void SkeletonBossSkillStart()
+    {
+        enemy.stateMachine.SkillState.SkeletonSkillBossStart();
+        Invoke("aa", 1f);
+    }
+
+    private void aa()
+    {
+        enemy.stateMachine.SkillState.bossSkill2.bulletInstances.SetActive(false);
+    }
+
+    public void SkeletonBossSkillEnd()
+    {
+        enemy.stateMachine.ChangeState(enemy.stateMachine.MoveState);
     }
 
     public void EnemyDie()
@@ -66,5 +78,18 @@ public class EnemyAnimationController : MonoBehaviour
     public void ArrowRangedAttack()
     {
         enemy.stateMachine.AttackState.RangedAttack(6005);
+    }
+
+    public void EnemyBossDie()
+    {
+        if (enemy is BossEnemy bossEnemy)
+        {
+            // skillZone 비활성화
+            foreach (Transform child in bossEnemy.skillZone.transform)
+                child.gameObject.SetActive(false);
+            bossEnemy.skillChargingEffect.SetActive(false);
+        }
+        enemy.Die();
+        GameManager.Instance.GameClear();
     }
 }

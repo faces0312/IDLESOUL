@@ -26,11 +26,6 @@ public class EnemySkill1 : EnemySkillBase
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
-        /*foreach (Transform child in bossEnemy.skillZone.transform)
-            child.gameObject.SetActive(false);
-
-        SkillAttack1();*/
     }
 
     public void SkillAttack1()

@@ -13,7 +13,7 @@ public class PlayerIdelState : PlayerBaseState
 
     public override void Enter()
     {
-        Debug.Log("Player Idle State Enter");
+        //Debug.Log("Player Idle State Enter");
         string animName = stateMachine._Player.PlayerAnimationController.idleAnimationName;
         stateMachine._Player.PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, true);
 
@@ -22,7 +22,7 @@ public class PlayerIdelState : PlayerBaseState
 
     public override void Exit()
     {
-        Debug.Log("Player Idle State Exit");
+        //Debug.Log("Player Idle State Exit");
     }
 
     public override void Update()

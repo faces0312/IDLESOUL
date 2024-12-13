@@ -17,7 +17,7 @@ public class PlayerShotAttackState : PlayerAttackState
     {
         base.Enter();
 
-        Debug.Log("Player Shot Attack State Enter");
+        //Debug.Log("Player Shot Attack State Enter");
         string animName = stateMachine._Player.PlayerAnimationController.ShotAttackAnimationName;
         currentAttackTimer = stateMachine._Player.UserData.stat.atkSpeed;
     }
@@ -25,7 +25,7 @@ public class PlayerShotAttackState : PlayerAttackState
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("Player Shot Attack State Exit");
+        //Debug.Log("Player Shot Attack State Exit");
     }
 
     public override void Update()

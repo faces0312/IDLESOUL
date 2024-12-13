@@ -25,4 +25,11 @@ public class UIItemStatus : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log($"{controller.SelectItem}");
+        }
+    }
 }

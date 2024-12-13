@@ -69,13 +69,37 @@ public class Player : BaseCharacter
     [Header("State Machine")]
     private PlayerStateMachine playerStateMachine;
 
+    [Header("EquipData")]
+    private Item equipItem; //장착 아이템 여부 
 
     public PlayerAnimationController PlayerAnimationController { get => playerAnimationController; }
     public PlayerSouls PlayerSouls { get => playerSouls; }
     public StatHandler StatHandler { get => base.statHandler; set => base.statHandler = value; }
     public UserData UserData { get => userData;  }
+    public Item IsEquipItem { get => equipItem;  }
 
     public Action OnUpdateSoulStats;
+
+    public void EquipItem(Item item)
+    {
+        if(equipItem != null)
+        {
+            equipItem.equip = false;
+            StatHandler.UnEquipItem(equipItem.ItemStat);
+        }
+        equipItem = item;
+        item.equip = true;
+
+        StatHandler.EquipItem(item.ItemStat);
+
+    }
+
+    public void DisEquipItem()
+    {
+        equipItem.equip = false;
+        StatHandler.UnEquipItem(equipItem.ItemStat);
+        equipItem = null;
+    }
 
     protected override void Awake()
     {

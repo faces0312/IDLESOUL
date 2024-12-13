@@ -39,6 +39,8 @@ public class GameSceneTigger : MonoBehaviour
         ObjectPool skillBoss1Pool = new ObjectPool(6003, 10, Const.ENEMY_PREFEB_GOBLINSKILLBOSS1_PATH);
         ObjectPool slashSkeletonPool = new ObjectPool(6004, 60, Const.ENEMY_PREFEB_SKELETONSLASH_PATH);
         ObjectPool arrowSkeletonPool = new ObjectPool(6005, 60, Const.ENEMY_PREFEB_SKELETONARROW_PATH);
+        ObjectPool energyBoltBOSSPool = new ObjectPool(6006, 60, Const.ENEMY_PREFEB_SKELETONENERGYBOLTBOSS_PATH);
+        ObjectPool skillBoss2Pool = new ObjectPool(6007, 10, Const.ENEMY_PREFEB_SKELETONSKILLBOSS2_PATH);
 
         ObjectPool goblinBossPool = new ObjectPool(5500, 3, Const.ENEMY_PREFEB_GOBLINBOSS_PATH);
         ObjectPool skeletonBossPool = new ObjectPool(5501, 3, Const.ENEMY_PREFEB_SKELETONBOSS_PATH);
@@ -54,6 +56,8 @@ public class GameSceneTigger : MonoBehaviour
         ObjectPoolManager.Instance.AddPool(Const.ENEMY_EFFECT_POOL_KEY, skillBoss1Pool);
         ObjectPoolManager.Instance.AddPool(Const.ENEMY_EFFECT_POOL_KEY, slashSkeletonPool);
         ObjectPoolManager.Instance.AddPool(Const.ENEMY_EFFECT_POOL_KEY, arrowSkeletonPool);
+        ObjectPoolManager.Instance.AddPool(Const.ENEMY_EFFECT_POOL_KEY, energyBoltBOSSPool);
+        ObjectPoolManager.Instance.AddPool(Const.ENEMY_EFFECT_POOL_KEY, skillBoss2Pool);
 
         ObjectPoolManager.Instance.AddPool(Const.ENEMY_BOSS_POOL_KEY, goblinBossPool);
         ObjectPoolManager.Instance.AddPool(Const.ENEMY_BOSS_POOL_KEY, skeletonBossPool);
