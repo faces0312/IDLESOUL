@@ -182,6 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 840b05e818681284399baffe7e835a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseHpSystem: {fileID: 0}
+  rb: {fileID: 0}
   attackType: 0
   enemyDB:
     key: 0
@@ -201,9 +203,12 @@ MonoBehaviour:
     KnockBackPower: 0
     KnockBackResistance: 0
   target: {fileID: 0}
-  rb: {fileID: 0}
+  animator: {fileID: 0}
   bulletTest: {fileID: 7331459659348895967, guid: c066ec948ba440747820b2a0bafe2f1c, type: 3}
+  healthBar: {fileID: 0}
+  currentHealth: 0
   skillZone: {fileID: 6647562026562452566}
+  skillChargingEffect: {fileID: 0}
   skillSpeed: 0
   skillSpeedTmp: 0
 --- !u!1 &6647562026562452566
