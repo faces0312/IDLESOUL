@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class GameSceneTigger : MonoBehaviour
 {
-
-
     private void Start()
     {
         ObjectPoolManager.Instance.ObjectPoolAllClear();

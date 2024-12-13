@@ -37,8 +37,14 @@ public class PlayerSouls : MonoBehaviour
     // 소울 등록
     public void RegisterSoul(string name, Soul soul)
     {
-        soulDic.Add(name, soul);
+        //soulDic.Add(name, soul);
         //SoulInventory.AddSoul(soul); // TODO : 씬 합칠때 주석 제거
+
+        if (!soulDic.ContainsKey(name))
+        {
+            soulDic.Add(name, soul);
+            SoulInventory.AddSoul(soul); // TODO : 씬 합칠때 주석 제거
+        }
     }
 
     // 소울 장착

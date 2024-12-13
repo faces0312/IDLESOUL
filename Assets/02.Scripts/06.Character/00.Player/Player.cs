@@ -133,17 +133,14 @@ public class Player : BaseCharacter
         //ObjectPoolManager.Instance.AddPool("playerProjectile", playerProjectilePool);
     }
 
-    public void OnClickRegisterSoul()
+    public void RegisterSoul()
     {
-        //GameManager.Instance.player.PlayerSouls.RegisterSoul("마법사 영혼", new SoulMagician(11000));
-        PlayerSouls.RegisterSoul("마법사 영혼", new SoulMagician(11000));
-        //GameManager.Instance.player.PlayerSouls.RegisterSoul("전사 영혼", new SoulKnight(11001));
-        PlayerSouls.RegisterSoul("전사 영혼", new SoulKnight(11001));
-
-        //GameManager.Instance.player.PlayerSouls.EquipSoul("마법사 영혼", 0);
-        PlayerSouls.EquipSoul("마법사 영혼", 0);
-        //GameManager.Instance.player.PlayerSouls.EquipSoul("전사 영혼", 1);
-        PlayerSouls.EquipSoul("전사 영혼", 1);
+        PlayerSouls.RegisterSoul("클라리스", new SoulMagician(11000));
+        PlayerSouls.RegisterSoul("플뢰르", new SoulKnight(11001));
+        PlayerSouls.RegisterSoul("루엔", new SoulArcher(11002));
+        PlayerSouls.EquipSoul("클라리스", 0);
+        PlayerSouls.EquipSoul("플뢰르", 1);
+        PlayerSouls.EquipSoul("루엔", 2);
         OnUpdateSoulStats?.Invoke();    // 착용 시 패시브 업데이트
 
         PlayerSouls.SpawnSoul(0);
@@ -185,7 +182,7 @@ public class Player : BaseCharacter
         playerStateMachine.ChangeState(playerStateMachine.IdleState);
 
         //Debug 소울 초기화 -> 리팩토링 및 호출 시점 재조정 필요
-        //OnClickRegisterSoul();
+        //RegisterSoul();
     }
 
     public override void TakeDamage(float damage)

@@ -56,6 +56,8 @@ public class SkillButton : MonoBehaviour
         // TODO : 추후 제거
         GameManager.Instance.player.PlayerSouls.UpdateSkillSprite();
 
+        TestManager.Instance.OnClickRegisterSoul(); // TODO : 씬 합칠때 위치 조정
+
         CurSoulIndex = GameManager.Instance.player.PlayerSouls.SpawnIndex;
     }
 
