@@ -10,10 +10,17 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         get 
         {
-            instance = FindObjectOfType<T>();
             if (instance == null)
             {
-                instance?.GetComponent<T>();
+                instance = FindObjectOfType<T>();
+                if (instance == null)
+                {
+                    GameObject obj = new GameObject();
+                    obj.name = typeof(T) + "auto";
+                    instance = obj.AddComponent<T>();
+
+                    //instance?.GetComponent<T>();
+                }
             }
             return instance;
         }
