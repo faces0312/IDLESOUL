@@ -14718,7 +14718,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8652875238218531347}
-  - component: {fileID: 4785190956944845907}
+  - component: {fileID: 3697035634411785125}
+  - component: {fileID: 7380031643748333019}
   m_Layer: 0
   m_Name: SkillBoss2
   m_TagString: Untagged
@@ -14736,7 +14737,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 275668778179798616}
@@ -14745,7 +14746,7 @@ Transform:
   - {fileID: 7976049405746951955}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4785190956944845907
+--- !u!114 &3697035634411785125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14754,27 +14755,58 @@ MonoBehaviour:
   m_GameObject: {fileID: 5606067627736305563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5d567ac3f32b2246a01a3ab60188dfa, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a90ea3e27750ef458f51c3262cc5be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectMain: {fileID: 5606067627736305563}
-  gameObjectTail: {fileID: 0}
-  hitObject: {fileID: 4228587307444617785, guid: e2b4962e6bf7611439e26c8240ae9304, type: 3}
-  layerMask:
+  speed: 10
+  hitOffset: 0.01
+  UseFirePointRotation: 0
+  rotationOffset: {x: 0, y: 0, z: 0}
+  hit: {fileID: 0}
+  hitPS: {fileID: 0}
+  flash: {fileID: 0}
+  rb: {fileID: 7380031643748333019}
+  col: {fileID: 0}
+  lightSourse: {fileID: 0}
+  Detached: []
+  projectilePS: {fileID: 9005167578425182773}
+  notDestroy: 1
+  knockbackPower: 0
+  dir: {x: 0, y: 0, z: 0}
+  TargetLayer:
     serializedVersion: 2
-    m_Bits: 1024
-  maxLength: 3
-  isDestroy: 1
-  objectDestroyTime: 10
-  tailDestroyTime: 0
-  hitObjectDestroyTime: 2
-  maxTime: 10
-  moveSpeed: 5
-  isCheckHitTag: 0
-  targetTag: Ground
-  isShieldActive: 0
-  isHitMake: 1
-  hitObjScale: {x: 0.4, y: 0.4, z: 0.4}
+    m_Bits: 64
+  enemyGrade: 0
+  isMelee: 0
+  attack: 0
+  value: 0.1
+--- !u!54 &7380031643748333019
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5606067627736305563}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7238652558589625087
 GameObject:
   m_ObjectHideFlags: 0
