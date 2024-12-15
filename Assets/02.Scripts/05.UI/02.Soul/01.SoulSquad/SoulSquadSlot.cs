@@ -14,10 +14,12 @@ public class SoulSquadSlot : MonoBehaviour
     public Soul soul;
     public int index;
     public string soulName;
+    public Sprite sprite;
 
     private void Awake()
     {
-        thumbnail = GetComponent<Image>();
+        if (thumbnail == null)
+            thumbnail = GetComponent<Image>();
         button = GetComponent<Button>();
         button.onClick.AddListener(OnClickSlot);
     }
@@ -37,12 +39,22 @@ public class SoulSquadSlot : MonoBehaviour
     public void EquipSoul(Soul soul)
     {
         GameManager.Instance.player.PlayerSouls.EquipSoul(soul.soulName, index);
+        thumbnail.sprite = sprite;
     }
 
     public void UnEquipSoul()
     {
         soul = null;
         soulName = string.Empty;
+        thumbnail.sprite = null;
         GameManager.Instance.player.PlayerSouls.UnEquipSoul(index);
+    }
+
+    // TODO : 리팩토링 필요
+    public void UpdateThumbnail()
+    {
+        if (thumbnail == null)
+            thumbnail = GetComponent<Image>();
+        thumbnail.sprite = sprite;
     }
 }
