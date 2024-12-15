@@ -29,6 +29,9 @@ public class SoulInfoView : MonoBehaviour, IUIBase
 {
     [SerializeField] private GameObject invenPanel;
 
+    [Header("Thumbnail")]
+    [SerializeField] private Image thumbnail;
+
     [Header("Scroll")]
     [SerializeField] private RectTransform scrollTransform;
 
@@ -89,7 +92,7 @@ public class SoulInfoView : MonoBehaviour, IUIBase
 
     public void UpdateUI()
     {
-        Debug.LogAssertion("소울 인포 UI 업데이트");
+        //Debug.LogAssertion("소울 인포 UI 업데이트");
         levelTexts[(int)LevelType.Soul].text = $"Lv. {soul.level}";
 
         // TODO : 소울 스텟도 업데이트 되어야함
@@ -98,19 +101,19 @@ public class SoulInfoView : MonoBehaviour, IUIBase
 
     public void UpdateDefault()
     {
-        Debug.LogAssertion("소울 인포 스킬1 업데이트");
+        //Debug.LogAssertion("소울 인포 스킬1 업데이트");
         levelTexts[(int)LevelType.Default].text = $"Lv. {soul.Skills[(int)SkillType.Default].level}";
     }
 
     public void UpdateUltimate()
     {
-        Debug.LogAssertion("소울 인포 스킬2 업데이트");
+        //Debug.LogAssertion("소울 인포 스킬2 업데이트");
         levelTexts[(int)LevelType.Ultimate].text = $"Lv. {soul.Skills[(int)SkillType.Ultimate].level}";
     }
 
     public void UpdatePassive()
     {
-        Debug.LogAssertion("소울 인포 패시브 업데이트");
+        //Debug.LogAssertion("소울 인포 패시브 업데이트");
         levelTexts[(int)LevelType.Passive].text = $"Lv. {soul.Skills[(int)SkillType.Passive].level}";
 
         // TODO : 소울 스텟도 업데이트 되어야함
@@ -131,6 +134,9 @@ public class SoulInfoView : MonoBehaviour, IUIBase
 
     private void InitUI()
     {
+        // TODO : 소울 썸네일 삽입
+        thumbnail.sprite = soul.icon;
+
         // TODO : 스킬 sprite 삽입
         // icons[(int)LevelType.Default].sprite = 
         // icons[(int)LevelType.Ultimate].sprite = 

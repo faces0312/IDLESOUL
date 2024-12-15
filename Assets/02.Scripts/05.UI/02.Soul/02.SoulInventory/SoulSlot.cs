@@ -26,6 +26,12 @@ public class SoulSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         button.onClick.AddListener(OnUpdateThumbnail);
     }
 
+    private void Start()
+    {
+        if (soul != null)
+            icon.sprite = soul.icon;
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         Invoke(nameof(ShowInfo), holdTime);
@@ -47,15 +53,15 @@ public class SoulSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         soulInfoModel.soul = soul;
         UIManager.Instance.ShowUI("SoulInfo");
 
-        Debug.Log($"소울 이름 : {soulInfoModel.soul.soulName}");
+        // Debug.Log($"소울 이름 : {soulInfoModel.soul.soulName}");
     }
 
     public void OnUpdateThumbnail()
     {
+        if (soul == null) return;
+
         GameManager.Instance.player.PlayerSouls.SoulInventory.SoulSlot = this;
-        // TODO : 소울 스프라이트 전달
-        // or 소울 ID를 전달해서 ID에 맞는 스프라이트 View에서 로드해서 사용
-        //sounInventoryView.sprite = null;
+        sounInventoryView.Sprite = soul.icon;
         sounInventoryView.UpdateUI();
     }
 }
