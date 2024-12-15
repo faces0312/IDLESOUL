@@ -7,8 +7,16 @@ using System.Linq;
 
 public class CameraController : MonoBehaviour
 {
-    public CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] private Camera minimapCamera;
+
+    public CinemachineVirtualCamera VirtualCamera { get => virtualCamera; }
+    public Camera MinimapCamera { get => minimapCamera; }
+
+    public void SetMininapCamera()
+    {
+
+    }
 
     public void Initialize(Transform Follow , Transform LookAt)
     {

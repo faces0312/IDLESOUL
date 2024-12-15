@@ -20,7 +20,7 @@ public class UIStageProgressBar : MonoBehaviour
     {
         //model = new UIStageProgressBarModel();
         //GameManager.Instance.StageProgressModel = model;
-        model = GameManager.Instance.StageProgressModel;
+        model = StageManager.Instance.StageProgressModel;
         controller = new UIStageProgressBarController();
         controller.Initialize(view, model);
 

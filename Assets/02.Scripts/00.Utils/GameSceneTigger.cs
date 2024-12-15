@@ -40,8 +40,20 @@ public class GameSceneTigger : MonoBehaviour
         //GameManager 초기화 및 
         GameManager.Instance.Init();
 
+        //StageManager 초기화
+        StageManager.Instance.Init();
+
         //EnemyManager 초기화
-        //EnemyManager.Instance.EnemySpawnStart();
+        EnemyManager.Instance.Init();
+
+        //EventManager 초기화
+        EventManager.Instance.Init();
+
+        //AchievementManager 초기화
+        AchievementManager.Instance.Init();
+
+        //UIManager 초기화
+        UIManager.Instance.Init();
     }
 
     private void InventoryObjectPoolSetting()

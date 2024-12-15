@@ -48,7 +48,7 @@ MonoBehaviour:
   isBoss: 1
   spawnTime: 3
   bossCameraCloseUpTime: 3
-  SpawnArea: {fileID: 0}
+  SpawnArea: {fileID: 1813508102917181420}
 --- !u!1 &9089225240593722272
 GameObject:
   m_ObjectHideFlags: 0

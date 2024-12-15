@@ -45,8 +45,8 @@ public abstract class Enemy : BaseCharacter
         animatorHashData = new AnimatorHashData();
         animatorHashData.Initialize();
         stateMachine = new EnemyStateMachine(this);
-        target = GameManager.Instance.player.gameObject;
-
+        //target = GameManager.Instance.player.gameObject; //Debug - 호출시점 변경
+        OnDieEvent += StageManager.Instance.StageProgressModel.AddCurEnemyCount;
         //HP 게임
     }
     protected virtual void Start()
@@ -109,7 +109,7 @@ public abstract class Enemy : BaseCharacter
         //OnEventTargetRemove?.Invoke();
         //OnDieEvent?.Invoke();
         gameObject.SetActive(false);
-        Debug.Log($"{gameObject.name} 사망!!");
+        //Debug.Log($"{gameObject.name} 사망!!");
     }
 
     public virtual void Update()

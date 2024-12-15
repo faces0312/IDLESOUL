@@ -10,34 +10,27 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private List<Coroutine> enemySpawnCoroutines = new List<Coroutine>();
 
-    //ObjectPoolManager의 Dictionary id
     private Dictionary<int, Enemy> enemyPrefabs = new Dictionary<int, Enemy>();
-    //private const string ENEMY_BOSS_POOL_KEY = "EnemyBoss";
-    //private const string ENEMY_POOL_KEY = "Enemies";
-    //private const string ENEMY_EFFECT_POOL_KEY = "EnemyEffect";
-    //private const int INITIAL_POOL_SIZE = 60;
 
     [SerializeField] private float bossCameraCloseUpTime = 3.0f; // 보스 카메라 연출 지속시간
 
-    //TestCode
-    public BoxCollider SpawnArea;
-    //
-
-    private void Start()
+    public void Init()
     {
         InitializeEnemyPool();
+        EnemySpawnStart();
 
-        //BossSpawn(5500);
-        //StartCoroutine(EnemySpawnCoroutine(30, 5001));
+        Debug.Log("EnemyManager 세팅 완료!!");
     }
 
     public void EnemySpawnStart()
     {
-        //enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5000, 1.5f)));
-        //enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5001, 2.0f)));
-        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5002, 3.0f)));
-        enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, 5003, 3.0f)));
-        //BossSpawn(5501);
+        List<int> summonEnenyIDList = StageManager.Instance.CurStageData.SummonEnemyIDList;
+
+        foreach(int ID in summonEnenyIDList)
+        {
+            //소환 갯수 , ID , 소환 주기
+            enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, ID, 3.0f)));
+        }
     }
 
     private void Update()
@@ -62,26 +55,6 @@ public class EnemyManager : Singleton<EnemyManager>
         InitializeEnemyPrefab(5001, Const.ENEMY_PREFEB_GOBLINMAGICIAN_PATH);
         InitializeEnemyPrefab(5002, Const.ENEMY_PREFEB_SKELETON_PATH);
         InitializeEnemyPrefab(5003, Const.ENEMY_PREFEB_SKELETONARCHER_PATH);
-
-        //ObjectPool goblinPool = new ObjectPool(5000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Goblin");
-        //ObjectPool goblinMagicianPool = new ObjectPool(5001, INITIAL_POOL_SIZE, "Prefabs/Enemy/GoblinMagician");
-
-        //ObjectPool slashPool = new ObjectPool(6000, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/Slash");
-        //ObjectPool energyBoltPool = new ObjectPool(6001, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/EnergyBolt");
-        //ObjectPool slashBossPool = new ObjectPool(6002, INITIAL_POOL_SIZE, "Prefabs/Enemy/Effects/SlashBoss");
-        //ObjectPool skillBoss1Pool = new ObjectPool(6003, 10, "Prefabs/Enemy/Effects/SkillBoss1");
-
-        //ObjectPool goblinBossPool = new ObjectPool(5500, 3, "Prefabs/Enemy/GoblinBoss");
-
-        //ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinPool);
-        //ObjectPoolManager.Instance.AddPool(ENEMY_POOL_KEY, goblinMagicianPool);
-
-        //ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, slashPool);
-        //ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, energyBoltPool);
-        //ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, slashBossPool);
-        //ObjectPoolManager.Instance.AddPool(ENEMY_EFFECT_POOL_KEY, skillBoss1Pool);
-
-        //ObjectPoolManager.Instance.AddPool(ENEMY_BOSS_POOL_KEY, goblinBossPool);
     }
 
     private void InitializeEnemyPrefab(int id, string prefabPath)
@@ -116,14 +89,16 @@ public class EnemyManager : Singleton<EnemyManager>
         Vector3 playerPosition = GameManager.Instance.player.transform.position;
         // 콜라이더의 사이즈를 가져오는 bound.size 사용
         float range_X, range_Z;
+
+        BoxCollider SpawnArea = StageManager.Instance.CurStageMap.SpawnArea;
         float offsetX = SpawnArea.center.x, offsetZ = SpawnArea.center.z;
 
         Vector3 RandomPostion;
         do
         {
             curAttaempt++;
-            range_X = UnityEngine.Random.Range((SpawnArea.bounds.size.x / 2) * -1, SpawnArea.bounds.size.x / 2);
-            range_Z = UnityEngine.Random.Range((SpawnArea.bounds.size.z / 2) * -1, SpawnArea.bounds.size.z / 2);
+            range_X = UnityEngine.Random.Range((SpawnArea.size.x / 2) * -1, SpawnArea.size.x / 2);
+            range_Z = UnityEngine.Random.Range((SpawnArea.size.z / 2) * -1, SpawnArea.size.z / 2);
             RandomPostion = new Vector3(range_X + offsetX, 1f, range_Z + offsetZ);
         }
         while (curAttaempt < maxAttempt && 4.0f >= Vector3.Distance(RandomPostion, playerPosition));
@@ -145,6 +120,7 @@ public class EnemyManager : Singleton<EnemyManager>
             {
                 enemy.enemyDB = prefabEnemy.enemyDB;
                 enemy.Initialize();
+                enemy.target = GameManager.Instance.player.gameObject;
             }
             enemyObject.transform.position = RandomSpawn();
             enemyObject.SetActive(true);
@@ -186,6 +162,7 @@ public class EnemyManager : Singleton<EnemyManager>
         GameObject enemyBoss = pool.GetObject();
         Enemy tempEnemy = enemyBoss.GetComponent<BossEnemy>();
         tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(id);
+        tempEnemy.target = GameManager.Instance.player.gameObject;
         enemyBoss.transform.position = RandomSpawn();
         enemyBoss.SetActive(true);
         GameManager.Instance.enemies.Add(enemyBoss);

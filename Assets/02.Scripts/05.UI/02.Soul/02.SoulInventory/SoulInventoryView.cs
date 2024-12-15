@@ -31,6 +31,6 @@ public class SoulInventoryView : MonoBehaviour, IUIBase
         // TODO : 클릭 시 썸네일 이미지 변경
         // thumbnail.sprite = sprite;
 
-        Debug.LogAssertion("소울 인벤토리 UI 업데이트");
+        //Debug.LogAssertion("소울 인벤토리 UI 업데이트");
     }
 }

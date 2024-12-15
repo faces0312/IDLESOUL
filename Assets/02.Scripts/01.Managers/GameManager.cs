@@ -21,13 +21,6 @@ public class GameManager : SingletonDDOL<GameManager>
     public bool IsBoss;//현재 Boss가 필드에 있는지를 체크하는 변수 
     public bool isTryBoss;//보스를 트라이 한적이 있는지
 
-    [Header("StageData")]
-    //UserData에 들어가야할 필드
-    public int curStageNum;
-    public int curChapterNum;
-
-    public UIStageProgressBarModel StageProgressModel;
-
     public event Action OnEventBossSummon;
     public event Action OnGameOverEvent;
     public event Action OnGameClearEvent;
@@ -38,22 +31,14 @@ public class GameManager : SingletonDDOL<GameManager>
     protected override void Awake()
     {
         base.Awake();
-        _player = Resources.Load<Player>("Prefabs/Player/Player_Origin");
-        cameraController = Resources.Load<CameraController>("Prefabs/Managers/CameraController");
     }
 
     public void Init()
     {
-        Instantiate(_player);
+        _player = Instantiate(Resources.Load<Player>("Prefabs/Player/Player_Origin"));
+        cameraController = Instantiate(Resources.Load<CameraController>("Prefabs/Managers/CameraController"));
 
-        if (cameraController == null)
-        {
-            cameraController = GetComponentInChildren<CameraController>();
-        }
-
-        //StageDB에서 외부데이터 호출하여 초기화하기
-        //StageProgressModel.Initialize(30);//Debug - 까먹지 말고 UI매니저 초기화할때 꼭 집어넣을것
-        cameraController.Initialize(_player.CamarePivot.transform ,_player.transform);
+        cameraController.Initialize(_player.CamarePivot.transform, _player.transform);
         _player.enabled = true;
 
         Utils.fader.FadeTo(1f, 0f, 0.3f).OnComplete(Utils.fader.Release);
@@ -62,6 +47,8 @@ public class GameManager : SingletonDDOL<GameManager>
         //{
         //UIManager.Instance.ShowUI("StageProgress"); //Debug - 까먹지 말고 UI매니저 초기화할때 꼭 집어넣을것
         //}
+
+        Debug.Log("GameManager 세팅 완료!!");
     }
 
     [ContextMenu("GameClear")]
@@ -75,12 +62,12 @@ public class GameManager : SingletonDDOL<GameManager>
         IsBoss = false;
         OnGameClearEvent?.Invoke();
         Debug.Log("게임 클리어!!");
-
-        StageProgressModel.CurCountDataClear();
+        
+         StageManager.Instance.StageProgressModel.CurCountDataClear();
 
         //Utils.StartFadeOut();
         Invoke("NextStage", 3.0f);
-       
+
     }
 
     public void NextStage()
@@ -113,7 +100,8 @@ public class GameManager : SingletonDDOL<GameManager>
 
         Utils.fader.FadeTo(0f, 1f, 2.0f).OnComplete(Utils.fader.Release);
 
-        StageProgressModel.CurCountDataClear();
+        StageManager.Instance.StageProgressModel.CurCountDataClear();
+
 
         IsBoss = false;
         Invoke("NextStage", 2.0f);

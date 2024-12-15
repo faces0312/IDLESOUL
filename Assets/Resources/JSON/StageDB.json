@@ -9,9 +9,11 @@
       "SlayEnemyCount": 100,
       "SummonEnemyIDList": [
         5000,
-        5001,
-        5002
-      ]
+        5001
+      ],
+      "SummonBossID": 5500,
+      "StageType": 0,
+      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
     },
     {
       "key": 7001,
@@ -21,10 +23,12 @@
       "stageName": "미숙한자들의 길",
       "SlayEnemyCount": 100,
       "SummonEnemyIDList": [
-        5000,
-        5001,
-        5002
-      ]
+        5002,
+        5003
+      ],
+      "SummonBossID": 5501,
+      "StageType": 0,
+      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
     },
     {
       "key": 7002,
@@ -35,9 +39,11 @@
       "SlayEnemyCount": 100,
       "SummonEnemyIDList": [
         5000,
-        5001,
         5002
-      ]
+      ],
+      "SummonBossID": 5500,
+      "StageType": 0,
+      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
     }
   ]
 }

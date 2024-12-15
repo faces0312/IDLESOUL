@@ -19,7 +19,5 @@ public class EnemyDropItem : MonoBehaviour
         GameManager.Instance.player.UserData.Gold += enemy.enemyDB.DropGold;
         GameManager.Instance.player.UserData.Diamonds += enemy.enemyDB.DropDia;
         //Debug.Log(GameManager.Instance.player.UserData.Gold);
-
-        GameManager.Instance.StageProgressModel.AddCurEnemyCount(1);
     }
 }

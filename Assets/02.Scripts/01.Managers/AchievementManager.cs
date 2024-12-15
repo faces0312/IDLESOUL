@@ -11,7 +11,12 @@ public class AchievementManager : SingletonDDOL<AchievementManager>
 
     [SerializeField] private AchieveAlarm alarm;
 
-    protected void Start()
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
+    public void Init()
     {
         achievements = new Dictionary<AchievementType, List<AchieveData>>();
         achievementDB = DataManager.Instance.AchieveDB.AchieveList;

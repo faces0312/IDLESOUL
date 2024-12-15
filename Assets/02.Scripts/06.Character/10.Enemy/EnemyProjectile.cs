@@ -45,7 +45,7 @@ public class EnemyProjectile : BaseProjectile
     {
         if (TargetLayer == ((1 << other.gameObject.layer) | TargetLayer))
         {
-            Debug.Log($"공격이 {other.gameObject.name}에 충돌");
+            //Debug.Log($"공격이 {other.gameObject.name}에 충돌");
             DamageCaculate(other.gameObject, attack);
             KnockBackCaculate(other.gameObject, 12);
 
