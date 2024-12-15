@@ -22,7 +22,8 @@ public class EnemyDB
     public string Descripton;
 
     /// <summary>
-    /// DropGold
+    /// 
+    /// Gold
     /// </summary>
     public int DropGold;
 

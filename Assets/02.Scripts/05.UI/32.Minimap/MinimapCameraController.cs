@@ -5,7 +5,6 @@ using UnityEngine;
 public class MinimapCameraController : MonoBehaviour
 {
     private Camera _camera;
-    [SerializeField] private GameObject player;
     private Vector3 _position;
 
     void Start()
@@ -15,7 +14,8 @@ public class MinimapCameraController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _position = new Vector3(player.transform.position.x,_camera.transform.position.y , player.transform.position.z);
-        _camera.transform.position = _position;
+        //Debug - 미니맵 카메라 추가시 연결 할것 
+        //_position = new Vector3(player.transform.position.x,_camera.transform.position.y , player.transform.position.z);
+        //_camera.transform.position = _position;
     }
 }

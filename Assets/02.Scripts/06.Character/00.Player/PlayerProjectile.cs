@@ -39,7 +39,7 @@ public class PlayerProjectile : BaseProjectile
     {
         if (TargetLayer == ((1 << other.gameObject.layer) | TargetLayer))
         {
-            int Atk = BigInteger.ToInt32(GameManager.Instance._player.UserData.stat.atk);
+            int Atk = BigInteger.ToInt32(GameManager.Instance.player.UserData.stat.atk);
 
             //Debug.Log($"공격이 {other.gameObject.name}에 충돌");
             DamageCaculate(other.gameObject, Atk * value);

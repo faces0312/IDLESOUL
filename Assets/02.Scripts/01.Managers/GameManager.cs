@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : SingletonDDOL<GameManager>
 {
     //플레이어 접근
-    public Player _player;
+    private Player _player;
     public Player player
     {
         get { return _player; }
@@ -21,19 +21,10 @@ public class GameManager : SingletonDDOL<GameManager>
     public bool IsBoss;//현재 Boss가 필드에 있는지를 체크하는 변수 
     public bool isTryBoss;//보스를 트라이 한적이 있는지
 
-    [Header("StageData")]
-    //UserData에 들어가야할 필드
-    public int curStageNum;
-    public int curChapterNum;
-
-    public UIStageProgressBarModel StageProgressModel;
-
     public event Action OnEventBossSummon;
     public event Action OnGameOverEvent;
     public event Action OnGameClearEvent;
 
-    //오브젝트 풀에 접근
-    //public ObjectPool objectPool;
     //현재 맵에 활성화되어 있는 적 리스트
     public List<GameObject> enemies = new List<GameObject>();
 
@@ -42,28 +33,22 @@ public class GameManager : SingletonDDOL<GameManager>
         base.Awake();
     }
 
-    public void StartGame()
+    public void Init()
     {
-        if (cameraController == null)
-        {
-            cameraController = GetComponentInChildren<CameraController>();
-        }
+        _player = Instantiate(Resources.Load<Player>("Prefabs/Player/Player_Origin"));
+        cameraController = Instantiate(Resources.Load<CameraController>("Prefabs/Managers/CameraController"));
 
-        var fader = Instantiate(Resources.Load<Fader>("Prefabs/UI/UIFade"));
-        fader.FadeTo(1f, 0f, 0.3f).OnComplete(fader.Release);
-
-
-        //StageDB에서 외부데이터 호출하여 초기화하기
-        StageProgressModel.Initialize(1000);
-        cameraController.Initialize();
+        cameraController.Initialize(_player.CamarePivot.transform, _player.transform);
         _player.enabled = true;
+
+        Utils.fader.FadeTo(1f, 0f, 0.3f).OnComplete(Utils.fader.Release);
 
         //if (!isTryBoss)
         //{
-            UIManager.Instance.ShowUI("StageProgress");
+        //UIManager.Instance.ShowUI("StageProgress"); //Debug - 까먹지 말고 UI매니저 초기화할때 꼭 집어넣을것
         //}
 
-        EnemyManager.Instance.EnemySpawnStart();
+        Debug.Log("GameManager 세팅 완료!!");
     }
 
     [ContextMenu("GameClear")]
@@ -77,12 +62,12 @@ public class GameManager : SingletonDDOL<GameManager>
         IsBoss = false;
         OnGameClearEvent?.Invoke();
         Debug.Log("게임 클리어!!");
-
-        StageProgressModel.CurCountDataClear();
+        
+         StageManager.Instance.StageProgressModel.CurCountDataClear();
 
         //Utils.StartFadeOut();
         Invoke("NextStage", 3.0f);
-       
+
     }
 
     public void NextStage()
@@ -113,10 +98,10 @@ public class GameManager : SingletonDDOL<GameManager>
         //GameManager.Instance.OnGameOverEvent += 게임종료페이지를 선언할 수 있음
         OnGameOverEvent?.Invoke();
 
-        var fader = Instantiate(Resources.Load<Fader>("Prefabs/UI/UIFade"));
-        fader.FadeTo(0f, 1f, 2.0f).OnComplete(fader.Release);
+        Utils.fader.FadeTo(0f, 1f, 2.0f).OnComplete(Utils.fader.Release);
 
-        StageProgressModel.CurCountDataClear();
+        StageManager.Instance.StageProgressModel.CurCountDataClear();
+
 
         IsBoss = false;
         Invoke("NextStage", 2.0f);

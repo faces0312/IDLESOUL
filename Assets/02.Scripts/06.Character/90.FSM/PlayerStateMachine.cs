@@ -3,7 +3,6 @@
     public Player _Player { get; private set; }
     public PlayerIdelState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
-    //public PlayerAttackState AttackState { get; private set; }
     public PlayerMeleeAttackState MeleeAttackState { get; private set; }
     public PlayerShotAttackState ShotAttackState { get; private set; }
 
@@ -11,24 +10,9 @@
     {
         IdleState = new PlayerIdelState(this);
         MoveState = new PlayerMoveState(this);
-        //AttackState = new PlayerAttackState(this);
         MeleeAttackState = new PlayerMeleeAttackState(this);
         ShotAttackState = new PlayerShotAttackState(this);
         _Player = player;
     }
 
-    //public BaseSlimeTower SlimeTower { get; private set; }
-    //public SlimeTowerIdleState IdleState { get; private set; }
-    //public SlimeTowerAttackState AttackState { get; private set; }
-
-    //public SlimeTowerWalkState WalkState { get; private set; }
-
-
-    //public SlimeStateMachine(BaseSlimeTower slimeTower)
-    //{
-    //    IdleState = new SlimeTowerIdleState(this);
-    //    AttackState = new SlimeTowerAttackState(this);
-    //    WalkState = new SlimeTowerWalkState(this);
-    //    SlimeTower = slimeTower;
-    //}
 }

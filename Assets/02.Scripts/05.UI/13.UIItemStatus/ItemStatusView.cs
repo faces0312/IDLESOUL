@@ -16,7 +16,6 @@ public class ItemStatusView : MonoBehaviour, IUIBase
     [SerializeField] private Button EquipBtn;
     [SerializeField] private Button DisEquipBtn;
 
-
     public Button EquipButton { get => EquipBtn; }
     public Button DisEquipButton { get => DisEquipBtn; }
     public Button UpgradeButton { get => UpgradeBtn; }
@@ -30,8 +29,6 @@ public class ItemStatusView : MonoBehaviour, IUIBase
 
     public void ShowUI()
     {
-
-
         gameObject.SetActive(true);
     }
 

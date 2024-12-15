@@ -79,7 +79,7 @@ public class EnemyAttackState : EnemyBaseState
             projectile.attack = BigInteger.ToInt32(stateMachine.Enemy.StatHandler.CurrentStat.atk);
             if (projectile != null)
             {
-                Vector3 targetPosition = GameManager.Instance._player.transform.position;
+                Vector3 targetPosition = GameManager.Instance.player.transform.position;
                 projectile.dir = (targetPosition - rangedAttack.transform.position).normalized;
             }
         }

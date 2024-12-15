@@ -8,11 +8,17 @@ public class UIManager : Singleton<UIManager>
     private Dictionary<string, UIController> controllers = new Dictionary<string, UIController>();
     private UIController activeController;
 
-    private void Start()
+    protected override void Awake()
     {
-        InitUI();
+        base.Awake();
     }
 
+    public void Init()
+    {
+        uiLobbyCanvas = Instantiate(Resources.Load<RectTransform>("Prefabs/UI/NeedCheck/UILobbyCanvas"));
+
+        InitUI();
+    }
     public void RegisterController(string key, UIController controller)
     {
         if(!controllers.ContainsKey(key))
@@ -62,10 +68,12 @@ public class UIManager : Singleton<UIManager>
         return null;
     }
 
-    private void InitUI()
+    public void InitUI()
     {
         var obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Soul"), uiLobbyCanvas);
         Instantiate(Resources.Load<GameObject>("Prefabs/UI/SoulButtons"), uiLobbyCanvas);
         obj.transform.SetAsLastSibling();
+
+
     }
 }

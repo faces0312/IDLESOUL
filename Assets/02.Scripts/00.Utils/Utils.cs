@@ -1,10 +1,11 @@
 ﻿using DG.Tweening;
-using TMPro;
 using UnityEngine;
 using ScottGarland;
 
 public static class Utils
 {
+    public static Fader fader = Object.Instantiate(Resources.Load<Fader>("Prefabs/UI/UIFade"));
+
     // 각종 유틸 메서드 정리
 
     public static bool IsInLayerMask(int layer, LayerMask layerMask)
@@ -83,4 +84,5 @@ public static class Utils
 
         return result;
     }
+
 }
