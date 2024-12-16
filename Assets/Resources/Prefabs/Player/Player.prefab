@@ -163,12 +163,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95accc892bed69b47a4a0e3ce521d752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runAnimationName: run
   idleAnimationName: idle
-  AttackAnimationName: attack
-  idleTurnAnimationName: idle
-  runToIdleAnimationName: run
-  runWalkDuration: 1.5
+  runAnimationName: run
+  MeleeAttackAnimationName: 
+  ShotAttackAnimationName: 
+  VictoryAnimationName: 
+  DeathAnimationName: 
 --- !u!33 &6065071277311057847
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -276,9 +276,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c22d9e9a4435e84fa7a1d49858ef965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseHpSystem: {fileID: 0}
+  rb: {fileID: 0}
   TestDefaultAttackType: 0
   targetSearch: {fileID: 0}
-  rb: {fileID: 0}
+  CamarePivot: {fileID: 0}
 --- !u!114 &3052255957930213953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50216b5fc0b7a8746a386e114fd020f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 27.79
+  radius: 35
   shortEnemyTarget: {fileID: 0}
   layer:
     serializedVersion: 2

@@ -50,8 +50,8 @@ public class UIStageProgressBarController : UIController
             Debug.Log($"보스 등장 조건을 만족 합니다.");
             EnemyManager.Instance.BossSpawn(StageManager.Instance.CurStageData.SummonBossID); // Debug ID값 고정시켜 사용
 
-            stageProgressBarModel.OnEventCurEnemyAddCount -= UpdateView;
-            stageProgressBarModel.OnEventCurEnemyAddCount -= BossTriggerCheck;
+            //stageProgressBarModel.OnEventCurEnemyAddCount -= UpdateView;
+            //stageProgressBarModel.OnEventCurEnemyAddCount -= BossTriggerCheck;
             OnHide();
         }
     }

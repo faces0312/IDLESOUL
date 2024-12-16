@@ -6,7 +6,7 @@
       "StageNum": 1,
       "CurStageModifier": 1,
       "stageName": "처음의 숲",
-      "SlayEnemyCount": 100,
+      "SlayEnemyCount": 10,
       "SummonEnemyIDList": [
         5000,
         5001
@@ -21,12 +21,12 @@
       "StageNum": 2,
       "CurStageModifier": 1.1,
       "stageName": "미숙한자들의 길",
-      "SlayEnemyCount": 100,
+      "SlayEnemyCount": 20,
       "SummonEnemyIDList": [
-        5002,
-        5003
+        5000,
+        5001
       ],
-      "SummonBossID": 5501,
+      "SummonBossID": 5500,
       "StageType": 0,
       "StageMapPath": "Prefabs/Stage/CasthleStageMap"
     },
@@ -36,12 +36,122 @@
       "StageNum": 3,
       "CurStageModifier": 1.1,
       "stageName": "익숙해지는 주변",
+      "SlayEnemyCount": 30,
+      "SummonEnemyIDList": [
+        5002,
+        5003
+      ],
+      "SummonBossID": 5500,
+      "StageType": 0,
+      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+    },
+    {
+      "key": 7003,
+      "ChapterNum": 1,
+      "StageNum": 4,
+      "CurStageModifier": 1.1,
+      "stageName": "처음의 숲",
+      "SlayEnemyCount": 50,
+      "SummonEnemyIDList": [
+        5002,
+        5003
+      ],
+      "SummonBossID": 5500,
+      "StageType": 0,
+      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+    },
+    {
+      "key": 7004,
+      "ChapterNum": 1,
+      "StageNum": 5,
+      "CurStageModifier": 1.1,
+      "stageName": "미숙한자들의 길",
       "SlayEnemyCount": 100,
       "SummonEnemyIDList": [
         5000,
-        5002
+        5001,
+        5002,
+        5003
       ],
       "SummonBossID": 5500,
+      "StageType": 0,
+      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+    },
+    {
+      "key": 7005,
+      "ChapterNum": 1,
+      "StageNum": 6,
+      "CurStageModifier": 1.1,
+      "stageName": "익숙해지는 주변",
+      "SlayEnemyCount": 120,
+      "SummonEnemyIDList": [
+        5000,
+        5001,
+        5002,
+        5003
+      ],
+      "SummonBossID": 5501,
+      "StageType": 0,
+      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+    },
+    {
+      "key": 7006,
+      "ChapterNum": 1,
+      "StageNum": 7,
+      "CurStageModifier": 1.2,
+      "stageName": "처음의 숲",
+      "SlayEnemyCount": 100,
+      "SummonEnemyIDList": [
+        5000,
+        5001,
+        5002,
+        5003
+      ],
+      "SummonBossID": 5501,
+      "StageType": 0,
+      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+    },
+    {
+      "key": 7007,
+      "ChapterNum": 1,
+      "StageNum": 8,
+      "CurStageModifier": 1.2,
+      "stageName": "미숙한자들의 길",
+      "SlayEnemyCount": 120,
+      "SummonEnemyIDList": [
+        5001,
+        5003
+      ],
+      "SummonBossID": 5501,
+      "StageType": 0,
+      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+    },
+    {
+      "key": 7008,
+      "ChapterNum": 1,
+      "StageNum": 9,
+      "CurStageModifier": 1.2,
+      "stageName": "익숙해지는 주변",
+      "SlayEnemyCount": 100,
+      "SummonEnemyIDList": [
+        5001,
+        5003
+      ],
+      "SummonBossID": 5501,
+      "StageType": 0,
+      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+    },
+    {
+      "key": 7009,
+      "ChapterNum": 1,
+      "StageNum": 10,
+      "CurStageModifier": 1.2,
+      "stageName": "처음의 숲",
+      "SlayEnemyCount": 120,
+      "SummonEnemyIDList": [
+        50005002
+      ],
+      "SummonBossID": 5501,
       "StageType": 0,
       "StageMapPath": "Prefabs/Stage/CasthleStageMap"
     }

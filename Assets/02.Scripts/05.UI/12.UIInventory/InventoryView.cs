@@ -9,6 +9,7 @@ public class InventoryView : MonoBehaviour, IUIBase
     [SerializeField] private Transform itemSlotParent;
     [SerializeField] private ItemSlot itemSlotPrefab;
     [SerializeField] private RectTransform itemSlotBoundary;
+
     public InventoryController Controller;
 
     private List<ItemSlot> itemSlots = new List<ItemSlot>();
@@ -38,6 +39,8 @@ public class InventoryView : MonoBehaviour, IUIBase
         {
             itemSlots[i].UIUpdate();    
         }
+
+        gameObject.SetActive(true);
     }
 
     public void HideUI()
