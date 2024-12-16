@@ -17,16 +17,27 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
 
     [Header("Status")]
     [SerializeField] private GameObject statusBundle;
-    [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private TextMeshProUGUI powerText;
     private TextMeshProUGUI[] statusText;
+
+    [Header("Upgrade")]
+    [SerializeField] private TextMeshProUGUI[] upgradeLevelText;
 
     [Header("Level")]
     [SerializeField] private TextMeshProUGUI[] levelTexts;
 
+    private StatHandler playerStatHandler;
+
     public void Initialize()
     {
-        
+        playerStatHandler = GameManager.Instance.player.StatHandler;
+
+        statusText = new TextMeshProUGUI[statusBundle.transform.childCount];
+
+        for (int i = 0; i < statusBundle.transform.childCount; ++i)
+        {
+            statusText[i] = statusBundle.transform.GetChild(i).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        }
     }
 
     public void ShowUI()
@@ -48,43 +59,64 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
     public void UpdateUI()
     {
         Debug.LogAssertion("플레이어 인포 UI 업데이트");
-        // levelTexts[(int)LevelType.Soul].text = $"Lv. {soul.level}";
 
-        // TODO : 소울 스텟도 업데이트 되어야함
-        // UpdateStatus();
+        UpdateStatus();
     }
 
-    private void InitUI()
+    public void UpdateHp()
     {
-        //// TODO : 소울 썸네일 삽입
-        //thumbnail.sprite = soul.icon;
-
-        //// TODO : 스킬 sprite 삽입
-        //// icons[(int)LevelType.Default].sprite = 
-        //// icons[(int)LevelType.Ultimate].sprite = 
-        //// icons[(int)LevelType.Passive].sprite = 
-
-        //skillNameTexts[(int)LevelType.Default].text = $"Lv. {soul.Skills[(int)SkillType.Default].skillName}";
-        //skillNameTexts[(int)LevelType.Ultimate].text = $"Lv. {soul.Skills[(int)SkillType.Ultimate].skillName}";
-        //skillNameTexts[(int)LevelType.Passive].text = $"Lv. {soul.Skills[(int)SkillType.Passive].skillName}";
-
-        //skillDescriptionTexts[(int)LevelType.Default].text = $"Lv. {soul.Skills[(int)SkillType.Default].description}";
-        //skillDescriptionTexts[(int)LevelType.Ultimate].text = $"Lv. {soul.Skills[(int)SkillType.Ultimate].description}";
-        //skillDescriptionTexts[(int)LevelType.Passive].text = $"Lv. {soul.Skills[(int)SkillType.Passive].description}";
+        upgradeLevelText[(int)Status.Hp].text = $"체력 Lv. {playerStatHandler.CurrentStat.MaxHealthLevel}";
+        statusText[(int)StatusType.Hp].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.maxHealth) + "%";
     }
 
+    public void UpdateAtk()
+    {
+        upgradeLevelText[(int)Status.Atk].text = $"공격력 Lv. {playerStatHandler.CurrentStat.AtkLevel}";
+        statusText[(int)StatusType.Atk].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.atk) + "%";
+    }
+
+    public void UpdateDef()
+    {
+        upgradeLevelText[(int)Status.Def].text = $"방어력 Lv. {playerStatHandler.CurrentStat.DefLevel}";
+        statusText[(int)StatusType.Def].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.def) + "%";
+    }
+
+    public void UpdateReduceDmg()
+    {
+        upgradeLevelText[(int)Status.ReduceDmg].text = $"피해 감소 Lv. {playerStatHandler.CurrentStat.ReduceDamageLevel}";
+        statusText[(int)StatusType.ReduceDamage].text = playerStatHandler.CurrentStat.reduceDamage.ToString() + "%";
+    }
+
+    public void UpdateCritChance()
+    {
+        upgradeLevelText[(int)Status.CritChance].text = $"치명타 확률 Lv. {playerStatHandler.CurrentStat.CriticalRateLevel}";
+        statusText[(int)StatusType.CritChance].text = $"{playerStatHandler.CurrentStat.critChance}%";
+    }
+
+    public void UpdateCritDmg()
+    {
+        upgradeLevelText[(int)Status.CritDmg].text = $"치명타 피해 Lv. {playerStatHandler.CurrentStat.CriticalDamageLevel}";
+        statusText[(int)StatusType.CritDamage].text = $"{playerStatHandler.CurrentStat.critDamage}%";
+    }
+    
     private void UpdateStatus()
     {
-        //levelText.text = $"Lv. {soul.level}";
-        //powerText.text = Utils.FormatBigInteger(soul.statHandler.CurrentStat.totalDamage);
-        //statusText[(int)StatusType.Hp].text = Utils.FormatBigInteger(soul.statHandler.CurrentStat.maxHealth);
-        //statusText[(int)StatusType.Atk].text = Utils.FormatBigInteger(soul.statHandler.CurrentStat.atk);
-        //statusText[(int)StatusType.Def].text = Utils.FormatBigInteger(soul.statHandler.CurrentStat.def);
-        //statusText[(int)StatusType.MoveSpeed].text = $"{soul.statHandler.CurrentStat.moveSpeed + 100f}%";
-        //statusText[(int)StatusType.AtkSpeed].text = $"{soul.statHandler.CurrentStat.atkSpeed + 100f}%";
-        //statusText[(int)StatusType.ReduceDamage].text = soul.statHandler.CurrentStat.reduceDamage.ToString();
-        //statusText[(int)StatusType.CritChance].text = $"{soul.statHandler.CurrentStat.critChance}%";
-        //statusText[(int)StatusType.CritDamage].text = $"{soul.statHandler.CurrentStat.critDamage}%";
-        //statusText[(int)StatusType.CoolDown].text = $"{soul.statHandler.CurrentStat.coolDown}%";
+        powerText.text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.totalDamage);
+        statusText[(int)StatusType.Hp].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.maxHealth);
+        statusText[(int)StatusType.Atk].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.atk);
+        statusText[(int)StatusType.Def].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.def);
+        statusText[(int)StatusType.MoveSpeed].text = $"{playerStatHandler.CurrentStat.moveSpeed + 100f}%";
+        statusText[(int)StatusType.AtkSpeed].text = $"{playerStatHandler.CurrentStat.atkSpeed + 100f}%";
+        statusText[(int)StatusType.ReduceDamage].text = playerStatHandler.CurrentStat.reduceDamage.ToString();
+        statusText[(int)StatusType.CritChance].text = $"{playerStatHandler.CurrentStat.critChance}%";
+        statusText[(int)StatusType.CritDamage].text = $"{playerStatHandler.CurrentStat.critDamage}%";
+        statusText[(int)StatusType.CoolDown].text = $"{playerStatHandler.CurrentStat.coolDown}%";
+
+        upgradeLevelText[(int)Status.Hp].text = $"체력 Lv. {playerStatHandler.CurrentStat.MaxHealthLevel}";
+        upgradeLevelText[(int)Status.Atk].text = $"공격력 Lv. {playerStatHandler.CurrentStat.AtkLevel}";
+        upgradeLevelText[(int)Status.Def].text = $"방어력 Lv. {playerStatHandler.CurrentStat.DefLevel}";
+        upgradeLevelText[(int)Status.ReduceDmg].text = $"피해 감소 Lv. {playerStatHandler.CurrentStat.ReduceDamageLevel}";
+        upgradeLevelText[(int)Status.CritChance].text = $"치명타 확률 Lv. {playerStatHandler.CurrentStat.CriticalRateLevel}";
+        upgradeLevelText[(int)Status.CritDmg].text = $"치명타 피해 Lv. {playerStatHandler.CurrentStat.CriticalDamageLevel}";
     }
 }

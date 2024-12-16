@@ -161,22 +161,29 @@ public class StatHandler
         switch(type)
         {
             case Status.Hp:
-                currentStat.health = BigInteger.Multiply(baseStat.health, level);
+                currentStat.MaxHealthLevel += level;
+                currentStat.health = BigInteger.Multiply(baseStat.health, currentStat.MaxHealthLevel);
+                currentStat.maxHealth = currentStat.health;
                 break;
             case Status.Atk:
-                currentStat.atk = BigInteger.Multiply(baseStat.atk, level);
+                currentStat.AtkLevel += level;
+                currentStat.atk = BigInteger.Multiply(baseStat.atk, currentStat.AtkLevel);
                 break;
             case Status.Def:
-                currentStat.atk = BigInteger.Multiply(baseStat.def, level);
+                currentStat.DefLevel += level;
+                currentStat.def = BigInteger.Multiply(baseStat.def, currentStat.DefLevel);
                 break;
             case Status.ReduceDmg:
-                currentStat.reduceDamage = baseStat.reduceDamage * level;
+                currentStat.ReduceDamageLevel += level;
+                currentStat.reduceDamage = baseStat.reduceDamage * currentStat.ReduceDamageLevel;
                 break;
             case Status.CritChance:
-                currentStat.critChance = baseStat.critChance * level;
+                currentStat.CriticalRateLevel += level;
+                currentStat.critChance = baseStat.critChance * currentStat.CriticalRateLevel;
                 break;
             case Status.CritDmg:
-                currentStat.critDamage = baseStat.critDamage * level;
+                currentStat.CriticalDamageLevel += level;
+                currentStat.critDamage = baseStat.critDamage * currentStat.CriticalDamageLevel;
                 break;
         }
     }
