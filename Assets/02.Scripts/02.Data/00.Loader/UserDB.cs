@@ -153,12 +153,12 @@ public class UserDB
         Atk = BigInteger.ToInt32(userData.stat.atk);
         Def = BigInteger.ToInt32(userData.stat.def);
 
-        //MaxHealthLevel =  userData.stat.MaxHealthLevel
-        //AtkLevel = userData.stat.AtkLevel;
-        //DefLevel = userData.stat.DefLevel;
-        //ReduceDamageLevel = userData.stat.ReduceDamageLevel;
-        //CriticalRateLevel = userData.stat.CriticalRateLevel;
-        //CriticalDamageLevel = userData.stat.CriticalDamageLevel;
+        MaxHealthLevel = userData.stat.MaxHealthLevel;
+        AtkLevel = userData.stat.AtkLevel;
+        DefLevel = userData.stat.DefLevel;
+        ReduceDamageLevel = userData.stat.ReduceDamageLevel;
+        CriticalRateLevel = userData.stat.CriticalRateLevel;
+        CriticalDamageLevel = userData.stat.CriticalDamageLevel;
 
         moveSpeed = userData.stat.moveSpeed;
         atkSpeed = userData.stat.atkSpeed;

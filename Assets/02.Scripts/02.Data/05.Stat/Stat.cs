@@ -29,6 +29,13 @@ public class Stat
     public float critDamage;
     public float coolDown;
 
+    public int MaxHealthLevel;
+    public int AtkLevel;
+    public int DefLevel;
+    public int ReduceDamageLevel;
+    public int CriticalRateLevel;
+    public int CriticalDamageLevel;
+
     public Stat()
     {
         this.health = 0;
@@ -44,6 +51,13 @@ public class Stat
         this.critChance = 0;
         this.critDamage = 0;
         this.coolDown = 0;
+
+        this.MaxHealthLevel = 0;
+        this.AtkLevel = 0;
+        this.DefLevel = 0;
+        this.ReduceDamageLevel = 0;
+        this.CriticalRateLevel = 0;
+        this.CriticalDamageLevel = 0;
     }
 
     public Stat(Stat stat)
@@ -61,6 +75,13 @@ public class Stat
         this.critChance = stat.critChance;
         this.critDamage = stat.critDamage;
         this.coolDown = stat.coolDown;
+
+        this.MaxHealthLevel = stat.MaxHealthLevel;
+        this.AtkLevel = stat.AtkLevel;
+        this.DefLevel = stat.DefLevel;
+        this.ReduceDamageLevel = stat.ReduceDamageLevel;
+        this.CriticalRateLevel = stat.CriticalRateLevel;
+        this.CriticalDamageLevel = stat.CriticalDamageLevel;
     }
 
     public static Stat operator +(Stat stat1, Stat stat2)
