@@ -7,9 +7,9 @@ public class Boss2 : BossEnemy
     public float skillSpeed;
     public float skillSpeedTmp;
 
-    protected override void Start()
+    public override void Initialize()
     {
-        base.Start();
+        base.Initialize();
         healthBar.gameObject.SetActive(true);
         skill = new List<EnemySkillBase>
         {

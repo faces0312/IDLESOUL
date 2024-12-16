@@ -45,29 +45,22 @@ public abstract class Enemy : BaseCharacter
         collider = GetComponent<CapsuleCollider>();
         animator = GetComponentInChildren<Animator>();
         animatorHashData = new AnimatorHashData();
-        animatorHashData.Initialize();
         stateMachine = new EnemyStateMachine(this);
         //target = GameManager.Instance.player.gameObject; //Debug - 호출시점 변경
         OnDieEvent += StageManager.Instance.StageProgressModel.AddCurEnemyCount;
         //HP 게임
     }
-    protected virtual void Start()
-    {
-        Initialize();
-        stateMachine.Initialize();
-        HpUpdate();
-        //Debug.Log(statHandler.CurrentStat.health);
-    }
 
-    public void Initialize()
+    public virtual void Initialize()
     {
+        animatorHashData.Initialize();
         collider.enabled = true;
         OnEventTargetRemove += GameManager.Instance.player.targetSearch.TargetClear;
 
         statHandler = new StatHandler(StatType.Enemy, enemyDB.key);
 
         statHandler.CurrentStat.iD = enemyDB.key;
-        statHandler.CurrentStat.health = new  BigInteger((long)enemyDB.Health);
+        statHandler.CurrentStat.health = new BigInteger((long)enemyDB.Health);
         statHandler.CurrentStat.maxHealth = new BigInteger((long)enemyDB.Health);
         statHandler.CurrentStat.atk = new BigInteger((long)enemyDB.Attack);
         statHandler.CurrentStat.def = new BigInteger((long)enemyDB.Defence);
@@ -76,6 +69,8 @@ public abstract class Enemy : BaseCharacter
         statHandler.CurrentStat.critChance = enemyDB.CritChance;
         statHandler.CurrentStat.critDamage = enemyDB.CritDamage;
         skillDamage = 100000;
+        stateMachine.Initialize();
+        HpUpdate();
     }
 
     public override void TakeDamage(float damage)

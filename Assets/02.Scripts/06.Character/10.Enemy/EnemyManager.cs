@@ -162,6 +162,7 @@ public class EnemyManager : SingletonDDOL<EnemyManager>
         GameObject enemyBoss = pool.GetObject();
         Enemy tempEnemy = enemyBoss.GetComponent<BossEnemy>();
         tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(id);
+        tempEnemy.Initialize();
         tempEnemy.target = GameManager.Instance.player.gameObject;
         enemyBoss.transform.position = RandomSpawn();
         enemyBoss.SetActive(true);
