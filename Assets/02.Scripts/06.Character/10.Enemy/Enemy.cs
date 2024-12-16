@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using ScottGarland;
 using UnityEngine.UI;
+using Spine;
 
 public enum AttackType
 {
@@ -111,6 +112,9 @@ public abstract class Enemy : BaseCharacter
         //OnEventTargetRemove?.Invoke();
         //OnDieEvent?.Invoke();
         gameObject.SetActive(false);
+        AchieveEvent achieveEvent = new AchieveEvent(Enums.AchievementType.KillMonster,Enums.ActionType.Kill, 1);
+        EventManager.Instance.Publish<AchieveEvent>(Enums.Channel.Achievement, achieveEvent);
+
         //Debug.Log($"{gameObject.name} »ç¸Á!!");
     }
 

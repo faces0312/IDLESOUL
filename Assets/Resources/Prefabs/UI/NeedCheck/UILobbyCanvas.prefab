@@ -2676,7 +2676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 1206556900011430907}
-  menuObject: {fileID: 0}
+  menuObject: {fileID: 4966687914567819270}
   shop: {fileID: 4781777411011687686}
   shopObject: {fileID: 0}
 --- !u!1 &5390114131257333677

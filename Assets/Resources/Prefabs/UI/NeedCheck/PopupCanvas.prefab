@@ -6823,14 +6823,15 @@ GameObject:
   - component: {fileID: 369167342708992260}
   - component: {fileID: 1700847179345753481}
   - component: {fileID: 9195185544014744182}
-  - component: {fileID: 8749468472022492462}
+  - component: {fileID: 8631707907242074581}
+  - component: {fileID: 440034882176853296}
   m_Layer: 5
   m_Name: POPUP_AchievementAlarm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6749170738197001030
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6906,7 +6907,7 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
---- !u!114 &8749468472022492462
+--- !u!114 &8631707907242074581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6915,21 +6916,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 3235390910563191933}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac958a1d567f59b4385ecd44a434aaab, type: 3}
+  m_Script: {fileID: 11500000, guid: d3a790cbe5de08b478448e35a9b2d567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AData:
-    Name: 
-    Description: 
-    progress: 0
-    Goal: 0
-    ID: 0
-    iconPath: 
-    Action: 0
-    AchievementType: 0
-    isClear: 0
-    isPublished: 0
-  icon: {fileID: 3876526165268985065}
+  UIKey: AchieveAlarm
+  view: {fileID: 440034882176853296}
+--- !u!114 &440034882176853296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3235390910563191933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b7c4cbdc5c7e4c46bfeefebef00166c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 1700847179345753481}
   aName: {fileID: 7850211509951102169}
 --- !u!1 &3247206010907454632
 GameObject:
@@ -10385,6 +10389,8 @@ GameObject:
   - component: {fileID: 4054592119620001005}
   - component: {fileID: 1675417182489880943}
   - component: {fileID: 7084070206916624321}
+  - component: {fileID: 363741482892818702}
+  - component: {fileID: 2053538179514010558}
   - component: {fileID: 7123636934935039337}
   - component: {fileID: 2924475430480543564}
   m_Layer: 5
@@ -10468,6 +10474,34 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: 3}
   m_UseGraphicAlpha: 1
+--- !u!114 &363741482892818702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5628600013070588523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db491f903dbd574b8bde8230da05c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIKey: Achievement
+  view: {fileID: 2053538179514010558}
+--- !u!114 &2053538179514010558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5628600013070588523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c11bbbdcf0a5042bc04929d28a1d7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AchievePanel: {fileID: 5628600013070588523}
+  scroll: {fileID: 7123636934935039337}
 --- !u!114 &7123636934935039337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17024,7 +17058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8265447694745644419
 RectTransform:
   m_ObjectHideFlags: 0
