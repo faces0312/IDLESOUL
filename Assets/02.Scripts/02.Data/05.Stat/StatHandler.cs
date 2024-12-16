@@ -4,6 +4,16 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 
+public enum Status
+{
+    Hp,
+    Atk,
+    Def,
+    ReduceDmg,
+    CritChance,
+    CritDmg
+}
+
 public class StatHandler
 {
     [SerializeField] private StatType type;
@@ -140,6 +150,34 @@ public class StatHandler
         {
             additionalStats.Clear();    // 추가 값이 사라졌으므로 초기화 시킨다.
             UpdateSoulStats();
+        }
+    }
+
+    public void LevelUp(int level, Status type)
+    {
+        // Player 레벨업 메서드
+        // TODO : 수치 적용 방법 => 현재는 레벨을 곱해줌
+
+        switch(type)
+        {
+            case Status.Hp:
+                currentStat.health = BigInteger.Multiply(baseStat.health, level);
+                break;
+            case Status.Atk:
+                currentStat.atk = BigInteger.Multiply(baseStat.atk, level);
+                break;
+            case Status.Def:
+                currentStat.atk = BigInteger.Multiply(baseStat.def, level);
+                break;
+            case Status.ReduceDmg:
+                currentStat.reduceDamage = baseStat.reduceDamage * level;
+                break;
+            case Status.CritChance:
+                currentStat.critChance = baseStat.critChance * level;
+                break;
+            case Status.CritDmg:
+                currentStat.critDamage = baseStat.critDamage * level;
+                break;
         }
     }
 
