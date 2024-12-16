@@ -4,9 +4,21 @@ using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
 {
+    [SerializeField] RectTransform uiLobbyCanvas;
     private Dictionary<string, UIController> controllers = new Dictionary<string, UIController>();
     private UIController activeController;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
+    public void Init()
+    {
+        uiLobbyCanvas = Instantiate(Resources.Load<RectTransform>("Prefabs/UI/NeedCheck/UILobbyCanvas"));
+
+        InitUI();
+    }
     public void RegisterController(string key, UIController controller)
     {
         if(!controllers.ContainsKey(key))
@@ -54,5 +66,14 @@ public class UIManager : Singleton<UIManager>
         }
 
         return null;
+    }
+
+    public void InitUI()
+    {
+        var obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Soul"), uiLobbyCanvas);
+        Instantiate(Resources.Load<GameObject>("Prefabs/UI/SoulButtons"), uiLobbyCanvas);
+        obj.transform.SetAsLastSibling();
+
+
     }
 }

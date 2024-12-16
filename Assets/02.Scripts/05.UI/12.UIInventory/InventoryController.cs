@@ -6,7 +6,6 @@ public class InventoryController : UIController
 {
     private InventoryModel inventoryModel;
     private InventoryView inventoryView;
-
     public InventoryModel Model { get => inventoryModel; set => inventoryModel = value; }
     public InventoryView View { get => inventoryView; set => inventoryView = value; }
 

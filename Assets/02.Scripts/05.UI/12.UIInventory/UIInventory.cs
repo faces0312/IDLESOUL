@@ -16,7 +16,7 @@ public class UIInventory : MonoBehaviour
         //Model(Data) 초기화
         model = new InventoryModel();
         model.Initilaize();
-        GameManager.Instance._player.Inventory = model;
+        GameManager.Instance.player.Inventory = model;
 
         //컨트롤러  초기화 및 View 등록
         controller = new InventoryController();

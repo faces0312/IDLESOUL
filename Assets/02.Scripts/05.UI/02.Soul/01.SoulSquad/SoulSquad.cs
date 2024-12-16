@@ -26,14 +26,15 @@ public class SoulSquad : MonoBehaviour
 
             Initialize();
         }
-
-        //GameManager.Instance.player.PlayerSouls.SoulSquad = this;
+        
+        GameManager.Instance.player.PlayerSouls.SoulSquad = this;
         gameObject.SetActive(false);
     }
 
     private void Start()
     {
-        GameManager.Instance._player.PlayerSouls.SoulSquad = this;
+        //GameManager.Instance._player.PlayerSouls.SoulSquad = this;
+        //gameObject.SetActive(false);
     }
 
     private void Initialize()

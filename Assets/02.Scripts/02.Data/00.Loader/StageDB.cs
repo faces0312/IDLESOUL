@@ -42,11 +42,20 @@ public class StageDB
     /// </summary>
     public List<int> SummonEnemyIDList;
 
+    /// <summary>
+    /// SummonBossID
+    /// </summary>
+    public int SummonBossID;
 
     /// <summary>
     /// StageType Int / 0 = none, 1 = daily, 2 = EXP, 3 = Upgrade
     /// </summary>
     public int StageType;
+
+    /// <summary>
+    /// StageMapPath
+    /// </summary>
+    public string StageMapPath;
 
 }
 public class StageDBLoader

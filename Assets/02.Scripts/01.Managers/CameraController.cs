@@ -3,16 +3,28 @@ using UnityEngine;
 using Cinemachine;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 
 public class CameraController : MonoBehaviour
 {
-    public CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] private Camera minimapCamera;
 
-    public void Initialize()
+    public CinemachineVirtualCamera VirtualCamera { get => virtualCamera; }
+    public Camera MinimapCamera { get => minimapCamera; }
+
+    public void SetMininapCamera()
     {
-        virtualCamera.Follow = GameManager.Instance._player.CamarePivot.transform;
-        virtualCamera.LookAt = GameManager.Instance._player.transform;
+
+    }
+
+    public void Initialize(Transform Follow , Transform LookAt)
+    {
+        //virtualCamera.Follow = GameManager.Instance._player.CamarePivot.transform;
+        //virtualCamera.LookAt = GameManager.Instance._player.transform;
+        
+        virtualCamera.Follow = Follow;
+        virtualCamera.LookAt = LookAt;
     }
 
     public void ToggleFollowTarget(Transform newFollowTr , float closeUpTime)
@@ -26,13 +38,13 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void ResetFollowTarget()
+    public void ResetFollowTarget(Transform Follow, Transform LookAt)
     {
         if (virtualCamera != null)
         {
-            virtualCamera.Follow = GameManager.Instance._player.CamarePivot.transform;
-            virtualCamera.LookAt = GameManager.Instance._player.transform;
-            GameManager.Instance._player.enabled = true;
+            virtualCamera.Follow = Follow;
+            virtualCamera.LookAt = LookAt;
+            GameManager.Instance.player.enabled = true;
         }
     }
 }

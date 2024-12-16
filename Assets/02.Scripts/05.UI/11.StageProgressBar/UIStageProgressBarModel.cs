@@ -28,12 +28,12 @@ public class UIStageProgressBarModel : UIModel
         curEnemySlayerCount = 0;
     }
 
-    public void AddCurEnemyCount(int slayEnemyCount)
+    public void AddCurEnemyCount()
     {
         //보스가 등장했을때만 Add하게됨
         if (!GameManager.Instance.isTryBoss)
         {
-            curEnemySlayerCount += slayEnemyCount;
+            curEnemySlayerCount ++;
             Debug.Log($"현재 처치한 적의 갯수 : {curEnemySlayerCount} \" {bossTriggerEnemySlayerCount}");
             OnEventCurEnemyAddCount?.Invoke();
         }

@@ -31,6 +31,7 @@ public abstract class Enemy : BaseCharacter
     public Slider healthBar;
     public float currentHealth;
 
+    public static float skillDamage;
     public StatHandler StatHandler { get => base.statHandler; set => base.statHandler = value; }
 
     public event Action OnDieEvent;
@@ -45,8 +46,8 @@ public abstract class Enemy : BaseCharacter
         animatorHashData = new AnimatorHashData();
         animatorHashData.Initialize();
         stateMachine = new EnemyStateMachine(this);
-        target = GameManager.Instance.player.gameObject;
-
+        //target = GameManager.Instance.player.gameObject; //Debug - 호출시점 변경
+        OnDieEvent += StageManager.Instance.StageProgressModel.AddCurEnemyCount;
         //HP 게임
     }
     protected virtual void Start()
@@ -60,7 +61,7 @@ public abstract class Enemy : BaseCharacter
     public void Initialize()
     {
         collider.enabled = true;
-        OnEventTargetRemove += GameManager.Instance._player.targetSearch.TargetClear;
+        OnEventTargetRemove += GameManager.Instance.player.targetSearch.TargetClear;
 
         statHandler = new StatHandler(StatType.Enemy, enemyDB.key);
 
@@ -73,6 +74,7 @@ public abstract class Enemy : BaseCharacter
         statHandler.CurrentStat.atkSpeed = enemyDB.AttackSpeed;
         statHandler.CurrentStat.critChance = enemyDB.CritChance;
         statHandler.CurrentStat.critDamage = enemyDB.CritDamage;
+        skillDamage = 100000;
     }
 
     public override void TakeDamage(float damage)
@@ -109,7 +111,7 @@ public abstract class Enemy : BaseCharacter
         //OnEventTargetRemove?.Invoke();
         //OnDieEvent?.Invoke();
         gameObject.SetActive(false);
-        Debug.Log($"{gameObject.name} 사망!!");
+        //Debug.Log($"{gameObject.name} 사망!!");
     }
 
     public virtual void Update()

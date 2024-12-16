@@ -11,7 +11,10 @@ public class AchieveController : MonoBehaviour
     private void OnEnable()
     {
         recycleScroll = GetComponent<RecycleScrollY>();
-        recycleScroll.SetRectsCount(DataManager.Instance.AchieveDB.AchieveList.Count, 6);
+        if (DataManager.Instance.AchieveDB != null) //임시로 조건문 달성 ,호출시점 변경  필요 
+        {
+            recycleScroll.SetRectsCount(DataManager.Instance.AchieveDB.AchieveList.Count, 6);
+        }
     }
 
     private void Start()

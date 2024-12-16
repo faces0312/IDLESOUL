@@ -38,12 +38,6 @@ public class EnemyAnimationController : MonoBehaviour
     public void SkeletonBossSkillStart()
     {
         enemy.stateMachine.SkillState.SkeletonSkillBossStart();
-        Invoke("aa", 1f);
-    }
-
-    private void aa()
-    {
-        enemy.stateMachine.SkillState.bossSkill2.bulletInstances.SetActive(false);
     }
 
     public void SkeletonBossSkillEnd()

@@ -24,6 +24,8 @@ public class SoulSquadModel : UIModel
         slots[index].soul = soul;
         slots[index].index = index;
         slots[index].soulName = soul.soulName;
+        slots[index].sprite = soul.sprite;
+        slots[index].UpdateThumbnail(); // TODO : View에서 호출 하도록 리펙토링필요
         OnSquadChanged?.Invoke();
     }
 
@@ -32,6 +34,7 @@ public class SoulSquadModel : UIModel
         slots[index].soul = null;
         slots[index].index = -1;
         slots[index].soulName = string.Empty;
+        slots[index].sprite = null;
         OnSquadChanged?.Invoke();
     }
 }

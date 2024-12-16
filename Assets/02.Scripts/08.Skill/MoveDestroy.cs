@@ -33,6 +33,8 @@ public class MoveDestroy : MonoBehaviour
     private bool isHit;
     //private float scalefactor;
 
+    public Vector3 hitObjScale = new Vector3(1, 1, 1);
+
     public GameObject MakedObject { get => makedObject; }
 
     private void Start()
@@ -67,7 +69,7 @@ public class MoveDestroy : MonoBehaviour
             return;
         makedObject = Instantiate(hitObject, hit.point, Quaternion.LookRotation(hit.normal));
         //makedObject.transform.parent = transform.parent;
-        makedObject.transform.localScale = new Vector3(1, 1, 1);
+        makedObject.transform.localScale = hitObjScale;
     }
 
     void MakeHitObject(Transform point)
@@ -76,7 +78,7 @@ public class MoveDestroy : MonoBehaviour
             return;
         makedObject = Instantiate(hitObject, point.transform.position, point.rotation);
         //makedObject.transform.parent = transform.parent;
-        makedObject.transform.localScale = new Vector3(1, 1, 1);
+        makedObject.transform.localScale = hitObjScale;
     }
 
     void HitObj(RaycastHit hit)
