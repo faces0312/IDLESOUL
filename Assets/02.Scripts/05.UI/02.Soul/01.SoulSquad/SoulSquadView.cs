@@ -24,6 +24,6 @@ public class SoulSquadView : MonoBehaviour, IUIBase
 
     public void UpdateUI()
     {
-        Debug.LogAssertion("소울 스쿼드 UI 업데이트");
+        //Debug.LogAssertion("소울 스쿼드 UI 업데이트");
     }
 }

@@ -58,8 +58,6 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
 
     public void UpdateUI()
     {
-        Debug.LogAssertion("플레이어 인포 UI 업데이트");
-
         UpdateStatus();
     }
 

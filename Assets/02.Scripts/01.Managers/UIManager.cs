@@ -23,10 +23,10 @@ public class UIManager : SingletonDDOL<UIManager>
 
         var SoulStatus = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Soul"), uiLobbyCanvas);
         var SoulBtns = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SoulButtons"), uiLobbyCanvas);
+        Instantiate(Resources.Load<GameObject>("Prefabs/UI/PlayerInfoPanel"), uiLobbyCanvas);
 
         SoulStatus.transform.SetAsLastSibling();
         SoulBtns.transform.SetAsFirstSibling();
-        //InitUI();
     }
     public void RegisterController(string key, UIController controller)
     {
@@ -76,11 +76,4 @@ public class UIManager : SingletonDDOL<UIManager>
 
         return null;
     }
-
-    //public void InitUI()
-    //{
-      
-
-
-    //}
 }
