@@ -26,8 +26,6 @@ public class UserData
         Gold = userDB.Gold;
         Diamonds = userDB.Diamonds;
         PlayTimeInSeconds = userDB.PlayTimeInSeconds;
-        Exp = userDB.exp;
-        MaxExp = userDB.MaxExp;
 
         stat = new Stat();
         stat.iD = UID;

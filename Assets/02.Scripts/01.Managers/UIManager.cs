@@ -21,9 +21,11 @@ public class UIManager : SingletonDDOL<UIManager>
         popupCanvas = Instantiate(Resources.Load<RectTransform>("Prefabs/UI/NeedCheck/PopupCanvas"));
         uiInventory = Instantiate(Resources.Load<RectTransform>("Prefabs/UI/NeedCheck/UIInventory"));
 
-        var obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Soul"), uiLobbyCanvas);
-        Instantiate(Resources.Load<GameObject>("Prefabs/UI/SoulButtons"), uiLobbyCanvas);
-        obj.transform.SetAsLastSibling();
+        var SoulStatus = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Soul"), uiLobbyCanvas);
+        var SoulBtns = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SoulButtons"), uiLobbyCanvas);
+
+        SoulStatus.transform.SetAsLastSibling();
+        SoulBtns.transform.SetAsFirstSibling();
         //InitUI();
     }
     public void RegisterController(string key, UIController controller)

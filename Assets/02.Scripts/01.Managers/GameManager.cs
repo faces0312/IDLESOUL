@@ -48,8 +48,6 @@ public class GameManager : SingletonDDOL<GameManager>
             cameraController.Initialize(_player.CamarePivot.transform, _player.transform);
         }
       
-
-
         //Utils.fader.FadeTo(1f, 0f, 0.3f).OnComplete(Utils.fader.Release);
 
         //if (!isTryBoss)
@@ -89,10 +87,11 @@ public class GameManager : SingletonDDOL<GameManager>
 
         UIManager.Instance.ShowUI("StageProgress");
         DataManager.Instance.SaveUserData(_player.UserData);
-        _player.transform.position = Vector3.up; //플레이어 위치 초기화
+        //_player.transform.position = Vector3.up; //플레이어 위치 초기화
 
         //StageManager 초기화
         StageManager.Instance.Init();
+        UIManager.Instance.ShowUI("StageLabel");
 
         //EnemyManager 초기화
         EnemyManager.Instance.Init();

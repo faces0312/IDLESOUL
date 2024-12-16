@@ -9,22 +9,20 @@ public class UIStageLabelView : MonoBehaviour, IUIBase
 
     public void HideUI()
     {
-        throw new System.NotImplementedException();
     }
 
     public void Initialize()
     {
-        throw new System.NotImplementedException();
     }
 
     public void ShowUI()
     {
-        throw new System.NotImplementedException();
+        StageDB stagedb = StageManager.Instance.CurStageData;
+        stageLabal.text = $"{stagedb.ChapterNum} - {stagedb.StageNum} {stagedb.stageName}";
     }
 
     public void UpdateUI()
     {
-        throw new System.NotImplementedException();
     }
 
 }

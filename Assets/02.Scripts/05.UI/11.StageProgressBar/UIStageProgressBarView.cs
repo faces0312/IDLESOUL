@@ -27,6 +27,7 @@ public class UIStageProgressBarView : MonoBehaviour, IUIBase
     {
         //Boss 몬스터 등장 조건이 되지 않으면 UI 출력
         gameObject.SetActive(true);
+        Utils.StartFadeIn(this.GetComponent<CanvasGroup>(), Ease.OutBounce, 1.0f);
     }
 
     public void HideUI()

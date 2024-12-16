@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class UIStageLabelController : UIController
 {
-    private UIStageLabelModel stageLabelModel;
     private UIStageLabelView stageLabelView;
 
     public override void OnShow()

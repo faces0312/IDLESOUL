@@ -20,5 +20,6 @@ public class UIStageLabel : MonoBehaviour
 
         //UI매니저에 UI 등록
         UIManager.Instance.RegisterController(UIKey, controller);
+        UIManager.Instance.ShowUI(UIKey);
     }
 }
