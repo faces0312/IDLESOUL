@@ -9,7 +9,7 @@ public class AchievementManager : SingletonDDOL<AchievementManager>
     private List<AchieveDB> achievementDB; //도전과제 DB
     public List<AchieveData> aDatas = new List<AchieveData>();
 
-    [SerializeField] private AchieveAlarm alarm;
+    //[SerializeField] private AchieveAlarm alarm;
 
     protected override void Awake()
     {
@@ -62,9 +62,14 @@ public class AchievementManager : SingletonDDOL<AchievementManager>
 
     public IEnumerator CoAlarm(AchieveData data)
     {
-        alarm.gameObject.SetActive(true);
-        alarm.SetContent(data);
+        AchieveAlarmController controller = UIManager.Instance.GetController("AchieveAlarm") as AchieveAlarmController;
+        controller.AchieveAlarmView.SetContent(data);
+        UIManager.Instance.ShowUI("AchieveAlarm");
         yield return Wait.Wait3s;
-        alarm.gameObject.SetActive(false);
+        UIManager.Instance.HideUI("AchieveAlarm");
+        //alarm.gameObject.SetActive(true);
+        //alarm.SetContent(data);
+        //yield return Wait.Wait3s;
+        //alarm.gameObject.SetActive(false);
     }
 }

@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class AchievementView : MonoBehaviour, IUIBase
 {
     [SerializeField] private GameObject AchievePanel;
-    [SerializeField] private AchieveAlarm aMentAlarm;
-    [SerializeField] private Button exitButton;
     [SerializeField] private RecycleScrollY scroll;
 
     private bool isReceived;

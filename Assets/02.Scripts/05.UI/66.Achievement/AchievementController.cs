@@ -1,13 +1,14 @@
 public class AchievementController : UIController
 {
-    string key = "achieveController";
     private AchievementModel achievementModel;
+    private AchievementView achievementView;
 
     public override void Initialize(IUIBase view, UIModel model)
     {
-        base.Initialize(view, model);
-
         achievementModel = model as AchievementModel;
+        achievementView = view as AchievementView;
+
+        base.Initialize(view, model);
 
     }
 

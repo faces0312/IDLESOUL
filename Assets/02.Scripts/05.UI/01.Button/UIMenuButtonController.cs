@@ -30,10 +30,12 @@ public class UIMenuButtonController : MonoBehaviour
         });
         achievement.onClick.AddListener(() =>
         {
-            if(achievementObject.activeSelf == false)
-            {
-                achievementObject.SetActive(true);
-            }
+            //if(achievementObject.activeSelf == false)
+            //{
+            //    achievementObject.SetActive(true);
+            //}
+            UIManager.Instance.ShowUI("Achievement");
+
         });
         config.onClick.AddListener(() =>
         {
