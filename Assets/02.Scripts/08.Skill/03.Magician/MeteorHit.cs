@@ -44,9 +44,16 @@ public class MeteorHit : MonoBehaviour
         {
             // TODO : Enemy 피격 처리
 
+            ITakeDamageAble damageable = other.gameObject.GetComponent<ITakeDamageAble>();
+            //TODO :: 무적시간이 아닐때에도 조건에 추가해야됨
+            if (damageable != null)
+            {
+                damageable.TakeDamage(10000);
+            }
+
             //GameManager.Instance.enemies.Remove(collision.gameObject);  // 임시로 제거
             //Destroy(collision.gameObject);
-            Debug.LogAssertion("Enemy Destroy");
+            //Debug.LogAssertion("Enemy Destroy");
         }
     }
 }
