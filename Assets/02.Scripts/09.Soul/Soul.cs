@@ -31,6 +31,9 @@ public abstract class Soul
     protected JobType job = JobType.None;
     protected AttackType attackType;
 
+    public Sprite icon;
+    public Sprite sprite;
+
     protected Skill[] skills = new Skill[(int)SkillType.Max];
     public Skill[] Skills { get { return skills; } }
     public StatHandler StatHandler { get { return statHandler; } }
@@ -53,7 +56,10 @@ public abstract class Soul
         //upgradeStack = db.
 
         job = db.JobType;
-        //attackType = db.AttackType;
+        attackType = db.AttackType;
+
+        icon = Resources.Load<Sprite>(db.IconPath);
+        sprite = Resources.Load<Sprite>(db.SpritePath);
 
         // TODO : 스킬 데이터 넘겨주기
         InitSkills();

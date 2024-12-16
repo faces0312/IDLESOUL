@@ -47,6 +47,20 @@ public class AchieveData
         AchievementType = (AchievementType)data.AchievementType;
     }
 
+    public void Set(AchieveDB data)
+    {
+        Name = data.Name;
+        Description = data.Description;
+
+        progress = 0;
+        Goal = data.Goal;
+        ID = data.ID;
+
+        iconPath = data.iconPath;
+        Action = (Enums.ActionType)data.Action;
+        AchievementType = (AchievementType)data.AchievementType;
+    }
+
     public void AddProgress(float value)
     {
         progress += value;

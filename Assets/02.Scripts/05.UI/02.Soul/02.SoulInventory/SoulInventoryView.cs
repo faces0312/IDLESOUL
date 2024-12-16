@@ -9,7 +9,7 @@ public class SoulInventoryView : MonoBehaviour, IUIBase
     [SerializeField] private GameObject invenPanel;
     [SerializeField] private Image thumbnail;
 
-    public Sprite sprite;
+    public Sprite Sprite { get; set; }
 
     public void Initialize()
     {
@@ -28,8 +28,8 @@ public class SoulInventoryView : MonoBehaviour, IUIBase
 
     public void UpdateUI()
     {
-        // TODO : 클릭 시 썸네일 이미지 변경
-        // thumbnail.sprite = sprite;
+        if (Sprite != null)
+            thumbnail.sprite = Sprite;
 
         //Debug.LogAssertion("소울 인벤토리 UI 업데이트");
     }
