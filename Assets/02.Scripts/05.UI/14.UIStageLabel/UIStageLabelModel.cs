@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageMap : MonoBehaviour
+public class UIStageLabelModel : UIModel
 {
-    public BoxCollider SpawnArea;
-
+    
 }

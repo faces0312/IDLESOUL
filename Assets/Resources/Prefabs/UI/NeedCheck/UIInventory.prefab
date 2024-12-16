@@ -1020,7 +1020,6 @@ GameObject:
   - component: {fileID: 895430917546116167}
   - component: {fileID: 5630163958773123423}
   - component: {fileID: 55327539091121017}
-  - component: {fileID: 6183017899306266130}
   m_Layer: 5
   m_Name: InventoryView
   m_TagString: Untagged
@@ -1116,21 +1115,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6183017899306266130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2263210695062898043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 090da38ae8b1af540a50086607062c06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemSlotParent: {fileID: 6944386377967960459}
-  itemSlotPrefab: {fileID: 0}
-  itemSlotBoundary: {fileID: 6944386377967960459}
 --- !u!1 &2614037988174064771
 GameObject:
   m_ObjectHideFlags: 0
@@ -2966,6 +2950,7 @@ GameObject:
   - component: {fileID: 6869802091910249461}
   - component: {fileID: 5913821892995319488}
   - component: {fileID: 2365635996244520603}
+  - component: {fileID: 5739851048247875910}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -3048,7 +3033,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIKey: Inventory
   views:
-  - {fileID: 6183017899306266130}
+  - {fileID: 5739851048247875910}
+--- !u!114 &5739851048247875910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6942473510273877778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090da38ae8b1af540a50086607062c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSlotParent: {fileID: 6944386377967960459}
+  itemSlotPrefab: {fileID: 0}
+  itemSlotBoundary: {fileID: 6944386377967960459}
 --- !u!1 &7325511441924331183
 GameObject:
   m_ObjectHideFlags: 0

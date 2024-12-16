@@ -38,12 +38,12 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void ResetFollowTarget(Transform Follow, Transform LookAt)
+    public void ResetFollowTarget()
     {
         if (virtualCamera != null)
         {
-            virtualCamera.Follow = Follow;
-            virtualCamera.LookAt = LookAt;
+            virtualCamera.Follow = GameManager.Instance.player.CamarePivot.transform;
+            virtualCamera.LookAt = GameManager.Instance.player.transform;
             GameManager.Instance.player.enabled = true;
         }
     }

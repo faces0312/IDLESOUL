@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 public class GameManager : SingletonDDOL<GameManager>
@@ -35,13 +36,21 @@ public class GameManager : SingletonDDOL<GameManager>
 
     public void Init()
     {
-        _player = Instantiate(Resources.Load<Player>("Prefabs/Player/Player_Origin"));
-        cameraController = Instantiate(Resources.Load<CameraController>("Prefabs/Managers/CameraController"));
+        if (_player == null)
+        {
+            _player = Instantiate(Resources.Load<Player>("Prefabs/Player/Player_Origin"));
+            _player.enabled = true;
+        }
 
-        cameraController.Initialize(_player.CamarePivot.transform, _player.transform);
-        _player.enabled = true;
+        if(cameraController == null)
+        {
+            cameraController = Instantiate(Resources.Load<CameraController>("Prefabs/Managers/CameraController"));
+            cameraController.Initialize(_player.CamarePivot.transform, _player.transform);
+        }
+      
 
-        Utils.fader.FadeTo(1f, 0f, 0.3f).OnComplete(Utils.fader.Release);
+
+        //Utils.fader.FadeTo(1f, 0f, 0.3f).OnComplete(Utils.fader.Release);
 
         //if (!isTryBoss)
         //{
@@ -62,8 +71,12 @@ public class GameManager : SingletonDDOL<GameManager>
         IsBoss = false;
         OnGameClearEvent?.Invoke();
         Debug.Log("게임 클리어!!");
+
         
-         StageManager.Instance.StageProgressModel.CurCountDataClear();
+        StageManager.Instance.StageProgressModel.CurCountDataClear();
+
+        int stageID = StageManager.Instance.CurStageID;
+        StageManager.Instance.StageSelect(stageID + 1);//다음 Stage로 이동
 
         //Utils.StartFadeOut();
         Invoke("NextStage", 3.0f);
@@ -72,7 +85,19 @@ public class GameManager : SingletonDDOL<GameManager>
 
     public void NextStage()
     {
-        SceneManager.LoadScene("GameScene_SMS");
+        //SceneManager.LoadScene("GameScene_SMS");
+
+        UIManager.Instance.ShowUI("StageProgress");
+        DataManager.Instance.SaveUserData(_player.UserData);
+        _player.transform.position = Vector3.up; //플레이어 위치 초기화
+
+        //StageManager 초기화
+        StageManager.Instance.Init();
+
+        //EnemyManager 초기화
+        EnemyManager.Instance.Init();
+
+        
     }
 
     //다음 스테이지 혹은 현재 스테이지에 
@@ -98,7 +123,7 @@ public class GameManager : SingletonDDOL<GameManager>
         //GameManager.Instance.OnGameOverEvent += 게임종료페이지를 선언할 수 있음
         OnGameOverEvent?.Invoke();
 
-        Utils.fader.FadeTo(0f, 1f, 2.0f).OnComplete(Utils.fader.Release);
+        //Utils.fader.FadeTo(0f, 1f, 2.0f).OnComplete(Utils.fader.Release);
 
         StageManager.Instance.StageProgressModel.CurCountDataClear();
 

@@ -38,6 +38,8 @@ public class InventoryView : MonoBehaviour, IUIBase
         {
             itemSlots[i].UIUpdate();    
         }
+
+        gameObject.SetActive(true);
     }
 
     public void HideUI()

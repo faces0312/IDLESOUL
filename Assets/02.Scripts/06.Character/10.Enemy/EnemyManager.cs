@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : Singleton<EnemyManager>
+public class EnemyManager : SingletonDDOL<EnemyManager>
 {
     [SerializeField] private bool isBoss;
     [SerializeField] private float spawnTime;
