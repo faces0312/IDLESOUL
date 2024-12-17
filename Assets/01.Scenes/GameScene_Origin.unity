@@ -1085,8 +1085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6b032c858216748bf13a1fcd18b335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gachaBase: {fileID: 762779952}
-  confirm: {fileID: 1942417038}
 --- !u!1 &112576485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,19 +1139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac958a1d567f59b4385ecd44a434aaab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AData:
-    Name: 
-    Description: 
-    progress: 0
-    Goal: 0
-    ID: 0
-    iconPath: 
-    Action: 0
-    AchievementType: 0
-    isClear: 0
-    isPublished: 0
-  icon: {fileID: 1044151954}
-  aName: {fileID: 572662532}
 --- !u!114 &112576488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1412,12 +1397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6bbcfd2cfd3f6a49928777a18b0fd99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultSprite: {fileID: 1363188578}
-  _name: {fileID: 1261186308}
-  description: {fileID: 1322127933}
-  gachaBase: {fileID: 1603069887}
-  skipButton: {fileID: 1940834595}
-  isSkip: 0
 --- !u!4 &142158225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eedfe5cffcf0d55439cd717507136e80, type: 3}
@@ -1506,10 +1485,10 @@ RectTransform:
   - {fileID: 2074181528}
   m_Father: {fileID: 1907461203}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125, y: -80}
-  m_SizeDelta: {x: 190, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &153837750
 MonoBehaviour:
@@ -8090,6 +8069,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiLobbyCanvas: {fileID: 3806901905267828915}
+  popupCanvas: {fileID: 0}
+  uiInventory: {fileID: 0}
 --- !u!4 &713710762
 Transform:
   m_ObjectHideFlags: 0
@@ -8115,6 +8096,7 @@ GameObject:
   m_Component:
   - component: {fileID: 715816228}
   - component: {fileID: 715816227}
+  - component: {fileID: 715816229}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -8177,6 +8159,29 @@ Transform:
   - {fileID: 2041833667}
   m_Father: {fileID: 2081515315}
   m_LocalEulerAnglesHint: {x: 31.96, y: 0, z: 0}
+--- !u!114 &715816229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715816226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
+  m_UseCameraSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!4 &731725705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: db3e8a46a7691ce4f91906916596b7ab, type: 3}
@@ -9342,7 +9347,6 @@ MonoBehaviour:
   isBoss: 1
   spawnTime: 3
   bossCameraCloseUpTime: 3
-  SpawnArea: {fileID: 1437096020}
 --- !u!4 &849841125
 Transform:
   m_ObjectHideFlags: 0
@@ -12070,10 +12074,10 @@ RectTransform:
   - {fileID: 455462199}
   m_Father: {fileID: 1907461203}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125, y: -340}
-  m_SizeDelta: {x: 190, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1056542785
 MonoBehaviour:
@@ -12192,7 +12196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afd023acbdafb64e9c138a68b39752f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1437799600539849736}
 --- !u!20 &1082211589
 Camera:
   m_ObjectHideFlags: 0
@@ -14174,7 +14177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901d608e9186b0c44903f005c85ae320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
 --- !u!114 &1301077716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14496,10 +14498,10 @@ RectTransform:
   - {fileID: 521994205}
   m_Father: {fileID: 1907461203}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125, y: -210}
-  m_SizeDelta: {x: 190, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1314412313
 MonoBehaviour:
@@ -18418,9 +18420,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf4d78c89e043e4aa1e879cb6924880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gachaBase: {fileID: 762779952}
   result: {fileID: 127496447}
   grid: {fileID: 89434227}
+  gachaBase: {fileID: 762779952}
 --- !u!114 &1603069888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18433,18 +18435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfff9ac000184974e928ce1a7801fd5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content_Gacha: {fileID: 153837750}
-  gachaPanel: {fileID: 1575067270}
-  content_BuyItem: {fileID: 1314412313}
-  content_ChangeProduct: {fileID: 1056542785}
-  buyItemPanel: {fileID: 323793009}
-  gachaType_Soul: {fileID: 977528668}
-  gachaType_Weapon: {fileID: 1313256909}
-  pickupImage: {fileID: 9906463}
-  gachaOnce: {fileID: 950980324}
-  gacha10: {fileID: 447395975}
-  buyPanel: {fileID: 1992851050}
-  exitButton: {fileID: 949849761}
 --- !u!114 &1603069889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22687,7 +22677,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aDatas: []
-  alarm: {fileID: 0}
 --- !u!4 &1991038905
 Transform:
   m_ObjectHideFlags: 0
@@ -22892,21 +22881,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ea2099ab227574fa97eb958e6aea21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurItem:
-    key: 0
-    OriginID: 
-    ProductName: 
-    ProductDescription: 
-    PriceType: 0
-    Price: 0
-    IsStack: 0
-    StackCount: 0
-    IconPath: 
-  icon: {fileID: 1407782577}
-  _name: {fileID: 550859713}
-  description: {fileID: 1495576331}
-  confirm: {fileID: 83096100}
-  cancel: {fileID: 1211512783}
 --- !u!114 &1992851051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24122,6 +24096,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2081515315}
   - component: {fileID: 2081515314}
+  - component: {fileID: 2081515316}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -24141,13 +24116,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b0a477d3332914c9c09444ce85a241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   cameraController: {fileID: 2056457353}
   score: 0
   IsBoss: 0
   isTryBoss: 0
-  curStageNum: 0
-  curChapterNum: 0
   enemies: []
 --- !u!4 &2081515315
 Transform:
@@ -24166,6 +24138,18 @@ Transform:
   - {fileID: 2056457352}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2081515316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081515313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549296c9ff368fb41b79cbbe5dcf7db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2090599891
 GameObject:
   m_ObjectHideFlags: 0
