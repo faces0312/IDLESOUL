@@ -128,6 +128,11 @@ public class Player : BaseCharacter
         Initialize();
     }
 
+    public void LevelUp(int level, Status status)
+    {
+        statHandler.LevelUp(level, status);
+    }
+
     public void RegisterSoul()
     {
         PlayerSouls.RegisterSoul("클라리스", new SoulMagician(11000));

@@ -47,8 +47,8 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
         ObjectPool energyBoltBOSSPool = new ObjectPool(6006, 60, Const.ENEMY_PREFEB_SKELETONENERGYBOLTBOSS_PATH);
         ObjectPool skillBoss2Pool = new ObjectPool(6007, 10, Const.ENEMY_PREFEB_SKELETONSKILLBOSS2_PATH);
 
-        ObjectPool goblinBossPool = new ObjectPool(5500, 3, Const.ENEMY_PREFEB_GOBLINBOSS_PATH);
-        ObjectPool skeletonBossPool = new ObjectPool(5501, 3, Const.ENEMY_PREFEB_SKELETONBOSS_PATH);
+        ObjectPool goblinBossPool = new ObjectPool(5500, 1, Const.ENEMY_PREFEB_GOBLINBOSS_PATH);
+        ObjectPool skeletonBossPool = new ObjectPool(5501, 1, Const.ENEMY_PREFEB_SKELETONBOSS_PATH);
 
         ObjectPoolManager.Instance.AddPool(Const.ENEMY_POOL_KEY, goblinPool);
         ObjectPoolManager.Instance.AddPool(Const.ENEMY_POOL_KEY, goblinMagicianPool);

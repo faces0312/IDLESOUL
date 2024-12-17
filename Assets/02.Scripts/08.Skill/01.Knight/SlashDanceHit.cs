@@ -50,17 +50,23 @@ public class SlashDanceHit : MonoBehaviour
         if (Utils.IsInLayerMask(other.gameObject.layer, layerMask))
         {
             if (curCorutine == null)
-                curCorutine = StartCoroutine(CoroutineTickDamage());
+                curCorutine = StartCoroutine(CoroutineTickDamage(other.gameObject));
         }
     }
 
-    private IEnumerator CoroutineTickDamage()
+    private IEnumerator CoroutineTickDamage(GameObject hitObj)
     {
         while (true)
         {
             // TODO : Enemy 피격 처리
+            ITakeDamageAble damageable = hitObj.GetComponent<ITakeDamageAble>();
+            //TODO :: 무적시간이 아닐때에도 조건에 추가해야됨
+            if (damageable != null)
+            {
+                damageable.TakeDamage(10000);
 
-            Debug.LogAssertion("Slash Damage!");
+            }
+            //Debug.LogAssertion("Slash Damage!");
             yield return coroutineTime;
         }
     }

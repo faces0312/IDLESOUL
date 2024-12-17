@@ -47,6 +47,7 @@ public class EnemyAnimationController : MonoBehaviour
 
     public void EnemyDie()
     {
+        enemy.animator.Rebind();
         enemy.Die();
     }
 
@@ -83,6 +84,7 @@ public class EnemyAnimationController : MonoBehaviour
                 child.gameObject.SetActive(false);
             bossEnemy.skillChargingEffect.SetActive(false);
         }
+        enemy.animator.Rebind();
         enemy.Die();
         GameManager.Instance.GameClear();
     }
