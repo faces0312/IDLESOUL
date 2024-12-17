@@ -6,7 +6,7 @@ using ScottGarland;
 public class SpinSword : MonoBehaviour
 {
     [SerializeField] private float lifeTime;
-    [SerializeField] private float tickTime = 0.5f;
+    [SerializeField] private float tickTime = 0.1f;
 
     private float curTime;
 
@@ -18,8 +18,9 @@ public class SpinSword : MonoBehaviour
 
     private Transform playerTransform;
 
-    private Coroutine curCorutine;
     private WaitForSecondsRealtime coroutineTime;
+
+    private Dictionary<int, Coroutine> enemyDic = new Dictionary<int, Coroutine>();
 
     public Vector3 OriginPos { get; set; }
 
@@ -45,8 +46,6 @@ public class SpinSword : MonoBehaviour
         {
             myCollider.enabled = false;     // TODO : 오브젝트 풀링 사용 시, 다시 켜야한다
 
-            if(curCorutine != null)
-                StopCoroutine(curCorutine);
             Destroy(gameObject);
         }
     }
@@ -61,15 +60,19 @@ public class SpinSword : MonoBehaviour
     {
         if (Utils.IsInLayerMask(other.gameObject.layer, layerMask))
         {
-            // TODO : Enemy 피격 처리
+            enemyDic.Add(other.GetInstanceID(),
+                StartCoroutine(CoroutineTickDamage(other.gameObject)));
+        }
+    }
 
-            //GameManager.Instance.enemies.Remove(collision.gameObject);  // 임시로 제거
-            //Destroy(collision.gameObject);
-            //Debug.LogAssertion("Enemy Destroy");
-
-            if(curCorutine == null)
-                curCorutine = StartCoroutine(CoroutineTickDamage(other.gameObject));
-
+    private void OnTriggerExit(Collider other)
+    {
+        if (Utils.IsInLayerMask(other.gameObject.layer, layerMask))
+        {
+            if (enemyDic.TryGetValue(other.GetInstanceID(), out Coroutine coroutine))
+            {
+                StopCoroutine(coroutine);
+            }
         }
     }
 
@@ -78,15 +81,13 @@ public class SpinSword : MonoBehaviour
         while (true)
         {
             // TODO : Enemy 피격 처리
-
             ITakeDamageAble damageable = hitObj.GetComponent<ITakeDamageAble>();
             //TODO :: 무적시간이 아닐때에도 조건에 추가해야됨
             if (damageable != null)
             {
-                damageable.TakeDamage(10000);
+                damageable.TakeDamage(3);
             }
 
-            //Debug.LogAssertion("Spin Damage!");
             yield return coroutineTime;
         }
     }

@@ -41,7 +41,7 @@
         5002,
         5003
       ],
-      "SummonBossID": 5500,
+      "SummonBossID": 5501,
       "StageType": 0,
       "StageMapPath": "Prefabs/Stage/CasthleStageMap"
     },
@@ -56,7 +56,7 @@
         5002,
         5003
       ],
-      "SummonBossID": 5500,
+      "SummonBossID": 5501,
       "StageType": 0,
       "StageMapPath": "Prefabs/Stage/CasthleStageMap"
     },

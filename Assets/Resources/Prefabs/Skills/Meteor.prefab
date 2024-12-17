@@ -24657,6 +24657,7 @@ MonoBehaviour:
   targetTag: Ground
   isShieldActive: 0
   isHitMake: 1
+  hitObjScale: {x: 1, y: 1, z: 1}
 --- !u!114 &-700596275365427513
 MonoBehaviour:
   m_ObjectHideFlags: 0

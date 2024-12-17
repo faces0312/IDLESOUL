@@ -16,8 +16,9 @@ public class SlashDanceHit : MonoBehaviour
     private Collider myCollider;
     private LayerMask layerMask;
 
-    private Coroutine curCorutine;
     private WaitForSecondsRealtime coroutineTime;
+
+    private Dictionary<int, Coroutine> enemyDic = new Dictionary<int, Coroutine>();
 
     void Start()
     {
@@ -33,9 +34,7 @@ public class SlashDanceHit : MonoBehaviour
         // 지속 시간 후 삭제
         if (Time.time > curTime + lifeTime)
         {
-            if (curCorutine != null)
-                StopCoroutine(curCorutine);
-                Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -49,8 +48,19 @@ public class SlashDanceHit : MonoBehaviour
     {
         if (Utils.IsInLayerMask(other.gameObject.layer, layerMask))
         {
-            if (curCorutine == null)
-                curCorutine = StartCoroutine(CoroutineTickDamage(other.gameObject));
+            enemyDic.Add(other.GetInstanceID(),
+                StartCoroutine(CoroutineTickDamage(other.gameObject)));
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (Utils.IsInLayerMask(other.gameObject.layer, layerMask))
+        {
+            if (enemyDic.TryGetValue(other.GetInstanceID(), out Coroutine coroutine))
+            {
+                StopCoroutine(coroutine);
+            }
         }
     }
 
@@ -63,10 +73,9 @@ public class SlashDanceHit : MonoBehaviour
             //TODO :: 무적시간이 아닐때에도 조건에 추가해야됨
             if (damageable != null)
             {
-                damageable.TakeDamage(10000);
-
+                damageable.TakeDamage(10);
             }
-            //Debug.LogAssertion("Slash Damage!");
+
             yield return coroutineTime;
         }
     }

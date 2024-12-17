@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +13,7 @@ public class ArcherPassiveSkill : Skill
     {
         passiveStat = new Stat();
         //passiveStat.atk = (int)value * level;
-        // TODO : °­È­ °ø°İ¿ë ¼öÄ¡
+        // TODO : ê°•í™” ê³µê²©ìš© ìˆ˜ì¹˜
         PassiveValue = value * level;
         playerStatHandler = GameManager.Instance.player.StatHandler;
     }
@@ -22,18 +22,18 @@ public class ArcherPassiveSkill : Skill
     {
         level += amount;
 
-        // ÀÌÀü ·¹º§ ´É·ÂÄ¡ ÇØÁ¦
+        // ì´ì „ ë ˆë²¨ ëŠ¥ë ¥ì¹˜ í•´ì œ
         playerStatHandler.UnEquipItem(passiveStat);
 
-        // TODO : ¹èÀ² Á¶Á¤
+        // TODO : ë°°ìœ¨ ì¡°ì •
         //passiveStat.atk = (int)value * level;
-        // TODO : °­È­ °ø°İ¿ë ¼öÄ¡
+        // TODO : ê°•í™” ê³µê²©ìš© ìˆ˜ì¹˜
         //PassiveValue = value * level;
     }
 
     public override void UseSkill(StatHandler statHandler)
     {
-        // °ø°İ·ÂÀÌ »ó½Ã·Î Áõ°¡ÇÔ
+        // ê³µê²©ë ¥ì´ ìƒì‹œë¡œ ì¦ê°€í•¨
         //playerStatHandler.EquipItem(passiveStat);
     }
 }

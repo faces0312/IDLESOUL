@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ScottGarland;
+using Cinemachine;
 
 public class MeteorHit : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MeteorHit : MonoBehaviour
     private float range;
 
     private Collider myCollider;
+    private CinemachineImpulseSource impulseSource;
 
     private LayerMask layerMask;
 
@@ -21,6 +23,9 @@ public class MeteorHit : MonoBehaviour
         curTime = Time.time;
         myCollider = GetComponent<Collider>();
         layerMask = 1 << LayerMask.NameToLayer("Enemy");
+
+        impulseSource = GetComponent<CinemachineImpulseSource>();
+        GameManager.Instance.cameraController.ShakeCamera(impulseSource);
     }
 
     private void Update()
