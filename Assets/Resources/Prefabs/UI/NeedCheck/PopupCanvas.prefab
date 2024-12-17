@@ -8923,6 +8923,7 @@ GameObject:
   - component: {fileID: 7382793024355451356}
   - component: {fileID: 337259068761731342}
   - component: {fileID: 5764174438384808094}
+  - component: {fileID: 4218935995818594615}
   - component: {fileID: 7670026805502689020}
   m_Layer: 5
   m_Name: POPUP_Shop
@@ -8993,6 +8994,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4218935995818594615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4606404686700154997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d97c732365941b49a511a599bb96ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIKey: shopController
+  views: {fileID: 7670026805502689020}
 --- !u!114 &7670026805502689020
 MonoBehaviour:
   m_ObjectHideFlags: 0
