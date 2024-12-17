@@ -1,9 +1,7 @@
 ﻿using UnityEngine.UIElements.Experimental;
 
 public class ShopController : UIController
-{
-    string key = "shopController";
-    
+{  
     private ShopModel shopModel;
     private ShopView shopView;
 

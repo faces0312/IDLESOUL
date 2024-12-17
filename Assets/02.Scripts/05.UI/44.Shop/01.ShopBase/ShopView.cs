@@ -15,13 +15,13 @@ public class ShopView : MonoBehaviour, IUIBase
     [SerializeField] private Button moneyButton;
     [SerializeField] private GameObject moneyPanel;
 
-    private ShopController shopController;
+    //private ShopController shopController;
 
     private void Start()
     {
-        shopController = new ShopController();
-        shopController.ShopView = this;
-        UIManager.Instance.RegisterController("shopController", shopController);
+        //shopController = new ShopController();
+        //shopController.ShopView = this;
+        //UIManager.Instance.RegisterController("shopController", shopController);
         exitButton.onClick.AddListener(() =>
         {
             HideUI();
