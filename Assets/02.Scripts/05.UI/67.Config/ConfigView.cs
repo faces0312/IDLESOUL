@@ -20,7 +20,7 @@ public class ConfigView : MonoBehaviour, IUIBase
 
         exitButton.onClick.AddListener(() =>
         {
-            UIManager.Instance.HideUI("ConfigController");
+            ConfigPanel.SetActive(false);
         });
 
         mainVolume.onValueChanged.AddListener((float value) =>
@@ -37,6 +37,8 @@ public class ConfigView : MonoBehaviour, IUIBase
         {
             SoundManager.Instance.SetSoundEffectVolume(value);
         });
+
+        ConfigPanel.SetActive(false);
     } 
 
     public void HideUI()

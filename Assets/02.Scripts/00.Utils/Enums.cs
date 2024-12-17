@@ -56,4 +56,11 @@ namespace Enums
         Sell,
         Buy
     }
+
+    public enum ShopType
+    {
+        None,
+        Item,
+        Product
+    }
 }

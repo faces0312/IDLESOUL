@@ -54,6 +54,7 @@ public class ItemPanel : MonoBehaviour
         {
             this.gameObject.SetActive(false);
         });
+        this.gameObject.SetActive(false);
     }
 
     public void SetItem(SellItemDB item)

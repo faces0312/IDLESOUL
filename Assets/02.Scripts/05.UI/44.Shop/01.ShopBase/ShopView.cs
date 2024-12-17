@@ -13,7 +13,6 @@ public class ShopView : MonoBehaviour, IUIBase
     [SerializeField] private GameObject itemPanel;
 
     [SerializeField] private Button moneyButton;
-    [SerializeField] private GameObject moneyPanel;
 
     //private ShopController shopController;
 
@@ -31,19 +30,19 @@ public class ShopView : MonoBehaviour, IUIBase
         {
             gachaPanel.SetActive(true);
             itemPanel.SetActive(false);
-            moneyPanel.SetActive(false);
         });
 
         itemButton.onClick.AddListener(() =>
         {
             gachaPanel.SetActive(false);
             itemPanel.SetActive(true);
+            itemPanel.GetComponent<ShopGrid>().SetItem(Enums.ShopType.Item);
         });
 
         moneyButton.onClick.AddListener(() =>
         {
             gachaPanel.SetActive(false);
-            moneyPanel.SetActive(true);
+            itemPanel.SetActive(true);
         });
     }
 
@@ -66,6 +65,5 @@ public class ShopView : MonoBehaviour, IUIBase
     {
         gachaPanel.SetActive(true);
         itemPanel.SetActive(false);
-        moneyPanel.SetActive(false);
     }
 }
