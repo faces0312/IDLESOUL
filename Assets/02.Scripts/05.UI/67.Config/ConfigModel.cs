@@ -1,7 +1,7 @@
 ﻿public class ConfigModel : UIModel
 {
-    public void SetVolume(float value)
-    {
+    public bool is30fps;
+    public bool is60fps;
 
-    }
+
 }
