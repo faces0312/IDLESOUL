@@ -17,7 +17,7 @@ public class AchieveAlarmView : MonoBehaviour, IUIBase
     }
     public void SetContent(AchieveData data)
     {
-        if (data.iconPath != string.Empty)
+        if (data.iconPath != "")
         {
             icon.sprite = Resources.Load<Sprite>(data.iconPath);
         }

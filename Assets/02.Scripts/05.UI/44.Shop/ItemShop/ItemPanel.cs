@@ -25,7 +25,7 @@ public class ItemPanel : MonoBehaviour
 
     private void Start()
     {
-        controller = GetComponent<ItemShopController>();
+        controller = new ItemShopController();
         controller.ItemPanel = this.gameObject;
         UIManager.Instance.RegisterController(controller.key, controller);
         confirm.onClick.AddListener(() =>
