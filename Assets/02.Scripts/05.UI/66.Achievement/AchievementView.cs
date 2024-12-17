@@ -7,12 +7,26 @@ public class AchievementView : MonoBehaviour, IUIBase
 {
     [SerializeField] private GameObject AchievePanel;
     [SerializeField] private RecycleScrollY scroll;
+    [SerializeField] private Button exit;
 
     private bool isReceived;
+
+    private void OnEnable()
+    {
+        scroll = GetComponent<RecycleScrollY>();
+        scroll.SetRectsCount(DataManager.Instance.AchieveDB.AchieveList.Count, 6);
+    }
 
     private void Start()
     {
         scroll.SetContent += SetContent;
+        exit.onClick.AddListener(() =>
+        {
+            this.gameObject.SetActive(false);
+        });
+        if (this.gameObject.activeSelf == true) this.gameObject.SetActive(false);
+
+        scroll.Init();
     }
 
     private void SetContent(GameObject obj, int arg)

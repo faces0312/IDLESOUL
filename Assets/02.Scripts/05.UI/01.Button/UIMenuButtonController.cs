@@ -28,13 +28,7 @@ public class UIMenuButtonController : MonoBehaviour
 
         achievement.onClick.AddListener(() =>
         {
-            UIManager.Instance.ShowUI("achievement");
-            //if(achievementObject.activeSelf == false)
-            //{
-            //    achievementObject.SetActive(true);
-            //}
             UIManager.Instance.ShowUI("Achievement");
-
         });
 
         config.onClick.AddListener(() =>
@@ -46,6 +40,8 @@ public class UIMenuButtonController : MonoBehaviour
         {
             Application.Quit();
         });
+
+        gameObject.SetActive(false);
     }
 
 }

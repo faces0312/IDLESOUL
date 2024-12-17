@@ -2,7 +2,8 @@
 //using UnityEngine;
 //using UnityEngine.UI;
 
-//internal class AchieveAlarm : MonoBehaviour
+//internal class
+//: MonoBehaviour
 //{
 //    public AchieveData AData;
 //    [SerializeField] private Image icon;
