@@ -93,8 +93,9 @@ public class GameManager : SingletonDDOL<GameManager>
         StageManager.Instance.Init();
         UIManager.Instance.ShowUI("StageLabel");
 
-        //EnemyManager 초기화
-        EnemyManager.Instance.Init();
+        //EnemyManager 소환 재실행
+        EnemyManager.Instance.EnemySpawnStop();
+        EnemyManager.Instance.EnemySpawnStart();
 
         
     }

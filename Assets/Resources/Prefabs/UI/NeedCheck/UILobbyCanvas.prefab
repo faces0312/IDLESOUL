@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 598374137049571946}
   - component: {fileID: 914027307350954207}
   - component: {fileID: 3445965043694415057}
+  - component: {fileID: 5433079106459462117}
+  - component: {fileID: 7989624534535148169}
   m_Layer: 5
-  m_Name: HPFrame
+  m_Name: UIPlayerHPDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,6 +76,34 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &5433079106459462117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17644174306579616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db80447b0498cd9458145f5c8570158a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIKey: PlayerHPDisplay
+  views: {fileID: 7989624534535148169}
+--- !u!114 &7989624534535148169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17644174306579616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56169234f549264494998b559e2e352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HPFrontImg: {fileID: 7912747977864913936}
+  HpText: {fileID: 7785843031797179103}
 --- !u!1 &110360742370469054
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,7 +114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8894894228364477809}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: HPLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1884,7 +1914,7 @@ GameObject:
   - component: {fileID: 5150556889342458971}
   - component: {fileID: 7785843031797179103}
   m_Layer: 5
-  m_Name: CurHPText
+  m_Name: HPText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2897,7 +2927,7 @@ GameObject:
   - component: {fileID: 7671222360101567737}
   - component: {fileID: 2805299618319575370}
   m_Layer: 5
-  m_Name: HPFront
+  m_Name: HPFrontImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

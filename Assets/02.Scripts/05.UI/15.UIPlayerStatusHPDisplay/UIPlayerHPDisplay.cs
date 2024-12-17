@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIPlayerHPDisplay : MonoBehaviour
 {
-    public string UIKey;
+    public string UIKey; // "PlayerHPDisplay"
 
     private UIPlayerHPDisplayModel model;
     [SerializeField] private UIPlayerHPDisplayView views;
@@ -13,6 +13,7 @@ public class UIPlayerHPDisplay : MonoBehaviour
     private void Start()
     {
         model = new UIPlayerHPDisplayModel();
+        model.Init();
 
         //컨트롤러  초기화 및 View 등록
         controller = new UIPlayerHPDisplayController();

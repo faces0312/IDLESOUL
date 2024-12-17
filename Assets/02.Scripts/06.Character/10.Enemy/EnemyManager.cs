@@ -33,6 +33,16 @@ public class EnemyManager : SingletonDDOL<EnemyManager>
         }
     }
 
+    public void EnemySpawnStop()
+    {
+        for(int i =0; i <  enemySpawnCoroutines.Count; i++)
+        {
+            StopCoroutine(enemySpawnCoroutines[i]);
+            enemySpawnCoroutines[i] = null;
+        }
+        enemySpawnCoroutines.Clear();
+    }
+
     private void Update()
     {
         if (isBoss == false)

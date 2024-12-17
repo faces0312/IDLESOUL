@@ -190,6 +190,7 @@ public class Player : BaseCharacter
     public override void TakeDamage(float damage)
     {
         baseHpSystem.TakeDamage(damage, statHandler);
+        UIManager.Instance.ShowUI("PlayerHPDisplay");
 
         if (statHandler.CurrentStat.health <= 0)
         {
@@ -208,6 +209,7 @@ public class Player : BaseCharacter
             PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, false);
 
             rb.velocity = Vector3.zero; //캐릭터 이동되지않게 속도를 0으로 수정
+            rb.isKinematic = true;
             GameManager.Instance.GameOver();
             enabled = false;
         }
