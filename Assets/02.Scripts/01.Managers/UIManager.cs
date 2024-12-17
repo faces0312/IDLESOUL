@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : Singleton<UIManager>
+public class UIManager : SingletonDDOL<UIManager>
 {
     [SerializeField] RectTransform uiLobbyCanvas;
+    [SerializeField] RectTransform popupCanvas;
+    [SerializeField] RectTransform uiInventory;
     private Dictionary<string, UIController> controllers = new Dictionary<string, UIController>();
     private UIController activeController;
 
@@ -16,8 +18,15 @@ public class UIManager : Singleton<UIManager>
     public void Init()
     {
         uiLobbyCanvas = Instantiate(Resources.Load<RectTransform>("Prefabs/UI/NeedCheck/UILobbyCanvas"));
+        popupCanvas = Instantiate(Resources.Load<RectTransform>("Prefabs/UI/NeedCheck/PopupCanvas"));
+        uiInventory = Instantiate(Resources.Load<RectTransform>("Prefabs/UI/NeedCheck/UIInventory"));
 
-        InitUI();
+        var SoulStatus = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Soul"), uiLobbyCanvas);
+        var SoulBtns = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SoulButtons"), uiLobbyCanvas);
+        Instantiate(Resources.Load<GameObject>("Prefabs/UI/PlayerInfoPanel"), uiLobbyCanvas);
+
+        SoulStatus.transform.SetAsLastSibling();
+        SoulBtns.transform.SetAsFirstSibling();
     }
     public void RegisterController(string key, UIController controller)
     {
@@ -67,6 +76,7 @@ public class UIManager : Singleton<UIManager>
 
         return null;
     }
+<<<<<<< HEAD
 
     public void InitUI()
     {
@@ -74,4 +84,6 @@ public class UIManager : Singleton<UIManager>
         Instantiate(Resources.Load<GameObject>("Prefabs/UI/SoulButtons"), uiLobbyCanvas);
         obj.transform.SetAsLastSibling();
     }
+=======
+>>>>>>> Dev
 }

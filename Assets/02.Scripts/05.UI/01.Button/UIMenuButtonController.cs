@@ -27,7 +27,16 @@ public class UIMenuButtonController : MonoBehaviour
         });
         achievement.onClick.AddListener(() =>
         {
+<<<<<<< HEAD
             UIManager.Instance.ShowUI("achievement");
+=======
+            //if(achievementObject.activeSelf == false)
+            //{
+            //    achievementObject.SetActive(true);
+            //}
+            UIManager.Instance.ShowUI("Achievement");
+
+>>>>>>> Dev
         });
         config.onClick.AddListener(() =>
         {
