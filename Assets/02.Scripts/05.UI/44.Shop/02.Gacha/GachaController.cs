@@ -8,4 +8,18 @@ public class GachaController : UIController
 
     public GameObject GachaPanel;
 
+    public override void OnHide()
+    {
+        GachaPanel.SetActive(false);
+    }
+
+    public override void OnShow()
+    {
+        GachaPanel.SetActive(true);
+    }
+
+    public override void UpdateView()
+    {
+        
+    }
 }

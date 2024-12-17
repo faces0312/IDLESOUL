@@ -2,11 +2,15 @@ using Enums;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+public interface IGachableDB
+{
+    public int GetKey();
+    public int GetRairity();
+}
 public class GachaBase : MonoBehaviour
 {
-    [SerializeField] public GachaResult result;
-    [SerializeField] public GachaGrid grid;
+    public GachaResult result;
+    public GachaGrid grid;
 
     private GachaController controller;
 

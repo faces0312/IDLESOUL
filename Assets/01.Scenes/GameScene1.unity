@@ -908,7 +908,7 @@ RectTransform:
   m_Father: {fileID: 1479856983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2923,6 +2923,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiLobbyCanvas: {fileID: 0}
+  popupCanvas: {fileID: 0}
+  uiInventory: {fileID: 0}
 --- !u!4 &713710762
 Transform:
   m_ObjectHideFlags: 0
@@ -3002,7 +3004,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715816226}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2240146, y: 0.000000018748418, z: -0.00000000430944, w: 0.97458583}
+  m_LocalRotation: {x: 0.2240146, y: -0.000000018748418, z: 0.00000000430944, w: 0.97458583}
   m_LocalPosition: {x: 0, y: 5.64, z: -8.440001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3048,7 +3050,7 @@ RectTransform:
   m_Father: {fileID: 1883241172}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3866,7 +3868,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &894366472
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4608,7 +4610,7 @@ RectTransform:
   m_Father: {fileID: 425860931}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5001,7 +5003,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342909076}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2240146, y: 0.000000018748418, z: -0.00000000430944, w: 0.97458583}
+  m_LocalRotation: {x: 0.2240146, y: -0.000000018748418, z: 0.00000000430944, w: 0.97458583}
   m_LocalPosition: {x: 0, y: 5.64, z: -8.440001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5889,7 +5891,7 @@ RectTransform:
   m_Father: {fileID: 1688867707}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7187,9 +7189,9 @@ RectTransform:
   - {fileID: 773498307}
   m_Father: {fileID: 894366472}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: -390}
   m_SizeDelta: {x: 0, y: 390}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1782594362
@@ -8483,7 +8485,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aDatas: []
-  alarm: {fileID: 6873970781879639115}
 --- !u!4 &1991038905
 Transform:
   m_ObjectHideFlags: 0
@@ -8759,9 +8760,9 @@ RectTransform:
   - {fileID: 1667661302}
   m_Father: {fileID: 894366472}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: -780}
   m_SizeDelta: {x: 0, y: 390}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2064682752
@@ -11471,10 +11472,10 @@ RectTransform:
   - {fileID: 2701161374993871996}
   m_Father: {fileID: 1938173083560563593}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125, y: -210}
-  m_SizeDelta: {x: 190, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &893052839408268411
 MonoBehaviour:
@@ -11905,6 +11906,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4209626729303780045}
+  - component: {fileID: 4209626729303780046}
   m_Layer: 5
   m_Name: GachaGrid
   m_TagString: Untagged
@@ -14538,6 +14540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1118191643457606788}
   - component: {fileID: 4181725695727935592}
+  - component: {fileID: 4181725695727935593}
   m_Layer: 5
   m_Name: GachaResult
   m_TagString: Untagged
@@ -21022,7 +21025,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901d608e9186b0c44903f005c85ae320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
 --- !u!114 &3451421625448137259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24160,6 +24162,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1124.342, y: 517.89233}
   m_EdgeRadius: 0
+--- !u!114 &4181725695727935593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727849219868396145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfd7ef06f8e6414b9c8288d16cb57c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resultSprite: {fileID: 533636449783431580}
+  _name: {fileID: 3989504939318056792}
+  description: {fileID: 4841420181629439046}
+  gachaBase: {fileID: 7561114818963574013}
+  skipButton: {fileID: 7036021413089100217}
+  isSkip: 0
 --- !u!114 &4184960253466959698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24247,6 +24267,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4209626729303780046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959632791820478262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f239181f99aab04fadd74911fa68f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gachaBase: {fileID: 5997922994450280987}
+  confirm: {fileID: 2720970606920465422}
 --- !u!1 &4217559457226438838
 GameObject:
   m_ObjectHideFlags: 0
@@ -25447,10 +25481,10 @@ RectTransform:
   - {fileID: 6960497807583922160}
   m_Father: {fileID: 1938173083560563593}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125, y: -340}
-  m_SizeDelta: {x: 190, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4528089390669077624
 CanvasRenderer:
@@ -26851,8 +26885,6 @@ GameObject:
   - component: {fileID: 6316703402072412064}
   - component: {fileID: 4169089564637021694}
   - component: {fileID: 4558511812113724180}
-  - component: {fileID: 6316703402072412066}
-  - component: {fileID: 6316703402072412065}
   m_Layer: 5
   m_Name: GachaContainer
   m_TagString: Untagged
@@ -30549,6 +30581,7 @@ GameObject:
   - component: {fileID: 212515994533623102}
   - component: {fileID: 1512179602189509436}
   - component: {fileID: 7561114818963574012}
+  - component: {fileID: 7561114818963574013}
   m_Layer: 5
   m_Name: GachaBase
   m_TagString: Untagged
@@ -31570,41 +31603,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4956264987026897246}
   m_CullTransparentMesh: 1
---- !u!114 &6316703402072412065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4956264987026897246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bf4d78c89e043e4aa1e879cb6924880, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  result: {fileID: 0}
-  grid: {fileID: 0}
---- !u!114 &6316703402072412066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4956264987026897246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3c58a20ffa14a64a9cabba1514c00a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GachaPanel: {fileID: 4956264987026897246}
-  Illust: {fileID: 1455410134215255875}
-  SoulPickup: {fileID: 7298451059960515757}
-  Soul: {fileID: 4553637401631872031}
-  ItemPickup: {fileID: 6443457565423454444}
-  Item: {fileID: 423433277092457213}
-  Gacha_1: {fileID: 1264145527975274275}
-  Gacha_10: {fileID: 7027566320100577099}
-  GachaBase: {fileID: 6316703402072412065}
 --- !u!114 &6322951702252851799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32854,10 +32852,10 @@ RectTransform:
   - {fileID: 4839408116439502815}
   m_Father: {fileID: 1938173083560563593}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125, y: -80}
-  m_SizeDelta: {x: 190, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6597115162243702958
 MonoBehaviour:
@@ -33814,19 +33812,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac958a1d567f59b4385ecd44a434aaab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AData:
-    Name: 
-    Description: 
-    progress: 0
-    Goal: 0
-    ID: 0
-    iconPath: 
-    Action: 0
-    AchievementType: 0
-    isClear: 0
-    isPublished: 0
-  icon: {fileID: 828430020252059556}
-  aName: {fileID: 4155762348188933701}
 --- !u!224 &6876776054751749773
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36338,6 +36323,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7561114818963574013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5997922994450280987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf4d78c89e043e4aa1e879cb6924880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  result: {fileID: 4181725695727935593}
+  grid: {fileID: 4209626729303780046}
 --- !u!222 &7564569599373955364
 CanvasRenderer:
   m_ObjectHideFlags: 0

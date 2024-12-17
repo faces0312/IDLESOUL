@@ -76,7 +76,6 @@ public class UIManager : SingletonDDOL<UIManager>
 
         return null;
     }
-<<<<<<< HEAD
 
     public void InitUI()
     {
@@ -84,6 +83,4 @@ public class UIManager : SingletonDDOL<UIManager>
         Instantiate(Resources.Load<GameObject>("Prefabs/UI/SoulButtons"), uiLobbyCanvas);
         obj.transform.SetAsLastSibling();
     }
-=======
->>>>>>> Dev
 }

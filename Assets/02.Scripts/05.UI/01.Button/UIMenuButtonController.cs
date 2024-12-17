@@ -25,23 +25,23 @@ public class UIMenuButtonController : MonoBehaviour
         {
             UIManager.Instance.ShowUI("selectDungeon");
         });
+
         achievement.onClick.AddListener(() =>
         {
-<<<<<<< HEAD
             UIManager.Instance.ShowUI("achievement");
-=======
             //if(achievementObject.activeSelf == false)
             //{
             //    achievementObject.SetActive(true);
             //}
             UIManager.Instance.ShowUI("Achievement");
 
->>>>>>> Dev
         });
+
         config.onClick.AddListener(() =>
         {
             Debug.LogAssertion("설정 창 오픈"); //설정 창 생기면 추가
         });
+
         exitGame.onClick.AddListener(() =>
         {
             Application.Quit();
