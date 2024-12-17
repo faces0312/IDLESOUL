@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class DungeonSelector : MonoBehaviour
 {
     public StageSelector StageSelector;
+    private DungeonSelectorController controller;
 
     [SerializeField] private Button daily;
     [SerializeField] private Button exp;
@@ -17,25 +18,29 @@ public class DungeonSelector : MonoBehaviour
 
     private void Start()
     {
-        this.gameObject.SetActive(false);
+        controller = new DungeonSelectorController();
+        controller.DungeonSelector = this.gameObject;
+        UIManager.Instance.RegisterController(controller.key, controller);
+
         daily.onClick.AddListener(() =>
         {
             StageSelector.SetStageType(Enums.StageType.Daily);
-            StageSelector.gameObject.SetActive(true);
+            UIManager.Instance.ShowUI("stageSelectorController");
         });
         exp.onClick.AddListener(() =>
         {
             StageSelector.SetStageType(Enums.StageType.EXP);
-            StageSelector.gameObject.SetActive(true);
+            UIManager.Instance.ShowUI("stageSelectorController");
         });
         upgrade.onClick.AddListener(() =>
         {
             StageSelector.SetStageType(Enums.StageType.Upgrade);
-            StageSelector.gameObject.SetActive(true);
+            UIManager.Instance.ShowUI("stageSelectorController");
         });
         exit.onClick.AddListener(() =>
         {
-            this.gameObject.SetActive(false);
-        });
+            controller.OnHide();
+        }); 
+        this.gameObject.SetActive(false);
     }
 }

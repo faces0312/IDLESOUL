@@ -13,6 +13,7 @@ public class GachaResult : MonoBehaviour, IPointerClickHandler
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] private GachaBase gachaBase;
     [SerializeField] private Button skipButton;
+    private GachaResultController controller;
 
     private List<IGachableDB> gachaResultList;
 
@@ -39,6 +40,9 @@ public class GachaResult : MonoBehaviour, IPointerClickHandler
         {
             isSkip = true;
         });
+        controller = new GachaResultController();
+        controller.GachaPanel = this.gameObject;
+        UIManager.Instance.RegisterController(controller.key, controller);
         this.gameObject.SetActive(false);
     }
 

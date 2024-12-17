@@ -11,6 +11,7 @@ public class ItemPanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] private Button confirm;
     [SerializeField] private Button cancel;
+    private ItemShopController controller;
 
     private void OnEnable()
     {
@@ -24,6 +25,9 @@ public class ItemPanel : MonoBehaviour
 
     private void Start()
     {
+        controller = GetComponent<ItemShopController>();
+        controller.ItemPanel = this.gameObject;
+        UIManager.Instance.RegisterController(controller.key, controller);
         confirm.onClick.AddListener(() =>
         {
             switch (CurItem.PriceType)
