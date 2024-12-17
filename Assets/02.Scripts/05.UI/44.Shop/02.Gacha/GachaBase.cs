@@ -11,6 +11,7 @@ public class GachaBase : MonoBehaviour
 {
     public GachaResult result;
     public GachaGrid grid;
+    public GameObject gachaBase;
 
     private GachaController controller;
 
@@ -21,13 +22,21 @@ public class GachaBase : MonoBehaviour
 
     private void Start()
     {
-        items = DataManager.Instance.ItemDB.ItemsList;
-        souls = DataManager.Instance.SoulDB.ItemsList;
+        controller = new GachaController();
+        controller.GachaPanel = gachaBase;
+        UIManager.Instance.RegisterController("gachaController", controller);
+        
         gachaList = new List<IGachableDB>();
         tempList = new List<IGachableDB>();
-        controller = new GachaController();
-        controller.GachaPanel = this.gameObject;
+        
         EventManager.Instance.Subscribe<GachaEvent>(Channel.Gacha, Gacha);
+        gachaBase.SetActive(false);
+    }
+
+    private void Init()
+    {
+        items = DataManager.Instance.ItemDB.ItemsList;
+        souls = DataManager.Instance.SoulDB.ItemsList;
     }
 
     private void Gacha(GachaEvent arg)
@@ -35,6 +44,10 @@ public class GachaBase : MonoBehaviour
         if(grid.gameObject.activeSelf == true)
         {
             grid.gameObject.SetActive(false);   
+        }
+        if (this.gameObject.activeSelf == false)
+        {
+            this.gameObject.SetActive(true);
         }
         switch (arg.type)
         {

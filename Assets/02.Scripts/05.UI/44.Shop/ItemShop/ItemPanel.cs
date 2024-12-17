@@ -27,6 +27,7 @@ public class ItemPanel : MonoBehaviour
     {
         controller = GetComponent<ItemShopController>();
         controller.ItemPanel = this.gameObject;
+        UIManager.Instance.RegisterController(controller.key, controller);
         confirm.onClick.AddListener(() =>
         {
             switch (CurItem.PriceType)

@@ -20,16 +20,16 @@ public class ShopController : UIController
 
     public override void OnHide()
     {
-        view.HideUI();
+        shopView.HideUI();
     }
 
     public override void OnShow()
     {
-        view.ShowUI();
+        shopView.ShowUI();
     }
 
     public override void UpdateView()
     {
-        view.UpdateUI();
+        shopView.UpdateUI();
     }
 }

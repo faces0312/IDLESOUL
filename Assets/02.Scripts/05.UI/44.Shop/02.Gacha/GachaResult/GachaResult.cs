@@ -42,6 +42,7 @@ public class GachaResult : MonoBehaviour, IPointerClickHandler
         });
         controller = new GachaResultController();
         controller.GachaPanel = this.gameObject;
+        UIManager.Instance.RegisterController(controller.key, controller);
         this.gameObject.SetActive(false);
     }
 

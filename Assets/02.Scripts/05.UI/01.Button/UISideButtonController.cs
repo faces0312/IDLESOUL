@@ -20,6 +20,7 @@ public class UISideButtonController : MonoBehaviour
             }
             else menuObject.SetActive(true);
         });
+
         shop.onClick.AddListener(() =>
         {
             UIManager.Instance.ShowUI("shopController");
