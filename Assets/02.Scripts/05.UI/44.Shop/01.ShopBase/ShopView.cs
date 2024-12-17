@@ -57,7 +57,7 @@ public class ShopView : MonoBehaviour, IUIBase
 
     public void Initialize()
     {
-        Debug.LogAssertion("");
+        //Debug.LogAssertion("");
     }
 
     public void ShowUI()

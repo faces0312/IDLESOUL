@@ -47,19 +47,19 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
         ObjectPool goblinBossPool = new ObjectPool(5500, 1, Const.ENEMY_PREFEB_GOBLINBOSS_PATH);
         ObjectPool skeletonBossPool = new ObjectPool(5501, 1, Const.ENEMY_PREFEB_SKELETONBOSS_PATH);
 
-        ObjectPoolManager.Instance.AddPool(Const.ENEMY_POOL_KEY, goblinPool);
-        ObjectPoolManager.Instance.AddPool(Const.ENEMY_POOL_KEY, goblinMagicianPool);
-        ObjectPoolManager.Instance.AddPool(Const.ENEMY_POOL_KEY, skeletonPool);
-        ObjectPoolManager.Instance.AddPool(Const.ENEMY_POOL_KEY, skeletonArcherPool);
+        AddPool(Const.ENEMY_POOL_KEY, goblinPool);
+        AddPool(Const.ENEMY_POOL_KEY, goblinMagicianPool);
+        AddPool(Const.ENEMY_POOL_KEY, skeletonPool);
+        AddPool(Const.ENEMY_POOL_KEY, skeletonArcherPool);
 
-        ObjectPoolManager.Instance.AddPool(Const.ENEMY_EFFECT_POOL_KEY, energyBoltPool);
-        ObjectPoolManager.Instance.AddPool(Const.ENEMY_EFFECT_POOL_KEY, skillBoss1Pool);
-        ObjectPoolManager.Instance.AddPool(Const.ENEMY_EFFECT_POOL_KEY, arrowSkeletonPool);
-        ObjectPoolManager.Instance.AddPool(Const.ENEMY_EFFECT_POOL_KEY, energyBoltBOSSPool);
-        ObjectPoolManager.Instance.AddPool(Const.ENEMY_EFFECT_POOL_KEY, skillBoss2Pool);
+        AddPool(Const.ENEMY_EFFECT_POOL_KEY, energyBoltPool);
+        AddPool(Const.ENEMY_EFFECT_POOL_KEY, skillBoss1Pool);
+        AddPool(Const.ENEMY_EFFECT_POOL_KEY, arrowSkeletonPool);
+        AddPool(Const.ENEMY_EFFECT_POOL_KEY, energyBoltBOSSPool);
+        AddPool(Const.ENEMY_EFFECT_POOL_KEY, skillBoss2Pool);
 
-        ObjectPoolManager.Instance.AddPool(Const.ENEMY_BOSS_POOL_KEY, goblinBossPool);
-        ObjectPoolManager.Instance.AddPool(Const.ENEMY_BOSS_POOL_KEY, skeletonBossPool);
+        AddPool(Const.ENEMY_BOSS_POOL_KEY, goblinBossPool);
+        AddPool(Const.ENEMY_BOSS_POOL_KEY, skeletonBossPool);
     }
 
     #endregion
@@ -118,6 +118,16 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
         }
     }
 
+    public void ObjectPoolAllReturn(string id)
+    {
+        if (poolDict.ContainsKey(id))
+        {
+            foreach (ObjectPool objPool in poolDict[id])
+            {
+                objPool.SetActiveAllFalse();
+            }
+        }
+    }
     /* 
     /// <summary>
     /// 오브젝트 풀 딕셔너리 내부의 풀 리스트를 반환

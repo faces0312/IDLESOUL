@@ -95,9 +95,17 @@ public class GameManager : SingletonDDOL<GameManager>
 
         //EnemyManager 소환 재실행
         EnemyManager.Instance.EnemySpawnStop();
-        EnemyManager.Instance.EnemySpawnStart();
 
-        
+        ObjectPoolManager.Instance.ObjectPoolAllReturn(Const.ENEMY_POOL_KEY);
+        ObjectPoolManager.Instance.ObjectPoolAllReturn(Const.ENEMY_EFFECT_POOL_KEY);
+        ObjectPoolManager.Instance.ObjectPoolAllReturn(Const.ENEMY_BOSS_POOL_KEY);
+
+        if (player.BaseHpSystem.IsDead)
+        {
+            player.Respwan();
+        }
+
+        EnemyManager.Instance.EnemySpawnStart();
     }
 
     //다음 스테이지 혹은 현재 스테이지에 
@@ -126,7 +134,6 @@ public class GameManager : SingletonDDOL<GameManager>
         //Utils.fader.FadeTo(0f, 1f, 2.0f).OnComplete(Utils.fader.Release);
 
         StageManager.Instance.StageProgressModel.CurCountDataClear();
-
 
         IsBoss = false;
         Invoke("NextStage", 2.0f);

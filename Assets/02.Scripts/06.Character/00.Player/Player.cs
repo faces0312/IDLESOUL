@@ -215,6 +215,16 @@ public class Player : BaseCharacter
         }
     }
 
+    public void Respwan()
+    {
+        //ToDoCode : 플레이어가 죽을경우 재세팅하는 함수
+        statHandler.CurrentStat.health = statHandler.CurrentStat.maxHealth;
+        transform.position = Vector3.up;
+        rb.isKinematic = false;
+        enabled = true;
+        baseHpSystem.IsDead = false;
+        UIManager.Instance.ShowUI("PlayerHPDisplay");
+    }
 
     public override void Attack()
     {
