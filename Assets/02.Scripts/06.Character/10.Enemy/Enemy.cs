@@ -69,7 +69,7 @@ public abstract class Enemy : BaseCharacter
         statHandler.CurrentStat.atkSpeed = enemyDB.AttackSpeed;
         statHandler.CurrentStat.critChance = enemyDB.CritChance;
         statHandler.CurrentStat.critDamage = enemyDB.CritDamage;
-        skillDamage = 100000;
+        skillDamage = 500;
         stateMachine.Initialize();
         HpUpdate();
     }
