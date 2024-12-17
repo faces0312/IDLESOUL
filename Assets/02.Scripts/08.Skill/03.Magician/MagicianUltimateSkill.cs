@@ -43,5 +43,7 @@ public class MagicianUltimateSkill : Skill
         {
             component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);
         }
+
+        GameManager.Instance.cameraController.MeteorEffect();
     }
 }

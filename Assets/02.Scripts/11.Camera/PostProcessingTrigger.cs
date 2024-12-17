@@ -22,4 +22,9 @@ public class PostProcessingTrigger
         colorGradingEffect.SwordSlashEffect();
         vignetteEffect.SwordSlashEffect();
     }
+
+    public void MeteorEffect()
+    {
+        chromaticAberrationEffect.MeteorEffect();
+    }
 }

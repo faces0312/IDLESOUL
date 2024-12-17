@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
     // TODO : 임시
     private void Awake()
     {
-        // 포스트 프로세스 세팅
+        // PostProcessing
         if (Camera.main.TryGetComponent(out PostProcessVolume volume))
         {
             postProcessingTrigger = new PostProcessingTrigger(volume);
@@ -67,9 +67,19 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    public void ShakeCamera(CinemachineImpulseSource source)
+    {
+        source.GenerateImpulse();
+    }
+
     public void SwordSlashEffect()
     {
         postProcessingTrigger.SwordSlashEffect();
+    }
+
+    public void MeteorEffect()
+    {
+        postProcessingTrigger.MeteorEffect();
     }
 }
 
