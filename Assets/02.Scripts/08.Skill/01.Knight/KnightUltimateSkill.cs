@@ -37,5 +37,7 @@ public class KnightUltimateSkill : Skill
         //    component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);
         //    component.OriginPos = skillPrefab.transform.position;
         //}
+
+        GameManager.Instance.cameraController.SwordSlashEffect();
     }
 }
