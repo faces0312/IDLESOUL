@@ -33,7 +33,7 @@ public class SlashDanceHit : MonoBehaviour
         // 지속 시간 후 삭제
         if (Time.time > curTime + lifeTime)
         {
-            if (curCorutine != null)
+            //if (curCorutine != null)
                 StopCoroutine(curCorutine);
                 Destroy(gameObject);
         }
@@ -49,7 +49,7 @@ public class SlashDanceHit : MonoBehaviour
     {
         if (Utils.IsInLayerMask(other.gameObject.layer, layerMask))
         {
-            if (curCorutine == null)
+            //if (curCorutine == null)
                 curCorutine = StartCoroutine(CoroutineTickDamage(other.gameObject));
         }
     }
@@ -64,9 +64,9 @@ public class SlashDanceHit : MonoBehaviour
             if (damageable != null)
             {
                 damageable.TakeDamage(10000);
-
+                Debug.LogAssertion("Slash Damage!");
             }
-            //Debug.LogAssertion("Slash Damage!");
+           
             yield return coroutineTime;
         }
     }

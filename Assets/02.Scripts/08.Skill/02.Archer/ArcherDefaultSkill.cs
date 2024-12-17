@@ -74,7 +74,7 @@ public class ArcherDefaultSkill : Skill
         }
 
 
-        GameObject arrowShot = Object.Instantiate(skillPrefab, targetPos, Quaternion.LookRotation(skillPrefab.transform.forward));
+        GameObject arrowShot = Object.Instantiate(skillPrefab, playerPos, Quaternion.LookRotation(targetPos - playerPos));
         //if (arrowShot.TryGetComponent(out Explosion component))
         //{
         //    component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);

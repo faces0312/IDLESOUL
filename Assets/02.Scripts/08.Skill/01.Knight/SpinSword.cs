@@ -45,7 +45,7 @@ public class SpinSword : MonoBehaviour
         {
             myCollider.enabled = false;     // TODO : 오브젝트 풀링 사용 시, 다시 켜야한다
 
-            if(curCorutine != null)
+            //if(curCorutine != null)
                 StopCoroutine(curCorutine);
             Destroy(gameObject);
         }
@@ -67,7 +67,7 @@ public class SpinSword : MonoBehaviour
             //Destroy(collision.gameObject);
             //Debug.LogAssertion("Enemy Destroy");
 
-            if(curCorutine == null)
+            //if(curCorutine == null)
                 curCorutine = StartCoroutine(CoroutineTickDamage(other.gameObject));
 
         }
