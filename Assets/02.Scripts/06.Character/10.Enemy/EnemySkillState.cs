@@ -42,11 +42,7 @@ public class EnemySkillState : EnemyBaseState
 
     public void MeleeSkillBossStart()
     {
-        if (stateMachine.Enemy.transform.localScale.x > 0)
-            stateMachine.AttackState.meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(6002, new Vector3(stateMachine.Enemy.transform.position.x - 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 0, 90));
-        else
-            stateMachine.AttackState.meleeAttack = EnemyManager.Instance.EnemyAttackSpawn(6002, new Vector3(stateMachine.Enemy.transform.position.x + 0.5f, stateMachine.Enemy.transform.position.y, stateMachine.Enemy.transform.position.z), Quaternion.Euler(90, 180, 90));
-
+        enemy.slash.SetActive(true);
         bossEnemy.skillChargingEffect.SetActive(false);
         foreach (Transform child in bossEnemy.skillZone.transform)
             child.gameObject.SetActive(false);
