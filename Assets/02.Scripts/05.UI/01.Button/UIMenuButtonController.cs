@@ -39,7 +39,7 @@ public class UIMenuButtonController : MonoBehaviour
 
         config.onClick.AddListener(() =>
         {
-            Debug.LogAssertion("설정 창 오픈"); //설정 창 생기면 추가
+            UIManager.Instance.ShowUI("ConfigController");
         });
 
         exitGame.onClick.AddListener(() =>

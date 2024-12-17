@@ -38,14 +38,11 @@ public class ShopView : MonoBehaviour, IUIBase
         {
             gachaPanel.SetActive(false);
             itemPanel.SetActive(true);
-            moneyPanel.SetActive(false);
-
         });
 
         moneyButton.onClick.AddListener(() =>
         {
             gachaPanel.SetActive(false);
-            itemPanel.SetActive(false);
             moneyPanel.SetActive(true);
         });
     }
@@ -57,7 +54,6 @@ public class ShopView : MonoBehaviour, IUIBase
 
     public void Initialize()
     {
-        Debug.LogAssertion("");
     }
 
     public void ShowUI()

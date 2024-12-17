@@ -8,14 +8,19 @@ public class ConfigView : MonoBehaviour, IUIBase
     [SerializeField] private Slider mainVolume;
     [SerializeField] private Slider bgmVolume;
     [SerializeField] private Slider sfxVolume;
+    private ConfigController controller;
 
-    public ConfigController controller;
+    public Toggle fps30;
+    public Toggle fps60;
 
     private void Start()
     {
+        controller = new ConfigController();
+        UIManager.Instance.RegisterController(controller.key, controller);
+
         exitButton.onClick.AddListener(() =>
         {
-            HideUI();
+            UIManager.Instance.HideUI("ConfigController");
         });
 
         mainVolume.onValueChanged.AddListener((float value) =>

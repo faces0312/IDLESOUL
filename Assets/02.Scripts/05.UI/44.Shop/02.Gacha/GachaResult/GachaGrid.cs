@@ -10,7 +10,7 @@ public class GachaGrid : MonoBehaviour
     private Sprite None;
     private GachaSlot[] slots;
 
-    private void Start()
+    private void Awake()
     {
         slots = GetComponentsInChildren<GachaSlot>();
         None = Resources.Load<Sprite>("Sprite/SoulSprite/SoulIcon/None");

@@ -11,6 +11,8 @@ public class ShopSlot
     public void SetItem(SellItemDB item)
     {
         this.item = item;
+        icon.sprite = Resources.Load<Sprite>(item.IconPath);
+        this.text.text = item.ProductName;
     }
 
     public SellItemDB GetItem()

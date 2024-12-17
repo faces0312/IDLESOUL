@@ -18,4 +18,9 @@ public class ShopSlotComponent : MonoBehaviour
     {
         EventManager.Instance.Publish<ItemEvent>(Channel.Shop, itemEvent.SetEvent(slot.GetItem().key));
     }
+
+    public void SetItem(SellItemDB data)
+    {
+        slot.SetItem(data);
+    }
 }
