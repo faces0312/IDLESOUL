@@ -40,6 +40,8 @@ public class GachaResult : MonoBehaviour, IPointerClickHandler
         {
             isSkip = true;
         });
+        controller = new GachaResultController();
+        controller.GachaPanel = this.gameObject;
         this.gameObject.SetActive(false);
     }
 

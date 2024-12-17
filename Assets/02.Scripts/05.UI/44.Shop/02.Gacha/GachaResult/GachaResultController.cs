@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class GachaResultController : UIController
 {
-    [SerializeField] private GameObject GachaPanel;
+     public GameObject GachaPanel;
+     public string key = "gachaResultController";
 
     public override void OnHide()
     {

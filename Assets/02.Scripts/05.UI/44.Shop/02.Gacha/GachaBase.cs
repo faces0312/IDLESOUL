@@ -8,6 +8,8 @@ public class GachaBase : MonoBehaviour
     [SerializeField] public GachaResult result;
     [SerializeField] public GachaGrid grid;
 
+    private GachaController controller;
+
     private List<IGachableDB> gachaList;
     private List<IGachableDB> tempList;
     private List<ItemDB> items;
@@ -19,6 +21,8 @@ public class GachaBase : MonoBehaviour
         souls = DataManager.Instance.SoulDB.ItemsList;
         gachaList = new List<IGachableDB>();
         tempList = new List<IGachableDB>();
+        controller = new GachaController();
+        controller.GachaPanel = this.gameObject;
         EventManager.Instance.Subscribe<GachaEvent>(Channel.Gacha, Gacha);
     }
 
