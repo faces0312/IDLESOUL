@@ -25,7 +25,9 @@ public class GachaBase : MonoBehaviour
         controller = new GachaController();
         controller.GachaPanel = gachaBase;
         UIManager.Instance.RegisterController("gachaController", controller);
-        
+
+        items = DataManager.Instance.ItemDB.ItemsList;
+        souls = DataManager.Instance.SoulDB.ItemsList;
         gachaList = new List<IGachableDB>();
         tempList = new List<IGachableDB>();
         
@@ -33,11 +35,6 @@ public class GachaBase : MonoBehaviour
         gachaBase.SetActive(false);
     }
 
-    private void Init()
-    {
-        items = DataManager.Instance.ItemDB.ItemsList;
-        souls = DataManager.Instance.SoulDB.ItemsList;
-    }
 
     private void Gacha(GachaEvent arg)
     {

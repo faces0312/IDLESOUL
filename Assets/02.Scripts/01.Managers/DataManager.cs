@@ -37,10 +37,7 @@ public class DataManager : SingletonDDOL<DataManager>
     protected override void Awake()
     {
         base.Awake();
-    }
 
-    public void Init()
-    {
         enemyDB = new EnemyDBLoader(Const.JsonEnemyDBPath);
         itemDB = new ItemDBLoader(Const.JsonItemDBPath);
         sellItemDB = new SellItemDBLoader(Const.JsonSellItemDBPath);
@@ -49,7 +46,10 @@ public class DataManager : SingletonDDOL<DataManager>
         skillDB = new SkillDBLoader(Const.JsonSkillDBPath);
         userDB = new UserDBLoader(Const.JsonUserDBPath);
         achieveDB = new AchieveDBLoader(Const.JsonAchieveDBPath);
+    }
 
+    public void Init()
+    {
         Debug.Log("DataManager Init ¿Ï·á!!");
     }
 

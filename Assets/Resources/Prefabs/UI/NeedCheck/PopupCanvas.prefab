@@ -1325,10 +1325,10 @@ RectTransform:
   - {fileID: 6389949144674158752}
   m_Father: {fileID: 5024285989782870153}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 322.5, y: -65}
-  m_SizeDelta: {x: 215, y: 130}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6580339723094557063
 CanvasRenderer:
@@ -2007,6 +2007,7 @@ GameObject:
   - component: {fileID: 9138270777035497857}
   - component: {fileID: 5694251198805863885}
   - component: {fileID: 5570554417052754235}
+  - component: {fileID: 5032305017742101270}
   m_Layer: 5
   m_Name: GachaContainer
   m_TagString: Untagged
@@ -2088,6 +2089,25 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &5032305017742101270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917588915924232150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daa58619399380946b2dec457f75656c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoulPickUP: {fileID: 2636293001149604617}
+  Soul: {fileID: 7969180470419779207}
+  WeaponPickUP: {fileID: 404398719971851318}
+  Weapon: {fileID: 358513897925189336}
+  GachaOnce: {fileID: 1895754659298894886}
+  Gacha10: {fileID: 4605480080838883987}
+  containerImage: {fileID: 0}
 --- !u!1 &974523471764671328
 GameObject:
   m_ObjectHideFlags: 0
@@ -3584,7 +3604,6 @@ GameObject:
   - component: {fileID: 7417154380798959784}
   - component: {fileID: 7911881965290524265}
   - component: {fileID: 7184152546023408659}
-  - component: {fileID: 7890314660896365054}
   m_Layer: 5
   m_Name: ItemPanel
   m_TagString: Untagged
@@ -3654,33 +3673,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7890314660896365054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1814783601859999605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0ea2099ab227574fa97eb958e6aea21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurItem:
-    key: 0
-    OriginID: 
-    ProductName: 
-    ProductDescription: 
-    PriceType: 0
-    Price: 0
-    IsStack: 0
-    StackCount: 0
-    IconPath: 
-  icon: {fileID: 2021128144446648817}
-  _name: {fileID: 2059811912839370919}
-  description: {fileID: 2817333135457743905}
-  confirm: {fileID: 1820809901805131242}
-  cancel: {fileID: 646617542159295921}
 --- !u!1 &1818842793698090149
 GameObject:
   m_ObjectHideFlags: 0
@@ -5309,15 +5301,15 @@ GameObject:
   - component: {fileID: 2237096127274533791}
   - component: {fileID: 5524051434534934622}
   - component: {fileID: 6134837932903818904}
-  - component: {fileID: 2810774440859578144}
-  - component: {fileID: 8419071924973781867}
+  - component: {fileID: 8525166751251906716}
+  - component: {fileID: 6887733217400934515}
   m_Layer: 5
   m_Name: POPUP_Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2237096127274533791
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5380,7 +5372,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2810774440859578144
+--- !u!114 &8525166751251906716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5389,36 +5381,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 2605980628133674630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfff9ac000184974e928ce1a7801fd5b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d97c732365941b49a511a599bb96ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content_Gacha: {fileID: 8084090009088980636}
-  gachaPanel: {fileID: 917588915924232150}
-  content_BuyItem: {fileID: 9176743498397174392}
-  content_ChangeProduct: {fileID: 7263588142150034829}
-  buyItemPanel: {fileID: 9074557825859177137}
-  gachaType_Soul: {fileID: 2636293001149604617}
-  gachaType_Weapon: {fileID: 404398719971851318}
-  pickupImage: {fileID: 1397447810271307144}
-  gachaOnce: {fileID: 1895754659298894886}
-  gacha10: {fileID: 4605480080838883987}
-  buyPanel: {fileID: 7890314660896365054}
+  UIKey: shopController
+  views: {fileID: 6887733217400934515}
+--- !u!114 &6887733217400934515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2605980628133674630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27de443dd44f582479e54b898eb28eca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopPanel: {fileID: 0}
   exitButton: {fileID: 8939298354072385854}
---- !u!114 &8419071924973781867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2605980628133674630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bf4d78c89e043e4aa1e879cb6924880, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gachaBase: {fileID: 506337006899997954}
-  result: {fileID: 1545475720563201250}
-  grid: {fileID: 636866691227025458}
+  gachaButton: {fileID: 8084090009088980636}
+  gachaPanel: {fileID: 0}
+  itemButton: {fileID: 9176743498397174392}
+  itemPanel: {fileID: 1814783601859999605}
+  moneyButton: {fileID: 7263588142150034829}
+  moneyPanel: {fileID: 0}
 --- !u!1 &2641959911985554999
 GameObject:
   m_ObjectHideFlags: 0
@@ -6831,7 +6818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6749170738197001030
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7201,7 +7188,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 390}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &335658983180053354
 MonoBehaviour:
@@ -9572,10 +9559,10 @@ RectTransform:
   - {fileID: 6374505239958400017}
   m_Father: {fileID: 5024285989782870153}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 107.5, y: -65}
-  m_SizeDelta: {x: 215, y: 130}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3102674386390575032
 CanvasRenderer:
@@ -9902,10 +9889,10 @@ RectTransform:
   - {fileID: 7378628190997355784}
   m_Father: {fileID: 5024285989782870153}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 537.5, y: -65}
-  m_SizeDelta: {x: 215, y: 130}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1632246948827139056
 CanvasRenderer:
@@ -10399,7 +10386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5414840958122424889
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12309,7 +12296,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5043500562817756300}
-  - component: {fileID: 1545475720563201250}
+  - component: {fileID: 2576228213581500107}
   - component: {fileID: 8073360941120249281}
   m_Layer: 5
   m_Name: GachaResult
@@ -12340,7 +12327,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1545475720563201250
+--- !u!114 &2576228213581500107
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12349,13 +12336,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6507728404080196634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6bbcfd2cfd3f6a49928777a18b0fd99, type: 3}
+  m_Script: {fileID: 11500000, guid: ebfd7ef06f8e6414b9c8288d16cb57c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resultSprite: {fileID: 7186318596237271573}
   _name: {fileID: 1347208766612964891}
   description: {fileID: 1755050286223965309}
-  gachaBase: {fileID: 8419071924973781867}
+  gachaBase: {fileID: 0}
   skipButton: {fileID: 4038226951280951749}
   isSkip: 0
 --- !u!61 &8073360941120249281
@@ -13745,10 +13732,10 @@ RectTransform:
   - {fileID: 2671995760489870936}
   m_Father: {fileID: 5024285989782870153}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 752.5, y: -65}
-  m_SizeDelta: {x: 215, y: 130}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4420550537212023336
 CanvasRenderer:
@@ -16876,14 +16863,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4596188624870556582}
-  - component: {fileID: 636866691227025458}
+  - component: {fileID: 1225799848344459564}
   m_Layer: 5
   m_Name: GachaGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4596188624870556582
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16905,7 +16892,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &636866691227025458
+--- !u!114 &1225799848344459564
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16914,7 +16901,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8980952695955209186}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf6b032c858216748bf13a1fcd18b335, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f239181f99aab04fadd74911fa68f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gachaBase: {fileID: 506337006899997954}
@@ -17158,7 +17145,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4716260975918465356}
   - component: {fileID: 4723643585416874117}
-  - component: {fileID: 4598021181961332595}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -17233,19 +17219,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4598021181961332595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9080059425935701273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 901d608e9186b0c44903f005c85ae320, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 0}
 --- !u!1 &9189171831949678459
 GameObject:
   m_ObjectHideFlags: 0
