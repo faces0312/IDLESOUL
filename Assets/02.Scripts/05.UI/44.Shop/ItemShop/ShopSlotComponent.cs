@@ -12,7 +12,7 @@ public class ShopSlotComponent : MonoBehaviour
     public ShopSlot slot;
     private ItemEvent itemEvent;
 
-    private void Start()
+    public void Init()
     {
         slot = new ShopSlot();
         button = GetComponent<Button>();
