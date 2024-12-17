@@ -8,7 +8,7 @@ public class EnemyAnimationController : MonoBehaviour
 
     public void MeleeAttackBoss()
     {
-        enemy.stateMachine.AttackState.MeleeAttackBoss();
+        enemy.slash.SetActive(true);
     }
     public void MeleeSkillBossCharging()
     {
@@ -22,7 +22,7 @@ public class EnemyAnimationController : MonoBehaviour
 
     public void MeleeSkillBossEnd()
     {
-        enemy.stateMachine.AttackState.meleeAttack.SetActive(false);
+        enemy.slash.SetActive(false);
         enemy.stateMachine.ChangeState(enemy.stateMachine.MoveState);
     }
 
@@ -53,16 +53,16 @@ public class EnemyAnimationController : MonoBehaviour
 
     public void GoblinAttackStart()
     {
-        enemy.stateMachine.AttackState.MeleeAttack(6000);
+        enemy.slash.SetActive(true);
     }
     public void SkeletonAttackStart()
     {
-        enemy.stateMachine.AttackState.MeleeAttack(6004);
+        enemy.slash.SetActive(true);
     }
 
     public void MeleeAttackEnd()
     {
-        enemy.stateMachine.AttackState.meleeAttack.SetActive(false);
+        enemy.slash.SetActive(false);
     }
 
     public void EnergyBoltRangedAttack()

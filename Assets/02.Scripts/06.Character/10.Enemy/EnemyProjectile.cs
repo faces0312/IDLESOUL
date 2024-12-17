@@ -45,27 +45,17 @@ public class EnemyProjectile : BaseProjectile
     {
         if (TargetLayer == ((1 << other.gameObject.layer) | TargetLayer))
         {
-            //Debug.Log($"공격이 {other.gameObject.name}에 충돌");
             DamageCaculate(other.gameObject, attack);
             KnockBackCaculate(other.gameObject, 12);
 
             if(enemyGrade == EnemyGrade.Regular)
             {
-                if (isMelee == true)
-                    base.ProjectileMeleeCollison(other);
-                else
-                    base.ProjectileCollison(other);
+                ProjectileCollison(other);
             }
             else
             {
-                if (isMelee == true)
-                    base.ProjectileMeleeCollison(other);
-                else
-                    base.ProjectileRangeCollison(other);
+                ProjectileRangeCollison(other);
             }
-            //gameObject.SetActive(false);
-
-            //ObjectPoolManager.Instance.GetPool("playerProjectile", Utils.POOL_KEY_PLAYERPROJECTILE).GetObject();
         }
     }
 }

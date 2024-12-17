@@ -27,11 +27,8 @@ public static class Const
     public static readonly string ENEMY_PREFEB_GOBLINBOSS_PATH = "Prefabs/Enemy/GoblinBoss";
     public static readonly string ENEMY_PREFEB_SKELETONBOSS_PATH = "Prefabs/Enemy/SkeletonBoss";
 
-    public static readonly string ENEMY_PREFEB_GOBLINSLASH_PATH = "Prefabs/Enemy/Effects/Slash";
     public static readonly string ENEMY_PREFEB_GOBLINEENERGYBOLT_PATH = "Prefabs/Enemy/Effects/EnergyBolt";
-    public static readonly string ENEMY_PREFEB_GOBLINSLASHBOSS_PATH = "Prefabs/Enemy/Effects/SlashBoss";
     public static readonly string ENEMY_PREFEB_GOBLINSKILLBOSS1_PATH = "Prefabs/Enemy/Effects/SkillBoss1";
-    public static readonly string ENEMY_PREFEB_SKELETONSLASH_PATH = "Prefabs/Enemy/Effects/SlashSkeleton";
     public static readonly string ENEMY_PREFEB_SKELETONARROW_PATH = "Prefabs/Enemy/Effects/ArrowSkeleton";
     public static readonly string ENEMY_PREFEB_SKELETONENERGYBOLTBOSS_PATH = "Prefabs/Enemy/Effects/EnergyBoltBoss";
     public static readonly string ENEMY_PREFEB_SKELETONSKILLBOSS2_PATH = "Prefabs/Enemy/Effects/SkillBoss2";

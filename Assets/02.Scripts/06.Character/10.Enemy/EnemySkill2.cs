@@ -25,7 +25,7 @@ public class EnemySkill2 : EnemySkillBase
 
     public void SkillAttack2()
     {
-        bulletInstances = EnemyManager.Instance.EnemyAttackSpawn(6007, new Vector3(bossEnemy.skillZone.transform.GetChild(0).position.x, bossEnemy.skillZone.transform.GetChild(0).position.y + 8f, bossEnemy.skillZone.transform.GetChild(0).position.z), Quaternion.Euler(90, 0, 0));
+        bulletInstances = EnemyManager.Instance.EnemyAttackSpawn(6007, new Vector3(bossEnemy.skillZone.transform.GetChild(0).position.x, bossEnemy.skillZone.transform.GetChild(0).position.y + 10f, bossEnemy.skillZone.transform.GetChild(0).position.z), Quaternion.Euler(90, 0, 0));
 
     }
 }
