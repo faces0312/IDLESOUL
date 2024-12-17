@@ -6,5 +6,4 @@ public class StageMap : MonoBehaviour
 {
     public BoxCollider SpawnArea;
 
-
 }

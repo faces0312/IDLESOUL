@@ -65,21 +65,28 @@ public class SpinSword : MonoBehaviour
 
             //GameManager.Instance.enemies.Remove(collision.gameObject);  // 임시로 제거
             //Destroy(collision.gameObject);
-            Debug.LogAssertion("Enemy Destroy");
+            //Debug.LogAssertion("Enemy Destroy");
 
             if(curCorutine == null)
-                curCorutine = StartCoroutine(CoroutineTickDamage());
+                curCorutine = StartCoroutine(CoroutineTickDamage(other.gameObject));
 
         }
     }
 
-    private IEnumerator CoroutineTickDamage()
+    private IEnumerator CoroutineTickDamage(GameObject hitObj)
     {
         while (true)
         {
             // TODO : Enemy 피격 처리
 
-            Debug.LogAssertion("Spin Damage!");
+            ITakeDamageAble damageable = hitObj.GetComponent<ITakeDamageAble>();
+            //TODO :: 무적시간이 아닐때에도 조건에 추가해야됨
+            if (damageable != null)
+            {
+                damageable.TakeDamage(10000);
+            }
+
+            //Debug.LogAssertion("Spin Damage!");
             yield return coroutineTime;
         }
     }

@@ -4,7 +4,7 @@ using ScottGarland;
 
 public static class Utils
 {
-    public static Fader fader = Object.Instantiate(Resources.Load<Fader>("Prefabs/UI/UIFade"));
+    //public static Fader fader = Object.Instantiate(Resources.Load<Fader>("Prefabs/UI/UIFade"));
 
     // 각종 유틸 메서드 정리
 

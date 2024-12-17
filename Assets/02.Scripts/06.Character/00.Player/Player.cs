@@ -26,8 +26,6 @@ public class UserData
         Gold = userDB.Gold;
         Diamonds = userDB.Diamonds;
         PlayTimeInSeconds = userDB.PlayTimeInSeconds;
-        Exp = userDB.exp;
-        MaxExp = userDB.MaxExp;
 
         stat = new Stat();
         stat.iD = UID;
@@ -128,6 +126,11 @@ public class Player : BaseCharacter
         GameManager.Instance.player = this;
 
         Initialize();
+    }
+
+    public void LevelUp(int level, Status status)
+    {
+        statHandler.LevelUp(level, status);
     }
 
     public void RegisterSoul()

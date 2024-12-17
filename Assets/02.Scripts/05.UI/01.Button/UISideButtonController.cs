@@ -20,9 +20,9 @@ public class UISideButtonController : MonoBehaviour
             }
             else menuObject.SetActive(true);
         });
-        shop.onClick.AddListener(() =>
-        {
-            shopObject.SetActive(true);
-        });
+        //shop.onClick.AddListener(() =>
+        //{
+        //    shopObject.SetActive(true); //Debug - Shop UI 매니저 등록하면 변경하여 사용하기
+        //});
     }
 }

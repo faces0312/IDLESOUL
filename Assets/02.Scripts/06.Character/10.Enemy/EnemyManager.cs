@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : Singleton<EnemyManager>
+public class EnemyManager : SingletonDDOL<EnemyManager>
 {
     [SerializeField] private bool isBoss;
     [SerializeField] private float spawnTime;
@@ -162,6 +162,7 @@ public class EnemyManager : Singleton<EnemyManager>
         GameObject enemyBoss = pool.GetObject();
         Enemy tempEnemy = enemyBoss.GetComponent<BossEnemy>();
         tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(id);
+        tempEnemy.Initialize();
         tempEnemy.target = GameManager.Instance.player.gameObject;
         enemyBoss.transform.position = RandomSpawn();
         enemyBoss.SetActive(true);

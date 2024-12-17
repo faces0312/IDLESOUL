@@ -1260,6 +1260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invenPanel: {fileID: 950895627082555947}
+  thumbnail: {fileID: 0}
   scrollTransform: {fileID: 6273739185910717134}
   statusBundle: {fileID: 5249726722359238243}
   levelText: {fileID: 3057033913430021595}
@@ -3964,7 +3965,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &7968050078053712979
 MonoBehaviour:
@@ -7673,6 +7674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   soulName: 
+  sprite: {fileID: 0}
 --- !u!1 &4914930684888612869
 GameObject:
   m_ObjectHideFlags: 0
@@ -10427,6 +10429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   soulName: 
+  sprite: {fileID: 0}
 --- !u!1 &6166840878728330928
 GameObject:
   m_ObjectHideFlags: 0
@@ -12534,7 +12537,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invenPanel: {fileID: 6654541365242139963}
   thumbnail: {fileID: 0}
-  sprite: {fileID: 0}
 --- !u!114 &8038330484714493488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13602,6 +13604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   soulName: 
+  sprite: {fileID: 0}
 --- !u!1 &7319545329241894057
 GameObject:
   m_ObjectHideFlags: 0

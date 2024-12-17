@@ -134,7 +134,7 @@ public class SoulInfoView : MonoBehaviour, IUIBase
 
     private void InitUI()
     {
-        // TODO : 소울 썸네일 삽입
+        // 소울 썸네일 삽입
         thumbnail.sprite = soul.icon;
 
         // TODO : 스킬 sprite 삽입

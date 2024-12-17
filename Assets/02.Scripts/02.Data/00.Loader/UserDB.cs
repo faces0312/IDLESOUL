@@ -23,9 +23,24 @@ public class UserDB
     public int Level;
 
     /// <summary>
+    /// Exp
+    /// </summary>
+    public int Exp;
+
+    /// <summary>
+    /// MaxExp
+    /// </summary>
+    public int MaxExp;
+
+    /// <summary>
     /// Health
     /// </summary>
     public int Health;
+
+    /// <summary>
+    /// MaxHealthLevel
+    /// </summary>
+    public int MaxHealthLevel;
 
     /// <summary>
     /// MaxHealth
@@ -33,9 +48,19 @@ public class UserDB
     public int MaxHealth;
 
     /// <summary>
+    /// AtkLevel
+    /// </summary>
+    public int AtkLevel;
+
+    /// <summary>
     /// Atk
     /// </summary>
     public int Atk;
+
+    /// <summary>
+    /// DefLevel
+    /// </summary>
+    public int DefLevel;
 
     /// <summary>
     /// Def
@@ -43,14 +68,29 @@ public class UserDB
     public int Def;
 
     /// <summary>
+    /// ReduceDamageLevel
+    /// </summary>
+    public int ReduceDamageLevel;
+
+    /// <summary>
     /// ReduceDamage
     /// </summary>
     public float ReduceDamage;
 
     /// <summary>
+    /// CriticalRateLevel
+    /// </summary>
+    public int CriticalRateLevel;
+
+    /// <summary>
     /// CriticalRate
     /// </summary>
     public float CriticalRate;
+
+    /// <summary>
+    /// CriticalDamageLevel
+    /// </summary>
+    public int CriticalDamageLevel;
 
     /// <summary>
     /// CriticalDamage
@@ -71,16 +111,6 @@ public class UserDB
     /// coolDown
     /// </summary>
     public float coolDown;
-
-    /// <summary>
-    /// Exp
-    /// </summary>
-    public int exp;
-
-    /// <summary>
-    /// MaxExp
-    /// </summary>
-    public int MaxExp;
 
     /// <summary>
     /// Gold
@@ -115,13 +145,20 @@ public class UserDB
         Gold = userData.Gold;
         Diamonds = userData.Diamonds;
         PlayTimeInSeconds = userData.PlayTimeInSeconds;
-        exp = userData.Exp;
+        Exp = userData.Exp;
         MaxExp = userData.MaxExp;
 
         Health = BigInteger.ToInt32(userData.stat.health); ;
         MaxHealth = BigInteger.ToInt32(userData.stat.maxHealth);
         Atk = BigInteger.ToInt32(userData.stat.atk);
         Def = BigInteger.ToInt32(userData.stat.def);
+
+        MaxHealthLevel = userData.stat.MaxHealthLevel;
+        AtkLevel = userData.stat.AtkLevel;
+        DefLevel = userData.stat.DefLevel;
+        ReduceDamageLevel = userData.stat.ReduceDamageLevel;
+        CriticalRateLevel = userData.stat.CriticalRateLevel;
+        CriticalDamageLevel = userData.stat.CriticalDamageLevel;
 
         moveSpeed = userData.stat.moveSpeed;
         atkSpeed = userData.stat.atkSpeed;

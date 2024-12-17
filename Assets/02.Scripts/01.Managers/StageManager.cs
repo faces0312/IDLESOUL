@@ -15,6 +15,7 @@ public class StageManager : SingletonDDOL<StageManager>
    
     public StageMap CurStageMap { get => curStageMap; }
     public StageDB CurStageData { get => curStageData; }
+    public int CurStageID { get => curStageID;}
 
     protected override void Awake()
     {
@@ -22,10 +23,16 @@ public class StageManager : SingletonDDOL<StageManager>
         StageProgressModel = new UIStageProgressBarModel();
         curStageID = 7000; //ц╘ем1 Stage1
     }
+    
+    public void StageSelect(int stageID)
+    {
+        curStageID = stageID;
+    }
 
     public void Init()
     {
         curStageData = DataManager.Instance.StageDB.GetByKey(curStageID);
+        
         curStageMap = Resources.Load<StageMap>(curStageData.StageMapPath);
         Instantiate(curStageMap);
 
