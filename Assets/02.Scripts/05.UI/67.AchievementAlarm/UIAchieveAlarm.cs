@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 internal class UIAchieveAlarm : MonoBehaviour
 {
-    public string UIKey;
+    public string UIKey; //"AchieveAlarm"
 
     private AchieveAlarmModel model;
     [SerializeField] private AchieveAlarmView view;

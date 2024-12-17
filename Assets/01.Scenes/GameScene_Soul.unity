@@ -1141,19 +1141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac958a1d567f59b4385ecd44a434aaab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AData:
-    Name: 
-    Description: 
-    progress: 0
-    Goal: 0
-    ID: 0
-    iconPath: 
-    Action: 0
-    AchievementType: 0
-    isClear: 0
-    isPublished: 0
-  icon: {fileID: 1044151954}
-  aName: {fileID: 572662532}
 --- !u!114 &112576488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8711,6 +8698,7 @@ GameObject:
   m_Component:
   - component: {fileID: 715816228}
   - component: {fileID: 715816227}
+  - component: {fileID: 715816229}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -8773,6 +8761,29 @@ Transform:
   - {fileID: 2041833667}
   m_Father: {fileID: 2081515315}
   m_LocalEulerAnglesHint: {x: 31.96, y: 0, z: 0}
+--- !u!114 &715816229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715816226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
+  m_UseCameraSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!4 &731725705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: db3e8a46a7691ce4f91906916596b7ab, type: 3}
@@ -23415,7 +23426,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aDatas: []
-  alarm: {fileID: 0}
 --- !u!4 &1991038905
 Transform:
   m_ObjectHideFlags: 0
@@ -24984,6 +24994,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2081515315}
   - component: {fileID: 2081515314}
+  - component: {fileID: 2081515316}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -25025,6 +25036,18 @@ Transform:
   - {fileID: 2056457352}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2081515316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081515313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549296c9ff368fb41b79cbbe5dcf7db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2090599891
 GameObject:
   m_ObjectHideFlags: 0

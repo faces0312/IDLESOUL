@@ -7,8 +7,10 @@ public abstract class BaseCharacter : MonoBehaviour, ITakeDamageAble
     //protected Animator characterAnimator; //애니메이션 관련 컨트롤러
     //protected CharacterController characterController; //캐릭터 컨트롤러
 
-    [SerializeField]protected BaseHpSystem baseHpSystem; //체력 계산해주는 클래스 
+    [SerializeField] protected BaseHpSystem baseHpSystem; //체력 계산해주는 클래스 
     public Rigidbody rb;
+
+    public BaseHpSystem BaseHpSystem { get => baseHpSystem; }
 
     public abstract void Attack();
     public abstract void Move();

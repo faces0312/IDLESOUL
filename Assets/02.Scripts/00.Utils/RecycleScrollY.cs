@@ -27,7 +27,7 @@ public class RecycleScrollY : MonoBehaviour
 
     public Action<GameObject, int> SetContent;
 
-    private void Start()
+    public void Init()
     {
         pastPos = 0;
 

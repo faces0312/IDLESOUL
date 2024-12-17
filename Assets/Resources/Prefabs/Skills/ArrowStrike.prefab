@@ -54048,6 +54048,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3870527771692531937}
+  - component: {fileID: 3850574959987365137}
   m_Layer: 0
   m_Name: ArrowStrike
   m_TagString: Untagged
@@ -54074,6 +54075,20 @@ Transform:
   - {fileID: 3870527770307888444}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &3850574959987365137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3870527771692531936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbef143faa95a946b6fdb0f586b7233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitObj: {fileID: 5395853469459044514, guid: 5fe5567e0d6658c44a34f72cb2a6c186, type: 3}
+  lifeTime: 4.6
 --- !u!1 &3870527771716840068
 GameObject:
   m_ObjectHideFlags: 0

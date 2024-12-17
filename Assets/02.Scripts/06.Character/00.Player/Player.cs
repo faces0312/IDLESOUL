@@ -65,10 +65,13 @@ public class Player : BaseCharacter
     public InventoryModel Inventory; //플레이어 인벤토리 데이터
 
     [Header("State Machine")]
-    private PlayerStateMachine playerStateMachine;
+    public PlayerStateMachine playerStateMachine;
 
     [Header("EquipData")]
     private Item equipItem; //장착 아이템 여부 
+
+    [Header("Auto")]
+    public bool isAuto;
 
     public PlayerAnimationController PlayerAnimationController { get => playerAnimationController; }
     public PlayerSouls PlayerSouls { get => playerSouls; }
@@ -190,6 +193,7 @@ public class Player : BaseCharacter
     public override void TakeDamage(float damage)
     {
         baseHpSystem.TakeDamage(damage, statHandler);
+        UIManager.Instance.ShowUI("PlayerHPDisplay");
 
         if (statHandler.CurrentStat.health <= 0)
         {
@@ -208,11 +212,22 @@ public class Player : BaseCharacter
             PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, false);
 
             rb.velocity = Vector3.zero; //캐릭터 이동되지않게 속도를 0으로 수정
+            rb.isKinematic = true;
             GameManager.Instance.GameOver();
             enabled = false;
         }
     }
 
+    public void Respwan()
+    {
+        //ToDoCode : 플레이어가 죽을경우 재세팅하는 함수
+        statHandler.CurrentStat.health = statHandler.CurrentStat.maxHealth;
+        transform.position = Vector3.up;
+        rb.isKinematic = false;
+        enabled = true;
+        baseHpSystem.IsDead = false;
+        UIManager.Instance.ShowUI("PlayerHPDisplay");
+    }
 
     public override void Attack()
     {
@@ -226,7 +241,8 @@ public class Player : BaseCharacter
 
     private void Update()
     {
-        playerStateMachine.Update();
+        if (isAuto == true)
+            playerStateMachine.Update();
 
         if (Input.GetKeyDown(KeyCode.D)) // 데이터 갱신
         {

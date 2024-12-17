@@ -1,4 +1,5 @@
-﻿using ScottGarland;
+﻿using Cinemachine;
+using ScottGarland;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class Explosion : MonoBehaviour
     private float range;
 
     private Collider myCollider;
+    private CinemachineImpulseSource impulseSource;
     private LayerMask layerMask;
 
     // Start is called before the first frame update
@@ -21,6 +23,9 @@ public class Explosion : MonoBehaviour
         myCollider = GetComponent<Collider>();
         layerMask = 1 << LayerMask.NameToLayer("Enemy");
         //transform.localScale = new Vector3(range, range, range);
+
+        impulseSource = GetComponent<CinemachineImpulseSource>();
+        GameManager.Instance.cameraController.ShakeCamera(impulseSource);
     }
 
     // Update is called once per frame

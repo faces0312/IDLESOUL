@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UIAchievement : MonoBehaviour
 {
-    public string UIKey;
+    public string UIKey; //"Achievement"
 
     private AchievementModel model;
     [SerializeField] private AchievementView view;
