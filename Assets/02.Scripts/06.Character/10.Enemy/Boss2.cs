@@ -17,17 +17,18 @@ public class Boss2 : BossEnemy
         };
     }
 
-    public override void Update()
+    private void OnEnable()
     {
-        base.Update();
+        StartCoroutine(Skill(10f));
+    }
 
-        skillSpeedTmp += Time.deltaTime;
-        //TODO :: skillSpeed 설정후 그 값으로 변경
-        if (skillSpeedTmp >= 10f)
+    IEnumerator Skill(float delay)
+    {
+        while (true)
         {
-            Debug.Log("스킬 실행");
+            yield return new WaitForSeconds(delay);
+            // 대기 후 실행할 함수
             stateMachine.ChangeState(stateMachine.SkillState);
-            skillSpeedTmp = 0f;
         }
     }
 }

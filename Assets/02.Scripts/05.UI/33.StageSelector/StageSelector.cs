@@ -12,9 +12,13 @@ public class StageSelector : MonoBehaviour
     private List<StageDB> stageData;
     private List<StageDB> sortedData;
     private StageType stageType;
+    private StageSelectorController controller;
 
     private void Start()
     {
+        controller = new StageSelectorController();
+        controller.StageSelector = this.gameObject;
+        UIManager.Instance.RegisterController("stageSelectorController", controller);
         exit.onClick.AddListener(() =>
         {
             this.gameObject.SetActive(false);

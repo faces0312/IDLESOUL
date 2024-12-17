@@ -24,6 +24,8 @@ public class ObjectMoveDestroy : MonoBehaviour
     bool ishit;
     float m_scalefactor;
 
+    public Vector3 hitScale = new Vector3(1,1,1);
+
     private void Start()
     {
         m_scalefactor = VariousEffectsScene.m_gaph_scenesizefactor;//transform.parent.localScale.x;
@@ -56,7 +58,7 @@ public class ObjectMoveDestroy : MonoBehaviour
             return;
         m_makedObject = Instantiate(m_hitObject, hit.point, Quaternion.LookRotation(hit.normal)).gameObject;
         m_makedObject.transform.parent = transform.parent;
-        m_makedObject.transform.localScale = new Vector3(1, 1, 1);
+        m_makedObject.transform.localScale = hitScale;
     }
 
     void MakeHitObject(Transform point)
@@ -65,7 +67,7 @@ public class ObjectMoveDestroy : MonoBehaviour
             return;
         m_makedObject = Instantiate(m_hitObject, point.transform.position, point.rotation).gameObject;
         m_makedObject.transform.parent = transform.parent;
-        m_makedObject.transform.localScale = new Vector3(1, 1, 1);
+        m_makedObject.transform.localScale = hitScale;
     }
 
     void HitObj(RaycastHit hit)

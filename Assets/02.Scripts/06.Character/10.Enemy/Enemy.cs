@@ -16,6 +16,7 @@ public abstract class Enemy : BaseCharacter
 {
     [Header("Data")]
     public AttackType attackType;
+    public GameObject slash;
     public EnemyDB enemyDB;
 
     [Header("References")]
@@ -68,7 +69,7 @@ public abstract class Enemy : BaseCharacter
         statHandler.CurrentStat.atkSpeed = enemyDB.AttackSpeed;
         statHandler.CurrentStat.critChance = enemyDB.CritChance;
         statHandler.CurrentStat.critDamage = enemyDB.CritDamage;
-        skillDamage = 100000;
+        skillDamage = 500;
         stateMachine.Initialize();
         HpUpdate();
     }
@@ -113,7 +114,7 @@ public abstract class Enemy : BaseCharacter
         //Debug.Log($"{gameObject.name} 사망!!");
     }
 
-    public virtual void Update()
+    public void Update()
     {
         stateMachine.Update();
     }
@@ -122,14 +123,27 @@ public abstract class Enemy : BaseCharacter
         stateMachine.FixedUpdateState();
     }
 
+    private void LateUpdate()
+    {
+        if (target.transform.position.x - transform.position.x < 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (target.transform.position.x - transform.position.x > 0) // 플레이어가 오른쪽에 있을 때
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+    }
+
     public override void Attack()
     {
     }
-    private void AttackDelay()
+    public override void Move()
     {
     }
 
-    public override void Move()
+    public float GetAttackPower()
     {
+        return BigInteger.ToInt32(statHandler.CurrentStat.atk);
     }
 }

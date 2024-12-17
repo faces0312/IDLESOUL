@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/02.Scripts/05.UI/44.Shop/ItemShop.meta
+guid: 58ebdeeb711db944bba719daa2ada080
+========
 guid: c9f73960f2ec4344d8da55beb44b2ca9
+>>>>>>>> Dev:Assets/02.Scripts/05.UI/15.UIPlayerStatusHPDisplay.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
