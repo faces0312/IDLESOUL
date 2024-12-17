@@ -23,17 +23,11 @@ public class UIMenuButtonController : MonoBehaviour
     {
         enterDungeon.onClick.AddListener(() =>
         {
-            if(selectDungeon.activeSelf == false)
-            {
-                selectDungeon.SetActive(true);
-            }
+            UIManager.Instance.ShowUI("selectDungeon");
         });
         achievement.onClick.AddListener(() =>
         {
-            if(achievementObject.activeSelf == false)
-            {
-                achievementObject.SetActive(true);
-            }
+            UIManager.Instance.ShowUI("achievement");
         });
         config.onClick.AddListener(() =>
         {

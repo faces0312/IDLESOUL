@@ -3,17 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public interface IGachableDB
-{
-    public int GetKey();
-    public int GetRairity();
-}
-
 public class GachaBase : MonoBehaviour
 {
-    public GameObject gachaBase;
-    public GachaResult result;
-    public GachaGrid grid;
+    [SerializeField] public GachaResult result;
+    [SerializeField] public GachaGrid grid;
 
     private List<IGachableDB> gachaList;
     private List<IGachableDB> tempList;
@@ -27,12 +20,10 @@ public class GachaBase : MonoBehaviour
         gachaList = new List<IGachableDB>();
         tempList = new List<IGachableDB>();
         EventManager.Instance.Subscribe<GachaEvent>(Channel.Gacha, Gacha);
-        gachaBase.SetActive(false);
     }
 
     private void Gacha(GachaEvent arg)
     {
-        gachaBase.SetActive(true);
         if(grid.gameObject.activeSelf == true)
         {
             grid.gameObject.SetActive(false);   

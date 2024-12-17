@@ -13,6 +13,7 @@ public class GachaResult : MonoBehaviour, IPointerClickHandler
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] private GachaBase gachaBase;
     [SerializeField] private Button skipButton;
+    private GachaResultController controller;
 
     private List<IGachableDB> gachaResultList;
 
