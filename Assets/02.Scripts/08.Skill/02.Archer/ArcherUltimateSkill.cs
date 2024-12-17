@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +10,7 @@ public class ArcherUltimateSkill : Skill
 
     public ArcherUltimateSkill(int id) : base(id)
     {
-        // TODO : DB ø°º≠ πﬁæ∆ ≥÷±‚
+        // TODO : DB ÏóêÏÑú Î∞õÏïÑ ÎÑ£Í∏∞
         coolTime = 5f;
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/ArrowStrike");
         range = 10f;
@@ -21,7 +21,7 @@ public class ArcherUltimateSkill : Skill
     {
         level += amount;
 
-        // TODO : πË¿≤ ¡∂¡§
+        // TODO : Î∞∞Ïú® Ï°∞Ï†ï
         totalValue = value * (level * upgradeValue);
     }
 
@@ -42,15 +42,9 @@ public class ArcherUltimateSkill : Skill
 
         GameObject arrowStrike = Object.Instantiate(skillPrefab, playerPos, Quaternion.LookRotation(dir));
 
-        //if (GameManager.Instance.player.PlayerAnimationController.skeleton.ScaleX > 0)
-        //{
-        //    arrowStrike.transform.position -= new Vector3(skillPrefab.transform.position.x * 2f, 0, 0);
-        //    arrowStrike.transform.Rotate(new Vector3(90f, 0, 0));
-        //}
-
-        //if (arrowStrike.TryGetComponent(out Meteor component))
-        //{
-        //    component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);
-        //}
+        if (arrowStrike.TryGetComponent(out ArrowStrike component))
+        {
+            component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);
+        }
     }
 }

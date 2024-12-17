@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +12,7 @@ public class ArcherDefaultSkill : Skill
 
     public ArcherDefaultSkill(int id) : base(id)
     {
-        // TODO : DB ¿¡¼­ ¹Ş¾Æ ³Ö±â
+        // TODO : DB ì—ì„œ ë°›ì•„ ë„£ê¸°
         coolTime = 3f;
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/ArrowShot");
         range = 10f;
@@ -25,16 +25,16 @@ public class ArcherDefaultSkill : Skill
     {
         level += amount;
 
-        // TODO : ¹èÀ² Á¶Á¤
+        // TODO : ë°°ìœ¨ ì¡°ì •
         totalValue = value * (level * upgradeValue);
     }
 
     public override void UseSkill(StatHandler statHandler)
     {
-        // °¡Àå °¡±î¿î Enemy ¸¦ Ã£´Â ·ÎÁ÷
-        // Enemy ¸®½ºÆ®¸¦ ¹Ş¾Æ¿Í °Å¸® ±â¹İ Å½Áö
+        // ê°€ì¥ ê°€ê¹Œìš´ Enemy ë¥¼ ì°¾ëŠ” ë¡œì§
+        // Enemy ë¦¬ìŠ¤íŠ¸ë¥¼ ë°›ì•„ì™€ ê±°ë¦¬ ê¸°ë°˜ íƒì§€
 
-        List<GameObject> targets = GameManager.Instance.enemies;    // Enemy ¸®½ºÆ®
+        List<GameObject> targets = GameManager.Instance.enemies;    // Enemy ë¦¬ìŠ¤íŠ¸
         GameObject closestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
 
@@ -51,7 +51,7 @@ public class ArcherDefaultSkill : Skill
             }
         }
 
-        // Å½»ö ¹üÀ§¸¦ ³Ñ¾î¼± ´ë»óÀº null Ã³¸®
+        // íƒìƒ‰ ë²”ìœ„ë¥¼ ë„˜ì–´ì„  ëŒ€ìƒì€ null ì²˜ë¦¬
         if (searchRange * searchRange < closestDistanceSqr)
             closestTarget = null;
 
@@ -75,9 +75,9 @@ public class ArcherDefaultSkill : Skill
 
 
         GameObject arrowShot = Object.Instantiate(skillPrefab, playerPos, Quaternion.LookRotation(targetPos - playerPos));
-        //if (arrowShot.TryGetComponent(out Explosion component))
-        //{
-        //    component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);
-        //}
+        if (arrowShot.TryGetComponent(out ArrowShot component))
+        {
+            component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);
+        }
     }
 }

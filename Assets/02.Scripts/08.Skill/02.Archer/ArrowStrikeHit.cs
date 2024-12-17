@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScottGarland;
 
-public class SlashDanceHit : MonoBehaviour
+public class ArrowStrikeHit : MonoBehaviour
 {
     [SerializeField] private float tickTime = 0.05f;
     private float lifeTime;
@@ -22,7 +22,7 @@ public class SlashDanceHit : MonoBehaviour
 
     void Start()
     {
-        lifeTime = time - 1f;
+        lifeTime = time - 2.6f;
         curTime = Time.time;
         myCollider = GetComponent<Collider>();
         layerMask = 1 << LayerMask.NameToLayer("Enemy");
