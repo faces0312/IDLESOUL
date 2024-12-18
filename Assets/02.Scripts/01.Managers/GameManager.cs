@@ -103,6 +103,9 @@ public class GameManager : SingletonDDOL<GameManager>
         if (player.BaseHpSystem.IsDead)
         {
             player.Respwan();
+            //Controller(FSM ¼¼ÆÃ)
+            player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
+            player.targetSearch.TargetClear();
         }
 
         EnemyManager.Instance.EnemySpawnStart();
