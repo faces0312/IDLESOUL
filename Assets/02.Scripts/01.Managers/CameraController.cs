@@ -48,17 +48,21 @@ public class CameraController : MonoBehaviour
 
     public void ToggleFollowTarget(Transform newFollowTr , float closeUpTime)
     {
+        UIManager.Instance.ShowUI("BossSummonAlarm");
+
         if (virtualCamera != null)
         {
             virtualCamera.Follow = newFollowTr;
             virtualCamera.LookAt = newFollowTr;
 
             Invoke("ResetFollowTarget", closeUpTime);
-        }
+        } 
     }
 
     public void ResetFollowTarget()
     {
+        UIManager.Instance.HideUI("BossSummonAlarm");
+
         if (virtualCamera != null)
         {
             virtualCamera.Follow = GameManager.Instance.player.CamarePivot.transform;

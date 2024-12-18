@@ -52,7 +52,10 @@ public class UIStageProgressBarController : UIController
 
             //stageProgressBarModel.OnEventCurEnemyAddCount -= UpdateView;
             //stageProgressBarModel.OnEventCurEnemyAddCount -= BossTriggerCheck;
+            
             OnHide();
         }
     }
+
+
 }

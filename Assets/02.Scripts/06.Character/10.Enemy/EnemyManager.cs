@@ -179,7 +179,8 @@ public class EnemyManager : SingletonDDOL<EnemyManager>
         GameManager.Instance.enemies.Add(enemyBoss);
         Debug.Log("보스 생성");
 
-
+        UIBossSummonAlarmController controller = UIManager.Instance.GetController("BossSummonAlarm") as UIBossSummonAlarmController;
+        controller.BossSummonAlarmView.BossNameSet(tempEnemy.enemyDB.Name);
         GameManager.Instance.cameraController.ToggleFollowTarget(tempEnemy.transform , bossCameraCloseUpTime);
     }
 
