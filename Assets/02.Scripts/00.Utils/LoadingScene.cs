@@ -7,7 +7,9 @@ using UnityEngine.UI;
 
 public class LoadingScene : MonoBehaviour
 {
-    private static string nextScene;
+    //private static string nextScene;
+    public string nextScene;
+
     public GameObject gauge;
     public TextMeshProUGUI percent;
     public Image LoadingSceneImage;
@@ -16,7 +18,8 @@ public class LoadingScene : MonoBehaviour
 
     private void Awake()
     {
-        nextScene = SceneDataManager.Instance.NextScene;
+        //nextScene = SceneDataManager.Instance.NextScene;
+        //nextScene = "GameScene_SMS"; //Test 목적
         Sprites = Resources.LoadAll<Sprite>("Sprite/LoadingSceneSprite");
     }
 
@@ -24,6 +27,11 @@ public class LoadingScene : MonoBehaviour
     {
         gauge.transform.DOScaleX(0, 0f);
         StartCoroutine(CoLoading());
+
+        if(nextScene == "")
+        {
+            Debug.LogAssertion("로딩씬 이후로 진행 할 씬이 없습니다.");
+        }
     }
 
     public void LoadScene(string sceneName)
