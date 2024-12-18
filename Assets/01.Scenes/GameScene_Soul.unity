@@ -1085,8 +1085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6b032c858216748bf13a1fcd18b335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gachaBase: {fileID: 762779952}
-  confirm: {fileID: 1942417038}
 --- !u!1 &112576485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,12 +1397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6bbcfd2cfd3f6a49928777a18b0fd99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultSprite: {fileID: 1363188578}
-  _name: {fileID: 1261186308}
-  description: {fileID: 1322127933}
-  gachaBase: {fileID: 1603069887}
-  skipButton: {fileID: 1940834595}
-  isSkip: 0
 --- !u!4 &142158225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eedfe5cffcf0d55439cd717507136e80, type: 3}
@@ -14779,7 +14771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901d608e9186b0c44903f005c85ae320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
 --- !u!114 &1301077716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19023,9 +19014,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf4d78c89e043e4aa1e879cb6924880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gachaBase: {fileID: 762779952}
   result: {fileID: 127496447}
   grid: {fileID: 89434227}
+  gachaBase: {fileID: 762779952}
 --- !u!114 &1603069888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19038,18 +19029,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfff9ac000184974e928ce1a7801fd5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content_Gacha: {fileID: 153837750}
-  gachaPanel: {fileID: 1575067270}
-  content_BuyItem: {fileID: 1314412313}
-  content_ChangeProduct: {fileID: 1056542785}
-  buyItemPanel: {fileID: 323793009}
-  gachaType_Soul: {fileID: 977528668}
-  gachaType_Weapon: {fileID: 1313256909}
-  pickupImage: {fileID: 9906463}
-  gachaOnce: {fileID: 950980324}
-  gacha10: {fileID: 447395975}
-  buyPanel: {fileID: 1992851050}
-  exitButton: {fileID: 949849761}
 --- !u!114 &1603069889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20234,7 +20213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e72fbb6c716aa024ca12682586c0131d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exit: {fileID: 1351014137}
 --- !u!114 &1724498601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23630,21 +23608,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ea2099ab227574fa97eb958e6aea21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurItem:
-    key: 0
-    OriginID: 
-    ProductName: 
-    ProductDescription: 
-    PriceType: 0
-    Price: 0
-    IsStack: 0
-    StackCount: 0
-    IconPath: 
-  icon: {fileID: 1407782577}
-  _name: {fileID: 550859713}
-  description: {fileID: 1495576331}
-  confirm: {fileID: 83096100}
-  cancel: {fileID: 1211512783}
 --- !u!114 &1992851051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29373,6 +29336,7 @@ MonoBehaviour:
   TestDefaultAttackType: 0
   targetSearch: {fileID: 0}
   CamarePivot: {fileID: 7387183355098126689}
+  isAuto: 0
 --- !u!1001 &4791419535300166685
 PrefabInstance:
   m_ObjectHideFlags: 0

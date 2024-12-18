@@ -37,6 +37,10 @@ public static class Const
     public static readonly string ENEMY_POOL_KEY = "Enemies";
     public static readonly string ENEMY_EFFECT_POOL_KEY = "EnemyEffect";
 
+    public static readonly int DAMAGE_FONT_POOL_KEY = 20;
+    public static readonly string DAMAGE_FONT_KEY = "DamageFont";
+    public static readonly string DAMAGE_FONT_PATH = "Prefabs/UI/DamageFont";
+
     public static readonly int INITIAL_POOL_SIZE = 60;
 
     public const int MAX_SOUL = 3;

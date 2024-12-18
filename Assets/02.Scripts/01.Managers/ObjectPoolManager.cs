@@ -17,6 +17,7 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
         PlayerObjectPoolSetting();
         EnemyObjectPoolSetting();
         InventoryObjectPoolSetting();
+        DamageFontObjectPoolSetting();
         Debug.Log("ObjectPoolManager Init ¿Ï·á!!");
     }
 
@@ -60,6 +61,12 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
 
         AddPool(Const.ENEMY_BOSS_POOL_KEY, goblinBossPool);
         AddPool(Const.ENEMY_BOSS_POOL_KEY, skeletonBossPool);
+    }
+
+    private void DamageFontObjectPoolSetting()
+    {
+        ObjectPool dmgFontPool = new ObjectPool(Const.DAMAGE_FONT_POOL_KEY, Const.INITIAL_POOL_SIZE, Const.DAMAGE_FONT_PATH);
+        ObjectPoolManager.Instance.AddPool(Const.DAMAGE_FONT_KEY, dmgFontPool);
     }
 
     #endregion
