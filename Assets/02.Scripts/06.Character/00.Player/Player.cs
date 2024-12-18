@@ -13,9 +13,9 @@ public class UserData
     public int Gold;
     public int Diamonds;
     public int PlayTimeInSeconds;
-    public int Level;
-    public int Exp;
-    public int MaxExp;
+    public int Level; // 계정 레벨
+    public int Exp; // 계정 현재 경험치
+    public int MaxExp; // 계정 최고 경험치 
 
     public Stat stat;
     public UserData(UserDB userDB)
