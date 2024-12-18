@@ -5,6 +5,7 @@ using UnityEngine;
 using Spine.Unity;
 using System;
 using UnityEditorInternal;
+using ScottGarland;
 
 public class UserData
 {
@@ -194,6 +195,14 @@ public class Player : BaseCharacter
     {
         baseHpSystem.TakeDamage(damage, statHandler);
         UIManager.Instance.ShowUI("PlayerHPDisplay");
+
+        // 데미지 폰트를 적용하는 부분
+        // TODO : 크리티컬 데미지 시, 변화를 준다
+        var dmgFont = ObjectPoolManager.Instance.GetPool(Const.DAMAGE_FONT_KEY, Const.DAMAGE_FONT_POOL_KEY).GetObject();
+        dmgFont.SetActive(true);
+        dmgFont.transform.position = transform.position;
+        dmgFont.transform.rotation = Quaternion.identity;
+        dmgFont.GetComponent<DamageFont>().SetDamage(Owner.Player, new BigInteger((int)damage));
 
         if (statHandler.CurrentStat.health <= 0)
         {

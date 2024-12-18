@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+public enum Owner
+{
+    Player,
+    Enemy,
+    None
+}
+
 public class DamageFont : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI damageFont;
@@ -16,9 +23,13 @@ public class DamageFont : MonoBehaviour
 
     private float fixedSizeOnScreen = 100f;
 
+    private Owner owner = Owner.None;
+    private Color originColor;
+
     private void Awake()
     {
         mainCam = Camera.main;
+        originColor = damageFont.color;
     }
 
     private void Update()
@@ -26,23 +37,21 @@ public class DamageFont : MonoBehaviour
         FixedScreenSize();
     }
 
-    private void OnEnable()
-    {
-        StartCoroutine(CoroutineDamageView());
-    }
-
     private void OnDisable()
     {
-        // 알파 값을 초기화 해준다.
-        Color resetColor = damageFont.color;
-        resetColor.a = 1f;
-        damageFont.color = resetColor;
+        // Color 값을 초기화 해준다.
+        damageFont.color = originColor;
     }
 
     private IEnumerator CoroutineDamageView()
     {
         Vector3 startPosition = transform.position;
         Color startColor = damageFont.color;
+
+        if (owner == Owner.Player) 
+            startColor = new Color(255f, 0f, 0f, 1f);
+        else if (owner == Owner.Enemy)
+            startColor = new Color(255f, 0f, 218f, 1f);
 
         while (damageFont.color.a > 0)
         {
@@ -74,9 +83,12 @@ public class DamageFont : MonoBehaviour
         damageFont.transform.localScale = Vector3.one * sizeOnScreen;
     }
 
-    public void SetDamage(BigInteger damage)
+    public void SetDamage(Owner type, BigInteger damage)
     {
+        owner = type;
         this.damage = damage;
         damageFont.text = Utils.FormatBigInteger(this.damage);
+
+        StartCoroutine(CoroutineDamageView());
     }
 }

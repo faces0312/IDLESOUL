@@ -96,7 +96,7 @@ public abstract class Enemy : BaseCharacter
         dmgFont.SetActive(true);
         dmgFont.transform.position = transform.position;
         dmgFont.transform.rotation = Quaternion.identity;
-        dmgFont.GetComponent<DamageFont>().SetDamage(new BigInteger((int)damage));
+        dmgFont.GetComponent<DamageFont>().SetDamage(Owner.Enemy, new BigInteger((int)damage));
     }
 
     public void HpUpdate()
