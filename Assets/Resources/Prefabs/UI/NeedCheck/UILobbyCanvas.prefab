@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d56169234f549264494998b559e2e352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HPFrontImg: {fileID: 0}
-  HpText: {fileID: 0}
+  HPFrontImg: {fileID: 7912747977864913936}
+  HpText: {fileID: 7785843031797179103}
 --- !u!1 &110360742370469054
 GameObject:
   m_ObjectHideFlags: 0
