@@ -11,7 +11,6 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public float m_fRadius; // 조이스틱 배경의 반지름
     public float m_fSpeed = 5.0f; // 이동 속도
     private Vector3 m_vecMove; // 이동 벡터
-    private bool m_bTouch = false; // 터치 상태
 
     [Header("Auto")]
     public GameObject onImage;
@@ -30,21 +29,21 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     void FixedUpdate()
     {
-        if (m_bTouch)
+        if (player.isJoyStick)
         {
             player.rb.velocity = new Vector3(m_vecMove.x * m_fSpeed, player.rb.velocity.y, m_vecMove.z * m_fSpeed);
 
             //Flip
-            /*if (m_vecMove.x < 0)
+            if (m_vecMove.x < 0)
             {
-                
+                player.playerStateMachine.CurrentState.FlipCharacter(false);
             }
             else if (m_vecMove.x > 0)
             {
-                
-            }*/
+                player.playerStateMachine.CurrentState.FlipCharacter(true);
+            }
         }
-        else if(m_bTouch == false && player.isAuto == false)
+        else if (player.isJoyStick == false && player.isAuto == false)
         {
             player.rb.velocity = new Vector3(0, player.rb.velocity.y, 0);
         }
@@ -63,25 +62,25 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public void OnDrag(PointerEventData eventData)
     {
         OnTouch(eventData.position);
-        m_bTouch = true;
+        player.isJoyStick = true;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        player.playerStateMachine.ChangeState(player.playerStateMachine.MoveState);
         AutoFalse();
         OnTouch(eventData.position);
-        m_bTouch = true;
+        player.isJoyStick = true;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         // 원래 위치로 되돌립니다.
         m_rectJoystick.localPosition = Vector2.zero;
-        m_bTouch = false;
+        player.isJoyStick = false;
         m_vecMove = Vector3.zero;
-        player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
         player.targetSearch.TargetClear();
-        player.targetSearch.OnTargetSearch();
+        player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
     }
 
     public void AutoButtton()
