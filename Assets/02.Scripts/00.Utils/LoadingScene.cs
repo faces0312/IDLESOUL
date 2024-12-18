@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class LoadingScene : MonoBehaviour
 {
     private static string nextScene;
-    public GameObject gauge;
+    public Image gauge;
     public TextMeshProUGUI percent;
     public Image LoadingSceneImage;
     private Sprite[] Sprites;
@@ -22,7 +22,7 @@ public class LoadingScene : MonoBehaviour
 
     private void OnEnable()
     {
-        gauge.transform.DOScaleX(0, 0f);
+        gauge.fillAmount = 0f;
         StartCoroutine(CoLoading());
     }
 
@@ -41,15 +41,15 @@ public class LoadingScene : MonoBehaviour
         while (!loading.isDone)
         {
             yield return null;
-            gauge.transform.DOScaleX(loading.progress, 0.3f); 
-            percent.text = (gauge.transform.localScale.x * 100).ToString() + " %";
+            gauge.fillAmount = loading.progress; 
+            percent.text = (gauge.fillAmount * 100).ToString() + " %";
             if (loading.isDone)
             {
                 Debug.Log("¿Ï·á!");
             }
             if (loading.progress >= 0.9f)
             {
-                gauge.transform.DOScaleX(1f, 1f);
+                gauge.fillAmount = 1f;
                 percent.text = "Load Complete!";
                 yield return wait1s;
                 loading.allowSceneActivation = true;

@@ -8,7 +8,7 @@ public class ShopGrid : MonoBehaviour
     private List<SellItemDB> datas;
     private ShopType type;
 
-    private void Awake()
+    private void Start()
     {
         ShopSlotComponent[] tempSlots = GetComponentsInChildren<ShopSlotComponent>();
         for(int i = 0; i < tempSlots.Length; i++)
