@@ -89,6 +89,10 @@ public abstract class Enemy : BaseCharacter
             collider.enabled = false;
             animator.SetTrigger("Die");
         }
+        ;
+        var dmgFont = Resources.Load<GameObject>("Prefabs/UI/DamageFont");
+        var fonts = Instantiate(dmgFont, transform.position, Quaternion.identity);
+        fonts.GetComponent<DamageFont>().SetDamage(new BigInteger((int)damage));
     }
 
     public void HpUpdate()
