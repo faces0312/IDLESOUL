@@ -88,6 +88,7 @@ public class DamageFont : MonoBehaviour
         owner = type;
         this.damage = damage;
         damageFont.text = Utils.FormatBigInteger(this.damage);
+        transform.position += Vector3.up * 0.5f;
 
         StartCoroutine(CoroutineDamageView());
     }
