@@ -71,7 +71,8 @@ public class Player : BaseCharacter
     private Item equipItem; //장착 아이템 여부 
 
     [Header("Auto")]
-    public bool isAuto;
+    public bool isAuto;//오토버튼이 활성화됐는지
+    public bool isJoyStick;//조이스틱으로 조종 중인지
 
     public PlayerAnimationController PlayerAnimationController { get => playerAnimationController; }
     public PlayerSouls PlayerSouls { get => playerSouls; }
@@ -241,7 +242,7 @@ public class Player : BaseCharacter
 
     private void Update()
     {
-        if (isAuto == true)
+        if (isJoyStick == false)
             playerStateMachine.Update();
 
         if (Input.GetKeyDown(KeyCode.D)) // 데이터 갱신
@@ -269,5 +270,4 @@ public class Player : BaseCharacter
     {
         playerStateMachine.FixedUpdateState();
     }
-
 }
