@@ -14,14 +14,11 @@ public class DamageFont : MonoBehaviour
     private BigInteger damage;
     private Camera mainCam;
 
-    private Vector3 originScale;
-
     private float fixedSizeOnScreen = 100f;
 
     private void Awake()
     {
         mainCam = Camera.main;
-        originScale = damageFont.transform.localScale;
     }
 
     private void Update()
@@ -36,7 +33,10 @@ public class DamageFont : MonoBehaviour
 
     private void OnDisable()
     {
-        damageFont.transform.localScale = originScale;
+        // 알파 값을 초기화 해준다.
+        Color resetColor = damageFont.color;
+        resetColor.a = 1f;
+        damageFont.color = resetColor;
     }
 
     private IEnumerator CoroutineDamageView()
@@ -53,6 +53,8 @@ public class DamageFont : MonoBehaviour
 
             yield return null;
         }
+
+        gameObject.SetActive(false);
     }
 
     private void FixedScreenSize()
