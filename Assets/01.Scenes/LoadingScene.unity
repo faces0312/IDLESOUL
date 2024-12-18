@@ -779,7 +779,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3bd2d2dedc5c7740bbf43b70fddb91e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gauge: {fileID: 1132085908}
+  nextScene: 
+  gauge: {fileID: 1132085910}
   percent: {fileID: 327630027}
   LoadingSceneImage: {fileID: 1418947971}
 --- !u!1 &1418947969

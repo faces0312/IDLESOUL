@@ -10,11 +10,13 @@ public class LoadingScene : MonoBehaviour
     //private static string nextScene;
     public string nextScene;
 
-    public GameObject gauge;
+    public Image gauge;
     public TextMeshProUGUI percent;
     public Image LoadingSceneImage;
     private Sprite[] Sprites;
     private readonly WaitForSeconds wait1s = new WaitForSeconds(1);
+
+    private Coroutine LoadNextScene;
 
     private void Awake()
     {
@@ -25,10 +27,11 @@ public class LoadingScene : MonoBehaviour
 
     private void OnEnable()
     {
-        gauge.transform.DOScaleX(0, 0f);
-        StartCoroutine(CoLoading());
+        gauge.fillAmount = 0;
+        nextScene = SceneDataManager.Instance.NextScene;
+        LoadNextScene = StartCoroutine(CoLoading());
 
-        if(nextScene == "")
+        if (nextScene == "")
         {
             Debug.LogAssertion("로딩씬 이후로 진행 할 씬이 없습니다.");
         }
@@ -42,27 +45,28 @@ public class LoadingScene : MonoBehaviour
 
     IEnumerator CoLoading()
     {
-        yield return null;
-        AsyncOperation loading = SceneManager.LoadSceneAsync(nextScene);
-        loading.allowSceneActivation = true;
-        gauge.transform.DOScaleX(0, 0f);
-        while (!loading.isDone)
+        while (true)
         {
             yield return null;
-            gauge.transform.DOScaleX(loading.progress, 0.3f); 
-            percent.text = (gauge.transform.localScale.x * 100).ToString() + " %";
-            if (loading.isDone)
+            AsyncOperation loading = SceneManager.LoadSceneAsync(nextScene);
+            loading.allowSceneActivation = true;
+            gauge.fillAmount = 0;
+            while (!loading.isDone)
             {
-                Debug.Log("완료!");
+                gauge.fillAmount = loading.progress;
+                percent.text = (gauge.fillAmount * 100).ToString() + " %";
+                if (loading.progress >= 0.9f)
+                {
+                    gauge.fillAmount = 1.0f;
+                    percent.text = "Load Complete!";
+                    yield return wait1s;
+                    loading.allowSceneActivation = true;
+                    yield break;
+                }
+                yield return null;
             }
-            if (loading.progress >= 0.9f)
-            {
-                gauge.transform.DOScaleX(1f, 1f);
-                percent.text = "Load Complete!";
-                yield return wait1s;
-                loading.allowSceneActivation = true;
-                yield break;
-            }
+            StopCoroutine(LoadNextScene);
         }
+        
     }
 }
