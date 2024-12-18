@@ -21,6 +21,7 @@ public class GameManager : SingletonDDOL<GameManager>
     public int score;//점수
     public bool IsBoss;//현재 Boss가 필드에 있는지를 체크하는 변수 
     public bool isTryBoss;//보스를 트라이 한적이 있는지
+    GameObject gameOverPage;
 
     public event Action OnEventBossSummon;
     public event Action OnGameOverEvent;
@@ -84,7 +85,7 @@ public class GameManager : SingletonDDOL<GameManager>
     public void NextStage()
     {
         //SceneManager.LoadScene("GameScene_SMS");
-
+        Destroy(gameOverPage);
         UIManager.Instance.ShowUI("StageProgress");
         DataManager.Instance.SaveUserData(_player.UserData);
         //_player.transform.position = Vector3.up; //플레이어 위치 초기화
@@ -103,6 +104,9 @@ public class GameManager : SingletonDDOL<GameManager>
         if (player.BaseHpSystem.IsDead)
         {
             player.Respwan();
+            //Controller(FSM 세팅)
+            player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
+            player.targetSearch.TargetClear();
         }
 
         EnemyManager.Instance.EnemySpawnStart();
@@ -126,17 +130,23 @@ public class GameManager : SingletonDDOL<GameManager>
     //플레이어의 체력이 0이 되면 호출
     public void GameOver()
     {
-        enemies.Clear();
+        foreach (GameObject enemyTmp in enemies)
+        {
+            if (enemyTmp != null)
+            {
+                enemyTmp.SetActive(false);
+            }
+        }
         //이벤트 등록을 통해
         //GameManager.Instance.OnGameOverEvent += 게임종료페이지를 선언할 수 있음
         OnGameOverEvent?.Invoke();
 
         //Utils.fader.FadeTo(0f, 1f, 2.0f).OnComplete(Utils.fader.Release);
-
+        gameOverPage = Instantiate(Resources.Load<GameObject>("Prefabs/UI/GameOverPage"), UIManager.Instance.uiLobbyCanvas);
         StageManager.Instance.StageProgressModel.CurCountDataClear();
 
         IsBoss = false;
-        Invoke("NextStage", 2.0f);
+        Invoke("NextStage", 3.0f);
     }
 
     public void Test()

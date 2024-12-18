@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIManager : SingletonDDOL<UIManager>
 {
-    [SerializeField] RectTransform uiLobbyCanvas;
+    public RectTransform uiLobbyCanvas;
     [SerializeField] RectTransform popupCanvas;
     [SerializeField] RectTransform uiInventory;
     private Dictionary<string, UIController> controllers = new Dictionary<string, UIController>();

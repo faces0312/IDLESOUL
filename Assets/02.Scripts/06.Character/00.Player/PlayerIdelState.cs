@@ -13,11 +13,11 @@ public class PlayerIdelState : PlayerBaseState
 
     public override void Enter()
     {
-        //Debug.Log("Player Idle State Enter");
         string animName = stateMachine._Player.PlayerAnimationController.idleAnimationName;
         stateMachine._Player.PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, true);
 
         moveSpeedModifier = idleStateMoveModifter;
+        Debug.Log("aa");
     }
 
     public override void Exit()
@@ -28,7 +28,7 @@ public class PlayerIdelState : PlayerBaseState
     public override void Update()
     {
         base.Update();
-
+        Debug.Log("aa");
         //적이 있는지 탐색함
         stateMachine._Player.targetSearch.OnTargetSearch();
 
@@ -47,7 +47,7 @@ public class PlayerIdelState : PlayerBaseState
                 //원거리 공격 상태로 전환
                 stateMachine.ChangeState(stateMachine.ShotAttackState);
             }
-            else //공격 범위가 아닌경우 적에게 이동  
+            else if(stateMachine._Player.isAuto == true)//공격 범위가 아닌경우 적에게 이동  
             {
                 //이동 상태로 전환
                 stateMachine.ChangeState(stateMachine.MoveState);

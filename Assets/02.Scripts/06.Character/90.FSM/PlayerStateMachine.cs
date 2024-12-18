@@ -6,6 +6,8 @@
     public PlayerMeleeAttackState MeleeAttackState { get; private set; }
     public PlayerShotAttackState ShotAttackState { get; private set; }
 
+    public PlayerBaseState CurrentState { get { return (PlayerBaseState)currentState; } }
+
     public PlayerStateMachine(Player player)
     {
         IdleState = new PlayerIdelState(this);
