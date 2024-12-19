@@ -20,7 +20,7 @@ namespace Enums
         None,
         Achievement,
         Shop,
-        Gacha
+        Gacha,
     }
 
     public enum AchievementType
