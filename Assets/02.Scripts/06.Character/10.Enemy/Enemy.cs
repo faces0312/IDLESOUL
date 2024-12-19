@@ -143,12 +143,6 @@ public abstract class Enemy : BaseCharacter
         }
     }
 
-    public override void Attack()
-    {
-    }
-    public override void Move()
-    {
-    }
 
     public float GetAttackPower()
     {

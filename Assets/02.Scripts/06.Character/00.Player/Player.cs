@@ -240,16 +240,6 @@ public class Player : BaseCharacter
         UIManager.Instance.ShowUI("PlayerHPDisplay");
     }
 
-    public override void Attack()
-    {
-
-    }
-
-    public override void Move()
-    {
-
-    }
-
     private void Update()
     {
         if (isJoyStick == false)

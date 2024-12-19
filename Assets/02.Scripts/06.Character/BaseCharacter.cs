@@ -12,9 +12,6 @@ public abstract class BaseCharacter : MonoBehaviour, ITakeDamageAble
 
     public BaseHpSystem BaseHpSystem { get => baseHpSystem; }
 
-    public abstract void Attack();
-    public abstract void Move();
-
     protected virtual void Awake()
     {
         if(baseHpSystem == null)
