@@ -87,8 +87,13 @@ public class ObjectMoveDestroy : MonoBehaviour
                 m_sc.AddHitObject(hit.point);
         }
 
-        Destroy(this.gameObject);
-        Destroy(m_gameObjectTail, TailDestroyTime);
-        Destroy(m_makedObject, HitObjectDestroyTime);
+        // 필요한 모든 작업을 완료한 후에 객체를 삭제
+        if (m_gameObjectTail)
+            Destroy(m_gameObjectTail, TailDestroyTime);
+        if (m_makedObject)
+            Destroy(m_makedObject, HitObjectDestroyTime);
+
+
+        gameObject.SetActive(false);
     }
 }
