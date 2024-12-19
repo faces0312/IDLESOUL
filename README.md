@@ -11,7 +11,7 @@ SCC_Unity_6기_9조_IdleSoul
 **각종 영혼들을 수집하여 , 강해지고 화려한 스킬을 써 적을 물러트려라!!
 방치 수집형 캐릭터 키우기 !! Soul 키우기 !!**
 
-개발환경 -C# / VisualStudio2022 / Unity 2022.3.17f1
+개발환경 - C# / VisualStudio2022 / Unity 2022.3.17f1
 
 ---
 ## [프로젝트 목표]
@@ -29,13 +29,13 @@ SCC_Unity_6기_9조_IdleSoul
 
 ---
 ## [사용된 기술]
-UI에 적용된 MVC 패턴
-Player와 Enemy 및 Projectile,Skill에 적용된 façade(퍼사드) 패턴과 Strategy Pattern(전략)패턴 
-스킬 연출을 위한 PostProcessing
-도전과제,상점 스크롤이 필요한데서 활용된 재사용스크롤 로직
-Json을 이용한 외부 데이터 관리
-최적화를 위한 ObjectPool 패턴
-각 매니저들에게 적용한 Singleton 패턴 
+**UI에 적용된 MVC 패턴**  
+**Player와 Enemy 및 Projectile,Skill에 적용된 façade(퍼사드) 패턴과 Strategy Pattern(전략)패턴**  
+**스킬 연출을 위한 PostProcessing**  
+**도전과제,상점 스크롤이 필요한데서 활용된 재사용스크롤 로직**  
+**Json을 이용한 외부 데이터 관리**  
+**최적화를 위한 ObjectPool 패턴**  
+**각 매니저들에게 적용한 Singleton 패턴**  
 
 ---
 ## [기능 구현]
