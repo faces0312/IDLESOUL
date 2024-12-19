@@ -2,16 +2,16 @@
 
 public class ConfigController : UIController
 {
-    public readonly string key = "ConfigController";
-
+    private ConfigModel configModel;
     private ConfigView configView;
 
     public ConfigView View { get => configView; set => configView = value; }
 
     public override void Initialize(IUIBase view, UIModel model)
     {
+        configModel = model as ConfigModel;
         configView = view as ConfigView;
-        base.Initialize(view, model);
+        base.Initialize(configView, configModel);
     }
 
     public override void OnHide()

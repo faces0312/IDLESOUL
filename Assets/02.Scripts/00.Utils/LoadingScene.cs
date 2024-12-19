@@ -20,7 +20,7 @@ public class LoadingScene : MonoBehaviour
 
     private void Awake()
     {
-        //nextScene = SceneDataManager.Instance.NextScene;
+        nextScene = SceneDataManager.Instance.NextScene;
         //nextScene = "GameScene_SMS"; //Test ¸ñÀû
         Sprites = Resources.LoadAll<Sprite>("Sprite/LoadingSceneSprite");
     }

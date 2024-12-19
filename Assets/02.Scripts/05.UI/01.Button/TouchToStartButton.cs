@@ -19,7 +19,7 @@ public class TouchToStartButton : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(LoadScene);
+        SceneDataManager.Instance.LoadScene("GameScene_SMS");
     }
 
     IEnumerator StartSceneEffect()

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AchieveAlarmModel : UIModel
+public class ConfigModel: UIModel
 {
    
 }
