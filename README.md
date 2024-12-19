@@ -32,11 +32,13 @@ SCC_Unity_6기_9조_IdleSoul
 + **UI에 적용된 MVC 패턴**  
 + **Player와 Enemy 및 Projectile,Skill에 적용된 façade(퍼사드) 패턴과 Strategy Pattern(전략)패턴**
 + **Player에 적용된 Spine 애니메이션**
-+ **스킬 연출을 위한 PostProcessing**  
++ **스킬 연출을 위한 PostProcessing 과 CineMachine**  
 + **도전과제,상점 스크롤이 필요한데서 활용된 재사용스크롤 로직**  
 + **Json을 이용한 외부 데이터 관리**  
 + **최적화를 위한 ObjectPool 패턴**  
-+ **각 매니저들에게 적용한 Singleton 패턴**  
++ **각 매니저들에게 적용한 Singleton 패턴**
++ **범위를 벗어나는 숫자관리를 위한 BigInteger**  
++ **도전과제 및 Event 관리를 위한 EventBus 패턴 구현**  
 
 ---
 ## [기능 구현]
