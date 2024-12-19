@@ -40,7 +40,7 @@ public class BaseProjectile : MonoBehaviour
         if (notDestroy)
             StartCoroutine(DisableTimer(5));
         else
-            Destroy(gameObject, 5);
+            gameObject.SetActive(false);
         startChecker = true;
     }
     protected virtual IEnumerator DisableTimer(float time)

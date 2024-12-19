@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 public class GameManager : SingletonDDOL<GameManager>
@@ -50,12 +48,6 @@ public class GameManager : SingletonDDOL<GameManager>
         }
       
         //Utils.fader.FadeTo(1f, 0f, 0.3f).OnComplete(Utils.fader.Release);
-
-        //if (!isTryBoss)
-        //{
-        //UIManager.Instance.ShowUI("StageProgress"); //Debug - 까먹지 말고 UI매니저 초기화할때 꼭 집어넣을것
-        //}
-
         Debug.Log("GameManager 세팅 완료!!");
     }
 
@@ -146,6 +138,7 @@ public class GameManager : SingletonDDOL<GameManager>
         StageManager.Instance.StageProgressModel.CurCountDataClear();
 
         IsBoss = false;
+        isTryBoss = false; // MVP 이후에 보스 트라이 버튼 따로 구현해야됨
         Invoke("NextStage", 3.0f);
     }
 

@@ -1,10 +1,5 @@
-    using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using Spine.Unity;
 using System;
-using UnityEditorInternal;
 using ScottGarland;
 
 public class UserData
@@ -157,18 +152,23 @@ public class Player : BaseCharacter
     {
         baseHpSystem.IsDead = false; 
 
-        //Model(UserData) 세팅
-        if (DataManager.Instance.LoadUserData() == null)
-        {
-            //새로하기 , 기본 능력치를 제공 
-            userData = new UserData(DataManager.Instance.UserDB.GetByKey(TestID));
-            DataManager.Instance.SaveUserData(userData);
-        }
-        else
-        {
-            //이어하기
-            userData = new UserData(DataManager.Instance.LoadUserData());
-        }
+        //MVP 이후에 고쳐야 될 플레이어 유저 데이터 불러오기 로직
+        ////Model(UserData) 세팅
+        //if (DataManager.Instance.LoadUserData() == null)
+        //{
+        //    //새로하기 , 기본 능력치를 제공 
+        //    userData = new UserData(DataManager.Instance.UserDB.GetByKey(TestID));
+        //    DataManager.Instance.SaveUserData(userData);
+        //}
+        //else
+        //{
+        //    //이어하기
+        //    userData = new UserData(DataManager.Instance.LoadUserData());
+        //}
+
+        //새로하기 , 기본 능력치를 제공 
+        userData = new UserData(DataManager.Instance.UserDB.GetByKey(TestID));
+        DataManager.Instance.SaveUserData(userData);
 
         statHandler = new StatHandler(StatType.Player);
         statHandler.CurrentStat.iD = userData.UID;
@@ -236,6 +236,7 @@ public class Player : BaseCharacter
         rb.isKinematic = false;
         enabled = true;
         baseHpSystem.IsDead = false;
+        targetSearch.TargetClear();
         UIManager.Instance.ShowUI("PlayerHPDisplay");
     }
 
@@ -254,25 +255,25 @@ public class Player : BaseCharacter
         if (isJoyStick == false)
             playerStateMachine.Update();
 
-        if (Input.GetKeyDown(KeyCode.D)) // 데이터 갱신
-        {
-            userData.Level++;
-            userData.stat.atk = userData.Level * userData.stat.atk;
-            userData.stat.def = userData.Level * userData.stat.def;
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            DataManager.Instance.SaveUserData(userData);
-        }
-        else if (Input.GetKeyDown(KeyCode.L))
-        {
-            DataManager.Instance.LoadUserData();
-        }
-        else if (Input.GetKeyDown(KeyCode.C))
-        {
-            targetSearch.TargetClear();
-            Debug.Log("Player Chase Target Reset");
-        }
+        //if (Input.GetKeyDown(KeyCode.D)) // 데이터 갱신
+        //{
+        //    userData.Level++;
+        //    userData.stat.atk = userData.Level * userData.stat.atk;
+        //    userData.stat.def = userData.Level * userData.stat.def;
+        //}
+        //else if (Input.GetKeyDown(KeyCode.S))
+        //{
+        //    DataManager.Instance.SaveUserData(userData);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    DataManager.Instance.LoadUserData();
+        //}
+        //else if (Input.GetKeyDown(KeyCode.C))
+        //{
+        //    targetSearch.TargetClear();
+        //    Debug.Log("Player Chase Target Reset");
+        //}
     }
 
     private void FixedUpdate()

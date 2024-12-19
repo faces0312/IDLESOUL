@@ -17,7 +17,6 @@ public class PlayerIdelState : PlayerBaseState
         stateMachine._Player.PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, true);
 
         moveSpeedModifier = idleStateMoveModifter;
-        Debug.Log("aa");
     }
 
     public override void Exit()
@@ -28,7 +27,7 @@ public class PlayerIdelState : PlayerBaseState
     public override void Update()
     {
         base.Update();
-        Debug.Log("aa");
+
         //적이 있는지 탐색함
         stateMachine._Player.targetSearch.OnTargetSearch();
 
@@ -54,25 +53,6 @@ public class PlayerIdelState : PlayerBaseState
             }
           
         }      
-    }
-
-    public override void FixedUpdate()
-    {
-    }
-
-    protected void StartAnimation(int animatorHash)
-    {
-        //stateMachine.{객체}.Animator.SetBool(animatorHash, true);
-    }
-
-    protected void StartAnimationTrigger(int animatorHash)
-    {
-        //stateMachine.{객체}r.Animator.SetTrigger(animatorHash);
-    }
-
-    protected void StopAnimation(int animatorHash)
-    {
-        //stateMachine.{객체}.Animator.SetBool(animatorHash, false);
     }
 
 
