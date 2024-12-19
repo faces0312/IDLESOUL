@@ -21,11 +21,11 @@ SCC_Unity_6기_9조_IdleSoul
 ---
 ## [개발 기간]
 2024.11.25(월) ~ 글쓴 시점 약 4주
-개발 인원 : 4명
-송명성 : Game Roop Cycle,DataManager,StageManager,Player,Inventory,Item  
+개발 인원 : 4명  
+**송명성 : Game Roop Cycle,DataManager,StageManager,Player,Inventory,Item  
 박두산 : Achievement, Shop, Minimap, Loading, ObjectPoolManager,SceneDataManager  
 서현석 : GameManager,SoundManager,Enemy,EnemySkill  
-신현수 : Soul, PlayerSkill, PostProcessing , BigInteger , UIManager(MVC패턴기반하여 설계)  
+신현수 : Soul, PlayerSkill, PostProcessing , BigInteger , UIManager(MVC패턴기반하여 설계)  **
 
 ---
 ## [사용된 기술]
