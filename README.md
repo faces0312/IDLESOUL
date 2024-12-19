@@ -38,7 +38,8 @@ SCC_Unity_6기_9조_IdleSoul
 + **최적화를 위한 ObjectPool 패턴**  
 + **각 매니저들에게 적용한 Singleton 패턴**
 + **범위를 벗어나는 숫자관리를 위한 BigInteger**  
-+ **도전과제 및 Event 관리를 위한 EventBus 패턴 구현**  
++ **도전과제 및 Event 관리를 위한 EventBus 패턴 구현**
++ **UI에 애니메이션에 적용된 DOTween 에셋**
 
 ---
 ## [기능 구현]
