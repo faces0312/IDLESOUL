@@ -14,6 +14,7 @@ public class UIPlayerHPDisplayController : UIController
         playerHpDisplayView = view as UIPlayerHPDisplayView;
 
         base.Initialize(playerHpDisplayView, playerHpDisplayModel);
+        OnShow();
     }
 
     public override void OnShow()
