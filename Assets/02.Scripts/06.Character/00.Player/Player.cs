@@ -5,6 +5,7 @@ using UnityEngine;
 using Spine.Unity;
 using System;
 using UnityEditorInternal;
+using ScottGarland;
 
 public class UserData
 {
@@ -13,9 +14,9 @@ public class UserData
     public int Gold;
     public int Diamonds;
     public int PlayTimeInSeconds;
-    public int Level;
-    public int Exp;
-    public int MaxExp;
+    public int Level; // 계정 레벨
+    public int Exp; // 계정 현재 경험치
+    public int MaxExp; // 계정 최고 경험치 
 
     public Stat stat;
     public UserData(UserDB userDB)
@@ -71,7 +72,8 @@ public class Player : BaseCharacter
     private Item equipItem; //장착 아이템 여부 
 
     [Header("Auto")]
-    public bool isAuto;
+    public bool isAuto;//오토버튼이 활성화됐는지
+    public bool isJoyStick;//조이스틱으로 조종 중인지
 
     public PlayerAnimationController PlayerAnimationController { get => playerAnimationController; }
     public PlayerSouls PlayerSouls { get => playerSouls; }
@@ -195,6 +197,14 @@ public class Player : BaseCharacter
         baseHpSystem.TakeDamage(damage, statHandler);
         UIManager.Instance.ShowUI("PlayerHPDisplay");
 
+        // 데미지 폰트를 적용하는 부분
+        // TODO : 크리티컬 데미지 시, 변화를 준다
+        var dmgFont = ObjectPoolManager.Instance.GetPool(Const.DAMAGE_FONT_KEY, Const.DAMAGE_FONT_POOL_KEY).GetObject();
+        dmgFont.SetActive(true);
+        dmgFont.transform.position = transform.position;
+        dmgFont.transform.rotation = Quaternion.identity;
+        dmgFont.GetComponent<DamageFont>().SetDamage(Owner.Player, new BigInteger((int)damage));
+
         if (statHandler.CurrentStat.health <= 0)
         {
             Die();
@@ -241,7 +251,7 @@ public class Player : BaseCharacter
 
     private void Update()
     {
-        if (isAuto == true)
+        if (isJoyStick == false)
             playerStateMachine.Update();
 
         if (Input.GetKeyDown(KeyCode.D)) // 데이터 갱신
@@ -269,5 +279,4 @@ public class Player : BaseCharacter
     {
         playerStateMachine.FixedUpdateState();
     }
-
 }

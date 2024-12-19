@@ -8,14 +8,32 @@ public class TouchToStartButton : MonoBehaviour
 {
     [SerializeField] private Button StartButton;
     [SerializeField] private string LoadScene;
+    [SerializeField] private Image TitleImg;
 
     private void Awake()
     {
         StartButton.onClick.AddListener(StartGame);
+
+        StartCoroutine(StartSceneEffect());
     }
 
     public void StartGame()
     {
         SceneManager.LoadScene(LoadScene);
+    }
+
+    IEnumerator StartSceneEffect()
+    {
+        TitleImg.material.SetFloat("_FadeAmount", 1.0f);
+
+        float time = TitleImg.material.GetFloat("_FadeAmount");
+        while (time >= -1)
+        {
+            time -= Time.deltaTime;
+            TitleImg.material.SetFloat("_FadeAmount", time);
+
+            yield return new WaitForSeconds(0.01f);
+        }
+
     }
 }

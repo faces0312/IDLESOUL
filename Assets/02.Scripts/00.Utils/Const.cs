@@ -14,10 +14,10 @@ public static class Const
 
     public static readonly string JsonUserDataPath = "/userdata.json";
 
-    public static readonly int POOL_KEY_PLAYERPROJECTILE = 10;
+    public static readonly int POOL_KEY_PLAYERPROJECTILE = 10; //Player 투사체 DB가 없기에 따로 Const에 저장됨
     public static readonly string PLAYER_PROJECTILE_ENERGYBOLT_PATH = "Prefabs/Player/Attack/EnergyBolt";
     public static readonly string PLAYER_PROJECTILE_ENERGYBOLT_KEY = "PlayerProjectile";
-    public static readonly int PLAYER_INITIAL_POOL_SIZE = 60;
+    public static readonly int PLAYER_INITIAL_POOL_SIZE = 60; //Player 투사체 DB가 없기에 따로 Const에 저장됨
 
     public static readonly string ENEMY_PREFEB_GOBLIN_PATH = "Prefabs/Enemy/Goblin";
     public static readonly string ENEMY_PREFEB_GOBLINMAGICIAN_PATH = "Prefabs/Enemy/GoblinMagician";
@@ -36,6 +36,10 @@ public static class Const
     public static readonly string ENEMY_BOSS_POOL_KEY = "EnemyBoss";
     public static readonly string ENEMY_POOL_KEY = "Enemies";
     public static readonly string ENEMY_EFFECT_POOL_KEY = "EnemyEffect";
+
+    public static readonly int DAMAGE_FONT_POOL_KEY = 20;
+    public static readonly string DAMAGE_FONT_KEY = "DamageFont";
+    public static readonly string DAMAGE_FONT_PATH = "Prefabs/UI/DamageFont";
 
     public static readonly int INITIAL_POOL_SIZE = 60;
 

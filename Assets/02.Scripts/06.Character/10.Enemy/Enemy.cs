@@ -88,7 +88,15 @@ public abstract class Enemy : BaseCharacter
             OnDieEvent?.Invoke();
             collider.enabled = false;
             animator.SetTrigger("Die");
-        }
+        };
+
+        // 데미지 폰트를 적용하는 부분
+        // TODO : 크리티컬 데미지 시, 변화를 준다
+        var dmgFont = ObjectPoolManager.Instance.GetPool(Const.DAMAGE_FONT_KEY, Const.DAMAGE_FONT_POOL_KEY).GetObject();
+        dmgFont.SetActive(true);
+        dmgFont.transform.position = transform.position;
+        dmgFont.transform.rotation = Quaternion.identity;
+        dmgFont.GetComponent<DamageFont>().SetDamage(Owner.Enemy, new BigInteger((int)damage));
     }
 
     public void HpUpdate()
