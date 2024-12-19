@@ -11,7 +11,6 @@ public class ShopGrid : MonoBehaviour
     private void Start()
     {
         ShopSlotComponent[] tempSlots = GetComponentsInChildren<ShopSlotComponent>();
-        datas = DataManager.Instance.SellItemDB.ItemsList;
         for(int i = 0; i < tempSlots.Length; i++)
         {
             slots.Add(tempSlots[i]);
@@ -38,6 +37,5 @@ public class ShopGrid : MonoBehaviour
                 
             }
         }
-        
     }
 }

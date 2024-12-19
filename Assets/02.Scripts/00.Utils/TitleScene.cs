@@ -6,6 +6,6 @@ public class TitleScene : MonoBehaviour, IPointerClickHandler
 {
     public void OnPointerClick(PointerEventData eventData)
     {
-        SceneDataManager.Instance.LoadScene("GameScene");
+        SceneDataManager.Instance.LoadScene("GameScene_SMS");
     }
 }
