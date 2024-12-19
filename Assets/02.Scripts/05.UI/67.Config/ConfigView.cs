@@ -58,8 +58,6 @@ public class ConfigView : MonoBehaviour, IUIBase
 
     public void UpdateUI()
     {
-        
-        
-        
+
     }
 }

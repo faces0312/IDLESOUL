@@ -22,6 +22,8 @@ public class ConfigController : UIController
     public override void OnShow()
     {
         view.ShowUI();
+        configView.fps30.onValueChanged.AddListener(SetFPSTo30);
+        configView.fps60.onValueChanged.AddListener(SetFPSTo60);
     }
 
     public override void UpdateView()
@@ -29,8 +31,21 @@ public class ConfigController : UIController
         view.UpdateUI();
     }
 
-    public void SetFPS()
+    public void SetFPSTo30(bool isOn)
     {
-        
+        if(isOn == true)
+        {
+            configView.fps60.isOn = false;
+            Application.targetFrameRate = 30;
+        }
+    }
+
+    public void SetFPSTo60(bool isOn)
+    {
+        if (isOn == true)
+        {
+            configView.fps30.isOn = false;
+            Application.targetFrameRate = 60;
+        }
     }
 }
