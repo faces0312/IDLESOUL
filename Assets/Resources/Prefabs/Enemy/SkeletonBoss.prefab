@@ -1426,6 +1426,7 @@ MonoBehaviour:
   baseHpSystem: {fileID: 0}
   rb: {fileID: 38348744507261664}
   attackType: 1
+  slash: {fileID: 0}
   enemyDB:
     key: 0
     Name: 
@@ -6934,7 +6935,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!114 &2224116228434475560
 MonoBehaviour:
