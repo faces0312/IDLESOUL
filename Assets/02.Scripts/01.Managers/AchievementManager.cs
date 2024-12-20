@@ -67,9 +67,5 @@ public class AchievementManager : SingletonDDOL<AchievementManager>
         UIManager.Instance.ShowUI("AchieveAlarm");
         yield return Wait.Wait3s;
         UIManager.Instance.HideUI("AchieveAlarm");
-        //alarm.gameObject.SetActive(true);
-        //alarm.SetContent(data);
-        //yield return Wait.Wait3s;
-        //alarm.gameObject.SetActive(false);
     }
 }

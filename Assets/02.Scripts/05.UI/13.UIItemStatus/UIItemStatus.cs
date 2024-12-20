@@ -14,7 +14,6 @@ public class UIItemStatus : MonoBehaviour
     {
         //Model(Data) 초기화
         model = new ItemStatusModel();
-        //model.Initilaize();
 
         //컨트롤러  초기화 및 View 등록
         controller = new ItemStatusController();

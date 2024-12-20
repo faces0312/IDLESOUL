@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class StageManager : SingletonDDOL<StageManager>
 {
     [Header("StageData")]
@@ -11,6 +9,7 @@ public class StageManager : SingletonDDOL<StageManager>
     private StageDB curStageData;
     private StageMap curStageMap;
 
+    //게임의 진척도를 저장하고있는 Model(data) 변수
     public UIStageProgressBarModel StageProgressModel;
    
     public StageMap CurStageMap { get => curStageMap; }
@@ -36,7 +35,7 @@ public class StageManager : SingletonDDOL<StageManager>
         curStageMap = Resources.Load<StageMap>(curStageData.StageMapPath);
         Instantiate(curStageMap);
 
-        StageProgressModel.Initialize(CurStageData.SlayEnemyCount);//Debug - 까먹지 말고 UI매니저 초기화할때 꼭 집어넣을것
+        StageProgressModel.Initialize(CurStageData.SlayEnemyCount);
 
         Debug.Log("StageManager 세팅 완료!!");
     }
