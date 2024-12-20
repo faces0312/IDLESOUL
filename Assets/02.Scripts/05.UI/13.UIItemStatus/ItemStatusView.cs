@@ -61,7 +61,6 @@ public class ItemStatusView : MonoBehaviour, IUIBase
 
     public void UpdateUI()
     {
-        Debug.LogAssertion("아이템 정보창 UI 업데이트");
     }
 
 

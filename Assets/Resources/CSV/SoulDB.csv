@@ -1,7 +1,0 @@
-key,Name,Descripton,JobType,Health,Attack,Defence,ReduceDamage,AttackSpeed,CriticalRate,CriticalDamage,AtkSpeed,MoveSpeed,CoolDown,MaxExp,IconPath,SpritePath
-int,string,string,int,float,float,float,float,float,float,float,float,float,float,int,string,string
-ID,Name,Descripton,JobType,Health,Attack,Defence,ReduceDamage,AttackSpeed,CriticalRate,CriticalDamage,AtkSpeed,MoveSpeed,CoolDown,MaxExp,IconPath,SpritePath
-11000,클라리스,어디선가 누군가의 눈물이 마를 때. 그곳에 제가 있을 거에요.,1,100,50,25,5,3,15,110,1.2,1,0,100,Sprite/SoulSprite/SoulIcon/Claris,Sprite/SoulSprite/SoulFull/Claris
-11001,플뢰르,밤은 나의 무대야. 그리고 너는 그 무대의 관객이 될꺼야,2,200,25,50,10,1,5,100,0.8,0.7,0,100,Sprite/SoulSprite/SoulIcon/Fleur,Sprite/SoulSprite/SoulFull/Fleur
-11002,루엔,숲의 심장이 멈춘 날 내 생명도 그곳에 묻혔지 그러나 자연은 나를 버리지 않았어,3,80,10,15,1,2,10,100,1,1.2,0,100,Sprite/SoulSprite/SoulIcon/Luen,Sprite/SoulSprite/SoulFull/Luen
-11003,카르밀라,얼음 속에서 시들어가는 장미의 가시가 얼마나 억센 줄 알아? 지금 보여줄게,1,100,50,25,5,3,15,110,1.2,1,0,100,Sprite/SoulSprite/SoulIcon/Carmilla,Sprite/SoulSprite/SoulFull/Carmilla
