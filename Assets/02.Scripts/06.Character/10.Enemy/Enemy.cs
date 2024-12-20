@@ -33,7 +33,6 @@ public abstract class Enemy : BaseCharacter
     public Slider healthBar;
     public float currentHealth;
 
-    public static float skillDamage;
     public StatHandler StatHandler { get => base.statHandler; set => base.statHandler = value; }
 
     public event Action OnDieEvent;
@@ -69,7 +68,6 @@ public abstract class Enemy : BaseCharacter
         statHandler.CurrentStat.atkSpeed = enemyDB.AttackSpeed;
         statHandler.CurrentStat.critChance = enemyDB.CritChance;
         statHandler.CurrentStat.critDamage = enemyDB.CritDamage;
-        skillDamage = 500;
         stateMachine.Initialize();
         HpUpdate();
     }
