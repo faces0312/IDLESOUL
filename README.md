@@ -41,7 +41,7 @@ C# / VisualStudio2022 / Unity 2022.3.17f1
   + UI에 사용됨  
 + **façade(퍼사드) 패턴과 Strategy Pattern(전략)패턴**
   + Player와 Enemy 및 Projectile,Skill에 적용됨
-+ ** Spine(스파인)애니메이션**
++ **Spine(스파인)애니메이션**
   + Player의 애니메이션에 사용됨
 + **PostProcessing 과 CineMachine**
   + 스킬과 각종 Player,Enemy 등장 연출에 적용됨
