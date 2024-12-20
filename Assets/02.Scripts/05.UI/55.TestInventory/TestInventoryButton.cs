@@ -27,7 +27,6 @@ public class TestInventoryButton : MonoBehaviour
         {
             var inventoryModel = new TestInventoryModel();
             // 플레이어가 모델 데이터가 필요하면 소지하게 함
-            TestManager.Instance.inventory = inventoryModel;
             inventoryController = new TestInventoryController();
             inventoryController.Initialize(view, inventoryModel);
             UIManager.Instance.RegisterController(key, inventoryController);

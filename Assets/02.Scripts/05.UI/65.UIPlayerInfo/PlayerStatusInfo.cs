@@ -24,7 +24,7 @@ public class PlayerStatusInfo : MonoBehaviour
     {
         gold.text = GameManager.Instance.player.UserData.Gold.ToString();
         diamond.text = GameManager.Instance.player.UserData.Diamonds.ToString();
-        expBar.fillAmount = DataManager.Instance.UserData.Exp / DataManager.Instance.UserData.MaxExp;
+        //expBar.fillAmount = DataManager.Instance.UserData.Exp / DataManager.Instance.UserData.MaxExp;
         lv.text = GameManager.Instance.player.UserData.Level.ToString();
     }
 }
