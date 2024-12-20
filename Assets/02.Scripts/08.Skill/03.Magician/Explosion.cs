@@ -16,7 +16,6 @@ public class Explosion : MonoBehaviour
     private CinemachineImpulseSource impulseSource;
     private LayerMask layerMask;
 
-    // Start is called before the first frame update
     void Start()
     {
         curTime = Time.time;
@@ -28,7 +27,6 @@ public class Explosion : MonoBehaviour
         GameManager.Instance.cameraController.ShakeCamera(impulseSource);
     }
 
-    // Update is called once per frame
     void Update()
     {
         // 지속 시간 후, 콜라이더 Off
@@ -56,10 +54,6 @@ public class Explosion : MonoBehaviour
             {
                 damageable.TakeDamage(10000);
             }
-
-            //GameManager.Instance.enemies.Remove(collision.gameObject);  // 임시로 제거
-            //Destroy(collision.gameObject);
-            //Debug.LogAssertion("Enemy Destroy");
         }
     }
 }

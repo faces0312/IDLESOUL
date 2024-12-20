@@ -24,7 +24,6 @@ public class SpinSword : MonoBehaviour
 
     public Vector3 OriginPos { get; set; }
 
-    // Start is called before the first frame update
     void Start()
     {
         curTime = Time.time;
@@ -35,7 +34,6 @@ public class SpinSword : MonoBehaviour
         coroutineTime = new WaitForSecondsRealtime(tickTime);
     }
 
-    // Update is called once per frame
     void Update()
     {
         // TODO : 플레이어를 계속 따라다녀야함

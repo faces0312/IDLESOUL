@@ -52,8 +52,6 @@ public class SoulSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
         soulInfoModel.soul = soul;
         UIManager.Instance.ShowUI("SoulInfo");
-
-        // Debug.Log($"소울 이름 : {soulInfoModel.soul.soulName}");
     }
 
     public void OnUpdateThumbnail()

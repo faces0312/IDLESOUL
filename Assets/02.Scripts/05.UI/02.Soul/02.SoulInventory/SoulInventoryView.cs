@@ -30,7 +30,5 @@ public class SoulInventoryView : MonoBehaviour, IUIBase
     {
         if (Sprite != null)
             thumbnail.sprite = Sprite;
-
-        //Debug.LogAssertion("소울 인벤토리 UI 업데이트");
     }
 }

@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class SkillButton : MonoBehaviour
 {
-    //private const int MAX_SOUL = 3;
-
     [Header("Type")]
     [SerializeField] private SkillType skillType;
 
@@ -101,16 +99,10 @@ public class SkillButton : MonoBehaviour
         {
             curTimes[soulIndex] = Time.time - startTime;
 
-            //fillAmount = 1f - Utils.Percent(curTimes[curSoulIndex], coolTimes[curSoulIndex]);
-            //cooldownImg.fillAmount = fillAmount;
-            //timeText.text = $"{coolTimes[curSoulIndex] - curTimes[curSoulIndex]:F1}";
             yield return null;
         }
 
-        //fillAmount = 0f;
-        //timeText.text = string.Empty;
         isUses[soulIndex] = false;
-        //textBackground.SetActive(isUses[curSoulIndex]);
     }
 
     private void UpdateSkillImage(Sprite sprite)

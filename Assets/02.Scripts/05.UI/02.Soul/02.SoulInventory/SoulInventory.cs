@@ -28,11 +28,6 @@ public class SoulInventory : MonoBehaviour
 
             Initialize();
         }
-
-        //GameManager.Instance.player.PlayerSouls.SoulInventory = this;
-        // TODO : 호출시점 재조정
-        //TestManager.Instance.OnClickRegisterSoul(); // TODO : 씬 합칠때 위치 조정
-        //gameObject.SetActive(false);
     }
 
     private void Start()

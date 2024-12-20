@@ -32,11 +32,6 @@ public class KnightUltimateSkill : Skill
         playerPos += skillPrefab.transform.position;
 
         GameObject slashDance = Object.Instantiate(skillPrefab, playerPos, Quaternion.LookRotation(skillPrefab.transform.forward));
-        //if (spinSword.TryGetComponent(out SpinSword component))
-        //{
-        //    component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);
-        //    component.OriginPos = skillPrefab.transform.position;
-        //}
 
         GameManager.Instance.cameraController.SwordSlashEffect();
     }
