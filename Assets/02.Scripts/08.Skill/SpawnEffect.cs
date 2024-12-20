@@ -9,14 +9,12 @@ public class SpawnEffect : MonoBehaviour
 
     private float startTime;
 
-    // Start is called before the first frame update
     void Start()
     {
         startTime = Time.time;
         playerTransform = GameManager.Instance.player.transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position = playerTransform.position;

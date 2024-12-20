@@ -31,7 +31,6 @@ public class MoveDestroy : MonoBehaviour
 
     private float time;
     private bool isHit;
-    //private float scalefactor;
 
     public Vector3 hitObjScale = new Vector3(1, 1, 1);
 
@@ -39,13 +38,12 @@ public class MoveDestroy : MonoBehaviour
 
     private void Start()
     {
-        //scalefactor = transform.parent.localScale.x;
         time = Time.time;
     }
 
     void LateUpdate()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed/* * scalefactor*/);
+        transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed);
         if (!isHit)
         {
             RaycastHit hit;
@@ -68,7 +66,6 @@ public class MoveDestroy : MonoBehaviour
         if (isHitMake == false)
             return;
         makedObject = Instantiate(hitObject, hit.point, Quaternion.LookRotation(hit.normal));
-        //makedObject.transform.parent = transform.parent;
         makedObject.transform.localScale = hitObjScale;
     }
 
@@ -77,7 +74,6 @@ public class MoveDestroy : MonoBehaviour
         if (isHitMake == false)
             return;
         makedObject = Instantiate(hitObject, point.transform.position, point.rotation);
-        //makedObject.transform.parent = transform.parent;
         makedObject.transform.localScale = hitObjScale;
     }
 

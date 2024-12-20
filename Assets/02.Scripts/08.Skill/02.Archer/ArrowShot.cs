@@ -24,7 +24,6 @@ public class ArrowShot : MonoBehaviour
 
     public Vector3 OriginPos { get; set; }
 
-    // Start is called before the first frame update
     void Start()
     {
         curTime = Time.time;
@@ -35,7 +34,6 @@ public class ArrowShot : MonoBehaviour
         coroutineTime = new WaitForSecondsRealtime(tickTime);
     }
 
-    // Update is called once per frame
     void Update()
     {
         // 지속 시간 후, 콜라이더 Off

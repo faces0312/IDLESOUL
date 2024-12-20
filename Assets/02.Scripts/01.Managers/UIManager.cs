@@ -37,11 +37,6 @@ public class UIManager : SingletonDDOL<UIManager>
 
     public void ShowUI(string key)
     {
-        //if(activeController != null)
-        //{
-        //    activeController.OnHide();
-        //}
-
         if(controllers.TryGetValue(key, out UIController controller))
         {
             activeController = controller;
@@ -74,12 +69,5 @@ public class UIManager : SingletonDDOL<UIManager>
         }
 
         return null;
-    }
-
-    public void InitUI()
-    {
-        var obj = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Soul"), uiLobbyCanvas);
-        Instantiate(Resources.Load<GameObject>("Prefabs/UI/SoulButtons"), uiLobbyCanvas);
-        obj.transform.SetAsLastSibling();
     }
 }

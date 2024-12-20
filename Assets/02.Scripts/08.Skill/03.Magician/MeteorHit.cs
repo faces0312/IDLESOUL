@@ -17,7 +17,6 @@ public class MeteorHit : MonoBehaviour
 
     private LayerMask layerMask;
 
-    // Start is called before the first frame update
     void Start()
     {
         curTime = Time.time;
@@ -55,10 +54,6 @@ public class MeteorHit : MonoBehaviour
             {
                 damageable.TakeDamage(10000);
             }
-
-            //GameManager.Instance.enemies.Remove(collision.gameObject);  // 임시로 제거
-            //Destroy(collision.gameObject);
-            //Debug.LogAssertion("Enemy Destroy");
         }
     }
 }

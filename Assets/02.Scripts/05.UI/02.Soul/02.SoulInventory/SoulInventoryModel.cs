@@ -38,7 +38,6 @@ public class SoulInventoryModel : UIModel
             emptySlot.soul = soul;
             emptySlot.soulName = soul.soulName;
             OnInventoryChanged?.Invoke();
-            //Debug.LogAssertion("소울 획득!");
             return;
         }
         
