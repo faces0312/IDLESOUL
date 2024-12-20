@@ -12,7 +12,7 @@ public class EnemySkill : MonoBehaviour
         if (TargetLayer == ((1 << other.gameObject.layer) | TargetLayer))
         {
             Debug.Log($"공격이 {other.gameObject.name}에 충돌");
-            DamageCaculate(other.gameObject, Enemy.skillDamage);
+            DamageCaculate(other.gameObject, BossEnemy.skillDamage);
             KnockBackCaculate(other.gameObject, 0);
         }
     }

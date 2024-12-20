@@ -12,6 +12,7 @@ public class Boss1 : BossEnemy
     {
         base.Initialize();
         healthBar.gameObject.SetActive(true);
+        skillDamage = 500;
         skill = new List<EnemySkillBase>
         {
             new EnemySkill1(this, stateMachine)

@@ -22,6 +22,7 @@ public class ItemStatusView : MonoBehaviour, IUIBase
 
     public void Initialize()
     {
+        //ToDoCode : 사용 예정 
         //UpgradeBtn.onClick.AddListener(() => Debug.Log("아이템 강화"));
         //EquipBtn.onClick.AddListener(() => Debug.Log("아이템 장착"));
         //DisEquipBtn.onClick.AddListener(() => Debug.Log("아이템 장착해지"));

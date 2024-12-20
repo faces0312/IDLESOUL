@@ -16,7 +16,6 @@ public class CameraController : MonoBehaviour
     public CinemachineVirtualCamera VirtualCamera { get => virtualCamera; }
     public Camera MinimapCamera { get => minimapCamera; }
 
-    // TODO : 임시
     private void Awake()
     {
         // PostProcessing
@@ -26,16 +25,8 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void SetMininapCamera()
-    {
-
-    }
-
     public void Initialize(Transform Follow , Transform LookAt)
-    {
-        //virtualCamera.Follow = GameManager.Instance._player.CamarePivot.transform;
-        //virtualCamera.LookAt = GameManager.Instance._player.transform;
-        
+    {        
         virtualCamera.Follow = Follow;
         virtualCamera.LookAt = LookAt;
 

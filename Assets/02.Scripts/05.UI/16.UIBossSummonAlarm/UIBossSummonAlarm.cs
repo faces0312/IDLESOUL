@@ -13,7 +13,6 @@ public class UIBossSummonAlarm : MonoBehaviour
     private void Start()
     {
         model = new UIBossSummonAlarmModel();
-        //model.Init();
 
         //컨트롤러  초기화 및 View 등록
         controller = new UIBossSummonAlarmController();

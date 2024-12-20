@@ -47,8 +47,8 @@ public class Player : BaseCharacter
 {
     private readonly int TestID = 12345678;
 
-    [Header("Debuh : 근접(true) , 원거리(false)")]
-    public bool TestDefaultAttackType;
+    //Debug - 테스트용 근접,원거리 공격 타입 선택 변수 나중에 변수타입 변경할것 
+    public bool DefaultAttackType = false; //true : 근접공격 , false : 원거리 공격
 
     [Header("Data")]
     private UserData userData;
@@ -56,8 +56,8 @@ public class Player : BaseCharacter
     [Header("References")]
     public TargetSearch targetSearch;
     private PlayerAnimationController playerAnimationController;
-    private PlayerSouls playerSouls;
     public GameObject CamarePivot;
+    private PlayerSouls playerSouls;
     public InventoryModel Inventory; //플레이어 인벤토리 데이터
 
     [Header("State Machine")]

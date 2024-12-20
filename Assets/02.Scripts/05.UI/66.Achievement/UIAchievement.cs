@@ -1,6 +1,8 @@
 ﻿
 using UnityEngine;
 
+//UI에 적용되는 도전과제 MVC 초기화 클래스
+
 public class UIAchievement : MonoBehaviour
 {
     public string UIKey; //"Achievement"
