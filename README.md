@@ -41,6 +41,8 @@ C# / VisualStudio2022 / Unity 2022.3.17f1
   + UI에 사용됨  
 + **façade(퍼사드) 패턴과 Strategy Pattern(전략)패턴**
   + Player와 Enemy 및 Projectile,Skill에 적용됨
++ **FSM(유한상태기계)**
+  + Player와 Enemy의 동작로직에 사용됨  
 + **Spine(스파인)애니메이션**
   + Player의 애니메이션에 사용됨
 + **PostProcessing 과 CineMachine**
@@ -52,7 +54,7 @@ C# / VisualStudio2022 / Unity 2022.3.17f1
 + **ObjectPool**
   + Enemy 및 투사체,데미지 폰트 오브젝트 최적화에 사용됨 
 + **Singleton 패턴**
-+ GameManager,DataManager,ObjectPollManager 등등에 사용됨
+  + GameManager,DataManager,ObjectPollManager 등등에 사용됨
 + **BigInteger**
   + 범위를 벗어나는 숫자들 및 런타임시 숫자 가독성을 위해 사용됨
 + **EventBus**
