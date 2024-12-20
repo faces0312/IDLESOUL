@@ -24,21 +24,21 @@ public class ItemPanel : MonoBehaviour
             switch (CurItem.PriceType)
             {
                 case (int)PriceType.Diamond:
-                    if (DataManager.Instance.UserData.Diamonds >= CurItem.Price)
+                    if (GameManager.Instance.player.UserData.Diamonds >= CurItem.Price)
                     {
-                        DataManager.Instance.UserData.Diamonds -= CurItem.Price;
-                        TestManager.Instance.inventory.AddItem(CurItem.key.ToString());
+                        GameManager.Instance.player.UserData.Diamonds -= CurItem.Price;
+                        GameManager.Instance.player.Inventory.AddItem(CurItem.key);
                     }
                     break;
                 case (int)PriceType.Gold:
-                    if (DataManager.Instance.UserData.Gold >= CurItem.Price)
+                    if (GameManager.Instance.player.UserData.Gold >= CurItem.Price)
                     {
-                        DataManager.Instance.UserData.Gold -= CurItem.Price;
-                        TestManager.Instance.inventory.AddItem(CurItem.key.ToString());
+                        GameManager.Instance.player.UserData.Gold -= CurItem.Price;
+                        GameManager.Instance.player.Inventory.AddItem(CurItem.key);
                     }
                     break;
             }
-            GameManager.Instance.player.Inventory.AddItem(CurItem.key.ToString());
+            GameManager.Instance.player.Inventory.AddItem(CurItem.key);
         });
 
         cancel.onClick.AddListener(() =>
