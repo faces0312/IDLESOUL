@@ -36,12 +36,12 @@ public class PlayerIdelState : PlayerBaseState
             float targetDist = Vector3.Distance(stateMachine._Player.transform.position, stateMachine._Player.targetSearch.ShortEnemyTarget.transform.position);
 
             //적과의 거리에 따라 기본 공격 
-            if (stateMachine._Player.TestDefaultAttackType && targetDist <= stateMachine.MeleeAttackState.defaultAttackRange)
+            if (stateMachine._Player.DefaultAttackType && targetDist <= stateMachine.MeleeAttackState.defaultAttackRange)
             {
                 //근접 공격 상태로 전환
                 stateMachine.ChangeState(stateMachine.MeleeAttackState);
             }
-            else if (!stateMachine._Player.TestDefaultAttackType && targetDist <= stateMachine.ShotAttackState.defaultAttackRange)
+            else if (!stateMachine._Player.DefaultAttackType && targetDist <= stateMachine.ShotAttackState.defaultAttackRange)
             {
                 //원거리 공격 상태로 전환
                 stateMachine.ChangeState(stateMachine.ShotAttackState);

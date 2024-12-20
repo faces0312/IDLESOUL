@@ -19,13 +19,13 @@ public class InventoryModel : UIModel
         }
     }
 
-    public void AddItem(string item)
+    public void AddItem(int key)
     {
-
+        //ToDoCode : 아이템을 인벤토리에 추가될시 동작하는 메서드
     }
 
-    public void RemoveItem(string item)
+    public void RemoveItem(int key)
     {
-
+        //ToDoCode : 아이템을 인벤토리에 삭제될때 동작하는 메서드
     }
 }

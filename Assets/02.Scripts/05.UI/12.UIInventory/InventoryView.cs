@@ -49,6 +49,5 @@ public class InventoryView : MonoBehaviour, IUIBase
 
     public void UpdateUI()
     {
-        Debug.LogAssertion("인벤토리 UI 업데이트");
     }
 }
