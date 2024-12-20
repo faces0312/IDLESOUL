@@ -15,6 +15,7 @@ public class ShopSlotComponent : MonoBehaviour
     public void Init()
     {
         slot = new ShopSlot();
+        itemEvent = new ItemEvent();
         button = GetComponent<Button>();
         button.onClick.AddListener(Select);
     }

@@ -18,9 +18,6 @@ public class ShopView : MonoBehaviour, IUIBase
 
     private void Start()
     {
-        //shopController = new ShopController();
-        //shopController.ShopView = this;
-        //UIManager.Instance.RegisterController("shopController", shopController);
         exitButton.onClick.AddListener(() =>
         {
             HideUI();

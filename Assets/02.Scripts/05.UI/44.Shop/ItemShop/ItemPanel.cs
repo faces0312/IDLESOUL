@@ -13,15 +13,6 @@ public class ItemPanel : MonoBehaviour
     [SerializeField] private Button cancel;
     private ItemShopController controller;
 
-    private void OnEnable()
-    {
-        EventManager.Instance.Subscribe<ItemEvent>(Channel.Shop, SetItem);
-    }
-
-    private void OnDisable()
-    {
-        EventManager.Instance.Unsubscribe<ItemEvent>(Channel.Shop, SetItem);
-    }
 
     private void Start()
     {
@@ -47,7 +38,7 @@ public class ItemPanel : MonoBehaviour
                     }
                     break;
             }
-            TestManager.Instance.inventory.AddItem(CurItem.key.ToString());
+            GameManager.Instance.player.Inventory.AddItem(CurItem.key.ToString());
         });
 
         cancel.onClick.AddListener(() =>
@@ -55,6 +46,8 @@ public class ItemPanel : MonoBehaviour
             this.gameObject.SetActive(false);
         });
         this.gameObject.SetActive(false);
+
+        EventManager.Instance.Subscribe<ItemEvent>(Channel.Shop, SetItem);
     }
 
     public void SetItem(SellItemDB item)
@@ -65,6 +58,7 @@ public class ItemPanel : MonoBehaviour
 
     public void SetItem(ItemEvent item)
     {
+        if(this.gameObject.activeSelf == false) this.gameObject.SetActive(true);
         this.CurItem = DataManager.Instance.SellItemDB.GetByKey(item.Key);
         SetContent();
     }

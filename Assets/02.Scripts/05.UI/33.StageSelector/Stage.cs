@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
+//스테이지 맵과 병합 예정
 public class Stage : MonoBehaviour
 {
     private StageDB stageData;

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
-public class GachaContainer : MonoBehaviour, IUIBase
+public class GachaContainer : MonoBehaviour
 {
     [SerializeField] private Button SoulPickUP;
     [SerializeField] private Button Soul;
@@ -62,25 +62,5 @@ public class GachaContainer : MonoBehaviour, IUIBase
             else EventManager.Instance.Publish<GachaEvent>(Enums.Channel.Gacha, gacha.SetEvent(Enums.GachaType.Weapon, 10));
         });
 
-    }
-
-    public void HideUI()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void Initialize()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void ShowUI()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void UpdateUI()
-    {
-        throw new System.NotImplementedException();
     }
 }

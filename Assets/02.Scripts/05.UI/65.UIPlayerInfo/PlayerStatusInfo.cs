@@ -14,17 +14,17 @@ public class PlayerStatusInfo : MonoBehaviour
     private void Start()
     {
         EventManager.Instance.Subscribe<AchieveEvent>(Enums.Channel.Achievement, Kill);
-        gold.text = DataManager.Instance.UserData.Gold.ToString();
-        diamond.text = DataManager.Instance.UserData.Diamonds.ToString();
-        expBar.fillAmount = DataManager.Instance.UserData.Exp / DataManager.Instance.UserData.MaxExp;
-        lv.text = DataManager.Instance.UserData.Level.ToString();
+        gold.text = GameManager.Instance.player.UserData.Gold.ToString(); ;
+        diamond.text = GameManager.Instance.player.UserData.Diamonds.ToString();
+        //expBar.fillAmount = DataManager.Instance.UserData.Exp / DataManager.Instance.UserData.MaxExp;
+        lv.text = GameManager.Instance.player.UserData.Level.ToString();
     }
 
     private void Kill(AchieveEvent arg)
     {
-        gold.text = DataManager.Instance.UserData.Gold.ToString();
-        diamond.text = DataManager.Instance.UserData.Diamonds.ToString();
+        gold.text = GameManager.Instance.player.UserData.Gold.ToString();
+        diamond.text = GameManager.Instance.player.UserData.Diamonds.ToString();
         expBar.fillAmount = DataManager.Instance.UserData.Exp / DataManager.Instance.UserData.MaxExp;
-        lv.text = DataManager.Instance.UserData.Level.ToString();
+        lv.text = GameManager.Instance.player.UserData.Level.ToString();
     }
 }
