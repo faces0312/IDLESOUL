@@ -91,5 +91,18 @@ C# / VisualStudio2022 / Unity 2022.3.17f1
 > 마스크로 가려져 있어도 조이스틱이나, 스킬이 계속 사용되는 버그가 있습니다.
 6. **TitleScene에서 런타임시 SkillSprite에 null값이 들어가는 버그가 간헐적으로 발생합니다.**
 > ![image](https://github.com/user-attachments/assets/d6a2179a-267e-4ba8-8d9f-5f8c02ca37bf)
-> 
+7. **상점 - 뽑기 - 소울,무기픽업,무기 일러스트 연결 안됨**
+> ![image](https://github.com/user-attachments/assets/954fbcb4-e386-4310-a77a-f1509992dae3)
+8. **상점 - 재화 교환 구현 X**
+> 상점의 재화 교환은 현재 미구현 상태입니다.
+9. **메뉴 버튼의 던전입장 버튼 미구현**
+> ![image](https://github.com/user-attachments/assets/351942ea-88a4-4615-94e5-b055cd804052)
+10.**인벤토리 - 선택된 아이템 - 아이템 강화하기 미구현**
+> 아이템 강화하기 UI 버튼이 있지만 동작하지 않음
+11.**인벤토리 - 선택된 아이템 - 아이템 장착하기 - 인벤토리에 장착UI 업데이트 미구현**
+> 장착시에 인벤토리 UI가 업데이트되어 장착된 아이템이 바로 체크가 되야하지만 미구현 상태
+12. **Soul 편성 구조는 되있으나 순서 변경및 교체 미구현**
+> Soul의 종류가 3종류 + 더미가 2개 존재 , MVP 이후 테스트 및 구현 진행예정입니다.
+13. **Soul 전환 UI 버튼 Sprite 별개 적용 미구현**
+> ![image](https://github.com/user-attachments/assets/e3018057-f05f-4d67-bf28-13987dc4e155)
 ---
