@@ -1478,7 +1478,7 @@ MonoBehaviour:
   baseHpSystem: {fileID: 0}
   rb: {fileID: 0}
   attackType: 0
-  slash: {fileID: 0}
+  slash: {fileID: 1695457264415836873}
   enemyDB:
     key: 0
     Name: 
