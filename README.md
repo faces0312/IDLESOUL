@@ -18,8 +18,9 @@ C# / VisualStudio2022 / Unity 2022.3.17f1
 
 ## [게임플레이 방법]
 > 게임 플레이 화면의 UI , 버튼을 눌러 사용하면됩니다.
-![image](https://github.com/user-attachments/assets/740eb597-e932-4922-bafa-c01594ff79dc)  
- 
+> 조이스틱은 현재 키보드로 조작이 불가능하여 마우스로 조작 부탁드립니다.
+![image](https://github.com/user-attachments/assets/8ee0b4fe-01dc-4857-a4a5-dd669d87c794)
+
 > Soul 편성 조작 방법
 ![image](https://github.com/user-attachments/assets/ab7eb06e-c7c8-4a05-b5bb-2e832aee3979)
 
@@ -102,4 +103,6 @@ C# / VisualStudio2022 / Unity 2022.3.17f1
 > Soul의 종류가 3종류 + 더미가 2개 존재 , MVP 이후 테스트 및 구현 진행예정입니다.
 13. **Soul 전환 UI 버튼 Sprite 별개 적용 미구현**
 > ![image](https://github.com/user-attachments/assets/e3018057-f05f-4d67-bf28-13987dc4e155)
+14. **Player의 자동사냥(Auto) 모드일때 스킬사용 미구현**
+> 자동사냥 모드일때 스킬사용 미구현 상태입니다. 기본공격 및 적 추적만 됩니다.
 ---
