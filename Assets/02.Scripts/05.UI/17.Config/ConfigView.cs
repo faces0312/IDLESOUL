@@ -38,7 +38,7 @@ public class ConfigView : MonoBehaviour, IUIBase
             SoundManager.Instance.SetSoundEffectVolume(value);
         });
 
-        ConfigPanel.SetActive(false);
+        //ConfigPanel.SetActive(false);
     } 
 
     public void HideUI()
