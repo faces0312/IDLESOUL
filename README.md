@@ -36,13 +36,13 @@ C# / VisualStudio2022 / Unity 2022.3.17f1
 **개발 인원 : 4명**
 <pre>
 <code>
-송명성 : Game Roop Cycle,DataManager,StageManager,Player,Inventory,Item  
+송명성 : Game Roop Cycle, DataManager, StageManager, Player, Inventory, Item  
 --------------------------------------
 박두산 : Achievement, Shop, Minimap, Loading, ObjectPoolManager,SceneDataManager  
 ---------------------------------------
-서현석 : GameManager,SoundManager,Enemy,EnemySkill    
+서현석 : GameManager, SoundManager, Enemy, EnemySkill, JoyStick
 ---------------------------------------
-신현수 : Soul, PlayerSkill, PostProcessing , BigInteger , UIManager
+신현수 : Soul, PlayerSkill, PostProcessing , BigInteger , UIManager , Player & Soul Stat UI
 ---------------------------------------
 </code>
 </pre>
