@@ -15,6 +15,16 @@ SCC_Unity_6기_9조_IdleSoul
 C# / VisualStudio2022 / Unity 2022.3.17f1
 
 ---
+
+## [게임플레이 방법]
+> 게임 플레이 화면의 UI , 버튼을 눌러 사용하면됩니다.
+![image](https://github.com/user-attachments/assets/740eb597-e932-4922-bafa-c01594ff79dc)  
+ 
+> Soul 편성 조작 방법
+![image](https://github.com/user-attachments/assets/ab7eb06e-c7c8-4a05-b5bb-2e832aee3979)
+
+
+---
 ## [프로젝트 목표]
 - 모바일 시장에서 강세인 **수집형,방치형**과 **서브컬쳐**를 조합하여 하나의 게임을 개발하는것이 목표
 - **배포(itch.io)를 목적**으로 **게임의 재미** 및 **확장성 있는 설계 구조**를 잡는것이 목표
