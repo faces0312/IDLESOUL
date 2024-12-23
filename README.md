@@ -68,6 +68,8 @@ C# / VisualStudio2022 / Unity 2022.3.17f1
   + GameManager,DataManager,ObjectPollManager 등등에 사용됨
 + **BigInteger**
   + 범위를 벗어나는 숫자들 및 런타임시 숫자 가독성을 위해 사용됨
+  + **ScottGarland 라이브러리를 사용함**
+  + <라이브러리 링크> :  https://github.com/keiwando/biginteger 
 + **EventBus**
   + 도전과제 관리에 사용됨
 + **DOTween 에셋**
