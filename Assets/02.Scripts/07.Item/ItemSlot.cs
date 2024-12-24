@@ -24,7 +24,8 @@ public class ItemSlot : MonoBehaviour
         EquipCheck.gameObject.SetActive(false);
 
         itemStatusOpenPopUpBtn.onClick.AddListener(ItemStatusData);
-        itemStatusOpenPopUpBtn.onClick.AddListener(() => UIManager.Instance.ShowUI("ItemStatus"));
+        //itemStatusOpenPopUpBtn.onClick.AddListener(() => UIManager.Instance.ShowUI("ItemStatus"));
+        itemStatusOpenPopUpBtn.onClick.AddListener(() => UIManager.Instance.ShowUI<ItemStatusController>());
     }
 
     public void UIUpdate()
@@ -42,7 +43,6 @@ public class ItemSlot : MonoBehaviour
 
     private void ItemStatusData()
     {
-       ItemStatusController itemStatus = UIManager.Instance.GetController("ItemStatus") as ItemStatusController;
-       itemStatus.SelectItem = this;
+        UIManager.Instance.GetController<ItemStatusController>().SelectItem = this;
     }
 }

@@ -100,7 +100,7 @@ public class UIManager : SingletonDDOL<UIManager>
         }
     }
 
-    public T GetController<T>(string key) where T : UIController
+    public T GetController<T>() where T : UIController
     {
         if (controllers.ContainsKey(typeof(T).ToString()))
         {

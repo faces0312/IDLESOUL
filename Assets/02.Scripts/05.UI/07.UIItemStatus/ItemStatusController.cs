@@ -13,7 +13,6 @@ public class ItemStatusController : UIController
         itemStatusModel = model as ItemStatusModel;
         itemStatusView = view as ItemStatusView;
 
-        base.Initialize(itemStatusView, itemStatusModel);
         //아이템 장착 버튼 이벤트 함수 등록 (장착 , UI 출력)
         itemStatusView.EquipButton.onClick.AddListener(() => GameManager.Instance.player.EquipItem(SelectItem.item));
         itemStatusView.EquipButton.onClick.AddListener(() => OnShow());
@@ -21,6 +20,8 @@ public class ItemStatusController : UIController
         //아이템 장착해제 버튼 이벤트 함수 등록 (장착해제 , UI 출력)
         itemStatusView.DisEquipButton.onClick.AddListener(() => GameManager.Instance.player.DisEquipItem());
         itemStatusView.DisEquipButton.onClick.AddListener(() => OnShow());
+
+        base.Initialize(itemStatusView, itemStatusModel);
     }
 
     public override void OnShow()
@@ -55,6 +56,8 @@ public class ItemStatusController : UIController
                 EquipButtonViewUpdate();
             }
         }
+
+        UIManager.Instance.ShowUI<InventoryController>();
 
         view.UpdateUI();
     }

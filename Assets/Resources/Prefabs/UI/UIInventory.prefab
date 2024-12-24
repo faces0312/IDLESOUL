@@ -668,8 +668,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26f59ede78767db4cb1e29d8408bd9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIKey: ItemStatus
-  views: {fileID: 7576518175148679342}
+  views:
+  - {fileID: 7576518175148679342}
 --- !u!114 &7576518175148679342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3015,7 +3015,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9dabfb0d72f0a4db7ae4e60db94cff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIKey: Inventory
   views:
   - {fileID: 5739851048247875910}
 --- !u!114 &5739851048247875910
