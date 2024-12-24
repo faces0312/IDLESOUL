@@ -41,7 +41,7 @@ public class GachaContainer : MonoBehaviour
         WeaponPickUP.onClick.AddListener(() =>
         {
             gachatype = GachaType.Weapon;
-            containerImage.sprite = Resources.Load<Sprite>("Sprite/ItemSprite/Pickup/Carmilla");
+            containerImage.sprite = Resources.Load<Sprite>("Sprite/ItemSprite/Pickup/Pickup");
         });
 
         Weapon.onClick.AddListener(() =>

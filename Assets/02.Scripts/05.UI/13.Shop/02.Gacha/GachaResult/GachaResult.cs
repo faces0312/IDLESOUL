@@ -63,7 +63,7 @@ public class GachaResult : MonoBehaviour, IPointerClickHandler
                         break;
                     case "ItemDB":
                         tempItem = DataManager.Instance.ItemDB.GetByKey(gachaResultList[i].GetKey());
-                        resultSprite.sprite = Resources.Load<Sprite>(tempItem.SpritePath);
+                        resultSprite.sprite = Resources.Load<Sprite>(tempItem.IconPath);
                         _name.text = tempItem.Name;
                         description.text = tempItem.Descripton;
                         break;

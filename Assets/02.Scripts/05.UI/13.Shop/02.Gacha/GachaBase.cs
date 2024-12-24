@@ -35,12 +35,11 @@ public class GachaBase : MonoBehaviour
         gachaBase.SetActive(false);
     }
 
-
     private void Gacha(GachaEvent arg)
     {
         if(grid.gameObject.activeSelf == true)
         {
-            grid.gameObject.SetActive(false);   
+            grid.gameObject.SetActive(false);
         }
         if (this.gameObject.activeSelf == false)
         {
