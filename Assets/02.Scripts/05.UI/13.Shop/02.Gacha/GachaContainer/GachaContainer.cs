@@ -41,7 +41,7 @@ public class GachaContainer : MonoBehaviour
         WeaponPickUP.onClick.AddListener(() =>
         {
             gachatype = GachaType.Weapon;
-            containerImage.sprite = Resources.Load<Sprite>("Sprite/ItemSprite/Pickup/Carmilla");
+            containerImage.sprite = Resources.Load<Sprite>("Sprite/ItemSprite/Pickup/Pickup");
         });
 
         Weapon.onClick.AddListener(() =>
@@ -51,8 +51,8 @@ public class GachaContainer : MonoBehaviour
         });
 
         GachaOnce.onClick.AddListener(() =>
-        {            
-            if(gachatype == GachaType.Soul) EventManager.Instance.Publish<GachaEvent>(Enums.Channel.Gacha, gacha.SetEvent(Enums.GachaType.Soul, 1));
+        {
+            if (gachatype == GachaType.Soul) EventManager.Instance.Publish<GachaEvent>(Enums.Channel.Gacha, gacha.SetEvent(Enums.GachaType.Soul, 1));
             else EventManager.Instance.Publish<GachaEvent>(Enums.Channel.Gacha, gacha.SetEvent(Enums.GachaType.Weapon, 1));
         });
 
