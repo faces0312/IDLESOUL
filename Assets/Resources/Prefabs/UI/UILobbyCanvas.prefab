@@ -88,8 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db80447b0498cd9458145f5c8570158a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIKey: PlayerHPDisplay
-  views: {fileID: 7989624534535148169}
+  views:
+  - {fileID: 7989624534535148169}
 --- !u!114 &7989624534535148169
 MonoBehaviour:
   m_ObjectHideFlags: 0

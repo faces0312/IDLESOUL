@@ -2,24 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIBossSummonAlarm : MonoBehaviour
+public class UIBossSummonAlarm : UIBase<UIBossSummonAlarmModel, UIBossSummonAlarmView, UIBossSummonAlarmController>
 {
-    public string UIKey; // "BossSummonAlarm"
-
-    private UIBossSummonAlarmModel model;
-    [SerializeField] private UIBossSummonAlarmView views;
-    private UIBossSummonAlarmController controller;
-
-    private void Start()
+    public override void Start()
     {
         model = new UIBossSummonAlarmModel();
-
-        //컨트롤러  초기화 및 View 등록
-        controller = new UIBossSummonAlarmController();
-        controller.Initialize(views, model);
-
-        //UI매니저에 UI 등록
-        UIManager.Instance.RegisterController(UIKey, controller);
+        base.Start();
         controller.OnHide();
     }
 }

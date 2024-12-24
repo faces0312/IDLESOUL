@@ -195,7 +195,7 @@ public class Player : BaseCharacter
     public override void TakeDamage(float damage)
     {
         baseHpSystem.TakeDamage(damage, statHandler);
-        UIManager.Instance.ShowUI("PlayerHPDisplay");
+        UIManager.Instance.ShowUI<UIPlayerHPDisplayController>();
 
         // 데미지 폰트를 적용하는 부분
         // TODO : 크리티컬 데미지 시, 변화를 준다
@@ -237,7 +237,7 @@ public class Player : BaseCharacter
         enabled = true;
         baseHpSystem.IsDead = false;
         targetSearch.TargetClear();
-        UIManager.Instance.ShowUI("PlayerHPDisplay");
+        UIManager.Instance.ShowUI<UIPlayerHPDisplayController>();
     }
 
     private void Update()

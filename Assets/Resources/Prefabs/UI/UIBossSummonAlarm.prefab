@@ -84,7 +84,6 @@ GameObject:
   - component: {fileID: 3460836045707534093}
   - component: {fileID: 7203773139747816703}
   - component: {fileID: 6324888321037799976}
-  - component: {fileID: 3718755530399760096}
   m_Layer: 5
   m_Name: UIBossSummonAlarmTargetImage
   m_TagString: Untagged
@@ -150,22 +149,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3718755530399760096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2610890599956182228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentShaderType: 0
-  normalStrength: 5
-  normalSmoothing: 1
-  computingNormal: 0
 --- !u!1 &4309795633805775101
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,8 +342,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd0a8e08d2d5fd458274769e31dd32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIKey: BossSummonAlarm
-  views: {fileID: 5725004542944328682}
+  views:
+  - {fileID: 5725004542944328682}
 --- !u!114 &5725004542944328682
 MonoBehaviour:
   m_ObjectHideFlags: 0

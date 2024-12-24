@@ -1,26 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class UIPlayerHPDisplay : MonoBehaviour
+public class UIPlayerHPDisplay : UIBase<UIPlayerHPDisplayModel, UIPlayerHPDisplayView, UIPlayerHPDisplayController>
 {
-    public string UIKey; // "PlayerHPDisplay"
-
-    private UIPlayerHPDisplayModel model;
-    [SerializeField] private UIPlayerHPDisplayView views;
-    private UIPlayerHPDisplayController controller;
-
-    private void Start()
+    public override void Start()
     {
         model = new UIPlayerHPDisplayModel();
         model.Init();
 
-        //컨트롤러  초기화 및 View 등록
-        controller = new UIPlayerHPDisplayController();
-        controller.Initialize(views, model);
-
-        //UI매니저에 UI 등록
-        UIManager.Instance.RegisterController(UIKey, controller);
+        base.Start();
     }
 }
 

@@ -39,7 +39,7 @@ public class CameraController : MonoBehaviour
 
     public void ToggleFollowTarget(Transform newFollowTr , float closeUpTime)
     {
-        UIManager.Instance.ShowUI("BossSummonAlarm");
+        UIManager.Instance.ShowUI<UIBossSummonAlarmController>();
 
         if (virtualCamera != null)
         {
@@ -52,7 +52,7 @@ public class CameraController : MonoBehaviour
 
     public void ResetFollowTarget()
     {
-        UIManager.Instance.HideUI("BossSummonAlarm");
+        UIManager.Instance.HideUI<UIBossSummonAlarmController>();
 
         if (virtualCamera != null)
         {
