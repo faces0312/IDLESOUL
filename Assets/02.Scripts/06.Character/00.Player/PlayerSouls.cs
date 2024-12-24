@@ -37,9 +37,6 @@ public class PlayerSouls : MonoBehaviour
     // 소울 등록
     public void RegisterSoul(string name, Soul soul)
     {
-        //soulDic.Add(name, soul);
-        //SoulInventory.AddSoul(soul); // TODO : 씬 합칠때 주석 제거
-
         if (!soulDic.ContainsKey(name))
         {
             soulDic.Add(name, soul);
@@ -52,8 +49,25 @@ public class PlayerSouls : MonoBehaviour
     {
         if (soulDic.TryGetValue(name, out Soul soul))
         {
-            // 슬롯에 소울이 있다면 해제한다
-            UnEquipSoul(index);
+            if (SoulSquad.SearchSoul(soul))
+            {
+                // 현재 넣으려고 하는 슬롯의 소울을 이미 존재하는 소울의 슬롯으로 이전
+                for (int i = 0; i < Const.MAX_SOUL; ++i)
+                {
+                    if (SoulSlot[i] == soul)
+                    {
+                        soulSlot[i] = SoulSlot[index];
+                        // 소울스쿼드에 등록
+                        SoulSquad.EquipSoul(i, soulSlot[i]);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                // 슬롯에 소울이 있다면 해제한다
+                UnEquipSoul(index);
+            }
 
             // 해당하는 index에 소울을 장착
             soulSlot[index] = soul;
@@ -70,9 +84,8 @@ public class PlayerSouls : MonoBehaviour
         if (soulSlot[index] != null)
         {
             soulSlot[index] = null;
+            SoulSquad.UnEquipSoul(index);
         }
-
-        // TODO : 소울스쿼드에서도 해제
     }
 
     // 소울 스왑
@@ -81,11 +94,9 @@ public class PlayerSouls : MonoBehaviour
         // 현재 소환중인 소울과 같은 경우
         if (spawnIndex == index) return;
 
-        // TODO : 소환 중인 소울이 있다면 소환을 해제
         // 소환을 해제하는 로직
         CurrentSoul = null;
 
-        // TODO : 슬롯의 소울을 소환
         // 소환하는 로직
         CurrentSoul = soulSlot[index];
         spawnIndex = index;

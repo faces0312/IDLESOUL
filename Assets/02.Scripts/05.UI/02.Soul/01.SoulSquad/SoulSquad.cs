@@ -52,4 +52,9 @@ public class SoulSquad : MonoBehaviour
     {
         soulSquadModel.UnEquipSoul(index);
     }
+
+    public bool SearchSoul(Soul soul)
+    {
+        return soulSquadModel.SearchSoul(soul);
+    }
 }

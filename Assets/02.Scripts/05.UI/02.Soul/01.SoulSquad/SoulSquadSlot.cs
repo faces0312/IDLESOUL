@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class SoulSquadSlot : MonoBehaviour
 {
+    [SerializeField] private Sprite emptySprite;
+
     private SoulSquad soulSquad;
     private SoulInventory soulInventory;
 
@@ -36,9 +38,8 @@ public class SoulSquadSlot : MonoBehaviour
         UIManager.Instance.ShowUI("SoulInventory");
     }
 
-    public void EquipSoul(Soul soul)
+    public void EquipSoul()
     {
-        GameManager.Instance.player.PlayerSouls.EquipSoul(soul.soulName, index);
         thumbnail.sprite = sprite;
     }
 
@@ -46,8 +47,7 @@ public class SoulSquadSlot : MonoBehaviour
     {
         soul = null;
         soulName = string.Empty;
-        thumbnail.sprite = null;
-        GameManager.Instance.player.PlayerSouls.UnEquipSoul(index);
+        thumbnail.sprite = emptySprite;
     }
 
     // TODO : 리팩토링 필요

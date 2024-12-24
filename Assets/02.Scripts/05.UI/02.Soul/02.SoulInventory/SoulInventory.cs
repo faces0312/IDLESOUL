@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SoulInventory : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class SoulInventory : MonoBehaviour
     private SoulInventoryController soulInventoryController;
     // TODO : 완성 후 SerializeField 제거
     [SerializeField] private SoulInventoryModel soulInventoryModel;
+
+    [SerializeField] private Button equipBtn;
+    [SerializeField] private Button unEquipBtn;
 
     private string uiKey;
 
@@ -37,6 +41,11 @@ public class SoulInventory : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        CheckInteractableBtn();
+    }
+
     private void Initialize()
     {
         for(int i = 0; i < Slots.transform.childCount; ++i)
@@ -46,6 +55,20 @@ public class SoulInventory : MonoBehaviour
                 slot.index = i;
                 soulInventoryModel.AddSlot(slot);
             }
+        }
+    }
+
+    private void CheckInteractableBtn()
+    {
+        if(SoulSquadSlot.soul == SoulSlot.soul)
+        {
+            equipBtn.interactable = false;
+            unEquipBtn.interactable = true;
+        }
+        else
+        {
+            equipBtn.interactable = true;
+            unEquipBtn.interactable = false;
         }
     }
 
@@ -59,13 +82,34 @@ public class SoulInventory : MonoBehaviour
         soulInventoryModel.UpdateThumbnail(SoulSquadSlot.soulName);
     }
 
+    public SoulSlot GetSlot(Soul soul)
+    {
+        for (int i = 0; i < Slots.transform.childCount; ++i)
+        {
+            if (Slots.transform.GetChild(i).TryGetComponent(out SoulSlot slot))
+            {
+                if(slot.soul == soul)
+                {
+                    return slot;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    // TODO : 장착 주체 수정
     public void OnEquipSoul()
     {
-        SoulSquadSlot.EquipSoul(SoulSlot.soul);
+        SoulSlot.EquipSlot();
+        GameManager.Instance.player.PlayerSouls.EquipSoul(SoulSlot.soulName, SoulSquadSlot.index);
+        SoulSquadSlot.EquipSoul();
     }
 
     public void OnUnEquipSoul()
     {
+        SoulSlot.UnEquipSlot();
+        GameManager.Instance.player.PlayerSouls.UnEquipSoul(SoulSquadSlot.index);
         SoulSquadSlot.UnEquipSoul();
     }
 }

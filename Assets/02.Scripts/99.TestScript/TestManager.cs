@@ -16,6 +16,7 @@ public class TestManager : SingletonDDOL<TestManager>
         GameManager.Instance.player.PlayerSouls.RegisterSoul("클라리스", new SoulMagician(11000));
         GameManager.Instance.player.PlayerSouls.RegisterSoul("플뢰르", new SoulKnight(11001));
         GameManager.Instance.player.PlayerSouls.RegisterSoul("루엔", new SoulArcher(11002));
+        GameManager.Instance.player.PlayerSouls.RegisterSoul("카르밀라", new SoulDummyRare(11003));
         GameManager.Instance.player.PlayerSouls.EquipSoul("클라리스", 0);
         GameManager.Instance.player.PlayerSouls.EquipSoul("플뢰르", 1);
         GameManager.Instance.player.PlayerSouls.EquipSoul("루엔", 2);
