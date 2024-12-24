@@ -15,6 +15,6 @@ public class PlayerInfoButton : MonoBehaviour
 
     private void OnClick()
     {
-        UIManager.Instance.ShowUI("PlayerInfo");
+        UIManager.Instance.ShowUI<PlayerInfoController>();
     }
 }

@@ -28,7 +28,7 @@ public class UIMenuButtonController : MonoBehaviour
 
         achievement.onClick.AddListener(() =>
         {
-            UIManager.Instance.ShowUI("Achievement");
+            UIManager.Instance.ShowUI<AchievementController>();
         });
 
         config.onClick.AddListener(() =>

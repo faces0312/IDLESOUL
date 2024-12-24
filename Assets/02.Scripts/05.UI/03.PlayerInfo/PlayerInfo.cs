@@ -1,56 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerInfo : MonoBehaviour
+public class PlayerInfo : UIBase<PlayerInfoModel,PlayerInfoView, PlayerInfoController>
 {
-    [SerializeField] private PlayerInfoView infoView;
-    private PlayerInfoController infoController;
-    private PlayerInfoModel infoModel;
-
-    private string uiKey;
-
-    private void Awake()
+    public override void Start()
     {
-        uiKey = "PlayerInfo";
+        model = new PlayerInfoModel();
+        base.Start();
 
-        if (infoController == null)
-        {
-            infoModel = new PlayerInfoModel();
-            infoController = new PlayerInfoController();
-            infoController.Initialize(infoView, infoModel);
-            UIManager.Instance.RegisterController(uiKey, infoController);
-        }
         gameObject.SetActive(false);
     }
 
     public void HpLevelUp(int amount)
     {
-        infoModel.HpLevelUp(amount);
+        model.HpLevelUp(amount);
     }
 
     public void AtkLevelUp(int amount)
     {
-        infoModel.AtkLevelUp(amount);
+        model.AtkLevelUp(amount);
     }
 
     public void DefLevelUp(int amount)
     {
-        infoModel.DefLevelUp(amount);
+        model.DefLevelUp(amount);
     }
 
     public void ReduceDmgLevelUp(int amount)
     {
-        infoModel.ReduceDmgLevelUp(amount);
+        model.ReduceDmgLevelUp(amount);
     }
 
     public void CritChanceLevelUp(int amount)
     {
-        infoModel.CritChanceLevelUp(amount);
+        model.CritChanceLevelUp(amount);
     }
 
     public void CritDmgLevelUp(int amount)
     {
-        infoModel.CritDmgLevelUp(amount);
+        model.CritDmgLevelUp(amount);
     }
 }

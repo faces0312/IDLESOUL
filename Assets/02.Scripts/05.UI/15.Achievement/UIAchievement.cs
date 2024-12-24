@@ -1,27 +1,12 @@
-﻿
-using UnityEngine;
+﻿//UI에 적용되는 도전과제 MVC 초기화 클래스
 
-//UI에 적용되는 도전과제 MVC 초기화 클래스
-
-public class UIAchievement : MonoBehaviour
+public class UIAchievement : UIBase<AchievementModel, AchievementView, AchievementController>
 {
-    public string UIKey; //"Achievement"
-
-    private AchievementModel model;
-    [SerializeField] private AchievementView view;
-    private AchievementController controller;
-
-    private void Start()
+    public override void Start()
     {
         //Model(Data) 초기화
         model = new AchievementModel();
-    
-        //컨트롤러  초기화 및 View 등록
-        controller = new AchievementController();
-        controller.Initialize(view, model);
-
-        //UI매니저에 UI 등록
-        UIManager.Instance.RegisterController(UIKey, controller);
+        base.Start();
         gameObject.SetActive(false);
     }
 }
