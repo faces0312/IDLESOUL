@@ -78,13 +78,13 @@ public class GameManager : SingletonDDOL<GameManager>
     {
         //SceneManager.LoadScene("GameScene_SMS");
         Destroy(gameOverPage);
-        UIManager.Instance.ShowUI("StageProgress");
+        UIManager.Instance.ShowUI<UIStageProgressBarController>();
         DataManager.Instance.SaveUserData(_player.UserData);
         //_player.transform.position = Vector3.up; //플레이어 위치 초기화
 
         //StageManager 초기화
         StageManager.Instance.Init();
-        UIManager.Instance.ShowUI("StageLabel");
+        UIManager.Instance.ShowUI<UIStageLabelController>();
 
         //EnemyManager 소환 재실행
         EnemyManager.Instance.EnemySpawnStop();

@@ -3252,8 +3252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099d1d04bdc9fba4386fbe76b06462f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIKey: StageLabel
-  views: {fileID: 4628640910089028027}
+  views:
+  - {fileID: 4628640910089028027}
 --- !u!114 &4628640910089028027
 MonoBehaviour:
   m_ObjectHideFlags: 0
