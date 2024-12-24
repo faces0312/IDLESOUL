@@ -25,7 +25,6 @@ public class Boss1 : BossEnemy
     }
     IEnumerator BossAppear()
     {
-        rb.isKinematic = true;
         yield return new WaitForSeconds(2.5f);
         rb.isKinematic = false;
     }

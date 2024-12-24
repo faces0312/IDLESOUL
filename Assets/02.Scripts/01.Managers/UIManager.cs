@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIManager : SingletonDDOL<UIManager>
 {
     public RectTransform uiLobbyCanvas;
+    public RectTransform popupCanvas;
     private Dictionary<string, UIController> controllers = new Dictionary<string, UIController>();
     private UIController activeController;
 
@@ -16,7 +17,7 @@ public class UIManager : SingletonDDOL<UIManager>
     public void Init()
     {
         uiLobbyCanvas = Instantiate(Resources.Load<RectTransform>("Prefabs/UI/UILobbyCanvas"));
-        Instantiate(Resources.Load<RectTransform>("Prefabs/UI/PopupCanvas_copy"));
+        popupCanvas = Instantiate(Resources.Load<RectTransform>("Prefabs/UI/PopupCanvas_copy"));
         Instantiate(Resources.Load<RectTransform>("Prefabs/UI/UIInventory"));
         Instantiate(Resources.Load<RectTransform>("Prefabs/UI/UIBossSummonAlarm"));
 

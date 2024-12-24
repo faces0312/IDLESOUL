@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 586053324291898465}
   - component: {fileID: 4138117114131282327}
   - component: {fileID: 3052255957930213953}
+  - component: {fileID: 3486430881550729134}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -278,9 +279,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHpSystem: {fileID: 0}
   rb: {fileID: 0}
-  TestDefaultAttackType: 0
+  DefaultAttackType: 0
   targetSearch: {fileID: 0}
   CamarePivot: {fileID: 0}
+  isAuto: 0
+  isJoyStick: 0
 --- !u!114 &3052255957930213953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,3 +301,18 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &3486430881550729134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7535809586996369510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d09ff4c9e4021384aad686c5a5619691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fSpeed: 5
+  inputThreashold: 0.5
+  curMovementInput: {x: 0, y: 0}

@@ -18,6 +18,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     void Awake()
     {
+        GameManager.Instance.joyStick = this;
         player = GameManager.Instance.player.GetComponent<Player>();
         m_fRadius = m_rectBack.rect.width * 0.5f;
     }
@@ -43,7 +44,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
                 player.playerStateMachine.CurrentState.FlipCharacter(true);
             }
         }
-        else if (player.isJoyStick == false && player.isAuto == false)
+        else if (player.isJoyStick == false && player.isAuto == false && player.isController == false)
         {
             player.rb.velocity = new Vector3(0, player.rb.velocity.y, 0);
         }
@@ -79,8 +80,11 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         m_rectJoystick.localPosition = Vector2.zero;
         player.isJoyStick = false;
         m_vecMove = Vector3.zero;
-        player.targetSearch.TargetClear();
-        player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
+        if (player.isController == false)
+        {
+            player.targetSearch.TargetClear();
+            player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
+        }            
     }
 
     public void AutoButtton()

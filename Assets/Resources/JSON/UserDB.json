@@ -19,7 +19,7 @@
       "CriticalRate": 1,
       "CriticalDamageLevel": 1,
       "CriticalDamage": 100,
-      "atkSpeed": 1.5,
+      "atkSpeed": 1.2,
       "moveSpeed": 5,
       "coolDown": 0,
       "Gold": 100,

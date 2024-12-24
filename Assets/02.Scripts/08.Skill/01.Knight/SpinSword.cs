@@ -58,8 +58,12 @@ public class SpinSword : MonoBehaviour
     {
         if (Utils.IsInLayerMask(other.gameObject.layer, layerMask))
         {
-            enemyDic.Add(other.GetInstanceID(),
-                StartCoroutine(CoroutineTickDamage(other.gameObject)));
+            if (!enemyDic.ContainsKey(other.GetInstanceID()))
+            {
+                enemyDic.Add(other.GetInstanceID(), StartCoroutine(CoroutineTickDamage(other.gameObject)));
+            }
+            /*enemyDic.Add(other.GetInstanceID(),
+                StartCoroutine(CoroutineTickDamage(other.gameObject)));*/
         }
     }
 

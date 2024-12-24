@@ -27,6 +27,8 @@ public class SpawnSoulButton : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
+
+        GameManager.Instance.spawnSoul = this;
     }
 
     void Start()
@@ -40,6 +42,15 @@ public class SpawnSoulButton : MonoBehaviour
 
         spawnCoolTime.IsSpawn = true;
         StartCoroutine(CoroutineCoolTime());
+        GameManager.Instance.playerController.OnSwitch += HandleSwitch;
+    }
+
+    private void HandleSwitch(int switchIndex)
+    {
+        if (switchIndex == index + 1) // index가 0부터 시작한다고 가정
+        {
+            OnClickSpawnSoulButton();
+        }
     }
 
     private void OnClickSpawnSoulButton()

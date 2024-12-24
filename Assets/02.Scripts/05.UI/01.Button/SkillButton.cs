@@ -35,6 +35,8 @@ public class SkillButton : MonoBehaviour
         cooldownImg.fillAmount = 0f;
         timeText.text = string.Empty;
         textBackground.SetActive(false);
+
+        GameManager.Instance.skillButton = this;
     }
 
     void Start()
@@ -45,9 +47,11 @@ public class SkillButton : MonoBehaviour
         {
             case SkillType.Default:
                 GameManager.Instance.player.PlayerSouls.OnUpdateDefaultSprite += UpdateSkillImage;
+                GameManager.Instance.playerController.OnSkill1 += OnClickSkillButton;
                 break;
             case SkillType.Ultimate:
                 GameManager.Instance.player.PlayerSouls.OnUpdateUltimateSprite += UpdateSkillImage;
+                GameManager.Instance.playerController.OnSkill2 += OnClickSkillButton;
                 break;
         }
 
@@ -74,7 +78,7 @@ public class SkillButton : MonoBehaviour
         cooldownImg.fillAmount = fillAmounts[CurSoulIndex];
     }
 
-    private void OnClickSkillButton()
+    public void OnClickSkillButton()
     {
         CurSoulIndex = GameManager.Instance.player.PlayerSouls.SpawnIndex;
 

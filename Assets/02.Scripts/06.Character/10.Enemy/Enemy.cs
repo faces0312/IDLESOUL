@@ -113,6 +113,8 @@ public abstract class Enemy : BaseCharacter
     {
         //OnEventTargetRemove?.Invoke();
         //OnDieEvent?.Invoke();
+        if (attackType == AttackType.Melee)
+            slash.SetActive(false);
         gameObject.SetActive(false);
         AchieveEvent achieveEvent = new AchieveEvent(Enums.AchievementType.KillMonster,Enums.ActionType.Kill, 1);
         EventManager.Instance.Publish<AchieveEvent>(Enums.Channel.Achievement, achieveEvent);

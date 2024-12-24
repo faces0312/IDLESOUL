@@ -37,12 +37,12 @@ public class PlayerMoveState : PlayerBaseState
             if (stateMachine._Player.DefaultAttackType && targetDist <= stateMachine.MeleeAttackState.defaultAttackRange)
             {
                 //근접 공격 상태로 전환
-                stateMachine.ChangeState(stateMachine.MeleeAttackState);
+                stateMachine.ChangeState(stateMachine.IdleState);
             }
             else if (!stateMachine._Player.DefaultAttackType && targetDist <= stateMachine.ShotAttackState.defaultAttackRange)
             {
                 //원거리 공격 상태로 전환
-                stateMachine.ChangeState(stateMachine.ShotAttackState);
+                stateMachine.ChangeState(stateMachine.IdleState);
             }
         }
         else //추격할 타겟이 사라지면 대기 상태로 전환

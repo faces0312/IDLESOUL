@@ -13,6 +13,11 @@ public class GameManager : SingletonDDOL<GameManager>
         get { return _player; }
         set { _player = value; }
     }
+    //플레이어 이동
+    public PlayerController playerController;
+    public JoyStick joyStick;
+    public SkillButton skillButton;
+    public SpawnSoulButton spawnSoul;
 
     public CameraController cameraController;
 
@@ -20,6 +25,7 @@ public class GameManager : SingletonDDOL<GameManager>
     public bool IsBoss;//현재 Boss가 필드에 있는지를 체크하는 변수 
     public bool isTryBoss;//보스를 트라이 한적이 있는지
     GameObject gameOverPage;
+    private bool isGameOver = false;
 
     public event Action OnEventBossSummon;
     public event Action OnGameOverEvent;
@@ -76,6 +82,7 @@ public class GameManager : SingletonDDOL<GameManager>
 
     public void NextStage()
     {
+        SetGameOverFlag(false);
         //SceneManager.LoadScene("GameScene_SMS");
         Destroy(gameOverPage);
         UIManager.Instance.ShowUI<UIStageProgressBarController>();
@@ -132,14 +139,44 @@ public class GameManager : SingletonDDOL<GameManager>
         //이벤트 등록을 통해
         //GameManager.Instance.OnGameOverEvent += 게임종료페이지를 선언할 수 있음
         OnGameOverEvent?.Invoke();
+        SetGameOverFlag(true);
 
         //Utils.fader.FadeTo(0f, 1f, 2.0f).OnComplete(Utils.fader.Release);
-        gameOverPage = Instantiate(Resources.Load<GameObject>("Prefabs/UI/GameOverPage"), UIManager.Instance.uiLobbyCanvas);
+        gameOverPage = Instantiate(Resources.Load<GameObject>("Prefabs/UI/GameOverPage"), UIManager.Instance.popupCanvas);
         StageManager.Instance.StageProgressModel.CurCountDataClear();
 
         IsBoss = false;
         isTryBoss = false; // MVP 이후에 보스 트라이 버튼 따로 구현해야됨
         Invoke("NextStage", 3.0f);
+    }
+
+    public void SetGameOverFlag(bool flag)
+    {
+        isGameOver = flag;
+        if (isGameOver)
+        {
+            DisableUILobbyCanvas();
+        }
+        else
+        {
+            EnableUILobbyCanvas();
+        }
+    }
+
+    private void DisableUILobbyCanvas()
+    {
+        if (UIManager.Instance != null && UIManager.Instance.uiLobbyCanvas != null)
+        {
+            UIManager.Instance.uiLobbyCanvas.gameObject.SetActive(false);
+        }
+    }
+
+    private void EnableUILobbyCanvas()
+    {
+        if (UIManager.Instance != null && UIManager.Instance.uiLobbyCanvas != null)
+        {
+            UIManager.Instance.uiLobbyCanvas.gameObject.SetActive(true);
+        }
     }
 
     public void Test()
