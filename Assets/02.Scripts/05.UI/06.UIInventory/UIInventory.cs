@@ -7,6 +7,8 @@ public class UIInventory : UIBase<InventoryModel, InventoryView, InventoryContro
 {
     public override void Start()
     {
+        //Model(Data) 초기화
+        model = new InventoryModel();
         base.Start();
         
         gameObject.SetActive(false);

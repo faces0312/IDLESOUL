@@ -2635,8 +2635,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f938ed6f6c290564383de13bf6eccee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIKey: StageProgress
-  view: {fileID: 3471488489607216815}
+  views:
+  - {fileID: 3471488489607216815}
 --- !u!114 &3471488489607216815
 MonoBehaviour:
   m_ObjectHideFlags: 0

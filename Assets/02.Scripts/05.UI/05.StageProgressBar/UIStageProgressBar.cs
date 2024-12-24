@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.UI;
@@ -8,21 +9,25 @@ using UnityEngine.UI;
 //View : UIStageProgressBarView
 //Controller : UIStageProgressBarController
 
-public class UIStageProgressBar : MonoBehaviour
+
+
+public class UIStageProgressBar : UIBase<UIStageProgressBarModel, UIStageProgressBarView, UIStageProgressBarController>
 {
-    public string UIKey;
+    //public string UIKey;
 
-    private UIStageProgressBarModel model;
-    [SerializeField]private UIStageProgressBarView view;
-    private UIStageProgressBarController controller;
+    //private UIStageProgressBarModel model;
+    //[SerializeField]private UIStageProgressBarView view;
+    //private UIStageProgressBarController controller;
 
-    private void Start()
+    public override void Start()
     {
+        //Model(Data) 초기화
         model = StageManager.Instance.StageProgressModel;
-        controller = new UIStageProgressBarController();
-        controller.Initialize(view, model);
+        base.Start();
+        //controller = new UIStageProgressBarController();
+        //controller.Initialize(view, model);
 
-        UIManager.Instance.RegisterController(UIKey, controller);
+        //UIManager.Instance.RegisterController(UIKey, controller);
     }
 
 }

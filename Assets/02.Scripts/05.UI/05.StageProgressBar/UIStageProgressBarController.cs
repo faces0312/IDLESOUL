@@ -13,13 +13,13 @@ public class UIStageProgressBarController : UIController
 
     public override void Initialize(IUIBase view, UIModel model)
     {
-        base.Initialize(view, model);
-
         stageProgressBarModel = model as UIStageProgressBarModel;
         stageProgressBarView = view as UIStageProgressBarView;
 
         stageProgressBarModel.OnEventCurEnemyAddCount += UpdateView;
         stageProgressBarModel.OnEventCurEnemyAddCount += BossTriggerCheck;
+
+        base.Initialize(view, model);
     }
 
     public override void OnShow()
