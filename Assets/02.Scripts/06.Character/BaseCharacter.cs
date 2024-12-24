@@ -11,6 +11,7 @@ public abstract class BaseCharacter : MonoBehaviour, ITakeDamageAble
     public Rigidbody rb;
 
     public BaseHpSystem BaseHpSystem { get => baseHpSystem; }
+    public StatHandler StatHandler { get => statHandler;  }
 
     protected virtual void Awake()
     {

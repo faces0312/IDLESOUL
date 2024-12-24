@@ -80,8 +80,8 @@ public class BaseProjectile : MonoBehaviour
         //TODO :: 무적시간이 아닐때에도 조건에 추가해야됨
         if (damageable != null)
         {
+            //방어력 관련 적용 시킬것 
             damageable.TakeDamage(Damage);//매직넘버 (플레이어나 Enemy의 Stat값을 받아와서 적용 시켜야됨)
-
         }
     }
 

@@ -5,7 +5,7 @@ using ScottGarland;
 
 public class PlayerProjectile : BaseProjectile
 {
-    [SerializeField] private float value = 0.1f; // 해당 투사체의 계수
+    [SerializeField] private float value = 1.0f; // 해당 투사체의 계수
 
     protected override void Start()
     {
@@ -39,9 +39,10 @@ public class PlayerProjectile : BaseProjectile
     {
         if (TargetLayer == ((1 << other.gameObject.layer) | TargetLayer))
         {
-            int Atk = BigInteger.ToInt32(GameManager.Instance.player.UserData.stat.atk);
+            uint Atk = BigInteger.ToUInt32(GameManager.Instance.player.StatHandler.CurrentStat.atk);
 
-            //Debug.Log($"공격이 {other.gameObject.name}에 충돌");
+            //데미지 오차 범위 만들것
+
             DamageCaculate(other.gameObject, Atk * value);
             KnockBackCaculate(other.gameObject, 0.0f);
             base.ProjectileCollison(other);
@@ -49,4 +50,5 @@ public class PlayerProjectile : BaseProjectile
             ObjectPoolManager.Instance.GetPool(Const.PLAYER_PROJECTILE_ENERGYBOLT_KEY, Const.POOL_KEY_PLAYERPROJECTILE).GetObject();
         }
     }
+
 }

@@ -33,7 +33,7 @@ public abstract class Enemy : BaseCharacter
     public Slider healthBar;
     public float currentHealth;
 
-    public StatHandler StatHandler { get => base.statHandler; set => base.statHandler = value; }
+    //public StatHandler StatHandler { get => base.statHandler; set => base.statHandler = value; }
 
     public event Action OnDieEvent;
     public static event Action OnEventTargetRemove;

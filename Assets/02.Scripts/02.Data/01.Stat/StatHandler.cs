@@ -65,24 +65,22 @@ public class StatHandler
         }
     }
 
-    private void UpdateStats(int level)
+    public void UpdateStats()
     {
         // TODO : 수치 적용 방법 => 현재는 레벨을 곱해줌
         // Enemy 는 Stage에 비례해서 수치 적용 => level과 stage 배율 다르면 오버로딩
 
-        currentStat.health = BigInteger.Multiply(int.Parse(baseStat.health.ToString()), level);
-        currentStat.maxHealth = currentStat.health;
-        currentStat.atk = BigInteger.Multiply(int.Parse(baseStat.atk.ToString()), level);
-        currentStat.def = BigInteger.Multiply(int.Parse(baseStat.def.ToString()), level);
+        //currentStat.maxHealth = BigInteger.Multiply(int.Parse(currentStat.maxHealth.ToString()), currentStat.MaxHealthLevel * 3);
+        currentStat.maxHealth = BigInteger.Add(int.Parse(currentStat.maxHealth.ToString()), currentStat.MaxHealthLevel * 100);
+        //currentStat.maxHealth = currentStat.health;
+        currentStat.atk = BigInteger.Add(int.Parse(currentStat.atk.ToString()), currentStat.atk * 30);
+        currentStat.def = BigInteger.Add(int.Parse(currentStat.def.ToString()), currentStat.def * 30);
 
-        currentStat.moveSpeed = baseStat.moveSpeed * level;
-        currentStat.atkSpeed = baseStat.atkSpeed * level;
+        currentStat.reduceDamage = currentStat.reduceDamage * currentStat.ReduceDamageLevel * 5;
 
-        currentStat.reduceDamage = baseStat.reduceDamage * level;
-
-        currentStat.critChance = baseStat.critChance * level;
-        currentStat.critDamage = baseStat.critDamage * level;
-        currentStat.coolDown = baseStat.coolDown * level;   // TODO : 0 일때 처리
+        currentStat.critChance = currentStat.critChance * currentStat.CriticalRateLevel * 1;
+        currentStat.critDamage = currentStat.critDamage * currentStat.CriticalDamageLevel * 1;
+        currentStat.coolDown = baseStat.coolDown;   // TODO : 0 일때 처리
     }
 
     private void UpdateSoulStats()
@@ -162,28 +160,34 @@ public class StatHandler
         {
             case Status.Hp:
                 currentStat.MaxHealthLevel += level;
-                currentStat.health = BigInteger.Multiply(baseStat.health, currentStat.MaxHealthLevel);
-                currentStat.maxHealth = currentStat.health;
+                //currentStat.health = BigInteger.Multiply(baseStat.health, currentStat.MaxHealthLevel);
+                //currentStat.maxHealth = currentStat.health;
+                currentStat.maxHealth = BigInteger.Add(int.Parse(currentStat.maxHealth.ToString()), currentStat.MaxHealthLevel * 100);
                 break;
             case Status.Atk:
                 currentStat.AtkLevel += level;
-                currentStat.atk = BigInteger.Multiply(baseStat.atk, currentStat.AtkLevel);
+                //currentStat.atk = BigInteger.Multiply(baseStat.atk, currentStat.AtkLevel);
+                currentStat.atk = BigInteger.Add(int.Parse(currentStat.atk.ToString()), currentStat.AtkLevel * 3000);
                 break;
             case Status.Def:
                 currentStat.DefLevel += level;
-                currentStat.def = BigInteger.Multiply(baseStat.def, currentStat.DefLevel);
+                //currentStat.def = BigInteger.Multiply(baseStat.def, currentStat.DefLevel);
+                currentStat.def = BigInteger.Add(int.Parse(currentStat.def.ToString()), currentStat.DefLevel * 30);
                 break;
             case Status.ReduceDmg:
                 currentStat.ReduceDamageLevel += level;
-                currentStat.reduceDamage = baseStat.reduceDamage * currentStat.ReduceDamageLevel;
+                //currentStat.reduceDamage = baseStat.reduceDamage * currentStat.ReduceDamageLevel;
+                currentStat.reduceDamage = currentStat.reduceDamage * currentStat.ReduceDamageLevel * 5;
                 break;
             case Status.CritChance:
                 currentStat.CriticalRateLevel += level;
-                currentStat.critChance = baseStat.critChance * currentStat.CriticalRateLevel;
+                //currentStat.critChance = baseStat.critChance * currentStat.CriticalRateLevel;
+                currentStat.critChance = currentStat.critChance * currentStat.CriticalRateLevel * 1;
                 break;
             case Status.CritDmg:
                 currentStat.CriticalDamageLevel += level;
-                currentStat.critDamage = baseStat.critDamage * currentStat.CriticalDamageLevel;
+                //currentStat.critDamage = baseStat.critDamage * currentStat.CriticalDamageLevel;
+                currentStat.critDamage = currentStat.critDamage * currentStat.CriticalDamageLevel * 1;
                 break;
         }
     }

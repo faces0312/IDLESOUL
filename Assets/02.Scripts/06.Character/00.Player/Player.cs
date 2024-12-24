@@ -131,6 +131,7 @@ public class Player : BaseCharacter
     public void LevelUp(int level, Status status)
     {
         statHandler.LevelUp(level, status);
+        UIManager.Instance.ShowUI<UIPlayerHPDisplayController>();
     }
 
     public void RegisterSoul()

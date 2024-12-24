@@ -171,7 +171,7 @@
       "Attack": 1000,
       "AttackSpeed": 2,
       "AttackDistance": 1,
-      "Defence": 0,
+      "Defence": 20,
       "MoveSpeed": 1,
       "Health": 1000,
       "CritChance": 1,
