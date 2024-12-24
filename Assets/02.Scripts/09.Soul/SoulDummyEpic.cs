@@ -11,8 +11,8 @@ public class SoulDummyEpic : Soul
     protected override void InitSkills()
     {
         attackType = AttackType.Melee;
-        skills[(int)SkillType.Passive] = null;
-        skills[(int)SkillType.Default] = null;
-        skills[(int)SkillType.Ultimate] = null;
+        skills[(int)SkillType.Passive] = new KnightPassiveSkill(12003);
+        skills[(int)SkillType.Default] = new KnightDefaultSkill(12004);
+        skills[(int)SkillType.Ultimate] = new KnightUltimateSkill(12005);
     }
 }
