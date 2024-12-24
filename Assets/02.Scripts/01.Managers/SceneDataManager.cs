@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class SceneDataManager : SingletonDDOL<SceneDataManager>
 {
     public string NextScene;
-    public float Modifier;
 
     protected override void Awake()
     {
