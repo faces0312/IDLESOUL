@@ -62,10 +62,9 @@ public class AchievementManager : SingletonDDOL<AchievementManager>
 
     public IEnumerator CoAlarm(AchieveData data)
     {
-        AchieveAlarmController controller = UIManager.Instance.GetController("AchieveAlarm") as AchieveAlarmController;
-        controller.AchieveAlarmView.SetContent(data);
-        UIManager.Instance.ShowUI("AchieveAlarm");
+        UIManager.Instance.GetController<AchieveAlarmController>().AchieveAlarmView.SetContent(data);
+        UIManager.Instance.ShowUI<AchieveAlarmController>();
         yield return Wait.Wait3s;
-        UIManager.Instance.HideUI("AchieveAlarm");
+        UIManager.Instance.HideUI<AchieveAlarmController>();
     }
 }

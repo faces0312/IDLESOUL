@@ -33,7 +33,7 @@ public class UIMenuButtonController : MonoBehaviour
 
         config.onClick.AddListener(() =>
         {
-            UIManager.Instance.ShowUI("ConfigController");
+            UIManager.Instance.ShowUI<ConfigController>();
         });
 
         exitGame.onClick.AddListener(() =>
