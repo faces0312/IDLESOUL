@@ -37,12 +37,14 @@ public class UIManager : SingletonDDOL<UIManager>
 
     public void ShowUI(string key)
     {
-        if(controllers.TryGetValue(key, out UIController controller))
+        if (controllers.TryGetValue(key, out UIController controller))
         {
             activeController = controller;
             activeController.OnShow();
         }
     }
+
+
 
     public void HideUI(string key)
     {
@@ -66,6 +68,43 @@ public class UIManager : SingletonDDOL<UIManager>
         if (controllers.TryGetValue(key, out UIController controller))
         {
             return controller;
+        }
+
+        return null;
+    }
+
+    //Key값을 컨트롤러 클래스명으로 교체 후 , 제네릭을 사용 (문자열 누락 방지를 하기위해)
+    //20241223 추가
+
+    public void ShowUI<T>() where T : UIController
+    {
+        if (controllers.ContainsKey(typeof(T).ToString()))
+        {
+            activeController = controllers[typeof(T).ToString()] as T;
+            activeController.OnShow();
+        }
+    }
+    public void HideUI<T>() where T : UIController
+    {
+        if (controllers.ContainsKey(typeof(T).ToString()))
+        {
+            activeController = controllers[typeof(T).ToString()] as T;
+            activeController.OnHide();
+        }
+    }
+    public void UpdateUI<T>() where T : UIController
+    {
+        if (controllers.ContainsKey(typeof(T).ToString()))
+        {
+            controllers[typeof(T).ToString()].UpdateView();
+        }
+    }
+
+    public T GetController<T>(string key) where T : UIController
+    {
+        if (controllers.ContainsKey(typeof(T).ToString()))
+        {
+            return controllers[typeof(T).ToString()] as T;
         }
 
         return null;

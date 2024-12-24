@@ -10,8 +10,6 @@ public class InventoryView : MonoBehaviour, IUIBase
     [SerializeField] private ItemSlot itemSlotPrefab;
     [SerializeField] private RectTransform itemSlotBoundary;
 
-    public InventoryController Controller;
-
     private List<ItemSlot> itemSlots = new List<ItemSlot>();
 
     public void Initialize()
@@ -20,12 +18,12 @@ public class InventoryView : MonoBehaviour, IUIBase
         {
             itemSlotPrefab = Resources.Load<ItemSlot>("Prefabs/Item/ItemSlot");
         }
-
-        for (int i = 0; i < Controller.Model.Items.Count; i++)
+       
+        for (int i = 0; i < GameManager.Instance.player.Inventory.Items.Count; i++)
         {
             itemSlots.Add(Instantiate(itemSlotPrefab, itemSlotParent));
 
-            itemSlots[i].Initiliaze(Controller.Model.Items[i]);
+            itemSlots[i].Initiliaze(GameManager.Instance.player.Inventory.Items[i]);
         }
     }
 
@@ -35,7 +33,7 @@ public class InventoryView : MonoBehaviour, IUIBase
         size.y = 135 * ((itemSlots.Count / 4) + 1);
         itemSlotBoundary.sizeDelta = size;
 
-        for (int i = 0; i < Controller.Model.Items.Count; i++)
+        for (int i = 0; i < GameManager.Instance.player.Inventory.Items.Count; i++)
         {
             itemSlots[i].UIUpdate();    
         }

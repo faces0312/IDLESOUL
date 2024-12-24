@@ -15,6 +15,7 @@ public class InventoryButton : MonoBehaviour
 
     private void OnClick()
     {
-        UIManager.Instance.ShowUI("Inventory");
+        //UIManager.Instance.ShowUI("Inventory");
+        UIManager.Instance.ShowUI<InventoryController>();
     }
 }

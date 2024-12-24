@@ -9,6 +9,11 @@ public class InventoryModel : UIModel
 {
     public List<Item> Items = new List<Item>(); // 소지하고있는 아이템 리스트 
 
+    public InventoryModel()
+    {
+        Initilaize();
+    }
+
     public void Initilaize()
     {
         foreach (ItemDB Data in DataManager.Instance.ItemDB.ItemsDict.Values)
@@ -17,6 +22,8 @@ public class InventoryModel : UIModel
             itemObj.Initialize(Data);
             Items.Add(itemObj);
         }
+
+        GameManager.Instance.player.Inventory = this;
     }
 
     public void AddItem(int key)

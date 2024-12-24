@@ -29,7 +29,7 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
     private void PlayerObjectPoolSetting()
     {
         ObjectPool playerProjectilePool = new ObjectPool(Const.POOL_KEY_PLAYERPROJECTILE, Const.PLAYER_INITIAL_POOL_SIZE, Const.PLAYER_PROJECTILE_ENERGYBOLT_PATH);
-        ObjectPoolManager.Instance.AddPool(Const.PLAYER_PROJECTILE_ENERGYBOLT_KEY, playerProjectilePool);
+        AddPool(Const.PLAYER_PROJECTILE_ENERGYBOLT_KEY, playerProjectilePool);
     }
 
     private void EnemyObjectPoolSetting()
@@ -105,6 +105,27 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
     /// <param name="pool">추가할 오브젝트 풀</param>
     public void AddPool(string id, ObjectPool pool)
     {
+        if (!poolDict.ContainsKey(id))
+        {
+            List<ObjectPool> objPool = new List<ObjectPool>();
+            objPool.Add(pool);
+            poolDict.Add(id, objPool);
+        }
+        else
+        {
+            poolDict[id].Add(pool);
+        }
+    }
+
+    /// <summary>
+    /// 딕셔너리[id]에 풀을 추가, 없다면 생성 - 제네릭으로 수정 중 
+    /// </summary>
+    /// <param name="id">딕셔너리 키</param>
+    /// <param name="pool">추가할 오브젝트 풀</param>
+    public void AddPool<T>(ObjectPool pool)
+    {
+        string id = typeof(T).ToString();
+
         if (!poolDict.ContainsKey(id))
         {
             List<ObjectPool> objPool = new List<ObjectPool>();

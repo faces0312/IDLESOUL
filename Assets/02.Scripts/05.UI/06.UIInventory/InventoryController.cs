@@ -9,6 +9,7 @@ public class InventoryController : UIController
     public InventoryModel Model { get => inventoryModel; set => inventoryModel = value; }
     public InventoryView View { get => inventoryView; set => inventoryView = value; }
 
+
     public override void Initialize(IUIBase view, UIModel model)
     {
         inventoryModel = model as InventoryModel;
