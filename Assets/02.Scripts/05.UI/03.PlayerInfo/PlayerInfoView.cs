@@ -26,6 +26,9 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
     [Header("Level")]
     [SerializeField] private TextMeshProUGUI[] levelTexts;
 
+    [Header("Cost")]
+    [SerializeField] private TextMeshProUGUI[] costTexts;
+
     private StatHandler playerStatHandler;
 
     public void Initialize()
@@ -63,36 +66,42 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
 
     public void UpdateHp()
     {
+        costTexts[(int)Status.Hp].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.Hp))}";
         upgradeLevelText[(int)Status.Hp].text = $"체력 Lv. {playerStatHandler.CurrentStat.MaxHealthLevel}";
         statusText[(int)StatusType.Hp].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.maxHealth);
     }
 
     public void UpdateAtk()
     {
+        costTexts[(int)Status.Atk].text = $" {Utils.FormatBigInteger(Utils.UpgradeCost(Status.Atk))}";
         upgradeLevelText[(int)Status.Atk].text = $"공격력 Lv. {playerStatHandler.CurrentStat.AtkLevel}";
         statusText[(int)StatusType.Atk].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.atk);
     }
 
     public void UpdateDef()
     {
+        costTexts[(int)Status.Def].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.Def))}";
         upgradeLevelText[(int)Status.Def].text = $"방어력 Lv. {playerStatHandler.CurrentStat.DefLevel}";
         statusText[(int)StatusType.Def].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.def);
     }
 
     public void UpdateReduceDmg()
     {
+        costTexts[(int)Status.ReduceDmg].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.ReduceDmg))}";
         upgradeLevelText[(int)Status.ReduceDmg].text = $"피해 감소 Lv. {playerStatHandler.CurrentStat.ReduceDamageLevel}";
         statusText[(int)StatusType.ReduceDamage].text = playerStatHandler.CurrentStat.reduceDamage.ToString() + "%";
     }
 
     public void UpdateCritChance()
     {
+        costTexts[(int)Status.CritChance].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.CritChance))}";
         upgradeLevelText[(int)Status.CritChance].text = $"치명타 확률 Lv. {playerStatHandler.CurrentStat.CriticalRateLevel}";
         statusText[(int)StatusType.CritChance].text = $"{playerStatHandler.CurrentStat.critChance}%";
     }
 
     public void UpdateCritDmg()
     {
+        costTexts[(int)Status.CritDmg].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.CritDmg))}";
         upgradeLevelText[(int)Status.CritDmg].text = $"치명타 피해 Lv. {playerStatHandler.CurrentStat.CriticalDamageLevel}";
         statusText[(int)StatusType.CritDamage].text = $"{playerStatHandler.CurrentStat.critDamage}%";
     }
@@ -116,5 +125,12 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
         upgradeLevelText[(int)Status.ReduceDmg].text = $"피해 감소 Lv. {playerStatHandler.CurrentStat.ReduceDamageLevel}";
         upgradeLevelText[(int)Status.CritChance].text = $"치명타 확률 Lv. {playerStatHandler.CurrentStat.CriticalRateLevel}";
         upgradeLevelText[(int)Status.CritDmg].text = $"치명타 피해 Lv. {playerStatHandler.CurrentStat.CriticalDamageLevel}";
+
+        costTexts[(int)Status.Hp].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.Hp))}";
+        costTexts[(int)Status.Atk].text = $" {Utils.FormatBigInteger(Utils.UpgradeCost(Status.Atk))}";
+        costTexts[(int)Status.Def].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.Def))}";
+        costTexts[(int)Status.ReduceDmg].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.ReduceDmg))}";
+        costTexts[(int)Status.CritChance].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.CritChance))}";
+        costTexts[(int)Status.CritDmg].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.CritDmg))}";
     }
 }

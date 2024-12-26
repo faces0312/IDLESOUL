@@ -18,6 +18,7 @@ public class PlayerSouls : MonoBehaviour
 
     public event Action<Sprite> OnUpdateDefaultSprite;
     public event Action<Sprite> OnUpdateUltimateSprite;
+    public event Action OnUpdateSoulIcon;
 
     public int SpawnIndex { get => spawnIndex; }
     public Soul CurrentSoul { get; private set; }
@@ -75,6 +76,8 @@ public class PlayerSouls : MonoBehaviour
             // 소울스쿼드에 등록
             SoulSquad.EquipSoul(index, soul);
         }
+
+        OnUpdateSoulIcon?.Invoke();
     }
 
     // 소울 해제
@@ -86,6 +89,8 @@ public class PlayerSouls : MonoBehaviour
             soulSlot[index] = null;
             SoulSquad.UnEquipSoul(index);
         }
+
+        OnUpdateSoulIcon?.Invoke();
     }
 
     // 소울 스왑
@@ -93,6 +98,9 @@ public class PlayerSouls : MonoBehaviour
     {
         // 현재 소환중인 소울과 같은 경우
         if (spawnIndex == index) return;
+
+        // TODO : 스킬 스왑 시, 슬롯 클릭 조건 수정
+        //if (CurrentSoul == soulSlot[index]) return;
 
         // 소환을 해제하는 로직
         CurrentSoul = null;

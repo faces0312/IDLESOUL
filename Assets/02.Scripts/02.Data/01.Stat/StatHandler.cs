@@ -25,14 +25,14 @@ public class StatHandler
     private List<Stat> additionalStats = new List<Stat>();
     public Stat CurrentStat { get { return currentStat; } }
 
-    public StatHandler(StatType type, int key = 0)
+    public StatHandler(StatType type, int key = 0 , UserData userData = null)
     {
         this.type = type;
 
         switch (type)
         {
             case StatType.Player:
-                baseStat = StatConverter.PlayerStatConvert(key);
+                baseStat = StatConverter.PlayerStatConvert(userData);
                 break;
             case StatType.Soul:
                 baseStat = StatConverter.SoulStatConvert(key);

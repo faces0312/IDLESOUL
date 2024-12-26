@@ -21,6 +21,7 @@ public class DataManager : SingletonDDOL<DataManager>
     private SkillDBLoader skillDB;
     private UserDBLoader userDB;
     private AchieveDBLoader achieveDB;
+    private StatUpgradeDBLoader statUpgradeDB;
 
     public EnemyDBLoader EnemyDB { get => enemyDB; }
     public ItemDBLoader ItemDB { get => itemDB; }
@@ -30,9 +31,11 @@ public class DataManager : SingletonDDOL<DataManager>
     public SkillDBLoader SkillDB { get => skillDB; }
     public UserDBLoader UserDB { get => userDB;}
     public AchieveDBLoader AchieveDB { get => achieveDB; }
+    public StatUpgradeDBLoader StatUpgradeDB { get => statUpgradeDB; }
 
     private UserDB userData;
     public UserDB UserData { get => userData; set => userData = value; }
+   
 
     protected override void Awake()
     {
@@ -46,6 +49,7 @@ public class DataManager : SingletonDDOL<DataManager>
         skillDB = new SkillDBLoader(Const.JsonSkillDBPath);
         userDB = new UserDBLoader(Const.JsonUserDBPath);
         achieveDB = new AchieveDBLoader(Const.JsonAchieveDBPath);
+        statUpgradeDB = new StatUpgradeDBLoader(Const.JsonStatUpgradeDBPath);
     }
 
     public void Init()

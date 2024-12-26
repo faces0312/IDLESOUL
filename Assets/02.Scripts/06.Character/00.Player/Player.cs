@@ -39,6 +39,13 @@ public class UserData
         stat.critDamage = userDB.CriticalDamage;
         stat.critChance = userDB.CriticalRate;
         stat.coolDown = userDB.coolDown;
+
+        stat.MaxHealthLevel = userDB.MaxHealthLevel;
+        stat.AtkLevel = userDB.AtkLevel;
+        stat.DefLevel = userDB.DefLevel;
+        stat.ReduceDamageLevel = userDB.ReduceDamageLevel;
+        stat.CriticalRateLevel = userDB.CriticalRateLevel;
+        stat.CriticalDamageLevel = userDB.CriticalDamageLevel;
     }
 
 }
@@ -73,7 +80,6 @@ public class Player : BaseCharacter
 
     public PlayerAnimationController PlayerAnimationController { get => playerAnimationController; }
     public PlayerSouls PlayerSouls { get => playerSouls; }
-    public StatHandler StatHandler { get => base.statHandler; set => base.statHandler = value; }
     public UserData UserData { get => userData;  }
     public Item IsEquipItem { get => equipItem;  }
 
@@ -172,18 +178,18 @@ public class Player : BaseCharacter
         userData = new UserData(DataManager.Instance.UserDB.GetByKey(TestID));
         DataManager.Instance.SaveUserData(userData);
 
-        statHandler = new StatHandler(StatType.Player);
-        statHandler.CurrentStat.iD = userData.UID;
-        statHandler.CurrentStat.health = userData.stat.health;
-        statHandler.CurrentStat.maxHealth = userData.stat.maxHealth;
-        statHandler.CurrentStat.atk = userData.stat.atk;
-        statHandler.CurrentStat.def = userData.stat.def;
-        statHandler.CurrentStat.moveSpeed = userData.stat.moveSpeed;
-        statHandler.CurrentStat.atkSpeed = userData.stat.atkSpeed;
-        statHandler.CurrentStat.reduceDamage = userData.stat.reduceDamage;
-        statHandler.CurrentStat.critChance = userData.stat.critChance;
-        statHandler.CurrentStat.critDamage = userData.stat.critDamage;
-        statHandler.CurrentStat.coolDown = userData.stat.coolDown;
+        statHandler = new StatHandler(StatType.Player,0,userData);
+        //statHandler.CurrentStat.iD = userData.UID;
+        //statHandler.CurrentStat.health = userData.stat.health;
+        //statHandler.CurrentStat.maxHealth = userData.stat.maxHealth;
+        //statHandler.CurrentStat.atk = userData.stat.atk;
+        //statHandler.CurrentStat.def = userData.stat.def;
+        //statHandler.CurrentStat.moveSpeed = userData.stat.moveSpeed;
+        //statHandler.CurrentStat.atkSpeed = userData.stat.atkSpeed;
+        //statHandler.CurrentStat.reduceDamage = userData.stat.reduceDamage;
+        //statHandler.CurrentStat.critChance = userData.stat.critChance;
+        //statHandler.CurrentStat.critDamage = userData.stat.critDamage;
+        //statHandler.CurrentStat.coolDown = userData.stat.coolDown;
 
         //Controller(FSM ¼¼ÆÃ)
         playerStateMachine.ChangeState(playerStateMachine.IdleState);

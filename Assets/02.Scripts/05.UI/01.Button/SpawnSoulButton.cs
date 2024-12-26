@@ -24,10 +24,14 @@ public class SpawnSoulButton : MonoBehaviour
 
     private SpawnCoolTime spawnCoolTime;
 
+    private Color iconAlpha;
+    private Color iconNonAlpha;
+
     private void Awake()
     {
         button = GetComponent<Button>();
-
+        iconAlpha = soulImg.color;
+        iconNonAlpha = new Color(iconAlpha.r, iconAlpha.g, iconAlpha.b, 0f);
         GameManager.Instance.spawnSoul = this;
     }
 
@@ -43,6 +47,9 @@ public class SpawnSoulButton : MonoBehaviour
         spawnCoolTime.IsSpawn = true;
         StartCoroutine(CoroutineCoolTime());
         GameManager.Instance.playerController.OnSwitch += HandleSwitch;
+
+        GameManager.Instance.player.PlayerSouls.OnUpdateSoulIcon += UpdateIcon;
+        UpdateIcon();
     }
 
     private void HandleSwitch(int switchIndex)
@@ -89,5 +96,19 @@ public class SpawnSoulButton : MonoBehaviour
         timeText.text = string.Empty;
         spawnCoolTime.IsSpawn = false;
         textBackground.SetActive(isSpawn);
+    }
+
+    public void UpdateIcon()
+    {
+        // TODO : 소울 아이콘 변경
+        if (GameManager.Instance.player.PlayerSouls.SoulSlot[index] != null)
+        {
+            soulImg.sprite = GameManager.Instance.player.PlayerSouls.SoulSlot[index].icon;
+            soulImg.color = iconAlpha;
+        }
+        else
+        {
+            soulImg.color = iconNonAlpha;
+        }
     }
 }
