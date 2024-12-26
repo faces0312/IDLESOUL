@@ -31,6 +31,39 @@ public static class StatConverter
         return baseStat;
     }
 
+    public static Stat PlayerStatConvert(UserData userData)
+    {
+        Stat baseStat = new Stat();
+
+        // TODO : 플레이어 기본 스텟 수치 정보
+        // 현재 Temp
+
+        baseStat.iD = userData.UID;
+
+        baseStat.health = userData.stat.health;
+        baseStat.maxHealth = userData.stat.maxHealth;
+        baseStat.atk = userData.stat.atk;
+        baseStat.def = userData.stat.def;
+
+        baseStat.moveSpeed = userData.stat.moveSpeed;
+        baseStat.atkSpeed = userData.stat.atkSpeed;
+
+        baseStat.reduceDamage = userData.stat.reduceDamage;
+
+        baseStat.critChance = userData.stat.critChance;
+        baseStat.critDamage = userData.stat.critDamage;
+        baseStat.coolDown = userData.stat.coolDown;
+
+        baseStat.MaxHealthLevel = userData.stat.MaxHealthLevel;
+        baseStat.AtkLevel = userData.stat.AtkLevel;
+        baseStat.DefLevel = userData.stat.DefLevel;
+        baseStat.ReduceDamageLevel = userData.stat.ReduceDamageLevel;
+        baseStat.CriticalRateLevel = userData.stat.CriticalRateLevel;
+        baseStat.CriticalDamageLevel = userData.stat.CriticalDamageLevel;
+
+        return baseStat;
+    }
+
     public static Stat SoulStatConvert(int key)
     {
         Stat baseStat = new Stat();

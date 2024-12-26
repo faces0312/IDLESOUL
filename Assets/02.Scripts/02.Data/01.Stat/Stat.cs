@@ -82,6 +82,7 @@ public class Stat
         this.ReduceDamageLevel = stat.ReduceDamageLevel;
         this.CriticalRateLevel = stat.CriticalRateLevel;
         this.CriticalDamageLevel = stat.CriticalDamageLevel;
+
     }
 
     public static Stat operator +(Stat stat1, Stat stat2)
