@@ -28,12 +28,23 @@ public class InventoryModel : UIModel
 
     public void AddItem(int key)
     {
-        //ToDoCode : 아이템을 인벤토리에 추가될시 동작하는 메서드
-
+        Item item = new Item();
+        item.Initialize(DataManager.Instance.ItemDB.GetByKey(key));
+        foreach(Item inven in Items)
+        {
+            if(inven.ItemStat == item.ItemStat)
+            {
+                inven.stack += 1;
+            }
+        }
     }
 
-    public void RemoveItem(int key)
+    public void RemoveItem(Item item)
     {
-        //ToDoCode : 아이템을 인벤토리에 삭제될때 동작하는 메서드
+        if(Items.Contains(item))
+        {
+            Items.Remove(item);
+        }
+        
     }
 }
