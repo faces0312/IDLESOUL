@@ -13,6 +13,8 @@ public class CursorDescription : MonoBehaviour
     private float startTime;
     private float curTime;
 
+    private float fillRate = 1.15f;
+
     private Coroutine coroutine;
 
     private void Awake()
@@ -50,7 +52,7 @@ public class CursorDescription : MonoBehaviour
         while (curTime - startTime < holdTime)
         {
             curTime += Time.deltaTime;
-            progress.fillAmount = (curTime - startTime) * 1.2f;
+            progress.fillAmount = (curTime - startTime) * fillRate;
 
             yield return null;
         }
