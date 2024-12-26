@@ -106,6 +106,11 @@ public class SoulDB : IGachableDB
     /// </summary>
     public string SpritePath;
 
+    /// <summary>
+    /// SoulType
+    /// </summary>
+    public int SoulType;
+
     public int GetKey()
     {
         return key;

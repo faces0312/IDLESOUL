@@ -29,6 +29,7 @@ public class InventoryModel : UIModel
     public void AddItem(int key)
     {
         //ToDoCode : 아이템을 인벤토리에 추가될시 동작하는 메서드
+
     }
 
     public void RemoveItem(int key)

@@ -12,6 +12,16 @@ public enum JobType
     Healer,
 }
 
+public enum SoulType
+{
+    None,
+    Magician,
+    Knight,
+    Archer,
+    DummyRare,
+    DummyEpic
+}
+
 public abstract class Soul
 {
     protected SoulDB tempDB;
@@ -30,6 +40,8 @@ public abstract class Soul
 
     protected JobType job = JobType.None;
     protected AttackType attackType;
+
+    protected SoulType soulType;
 
     public Sprite icon;
     public Sprite sprite;
@@ -60,6 +72,8 @@ public abstract class Soul
 
         icon = Resources.Load<Sprite>(db.IconPath);
         sprite = Resources.Load<Sprite>(db.SpritePath);
+
+        soulType = (SoulType)db.SoulType;
 
         // TODO : 스킬 데이터 넘겨주기
         InitSkills();

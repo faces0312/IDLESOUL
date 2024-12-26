@@ -60,12 +60,14 @@ public class GachaResult : MonoBehaviour, IPointerClickHandler
                         resultSprite.sprite = Resources.Load<Sprite>(tempSoul.SpritePath);
                         _name.text = tempSoul.Name;
                         description.text = tempSoul.Descripton;
+                        RegistSoul(tempSoul);
                         break;
                     case "ItemDB":
                         tempItem = DataManager.Instance.ItemDB.GetByKey(gachaResultList[i].GetKey());
                         resultSprite.sprite = Resources.Load<Sprite>(tempItem.IconPath);
                         _name.text = tempItem.Name;
                         description.text = tempItem.Descripton;
+                        RegistItem(tempItem);
                         break;
                 }
                 isConfirm = false;
@@ -96,5 +98,37 @@ public class GachaResult : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         isConfirm = true;
+    }
+
+    public void RegistSoul(SoulDB data)
+    {
+        switch((SoulType)data.SoulType)
+        {
+            case SoulType.Magician:
+                SoulMagician soulM = new SoulMagician(data.GetKey());
+                GameManager.Instance.player.PlayerSouls.RegisterSoul(data.Name, soulM);
+                break;
+            case SoulType.Knight:
+                SoulKnight soulK = new SoulKnight(data.GetKey());
+                GameManager.Instance.player.PlayerSouls.RegisterSoul(data.Name, soulK);
+                break;
+            case SoulType.Archer:
+                SoulArcher soulA = new SoulArcher(data.GetKey());
+                GameManager.Instance.player.PlayerSouls.RegisterSoul(data.Name, soulA);
+                break;
+            case SoulType.DummyRare:
+                SoulDummyRare soulR = new SoulDummyRare(data.GetKey());
+                GameManager.Instance.player.PlayerSouls.RegisterSoul(data.Name, soulR);
+                break;
+            case SoulType.DummyEpic:
+                SoulDummyEpic soulE = new SoulDummyEpic(data.GetKey());
+                GameManager.Instance.player.PlayerSouls.RegisterSoul(data.Name, soulE);
+                break;
+        }
+    }
+
+    public void RegistItem(ItemDB data)
+    {
+        GameManager.Instance.player.Inventory.AddItem(data.GetKey());
     }
 }

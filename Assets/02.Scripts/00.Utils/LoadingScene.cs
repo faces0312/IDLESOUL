@@ -1,5 +1,3 @@
-using DG.Tweening;
-using JetBrains.Annotations;
 using System.Collections;
 using TMPro;
 using UnityEngine;
