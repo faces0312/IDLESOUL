@@ -9,9 +9,8 @@ public abstract class BaseCharacter : MonoBehaviour, ITakeDamageAble
 
     [SerializeField] protected BaseHpSystem baseHpSystem; //체력 계산해주는 클래스 
     public Rigidbody rb;
-
     public BaseHpSystem BaseHpSystem { get => baseHpSystem; }
-    public StatHandler StatHandler { get => statHandler;  }
+    public StatHandler StatHandler { get => statHandler; set => statHandler = value; }
 
     protected virtual void Awake()
     {

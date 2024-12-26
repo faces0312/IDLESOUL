@@ -7837,6 +7837,13 @@ MonoBehaviour:
   - {fileID: 5096237136577093258}
   - {fileID: 8044187634667946719}
   levelTexts: []
+  costTexts:
+  - {fileID: 6080521560515978139}
+  - {fileID: 1636563381841626780}
+  - {fileID: 8169302264611787714}
+  - {fileID: 5378626505850750257}
+  - {fileID: 7872530267871245888}
+  - {fileID: 7812101444538882114}
 --- !u!1 &6634847198341381292
 GameObject:
   m_ObjectHideFlags: 0
