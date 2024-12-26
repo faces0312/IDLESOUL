@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class SoulSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private SoulInventoryView sounInventoryView;
+    [SerializeField] private GameObject cursorDescription;
+
     private Image outLine;
     private Image icon;
     private Button button;
@@ -40,24 +42,34 @@ public class SoulSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        cursorDescription.GetComponent<CursorDescription>().StartProgress();
         Invoke(nameof(ShowInfo), holdTime);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        cursorDescription.GetComponent<CursorDescription>().StopProgress();
         CancelInvoke(nameof(ShowInfo));
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (soul == null || isEquip) return;
+        if (soul == null) return;
+       
+        cursorDescription.SetActive(true);
+
+        if (isEquip) return;
 
         outLine.enabled = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (soul == null || isEquip) return;
+        if (soul == null) return;
+
+        cursorDescription.SetActive(false);
+
+        if (isEquip) return;
 
         outLine.enabled = false;
     }
@@ -72,6 +84,8 @@ public class SoulSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
         }
         soulInfoModel.soul = soul;
         UIManager.Instance.ShowUI("SoulInfo");
+
+        cursorDescription.SetActive(false);
     }
 
     public void OnUpdateThumbnail()
