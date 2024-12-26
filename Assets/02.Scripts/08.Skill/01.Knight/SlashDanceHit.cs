@@ -68,13 +68,18 @@ public class SlashDanceHit : MonoBehaviour
     {
         while (true)
         {
-            // TODO : Enemy 피격 처리
+            if (hitObj.TryGetComponent(out ITakeDamageAble damageable) && !damageable.IsInvulnerable)
+            {
+                damageable.TakeDamage(10);
+            }
+
+            /*// TODO : Enemy 피격 처리
             ITakeDamageAble damageable = hitObj.GetComponent<ITakeDamageAble>();
             //TODO :: 무적시간이 아닐때에도 조건에 추가해야됨
             if (damageable != null)
             {
                 damageable.TakeDamage(10);
-            }
+            }*/
 
             yield return coroutineTime;
         }
