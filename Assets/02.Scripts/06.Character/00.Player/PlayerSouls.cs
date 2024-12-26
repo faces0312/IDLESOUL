@@ -99,6 +99,9 @@ public class PlayerSouls : MonoBehaviour
         // 현재 소환중인 소울과 같은 경우
         if (spawnIndex == index) return;
 
+        // TODO : 스킬 스왑 시, 슬롯 클릭 조건 수정
+        //if (CurrentSoul == soulSlot[index]) return;
+
         // 소환을 해제하는 로직
         CurrentSoul = null;
 
