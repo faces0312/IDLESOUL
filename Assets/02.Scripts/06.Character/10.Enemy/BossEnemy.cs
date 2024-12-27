@@ -15,4 +15,16 @@ public class BossEnemy : Enemy
         StartCoroutine(routine);
     }
 
+    public override void BossAppear()
+    {
+        IsInvulnerable = true;
+        StartCoroutine(BossAppearCoroutine());
+    }
+
+    IEnumerator BossAppearCoroutine()
+    {
+        yield return new WaitForSeconds(2.5f);
+        IsInvulnerable = false;
+    }
+
 }

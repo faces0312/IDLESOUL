@@ -21,7 +21,7 @@ public abstract class Enemy : BaseCharacter
 
     [Header("References")]
     public GameObject target;
-    private CapsuleCollider collider;
+    public CapsuleCollider collider;
     //public Rigidbody rb;
     public AnimatorHashData animatorHashData;
     public Animator animator;
@@ -46,7 +46,6 @@ public abstract class Enemy : BaseCharacter
         animator = GetComponentInChildren<Animator>();
         animatorHashData = new AnimatorHashData();
         stateMachine = new EnemyStateMachine(this);
-        //target = GameManager.Instance.player.gameObject; //Debug - 호출시점 변경
         OnDieEvent += StageManager.Instance.StageProgressModel.AddCurEnemyCount;
         //HP 게임
     }
@@ -71,6 +70,11 @@ public abstract class Enemy : BaseCharacter
         statHandler.CurrentStat.critDamage = enemyDB.CritDamage * StageManager.Instance.CurStageData.CurStageModifier;
         stateMachine.Initialize();
         HpUpdate();
+    }
+
+    public virtual void BossAppear()
+    {
+        Debug.Log("Base BossAppear called");
     }
 
     public override void TakeDamage(float damage)

@@ -20,13 +20,7 @@ public class Boss1 : BossEnemy
     }
     private void OnEnable()
     {
-        StartCoroutine(BossAppear());
         StartCoroutine(Skill(10f));
-    }
-    IEnumerator BossAppear()
-    {
-        yield return new WaitForSeconds(2.5f);
-        rb.isKinematic = false;
     }
     IEnumerator Skill(float delay)
     {
