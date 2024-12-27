@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public event Action OnSkill2; // K키 스킬 이벤트
     public event Action<int> OnSwitch; // 스킬 틀 전환 이벤트
 
+
     private void Start()
     {
         GameManager.Instance.playerController = this;
@@ -83,7 +84,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            OnSkill1?.Invoke();
+            UseSkill1();
         }
     }
 
@@ -91,8 +92,18 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            OnSkill2?.Invoke();
+            UseSkill2();
         }
+    }
+
+    public void UseSkill1()
+    {
+        OnSkill1?.Invoke();
+    }
+
+    public void UseSkill2()
+    {
+        OnSkill2?.Invoke();
     }
 
     public void OnSwitchAction(InputAction.CallbackContext context)
@@ -112,6 +123,7 @@ public class PlayerController : MonoBehaviour
             if (switchIndex != 0)
             {
                 OnSwitch?.Invoke(switchIndex);
+                GameManager.Instance.joyStick.FindSkillButtons();
             }
         }
     }
