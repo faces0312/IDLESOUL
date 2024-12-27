@@ -160,34 +160,33 @@ public class StatHandler
         {
             case Status.Hp:
                 currentStat.MaxHealthLevel += level;
-                //currentStat.health = BigInteger.Multiply(baseStat.health, currentStat.MaxHealthLevel);
-                //currentStat.maxHealth = currentStat.health;
-                currentStat.maxHealth = BigInteger.Add(int.Parse(currentStat.maxHealth.ToString()), currentStat.MaxHealthLevel * 100);
+                currentStat.maxHealth = Utils.UpgradePlayerStatBigInteger(Status.Hp);
+                //currentStat.maxHealth = BigInteger.Add(int.Parse(currentStat.maxHealth.ToString()), currentStat.MaxHealthLevel * 100);
                 break;
             case Status.Atk:
                 currentStat.AtkLevel += level;
-                //currentStat.atk = BigInteger.Multiply(baseStat.atk, currentStat.AtkLevel);
-                currentStat.atk = BigInteger.Add(int.Parse(currentStat.atk.ToString()), currentStat.AtkLevel * 3000);
+                currentStat.atk = Utils.UpgradePlayerStatBigInteger(Status.Atk);
+                //currentStat.atk = BigInteger.Add(int.Parse(currentStat.atk.ToString()), currentStat.AtkLevel * 3000);
                 break;
             case Status.Def:
                 currentStat.DefLevel += level;
-                //currentStat.def = BigInteger.Multiply(baseStat.def, currentStat.DefLevel);
-                currentStat.def = BigInteger.Add(int.Parse(currentStat.def.ToString()), currentStat.DefLevel * 30);
+                currentStat.def = Utils.UpgradePlayerStatBigInteger(Status.Def);
+                //currentStat.def = BigInteger.Add(int.Parse(currentStat.def.ToString()), currentStat.DefLevel * 30);
                 break;
             case Status.ReduceDmg:
                 currentStat.ReduceDamageLevel += level;
-                //currentStat.reduceDamage = baseStat.reduceDamage * currentStat.ReduceDamageLevel;
-                currentStat.reduceDamage = currentStat.reduceDamage * currentStat.ReduceDamageLevel * 5;
+                currentStat.reduceDamage = Utils.UpgradePlayerStat(Status.ReduceDmg);
+                //currentStat.reduceDamage = currentStat.reduceDamage * currentStat.ReduceDamageLevel * 5;
                 break;
             case Status.CritChance:
                 currentStat.CriticalRateLevel += level;
-                //currentStat.critChance = baseStat.critChance * currentStat.CriticalRateLevel;
-                currentStat.critChance = currentStat.critChance * currentStat.CriticalRateLevel * 1;
+                currentStat.critChance = Utils.UpgradePlayerStat(Status.CritChance);
+                //currentStat.critChance = currentStat.critChance * currentStat.CriticalRateLevel * 1;
                 break;
             case Status.CritDmg:
                 currentStat.CriticalDamageLevel += level;
-                //currentStat.critDamage = baseStat.critDamage * currentStat.CriticalDamageLevel;
-                currentStat.critDamage = currentStat.critDamage * currentStat.CriticalDamageLevel * 1;
+                currentStat.critDamage = Utils.UpgradePlayerStat(Status.CritDmg);
+                //currentStat.critDamage = currentStat.critDamage * currentStat.CriticalDamageLevel * 1;
                 break;
         }
     }

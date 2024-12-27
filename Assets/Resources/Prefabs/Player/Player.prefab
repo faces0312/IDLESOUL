@@ -284,6 +284,7 @@ MonoBehaviour:
   CamarePivot: {fileID: 0}
   isAuto: 0
   isJoyStick: 0
+  isController: 0
 --- !u!114 &3052255957930213953
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,6 +19,9 @@ public class ItemStatusController : UIController
         //아이템 장착해제 버튼 이벤트 함수 등록 (장착해제 , UI 출력)
         itemStatusView.DisEquipButton.onClick.AddListener(DisEquipItem);
 
+        //아이템 강화하기 버튼 이벤트 함수 등록 ( 아이템 강화하기, UI출력)
+        itemStatusView.UpgradeButton.onClick.AddListener(UpgradeItem);
+
         base.Initialize(itemStatusView, itemStatusModel);
     }
 
@@ -38,6 +41,23 @@ public class ItemStatusController : UIController
         OnShow();
     }
 
+    private void UpgradeItem()
+    {
+        if (SelectItem.item.stack >= 2)
+        {
+            SelectItem.item.stack -= 2;
+
+            SelectItem.item.ItemStat.maxHealth *= 2;
+            SelectItem.item.ItemStat.atk *= 2;
+            SelectItem.item.ItemStat.def *= 2;
+            SelectItem.item.ItemStat.maxHealth *= 2;
+            SelectItem.item.ItemStat.maxHealth *= 2;
+            SelectItem.item.ItemStat.maxHealth *= 2;
+        }
+
+        UpdateView();
+    }
+
     public override void OnShow()
     {
         UpdateView();   // 초기 View 갱신
@@ -51,7 +71,7 @@ public class ItemStatusController : UIController
 
     public override void UpdateView()
     {
-        itemStatusView.PrintData(SelectItem.item.ItemData);
+        itemStatusView.PrintData(SelectItem.item);
 
         //플레이어에 장착된 아이템이 있는지 null체크
         if (GameManager.Instance.player.IsEquipItem == null)

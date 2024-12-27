@@ -393,7 +393,7 @@ MonoBehaviour:
   itemIconImage: {fileID: 452083887195236538}
   Name: {fileID: 0}
   EquipCheck: {fileID: 0}
-  IsGainMask: {fileID: 0}
+  isGainMask: {fileID: 0}
 --- !u!1 &1106785220847670576
 GameObject:
   m_ObjectHideFlags: 0
@@ -3828,7 +3828,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 1 / 5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aedbfb48c6da0484686b4ef9f1c5118a, type: 2}
   m_sharedMaterial: {fileID: 7692690509805904559, guid: aedbfb48c6da0484686b4ef9f1c5118a, type: 2}

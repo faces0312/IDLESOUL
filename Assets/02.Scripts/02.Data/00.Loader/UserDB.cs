@@ -194,7 +194,7 @@ public class UserDBLoader
         public List<UserDB> Items;
     }
 
-    public UserDB GetByKey(int key)
+    public UserDB GetByKey(int key = 12345678) // Player 임시 Key코드
     {
         if (ItemsDict.ContainsKey(key))
         {

@@ -1,14 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using ScottGarland;
 
 public abstract class BaseItem 
 {
     private ItemDB itemData;
     private Stat itemStat = new Stat();
-
     public ItemDB ItemData { get => itemData; set => itemData = value; }
     public Stat ItemStat { get => itemStat; }
 

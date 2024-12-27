@@ -13,7 +13,6 @@ public class ItemPanel : MonoBehaviour
     [SerializeField] private Button cancel;
     private ItemShopController controller;
 
-
     private void Start()
     {
         controller = new ItemShopController();
@@ -38,7 +37,6 @@ public class ItemPanel : MonoBehaviour
                     }
                     break;
             }
-            GameManager.Instance.player.Inventory.AddItem(CurItem.key);
         });
 
         cancel.onClick.AddListener(() =>

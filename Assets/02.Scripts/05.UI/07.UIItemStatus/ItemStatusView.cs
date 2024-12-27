@@ -15,7 +15,6 @@ public class ItemStatusView : MonoBehaviour, IUIBase
     [SerializeField] private Button UpgradeBtn;
     [SerializeField] private Button EquipBtn;
     [SerializeField] private Button DisEquipBtn;
-
     public Button EquipButton { get => EquipBtn; }
     public Button DisEquipButton { get => DisEquipBtn; }
     public Button UpgradeButton { get => UpgradeBtn; }
@@ -38,26 +37,26 @@ public class ItemStatusView : MonoBehaviour, IUIBase
         gameObject.SetActive(false);
     }
 
-    public void PrintData(ItemDB data)
+    public void PrintData(Item selectedItem)
     {
-        curUpgradeLevelText.text = "0";
+        curUpgradeLevelText.text = "1";
         maxUpgradeLeveText.text = "100";
-        UpgradeCostText.text = "100";
+        UpgradeCostText.text = $"{selectedItem.stack} / 2"; 
 
         itemPassiveEffectText.text = 
-            $"공격력 + {data.Attack} " +
-            $"방어력 + {data.Defence} " +
-            $"HP + {data.Health} \n" +
-            $"크리티컬 + {data.CritChance}% " +
-            $"크리티컬 데미지 + {data.CritDamage}% ";
+            $"공격력 + {selectedItem.ItemStat.atk} " +
+            $"방어력 + {selectedItem.ItemStat.def} " +
+            $"HP + {selectedItem.ItemStat.maxHealth} \n" +
+            $"크리티컬 + {selectedItem.ItemStat.critChance}% " +
+            $"크리티컬 데미지 + {selectedItem.ItemStat.critDamage}% ";
 
         itemEquipEffectText.text =
-            $"공격력 + {data.Attack} " +
-            $"방어력 + {data.Defence} " +
-            $"HP + {data.Health} \n" +
-            $"크리티컬 + {data.CritChance}% " +
-            $"크리티컬 데미지 + {data.CritDamage}% ";
-        ItemIcon.sprite = Resources.Load<Sprite>(data.IconPath);
+        $"공격력 + {selectedItem.ItemStat.atk} " +
+            $"방어력 + {selectedItem.ItemStat.def} " +
+            $"HP + {selectedItem.ItemStat.maxHealth} \n" +
+            $"크리티컬 + {selectedItem.ItemStat.critChance}% " +
+            $"크리티컬 데미지 + {selectedItem.ItemStat.critDamage}% ";
+        ItemIcon.sprite = Resources.Load<Sprite>(selectedItem.ItemData.IconPath);
     }
 
     public void UpdateUI()

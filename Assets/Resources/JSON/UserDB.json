@@ -22,8 +22,8 @@
       "atkSpeed": 1.2,
       "moveSpeed": 5,
       "coolDown": 0,
-      "Gold": 100,
-      "Diamonds": 100,
+      "Gold": 10000000,
+      "Diamonds": 10000000,
       "PlayTimeInSeconds": 0,
       "CurChapter": 1,
       "CurStageNum": 1
