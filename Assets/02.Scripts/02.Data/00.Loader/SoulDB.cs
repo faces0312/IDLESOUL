@@ -111,6 +111,11 @@ public class SoulDB : IGachableDB
     /// </summary>
     public int SoulType;
 
+    /// <summary>
+    /// OwnStack
+    /// </summary>
+    public int OwnStack;
+
     public int GetKey()
     {
         return key;

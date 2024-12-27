@@ -12,6 +12,7 @@ public static class Const
     public static readonly string JsonAchieveDBPath = "JSON/AchieveDB";
     public static readonly string JsonUserDBPath = "JSON/UserDB";
     public static readonly string JsonStatUpgradeDBPath = "JSON/StatUpgradeDB";
+    public static readonly string JsonExchangeDBPath = "JSON/ExchangeDB";
 
     public static readonly string JsonUserDataPath = "/userdata.json";
 

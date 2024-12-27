@@ -62,6 +62,8 @@ public class PlayerSouls : MonoBehaviour
                     if (SoulSlot[i] == soul)
                     {
                         soulSlot[i] = SoulSlot[index];
+                        // 등록할 슬롯을 미리 비워준다
+                        SoulSquad.UnEquipSoul(index);
                         // 소울스쿼드에 등록
                         SoulSquad.EquipSoul(i, soulSlot[i]);
                         break;

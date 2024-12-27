@@ -1,0 +1,31 @@
+{
+  "Items": [
+    {
+      "key": 20000,
+      "ProductName": "다이아몬드 한 캐럿",
+      "ProductDescription": "다이아몬드 130개",
+      "Product":  130,
+      "PriceType": 1,
+      "Price": 1300,
+      "IconPath": ""
+    },
+    {
+      "key": 20001,
+      "ProductName": "다이아몬드 보따리",
+      "ProductDescription": "다이아몬드 1430개",
+      "Product": 1430,
+      "PriceType": 1,
+      "Price": 13000,
+      "IconPath": ""
+    },
+    {
+      "key": 20002,
+      "ProductName": "다이아몬드 상자",
+      "ProductDescription": "다이아몬드 6760개",
+      "Product": 6760,
+      "PriceType": 1,
+      "Price": 65000,
+      "IconPath": ""
+    }
+  ]
+}

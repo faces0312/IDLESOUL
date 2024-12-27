@@ -122,9 +122,14 @@ public class PlayerController : MonoBehaviour
 
             if (switchIndex != 0)
             {
-                OnSwitch?.Invoke(switchIndex);
+                SwitchSKill(switchIndex);
                 GameManager.Instance.joyStick.FindSkillButtons();
             }
         }
+    }
+
+    public void SwitchSKill(int _index)
+    {
+        OnSwitch?.Invoke(_index);
     }
 }

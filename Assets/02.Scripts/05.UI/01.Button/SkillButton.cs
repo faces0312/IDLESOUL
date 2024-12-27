@@ -18,9 +18,6 @@ public class SkillButton : MonoBehaviour
     [SerializeField] private GameObject textBackground;
 
     private Button button;
-    private float coolTime;
-    private float curTime;
-    private bool isUse;
 
     private float[] fillAmounts = new float[Const.MAX_SOUL];
     private float[] coolTimes = new float[Const.MAX_SOUL];
@@ -57,6 +54,8 @@ public class SkillButton : MonoBehaviour
 
         // TODO : 추후 제거
         GameManager.Instance.player.PlayerSouls.UpdateSkillSprite();
+        GameManager.Instance.OnGameClearEvent += ResetAll;
+        GameManager.Instance.OnGameOverEvent += ResetAll;
 
         CurSoulIndex = GameManager.Instance.player.PlayerSouls.SpawnIndex;
     }
@@ -112,5 +111,20 @@ public class SkillButton : MonoBehaviour
     private void UpdateSkillImage(Sprite sprite)
     {
         skillImg.sprite = sprite;
+    }
+
+    private void ResetAll()
+    {
+        for (int i = 0; i < Const.MAX_SOUL; ++i)
+        {
+            fillAmounts[i] = 0f;
+            coolTimes[i] = 0f;
+            curTimes[i] = 0f;
+            isUses[i] = false;
+        }
+
+        timeText.text = string.Empty;
+        textBackground.SetActive(false);
+        cooldownImg.fillAmount = 0f;
     }
 }

@@ -15,6 +15,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     [Header("Auto")]
     public GameObject onImage;
     public GameObject offImage;
+    int currentSoulIndex = 1;
     [SerializeField] private SkillButton skill1Button;
     [SerializeField] private SkillButton skill2Button;
     private Coroutine autoSkillCoroutine;
@@ -150,33 +151,29 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         while (player.isAuto)
         {
-            if (IsAnySkillReady())
-            {
-                int curSoulIndex = GameManager.Instance.player.PlayerSouls.SpawnIndex;
+            int curSoulIndex = GameManager.Instance.player.PlayerSouls.SpawnIndex;
 
+            if (IsAnySkillReady(curSoulIndex))
+            {
                 if (!skill1Button.isUses[curSoulIndex])
-                {
                     GameManager.Instance.playerController.UseSkill1();
-                    yield return new WaitForSeconds(1f);
-                }
                 else if (!skill2Button.isUses[curSoulIndex])
-                {
                     GameManager.Instance.playerController.UseSkill2();
-                    yield return new WaitForSeconds(1f);
-                }
             }
             else
             {
-                // 두 스킬 모두 준비되지 않았을 때는 잠시 대기
-                yield return new WaitForSeconds(0.5f);
+                currentSoulIndex = (currentSoulIndex % 3) + 1; // 1, 2, 3 순환
+                GameManager.Instance.playerController.SwitchSKill(currentSoulIndex);
+                GameManager.Instance.joyStick.FindSkillButtons();
             }
+
+            yield return new WaitForSeconds(1.2f);
         }
     }
 
-    private bool IsAnySkillReady()
+    private bool IsAnySkillReady(int soulIndex)
     {
-        int curSoulIndex = GameManager.Instance.player.PlayerSouls.SpawnIndex;
-        return !skill1Button.isUses[curSoulIndex] || !skill2Button.isUses[curSoulIndex];
+        return !skill1Button.isUses[soulIndex] || !skill2Button.isUses[soulIndex];
     }
 
     public void AutoFalse()

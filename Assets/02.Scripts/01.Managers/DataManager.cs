@@ -22,6 +22,7 @@ public class DataManager : SingletonDDOL<DataManager>
     private UserDBLoader userDB;
     private AchieveDBLoader achieveDB;
     private StatUpgradeDBLoader statUpgradeDB;
+    private ExchangeDBLoader exchangeDB;
 
     public EnemyDBLoader EnemyDB { get => enemyDB; }
     public ItemDBLoader ItemDB { get => itemDB; }
@@ -35,6 +36,7 @@ public class DataManager : SingletonDDOL<DataManager>
 
     private UserDB userData;
     public UserDB UserData { get => userData; set => userData = value; }
+    public ExchangeDBLoader ExchangeDB { get => exchangeDB; }
    
 
     protected override void Awake()
@@ -50,6 +52,7 @@ public class DataManager : SingletonDDOL<DataManager>
         userDB = new UserDBLoader(Const.JsonUserDBPath);
         achieveDB = new AchieveDBLoader(Const.JsonAchieveDBPath);
         statUpgradeDB = new StatUpgradeDBLoader(Const.JsonStatUpgradeDBPath);
+        exchangeDB = new ExchangeDBLoader(Const.JsonExchangeDBPath);
     }
 
     public void Init()

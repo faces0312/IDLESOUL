@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -50,11 +50,13 @@ public class SpawnSoulButton : MonoBehaviour
 
         GameManager.Instance.player.PlayerSouls.OnUpdateSoulIcon += UpdateIcon;
         UpdateIcon();
+        GameManager.Instance.OnGameClearEvent += ResetAll;
+        GameManager.Instance.OnGameOverEvent += ResetAll;
     }
 
     private void HandleSwitch(int switchIndex)
     {
-        if (switchIndex == index + 1) // index°¡ 0ºÎÅÍ ½ÃÀÛÇÑ´Ù°í °¡Á¤
+        if (switchIndex == index + 1) // indexê°€ 0ë¶€í„° ì‹œì‘í•œë‹¤ê³  ê°€ì •
         {
             OnClickSpawnSoulButton();
         }
@@ -98,9 +100,18 @@ public class SpawnSoulButton : MonoBehaviour
         textBackground.SetActive(isSpawn);
     }
 
+    private void ResetAll()
+    {
+        curTime = 0f;
+        cooldownImg.fillAmount = 0f;
+        timeText.text = string.Empty;
+        spawnCoolTime.IsSpawn = false;
+        textBackground.SetActive(false);
+    }
+
     public void UpdateIcon()
     {
-        // TODO : ¼Ò¿ï ¾ÆÀÌÄÜ º¯°æ
+        // TODO : ì†Œìš¸ ì•„ì´ì½˜ ë³€ê²½
         if (GameManager.Instance.player.PlayerSouls.SoulSlot[index] != null)
         {
             soulImg.sprite = GameManager.Instance.player.PlayerSouls.SoulSlot[index].icon;

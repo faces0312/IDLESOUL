@@ -40,6 +40,7 @@ public class ShopView : MonoBehaviour, IUIBase
         {
             gachaPanel.SetActive(false);
             itemPanel.SetActive(true);
+            itemPanel.GetComponent<ShopGrid>().SetItem(Enums.ShopType.Product);
         });
     }
 

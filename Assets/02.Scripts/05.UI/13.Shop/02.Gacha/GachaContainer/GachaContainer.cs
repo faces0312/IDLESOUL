@@ -52,14 +52,22 @@ public class GachaContainer : MonoBehaviour
 
         GachaOnce.onClick.AddListener(() =>
         {
-            if (gachatype == GachaType.Soul) EventManager.Instance.Publish<GachaEvent>(Enums.Channel.Gacha, gacha.SetEvent(Enums.GachaType.Soul, 1));
-            else EventManager.Instance.Publish<GachaEvent>(Enums.Channel.Gacha, gacha.SetEvent(Enums.GachaType.Weapon, 1));
+            if(GameManager.Instance.player.UserData.Diamonds >= 130)
+            {
+                GameManager.Instance.player.UserData.Diamonds -= 130;
+                if (gachatype == GachaType.Soul) EventManager.Instance.Publish<GachaEvent>(Enums.Channel.Gacha, gacha.SetEvent(Enums.GachaType.Soul, 1));
+                else EventManager.Instance.Publish<GachaEvent>(Enums.Channel.Gacha, gacha.SetEvent(Enums.GachaType.Weapon, 1));
+            }
         });
 
         Gacha10.onClick.AddListener(() =>
         {
-            if (gachatype == GachaType.Soul) EventManager.Instance.Publish<GachaEvent>(Enums.Channel.Gacha, gacha.SetEvent(Enums.GachaType.Soul, 10));
-            else EventManager.Instance.Publish<GachaEvent>(Enums.Channel.Gacha, gacha.SetEvent(Enums.GachaType.Weapon, 10));
+            if (GameManager.Instance.player.UserData.Diamonds >= 1300)
+            {
+                GameManager.Instance.player.UserData.Diamonds -= 1300;
+                if (gachatype == GachaType.Soul) EventManager.Instance.Publish<GachaEvent>(Enums.Channel.Gacha, gacha.SetEvent(Enums.GachaType.Soul, 10));
+                else EventManager.Instance.Publish<GachaEvent>(Enums.Channel.Gacha, gacha.SetEvent(Enums.GachaType.Weapon, 10));
+            }
         });
 
     }
