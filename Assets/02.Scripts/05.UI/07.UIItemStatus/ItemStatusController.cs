@@ -14,14 +14,28 @@ public class ItemStatusController : UIController
         itemStatusView = view as ItemStatusView;
 
         //아이템 장착 버튼 이벤트 함수 등록 (장착 , UI 출력)
-        itemStatusView.EquipButton.onClick.AddListener(() => GameManager.Instance.player.EquipItem(SelectItem.item));
-        itemStatusView.EquipButton.onClick.AddListener(() => OnShow());
+        itemStatusView.EquipButton.onClick.AddListener(EquipItem);
 
         //아이템 장착해제 버튼 이벤트 함수 등록 (장착해제 , UI 출력)
-        itemStatusView.DisEquipButton.onClick.AddListener(() => GameManager.Instance.player.DisEquipItem());
-        itemStatusView.DisEquipButton.onClick.AddListener(() => OnShow());
+        itemStatusView.DisEquipButton.onClick.AddListener(DisEquipItem);
 
         base.Initialize(itemStatusView, itemStatusModel);
+    }
+
+    private void EquipItem()
+    {
+        //해당 아이템을 소지하고있을때만 장착이 됨 
+        if (SelectItem.item.IsGain)
+        {
+            GameManager.Instance.player.EquipItem(SelectItem.item);
+            OnShow();
+        }
+    }
+
+    private void DisEquipItem()
+    {
+        GameManager.Instance.player.DisEquipItem();
+        OnShow();
     }
 
     public override void OnShow()

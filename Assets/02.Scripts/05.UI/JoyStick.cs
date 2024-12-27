@@ -15,6 +15,10 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     [Header("Auto")]
     public GameObject onImage;
     public GameObject offImage;
+    int currentSoulIndex = 1;
+    [SerializeField] private SkillButton skill1Button;
+    [SerializeField] private SkillButton skill2Button;
+    private Coroutine autoSkillCoroutine;
 
     void Awake()
     {
@@ -25,7 +29,29 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     void Start()
     {
+        FindSkillButtons();
+        StartCoroutine(DelayedAutoButton());
+    }
+    private IEnumerator DelayedAutoButton()
+    {
+        yield return null;
         AutoButtton();
+    }
+
+    public void FindSkillButtons()
+    {
+        SkillButton[] skillButtons = FindObjectsOfType<SkillButton>();
+        foreach (SkillButton skillButton in skillButtons)
+        {
+            if (skillButton.skillType == SkillType.Default)
+            {
+                skill1Button = skillButton;
+            }
+            else if (skillButton.skillType == SkillType.Ultimate)
+            {
+                skill2Button = skillButton;
+            }
+        }
     }
 
     void FixedUpdate()
@@ -92,11 +118,72 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         player.isAuto = !player.isAuto;
         onImage.SetActive(player.isAuto);
         offImage.SetActive(!player.isAuto);
+
+        if (player.isAuto)
+        {
+            StartAutoSkillCoroutine();
+        }
+        else
+        {
+            player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
+            StopAutoSkillCoroutine();
+        }
+    }
+
+    private void StartAutoSkillCoroutine()
+    {
+        if (autoSkillCoroutine == null)
+        {
+            autoSkillCoroutine = StartCoroutine(AutoUseSkillsCoroutine());
+        }
+    }
+
+    private void StopAutoSkillCoroutine()
+    {
+        if (autoSkillCoroutine != null)
+        {
+            StopCoroutine(autoSkillCoroutine);
+            autoSkillCoroutine = null;
+        }
+    }
+
+    private IEnumerator AutoUseSkillsCoroutine()
+    {
+        while (player.isAuto)
+        {
+            int curSoulIndex = GameManager.Instance.player.PlayerSouls.SpawnIndex;
+
+            if (IsAnySkillReady(curSoulIndex))
+            {
+                if (!skill1Button.isUses[curSoulIndex])
+                    GameManager.Instance.playerController.UseSkill1();
+                else if (!skill2Button.isUses[curSoulIndex])
+                    GameManager.Instance.playerController.UseSkill2();
+            }
+            else
+            {
+                currentSoulIndex = (currentSoulIndex % 3) + 1; // 1, 2, 3 ¼øÈ¯
+                GameManager.Instance.playerController.SwitchSKill(currentSoulIndex);
+                GameManager.Instance.joyStick.FindSkillButtons();
+            }
+
+            yield return new WaitForSeconds(1.2f);
+        }
+    }
+
+    private bool IsAnySkillReady(int soulIndex)
+    {
+        return !skill1Button.isUses[soulIndex] || !skill2Button.isUses[soulIndex];
     }
 
     public void AutoFalse()
     {
         if (player.isAuto == true)
-            AutoButtton();
+        {
+            player.isAuto = false;
+            onImage.SetActive(false);
+            offImage.SetActive(true);
+            StopAutoSkillCoroutine();
+        }
     }
 }
