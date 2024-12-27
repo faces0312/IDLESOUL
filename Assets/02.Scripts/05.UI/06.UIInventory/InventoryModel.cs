@@ -8,7 +8,7 @@ using System.Drawing;
 public class InventoryModel : UIModel
 {
     public List<Item> Items = new List<Item>(); // 소지하고있는 아이템 리스트 
-
+   
     public InventoryModel()
     {
         Initilaize();
@@ -30,21 +30,31 @@ public class InventoryModel : UIModel
     {
         Item item = new Item();
         item.Initialize(DataManager.Instance.ItemDB.GetByKey(key));
-        foreach(Item inven in Items)
+        //첫 획득시 아이템 소지여부를 true로 변경
+
+
+        foreach (Item inven in Items)
         {
-            if(inven.ItemStat == item.ItemStat)
+            if (inven.ItemStat.iD == item.ItemStat.iD)
             {
-                inven.stack += 1;
+                if (!inven.IsGain)
+                {
+                    inven.IsGain = true;
+                }
+                else
+                {
+                    inven.stack += 1;
+                }
             }
         }
     }
 
     public void RemoveItem(Item item)
     {
-        if(Items.Contains(item))
+        if (Items.Contains(item))
         {
             Items.Remove(item);
         }
-        
+
     }
 }

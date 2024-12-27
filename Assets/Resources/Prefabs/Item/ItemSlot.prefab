@@ -494,4 +494,4 @@ MonoBehaviour:
   itemIconImage: {fileID: 8773511155391015650}
   Name: {fileID: 2261545720747516517}
   EquipCheck: {fileID: 4262547755040798071}
-  IsGainMask: {fileID: 5316906765251105577}
+  isGainMask: {fileID: 5316906765251105577}
