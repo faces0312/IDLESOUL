@@ -38,6 +38,8 @@ public abstract class Soul
     protected int upgradeCount = 1;
     protected int upgradeStack = 0;
 
+    protected int ownStack = 0; // TODO : DB 추가
+
     protected JobType job = JobType.None;
     protected AttackType attackType;
 
@@ -49,6 +51,7 @@ public abstract class Soul
     protected Skill[] skills = new Skill[(int)SkillType.Max];
     public Skill[] Skills { get { return skills; } }
     public StatHandler StatHandler { get { return statHandler; } }
+    public int OwnStack { get { return ownStack; } }
 
     // TODO : 소환 중인지 확인 여부의 bool 변수가 필요할 수도 있음
 
@@ -103,4 +106,8 @@ public abstract class Soul
         skill.UseSkill(statHandler);
     }
 
+    public void CollectSoul(int amount)
+    {
+        ownStack += amount;
+    }
 }

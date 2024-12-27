@@ -36,12 +36,16 @@ public class PlayerSouls : MonoBehaviour
     }
 
     // 소울 등록
-    public void RegisterSoul(string name, Soul soul)
+    public void RegisterSoul(string name, Soul soul, int amount = 1)
     {
         if (!soulDic.ContainsKey(name))
         {
             soulDic.Add(name, soul);
             SoulInventory.AddSoul(soul); // TODO : 씬 합칠때 주석 제거
+        }
+        else
+        {
+            soulDic[name].CollectSoul(amount);
         }
     }
 
