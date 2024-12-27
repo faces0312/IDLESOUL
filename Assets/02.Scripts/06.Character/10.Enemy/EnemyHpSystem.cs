@@ -6,10 +6,11 @@ using System;
 
 public class EnemyHpSystem : MonoBehaviour, ITakeDamageAble
 {
+    public bool IsInvulnerable { get; set; }
     public Enemy enemy;
     public Slider healthBar;
 
-    void Start()
+    void Awake()
     {
         enemy = GetComponent<Enemy>();
         HpUpdate();

@@ -19,7 +19,7 @@
       "key": 7001,
       "ChapterNum": 1,
       "StageNum": 2,
-      "CurStageModifier": 1.1,
+      "CurStageModifier": 2,
       "stageName": "미숙한자들의 길",
       "SlayEnemyCount": 20,
       "SummonEnemyIDList": [
@@ -34,7 +34,7 @@
       "key": 7002,
       "ChapterNum": 1,
       "StageNum": 3,
-      "CurStageModifier": 1.1,
+      "CurStageModifier": 3,
       "stageName": "익숙해지는 주변",
       "SlayEnemyCount": 30,
       "SummonEnemyIDList": [
@@ -49,7 +49,7 @@
       "key": 7003,
       "ChapterNum": 1,
       "StageNum": 4,
-      "CurStageModifier": 1.1,
+      "CurStageModifier": 1,
       "stageName": "처음의 숲",
       "SlayEnemyCount": 50,
       "SummonEnemyIDList": [

@@ -36,12 +36,16 @@ public class PlayerSouls : MonoBehaviour
     }
 
     // 소울 등록
-    public void RegisterSoul(string name, Soul soul)
+    public void RegisterSoul(string name, Soul soul, int amount = 1)
     {
         if (!soulDic.ContainsKey(name))
         {
             soulDic.Add(name, soul);
             SoulInventory.AddSoul(soul); // TODO : 씬 합칠때 주석 제거
+        }
+        else
+        {
+            soulDic[name].CollectSoul(amount);
         }
     }
 
@@ -58,6 +62,8 @@ public class PlayerSouls : MonoBehaviour
                     if (SoulSlot[i] == soul)
                     {
                         soulSlot[i] = SoulSlot[index];
+                        // 등록할 슬롯을 미리 비워준다
+                        SoulSquad.UnEquipSoul(index);
                         // 소울스쿼드에 등록
                         SoulSquad.EquipSoul(i, soulSlot[i]);
                         break;

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public abstract class BaseCharacter : MonoBehaviour, ITakeDamageAble
 {
+    public bool IsInvulnerable { get; set; }
+
     protected StatHandler statHandler; //스텟 관리 클래스
     //protected Animator characterAnimator; //애니메이션 관련 컨트롤러
     //protected CharacterController characterController; //캐릭터 컨트롤러

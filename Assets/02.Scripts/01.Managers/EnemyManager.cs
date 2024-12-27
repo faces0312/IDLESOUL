@@ -174,9 +174,9 @@ public class EnemyManager : SingletonDDOL<EnemyManager>
         tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(id);
         tempEnemy.Initialize();
         tempEnemy.target = GameManager.Instance.player.gameObject;
-        tempEnemy.rb.isKinematic = true;
         enemyBoss.transform.position = RandomSpawn();
         enemyBoss.SetActive(true);
+        tempEnemy.BossAppear();
         GameManager.Instance.enemies.Add(enemyBoss);
         Debug.Log("보스 생성");
 
