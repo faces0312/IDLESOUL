@@ -5,13 +5,15 @@ using Enums;
 
 public class ItemPanel : MonoBehaviour
 {
-    public SellItemDB CurItem;
+    public IShopItem CurItem;
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI _name;
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] private Button confirm;
     [SerializeField] private Button cancel;
     private ItemShopController controller;
+    private ShopType shopType;
+    private int tempKey;
 
 
     private void Start()
@@ -21,24 +23,26 @@ public class ItemPanel : MonoBehaviour
         UIManager.Instance.RegisterController(controller.key, controller);
         confirm.onClick.AddListener(() =>
         {
-            switch (CurItem.PriceType)
+            switch (CurItem.GetPriceType())
             {
-                case (int)PriceType.Diamond:
-                    if (GameManager.Instance.player.UserData.Diamonds >= CurItem.Price)
+                case PriceType.Diamond:
+                    if (GameManager.Instance.player.UserData.Diamonds >= CurItem.GetPrice())
                     {
-                        GameManager.Instance.player.UserData.Diamonds -= CurItem.Price;
-                        GameManager.Instance.player.Inventory.AddItem(CurItem.key);
+                        GameManager.Instance.player.UserData.Diamonds -= CurItem.GetPrice();
+                        if (this.shopType == ShopType.Item) GameManager.Instance.player.Inventory.AddItem(tempKey);
+                        else if (this.shopType == ShopType.Product) GameManager.Instance.player.UserData.Gold += DataManager.Instance.ExchangeDB.GetByKey(tempKey).Product;
+
                     }
                     break;
-                case (int)PriceType.Gold:
-                    if (GameManager.Instance.player.UserData.Gold >= CurItem.Price)
+                case PriceType.Gold:
+                    if (GameManager.Instance.player.UserData.Gold >= CurItem.GetPrice())
                     {
-                        GameManager.Instance.player.UserData.Gold -= CurItem.Price;
-                        GameManager.Instance.player.Inventory.AddItem(CurItem.key);
+                        GameManager.Instance.player.UserData.Gold -= CurItem.GetPrice();
+                        if (this.shopType == ShopType.Item) GameManager.Instance.player.Inventory.AddItem(tempKey);
+                        else if (this.shopType == ShopType.Product) GameManager.Instance.player.UserData.Diamonds += DataManager.Instance.ExchangeDB.GetByKey(tempKey).Product;
                     }
                     break;
             }
-            GameManager.Instance.player.Inventory.AddItem(CurItem.key);
         });
 
         cancel.onClick.AddListener(() =>
@@ -58,16 +62,26 @@ public class ItemPanel : MonoBehaviour
 
     public void SetItem(ItemEvent item)
     {
-        if(this.gameObject.activeSelf == false) this.gameObject.SetActive(true);
-        this.CurItem = DataManager.Instance.SellItemDB.GetByKey(item.Key);
+        this.gameObject.SetActive(true);
+        switch (item.ShopType)
+        {
+            case ShopType.Item:
+                this.CurItem = DataManager.Instance.SellItemDB.GetByKey(item.Key);
+                break;
+            case ShopType.Product:
+                this.CurItem = DataManager.Instance.ExchangeDB.GetByKey(item.Key);
+                break;
+        }
+        this.shopType = item.ShopType;
+        this.tempKey = item.Key;
         SetContent();
     }
 
     public void SetContent()
     {
-        this.icon.sprite = Resources.Load<Sprite>(CurItem.IconPath);
-        this._name.text = CurItem.ProductName;
-        this.description.text = CurItem.ProductDescription;
+        this.icon.sprite = Resources.Load<Sprite>(CurItem.GetIconPath());
+        this._name.text = CurItem.GetName();
+        this.description.text = CurItem.GetDescription();
     }
 }
 

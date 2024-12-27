@@ -20,10 +20,14 @@ public class PlayerStatusInfo : MonoBehaviour
         lv.text = GameManager.Instance.player.UserData.Level.ToString();
     }
 
-    private void Kill(AchieveEvent arg)
+    private void Update()
     {
         gold.text = GameManager.Instance.player.UserData.Gold.ToString();
         diamond.text = GameManager.Instance.player.UserData.Diamonds.ToString();
+    }
+
+    private void Kill(AchieveEvent arg)
+    {
         //expBar.fillAmount = DataManager.Instance.UserData.Exp / DataManager.Instance.UserData.MaxExp;
         lv.text = GameManager.Instance.player.UserData.Level.ToString();
     }

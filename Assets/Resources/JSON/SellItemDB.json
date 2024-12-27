@@ -7,7 +7,7 @@
       ],
       "ProductName": "나무검",
       "ProductDescription": "나무검 입니다.",
-      "PriceType": "gold",
+      "PriceType": 1,
       "Price": 1000,
       "IsStack": false,
       "StackCount": 1
@@ -19,7 +19,7 @@
       ],
       "ProductName": "철검",
       "ProductDescription": "철검 입니다.",
-      "PriceType": "gold",
+      "PriceType": 1,
       "Price": 1100,
       "IsStack": false,
       "StackCount": 1
@@ -31,7 +31,7 @@
       ],
       "ProductName": "황동검",
       "ProductDescription": "황동검 입니다.",
-      "PriceType": "gold",
+      "PriceType": 1,
       "Price": 1200,
       "IsStack": false,
       "StackCount": 1
@@ -44,7 +44,7 @@
       ],
       "ProductName": "실버,골드검세트",
       "ProductDescription": "실버,골드검세트 입니다.",
-      "PriceType": "diamond",
+      "PriceType": 2,
       "Price": 1300,
       "IsStack": true,
       "StackCount": 10
@@ -58,7 +58,7 @@
       ],
       "ProductName": "황동,골드검세트",
       "ProductDescription": "황동,골드검세트 입니다.",
-      "PriceType": "diamond",
+      "PriceType": 2,
       "Price": 1400,
       "IsStack": true,
       "StackCount": 5
@@ -73,7 +73,7 @@
       ],
       "ProductName": "검\u002B회복포션세트1",
       "ProductDescription": "검\u002B회복포션세트1 입니다.",
-      "PriceType": "diamond",
+      "PriceType": 2,
       "Price": 1500,
       "IsStack": false,
       "StackCount": 1
@@ -88,7 +88,7 @@
       ],
       "ProductName": "검\u002B회복포션세트2",
       "ProductDescription": "검\u002B회복포션세트2 입니다.",
-      "PriceType": "diamond",
+      "PriceType": 2,
       "Price": 1600,
       "IsStack": false,
       "StackCount": 1
@@ -102,7 +102,7 @@
       ],
       "ProductName": "회복포션세트",
       "ProductDescription": "회복포션세트 입니다.",
-      "PriceType": "gold",
+      "PriceType": 1,
       "Price": 1700,
       "IsStack": true,
       "StackCount": 3
@@ -114,7 +114,7 @@
       ],
       "ProductName": "전설의 회복포션",
       "ProductDescription": "전설의 회복포션 입니다.",
-      "PriceType": "diamond",
+      "PriceType": 2,
       "Price": 1800,
       "IsStack": false,
       "StackCount": 1

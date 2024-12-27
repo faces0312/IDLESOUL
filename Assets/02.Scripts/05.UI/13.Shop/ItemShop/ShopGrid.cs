@@ -11,7 +11,7 @@ public class ShopGrid : MonoBehaviour
     private void Start()
     {
         ShopSlotComponent[] tempSlots = GetComponentsInChildren<ShopSlotComponent>();
-        for(int i = 0; i < tempSlots.Length; i++)
+        for (int i = 0; i < tempSlots.Length; i++)
         {
             slots.Add(tempSlots[i]);
             slots[i].Init();
@@ -27,14 +27,32 @@ public class ShopGrid : MonoBehaviour
         {
             for (int i = 0; i < slots.Count; i++)
             {
-                slots[i].SetItem(DataManager.Instance.SellItemDB.ItemsList[i]);
+                if (i >= DataManager.Instance.SellItemDB.ItemsList.Count)
+                {
+                    slots[i].Clear();
+                    slots[i].gameObject.SetActive(false);
+                }
+                else
+                {
+                    slots[i].gameObject.SetActive(true);
+                    slots[i].SetItem(DataManager.Instance.SellItemDB.ItemsList[i]);
+                }
             }
         }
         else if (type == ShopType.Product)
         {
             for (int i = 0; i < slots.Count; i++)
             {
-                
+                if (i >= DataManager.Instance.ExchangeDB.ItemsList.Count)
+                {
+                    slots[i].Clear();
+                    slots[i].gameObject.SetActive(false);
+                }
+                else
+                {
+                    slots[i].gameObject.SetActive(true);
+                    slots[i].SetItem(DataManager.Instance.ExchangeDB.ItemsList[i]);
+                }
             }
         }
     }

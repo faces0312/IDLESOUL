@@ -1,22 +1,27 @@
 using Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
-using Unity.VisualScripting;
 using UnityEngine;
 
+public interface IShopItem
+{
+    public int GetKey();
+    public PriceType GetPriceType();
+    public string GetName();
+    public string GetDescription();
+    public string GetIconPath();
+    public int GetPrice();
+}
+
 [Serializable]
-public class SellItemDB : IShopItem
+public class ExchangeDB : IShopItem
 {
     /// <summary>
     /// ProductID
     /// </summary>
     public int key;
-
-    /// <summary>
-    /// OriginID
-    /// </summary>
-    public List<int> OriginID;
 
     /// <summary>
     /// ProductName
@@ -29,6 +34,11 @@ public class SellItemDB : IShopItem
     public string ProductDescription;
 
     /// <summary>
+    /// Product
+    /// </summary>
+    public int Product;
+
+    /// <summary>
     /// PriceType
     /// </summary>
     public int PriceType;
@@ -37,16 +47,6 @@ public class SellItemDB : IShopItem
     /// Price
     /// </summary>
     public int Price;
-
-    /// <summary>
-    /// IsStack
-    /// </summary>
-    public bool IsStack;
-
-    /// <summary>
-    /// StackCount
-    /// </summary>
-    public int StackCount;
 
     /// <summary>
     /// IconPath
@@ -83,17 +83,17 @@ public class SellItemDB : IShopItem
         return (PriceType)PriceType;
     }
 }
-public class SellItemDBLoader
+public class ExchangeDBLoader
 {
-    public List<SellItemDB> ItemsList { get; private set; }
-    public Dictionary<int, SellItemDB> ItemsDict { get; private set; }
+    public List<ExchangeDB> ItemsList { get; private set; }
+    public Dictionary<int, ExchangeDB> ItemsDict { get; private set; }
 
-    public SellItemDBLoader(string path = "JSON/SellItemDB")
+    public ExchangeDBLoader(string path = "JSON/ExchangeDB")
     {
         string jsonData;
         jsonData = Resources.Load<TextAsset>(path).text;
         ItemsList = JsonUtility.FromJson<Wrapper>(jsonData).Items;
-        ItemsDict = new Dictionary<int, SellItemDB>();
+        ItemsDict = new Dictionary<int, ExchangeDB>();
         foreach (var item in ItemsList)
         {
             ItemsDict.Add(item.key, item);
@@ -103,10 +103,10 @@ public class SellItemDBLoader
     [Serializable]
     private class Wrapper
     {
-        public List<SellItemDB> Items;
+        public List<ExchangeDB> Items;
     }
 
-    public SellItemDB GetByKey(int key)
+    public ExchangeDB GetByKey(int key)
     {
         if (ItemsDict.ContainsKey(key))
         {
@@ -114,7 +114,7 @@ public class SellItemDBLoader
         }
         return null;
     }
-    public SellItemDB GetByIndex(int index)
+    public ExchangeDB GetByIndex(int index)
     {
         if (index >= 0 && index < ItemsList.Count)
         {

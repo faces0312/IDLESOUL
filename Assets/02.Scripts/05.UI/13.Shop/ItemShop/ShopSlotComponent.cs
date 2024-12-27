@@ -16,19 +16,32 @@ public class ShopSlotComponent : MonoBehaviour
     {
         slot = new ShopSlot();
         itemEvent = new ItemEvent();
-        button = GetComponent<Button>();
         button.onClick.AddListener(Select);
     }
 
     public void Select()
     {
-        EventManager.Instance.Publish<ItemEvent>(Channel.Shop, itemEvent.SetEvent(slot.GetItem().key));
+        if(slot.GetItem().GetKey() >= 20000)
+        {
+            EventManager.Instance.Publish<ItemEvent>(Channel.Shop, itemEvent.SetEvent(slot.GetItem().GetKey(), ShopAction.Buy, ShopType.Product));
+        }
+        else
+        {
+            EventManager.Instance.Publish<ItemEvent>(Channel.Shop, itemEvent.SetEvent(slot.GetItem().GetKey(), ShopAction.Buy, ShopType.Item));
+        }
     }
 
-    public void SetItem(SellItemDB data)
+    public void SetItem(IShopItem data)
     {
         slot.SetItem(data);
-        itemName.text = data.ProductName;
-        itemPrice.text = data.Price.ToString() + data.PriceType;
+        itemName.text = data.GetName();
+        itemPrice.text = data.GetPrice().ToString() + data.GetPriceType().ToString();
+    }
+
+    public void Clear()
+    {
+        slot.Clear();
+        itemName.text = "";
+        itemPrice.text = "";
     }
 }

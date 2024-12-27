@@ -1,9 +1,12 @@
 using Enums;
+using System.ComponentModel;
 
 public class ItemEvent : IEventObject
 {
     public int Key;
     public ShopAction ShopAction;
+    public ShopType ShopType;
+    
 
     public int Getkey()
     {
@@ -16,10 +19,11 @@ public class ItemEvent : IEventObject
         return this;
     }
 
-    public ItemEvent SetEvent(int key, ShopAction action)
+    public ItemEvent SetEvent(int key, ShopAction action, ShopType type)
     {
         this.Key = key;
         this.ShopAction = action;
+        this.ShopType = type;
         return this;
     }
 }

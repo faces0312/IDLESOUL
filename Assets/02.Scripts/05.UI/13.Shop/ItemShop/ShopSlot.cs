@@ -4,15 +4,20 @@ using TMPro;
 
 public class ShopSlot
 {
-    private SellItemDB item;
+    private IShopItem item;
 
-    public void SetItem(SellItemDB item)
+    public void SetItem(IShopItem item)
     {
         this.item = item;
     }
 
-    public SellItemDB GetItem()
+    public IShopItem GetItem()
     {
         return this.item;
+    }
+
+    public void Clear()
+    {
+        this.item = null;
     }
 }
