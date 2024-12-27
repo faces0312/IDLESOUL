@@ -104,8 +104,10 @@ public static class Utils
         switch (statType)
         {
             case Status.Hp:
+                /*필요한 데이터를 StatUpgradeDB에서 호출해서 사용 */
                 baseCost = DataManager.Instance.StatUpgradeDB.GetByKey(100).MaxHealthBaseCost;
                 growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).MaxHealthGrowRate;
+                /*플레이어의 스텟 레벨을 호출 */
                 playerStatLevel = GameManager.Instance.player.StatHandler.CurrentStat.MaxHealthLevel;
                 constIncrease = 20;
                 break;
@@ -140,6 +142,8 @@ public static class Utils
                 constIncrease = 20;
                 break;
         }
+
+        //코스트가 증가하는 기본적인 적용 수식 중 하나 
         int Cost = (int)(baseCost * Mathf.Pow(playerStatLevel, growRate) + (playerStatLevel * constIncrease));
 
         return new BigInteger(Cost);

@@ -18,12 +18,15 @@ public class PlayerInfoModel : UIModel
 
     public void HpLevelUp(int amount)
     {
+        //플레이어가 가지고 있는 골드가 업그레이드 코스트보다 높으면 true
         if (GameManager.Instance.player.UserData.Gold >= Utils.UpgradeCost(Status.Hp))
         {
-            GameManager.Instance.player.UserData.Gold = 
+            //플레이어 골드 - 업그레이드 코스트 비용 적용
+            GameManager.Instance.player.UserData.Gold =
                 Mathf.Max(0, GameManager.Instance.player.UserData.Gold - BigInteger.ToInt32(Utils.UpgradeCost(Status.Hp)));
+            //플레이어 레벨업 => 스텟 증가량 및 스테이터스 타입을 전달하여 스탯 증가
             GameManager.Instance.player.LevelUp(amount, Status.Hp);
-            OnHpUpgrade?.Invoke();
+            OnHpUpgrade?.Invoke(); //View에 데이터를 전달하여 출력을 갱신함
         }
     }
 
