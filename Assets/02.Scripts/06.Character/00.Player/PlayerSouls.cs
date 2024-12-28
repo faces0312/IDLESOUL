@@ -100,14 +100,15 @@ public class PlayerSouls : MonoBehaviour
     }
 
     // 소울 스왑
-    public void SpawnSoul(int index)
+    public void SpawnSoul(int index, bool isSwap = false)
     {
-        // 현재 소환중인 소울과 같은 경우
-        if (spawnIndex == index) return;
-
-        // TODO : 스킬 스왑 시, 슬롯 클릭 조건 수정
-        //if (CurrentSoul == soulSlot[index]) return;
-
+        // 교환의 경우에는 검사 진행 X
+        if (!isSwap)
+        {
+            // 현재 소환중인 소울과 같은 경우
+            if (spawnIndex == index) return;
+        }
+        
         // 소환을 해제하는 로직
         CurrentSoul = null;
 
