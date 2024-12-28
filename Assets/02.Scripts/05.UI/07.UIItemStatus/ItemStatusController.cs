@@ -7,7 +7,6 @@ public class ItemStatusController : UIController
     public ItemSlot SelectItem;
     private ItemStatusModel itemStatusModel;
     private ItemStatusView itemStatusView;
-
     public override void Initialize(IUIBase view, UIModel model)
     {
         itemStatusModel = model as ItemStatusModel;
@@ -43,16 +42,19 @@ public class ItemStatusController : UIController
 
     private void UpgradeItem()
     {
-        if (SelectItem.item.stack >= 2)
-        {
-            SelectItem.item.stack -= 2;
 
-            SelectItem.item.ItemStat.maxHealth *= 2;
-            SelectItem.item.ItemStat.atk *= 2;
-            SelectItem.item.ItemStat.def *= 2;
-            SelectItem.item.ItemStat.maxHealth *= 2;
-            SelectItem.item.ItemStat.maxHealth *= 2;
-            SelectItem.item.ItemStat.maxHealth *= 2;
+        if (SelectItem.item.UpgradeLevel < SelectItem.item.UpgradeLevelMax&& SelectItem.item.stack >= SelectItem.item.UpgradeStackCount)
+        {
+            SelectItem.item.stack -= SelectItem.item.UpgradeStackCount;
+            SelectItem.item.UpgradeStackCount *= SelectItem.item.UpgradeCostIncreaseRatio;
+
+            SelectItem.item.UpgradeLevel++;
+            SelectItem.item.ItemStat.maxHealth *= SelectItem.item.UpgradeStatIncreaseRatio;
+            SelectItem.item.ItemStat.atk *= SelectItem.item.UpgradeStatIncreaseRatio;
+            SelectItem.item.ItemStat.def *= SelectItem.item.UpgradeStatIncreaseRatio;
+            SelectItem.item.ItemStat.maxHealth *= SelectItem.item.UpgradeStatIncreaseRatio;
+            SelectItem.item.ItemStat.maxHealth *= SelectItem.item.UpgradeStatIncreaseRatio;
+            SelectItem.item.ItemStat.maxHealth *= SelectItem.item.UpgradeStatIncreaseRatio;
         }
 
         UpdateView();

@@ -1,11 +1,16 @@
 ﻿using Spine.Unity;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public abstract class PlayerBaseState : IState
 {
     protected float moveSpeedModifier = 1.0f;
 
     protected PlayerStateMachine stateMachine;
+
+    private bool isBorder = false;
 
     public PlayerBaseState(PlayerStateMachine _stateMachine)
     {
@@ -46,9 +51,13 @@ public abstract class PlayerBaseState : IState
 
     private void Move()
     {
-        Vector3 movementDirection = GetMovementDirection();
+        //자동모드일때
+        if (stateMachine._Player.isAuto)
+        {
+            Vector3 movementDirection = GetMovementDirection();
 
-        Move(movementDirection);
+            Move(movementDirection);
+        }
     }
 
     public void FlipCharacter(bool isFacingRight)
@@ -74,7 +83,7 @@ public abstract class PlayerBaseState : IState
             {
                 FlipCharacter(false);
             }
-            
+
             return targetDir;
         }
         else
@@ -84,11 +93,8 @@ public abstract class PlayerBaseState : IState
 
     }
 
-    
-
     private void Move(Vector3 direction)
     {
-        //float movementSpeed = stateMachine._Player.StatHandler.CurrentStat.moveSpeed;
         float movementSpeed = stateMachine._Player.UserData.stat.moveSpeed;
         //캐릭터컨트롤러 컴포넌트에는 Move라는 내부 메서드가 기본적으로 생성되어있음
         stateMachine._Player.rb.velocity = ((direction * movementSpeed)) * moveSpeedModifier;

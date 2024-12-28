@@ -30,7 +30,6 @@ public class InventoryModel : UIModel
     {
         Item item = new Item();
         item.Initialize(DataManager.Instance.ItemDB.GetByKey(key));
-        //첫 획득시 아이템 소지여부를 true로 변경
 
 
         foreach (Item inven in Items)
@@ -39,6 +38,7 @@ public class InventoryModel : UIModel
             {
                 if (!inven.IsGain)
                 {
+                    //첫 획득시 아이템 소지여부를 true로 변경
                     inven.IsGain = true;
                 }
                 else

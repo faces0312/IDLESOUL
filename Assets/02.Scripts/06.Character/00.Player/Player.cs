@@ -179,17 +179,6 @@ public class Player : BaseCharacter
         DataManager.Instance.SaveUserData(userData);
 
         statHandler = new StatHandler(StatType.Player,0,userData);
-        //statHandler.CurrentStat.iD = userData.UID;
-        //statHandler.CurrentStat.health = userData.stat.health;
-        //statHandler.CurrentStat.maxHealth = userData.stat.maxHealth;
-        //statHandler.CurrentStat.atk = userData.stat.atk;
-        //statHandler.CurrentStat.def = userData.stat.def;
-        //statHandler.CurrentStat.moveSpeed = userData.stat.moveSpeed;
-        //statHandler.CurrentStat.atkSpeed = userData.stat.atkSpeed;
-        //statHandler.CurrentStat.reduceDamage = userData.stat.reduceDamage;
-        //statHandler.CurrentStat.critChance = userData.stat.critChance;
-        //statHandler.CurrentStat.critDamage = userData.stat.critDamage;
-        //statHandler.CurrentStat.coolDown = userData.stat.coolDown;
 
         //Controller(FSM 세팅)
         playerStateMachine.ChangeState(playerStateMachine.IdleState);
@@ -252,30 +241,12 @@ public class Player : BaseCharacter
     {
         if (isJoyStick == false && isController == false)
             playerStateMachine.Update();
-
-        //if (Input.GetKeyDown(KeyCode.D)) // 데이터 갱신
-        //{
-        //    userData.Level++;
-        //    userData.stat.atk = userData.Level * userData.stat.atk;
-        //    userData.stat.def = userData.Level * userData.stat.def;
-        //}
-        //else if (Input.GetKeyDown(KeyCode.S))
-        //{
-        //    DataManager.Instance.SaveUserData(userData);
-        //}
-        //else if (Input.GetKeyDown(KeyCode.L))
-        //{
-        //    DataManager.Instance.LoadUserData();
-        //}
-        //else if (Input.GetKeyDown(KeyCode.C))
-        //{
-        //    targetSearch.TargetClear();
-        //    Debug.Log("Player Chase Target Reset");
-        //}
     }
 
     private void FixedUpdate()
     {
         playerStateMachine.FixedUpdateState();
     }
+
+
 }

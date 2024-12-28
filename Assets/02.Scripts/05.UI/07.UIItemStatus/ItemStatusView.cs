@@ -39,9 +39,9 @@ public class ItemStatusView : MonoBehaviour, IUIBase
 
     public void PrintData(Item selectedItem)
     {
-        curUpgradeLevelText.text = "1";
-        maxUpgradeLeveText.text = "100";
-        UpgradeCostText.text = $"{selectedItem.stack} / 2"; 
+        curUpgradeLevelText.text = $"{selectedItem.UpgradeLevel}";
+        maxUpgradeLeveText.text = $"{selectedItem.UpgradeLevelMax}";
+        UpgradeCostText.text = $"{selectedItem.stack} / {selectedItem.UpgradeStackCount}"; 
 
         itemPassiveEffectText.text = 
             $"°ø°Ý·Â + {selectedItem.ItemStat.atk} " +

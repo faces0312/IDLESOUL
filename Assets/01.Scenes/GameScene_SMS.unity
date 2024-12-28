@@ -547,36 +547,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13520b7e0c5ede843b4405e96ab18124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPrefab: {fileID: 3712707503665828137, guid: 519ff72a211faaf43b8be89b3169a13d, type: 3}
-  effectPrefab2: {fileID: 0}
-  statPanel: {fileID: 0}
-  enemy: {fileID: 0}
-  playerLevel: 1
-  soulLevel: 1
-  playerStats:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  soulStats:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!4 &6266220778889875219
 Transform:
   m_ObjectHideFlags: 0
