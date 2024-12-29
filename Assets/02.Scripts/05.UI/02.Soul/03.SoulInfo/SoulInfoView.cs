@@ -58,6 +58,9 @@ public class SoulInfoView : MonoBehaviour, IUIBase
     [Header("Description")]
     [SerializeField] private TextMeshProUGUI[] skillDescriptionTexts;
 
+    [Header("Cost")]
+    [SerializeField] private TextMeshProUGUI[] costTexts;
+
     public Soul soul;
 
     public void Initialize()
@@ -94,6 +97,7 @@ public class SoulInfoView : MonoBehaviour, IUIBase
     {
         //Debug.LogAssertion("소울 인포 UI 업데이트");
         levelTexts[(int)LevelType.Soul].text = $"Lv. {soul.level}";
+        costTexts[(int)LevelType.Soul].text = $"{Utils.FormatBigInteger(Utils.SoulUpgradeCost(LevelType.Soul, soul))}";
 
         // TODO : 소울 스텟도 업데이트 되어야함
         UpdateStatus();
@@ -103,18 +107,21 @@ public class SoulInfoView : MonoBehaviour, IUIBase
     {
         //Debug.LogAssertion("소울 인포 스킬1 업데이트");
         levelTexts[(int)LevelType.Default].text = $"Lv. {soul.Skills[(int)SkillType.Default].level}";
+        costTexts[(int)LevelType.Default].text = $"{Utils.FormatBigInteger(Utils.SoulUpgradeCost(LevelType.Default, soul))}";
     }
 
     public void UpdateUltimate()
     {
         //Debug.LogAssertion("소울 인포 스킬2 업데이트");
         levelTexts[(int)LevelType.Ultimate].text = $"Lv. {soul.Skills[(int)SkillType.Ultimate].level}";
+        costTexts[(int)LevelType.Ultimate].text = $" {Utils.FormatBigInteger(Utils.SoulUpgradeCost(LevelType.Ultimate, soul))}";
     }
 
     public void UpdatePassive()
     {
         //Debug.LogAssertion("소울 인포 패시브 업데이트");
         levelTexts[(int)LevelType.Passive].text = $"Lv. {soul.Skills[(int)SkillType.Passive].level}";
+        costTexts[(int)LevelType.Passive].text = $"{Utils.FormatBigInteger(Utils.SoulUpgradeCost(LevelType.Passive, soul))}";
 
         // TODO : 소울 스텟도 업데이트 되어야함
         UpdateStatus();
@@ -164,5 +171,10 @@ public class SoulInfoView : MonoBehaviour, IUIBase
         statusText[(int)StatusType.CritChance].text = $"{soul.statHandler.CurrentStat.critChance}%";
         statusText[(int)StatusType.CritDamage].text = $"{soul.statHandler.CurrentStat.critDamage}%";
         statusText[(int)StatusType.CoolDown].text = $"{soul.statHandler.CurrentStat.coolDown}%";
+
+        costTexts[(int)LevelType.Default].text = $"{Utils.FormatBigInteger(Utils.SoulUpgradeCost(LevelType.Default, soul))}";
+        costTexts[(int)LevelType.Ultimate].text = $"{Utils.FormatBigInteger(Utils.SoulUpgradeCost(LevelType.Ultimate, soul))}";
+        costTexts[(int)LevelType.Passive].text = $"{Utils.FormatBigInteger(Utils.SoulUpgradeCost(LevelType.Passive, soul))}";
+        costTexts[(int)LevelType.Soul].text = $"{Utils.FormatBigInteger(Utils.SoulUpgradeCost(LevelType.Soul, soul))}";
     }
 }
