@@ -1,8 +1,8 @@
-using ScottGarland;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using ScottGarland;
 
 [Serializable]
 public class UserDB
@@ -137,6 +137,16 @@ public class UserDB
     /// </summary>
     public int CurStageNum;
 
+    /// <summary>
+    /// SoulIDList
+    /// </summary>
+    public List<int> SoulIDList;
+
+    /// <summary>
+    /// ItemIDList
+    /// </summary>
+    public List<Item> ItemIDList;
+
     public void JsonDataConvert(UserData userData)
     {
         key = userData.UID;
@@ -147,6 +157,9 @@ public class UserDB
         PlayTimeInSeconds = userData.PlayTimeInSeconds;
         Exp = userData.Exp;
         MaxExp = userData.MaxExp;
+
+        //SoulIDList = userData.GainSoulID;
+        ItemIDList = userData.GainItemID;
 
         Health = BigInteger.ToInt32(userData.stat.health); ;
         MaxHealth = BigInteger.ToInt32(userData.stat.maxHealth);
@@ -162,7 +175,7 @@ public class UserDB
 
         moveSpeed = userData.stat.moveSpeed;
         atkSpeed = userData.stat.atkSpeed;
-       
+
         ReduceDamage = userData.stat.reduceDamage;
 
         CriticalRate = userData.stat.critChance;
@@ -194,7 +207,7 @@ public class UserDBLoader
         public List<UserDB> Items;
     }
 
-    public UserDB GetByKey(int key = 12345678) // Player 임시 Key코드
+    public UserDB GetByKey(int key = 12345678) // 임시 플레이어 ID 코드
     {
         if (ItemsDict.ContainsKey(key))
         {

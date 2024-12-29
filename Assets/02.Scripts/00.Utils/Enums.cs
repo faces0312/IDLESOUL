@@ -8,6 +8,12 @@ namespace Enums
         Upgrade
     }
 
+    public enum StageNameType
+    {
+        Casthle = 0,
+        Forest = 1,
+    }
+
     public enum GachaType
     {
         None,

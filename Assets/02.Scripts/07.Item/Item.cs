@@ -1,8 +1,11 @@
 using System;
+using Unity.VisualScripting;
+using UnityEngine;
 
-
+[System.Serializable]
 public class Item : BaseItem
 {
+    [SerializeField] private int ID; // Item ID, 직렬화 하기 위한 
     public bool IsGain; //플레이어의 아이템 첫 소지여부
     public bool equip; //플레이어의 아이템 장착 여부
     public int stack; //아이템 소지 갯수 
@@ -16,6 +19,7 @@ public class Item : BaseItem
     {
         base.Initialize(data);
 
+        ID = itemStat.iD;
         //ToDo : 플레이어 유저데이터를 참고하여 갱신할수 있게 해야됨
         IsGain = false;
         stack = 0;

@@ -1,9 +1,10 @@
 using ScottGarland;
+using UnityEngine;
 
 public abstract class BaseItem 
 {
-    private ItemDB itemData;
-    private Stat itemStat = new Stat();
+    protected ItemDB itemData;
+    protected Stat itemStat = new Stat();
     public ItemDB ItemData { get => itemData; set => itemData = value; }
     public Stat ItemStat { get => itemStat; }
 

@@ -8,18 +8,18 @@
       "stageName": "처음의 숲",
       "SlayEnemyCount": 10,
       "SummonEnemyIDList": [
-        5000,
-        5001
+        5002,
+        5003
       ],
       "SummonBossID": 5500,
       "StageType": 0,
-      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+      "StageName": 1
     },
     {
       "key": 7001,
       "ChapterNum": 1,
       "StageNum": 2,
-      "CurStageModifier": 2,
+      "CurStageModifier": 1.1,
       "stageName": "미숙한자들의 길",
       "SlayEnemyCount": 20,
       "SummonEnemyIDList": [
@@ -28,37 +28,37 @@
       ],
       "SummonBossID": 5500,
       "StageType": 0,
-      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+      "StageName": 0
     },
     {
       "key": 7002,
       "ChapterNum": 1,
       "StageNum": 3,
-      "CurStageModifier": 3,
+      "CurStageModifier": 1.1,
       "stageName": "익숙해지는 주변",
       "SlayEnemyCount": 30,
       "SummonEnemyIDList": [
         5002,
         5003
       ],
-      "SummonBossID": 5501,
+      "SummonBossID": 5500,
       "StageType": 0,
-      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+      "StageName": 1
     },
     {
       "key": 7003,
       "ChapterNum": 1,
       "StageNum": 4,
-      "CurStageModifier": 1,
+      "CurStageModifier": 1.1,
       "stageName": "처음의 숲",
       "SlayEnemyCount": 50,
       "SummonEnemyIDList": [
         5002,
         5003
       ],
-      "SummonBossID": 5501,
+      "SummonBossID": 5500,
       "StageType": 0,
-      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+      "StageName": 0
     },
     {
       "key": 7004,
@@ -75,7 +75,7 @@
       ],
       "SummonBossID": 5500,
       "StageType": 0,
-      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+      "StageName": 1
     },
     {
       "key": 7005,
@@ -92,7 +92,7 @@
       ],
       "SummonBossID": 5501,
       "StageType": 0,
-      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+      "StageName": 0
     },
     {
       "key": 7006,
@@ -109,7 +109,7 @@
       ],
       "SummonBossID": 5501,
       "StageType": 0,
-      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+      "StageName": 1
     },
     {
       "key": 7007,
@@ -124,7 +124,7 @@
       ],
       "SummonBossID": 5501,
       "StageType": 0,
-      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+      "StageName": 0
     },
     {
       "key": 7008,
@@ -139,7 +139,7 @@
       ],
       "SummonBossID": 5501,
       "StageType": 0,
-      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+      "StageName": 1
     },
     {
       "key": 7009,
@@ -153,7 +153,7 @@
       ],
       "SummonBossID": 5501,
       "StageType": 0,
-      "StageMapPath": "Prefabs/Stage/CasthleStageMap"
+      "StageName": 0
     }
   ]
 }

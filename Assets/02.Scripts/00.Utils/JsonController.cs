@@ -4,6 +4,8 @@ using System.Text;
 
 public class JsonController
 {
+    // Application.persistentDataPath : C:\Users\[user name]\AppData\LocalLow\[company name]\[product name]
+
     public UserDB LoadUserData(string path)
     {
         if (File.Exists(Application.persistentDataPath + path))

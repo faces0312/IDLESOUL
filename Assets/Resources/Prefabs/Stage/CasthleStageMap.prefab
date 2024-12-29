@@ -669,6 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4073003f15c922a41a500e5639521e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageName: 0
   SpawnArea: {fileID: 5280862729684200822}
 --- !u!1 &8363010302017176893
 GameObject:
