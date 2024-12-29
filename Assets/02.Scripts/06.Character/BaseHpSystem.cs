@@ -11,11 +11,11 @@ public class BaseHpSystem : MonoBehaviour
         HpUpdate();
     }
 
-    public void TakeDamage(float damage, StatHandler statHandler)
+    public void TakeDamage(BigInteger damage, StatHandler statHandler)
     {
         int maxHelth = BigInteger.ToInt32(statHandler.CurrentStat.maxHealth);
         int curHelth = BigInteger.ToInt32(statHandler.CurrentStat.health);
-        statHandler.CurrentStat.health = Mathf.Clamp(curHelth - (int)damage, 0, maxHelth);
+        statHandler.CurrentStat.health = Mathf.Clamp(curHelth - BigInteger.ToInt32(damage), 0, maxHelth);
         //Debug.Log($"{gameObject.name} 피격됨! 데미지 : {damage} , 체력 상태 : {curHelth}");
 
         HpUpdate();

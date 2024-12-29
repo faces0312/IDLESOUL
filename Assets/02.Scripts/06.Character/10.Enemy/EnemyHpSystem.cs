@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using ScottGarland;
 
 public class EnemyHpSystem : MonoBehaviour, ITakeDamageAble
 {
@@ -16,10 +17,10 @@ public class EnemyHpSystem : MonoBehaviour, ITakeDamageAble
         HpUpdate();
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(BigInteger damage)
     {
         Debug.Log("µ¥¹ÌÁö");
-        enemy.currentHealth -= damage;
+        enemy.currentHealth -= BigInteger.ToInt32(damage);
         HpUpdate();
         if (enemy.currentHealth <= 0)
         {

@@ -5,7 +5,7 @@ using ScottGarland;
 
 public class PlayerProjectile : BaseProjectile
 {
-    [SerializeField] private float value = 1.0f; // 해당 투사체의 계수
+    private float value = 1.0f; // 해당 투사체의 계수
 
     protected override void Start()
     {
@@ -39,11 +39,10 @@ public class PlayerProjectile : BaseProjectile
     {
         if (TargetLayer == ((1 << other.gameObject.layer) | TargetLayer))
         {
-            uint Atk = BigInteger.ToUInt32(GameManager.Instance.player.StatHandler.CurrentStat.atk);
-
+            BigInteger Atk = GameManager.Instance.player.StatHandler.CurrentStat.atk;
             //데미지 오차 범위 만들것
 
-            DamageCaculate(other.gameObject, Atk * value);
+            DamageCaculate(other.gameObject, BigInteger.Multiply(Atk, (int)value));//계수 수정 필요함 
             KnockBackCaculate(other.gameObject, 0.0f);
             base.ProjectileCollison(other);
 

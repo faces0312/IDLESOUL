@@ -189,7 +189,7 @@ public class Player : BaseCharacter
         Debug.Log("Player 세팅 완료!!");
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(BigInteger damage)
     {
         baseHpSystem.TakeDamage(damage, statHandler);
         UIManager.Instance.ShowUI<UIPlayerHPDisplayController>();
@@ -200,7 +200,7 @@ public class Player : BaseCharacter
         dmgFont.SetActive(true);
         dmgFont.transform.position = transform.position;
         dmgFont.transform.rotation = Quaternion.identity;
-        dmgFont.GetComponent<DamageFont>().SetDamage(Owner.Player, new BigInteger((int)damage));
+        dmgFont.GetComponent<DamageFont>().SetDamage(Owner.Player, damage);
 
         if (statHandler.CurrentStat.health <= 0)
         {
