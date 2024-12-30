@@ -62,8 +62,15 @@ public class SoulInventory : MonoBehaviour
     {
         if(SoulSquadSlot.soul == SoulSlot.soul)
         {
+            if (GameManager.Instance.player.PlayerSouls.CurrentSoul == SoulSlot.soul)
+            {
+                unEquipBtn.interactable = false;
+            }
+            else
+            {
+                unEquipBtn.interactable = true;
+            }
             equipBtn.interactable = false;
-            unEquipBtn.interactable = true;
         }
         else
         {
@@ -98,7 +105,6 @@ public class SoulInventory : MonoBehaviour
         return null;
     }
 
-    // TODO : 장착 주체 수정
     public void OnEquipSoul()
     {
         SoulSlot.EquipSlot();

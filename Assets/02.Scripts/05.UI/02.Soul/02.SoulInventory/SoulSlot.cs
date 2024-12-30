@@ -42,12 +42,16 @@ public class SoulSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (soul == null) return;
+
         cursorDescription.GetComponent<CursorDescription>().StartProgress();
         Invoke(nameof(ShowInfo), holdTime);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (soul == null) return;
+
         cursorDescription.GetComponent<CursorDescription>().StopProgress();
         CancelInvoke(nameof(ShowInfo));
     }

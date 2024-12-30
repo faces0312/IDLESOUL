@@ -353,14 +353,14 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 40
+  m_SortingOrder: 0
   m_BoneTransforms:
   - {fileID: 5089695083530441760}
-  - {fileID: 5089695083630404032}
-  - {fileID: 5089695082992614836}
-  - {fileID: 5089695083412183960}
-  - {fileID: 5089695083208587353}
-  - {fileID: 5089695083201155373}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!137 &5089695082555108117
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -401,7 +401,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 40
+  m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -539,9 +539,14 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 90
+  m_SortingOrder: 0
   m_BoneTransforms:
   - {fileID: 5089695082992614836}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!137 &5089695082758849326
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -582,7 +587,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 90
+  m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -649,6 +654,11 @@ MonoBehaviour:
   m_SortingOrder: 0
   m_BoneTransforms:
   - {fileID: 5089695083201155373}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!137 &5089695082835174678
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -756,6 +766,11 @@ MonoBehaviour:
   m_SortingOrder: 0
   m_BoneTransforms:
   - {fileID: 5089695083208587353}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!137 &5089695082845856924
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -1055,6 +1070,11 @@ MonoBehaviour:
   m_SortingOrder: 0
   m_BoneTransforms:
   - {fileID: 5089695083414684352}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!137 &7516311601087256485
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -1356,9 +1376,14 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 0
   m_BoneTransforms:
   - {fileID: 5089695083412183960}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!137 &5089695084044872593
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -1399,7 +1424,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -1463,9 +1488,14 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 0
   m_BoneTransforms:
   - {fileID: 5089695083177138240}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!137 &5089695084197600571
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -1506,7 +1536,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -1570,9 +1600,14 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 60
+  m_SortingOrder: 0
   m_BoneTransforms:
   - {fileID: 5089695083630404032}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!137 &5089695084344843555
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -1613,7 +1648,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 60
+  m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -1800,6 +1835,7 @@ MonoBehaviour:
   baseHpSystem: {fileID: 0}
   rb: {fileID: 0}
   attackType: 1
+  slash: {fileID: 0}
   enemyDB:
     key: 0
     Name: 
@@ -1818,8 +1854,8 @@ MonoBehaviour:
     KnockBackPower: 0
     KnockBackResistance: 0
   target: {fileID: 0}
+  collider: {fileID: 0}
   animator: {fileID: 0}
-  bulletTest: {fileID: 1595252117517162, guid: e8be27b2565d15b40823999a1d6b61f1, type: 3}
   healthBar: {fileID: 7835965282708907878}
   currentHealth: 0
 --- !u!114 &7912652396146340021

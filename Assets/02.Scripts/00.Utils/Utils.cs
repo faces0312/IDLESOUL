@@ -237,4 +237,56 @@ public static class Utils
         return statResult;
 
     }
+
+    /// <summary>
+    /// 스킬 업그레이드시 적용되는 코스트 증가율 수식
+    /// </summary>
+    /// <param name="baseCost">초기 비용. 레벨 1에서의 기본 비용입니다.</param>
+    /// <param name="level">현재 레벨</param>
+    /// <param name="growRate">코스트 증가율 (예: 1.5~2.0 사이).</param>
+    /// <param name="constantIncrease">레벨마다 고정적으로 추가되는 비용 (선택 사항).</param>
+    /// <returns></returns>
+    public static BigInteger SoulUpgradeCost(LevelType type, Soul soul)
+    {
+        int baseCost = 0;
+        float growRate = 0;
+        int level = 0;
+        int constIncrease = 0;
+
+        switch (type)
+        {
+            case LevelType.Default:
+                /*필요한 데이터를 StatUpgradeDB에서 호출해서 사용 */
+                baseCost = 10;
+                growRate = 2;
+                /*소울의 스킬 레벨을 호출 */
+                level = soul.Skills[(int)SkillType.Default].level;
+                constIncrease = 20;
+                break;
+            case LevelType.Ultimate:
+                baseCost = 10;
+                growRate = 2;
+                level = soul.Skills[(int)SkillType.Ultimate].level;
+                constIncrease = 20;
+                break;
+            case LevelType.Passive:
+                baseCost = 10;
+                growRate = 2;
+                level = soul.Skills[(int)SkillType.Passive].level;
+                constIncrease = 20;
+                break;
+            case LevelType.Soul:
+                baseCost = 10;
+                growRate = 2;
+                /*소울의 레벨을 호출 */
+                level = soul.level;
+                constIncrease = 20;
+                break;
+        }
+
+        //코스트가 증가하는 기본적인 적용 수식 중 하나 
+        int Cost = (int)(baseCost * Mathf.Pow(level, growRate) + (level * constIncrease));
+
+        return new BigInteger(Cost);
+    }
 }

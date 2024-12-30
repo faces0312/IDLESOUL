@@ -41,6 +41,10 @@ public class SoulSquadSlot : MonoBehaviour
     public void EquipSoul()
     {
         thumbnail.sprite = sprite;
+
+        // 현재 소환중인 소울과 교체한 소울슬롯의 인덱스가 같을 경우 재 소환
+        if (GameManager.Instance.player.PlayerSouls.SpawnIndex == index)
+            GameManager.Instance.player.PlayerSouls.SpawnSoul(index, true);
     }
 
     public void UnEquipSoul()
