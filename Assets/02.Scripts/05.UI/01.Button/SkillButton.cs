@@ -38,9 +38,16 @@ public class SkillButton : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(DelayedInitialization());
+    }
+
+    IEnumerator DelayedInitialization()
+    {
+        yield return null;
+
         button.onClick.AddListener(OnClickSkillButton);
 
-        switch(skillType)
+        switch (skillType)
         {
             case SkillType.Default:
                 GameManager.Instance.player.PlayerSouls.OnUpdateDefaultSprite += UpdateSkillImage;

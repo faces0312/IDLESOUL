@@ -37,7 +37,6 @@ public class ConfigView : MonoBehaviour, IUIBase
         {
             SoundManager.Instance.SetSoundEffectVolume(value);
         });
-
         //ConfigPanel.SetActive(false);
     } 
 
@@ -55,6 +54,7 @@ public class ConfigView : MonoBehaviour, IUIBase
     {
         ConfigPanel.SetActive(true);
     }
+
 
     public void UpdateUI()
     {

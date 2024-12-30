@@ -159,7 +159,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
                     GameManager.Instance.playerController.UseSkill1();
                 else if (!skill2Button.isUses[curSoulIndex])
                     GameManager.Instance.playerController.UseSkill2();
-            }
+             }
             else
             {
                 currentSoulIndex = (currentSoulIndex % 3) + 1; // 1, 2, 3 ¼øÈ¯
