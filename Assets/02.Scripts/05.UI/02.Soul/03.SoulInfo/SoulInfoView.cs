@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using ScottGarland;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -95,35 +96,33 @@ public class SoulInfoView : MonoBehaviour, IUIBase
 
     public void UpdateUI()
     {
-        //Debug.LogAssertion("소울 인포 UI 업데이트");
         levelTexts[(int)LevelType.Soul].text = $"Lv. {soul.level}";
         costTexts[(int)LevelType.Soul].text = $"{Utils.FormatBigInteger(Utils.SoulUpgradeCost(LevelType.Soul, soul))}";
 
-        // TODO : 소울 스텟도 업데이트 되어야함
         UpdateStatus();
     }
 
     public void UpdateDefault()
     {
-        //Debug.LogAssertion("소울 인포 스킬1 업데이트");
         levelTexts[(int)LevelType.Default].text = $"Lv. {soul.Skills[(int)SkillType.Default].level}";
         costTexts[(int)LevelType.Default].text = $"{Utils.FormatBigInteger(Utils.SoulUpgradeCost(LevelType.Default, soul))}";
+
+        UpdateStatus();
     }
 
     public void UpdateUltimate()
     {
-        //Debug.LogAssertion("소울 인포 스킬2 업데이트");
         levelTexts[(int)LevelType.Ultimate].text = $"Lv. {soul.Skills[(int)SkillType.Ultimate].level}";
         costTexts[(int)LevelType.Ultimate].text = $" {Utils.FormatBigInteger(Utils.SoulUpgradeCost(LevelType.Ultimate, soul))}";
+
+        UpdateStatus();
     }
 
     public void UpdatePassive()
     {
-        //Debug.LogAssertion("소울 인포 패시브 업데이트");
         levelTexts[(int)LevelType.Passive].text = $"Lv. {soul.Skills[(int)SkillType.Passive].level}";
         costTexts[(int)LevelType.Passive].text = $"{Utils.FormatBigInteger(Utils.SoulUpgradeCost(LevelType.Passive, soul))}";
 
-        // TODO : 소울 스텟도 업데이트 되어야함
         UpdateStatus();
     }
 
@@ -161,7 +160,11 @@ public class SoulInfoView : MonoBehaviour, IUIBase
     private void UpdateStatus()
     {
         levelText.text = $"Lv. {soul.level}";
-        powerText.text = Utils.FormatBigInteger(soul.statHandler.CurrentStat.totalDamage);
+        //powerText.text = Utils.FormatBigInteger(soul.statHandler.CurrentStat.totalDamage);
+        // TODO : 스탯 핸들러의 TotalDamage가 가지고 있게 수정
+        BigInteger power = (soul.statHandler.CurrentStat.maxHealth * 15) + ((soul.statHandler.CurrentStat.atk + soul.statHandler.CurrentStat.def) * 9)
+            + ((soul.Skills[(int)SkillType.Passive].level * soul.Skills[(int)SkillType.Default].level * soul.Skills[(int)SkillType.Ultimate].level) * 30);
+        powerText.text = Utils.FormatBigInteger(power);
         statusText[(int)StatusType.Hp].text = Utils.FormatBigInteger(soul.statHandler.CurrentStat.maxHealth);
         statusText[(int)StatusType.Atk].text = Utils.FormatBigInteger(soul.statHandler.CurrentStat.atk);
         statusText[(int)StatusType.Def].text = Utils.FormatBigInteger(soul.statHandler.CurrentStat.def);
