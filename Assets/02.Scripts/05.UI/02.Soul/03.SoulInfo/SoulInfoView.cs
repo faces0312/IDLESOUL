@@ -149,13 +149,13 @@ public class SoulInfoView : MonoBehaviour, IUIBase
         // icons[(int)LevelType.Ultimate].sprite = 
         // icons[(int)LevelType.Passive].sprite = 
 
-        skillNameTexts[(int)LevelType.Default].text = $"Lv. {soul.Skills[(int)SkillType.Default].skillName}";
-        skillNameTexts[(int)LevelType.Ultimate].text = $"Lv. {soul.Skills[(int)SkillType.Ultimate].skillName}";
-        skillNameTexts[(int)LevelType.Passive].text = $"Lv. {soul.Skills[(int)SkillType.Passive].skillName}";
+        skillNameTexts[(int)LevelType.Default].text = $"{soul.Skills[(int)SkillType.Default].skillName}";
+        skillNameTexts[(int)LevelType.Ultimate].text = $"{soul.Skills[(int)SkillType.Ultimate].skillName}";
+        skillNameTexts[(int)LevelType.Passive].text = $"{soul.Skills[(int)SkillType.Passive].skillName}";
 
-        skillDescriptionTexts[(int)LevelType.Default].text = $"Lv. {soul.Skills[(int)SkillType.Default].description}";
-        skillDescriptionTexts[(int)LevelType.Ultimate].text = $"Lv. {soul.Skills[(int)SkillType.Ultimate].description}";
-        skillDescriptionTexts[(int)LevelType.Passive].text = $"Lv. {soul.Skills[(int)SkillType.Passive].description}";
+        skillDescriptionTexts[(int)LevelType.Default].text = $"{soul.Skills[(int)SkillType.Default].description}";
+        skillDescriptionTexts[(int)LevelType.Ultimate].text = $"{soul.Skills[(int)SkillType.Ultimate].description}";
+        skillDescriptionTexts[(int)LevelType.Passive].text = $"{soul.Skills[(int)SkillType.Passive].description}";
     }
 
     private void UpdateStatus()
