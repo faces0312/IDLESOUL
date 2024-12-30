@@ -103,6 +103,13 @@ public class Stat
         clacStat.critDamage = (float)Math.Round(stat1.critDamage + stat2.critDamage, 1);
         clacStat.coolDown = (float)Math.Round(stat1.coolDown + stat2.coolDown, 1);
 
+        clacStat.MaxHealthLevel = stat1.MaxHealthLevel;
+        clacStat.AtkLevel = stat1.AtkLevel;
+        clacStat.DefLevel = stat1.DefLevel;
+        clacStat.ReduceDamageLevel = stat1.ReduceDamageLevel;
+        clacStat.CriticalRateLevel = stat1.CriticalRateLevel;
+        clacStat.CriticalDamageLevel = stat1.CriticalDamageLevel;
+
         return clacStat;
     }
 
@@ -124,6 +131,13 @@ public class Stat
         clacStat.critDamage = (float)Math.Round(stat1.critDamage - stat2.critDamage, 1);
         clacStat.coolDown = (float)Math.Round(stat1.coolDown - stat2.coolDown, 1);
 
+        clacStat.MaxHealthLevel = stat1.MaxHealthLevel;
+        clacStat.AtkLevel = stat1.AtkLevel;
+        clacStat.DefLevel = stat1.DefLevel;
+        clacStat.ReduceDamageLevel = stat1.ReduceDamageLevel;
+        clacStat.CriticalRateLevel = stat1.CriticalRateLevel;
+        clacStat.CriticalDamageLevel = stat1.CriticalDamageLevel;
+
         return clacStat;
     }
 
@@ -144,6 +158,13 @@ public class Stat
         clacStat.critChance = (float)Math.Round(stat.critChance * amount, 1);
         clacStat.critDamage = (float)Math.Round(stat.critDamage * amount, 1);
         clacStat.coolDown = (float)Math.Round(stat.coolDown * amount, 1);
+
+        clacStat.MaxHealthLevel = stat.MaxHealthLevel;
+        clacStat.AtkLevel = stat.AtkLevel;
+        clacStat.DefLevel = stat.DefLevel;
+        clacStat.ReduceDamageLevel = stat.ReduceDamageLevel;
+        clacStat.CriticalRateLevel = stat.CriticalRateLevel;
+        clacStat.CriticalDamageLevel = stat.CriticalDamageLevel;
 
         return clacStat;
     }
