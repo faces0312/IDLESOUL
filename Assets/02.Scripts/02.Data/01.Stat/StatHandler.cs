@@ -57,8 +57,8 @@ public class StatHandler
                 break;
             case StatType.Soul:
                 // TODO : 플레이가 레벨업, 장비를 장착할 때 소울들의 정보도 갱신이 되어야 한다. => 적용 확인 시 주석 삭제
-                GameManager.Instance.player.OnUpdateSoulStats += UpdateSoulStats;
-                UpdateSoulStats();
+                //GameManager.Instance.player.OnUpdateSoulStats += UpdateSoulStats;
+                //UpdateSoulStats();
                 break;
             case StatType.Enemy:
                 break;
@@ -144,11 +144,11 @@ public class StatHandler
         //UpdateStats(level);
         currentStat = baseStat * level;  // 연산자 오버로딩 테스트
 
-        if (type == StatType.Soul)
-        {
-            additionalStats.Clear();    // 추가 값이 사라졌으므로 초기화 시킨다.
-            UpdateSoulStats();
-        }
+        //if (type == StatType.Soul)
+        //{
+        //    additionalStats.Clear();    // 추가 값이 사라졌으므로 초기화 시킨다.
+        //    UpdateSoulStats();
+        //}
     }
 
     public void LevelUp(int level, Status type)
@@ -189,6 +189,9 @@ public class StatHandler
                 //currentStat.critDamage = currentStat.critDamage * currentStat.CriticalDamageLevel * 1;
                 break;
         }
+
+        // 소울과 아이템의 정보를 다시 갱신해주어야 함
+        currentStat += CalculateAdditionalStats();
     }
 
     public void EquipItem(Stat itemStat)

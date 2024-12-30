@@ -12,9 +12,12 @@ public class SoundManager : SingletonDDOL<SoundManager>
     public float musicVolume;// { get; private set; }
     public float soundEffectVolume;// { get; private set; }
 
+
     protected override void Awake()
     {
-        base.Awake(); 
+        base.Awake();
+        Init();
+        ChangeBGMForScene("TitleScene");
     }
 
     public void Init()
@@ -22,11 +25,39 @@ public class SoundManager : SingletonDDOL<SoundManager>
         //audioSource = Resources.Load<AudioSource>("Prefebs/Sample/AudioSource"); // 1
         audioSource = gameObject.AddComponent<AudioSource>(); // 2
         audioSource.loop = true; //BGM이기에 true
+        audioSource.volume = 0.2f;
+        audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("BGM")[0];
 
         SetBGMVolume(musicVolume);
         SetSoundEffectVolume(soundEffectVolume);
+    }
 
-        Debug.Log("SoundManager Init 완료!!");
+    public void ChangeBGMForScene(string sceneName)
+    {
+        Debug.Log($"Changing BGM for scene: {sceneName}");
+        if (sceneName == "LoadingScene")
+        {
+            StopBGM();
+            return;
+        }
+
+        AudioClip newBGM = null;
+        switch (sceneName)
+        {
+            case "TitleScene":
+                newBGM = Resources.Load<AudioClip>("Sound/BGM_Title");
+                break;
+            case "GameScene_SMS":
+                newBGM = Resources.Load<AudioClip>("Sound/BGM_Game");
+                break;
+            default:
+                return;
+        }
+
+        if (newBGM != null)
+        {
+            ChangeBGM(newBGM);
+        }
     }
 
     //씬바뀔때 BGM 바꾸기
@@ -35,6 +66,11 @@ public class SoundManager : SingletonDDOL<SoundManager>
         audioSource.Stop();
         audioSource.clip = clip;
         audioSource.Play();
+    }
+
+    public void StopBGM()
+    {
+        audioSource.Stop();
     }
 
     //전체음악 조절(슬라이더)

@@ -108,13 +108,22 @@ public class PlayerSouls : MonoBehaviour
             // 현재 소환중인 소울과 같은 경우
             if (spawnIndex == index) return;
         }
-        
-        // 소환을 해제하는 로직
-        CurrentSoul = null;
 
+        if (CurrentSoul != null)
+        {
+            // 현재 적용중인 소울의 패시브 스킬 해제
+            CurrentSoul.ReleasePassiveSkill();
+
+            // 소환을 해제하는 로직
+            CurrentSoul = null;
+        }
+        
         // 소환하는 로직
         CurrentSoul = soulSlot[index];
         spawnIndex = index;
+
+        // 해당 소울의 패시브 스킬 적용
+        CurrentSoul.ApplyPassiveSkill();
 
         // TODO : 소울의 속성에 따라 소환 이펙트 변경 / 임시로 고정해둠
         if (spawnEffects[spawnIndex] == null)

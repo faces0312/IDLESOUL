@@ -103,6 +103,13 @@ public class Stat
         clacStat.critDamage = (float)Math.Round(stat1.critDamage + stat2.critDamage, 1);
         clacStat.coolDown = (float)Math.Round(stat1.coolDown + stat2.coolDown, 1);
 
+        clacStat.MaxHealthLevel = stat1.MaxHealthLevel;
+        clacStat.AtkLevel = stat1.AtkLevel;
+        clacStat.DefLevel = stat1.DefLevel;
+        clacStat.ReduceDamageLevel = stat1.ReduceDamageLevel;
+        clacStat.CriticalRateLevel = stat1.CriticalRateLevel;
+        clacStat.CriticalDamageLevel = stat1.CriticalDamageLevel;
+
         return clacStat;
     }
 
@@ -124,6 +131,13 @@ public class Stat
         clacStat.critDamage = (float)Math.Round(stat1.critDamage - stat2.critDamage, 1);
         clacStat.coolDown = (float)Math.Round(stat1.coolDown - stat2.coolDown, 1);
 
+        clacStat.MaxHealthLevel = stat1.MaxHealthLevel;
+        clacStat.AtkLevel = stat1.AtkLevel;
+        clacStat.DefLevel = stat1.DefLevel;
+        clacStat.ReduceDamageLevel = stat1.ReduceDamageLevel;
+        clacStat.CriticalRateLevel = stat1.CriticalRateLevel;
+        clacStat.CriticalDamageLevel = stat1.CriticalDamageLevel;
+
         return clacStat;
     }
 
@@ -144,6 +158,43 @@ public class Stat
         clacStat.critChance = (float)Math.Round(stat.critChance * amount, 1);
         clacStat.critDamage = (float)Math.Round(stat.critDamage * amount, 1);
         clacStat.coolDown = (float)Math.Round(stat.coolDown * amount, 1);
+
+        clacStat.MaxHealthLevel = stat.MaxHealthLevel;
+        clacStat.AtkLevel = stat.AtkLevel;
+        clacStat.DefLevel = stat.DefLevel;
+        clacStat.ReduceDamageLevel = stat.ReduceDamageLevel;
+        clacStat.CriticalRateLevel = stat.CriticalRateLevel;
+        clacStat.CriticalDamageLevel = stat.CriticalDamageLevel;
+
+        return clacStat;
+    }
+
+    public static Stat operator *(Stat stat, float amount)
+    {
+        Stat clacStat = new Stat();
+
+        int rate = 100000000;
+        
+        clacStat.health = BigInteger.Divide(BigInteger.Multiply(stat.health, (int)(amount * rate)), rate);
+        clacStat.maxHealth = BigInteger.Divide(BigInteger.Multiply(stat.maxHealth, (int)(amount * rate)), rate);
+        clacStat.atk = BigInteger.Divide(BigInteger.Multiply(stat.atk, (int)(amount * rate)), rate);
+        clacStat.def = BigInteger.Divide(BigInteger.Multiply(stat.def, (int)(amount * rate)), rate);
+
+        clacStat.moveSpeed = (float)Math.Round(stat.moveSpeed * amount, 1);
+        clacStat.atkSpeed = (float)Math.Round(stat.atkSpeed * amount, 1);
+
+        clacStat.reduceDamage = (float)Math.Round(stat.reduceDamage * amount, 1);
+
+        clacStat.critChance = (float)Math.Round(stat.critChance * amount, 1);
+        clacStat.critDamage = (float)Math.Round(stat.critDamage * amount, 1);
+        clacStat.coolDown = (float)Math.Round(stat.coolDown * amount, 1);
+
+        clacStat.MaxHealthLevel = stat.MaxHealthLevel;
+        clacStat.AtkLevel = stat.AtkLevel;
+        clacStat.DefLevel = stat.DefLevel;
+        clacStat.ReduceDamageLevel = stat.ReduceDamageLevel;
+        clacStat.CriticalRateLevel = stat.CriticalRateLevel;
+        clacStat.CriticalDamageLevel = stat.CriticalDamageLevel;
 
         return clacStat;
     }
