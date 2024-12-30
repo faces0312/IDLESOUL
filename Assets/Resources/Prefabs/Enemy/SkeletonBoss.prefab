@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 0
   m_BoneTransforms:
   - {fileID: 2888714802967364}
 --- !u!137 &2950443775252688074
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 0
   m_BoneTransforms:
   - {fileID: 3344394218782882590}
 --- !u!137 &4080954813793490390
@@ -1097,7 +1097,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_BoneTransforms:
   - {fileID: 1229614212413468996}
 --- !u!137 &6854754439508081081
@@ -1445,6 +1445,7 @@ MonoBehaviour:
     KnockBackPower: 0
     KnockBackResistance: 0
   target: {fileID: 0}
+  collider: {fileID: 0}
   animator: {fileID: 6175394926275884764}
   healthBar: {fileID: 8586952787318062965}
   currentHealth: 0
@@ -6614,7 +6615,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 0
   m_BoneTransforms:
   - {fileID: 5182258164295227055}
 --- !u!137 &8552884710627548477
@@ -6770,7 +6771,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   m_BoneTransforms:
   - {fileID: 3643724458794156824}
 --- !u!137 &4593756410076913594
