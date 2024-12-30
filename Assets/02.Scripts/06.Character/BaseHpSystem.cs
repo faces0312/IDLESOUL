@@ -16,11 +16,17 @@ public class BaseHpSystem : MonoBehaviour
         int maxHelth = BigInteger.ToInt32(statHandler.CurrentStat.maxHealth);
         int curHelth = BigInteger.ToInt32(statHandler.CurrentStat.health);
         statHandler.CurrentStat.health = Mathf.Clamp(curHelth - BigInteger.ToInt32(damage), 0, maxHelth);
-        //Debug.Log($"{gameObject.name} 피격됨! 데미지 : {damage} , 체력 상태 : {curHelth}");
 
         HpUpdate();
     }
+    public void TakeHeal(BigInteger heal, StatHandler statHandler)
+    {
+        int maxHelth = BigInteger.ToInt32(statHandler.CurrentStat.maxHealth);
+        int curHelth = BigInteger.ToInt32(statHandler.CurrentStat.health);
+        statHandler.CurrentStat.health = Mathf.Clamp(curHelth + BigInteger.ToInt32(heal), 0, maxHelth);
 
+        HpUpdate();
+    }
     public void TakeKnockBack(Vector3 direction, float force)
     {
     }
@@ -35,6 +41,6 @@ public class BaseHpSystem : MonoBehaviour
 
     public void HpUpdate()
     {
-
+        UIManager.Instance.ShowUI<UIPlayerHPDisplayController>();
     }
 }

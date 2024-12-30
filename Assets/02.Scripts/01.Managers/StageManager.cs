@@ -30,6 +30,10 @@ public class StageManager : SingletonDDOL<StageManager>
         stageMapList.Add(Instantiate(Resources.Load<StageMap>(Const.STAGE_CASTHLE_MAP_PATH)));
         stageMapList.Add(Instantiate(Resources.Load<StageMap>(Const.STAGE_FORESET_MAP_PATH)));
 
+        for (int i = 0; i < stageMapList.Count; i++)
+        {
+            stageMapList[i].gameObject.SetActive(false);
+        }
     }
     
     public void StageSelect(int stageID)

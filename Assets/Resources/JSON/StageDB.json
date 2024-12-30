@@ -13,7 +13,7 @@
       ],
       "SummonBossID": 5500,
       "StageType": 0,
-      "StageName": 1
+      "StageName": 0
     },
     {
       "key": 7001,
@@ -149,7 +149,8 @@
       "stageName": "처음의 숲",
       "SlayEnemyCount": 120,
       "SummonEnemyIDList": [
-        50005002
+        5000,
+        5002
       ],
       "SummonBossID": 5501,
       "StageType": 0,
