@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using ScottGarland;
 
 public class PlayerInfoView : MonoBehaviour, IUIBase
 {
@@ -127,7 +128,11 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
     
     private void UpdateStatus()
     {
-        powerText.text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.totalDamage);
+        //powerText.text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.totalDamage);
+        // TODO : 스탯 핸들러의 TotalDamage가 가지고 있게 수정
+        BigInteger power = (playerStatHandler.CurrentStat.maxHealth * 3) + ((playerStatHandler.CurrentStat.atk + playerStatHandler.CurrentStat.def) * 2)
+           + ((playerStatHandler.CurrentStat.ReduceDamageLevel * playerStatHandler.CurrentStat.CriticalRateLevel * playerStatHandler.CurrentStat.CriticalDamageLevel) * 10);
+        powerText.text = Utils.FormatBigInteger(power);
         statusText[(int)StatusType.Hp].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.maxHealth);
         statusText[(int)StatusType.Atk].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.atk);
         statusText[(int)StatusType.Def].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.def);

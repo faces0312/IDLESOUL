@@ -60,6 +60,28 @@ public abstract class Skill : ISkill
         skillSpr = Resources.Load<Sprite>($"Prefabs/Sprites/Skills/{this.id}");
     }
 
+    public Skill(int id, Stat stat)
+    {
+        SkillDB db = DataManager.Instance.SkillDB.GetByKey(id);
+
+        this.id = id;
+        this.skillName = db.Name;
+        this.description = db.Descripton;
+        this.maxLevel = db.MaxLevel;
+        this.applyCount = db.ApplyCount;
+        this.value = db.Value;
+        this.upgradeValue = db.UpgradeValue;
+        this.upgradeCost = db.UpgradeCost;
+        this.type = db.SkillType;
+
+        // 스킬 ID 값에 따른 스킬 스프라이트 로드
+        skillSpr = Resources.Load<Sprite>($"Prefabs/Sprites/Skills/{this.id}");
+    }
+
     public abstract void UseSkill(StatHandler statHandler);
     public abstract void UpgradeSkill(int amount);
+    public virtual void ReleaseSkill()
+    {
+
+    }
 }

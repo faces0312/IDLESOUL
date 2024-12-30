@@ -2,8 +2,8 @@
   "Items": [
     {
       "key": 12000,
-      "Name": "TestSkill0",
-      "Descripton": "TestSkill0Desc",
+      "Name": "요정의 가호",
+      "Descripton": "공격력이 50% 증가한다.",
       "SkillType": 0,
       "MaxLevel": 10,
       "Value": 30,
@@ -13,8 +13,8 @@
     },
     {
       "key": 12001,
-      "Name": "TestSkill1",
-      "Descripton": "TestSkill1Desc",
+      "Name": "매지컬 버스트",
+      "Descripton": "전방에 폭발을 일으킨다.",
       "SkillType": 1,
       "MaxLevel": 5,
       "Value": 50,
@@ -24,8 +24,8 @@
     },
     {
       "key": 12002,
-      "Name": "TestSkill2",
-      "Descripton": "TestSkill2Desc",
+      "Name": "천상의 낙화",
+      "Descripton": "하늘에서 거대한 유성을 떨어뜨린다.",
       "SkillType": 2,
       "MaxLevel": 3,
       "Value": 100,
@@ -35,8 +35,8 @@
     },
     {
       "key": 12003,
-      "Name": "TestSkill3",
-      "Descripton": "TestSkill3Desc",
+      "Name": "여제의 축복",
+      "Descripton": "방어력이 50% 증가한다.",
       "SkillType": 0,
       "MaxLevel": 10,
       "Value": 30,
@@ -46,8 +46,8 @@
     },
     {
       "key": 12004,
-      "Name": "TestSkill4",
-      "Descripton": "TestSkill4Desc",
+      "Name": "어둠의 단죄",
+      "Descripton": "주변을 회전하는 검기로 공격한다.",
       "SkillType": 1,
       "MaxLevel": 5,
       "Value": 50,
@@ -57,8 +57,8 @@
     },
     {
       "key": 12005,
-      "Name": "TestSkill5",
-      "Descripton": "TestSkill5Desc",
+      "Name": "칠흑의 서약",
+      "Descripton": "무수히 많은 검기로 적들을 벤다.",
       "SkillType": 2,
       "MaxLevel": 3,
       "Value": 100,
@@ -68,8 +68,8 @@
     },
     {
       "key": 12006,
-      "Name": "TestSkill6",
-      "Descripton": "TestSkill6Desc",
+      "Name": "자연의 축복",
+      "Descripton": "공격력과 방어력이 25% 증가한다.",
       "SkillType": 0,
       "MaxLevel": 10,
       "Value": 30,
@@ -79,8 +79,8 @@
     },
     {
       "key": 12007,
-      "Name": "TestSkill7",
-      "Descripton": "TestSkill7Desc",
+      "Name": "피어싱 애로우",
+      "Descripton": "적에게 관통하는 화살을 발사한다.",
       "SkillType": 1,
       "MaxLevel": 5,
       "Value": 50,
@@ -90,8 +90,8 @@
     },
     {
       "key": 12008,
-      "Name": "TestSkill8",
-      "Descripton": "TestSkill8Desc",
+      "Name": "별빛 강림",
+      "Descripton": "대량의 화살을 하늘로 발사하여 쏟아지게 한다.",
       "SkillType": 2,
       "MaxLevel": 3,
       "Value": 100,

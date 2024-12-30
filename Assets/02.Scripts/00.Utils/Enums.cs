@@ -69,4 +69,13 @@ namespace Enums
         Item,
         Product
     }
+
+    public enum Rairity
+    {
+        None,
+        Normal,
+        Rare,
+        Epic,
+        Legendary
+    }
 }

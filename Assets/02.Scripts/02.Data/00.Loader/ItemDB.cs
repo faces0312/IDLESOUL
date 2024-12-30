@@ -1,3 +1,4 @@
+using Enums;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,7 +25,7 @@ public class ItemDB : IGachableDB
     /// <summary>
     /// Rairty
     /// </summary>
-    public string Rairty;
+    public string Rairity;
 
     /// <summary>
     /// Descripton
@@ -111,9 +112,16 @@ public class ItemDB : IGachableDB
         return key;
     }
 
-    public int GetRairity()
+    public Rairity GetRairity()
     {
-        throw new NotImplementedException();
+        switch(Rairity)
+        {
+            case "Normal": return Enums.Rairity.Normal;
+            case "Rare": return Enums.Rairity.Rare;
+            case "Epic": return Enums.Rairity.Epic;
+            case "Legendary": return Enums.Rairity.Legendary;
+            default: return Enums.Rairity.None;
+        }
     }
 }
 public class ItemDBLoader

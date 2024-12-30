@@ -27,6 +27,7 @@ public class GameSceneTigger : MonoBehaviour
     {
         //TitleSceneTrigger로 이동 예정
         DataManager.Instance.Init();
+        SoundManager.Instance.ChangeBGMForScene("GameScene_SMS");
         //SoundManager.Instance.Init();
         //
 
@@ -52,6 +53,4 @@ public class GameSceneTigger : MonoBehaviour
         //UIManager 초기화
         UIManager.Instance.Init();
     }
-
-  
 }

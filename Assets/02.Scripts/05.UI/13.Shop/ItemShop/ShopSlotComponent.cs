@@ -8,6 +8,8 @@ public class ShopSlotComponent : MonoBehaviour
     [SerializeField] private Button button;
     [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private TextMeshProUGUI itemPrice;
+    [SerializeField] private Image front;
+    [SerializeField] private Image priceIcon;
 
     public ShopSlot slot;
     private ItemEvent itemEvent;
@@ -35,7 +37,12 @@ public class ShopSlotComponent : MonoBehaviour
     {
         slot.SetItem(data);
         itemName.text = data.GetName();
-        itemPrice.text = data.GetPrice().ToString() + data.GetPriceType().ToString();
+        itemPrice.text = data.GetPrice().ToString();
+        if (data.GetPriceType() == Enums.PriceType.Diamond)
+            priceIcon.sprite = Resources.Load<Sprite>("UI/Gui_parts/diamond");
+        else
+            priceIcon.sprite = Resources.Load<Sprite>("UI/Gui_parts/coin");
+        front.sprite = Resources.Load<Sprite>(data.GetIconPath());
     }
 
     public void Clear()
