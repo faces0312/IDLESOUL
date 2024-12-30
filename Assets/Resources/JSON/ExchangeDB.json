@@ -2,12 +2,12 @@
   "Items": [
     {
       "key": 20000,
-      "ProductName": "다이아몬드 한 캐럿",
+      "ProductName": "다이아몬드 덩어리",
       "ProductDescription": "다이아몬드 130개",
       "Product":  130,
       "PriceType": 1,
       "Price": 1300,
-      "IconPath": ""
+      "IconPath": "Sprite/ItemSprite/ItemIcon/Diamonds"
     },
     {
       "key": 20001,
@@ -16,7 +16,7 @@
       "Product": 1430,
       "PriceType": 1,
       "Price": 13000,
-      "IconPath": ""
+      "IconPath": "Sprite/ItemSprite/ItemIcon/DiamondPack"
     },
     {
       "key": 20002,
@@ -25,7 +25,7 @@
       "Product": 6760,
       "PriceType": 1,
       "Price": 65000,
-      "IconPath": ""
+      "IconPath": "Sprite/ItemSprite/ItemIcon/DiamondChest"
     }
   ]
 }

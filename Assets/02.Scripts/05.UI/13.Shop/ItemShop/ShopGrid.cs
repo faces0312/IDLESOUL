@@ -15,7 +15,10 @@ public class ShopGrid : MonoBehaviour
         {
             slots.Add(tempSlots[i]);
             slots[i].Init();
-            slots[i].slot.SetItem(DataManager.Instance.SellItemDB.ItemsList[i]);
+            if (i < DataManager.Instance.SellItemDB.ItemsList.Count)
+            {
+                slots[i].slot.SetItem(DataManager.Instance.SellItemDB.ItemsList[i]);
+            }
         }
         this.gameObject.SetActive(false);
     }

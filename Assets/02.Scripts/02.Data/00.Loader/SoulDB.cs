@@ -1,3 +1,4 @@
+using Enums;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -121,7 +122,7 @@ public class SoulDB : IGachableDB
         return key;
     }
 
-    public int GetRairity()
+    Rairity IGachableDB.GetRairity()
     {
         throw new NotImplementedException();
     }

@@ -28,7 +28,13 @@ public class ItemPanel : MonoBehaviour
                     if (GameManager.Instance.player.UserData.Diamonds >= CurItem.GetPrice())
                     {
                         GameManager.Instance.player.UserData.Diamonds -= CurItem.GetPrice();
-                        if (this.shopType == ShopType.Item) GameManager.Instance.player.Inventory.AddItem(tempKey);
+                        if (this.shopType == ShopType.Item)
+                        {
+                            foreach(int key in DataManager.Instance.SellItemDB.GetByKey(tempKey).OriginID)
+                            {
+                                GameManager.Instance.player.Inventory.AddItem(key);
+                            }
+                        }
                         else if (this.shopType == ShopType.Product) GameManager.Instance.player.UserData.Gold += DataManager.Instance.ExchangeDB.GetByKey(tempKey).Product;
 
                     }

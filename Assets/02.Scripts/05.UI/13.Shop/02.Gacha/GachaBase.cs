@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public interface IGachableDB
 {
     public int GetKey();
-    public int GetRairity();
+    public Rairity GetRairity();
 }
 public class GachaBase : MonoBehaviour
 {
@@ -42,6 +42,7 @@ public class GachaBase : MonoBehaviour
         {
             grid.gameObject.SetActive(false);   
         }
+
         if (this.gameObject.activeSelf == false)
         {
             this.gameObject.SetActive(true);
@@ -52,7 +53,10 @@ public class GachaBase : MonoBehaviour
                 gachaList.Clear();
                 foreach(ItemDB item in DataManager.Instance.ItemDB.ItemsList)
                 {
-                    gachaList.Add(item);
+                    if(item.GetRairity() != Rairity.Legendary)
+                    {
+                        gachaList.Add(item);
+                    }
                 }
                 break;
             case GachaType.Soul:
@@ -64,12 +68,14 @@ public class GachaBase : MonoBehaviour
                 break;
         }
         tempList.Clear();
+
         for(int i = 0; i < arg.count; i++)
         {
             int rand = Random.Range(0, gachaList.Count);
             tempList.Add(gachaList[rand]);
         }
         result.SetList(tempList);
+
         if(result.coResult != null)
         {
             StopCoroutine(result.coResult);
