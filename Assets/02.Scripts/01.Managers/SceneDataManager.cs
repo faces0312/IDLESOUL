@@ -17,5 +17,7 @@ public class SceneDataManager : SingletonDDOL<SceneDataManager>
     {
         NextScene = nextScene;
         SceneManager.LoadScene("LoadingScene");
+        SoundManager.Instance.ChangeBGMForScene("LoadingScene");
     }
+
 }
