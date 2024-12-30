@@ -101,6 +101,11 @@ public abstract class Soul
         skills[(int)SkillType.Passive].UseSkill(statHandler);
     }
 
+    public void ReleasePassiveSkill()
+    {
+        skills[(int)SkillType.Passive].ReleaseSkill();
+    }
+
     public void UseSkill(Skill skill)
     {
         skill.UseSkill(statHandler);

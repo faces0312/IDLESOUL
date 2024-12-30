@@ -189,6 +189,9 @@ public class StatHandler
                 //currentStat.critDamage = currentStat.critDamage * currentStat.CriticalDamageLevel * 1;
                 break;
         }
+
+        // 소울과 아이템의 정보를 다시 갱신해주어야 함
+        currentStat += CalculateAdditionalStats();
     }
 
     public void EquipItem(Stat itemStat)
