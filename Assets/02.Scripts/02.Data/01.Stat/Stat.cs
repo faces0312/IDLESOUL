@@ -87,7 +87,7 @@ public class Stat
 
     public static Stat operator +(Stat stat1, Stat stat2)
     {
-        Stat clacStat = new Stat();
+        Stat clacStat = stat1;
 
         clacStat.health = stat1.health + stat2.health;
         clacStat.maxHealth = stat1.maxHealth + stat2.maxHealth;
@@ -108,7 +108,7 @@ public class Stat
 
     public static Stat operator -(Stat stat1, Stat stat2)
     {
-        Stat clacStat = new Stat();
+        Stat clacStat = stat1;
 
         clacStat.health = stat1.health - stat2.health;
         clacStat.maxHealth = stat1.maxHealth - stat2.maxHealth;
@@ -129,7 +129,7 @@ public class Stat
 
     public static Stat operator *(Stat stat, int amount)
     {
-        Stat clacStat = new Stat();
+        Stat clacStat = stat;
 
         clacStat.health = stat.health * amount;
         clacStat.maxHealth = stat.maxHealth * amount;
@@ -140,6 +140,27 @@ public class Stat
         clacStat.atkSpeed = (float)Math.Round(stat.atkSpeed * amount, 1);
 
         clacStat.reduceDamage = (float)Math.Round(stat.reduceDamage * amount, 1);
+
+        clacStat.critChance = (float)Math.Round(stat.critChance * amount, 1);
+        clacStat.critDamage = (float)Math.Round(stat.critDamage * amount, 1);
+        clacStat.coolDown = (float)Math.Round(stat.coolDown * amount, 1);
+
+        return clacStat;
+    }
+
+    public static Stat operator /(Stat stat, int amount)
+    {
+        Stat clacStat = stat;
+
+        clacStat.health = stat.health / amount;
+        clacStat.maxHealth = stat.maxHealth / amount;
+        clacStat.atk = stat.atk / amount;
+        clacStat.def = stat.def / amount;
+
+        clacStat.moveSpeed = (float)Math.Round(stat.moveSpeed / amount, 1);
+        clacStat.atkSpeed = (float)Math.Round(stat.atkSpeed / amount, 1);
+
+        clacStat.reduceDamage = (float)Math.Round(stat.reduceDamage / amount, 1);
 
         clacStat.critChance = (float)Math.Round(stat.critChance * amount, 1);
         clacStat.critDamage = (float)Math.Round(stat.critDamage * amount, 1);

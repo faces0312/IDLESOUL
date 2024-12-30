@@ -389,6 +389,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa06f36fcb7bd44c8e21bbef629de99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item:
+    ID: 0
+    IsGain: 0
+    equip: 0
+    stack: 0
+    PassiveStat:
+      iD: 0
+      moveSpeed: 0
+      atkSpeed: 0
+      reduceDamage: 0
+      critChance: 0
+      critDamage: 0
+      coolDown: 0
+      MaxHealthLevel: 0
+      AtkLevel: 0
+      DefLevel: 0
+      ReduceDamageLevel: 0
+      CriticalRateLevel: 0
+      CriticalDamageLevel: 0
+    PassiveStatValue: 10
+    UpgradeLevel: 0
+    UpgradeLevelMax: 0
+    UpgradeStackCount: 0
+    UpgradeStatIncreaseRatio: 0
+    UpgradeCostIncreaseRatio: 0
   itemStatusOpenPopUpBtn: {fileID: 0}
   itemIconImage: {fileID: 452083887195236538}
   Name: {fileID: 0}
@@ -687,6 +712,7 @@ MonoBehaviour:
   UpgradeCostText: {fileID: 2661538767362100912}
   itemPassiveEffectText: {fileID: 4877400910424764607}
   itemEquipEffectText: {fileID: 7715284442647565052}
+  itemStackLevel: {fileID: 0}
   ItemIcon: {fileID: 452083887195236538}
   UpgradeBtn: {fileID: 6044604141967856118}
   EquipBtn: {fileID: 7117602986114300532}
@@ -1577,7 +1603,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 'New Text
+
+    New Text
+
+    New Text
+
+    New Text
+
+    New Text'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aedbfb48c6da0484686b4ef9f1c5118a, type: 2}
   m_sharedMaterial: {fileID: 7692690509805904559, guid: aedbfb48c6da0484686b4ef9f1c5118a, type: 2}
@@ -1604,12 +1638,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 26.7
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 30
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -3560,7 +3594,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 'New Text
+
+    New Text
+
+    New Text
+
+    New Text
+
+    New Text'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aedbfb48c6da0484686b4ef9f1c5118a, type: 2}
   m_sharedMaterial: {fileID: 7692690509805904559, guid: aedbfb48c6da0484686b4ef9f1c5118a, type: 2}
@@ -3587,12 +3629,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 25.05
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 30
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256

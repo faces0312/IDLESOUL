@@ -43,7 +43,6 @@ public class StatHandler
         }
 
         currentStat = new Stat(baseStat);
-
         Initialize(type);
     }
 
@@ -206,4 +205,7 @@ public class StatHandler
 
         currentStat -= itemStat;
     }
+
+
+
 }

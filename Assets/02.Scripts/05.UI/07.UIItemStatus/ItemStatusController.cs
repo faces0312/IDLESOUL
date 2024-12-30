@@ -55,6 +55,8 @@ public class ItemStatusController : UIController
             SelectItem.item.ItemStat.maxHealth *= SelectItem.item.UpgradeStatIncreaseRatio;
             SelectItem.item.ItemStat.maxHealth *= SelectItem.item.UpgradeStatIncreaseRatio;
             SelectItem.item.ItemStat.maxHealth *= SelectItem.item.UpgradeStatIncreaseRatio;
+
+            SelectItem.item.PassiveStat = SelectItem.item.ItemStat / SelectItem.item.PassiveStatValue;
         }
 
         UpdateView();

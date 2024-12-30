@@ -672,7 +672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageName: 0
-  SpawnArea: {fileID: 0}
+  SpawnArea: {fileID: 7580057635258952010}
 --- !u!1 &8886048337448169869
 GameObject:
   m_ObjectHideFlags: 0
