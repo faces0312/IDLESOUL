@@ -44,6 +44,7 @@ public class StageManager : SingletonDDOL<StageManager>
     public void Init()
     {
         curStageData = DataManager.Instance.StageDB.GetByKey(curStageID);
+        SceneDataManager.Instance.MainStageModifier *= curStageData.CurStageModifier;
 
         for (int i = 0; i < stageMapList.Count; i++)
         {
