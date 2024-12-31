@@ -77,7 +77,7 @@ public class ArrowShot : MonoBehaviour
         {
             if (hitObj.TryGetComponent(out ITakeDamageAble damageable) && !damageable.IsInvulnerable)
             {
-                damageable.TakeDamage(3);
+                damageable.TakeDamage(BigInteger.Divide(value, 15));
             }
 
             yield return coroutineTime;

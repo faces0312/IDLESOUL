@@ -67,7 +67,6 @@ public class SpawnSoulButton : MonoBehaviour
         if (spawnCoolTime.IsSpawn) return;
         if (GameManager.Instance.player.PlayerSouls.SpawnIndex == index) return;
         spawnCoolTime.IsSpawn = true;
-        textBackground.SetActive(spawnCoolTime.IsSpawn);
 
         GameManager.Instance.player.PlayerSouls.SpawnSoul(index);
 
@@ -76,6 +75,7 @@ public class SpawnSoulButton : MonoBehaviour
 
     private void CalcCoolTime()
     {
+        textBackground.SetActive(true);
         StartCoroutine(CoroutineCoolTime());
     }
 
@@ -97,7 +97,7 @@ public class SpawnSoulButton : MonoBehaviour
         fillAmount = 0f;
         timeText.text = string.Empty;
         spawnCoolTime.IsSpawn = false;
-        textBackground.SetActive(isSpawn);
+        textBackground.SetActive(false);
     }
 
     private void ResetAll()

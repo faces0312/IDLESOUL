@@ -9,7 +9,8 @@
       "Value": 30,
       "UpgradeValue": 3,
       "ApplyCount": 1,
-      "UpgradeCost": 100
+      "UpgradeCost": 100,
+      "SpritePath": "Sprite/Skills/12000"
     },
     {
       "key": 12001,
@@ -20,7 +21,8 @@
       "Value": 50,
       "UpgradeValue": 5,
       "ApplyCount": 1,
-      "UpgradeCost": 200
+      "UpgradeCost": 200,
+      "SpritePath": "Sprite/Skills/12001"
     },
     {
       "key": 12002,
@@ -31,7 +33,8 @@
       "Value": 100,
       "UpgradeValue": 10,
       "ApplyCount": 1,
-      "UpgradeCost": 500
+      "UpgradeCost": 500,
+      "SpritePath": "Sprite/Skills/12002"
     },
     {
       "key": 12003,
@@ -42,7 +45,8 @@
       "Value": 30,
       "UpgradeValue": 3,
       "ApplyCount": 1,
-      "UpgradeCost": 100
+      "UpgradeCost": 100,
+      "SpritePath": "Sprite/Skills/12003"
     },
     {
       "key": 12004,
@@ -53,7 +57,8 @@
       "Value": 50,
       "UpgradeValue": 5,
       "ApplyCount": 1,
-      "UpgradeCost": 200
+      "UpgradeCost": 200,
+      "SpritePath": "Sprite/Skills/12004"
     },
     {
       "key": 12005,
@@ -64,7 +69,8 @@
       "Value": 100,
       "UpgradeValue": 10,
       "ApplyCount": 1,
-      "UpgradeCost": 500
+      "UpgradeCost": 500,
+      "SpritePath": "Sprite/Skills/12005"
     },
     {
       "key": 12006,
@@ -75,7 +81,8 @@
       "Value": 30,
       "UpgradeValue": 3,
       "ApplyCount": 1,
-      "UpgradeCost": 100
+      "UpgradeCost": 100,
+      "SpritePath": "Sprite/Skills/12006"
     },
     {
       "key": 12007,
@@ -86,7 +93,8 @@
       "Value": 50,
       "UpgradeValue": 5,
       "ApplyCount": 1,
-      "UpgradeCost": 200
+      "UpgradeCost": 200,
+      "SpritePath": "Sprite/Skills/12007"
     },
     {
       "key": 12008,
@@ -97,7 +105,8 @@
       "Value": 100,
       "UpgradeValue": 10,
       "ApplyCount": 1,
-      "UpgradeCost": 500
+      "UpgradeCost": 500,
+      "SpritePath": "Sprite/Skills/12008"
     }
   ]
 }

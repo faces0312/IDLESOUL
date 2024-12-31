@@ -48,7 +48,7 @@ public class Explosion : MonoBehaviour
         {
             if (other.gameObject.TryGetComponent(out ITakeDamageAble damageable) && !damageable.IsInvulnerable)
             {
-                damageable.TakeDamage(10000);
+                damageable.TakeDamage(value);
             }
         }
     }

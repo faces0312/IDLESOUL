@@ -140,13 +140,11 @@ public class SoulInfoView : MonoBehaviour, IUIBase
 
     private void InitUI()
     {
-        // 소울 썸네일 삽입
         thumbnail.sprite = soul.icon;
 
-        // TODO : 스킬 sprite 삽입
-        // icons[(int)LevelType.Default].sprite = 
-        // icons[(int)LevelType.Ultimate].sprite = 
-        // icons[(int)LevelType.Passive].sprite = 
+        icons[(int)LevelType.Default].sprite = soul.Skills[(int)SkillType.Default].SkillSpr;
+        icons[(int)LevelType.Ultimate].sprite = soul.Skills[(int)SkillType.Ultimate].SkillSpr;
+        icons[(int)LevelType.Passive].sprite = soul.Skills[(int)SkillType.Passive].SkillSpr;
 
         skillNameTexts[(int)LevelType.Default].text = $"{soul.Skills[(int)SkillType.Default].skillName}";
         skillNameTexts[(int)LevelType.Ultimate].text = $"{soul.Skills[(int)SkillType.Ultimate].skillName}";

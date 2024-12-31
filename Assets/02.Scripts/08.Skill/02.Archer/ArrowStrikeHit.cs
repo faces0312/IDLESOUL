@@ -70,7 +70,7 @@ public class ArrowStrikeHit : MonoBehaviour
         {
             if (hitObj.TryGetComponent(out ITakeDamageAble damageable) && !damageable.IsInvulnerable)
             {
-                damageable.TakeDamage(10);
+                damageable.TakeDamage(BigInteger.Divide(value, 10));
             }
 
             yield return coroutineTime;

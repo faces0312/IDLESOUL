@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using ScottGarland;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ public class ArcherDefaultSkill : Skill
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/ArrowShot");
         range = 10f;
         searchRange = 15f;
-        totalValue = value * (level * upgradeValue);
+        totalValue = level * upgradeValue;
         playerTransform = GameManager.Instance.player.transform;
     }
 
@@ -26,7 +27,7 @@ public class ArcherDefaultSkill : Skill
         level += amount;
 
         // TODO : 배율 조정
-        totalValue = value * (level * upgradeValue);
+        totalValue = level * upgradeValue;
     }
 
     public override void UseSkill(StatHandler statHandler)
@@ -77,7 +78,7 @@ public class ArcherDefaultSkill : Skill
         GameObject arrowShot = Object.Instantiate(skillPrefab, playerPos, Quaternion.LookRotation(targetPos - playerPos));
         if (arrowShot.TryGetComponent(out ArrowShot component))
         {
-            component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);
+            component.InitSettings((BigInteger.Divide(statHandler.CurrentStat.atk, 10) + (int)totalValue) * (int)value, range);
         }
     }
 }

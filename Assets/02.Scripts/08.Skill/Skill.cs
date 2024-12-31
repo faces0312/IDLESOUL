@@ -40,6 +40,7 @@ public abstract class Skill : ISkill
 
     public float CoolTime { get => coolTime; }
     public Sprite SkillSpr { get => skillSpr; }
+    public int UpgradeCost { get => upgradeCost; }
 
     // 생성자에서 데이터 적용
     public Skill(int id)
@@ -56,8 +57,7 @@ public abstract class Skill : ISkill
         this.upgradeCost = db.UpgradeCost;
         this.type = db.SkillType;
 
-        // 스킬 ID 값에 따른 스킬 스프라이트 로드
-        skillSpr = Resources.Load<Sprite>($"Prefabs/Sprites/Skills/{this.id}");
+        skillSpr = Resources.Load<Sprite>(db.SpritePath);
     }
 
     public Skill(int id, Stat stat)
@@ -74,8 +74,7 @@ public abstract class Skill : ISkill
         this.upgradeCost = db.UpgradeCost;
         this.type = db.SkillType;
 
-        // 스킬 ID 값에 따른 스킬 스프라이트 로드
-        skillSpr = Resources.Load<Sprite>($"Prefabs/Sprites/Skills/{this.id}");
+        skillSpr = Resources.Load<Sprite>(db.SpritePath);
     }
 
     public abstract void UseSkill(StatHandler statHandler);

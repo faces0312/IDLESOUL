@@ -51,6 +51,10 @@ public class SkillDB
     /// </summary>
     public int UpgradeCost;
 
+    /// <summary>
+    /// SpritePath
+    /// </summary>
+    public string SpritePath;
 }
 public class SkillDBLoader
 {

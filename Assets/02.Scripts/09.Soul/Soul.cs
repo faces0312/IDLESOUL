@@ -108,7 +108,7 @@ public abstract class Soul
 
     public void UseSkill(Skill skill)
     {
-        skill.UseSkill(statHandler);
+        skill.UseSkill(GameManager.Instance.player.StatHandler);
     }
 
     public void CollectSoul(int amount)

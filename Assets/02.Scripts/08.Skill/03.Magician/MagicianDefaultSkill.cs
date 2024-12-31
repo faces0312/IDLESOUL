@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ScottGarland;
 using UnityEngine;
 
 public class MagicianDefaultSkill : Skill
@@ -17,7 +18,7 @@ public class MagicianDefaultSkill : Skill
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/Explosion");
         range = 10f;
         searchRange = 15f;
-        totalValue = value * (level * upgradeValue);
+        totalValue = level * upgradeValue;
         playerTransform = GameManager.Instance.player.transform;
     }
 
@@ -26,7 +27,7 @@ public class MagicianDefaultSkill : Skill
         level += amount;
 
         // TODO : 배율 조정
-        totalValue = value * (level * upgradeValue);
+        totalValue = level * upgradeValue;
     }
 
     public override void UseSkill(StatHandler statHandler)
@@ -77,7 +78,7 @@ public class MagicianDefaultSkill : Skill
         GameObject explosion = Object.Instantiate(skillPrefab, targetPos, Quaternion.LookRotation(skillPrefab.transform.forward));
         if (explosion.TryGetComponent(out Explosion component))
         {
-            component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);
+            component.InitSettings((BigInteger.Divide(statHandler.CurrentStat.atk, 10) + (int)totalValue) * (int)value, range);
         }
     }
 }

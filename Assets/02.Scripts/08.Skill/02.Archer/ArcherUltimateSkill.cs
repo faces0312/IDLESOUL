@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using ScottGarland;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ public class ArcherUltimateSkill : Skill
         coolTime = 5f;
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/ArrowStrike");
         range = 10f;
-        totalValue = value * (level * upgradeValue);
+        totalValue = level * upgradeValue;
     }
 
     public override void UpgradeSkill(int amount)
@@ -22,7 +23,7 @@ public class ArcherUltimateSkill : Skill
         level += amount;
 
         // TODO : 배율 조정
-        totalValue = value * (level * upgradeValue);
+        totalValue = level * upgradeValue;
     }
 
     public override void UseSkill(StatHandler statHandler)
@@ -44,7 +45,7 @@ public class ArcherUltimateSkill : Skill
 
         if (arrowStrike.TryGetComponent(out ArrowStrike component))
         {
-            component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);
+            component.InitSettings((BigInteger.Divide(statHandler.CurrentStat.atk, 10) + (int)totalValue) * (int)value, range);
         }
     }
 }
