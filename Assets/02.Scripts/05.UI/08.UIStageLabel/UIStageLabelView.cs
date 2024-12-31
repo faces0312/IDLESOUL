@@ -18,8 +18,8 @@ public class UIStageLabelView : MonoBehaviour, IUIBase
     public void ShowUI()
     {
         StageDB stagedb = StageManager.Instance.CurStageData;
-        stageLabal.text = $"{SceneDataManager.Instance.Chapter} - {stagedb.StageNum} {stagedb.stageName}";
-        SceneDataManager.Instance.Stage = stagedb.StageNum;
+        stageLabal.text = $"{StageManager.Instance.Chapter} - {stagedb.StageNum} {stagedb.stageName}";
+        StageManager.Instance.Stage = stagedb.StageNum;
     }
 
     public void UpdateUI()

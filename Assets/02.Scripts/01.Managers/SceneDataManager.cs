@@ -7,15 +7,10 @@ public class SceneDataManager : SingletonDDOL<SceneDataManager>
 {
     public string NextScene;
     public float Modifier;
-    public float MainStageModifier; //메인 스테이지 진행 중 배율의 총 연산값
-    public int Chapter; //11스테이지 도달 시 챕터++ 스테이지는 1로 초기화
-    public int Stage; //현재 스테이지 저장 값
 
     protected override void Awake()
     {
         base.Awake();
-        MainStageModifier = 1;
-        Chapter = 1;
     }   
 
     public void LoadScene(string nextScene)

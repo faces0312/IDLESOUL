@@ -64,14 +64,14 @@ public abstract class Enemy : BaseCharacter
 
         //현재스테이지에 따른 스텟 증가량을 적용 받음 
         statHandler.CurrentStat.iD = enemyDB.key;
-        statHandler.CurrentStat.health = new BigInteger((long)(enemyDB.Health * SceneDataManager.Instance.MainStageModifier));
-        statHandler.CurrentStat.maxHealth = new BigInteger((long)(enemyDB.Health * SceneDataManager.Instance.MainStageModifier));
-        statHandler.CurrentStat.atk = new BigInteger((long)(enemyDB.Attack * SceneDataManager.Instance.MainStageModifier));
-        statHandler.CurrentStat.def = new BigInteger((long)(enemyDB.Defence * SceneDataManager.Instance.MainStageModifier));
+        statHandler.CurrentStat.health = new BigInteger((long)(enemyDB.Health * StageManager.Instance.MainStageModifier));
+        statHandler.CurrentStat.maxHealth = new BigInteger((long)(enemyDB.Health * StageManager.Instance.MainStageModifier));
+        statHandler.CurrentStat.atk = new BigInteger((long)(enemyDB.Attack * StageManager.Instance.MainStageModifier));
+        statHandler.CurrentStat.def = new BigInteger((long)(enemyDB.Defence * StageManager.Instance.MainStageModifier));
         statHandler.CurrentStat.moveSpeed = enemyDB.MoveSpeed;
         statHandler.CurrentStat.atkSpeed = enemyDB.AttackSpeed;
-        statHandler.CurrentStat.critChance = enemyDB.CritChance * SceneDataManager.Instance.MainStageModifier;
-        statHandler.CurrentStat.critDamage = enemyDB.CritDamage * SceneDataManager.Instance.MainStageModifier;
+        statHandler.CurrentStat.critChance = enemyDB.CritChance * StageManager.Instance.MainStageModifier;
+        statHandler.CurrentStat.critDamage = enemyDB.CritDamage * StageManager.Instance.MainStageModifier;
         stateMachine.Initialize();
         HpUpdate();
 

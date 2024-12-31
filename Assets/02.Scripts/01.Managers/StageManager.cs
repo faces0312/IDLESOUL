@@ -9,16 +9,20 @@ public class StageManager : SingletonDDOL<StageManager>
     [Header("StageData")]
     private int curStageID;
     private StageDB curStageData;
-    private StageMap curStageMap; 
+    private StageMap curStageMap;
 
     private List<StageMap> stageMapList = new List<StageMap>(); // 0 : 성 , 1 : 숲
 
+    public int Chapter;
+    public int Stage;
+    public float MainStageModifier;
+
     //게임의 진척도를 저장하고있는 Model(data) 변수
     public UIStageProgressBarModel StageProgressModel;
-   
+
     public StageMap CurStageMap { get => curStageMap; }
     public StageDB CurStageData { get => curStageData; }
-    public int CurStageID { get => curStageID;}
+    public int CurStageID { get => curStageID; }
 
     protected override void Awake()
     {
@@ -33,13 +37,13 @@ public class StageManager : SingletonDDOL<StageManager>
             stageMapList[i].gameObject.SetActive(false);
         }
     }
-    
+
     public void StageSelect(int stageID)
     {
         if (stageID > 7009)
         {
             stageID = 7000;
-            SceneDataManager.Instance.Chapter++;
+            GameManager.Instance.player.UserData.ClearStageCycle++;
             EventManager.Instance.Publish<AchieveEvent>(Enums.Channel.Achievement, new AchieveEvent(Enums.AchievementType.Clear, Enums.ActionType.Stage, 0));
         }
         curStageID = stageID;
@@ -47,8 +51,22 @@ public class StageManager : SingletonDDOL<StageManager>
 
     public void Init()
     {
-        curStageData = DataManager.Instance.StageDB.GetByKey(GameManager.Instance.player.UserData.curStageID);
-        SceneDataManager.Instance.MainStageModifier *= curStageData.CurStageModifier;
+        if (DataManager.Instance.StageDB.GetByKey(GameManager.Instance.player.UserData.curStageID) == null)
+        {
+            Chapter = 1;
+            curStageID = 7000;
+            MainStageModifier = 1;
+        }
+        else
+        {
+            Chapter = GameManager.Instance.player.UserData.ClearStageCycle;
+            curStageID = GameManager.Instance.player.UserData.curStageID;
+        }
+
+        curStageData = DataManager.Instance.StageDB.GetByKey(CurStageID);
+        MainStageModifier *= curStageData.CurStageModifier;
+
+        SaveStageData();
 
         for (int i = 0; i < stageMapList.Count; i++)
         {
@@ -65,10 +83,13 @@ public class StageManager : SingletonDDOL<StageManager>
         StageProgressModel.Initialize(CurStageData.SlayEnemyCount);
 
 
-
         Debug.Log("StageManager 세팅 완료!!");
     }
 
-
-
+    public void SaveStageData()
+    {
+        GameManager.Instance.player.UserData.ClearStageCycle = Chapter;
+        GameManager.Instance.player.UserData.curStageID = curStageID;
+        GameManager.Instance.player.UserData.StageModifier = MainStageModifier;
+    }
 }
