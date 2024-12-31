@@ -84,6 +84,11 @@ public abstract class Enemy : BaseCharacter
         Debug.Log("Base BossAppear called");
     }
 
+    public virtual void SetSkillCharging(bool charging)
+    {
+        Debug.Log("Base SkillCharging called");
+    }
+
     public override void TakeDamage(BigInteger damage)
     {
         if (statHandler.CurrentStat.health <= 0)
@@ -140,7 +145,7 @@ public abstract class Enemy : BaseCharacter
         stateMachine.FixedUpdateState();
     }
 
-    private void LateUpdate()
+    public virtual void LateUpdate()
     {
         if (target.transform.position.x - transform.position.x < 0)
         {
@@ -158,7 +163,7 @@ public abstract class Enemy : BaseCharacter
         return BigInteger.ToInt32(statHandler.CurrentStat.atk);
     }
 
-    private void OnDisable()
+    public virtual void OnDisable()
     {
         if (attackType == AttackType.Melee)
             slash.SetActive(false);

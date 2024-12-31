@@ -15,7 +15,9 @@ public class EnemySkill1 : EnemySkillBase
         Vector3 originalScale = new Vector3(30, 0, 1);
 
         foreach (Transform child in bossEnemy.skillZone.transform)
+        {
             child.gameObject.SetActive(true);
+        }
 
         float elapsedTime = 0f;
         while (elapsedTime < skillZoneTime)
