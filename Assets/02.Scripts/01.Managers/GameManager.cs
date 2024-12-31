@@ -75,7 +75,6 @@ public class GameManager : SingletonDDOL<GameManager>
 
         int stageID = StageManager.Instance.CurStageID;
         StageManager.Instance.StageSelect(stageID + 1);//다음 Stage로 이동
-        EventManager.Instance.Publish<AchieveEvent>(Channel.Achievement, new AchieveEvent(AchievementType.Clear, ActionType.Stage, 0));
 
         //Utils.StartFadeOut();
         Invoke("NextStage", 3.0f);

@@ -38,6 +38,12 @@ public class StageManager : SingletonDDOL<StageManager>
     
     public void StageSelect(int stageID)
     {
+        if (stageID > 7009)
+        {
+            stageID = 7000;
+            SceneDataManager.Instance.Chapter++;
+            EventManager.Instance.Publish<AchieveEvent>(Enums.Channel.Achievement, new AchieveEvent(Enums.AchievementType.Clear, Enums.ActionType.Stage, 0));
+        }
         curStageID = stageID;
     }
 
