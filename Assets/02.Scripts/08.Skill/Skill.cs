@@ -40,6 +40,7 @@ public abstract class Skill : ISkill
 
     public float CoolTime { get => coolTime; }
     public Sprite SkillSpr { get => skillSpr; }
+    public int UpgradeCost { get => upgradeCost; }
 
     // 생성자에서 데이터 적용
     public Skill(int id)

@@ -257,26 +257,26 @@ public static class Utils
         {
             case LevelType.Default:
                 /*필요한 데이터를 StatUpgradeDB에서 호출해서 사용 */
-                baseCost = 10;
+                baseCost = soul.Skills[(int)SkillType.Default].UpgradeCost;
                 growRate = 2;
                 /*소울의 스킬 레벨을 호출 */
                 level = soul.Skills[(int)SkillType.Default].level;
                 constIncrease = 20;
                 break;
             case LevelType.Ultimate:
-                baseCost = 10;
+                baseCost = soul.Skills[(int)SkillType.Ultimate].UpgradeCost;
                 growRate = 2;
                 level = soul.Skills[(int)SkillType.Ultimate].level;
                 constIncrease = 20;
                 break;
             case LevelType.Passive:
-                baseCost = 10;
+                baseCost = soul.Skills[(int)SkillType.Passive].UpgradeCost;
                 growRate = 2;
                 level = soul.Skills[(int)SkillType.Passive].level;
                 constIncrease = 20;
                 break;
             case LevelType.Soul:
-                baseCost = 10;
+                baseCost = 1000;
                 growRate = 2;
                 /*소울의 레벨을 호출 */
                 level = soul.level;
