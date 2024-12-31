@@ -7,11 +7,12 @@ public class SceneDataManager : SingletonDDOL<SceneDataManager>
 {
     public string NextScene;
     public float Modifier;
-    public float MainStageModifier = 1;
+    public float MainStageModifier;
 
     protected override void Awake()
     {
         base.Awake();
+        MainStageModifier = 1;
     }   
 
     public void LoadScene(string nextScene)

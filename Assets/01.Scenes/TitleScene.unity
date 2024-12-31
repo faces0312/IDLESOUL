@@ -584,6 +584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextScene: 
   Modifier: 0
+  MainStageModifier: 1
 --- !u!4 &1602121610
 Transform:
   m_ObjectHideFlags: 0
