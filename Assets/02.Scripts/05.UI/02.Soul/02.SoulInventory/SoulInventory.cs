@@ -81,7 +81,10 @@ public class SoulInventory : MonoBehaviour
 
     public void AddSoul(Soul soul)
     {
+        int curSoulCount = GetSoulCount();
         soulInventoryModel.AddSoul(soul);
+        if(AchievementManager.Instance != null)
+        EventManager.Instance.Publish<AchieveEvent>(Enums.Channel.Achievement, new AchieveEvent(Enums.AchievementType.Collect, Enums.ActionType.Soul, GetSoulCount() - curSoulCount));
     }
 
     public void UpdateThumbnail()
@@ -117,5 +120,21 @@ public class SoulInventory : MonoBehaviour
         SoulSlot.UnEquipSlot();
         GameManager.Instance.player.PlayerSouls.UnEquipSoul(SoulSquadSlot.index);
         SoulSquadSlot.UnEquipSoul();
+    }
+
+    public int GetSoulCount()
+    {
+        int value = 0;
+        for (int i = 0; i < Slots.transform.childCount; ++i)
+        {
+            if (Slots.transform.GetChild(i).TryGetComponent(out SoulSlot slot))
+            {
+                if (slot.soul != null)
+                {
+                    value++;
+                }
+            }
+        }
+        return value;
     }
 }

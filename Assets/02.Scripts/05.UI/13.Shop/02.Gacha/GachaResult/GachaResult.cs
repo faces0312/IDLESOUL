@@ -26,10 +26,7 @@ public class GachaResult : MonoBehaviour, IPointerClickHandler
 
     private static bool isConfirm;
 
-    private WaitUntil click = new WaitUntil(() =>
-    {
-        return isConfirm;
-    });
+    private WaitUntil click;
 
 
 
@@ -44,13 +41,16 @@ public class GachaResult : MonoBehaviour, IPointerClickHandler
         controller.GachaPanel = this.gameObject;
         UIManager.Instance.RegisterController(controller.key, controller);
         this.gameObject.SetActive(false);
+        click = Click();
     }
 
     public IEnumerator CoResult()
     {
         while (true)
         {
+            isSkip = false;
             gachaBase.result.gameObject.SetActive(true);
+            int curSoulCount = GameManager.Instance.player.PlayerSouls.SoulInventory.GetSoulCount();
             for (int i = 0; i < gachaResultList.Count; i++)
             {
                 switch (gachaResultList[i].GetType().ToString())
@@ -70,8 +70,15 @@ public class GachaResult : MonoBehaviour, IPointerClickHandler
                         RegistItem(tempItem);
                         break;
                 }
-                isConfirm = false;
-                yield return click;
+                if(isSkip == false)
+                {
+                    isConfirm = false;
+                    yield return click;
+                }
+                else
+                {
+                    isConfirm = true;
+                }
             }
             this.gameObject.SetActive(false);
             gachaBase.grid.gameObject.SetActive(true);
@@ -130,5 +137,18 @@ public class GachaResult : MonoBehaviour, IPointerClickHandler
     public void RegistItem(ItemDB data)
     {
         GameManager.Instance.player.Inventory.AddItem(data.GetKey());
+    }
+
+    public WaitUntil Click()
+    {
+        click = new WaitUntil(() =>
+        {
+            if(isSkip == true)
+            {
+                return true;
+            }
+            else return isConfirm;
+        });
+        return click;
     }
 }

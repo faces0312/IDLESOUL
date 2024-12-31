@@ -34,14 +34,16 @@ public class AchievementView : MonoBehaviour, IUIBase
         if (obj.TryGetComponent<Achievement>(out Achievement objData))
         {
             objData.SetContent(DataManager.Instance.AchieveDB.GetByKey(arg));
-            foreach (AchieveData data in AchievementManager.Instance.aDatas)
+            foreach (AchieveData data in AchievementManager.Instance.achievements[objData.AData.AchievementType])
             {
                 if (data.ID == objData.AData.ID)
                 {
                     objData.AData.progress = data.progress;
                     objData.AData.isClear = data.isClear;
+                    objData.UpdateContent();
                 }
             }
+            
         }
         else
         {

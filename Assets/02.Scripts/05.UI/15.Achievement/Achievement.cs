@@ -7,14 +7,11 @@ public class Achievement : MonoBehaviour
 {
     public AchieveData AData;
     [SerializeField] private Image icon;
-    [SerializeField] private Button receive;
     [SerializeField] private TextMeshProUGUI aName;
     [SerializeField] private TextMeshProUGUI aDescription;
-    private bool isReceived;
 
     private void Start()
     {
-        receive.gameObject.SetActive(false);
         if(AData != null)
         {
             aName.text = AData.Name;
@@ -25,19 +22,35 @@ public class Achievement : MonoBehaviour
     public void SetContent(AchieveDB data)
     {
         this.AData = new AchieveData(data);
-        icon.sprite = Resources.Load<Sprite>(AData.iconPath);
         aName.text = AData.Name;
         aDescription.text = AData.Description;
-        if (AData.isClear == true && isReceived == false)
+        if (AData.isClear == true)
         {
-            receive.gameObject.SetActive(true);
-            receive.onClick.AddListener(Prize);
+            icon.sprite = Resources.Load<Sprite>(data.iconPath);
         }
+        else icon.sprite = null;
     }
 
-    private void Prize()
+    public void SetContent(AchieveData data)
     {
-        isReceived = true;
-        receive.gameObject.SetActive(false);
+        this.AData = data;
+        aName.text = AData.Name;
+        aDescription.text = AData.Description;
+        if (AData.isClear == true)
+        {
+            icon.sprite = Resources.Load<Sprite>(data.iconPath);
+        }
+        else icon.sprite = null;
+    }
+
+    public void UpdateContent()
+    {
+        aName.text = AData.Name;
+        aDescription.text = AData.Description;
+        if (AData.isClear == true)
+        {
+            icon.sprite = Resources.Load<Sprite>(AData.iconPath);
+        }
+        else icon.sprite = null;
     }
 }

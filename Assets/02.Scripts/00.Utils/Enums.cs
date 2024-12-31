@@ -26,21 +26,23 @@ namespace Enums
     public enum AchievementType
     {
         None,
-        KillMonster,
-        ClearStage,
-        CollectGold,
-        CollectSoul,
-        Time
+        Kill,
+        Collect,
+        Time,
+        Clear
     }
 
     public enum ActionType
     {
         None,
-        Kill,
-        Gold,
-        Stage,
+        Player,
+        Monster,
+        Item,
         Soul,
-        Time
+        Gold,
+        Diamond,
+        Time,
+        Stage
     }
 
     public enum PriceType

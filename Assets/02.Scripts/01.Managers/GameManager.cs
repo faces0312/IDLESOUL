@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using Enums;
 
 
 public class GameManager : SingletonDDOL<GameManager>
@@ -52,7 +53,7 @@ public class GameManager : SingletonDDOL<GameManager>
             cameraController = Instantiate(Resources.Load<CameraController>("Prefabs/Managers/CameraController"));
             cameraController.Initialize(_player.CamarePivot.transform, _player.transform);
         }
-      
+
         //Utils.fader.FadeTo(1f, 0f, 0.3f).OnComplete(Utils.fader.Release);
         Debug.Log("GameManager 세팅 완료!!");
     }
@@ -74,6 +75,7 @@ public class GameManager : SingletonDDOL<GameManager>
 
         int stageID = StageManager.Instance.CurStageID;
         StageManager.Instance.StageSelect(stageID + 1);//다음 Stage로 이동
+        EventManager.Instance.Publish<AchieveEvent>(Channel.Achievement, new AchieveEvent(AchievementType.Clear, ActionType.Stage, 0));
 
         //Utils.StartFadeOut();
         Invoke("NextStage", 3.0f);
@@ -82,6 +84,7 @@ public class GameManager : SingletonDDOL<GameManager>
 
     public void NextStage()
     {
+        if(isGameOver == true) EventManager.Instance.Publish<AchieveEvent>(Channel.Achievement, new AchieveEvent(AchievementType.Kill, ActionType.Player, 1));
         SetGameOverFlag(false);
         //SceneManager.LoadScene("GameScene_SMS");
         Destroy(gameOverPage);

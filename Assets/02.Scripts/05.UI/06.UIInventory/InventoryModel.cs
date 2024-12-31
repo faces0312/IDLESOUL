@@ -32,7 +32,6 @@ public class InventoryModel : UIModel
         item.Initialize(DataManager.Instance.ItemDB.GetByKey(key));
         //첫 획득시 아이템 소지여부를 true로 변경
 
-
         foreach (Item inven in Items)
         {
             if (inven.ItemStat.iD == item.ItemStat.iD)
@@ -40,6 +39,7 @@ public class InventoryModel : UIModel
                 if (!inven.IsGain)
                 {
                     inven.IsGain = true;
+                    EventManager.Instance.Publish<AchieveEvent>(Enums.Channel.Achievement, new AchieveEvent(Enums.AchievementType.Collect, Enums.ActionType.Item, 1));
                 }
                 else
                 {
