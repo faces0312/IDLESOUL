@@ -13,6 +13,8 @@ public class UserData
     public int Level; // 계정 레벨
     public int Exp; // 계정 현재 경험치
     public int MaxExp; // 계정 최고 경험치 
+    public int curStageID; //현재 진행중인 Stage ID를 저장
+    public int ClearStageCycle; //현재 클리어한 Stage 루프 횟수를 지정
 
     public List<UserItemData> GainItem = new List<UserItemData>();
     public List<UserSoulData> GainSoul = new List<UserSoulData>();
@@ -29,6 +31,8 @@ public class UserData
         Gold = userDB.Gold;
         Diamonds = userDB.Diamonds;
         PlayTimeInSeconds = userDB.PlayTimeInSeconds;
+        curStageID = userDB.CurStageID;
+        ClearStageCycle = userDB.ClearStageCycle;
 
         stat = new Stat();
         stat.iD = UID;

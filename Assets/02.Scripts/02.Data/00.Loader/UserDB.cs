@@ -128,6 +128,16 @@ public class UserDB
     public int PlayTimeInSeconds;
 
     /// <summary>
+    /// CurStageID
+    /// </summary>
+    public int CurStageID;
+
+    /// <summary>
+    /// ClearStageCycle
+    /// </summary>
+    public int ClearStageCycle;
+
+    /// <summary>
     /// CurChapter
     /// </summary>
     public int CurChapter;
@@ -150,6 +160,8 @@ public class UserDB
         PlayTimeInSeconds = userData.PlayTimeInSeconds;
         Exp = userData.Exp;
         MaxExp = userData.MaxExp;
+        CurStageID = userData.curStageID;
+        ClearStageCycle = userData.ClearStageCycle;
 
         Health = BigInteger.ToInt32(userData.stat.health); ;
         MaxHealth = BigInteger.ToInt32(userData.stat.maxHealth);
