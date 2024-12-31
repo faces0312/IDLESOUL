@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using ScottGarland;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ public class KnightDefaultSkill : Skill
         coolTime = 3f;
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/SpinSword");
         range = 5f;
-        totalValue = value * (level * upgradeValue);
+        totalValue = level * upgradeValue;
     }
 
     public override void UpgradeSkill(int amount)
@@ -22,7 +23,7 @@ public class KnightDefaultSkill : Skill
         level += amount;
 
         // TODO : 배율 조정
-        totalValue = value * (level * upgradeValue);
+        totalValue = level * upgradeValue;
     }
 
     public override void UseSkill(StatHandler statHandler)
@@ -34,7 +35,7 @@ public class KnightDefaultSkill : Skill
         GameObject spinSword = Object.Instantiate(skillPrefab, playerPos, Quaternion.LookRotation(skillPrefab.transform.forward));
         if (spinSword.TryGetComponent(out SpinSword component))
         {
-            component.InitSettings(statHandler.CurrentStat.atk * (int)totalValue, range);
+            component.InitSettings((BigInteger.Divide(statHandler.CurrentStat.atk, 10) + (int)totalValue) * (int)value, range);
             component.OriginPos = skillPrefab.transform.position;
         }
     }

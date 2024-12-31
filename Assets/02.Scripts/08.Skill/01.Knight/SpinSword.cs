@@ -84,7 +84,7 @@ public class SpinSword : MonoBehaviour
         {
             if (hitObj.TryGetComponent(out ITakeDamageAble damageable) && !damageable.IsInvulnerable)
             {
-                damageable.TakeDamage(10);
+                damageable.TakeDamage(BigInteger.Divide(value, 15));
             }
 
             yield return coroutineTime;

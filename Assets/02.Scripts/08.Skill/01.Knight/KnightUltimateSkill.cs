@@ -1,3 +1,4 @@
+using ScottGarland;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class KnightUltimateSkill : Skill
         coolTime = 5f;
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/SlashDance");
         range = 5f;
-        totalValue = value * (level * upgradeValue);
+        totalValue = level * upgradeValue;
     }
 
     public override void UpgradeSkill(int amount)
@@ -22,7 +23,7 @@ public class KnightUltimateSkill : Skill
         level += amount;
 
         // TODO : 배율 조정
-        totalValue = value * (level * upgradeValue);
+        totalValue = level * upgradeValue;
     }
 
     public override void UseSkill(StatHandler statHandler)
@@ -32,6 +33,10 @@ public class KnightUltimateSkill : Skill
         playerPos += skillPrefab.transform.position;
 
         GameObject slashDance = Object.Instantiate(skillPrefab, playerPos, Quaternion.LookRotation(skillPrefab.transform.forward));
+        if (slashDance.TryGetComponent(out SlashDance component))
+        {
+            component.InitSettings((BigInteger.Divide(statHandler.CurrentStat.atk, 10) + (int)totalValue) * (int)value, range);
+        }
 
         GameManager.Instance.cameraController.SwordSlashEffect();
     }
