@@ -12,6 +12,7 @@ public class EnemyAnimationController : MonoBehaviour
     }
     public void MeleeSkillBossCharging()
     {
+        enemy.SetSkillCharging(true);
         enemy.stateMachine.SkillState.bossEnemy.StartSkillCoroutine(enemy.stateMachine.SkillState.PerformSkill());
     }
 
@@ -22,6 +23,7 @@ public class EnemyAnimationController : MonoBehaviour
 
     public void MeleeSkillBossEnd()
     {
+        enemy.SetSkillCharging(false);
         enemy.slash.SetActive(false);
         enemy.stateMachine.ChangeState(enemy.stateMachine.MoveState);
     }
@@ -32,6 +34,7 @@ public class EnemyAnimationController : MonoBehaviour
     }
     public void SkeletonBossSkillCharging()
     {
+        enemy.SetSkillCharging(true);
         enemy.stateMachine.SkillState.bossEnemy.StartSkillCoroutine(enemy.stateMachine.SkillState.PerformSkill());
     }
 
@@ -42,6 +45,7 @@ public class EnemyAnimationController : MonoBehaviour
 
     public void SkeletonBossSkillEnd()
     {
+        enemy.SetSkillCharging(false);
         enemy.stateMachine.ChangeState(enemy.stateMachine.MoveState);
     }
 

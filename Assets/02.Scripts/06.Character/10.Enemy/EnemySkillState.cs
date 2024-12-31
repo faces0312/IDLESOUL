@@ -45,7 +45,9 @@ public class EnemySkillState : EnemyBaseState
         enemy.slash.SetActive(true);
         bossEnemy.skillChargingEffect.SetActive(false);
         foreach (Transform child in bossEnemy.skillZone.transform)
+        {
             child.gameObject.SetActive(false);
+        }
 
         bossSkill1.SkillAttack1();
     }
@@ -54,7 +56,9 @@ public class EnemySkillState : EnemyBaseState
     {
         bossEnemy.skillChargingEffect.SetActive(false);
         foreach (Transform child in bossEnemy.skillZone.transform)
+        {
             child.gameObject.SetActive(false);
+        }
 
         bossSkill2.SkillAttack2();
     }
