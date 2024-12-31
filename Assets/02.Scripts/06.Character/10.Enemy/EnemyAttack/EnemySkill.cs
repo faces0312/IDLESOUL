@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ScottGarland;
 
 public class EnemySkill : MonoBehaviour
 {
@@ -12,12 +13,12 @@ public class EnemySkill : MonoBehaviour
         if (TargetLayer == ((1 << other.gameObject.layer) | TargetLayer))
         {
             Debug.Log($"공격이 {other.gameObject.name}에 충돌");
-            DamageCaculate(other.gameObject, BossEnemy.skillDamage);
+            DamageCaculate(other.gameObject, new BigInteger((int)BossEnemy.skillDamage));
             KnockBackCaculate(other.gameObject, 0);
         }
     }
 
-    private void DamageCaculate(GameObject hitObject, float Damage)
+    private void DamageCaculate(GameObject hitObject, BigInteger Damage)
     {
         ITakeDamageAble damageable = hitObject.GetComponent<ITakeDamageAble>();
         //TODO :: 무적시간이 아닐때에도 조건에 추가해야됨

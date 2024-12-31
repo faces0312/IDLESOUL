@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using ScottGarland;
+using System.Collections.Generic;
 
 public class UserData
 {
@@ -13,6 +14,9 @@ public class UserData
     public int Exp; // 계정 현재 경험치
     public int MaxExp; // 계정 최고 경험치 
 
+    //public List<int> GainSoulID ;
+    public List<Item> GainItemID ;
+
     public Stat stat;
     public UserData(UserDB userDB)
     {
@@ -22,6 +26,9 @@ public class UserData
         Gold = userDB.Gold;
         Diamonds = userDB.Diamonds;
         PlayTimeInSeconds = userDB.PlayTimeInSeconds;
+
+        //GainSoulID = userDB.SoulIDList;
+        GainItemID = userDB.ItemIDList;
 
         stat = new Stat();
         stat.iD = UID;
@@ -46,6 +53,8 @@ public class UserData
         stat.ReduceDamageLevel = userDB.ReduceDamageLevel;
         stat.CriticalRateLevel = userDB.CriticalRateLevel;
         stat.CriticalDamageLevel = userDB.CriticalDamageLevel;
+
+
     }
 
 }
@@ -139,6 +148,34 @@ public class Player : BaseCharacter
     {
         statHandler.LevelUp(level, status);
         UIManager.Instance.ShowUI<UIPlayerHPDisplayController>();
+
+        switch (status)
+        {
+            case Status.Hp:
+                userData.stat.MaxHealthLevel = statHandler.CurrentStat.MaxHealthLevel;
+                userData.stat.maxHealth = statHandler.CurrentStat.maxHealth;
+                break;
+            case Status.Atk:
+                userData.stat.AtkLevel = statHandler.CurrentStat.AtkLevel;
+                userData.stat.atk = statHandler.CurrentStat.atk;
+                break;
+            case Status.Def:
+                userData.stat.DefLevel = statHandler.CurrentStat.DefLevel;
+                userData.stat.def = statHandler.CurrentStat.def;
+                break;
+            case Status.ReduceDmg:
+                userData.stat.ReduceDamageLevel = statHandler.CurrentStat.ReduceDamageLevel;
+                userData.stat.reduceDamage = statHandler.CurrentStat.reduceDamage;
+                break;
+            case Status.CritChance:
+                userData.stat.CriticalRateLevel = statHandler.CurrentStat.CriticalRateLevel;
+                userData.stat.critChance = statHandler.CurrentStat.critChance;
+                break;
+            case Status.CritDmg:
+                userData.stat.CriticalDamageLevel = statHandler.CurrentStat.CriticalDamageLevel;
+                userData.stat.critDamage = statHandler.CurrentStat.critDamage;
+                break;
+        }
     }
 
     public void RegisterSoul()
@@ -158,38 +195,22 @@ public class Player : BaseCharacter
 
     public void Initialize()
     {
-        baseHpSystem.IsDead = false; 
+        baseHpSystem.IsDead = false;
 
         //MVP 이후에 고쳐야 될 플레이어 유저 데이터 불러오기 로직
-        ////Model(UserData) 세팅
-        //if (DataManager.Instance.LoadUserData() == null)
-        //{
-        //    //새로하기 , 기본 능력치를 제공 
-        //    userData = new UserData(DataManager.Instance.UserDB.GetByKey(TestID));
-        //    DataManager.Instance.SaveUserData(userData);
-        //}
-        //else
-        //{
-        //    //이어하기
-        //    userData = new UserData(DataManager.Instance.LoadUserData());
-        //}
-
-        //새로하기 , 기본 능력치를 제공 
-        userData = new UserData(DataManager.Instance.UserDB.GetByKey(TestID));
-        DataManager.Instance.SaveUserData(userData);
+        //Model(UserData) 세팅
+        if (DataManager.Instance.LoadUserData() == null)
+        {
+            //새로하기 , 기본 능력치를 제공 
+            userData = new UserData(DataManager.Instance.UserDB.GetByKey(TestID));  
+        }
+        else
+        {
+            //이어하기
+            userData = new UserData(DataManager.Instance.LoadUserData());
+        }
 
         statHandler = new StatHandler(StatType.Player,0,userData);
-        //statHandler.CurrentStat.iD = userData.UID;
-        //statHandler.CurrentStat.health = userData.stat.health;
-        //statHandler.CurrentStat.maxHealth = userData.stat.maxHealth;
-        //statHandler.CurrentStat.atk = userData.stat.atk;
-        //statHandler.CurrentStat.def = userData.stat.def;
-        //statHandler.CurrentStat.moveSpeed = userData.stat.moveSpeed;
-        //statHandler.CurrentStat.atkSpeed = userData.stat.atkSpeed;
-        //statHandler.CurrentStat.reduceDamage = userData.stat.reduceDamage;
-        //statHandler.CurrentStat.critChance = userData.stat.critChance;
-        //statHandler.CurrentStat.critDamage = userData.stat.critDamage;
-        //statHandler.CurrentStat.coolDown = userData.stat.coolDown;
 
         //Controller(FSM 세팅)
         playerStateMachine.ChangeState(playerStateMachine.IdleState);
@@ -198,9 +219,11 @@ public class Player : BaseCharacter
         //RegisterSoul();
 
         Debug.Log("Player 세팅 완료!!");
+
+        DataManager.Instance.SaveUserData(userData);
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(BigInteger damage)
     {
         baseHpSystem.TakeDamage(damage, statHandler);
         UIManager.Instance.ShowUI<UIPlayerHPDisplayController>();
@@ -211,7 +234,7 @@ public class Player : BaseCharacter
         dmgFont.SetActive(true);
         dmgFont.transform.position = transform.position;
         dmgFont.transform.rotation = Quaternion.identity;
-        dmgFont.GetComponent<DamageFont>().SetDamage(Owner.Player, new BigInteger((int)damage));
+        dmgFont.GetComponent<DamageFont>().SetDamage(Owner.Player, damage);
 
         if (statHandler.CurrentStat.health <= 0)
         {
@@ -252,30 +275,12 @@ public class Player : BaseCharacter
     {
         if (isJoyStick == false && isController == false)
             playerStateMachine.Update();
-
-        //if (Input.GetKeyDown(KeyCode.D)) // 데이터 갱신
-        //{
-        //    userData.Level++;
-        //    userData.stat.atk = userData.Level * userData.stat.atk;
-        //    userData.stat.def = userData.Level * userData.stat.def;
-        //}
-        //else if (Input.GetKeyDown(KeyCode.S))
-        //{
-        //    DataManager.Instance.SaveUserData(userData);
-        //}
-        //else if (Input.GetKeyDown(KeyCode.L))
-        //{
-        //    DataManager.Instance.LoadUserData();
-        //}
-        //else if (Input.GetKeyDown(KeyCode.C))
-        //{
-        //    targetSearch.TargetClear();
-        //    Debug.Log("Player Chase Target Reset");
-        //}
     }
 
     private void FixedUpdate()
     {
         playerStateMachine.FixedUpdateState();
     }
+
+
 }

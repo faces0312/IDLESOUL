@@ -18,12 +18,12 @@ public class EnemyAttack : MonoBehaviour
         {
             //BigInteger.ToInt32(enemy.StatHandler.CurrentStat.atk)
             Debug.Log($"공격이 {other.gameObject.name}에 충돌");
-            float attackPower = enemy.GetAttackPower();
+            BigInteger attackPower = new BigInteger((int)enemy.GetAttackPower());
             DamageCaculate(other.gameObject, attackPower);
             KnockBackCaculate(other.gameObject, 0);
         }
     }
-    private void DamageCaculate(GameObject hitObject, float Damage)
+    private void DamageCaculate(GameObject hitObject, BigInteger Damage)
     {
         ITakeDamageAble damageable = hitObject.GetComponent<ITakeDamageAble>();
         //TODO :: 무적시간이 아닐때에도 조건에 추가해야됨

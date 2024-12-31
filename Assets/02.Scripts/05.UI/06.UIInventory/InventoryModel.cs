@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-using UnityEngine.U2D;
-using System.Drawing;
+﻿using System.Collections.Generic;
+
 
 public class InventoryModel : UIModel
 {
@@ -24,13 +20,18 @@ public class InventoryModel : UIModel
         }
 
         GameManager.Instance.player.Inventory = this;
+
+        //유저데이터의 아이템 데이터를 불러오기
+        for(int i = 0; i < GameManager.Instance.player.UserData.GainItemID.Count; i++)
+        {
+            AddItem(GameManager.Instance.player.UserData.GainItemID[i]);
+        } 
     }
 
     public void AddItem(int key)
     {
         Item item = new Item();
         item.Initialize(DataManager.Instance.ItemDB.GetByKey(key));
-        //첫 획득시 아이템 소지여부를 true로 변경
 
         foreach (Item inven in Items)
         {
@@ -38,7 +39,11 @@ public class InventoryModel : UIModel
             {
                 if (!inven.IsGain)
                 {
+                    //첫 획득시 아이템 소지여부를 true로 변경
                     inven.IsGain = true;
+
+                    //획득시 보유효과(패시브) 스텟 적용
+                    GameManager.Instance.player.StatHandler.EquipItem(inven.PassiveStat);
                     EventManager.Instance.Publish<AchieveEvent>(Enums.Channel.Achievement, new AchieveEvent(Enums.AchievementType.Collect, Enums.ActionType.Item, 1));
                 }
                 else
@@ -47,6 +52,18 @@ public class InventoryModel : UIModel
                 }
             }
         }
+    }
+
+    public void AddItem(Item item)
+    {
+        for(int i = 0; i < Items.Count; i++) 
+        {
+            if (Items[i].ItemStat.iD == item.ItemStat.iD)
+            {
+                Items[i] = item;
+                break;
+            }
+        }    
     }
 
     public void RemoveItem(Item item)

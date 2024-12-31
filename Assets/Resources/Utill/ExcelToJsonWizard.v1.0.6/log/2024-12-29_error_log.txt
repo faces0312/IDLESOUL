@@ -1,0 +1,30 @@
+2024-12-29 오후 4:54:11: Error processing sheet StageDB in file excel_files\StageDB.xlsx: Enum type 'Sizes' not found in Enum definitions.
+   at ExcelToJsonWizard.Program.GenerateClassAndJsonFromExcel(String excelPath, String loaderDir, String jsonDir, String logFilePath, Boolean allowMultipleSheets, Boolean useResources, String resourcesInternalPath)
+2024-12-29 오후 4:54:16: Error processing sheet StageDB in file excel_files\StageDB.xlsx: Enum type 'Sizes' not found in Enum definitions.
+   at ExcelToJsonWizard.Program.GenerateClassAndJsonFromExcel(String excelPath, String loaderDir, String jsonDir, String logFilePath, Boolean allowMultipleSheets, Boolean useResources, String resourcesInternalPath)
+2024-12-29 오후 6:10:28: Error converting value '110001100111002' for variable 'SoulIDList' in sheet 'Sheet1' of file 'excel_files\UserDB.xlsx': Value was either too large or too small for an Int32.
+   at System.Number.ThrowOverflowException[TInteger]()
+   at System.Int32.Parse(String s)
+   at System.Linq.Enumerable.SelectArrayIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToList()
+   at ExcelToJsonWizard.Program.ConvertToType(String value, String type, String variableName, String logFilePath, String excelPath, String sheetName)
+2024-12-29 오후 6:10:28: Error processing sheet Sheet1 in file excel_files\UserDB.xlsx: Value was either too large or too small for an Int32.
+   at System.Number.ThrowOverflowException[TInteger]()
+   at System.Int32.Parse(String s)
+   at System.Linq.Enumerable.SelectArrayIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToList()
+   at ExcelToJsonWizard.Program.ConvertToType(String value, String type, String variableName, String logFilePath, String excelPath, String sheetName)
+   at ExcelToJsonWizard.Program.GenerateClassAndJsonFromExcel(String excelPath, String loaderDir, String jsonDir, String logFilePath, Boolean allowMultipleSheets, Boolean useResources, String resourcesInternalPath)
+2024-12-29 오후 8:10:47: Error converting value '110001100111002' for variable 'SoulIDList' in sheet 'Sheet1' of file 'excel_files\UserDB.xlsx': Value was either too large or too small for an Int32.
+   at System.Number.ThrowOverflowException[TInteger]()
+   at System.Int32.Parse(String s)
+   at System.Linq.Enumerable.SelectArrayIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToList()
+   at ExcelToJsonWizard.Program.ConvertToType(String value, String type, String variableName, String logFilePath, String excelPath, String sheetName)
+2024-12-29 오후 8:10:47: Error processing sheet Sheet1 in file excel_files\UserDB.xlsx: Value was either too large or too small for an Int32.
+   at System.Number.ThrowOverflowException[TInteger]()
+   at System.Int32.Parse(String s)
+   at System.Linq.Enumerable.SelectArrayIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToList()
+   at ExcelToJsonWizard.Program.ConvertToType(String value, String type, String variableName, String logFilePath, String excelPath, String sheetName)
+   at ExcelToJsonWizard.Program.GenerateClassAndJsonFromExcel(String excelPath, String loaderDir, String jsonDir, String logFilePath, Boolean allowMultipleSheets, Boolean useResources, String resourcesInternalPath)

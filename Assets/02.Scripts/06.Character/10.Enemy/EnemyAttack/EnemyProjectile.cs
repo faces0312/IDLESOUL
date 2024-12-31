@@ -45,7 +45,7 @@ public class EnemyProjectile : BaseProjectile
     {
         if (TargetLayer == ((1 << other.gameObject.layer) | TargetLayer))
         {
-            DamageCaculate(other.gameObject, attack);
+            DamageCaculate(other.gameObject, new BigInteger((int)attack));
             KnockBackCaculate(other.gameObject, 12);
 
             if(enemyGrade == EnemyGrade.Regular)

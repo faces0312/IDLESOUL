@@ -44,6 +44,9 @@ public static class Const
     public static readonly string DAMAGE_FONT_KEY = "DamageFont";
     public static readonly string DAMAGE_FONT_PATH = "Prefabs/UI/DamageFont";
 
+    public static readonly string STAGE_CASTHLE_MAP_PATH = "Prefabs/Stage/CasthleStageMap";
+    public static readonly string STAGE_FORESET_MAP_PATH = "Prefabs/Stage/ForestStageMap";
+
     public static readonly int INITIAL_POOL_SIZE = 60;
 
     public const int MAX_SOUL = 3;

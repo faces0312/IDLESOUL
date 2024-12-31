@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using ScottGarland;
 public class BaseProjectile : MonoBehaviour
 {
     [SerializeField] protected float speed = 15f; //투사체 속도
@@ -74,13 +74,12 @@ public class BaseProjectile : MonoBehaviour
         }
     }
 
-    protected virtual void DamageCaculate(GameObject hitObject, float Damage)
+    protected virtual void DamageCaculate(GameObject hitObject, BigInteger Damage)
     {
         ITakeDamageAble damageable = hitObject.GetComponent<ITakeDamageAble>();
         //TODO :: 무적시간이 아닐때에도 조건에 추가해야됨
         if (damageable != null)
         {
-            //방어력 관련 적용 시킬것 
             damageable.TakeDamage(Damage);//매직넘버 (플레이어나 Enemy의 Stat값을 받아와서 적용 시켜야됨)
         }
     }
@@ -91,60 +90,12 @@ public class BaseProjectile : MonoBehaviour
         //TODO :: 무적시간이 아닐때에도 조건에 추가해야됨
         if (damageable != null)
         {
-
             Vector3 directionKnockBack = (hitObject.transform.position - transform.position).normalized;
             //damageable.TakeKnockBack(directionKnockBack, knockbackPower);
             directionKnockBack.y = 0; // y축 보정
             damageable.TakeKnockBack(directionKnockBack, Power);
         }
     }
-
-    //protected void ProjectileCollison(Collision collision)
-    //{
-    //    //Lock all axes movement and rotation
-    //    rb.constraints = RigidbodyConstraints.FreezeAll;
-    //    //speed = 0;
-    //    if (lightSourse != null)
-    //        lightSourse.enabled = false;
-    //    col.enabled = false;
-    //    projectilePS.Stop();
-    //    projectilePS.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-
-    //    ContactPoint contact = collision.contacts[0];
-    //    Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-    //    Vector3 pos = contact.point + contact.normal * hitOffset;
-
-    //    //Spawn hit effect on collision
-    //    if (hit != null)
-    //    {
-    //        hit.transform.rotation = rot;
-    //        hit.transform.position = pos;
-    //        if (UseFirePointRotation) { hit.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0); }
-    //        else if (rotationOffset != Vector3.zero) { hit.transform.rotation = Quaternion.Euler(rotationOffset); }
-    //        else { hit.transform.LookAt(contact.point + contact.normal); }
-    //        hitPS.Play();
-    //    }
-
-    //    //Removing trail from the projectile on cillision enter or smooth removing. Detached elements must have "AutoDestroying script"
-    //    foreach (var detachedPrefab in Detached)
-    //    {
-    //        if (detachedPrefab != null)
-    //        {
-    //            ParticleSystem detachedPS = detachedPrefab.GetComponent<ParticleSystem>();
-    //            detachedPS.Stop();
-    //        }
-    //    }
-
-    //    if (notDestroy)
-    //        StartCoroutine(DisableTimer(hitPS.main.duration));
-    //    else
-    //    {
-    //        gameObject.SetActive(false);
-    //    }
-
-
-    //    ObjectPoolManager.Instance.GetPool("playerProjectile", Utils.POOL_KEY_PLAYERPROJECTILE).GetObject();
-    //}
 
     protected void ProjectileCollison(Collider other)
     {
@@ -166,7 +117,6 @@ public class BaseProjectile : MonoBehaviour
             hit.transform.position = closetPoint;
             if (UseFirePointRotation) { hit.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0); }
             else if (rotationOffset != Vector3.zero) { hit.transform.rotation = Quaternion.Euler(rotationOffset); }
-            //else { hit.transform.LookAt(contact.point + contact.normal); }
             else { hit.transform.LookAt(closetPoint); }
             hitPS.Play();
         }

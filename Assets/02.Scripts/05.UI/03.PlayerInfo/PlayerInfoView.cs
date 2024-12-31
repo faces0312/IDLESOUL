@@ -24,11 +24,12 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
     [Header("Upgrade")]
     [SerializeField] private TextMeshProUGUI[] upgradeLevelText;
 
-    [Header("Level")]
-    [SerializeField] private TextMeshProUGUI[] levelTexts;
-
     [Header("Cost")]
     [SerializeField] private TextMeshProUGUI[] costTexts;
+
+    [Header("Value&NextValue")]
+    [SerializeField] private TextMeshProUGUI[] valueTexts;
+    [SerializeField] private TextMeshProUGUI[] nextValueTexts;
 
     private StatHandler playerStatHandler;
 
@@ -70,6 +71,9 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
         costTexts[(int)Status.Hp].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.Hp))}";
         upgradeLevelText[(int)Status.Hp].text = $"체력 Lv. {playerStatHandler.CurrentStat.MaxHealthLevel}";
         statusText[(int)StatusType.Hp].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.maxHealth);
+
+        valueTexts[(int)Status.Hp].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.maxHealth);
+        nextValueTexts[(int)Status.Hp].text = $"-> {Utils.FormatBigInteger(Utils.UpgradePlayerStatBigInteger(Status.Hp))}";
     }
 
     public void UpdateAtk()
@@ -77,6 +81,9 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
         costTexts[(int)Status.Atk].text = $" {Utils.FormatBigInteger(Utils.UpgradeCost(Status.Atk))}";
         upgradeLevelText[(int)Status.Atk].text = $"공격력 Lv. {playerStatHandler.CurrentStat.AtkLevel}";
         statusText[(int)StatusType.Atk].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.atk);
+
+        valueTexts[(int)Status.Atk].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.atk);
+        nextValueTexts[(int)Status.Atk].text = $"-> {Utils.FormatBigInteger(Utils.UpgradePlayerStatBigInteger(Status.Atk))}";
     }
 
     public void UpdateDef()
@@ -84,6 +91,9 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
         costTexts[(int)Status.Def].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.Def))}";
         upgradeLevelText[(int)Status.Def].text = $"방어력 Lv. {playerStatHandler.CurrentStat.DefLevel}";
         statusText[(int)StatusType.Def].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.def);
+
+        valueTexts[(int)Status.Def].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.def);
+        nextValueTexts[(int)Status.Def].text = $"-> {Utils.FormatBigInteger(Utils.UpgradePlayerStatBigInteger(Status.Def))}";
     }
 
     public void UpdateReduceDmg()
@@ -91,6 +101,9 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
         costTexts[(int)Status.ReduceDmg].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.ReduceDmg))}";
         upgradeLevelText[(int)Status.ReduceDmg].text = $"피해 감소 Lv. {playerStatHandler.CurrentStat.ReduceDamageLevel}";
         statusText[(int)StatusType.ReduceDamage].text = playerStatHandler.CurrentStat.reduceDamage.ToString() + "%";
+
+        valueTexts[(int)Status.ReduceDmg].text = playerStatHandler.CurrentStat.reduceDamage.ToString();
+        nextValueTexts[(int)Status.ReduceDmg].text = $"-> {Utils.UpgradePlayerStat(Status.ReduceDmg)}%";
     }
 
     public void UpdateCritChance()
@@ -98,6 +111,9 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
         costTexts[(int)Status.CritChance].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.CritChance))}";
         upgradeLevelText[(int)Status.CritChance].text = $"치명타 확률 Lv. {playerStatHandler.CurrentStat.CriticalRateLevel}";
         statusText[(int)StatusType.CritChance].text = $"{playerStatHandler.CurrentStat.critChance}%";
+
+        valueTexts[(int)Status.CritChance].text = $"{playerStatHandler.CurrentStat.critChance}%";
+        nextValueTexts[(int)Status.CritChance].text = $"-> {Utils.UpgradePlayerStat(Status.CritChance)}%";
     }
 
     public void UpdateCritDmg()
@@ -105,6 +121,9 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
         costTexts[(int)Status.CritDmg].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.CritDmg))}";
         upgradeLevelText[(int)Status.CritDmg].text = $"치명타 피해 Lv. {playerStatHandler.CurrentStat.CriticalDamageLevel}";
         statusText[(int)StatusType.CritDamage].text = $"{playerStatHandler.CurrentStat.critDamage}%";
+
+        valueTexts[(int)Status.CritDmg].text = $"{playerStatHandler.CurrentStat.critDamage}%";
+        nextValueTexts[(int)Status.CritDmg].text = $"-> {Utils.UpgradePlayerStat(Status.CritDmg)}%";
     }
     
     private void UpdateStatus()
@@ -137,5 +156,19 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
         costTexts[(int)Status.ReduceDmg].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.ReduceDmg))}";
         costTexts[(int)Status.CritChance].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.CritChance))}";
         costTexts[(int)Status.CritDmg].text = $"{Utils.FormatBigInteger(Utils.UpgradeCost(Status.CritDmg))}";
+
+        valueTexts[(int)Status.Hp].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.maxHealth);
+        valueTexts[(int)Status.Atk].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.atk);
+        valueTexts[(int)Status.Def].text = Utils.FormatBigInteger(playerStatHandler.CurrentStat.def);
+        valueTexts[(int)Status.ReduceDmg].text = playerStatHandler.CurrentStat.reduceDamage.ToString();
+        valueTexts[(int)Status.CritChance].text = $"{playerStatHandler.CurrentStat.critChance}%";
+        valueTexts[(int)Status.CritDmg].text = $"{playerStatHandler.CurrentStat.critDamage}%";
+
+        nextValueTexts[(int)Status.Hp].text = $"-> {Utils.FormatBigInteger(Utils.UpgradePlayerStatBigInteger(Status.Hp))}";
+        nextValueTexts[(int)Status.Atk].text = $"-> {Utils.FormatBigInteger(Utils.UpgradePlayerStatBigInteger(Status.Atk))}";
+        nextValueTexts[(int)Status.Def].text = $"-> {Utils.FormatBigInteger(Utils.UpgradePlayerStatBigInteger(Status.Def))}";
+        nextValueTexts[(int)Status.ReduceDmg].text = $"-> {Utils.UpgradePlayerStat(Status.ReduceDmg)}%";
+        nextValueTexts[(int)Status.CritChance].text = $"-> {Utils.UpgradePlayerStat(Status.CritChance)}%";
+        nextValueTexts[(int)Status.CritDmg].text = $"-> {Utils.UpgradePlayerStat(Status.CritDmg)}%";
     }
 }

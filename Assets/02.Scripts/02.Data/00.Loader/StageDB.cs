@@ -1,4 +1,3 @@
-using Enums;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -48,14 +47,14 @@ public class StageDB
     public int SummonBossID;
 
     /// <summary>
-    /// StageType Int / 0 = none, 1 = daily, 2 = EXP, 3 = Upgrade
+    /// StageType
     /// </summary>
     public int StageType;
 
     /// <summary>
-    /// StageMapPath
+    /// StageName
     /// </summary>
-    public string StageMapPath;
+    public Enums.StageNameType StageName;
 
 }
 public class StageDBLoader

@@ -77,7 +77,7 @@ public abstract class Enemy : BaseCharacter
         Debug.Log("Base BossAppear called");
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(BigInteger damage)
     {
         if (statHandler.CurrentStat.health <= 0)
             return;
@@ -99,7 +99,7 @@ public abstract class Enemy : BaseCharacter
         dmgFont.SetActive(true);
         dmgFont.transform.position = transform.position;
         dmgFont.transform.rotation = Quaternion.identity;
-        dmgFont.GetComponent<DamageFont>().SetDamage(Owner.Enemy, new BigInteger((int)damage));
+        dmgFont.GetComponent<DamageFont>().SetDamage(Owner.Enemy, damage);
     }
 
     public void HpUpdate()

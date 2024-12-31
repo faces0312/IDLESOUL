@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using ScottGarland;
 
 public abstract class BaseCharacter : MonoBehaviour, ITakeDamageAble
 {
@@ -22,7 +23,7 @@ public abstract class BaseCharacter : MonoBehaviour, ITakeDamageAble
         }
     }
 
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(BigInteger damage)
     {
         baseHpSystem.TakeDamage(damage, statHandler);
     }

@@ -171,18 +171,18 @@ public static class Utils
         {
             case Status.Hp:
                 /*필요한 데이터를 StatUpgradeDB에서 호출해서 사용 */
-                baseStat = DataManager.Instance.UserDB.GetByKey().MaxHealth;
+                baseStat = DataManager.Instance.StatUpgradeDB.GetByKey(100).MaxHealthBaseStat;
                 growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).MaxHealthGrowRate;
                 /*플레이어의 현재 스텟 레벨을 호출 */
                 playerStatLevel = GameManager.Instance.player.StatHandler.CurrentStat.MaxHealthLevel;
                 break;
             case Status.Atk:
-                baseStat = DataManager.Instance.UserDB.GetByKey().Atk;
+                baseStat = DataManager.Instance.StatUpgradeDB.GetByKey(100).AtkBaseStat;
                 growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).AtkGrowRate;
                 playerStatLevel = GameManager.Instance.player.StatHandler.CurrentStat.AtkLevel;
                 break;
             case Status.Def:
-                baseStat = DataManager.Instance.UserDB.GetByKey().Def;
+                baseStat = DataManager.Instance.StatUpgradeDB.GetByKey(100).DefBaseStat;
                 growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).DefGrowRate;
                 playerStatLevel = GameManager.Instance.player.StatHandler.CurrentStat.DefLevel;
                 break;
@@ -215,17 +215,17 @@ public static class Utils
         switch (statType)
         {
             case Status.ReduceDmg:
-                baseStat = DataManager.Instance.UserDB.GetByKey().ReduceDamage;
+                baseStat = DataManager.Instance.StatUpgradeDB.GetByKey(100).ReduceDamageBaseStat;
                 growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).ReduceDamageGrowRate;
                 playerStatLevel = GameManager.Instance.player.StatHandler.CurrentStat.ReduceDamageLevel;
                 break;
             case Status.CritChance:
-                baseStat = DataManager.Instance.UserDB.GetByKey().CriticalRate;
+                baseStat = DataManager.Instance.StatUpgradeDB.GetByKey(100).CriticalRateBaseStat;
                 growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).CriticalRateGrowRate;
                 playerStatLevel = GameManager.Instance.player.StatHandler.CurrentStat.CriticalRateLevel;
                 break;
             case Status.CritDmg:
-                baseStat = DataManager.Instance.UserDB.GetByKey().CriticalDamage;
+                baseStat = DataManager.Instance.StatUpgradeDB.GetByKey(100).CriticalDamageBaseStat;
                 growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).CriticalDamageGrowRate;
                 playerStatLevel = GameManager.Instance.player.StatHandler.CurrentStat.CriticalDamageLevel;
                 break;
