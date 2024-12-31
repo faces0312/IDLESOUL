@@ -20,21 +20,14 @@
       "CriticalDamageLevel": 1,
       "CriticalDamage": 100,
       "atkSpeed": 1,
-      "moveSpeed": 1,
+      "moveSpeed": 5,
       "coolDown": 0,
       "Gold": 100000,
       "Diamonds": 100000,
       "PlayTimeInSeconds": 0,
       "CurChapter": 1,
       "CurStageNum": 1,
-      "SoulIDList": [
-        11000,
-        11001,
-        11002
-      ],
-      "ItemIDList": [
-        1000
-      ]
+      "CurStageID": 7000
     }
   ]
 }

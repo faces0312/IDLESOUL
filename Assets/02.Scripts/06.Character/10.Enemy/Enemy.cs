@@ -58,7 +58,10 @@ public abstract class Enemy : BaseCharacter
         OnEventTargetRemove += GameManager.Instance.player.targetSearch.TargetClear;
 
         statHandler = new StatHandler(StatType.Enemy, enemyDB.key);
-        
+
+        float increaseStat = StageManager.Instance.CurStageData.CurStageModifier;
+        int chapter = StageManager.Instance.CurStageData.ChapterNum;
+
         //현재스테이지에 따른 스텟 증가량을 적용 받음 
         statHandler.CurrentStat.iD = enemyDB.key;
         statHandler.CurrentStat.health = new BigInteger((long)(enemyDB.Health * SceneDataManager.Instance.MainStageModifier));

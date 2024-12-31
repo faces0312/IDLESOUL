@@ -8,7 +8,6 @@ public class StageManager : SingletonDDOL<StageManager>
 {
     [Header("StageData")]
     private int curStageID;
-    private int newStageID;
     private StageDB curStageData;
     private StageMap curStageMap; 
 
@@ -25,7 +24,6 @@ public class StageManager : SingletonDDOL<StageManager>
     {
         base.Awake();
         StageProgressModel = new UIStageProgressBarModel();
-        curStageID = 7000; //챕터1 Stage1
 
         stageMapList.Add(Instantiate(Resources.Load<StageMap>(Const.STAGE_CASTHLE_MAP_PATH)));
         stageMapList.Add(Instantiate(Resources.Load<StageMap>(Const.STAGE_FORESET_MAP_PATH)));
@@ -49,8 +47,7 @@ public class StageManager : SingletonDDOL<StageManager>
 
     public void Init()
     {
-        Debug.Log(curStageID);
-        curStageData = DataManager.Instance.StageDB.GetByKey(curStageID);
+        curStageData = DataManager.Instance.StageDB.GetByKey(GameManager.Instance.player.UserData.curStageID);
         SceneDataManager.Instance.MainStageModifier *= curStageData.CurStageModifier;
 
         for (int i = 0; i < stageMapList.Count; i++)
@@ -66,6 +63,8 @@ public class StageManager : SingletonDDOL<StageManager>
         curStageMap.gameObject.SetActive(true);
 
         StageProgressModel.Initialize(CurStageData.SlayEnemyCount);
+
+
 
         Debug.Log("StageManager 세팅 완료!!");
     }

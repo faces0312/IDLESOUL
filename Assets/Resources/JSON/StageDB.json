@@ -5,41 +5,40 @@
       "ChapterNum": 1,
       "StageNum": 1,
       "CurStageModifier": 1,
-      "stageName": "처음의 숲",
+      "stageName": "처음의 숲 1",
       "SlayEnemyCount": 10,
+      "SummonEnemyIDList": [
+        5000
+      ],
+      "SummonBossID": 5500,
+      "StageType": 0,
+      "StageName": 1
+    },
+    {
+      "key": 7001,
+      "ChapterNum": 1,
+      "StageNum": 2,
+      "CurStageModifier": 1,
+      "stageName": "처음의 숲 2",
+      "SlayEnemyCount": 20,
       "SummonEnemyIDList": [
         5000,
         5001
       ],
       "SummonBossID": 5500,
       "StageType": 0,
-      "StageName": 0
-    },
-    {
-      "key": 7001,
-      "ChapterNum": 1,
-      "StageNum": 2,
-      "CurStageModifier": 1.1,
-      "stageName": "미숙한자들의 길",
-      "SlayEnemyCount": 20,
-      "SummonEnemyIDList": [
-        5002,
-        5003
-      ],
-      "SummonBossID": 5501,
-      "StageType": 0,
-      "StageName": 0
+      "StageName": 1
     },
     {
       "key": 7002,
       "ChapterNum": 1,
       "StageNum": 3,
       "CurStageModifier": 1.1,
-      "stageName": "익숙해지는 주변",
+      "stageName": "처음의 숲 3",
       "SlayEnemyCount": 30,
       "SummonEnemyIDList": [
-        5002,
-        5003
+        5000,
+        5001
       ],
       "SummonBossID": 5500,
       "StageType": 0,
@@ -50,8 +49,23 @@
       "ChapterNum": 1,
       "StageNum": 4,
       "CurStageModifier": 1.1,
-      "stageName": "처음의 숲",
+      "stageName": "처음의 숲 4",
       "SlayEnemyCount": 50,
+      "SummonEnemyIDList": [
+        5000,
+        5001
+      ],
+      "SummonBossID": 5500,
+      "StageType": 0,
+      "StageName": 1
+    },
+    {
+      "key": 7004,
+      "ChapterNum": 1,
+      "StageNum": 5,
+      "CurStageModifier": 1.2,
+      "stageName": "침략된 마을 1",
+      "SlayEnemyCount": 80,
       "SummonEnemyIDList": [
         5002,
         5003
@@ -61,28 +75,11 @@
       "StageName": 0
     },
     {
-      "key": 7004,
-      "ChapterNum": 1,
-      "StageNum": 5,
-      "CurStageModifier": 1.1,
-      "stageName": "미숙한자들의 길",
-      "SlayEnemyCount": 100,
-      "SummonEnemyIDList": [
-        5000,
-        5001,
-        5002,
-        5003
-      ],
-      "SummonBossID": 5500,
-      "StageType": 0,
-      "StageName": 1
-    },
-    {
       "key": 7005,
       "ChapterNum": 1,
       "StageNum": 6,
-      "CurStageModifier": 1.1,
-      "stageName": "익숙해지는 주변",
+      "CurStageModifier": 1.2,
+      "stageName": "침략된 마을 2",
       "SlayEnemyCount": 120,
       "SummonEnemyIDList": [
         5000,
@@ -90,7 +87,7 @@
         5002,
         5003
       ],
-      "SummonBossID": 5501,
+      "SummonBossID": 5500,
       "StageType": 0,
       "StageName": 0
     },
@@ -98,9 +95,9 @@
       "key": 7006,
       "ChapterNum": 1,
       "StageNum": 7,
-      "CurStageModifier": 1.2,
-      "stageName": "처음의 숲",
-      "SlayEnemyCount": 100,
+      "CurStageModifier": 1.3,
+      "stageName": "침략된 마을 3",
+      "SlayEnemyCount": 120,
       "SummonEnemyIDList": [
         5000,
         5001,
@@ -109,17 +106,19 @@
       ],
       "SummonBossID": 5501,
       "StageType": 0,
-      "StageName": 1
+      "StageName": 0
     },
     {
       "key": 7007,
       "ChapterNum": 1,
       "StageNum": 8,
-      "CurStageModifier": 1.2,
-      "stageName": "미숙한자들의 길",
+      "CurStageModifier": 1.3,
+      "stageName": "침략된 마을 4",
       "SlayEnemyCount": 120,
       "SummonEnemyIDList": [
+        5000,
         5001,
+        5002,
         5003
       ],
       "SummonBossID": 5501,
@@ -130,9 +129,39 @@
       "key": 7008,
       "ChapterNum": 1,
       "StageNum": 9,
-      "CurStageModifier": 1.2,
-      "stageName": "익숙해지는 주변",
-      "SlayEnemyCount": 100,
+      "CurStageModifier": 1.4,
+      "stageName": "다시 숲으로.. 1",
+      "SlayEnemyCount": 80,
+      "SummonEnemyIDList": [
+        5000,
+        5002
+      ],
+      "SummonBossID": 5500,
+      "StageType": 0,
+      "StageName": 1
+    },
+    {
+      "key": 7009,
+      "ChapterNum": 1,
+      "StageNum": 10,
+      "CurStageModifier": 1.4,
+      "stageName": "다시 숲으로.. 2",
+      "SlayEnemyCount": 80,
+      "SummonEnemyIDList": [
+        5000,
+        5002
+      ],
+      "SummonBossID": 5500,
+      "StageType": 0,
+      "StageName": 1
+    },
+    {
+      "key": 7010,
+      "ChapterNum": 2,
+      "StageNum": 1,
+      "CurStageModifier": 1.5,
+      "stageName": "기습에 당하다 1",
+      "SlayEnemyCount": 80,
       "SummonEnemyIDList": [
         5001,
         5003
@@ -142,15 +171,75 @@
       "StageName": 1
     },
     {
-      "key": 7009,
-      "ChapterNum": 1,
-      "StageNum": 10,
-      "CurStageModifier": 1.2,
-      "stageName": "처음의 숲",
-      "SlayEnemyCount": 120,
+      "key": 7011,
+      "ChapterNum": 2,
+      "StageNum": 2,
+      "CurStageModifier": 1.5,
+      "stageName": "기습에 당하다 2",
+      "SlayEnemyCount": 80,
       "SummonEnemyIDList": [
-        5000,
-        5002
+        5001,
+        5003
+      ],
+      "SummonBossID": 5500,
+      "StageType": 0,
+      "StageName": 1
+    },
+    {
+      "key": 7012,
+      "ChapterNum": 2,
+      "StageNum": 3,
+      "CurStageModifier": 1.6,
+      "stageName": "되살아난 영혼 1",
+      "SlayEnemyCount": 90,
+      "SummonEnemyIDList": [
+        5002,
+        5003
+      ],
+      "SummonBossID": 5501,
+      "StageType": 0,
+      "StageName": 0
+    },
+    {
+      "key": 7013,
+      "ChapterNum": 2,
+      "StageNum": 4,
+      "CurStageModifier": 1.6,
+      "stageName": "되살아난 영혼 2",
+      "SlayEnemyCount": 90,
+      "SummonEnemyIDList": [
+        5002,
+        5003
+      ],
+      "SummonBossID": 5501,
+      "StageType": 0,
+      "StageName": 0
+    },
+    {
+      "key": 7014,
+      "ChapterNum": 2,
+      "StageNum": 5,
+      "CurStageModifier": 1.7,
+      "stageName": "되살아난 영혼 3",
+      "SlayEnemyCount": 90,
+      "SummonEnemyIDList": [
+        5002,
+        5003
+      ],
+      "SummonBossID": 5501,
+      "StageType": 0,
+      "StageName": 0
+    },
+    {
+      "key": 7015,
+      "ChapterNum": 2,
+      "StageNum": 6,
+      "CurStageModifier": 1.7,
+      "stageName": "되살아난 영혼 4",
+      "SlayEnemyCount": 90,
+      "SummonEnemyIDList": [
+        5002,
+        5003
       ],
       "SummonBossID": 5501,
       "StageType": 0,
