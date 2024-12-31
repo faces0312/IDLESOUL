@@ -56,8 +56,7 @@ public abstract class Skill : ISkill
         this.upgradeCost = db.UpgradeCost;
         this.type = db.SkillType;
 
-        // 스킬 ID 값에 따른 스킬 스프라이트 로드
-        skillSpr = Resources.Load<Sprite>($"Prefabs/Sprites/Skills/{this.id}");
+        skillSpr = Resources.Load<Sprite>(db.SpritePath);
     }
 
     public Skill(int id, Stat stat)
@@ -74,8 +73,7 @@ public abstract class Skill : ISkill
         this.upgradeCost = db.UpgradeCost;
         this.type = db.SkillType;
 
-        // 스킬 ID 값에 따른 스킬 스프라이트 로드
-        skillSpr = Resources.Load<Sprite>($"Prefabs/Sprites/Skills/{this.id}");
+        skillSpr = Resources.Load<Sprite>(db.SpritePath);
     }
 
     public abstract void UseSkill(StatHandler statHandler);
