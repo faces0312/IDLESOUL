@@ -19,4 +19,5 @@ public abstract class BaseItem
         itemStat.critChance = itemData.CritChance;
         itemStat.critDamage = itemData.CritDamage; 
     }
+
 }

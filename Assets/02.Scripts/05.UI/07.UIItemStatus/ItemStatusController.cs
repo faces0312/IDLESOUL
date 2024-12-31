@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ItemStatusController : UIController
 {
@@ -43,7 +44,7 @@ public class ItemStatusController : UIController
     private void UpgradeItem()
     {
 
-        if (SelectItem.item.UpgradeLevel < SelectItem.item.UpgradeLevelMax&& SelectItem.item.stack >= SelectItem.item.UpgradeStackCount)
+        if (SelectItem.item.UpgradeLevel < SelectItem.item.UpgradeLevelMax && SelectItem.item.stack >= SelectItem.item.UpgradeStackCount)
         {
             SelectItem.item.stack -= SelectItem.item.UpgradeStackCount;
             SelectItem.item.UpgradeStackCount *= SelectItem.item.UpgradeCostIncreaseRatio;
@@ -61,9 +62,16 @@ public class ItemStatusController : UIController
             SelectItem.item.PassiveStat = SelectItem.item.ItemStat / SelectItem.item.PassiveStatValue;
 
             GameManager.Instance.player.StatHandler.EquipItem(SelectItem.item.PassiveStat); //업그레이드 후의 패시브 효과 적용
+
+            //아이템 강화시 필요데이터 저장 - 리팩토링 필요 
+
+            GameManager.Instance.player.UserData.GainItem.Find(x => x.ID == SelectItem.item.ItemStat.iD).GainStack = SelectItem.item.UpgradeStackCount;
+            GameManager.Instance.player.UserData.GainItem.Find(x => x.ID == SelectItem.item.ItemStat.iD).Level = SelectItem.item.UpgradeLevel;
+            DataManager.Instance.SaveUserData(GameManager.Instance.player.UserData);
         }
 
         UpdateView();
+        
     }
 
     public override void OnShow()

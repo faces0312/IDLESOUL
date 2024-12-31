@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine.InputSystem;
+using static UnityEditor.Progress;
 
 
 public class InventoryModel : UIModel
 {
     public List<Item> Items = new List<Item>(); // 소지하고있는 아이템 리스트 
-   
+    public Dictionary<int, Item> DictItems = new Dictionary<int, Item>(); // (탐색용)소지하고 있는 아이템 딕셔너리 
+
     public InventoryModel()
     {
         Initilaize();
@@ -19,13 +23,22 @@ public class InventoryModel : UIModel
             Items.Add(itemObj);
         }
 
-        GameManager.Instance.player.Inventory = this;
-
-        //유저데이터의 아이템 데이터를 불러오기
-        for(int i = 0; i < GameManager.Instance.player.UserData.GainItemID.Count; i++)
+        foreach (Item item in Items)
         {
-            AddItem(GameManager.Instance.player.UserData.GainItemID[i]);
-        } 
+            DictItems.Add(item.ItemStat.iD, item);
+        }
+
+        for (int i = 0; i< GameManager.Instance.player.UserData.GainItem.Count; i++)
+        {
+            int key = GameManager.Instance.player.UserData.GainItem[i].ID;
+
+            if (DictItems.ContainsKey(key))
+            {
+                InitItem(GameManager.Instance.player.UserData.GainItem[i]);
+            }
+        }
+
+        GameManager.Instance.player.Inventory = this;
     }
 
     public void AddItem(int key)
@@ -33,36 +46,48 @@ public class InventoryModel : UIModel
         Item item = new Item();
         item.Initialize(DataManager.Instance.ItemDB.GetByKey(key));
 
-        foreach (Item inven in Items)
+        if (DictItems.ContainsKey(key))
         {
-            if (inven.ItemStat.iD == item.ItemStat.iD)
+            if (!DictItems[key].IsGain)
             {
-                if (!inven.IsGain)
-                {
-                    //첫 획득시 아이템 소지여부를 true로 변경
-                    inven.IsGain = true;
+                //첫 획득시 아이템 소지여부를 true로 변경
+                DictItems[key].IsGain = true;
 
-                    //획득시 보유효과(패시브) 스텟 적용
-                    GameManager.Instance.player.StatHandler.EquipItem(inven.PassiveStat);
-                }
-                else
-                {
-                    inven.stack += 1;
-                }
+                //획득시 보유효과(패시브) 스텟 적용
+                GameManager.Instance.player.StatHandler.EquipItem(DictItems[key].PassiveStat);
+
+                //아이템 획득시 데이터 저장
+                GameManager.Instance.player.UserData.GainItem.Add(new UserItemData(DictItems[key]));
             }
+            else
+            {
+                DictItems[key].stack += 1;
+            }
+
+            //아이템 획득시 게임 데이터 저장
+            DataManager.Instance.SaveUserData(GameManager.Instance.player.UserData);
         }
+
+
     }
 
-    public void AddItem(Item item)
+    public void InitItem(UserItemData userItem)
     {
-        for(int i = 0; i < Items.Count; i++) 
+        //DictItems[userItem.ID].Initialize(DataManager.Instance.ItemDB.GetByKey(userItem.ID));
+        DictItems[userItem.ID].LoadInitData(userItem);
+
+        if (DictItems.ContainsKey(userItem.ID))
         {
-            if (Items[i].ItemStat.iD == item.ItemStat.iD)
+            if (!DictItems[userItem.ID].IsGain)
             {
-                Items[i] = item;
-                break;
+                //첫 획득시 아이템 소지여부를 true로 변경
+                DictItems[userItem.ID].IsGain = true;
+
+                //획득시 보유효과(패시브) 스텟 적용
+                GameManager.Instance.player.StatHandler.EquipItem(DictItems[userItem.ID].PassiveStat);
+
             }
-        }    
+        }
     }
 
     public void RemoveItem(Item item)

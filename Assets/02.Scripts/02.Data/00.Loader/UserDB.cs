@@ -128,6 +128,16 @@ public class UserDB
     public int PlayTimeInSeconds;
 
     /// <summary>
+    /// CurStageID
+    /// </summary>
+    public int CurStageID;
+
+    /// <summary>
+    /// ClearStageCycle
+    /// </summary>
+    public int ClearStageCycle;
+
+    /// <summary>
     /// CurChapter
     /// </summary>
     public int CurChapter;
@@ -137,15 +147,8 @@ public class UserDB
     /// </summary>
     public int CurStageNum;
 
-    /// <summary>
-    /// SoulIDList
-    /// </summary>
-    public List<int> SoulIDList;
-
-    /// <summary>
-    /// ItemIDList
-    /// </summary>
-    public List<Item> ItemIDList;
+    public List<UserItemData> GainItem;
+    public List<UserSoulData> GainSoul;
 
     public void JsonDataConvert(UserData userData)
     {
@@ -157,9 +160,8 @@ public class UserDB
         PlayTimeInSeconds = userData.PlayTimeInSeconds;
         Exp = userData.Exp;
         MaxExp = userData.MaxExp;
-
-        //SoulIDList = userData.GainSoulID;
-        ItemIDList = userData.GainItemID;
+        CurStageID = userData.curStageID;
+        ClearStageCycle = userData.ClearStageCycle;
 
         Health = BigInteger.ToInt32(userData.stat.health); ;
         MaxHealth = BigInteger.ToInt32(userData.stat.maxHealth);
@@ -181,6 +183,9 @@ public class UserDB
         CriticalRate = userData.stat.critChance;
         CriticalDamage = userData.stat.critDamage;
         coolDown = userData.stat.coolDown;
+
+        GainItem = userData.GainItem;
+        GainSoul = userData.GainSoul;
     }
 
 }

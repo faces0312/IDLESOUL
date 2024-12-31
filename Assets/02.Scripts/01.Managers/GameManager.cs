@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 public class GameManager : SingletonDDOL<GameManager>
@@ -72,8 +73,8 @@ public class GameManager : SingletonDDOL<GameManager>
         
         StageManager.Instance.StageProgressModel.CurCountDataClear();
 
-        int stageID = StageManager.Instance.CurStageID;
-        StageManager.Instance.StageSelect(stageID + 1);//다음 Stage로 이동
+        _player.UserData.curStageID += 1;
+        StageManager.Instance.StageSelect(_player.UserData.curStageID);//다음 Stage로 이동
 
         //Utils.StartFadeOut();
         Invoke("NextStage", 3.0f);
@@ -85,6 +86,8 @@ public class GameManager : SingletonDDOL<GameManager>
         SetGameOverFlag(false);
         //SceneManager.LoadScene("GameScene_SMS");
         Destroy(gameOverPage);
+
+        _player.UserData.curStageID = StageManager.Instance.CurStageID;
         UIManager.Instance.ShowUI<UIStageProgressBarController>();
         DataManager.Instance.SaveUserData(_player.UserData);
         //_player.transform.position = Vector3.up; //플레이어 위치 초기화
@@ -107,6 +110,16 @@ public class GameManager : SingletonDDOL<GameManager>
             player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
             player.targetSearch.TargetClear();
         }
+
+        if(isTryBoss == true)
+        {
+            UIManager.Instance.HideUI<UIStageProgressBarController>();
+            UIManager.Instance.tryBoss.SetActive(true);
+        }
+        else
+        {
+            UIManager.Instance.tryBoss.SetActive(false);
+        }    
 
         EnemyManager.Instance.EnemySpawnStart();
     }
@@ -146,7 +159,7 @@ public class GameManager : SingletonDDOL<GameManager>
         StageManager.Instance.StageProgressModel.CurCountDataClear();
 
         IsBoss = false;
-        isTryBoss = false; // MVP 이후에 보스 트라이 버튼 따로 구현해야됨
+        //isTryBoss = false; // MVP 이후에 보스 트라이 버튼 따로 구현해야됨
         Invoke("NextStage", 3.0f);
     }
 

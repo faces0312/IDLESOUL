@@ -23,7 +23,7 @@ public class InventoryView : MonoBehaviour, IUIBase
         {
             itemSlots.Add(Instantiate(itemSlotPrefab, itemSlotParent));
 
-            itemSlots[i].Initiliaze(GameManager.Instance.player.Inventory.Items[i]);
+             itemSlots[i].Initiliaze(GameManager.Instance.player.Inventory.Items[i]);
         }
     }
 

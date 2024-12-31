@@ -6,6 +6,7 @@ public class UIManager : SingletonDDOL<UIManager>
 {
     public RectTransform uiLobbyCanvas;
     public RectTransform popupCanvas;
+    public GameObject tryBoss;
     private Dictionary<string, UIController> controllers = new Dictionary<string, UIController>();
     private UIController activeController;
 
