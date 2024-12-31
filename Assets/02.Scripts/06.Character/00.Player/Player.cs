@@ -14,21 +14,21 @@ public class UserData
     public int Exp; // 계정 현재 경험치
     public int MaxExp; // 계정 최고 경험치 
 
-    //public List<int> GainSoulID ;
-    public List<Item> GainItemID ;
+    public List<UserItemData> GainItem = new List<UserItemData>();
+    public List<UserSoulData> GainSoul = new List<UserSoulData>();
 
     public Stat stat;
     public UserData(UserDB userDB)
     {
+        GainItem = userDB.GainItem;
+        GainSoul = userDB.GainSoul;
+
         UID = userDB.key;
         NickName = userDB.Nickname;
         Level = userDB.Level;
         Gold = userDB.Gold;
         Diamonds = userDB.Diamonds;
         PlayTimeInSeconds = userDB.PlayTimeInSeconds;
-
-        //GainSoulID = userDB.SoulIDList;
-        GainItemID = userDB.ItemIDList;
 
         stat = new Stat();
         stat.iD = UID;
@@ -53,10 +53,42 @@ public class UserData
         stat.ReduceDamageLevel = userDB.ReduceDamageLevel;
         stat.CriticalRateLevel = userDB.CriticalRateLevel;
         stat.CriticalDamageLevel = userDB.CriticalDamageLevel;
+    }
+}
 
+[System.Serializable]
+public class UserItemData
+{
+    public int ID;                  // 아이템의 ID
+    public int Level;               // 아이템 강화 레벨
+    public int GainStack;           // 아이템의 소유 갯수
 
+    public UserItemData(Item item)
+    {
+        ID = item.ItemStat.iD;
+        Level = item.UpgradeLevel;
+        GainStack = item.stack;
     }
 
+}
+
+[System.Serializable]
+public class UserSoulData
+{
+    public int ID;                  // 소울의 ID
+    public int Level;               // 소울의 강화 레벨
+    public int PassiveSkillLevel;   // 소울 패시브 스킬 레벨
+    public int DefaultSkillLevel;   // 소울 액티브 스킬 레벨
+    public int UltimateSkillLevel;   // 소울 궁극기 스킬 레벨
+
+    public UserSoulData(Soul soul)
+    {
+        ID = soul.StatHandler.CurrentStat.iD;
+        Level = soul.level;
+        PassiveSkillLevel = soul.Skills[(int)SkillType.Passive].level;
+        DefaultSkillLevel = soul.Skills[(int)SkillType.Default].level;
+        UltimateSkillLevel = soul.Skills[(int)SkillType.Ultimate].level;
+    }
 }
 
 public class Player : BaseCharacter

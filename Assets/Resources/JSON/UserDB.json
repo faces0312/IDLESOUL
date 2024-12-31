@@ -26,15 +26,7 @@
       "Diamonds": 100000,
       "PlayTimeInSeconds": 0,
       "CurChapter": 1,
-      "CurStageNum": 1,
-      "SoulIDList": [
-        11000,
-        11001,
-        11002
-      ],
-      "ItemIDList": [
-        1000
-      ]
+      "CurStageNum": 1
     }
   ]
 }

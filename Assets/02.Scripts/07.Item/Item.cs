@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [System.Serializable]
 public class Item : BaseItem
@@ -18,6 +19,7 @@ public class Item : BaseItem
     public int UpgradeStackCount; //아이템 강화 스택 필요양 
     public int UpgradeStatIncreaseRatio; //아이템 강화시 스텟 증가량
     public int UpgradeCostIncreaseRatio; //아이템 강화 스택 증가량
+
     public override void Initialize(ItemDB data)
     {
         base.Initialize(data);
@@ -27,7 +29,7 @@ public class Item : BaseItem
         ID = itemStat.iD;
         //ToDo : 플레이어 유저데이터를 참고하여 갱신할수 있게 해야됨
         IsGain = false;
-        stack = 9999;
+        stack = 1;
         UpgradeLevel = 1;
         UpgradeLevelMax = 10;
         UpgradeStackCount = 1;
@@ -35,4 +37,20 @@ public class Item : BaseItem
         UpgradeCostIncreaseRatio = 3;
     }
 
+    public void LoadInitData(UserItemData itemData)
+    {
+        stack = itemData.GainStack;
+        UpgradeLevel = itemData.Level;
+
+        ItemStat.maxHealth *= UpgradeStatIncreaseRatio * UpgradeLevel;
+        ItemStat.atk *= UpgradeStatIncreaseRatio * UpgradeLevel;
+        ItemStat.def *= UpgradeStatIncreaseRatio * UpgradeLevel;
+        ItemStat.reduceDamage *= UpgradeStatIncreaseRatio * UpgradeLevel;
+        ItemStat.critChance *= UpgradeStatIncreaseRatio * UpgradeLevel;
+        ItemStat.critDamage *= UpgradeStatIncreaseRatio * UpgradeLevel;
+
+        UpgradeStackCount *= UpgradeCostIncreaseRatio * UpgradeLevel;
+
+        PassiveStat = ItemStat / PassiveStatValue;
+    }
 }
