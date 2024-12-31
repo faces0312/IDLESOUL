@@ -61,10 +61,13 @@ public class StageManager : SingletonDDOL<StageManager>
         {
             Chapter = GameManager.Instance.player.UserData.ClearStageCycle;
             curStageID = GameManager.Instance.player.UserData.curStageID;
+            MainStageModifier = GameManager.Instance.player.UserData.StageModifier;
         }
 
         curStageData = DataManager.Instance.StageDB.GetByKey(CurStageID);
-        MainStageModifier *= curStageData.CurStageModifier;
+
+        if (GameManager.Instance.player.UserData.curStageID != curStageID)
+            MainStageModifier *= curStageData.CurStageModifier;
 
         SaveStageData();
 

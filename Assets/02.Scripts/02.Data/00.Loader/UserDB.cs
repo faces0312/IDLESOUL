@@ -138,14 +138,9 @@ public class UserDB
     public int ClearStageCycle;
 
     /// <summary>
-    /// CurChapter
+    /// StageModifier
     /// </summary>
-    public int CurChapter;
-
-    /// <summary>
-    /// CurStageNum
-    /// </summary>
-    public int CurStageNum;
+    public float StageModifier;
 
     public List<UserItemData> GainItem;
     public List<UserSoulData> GainSoul;
@@ -162,6 +157,7 @@ public class UserDB
         MaxExp = userData.MaxExp;
         CurStageID = userData.curStageID;
         ClearStageCycle = userData.ClearStageCycle;
+        StageModifier = userData.StageModifier;
 
         Health = BigInteger.ToInt32(userData.stat.health); ;
         MaxHealth = BigInteger.ToInt32(userData.stat.maxHealth);
