@@ -42,8 +42,8 @@ public class InventoryModel : UIModel
                     //첫 획득시 아이템 소지여부를 true로 변경
                     inven.IsGain = true;
 
-                    //획득시 보유효과(패시브) 스텟 적용 - 버그있음, 수정해야됨
-                    //GameManager.Instance.player.StatHandler.EquipItem(inven.ItemStat);
+                    //획득시 보유효과(패시브) 스텟 적용
+                    GameManager.Instance.player.StatHandler.EquipItem(inven.PassiveStat);
                 }
                 else
                 {

@@ -48,15 +48,19 @@ public class ItemStatusController : UIController
             SelectItem.item.stack -= SelectItem.item.UpgradeStackCount;
             SelectItem.item.UpgradeStackCount *= SelectItem.item.UpgradeCostIncreaseRatio;
 
+            GameManager.Instance.player.StatHandler.UnEquipItem(SelectItem.item.PassiveStat); //해당 아이템의 패시브 효과 적용해제 
+
             SelectItem.item.UpgradeLevel++;
             SelectItem.item.ItemStat.maxHealth *= SelectItem.item.UpgradeStatIncreaseRatio;
             SelectItem.item.ItemStat.atk *= SelectItem.item.UpgradeStatIncreaseRatio;
             SelectItem.item.ItemStat.def *= SelectItem.item.UpgradeStatIncreaseRatio;
-            SelectItem.item.ItemStat.maxHealth *= SelectItem.item.UpgradeStatIncreaseRatio;
-            SelectItem.item.ItemStat.maxHealth *= SelectItem.item.UpgradeStatIncreaseRatio;
-            SelectItem.item.ItemStat.maxHealth *= SelectItem.item.UpgradeStatIncreaseRatio;
+            SelectItem.item.ItemStat.reduceDamage *= SelectItem.item.UpgradeStatIncreaseRatio;
+            SelectItem.item.ItemStat.critChance *= SelectItem.item.UpgradeStatIncreaseRatio;
+            SelectItem.item.ItemStat.critDamage *= SelectItem.item.UpgradeStatIncreaseRatio;
 
             SelectItem.item.PassiveStat = SelectItem.item.ItemStat / SelectItem.item.PassiveStatValue;
+
+            GameManager.Instance.player.StatHandler.EquipItem(SelectItem.item.PassiveStat); //업그레이드 후의 패시브 효과 적용
         }
 
         UpdateView();

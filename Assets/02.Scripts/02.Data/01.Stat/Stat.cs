@@ -87,7 +87,7 @@ public class Stat
 
     public static Stat operator +(Stat stat1, Stat stat2)
     {
-        Stat clacStat = stat1;
+        Stat clacStat = new Stat();
 
         clacStat.health = stat1.health + stat2.health;
         clacStat.maxHealth = stat1.maxHealth + stat2.maxHealth;
@@ -115,7 +115,7 @@ public class Stat
 
     public static Stat operator -(Stat stat1, Stat stat2)
     {
-        Stat clacStat = stat1;
+        Stat clacStat = new Stat();
 
         clacStat.health = stat1.health - stat2.health;
         clacStat.maxHealth = stat1.maxHealth - stat2.maxHealth;
@@ -143,7 +143,7 @@ public class Stat
 
     public static Stat operator *(Stat stat, int amount)
     {
-        Stat clacStat = stat;
+        Stat clacStat = new Stat();
 
         clacStat.health = stat.health * amount;
         clacStat.maxHealth = stat.maxHealth * amount;
@@ -201,7 +201,7 @@ public class Stat
 
     public static Stat operator /(Stat stat, int amount)
     {
-        Stat clacStat = stat;
+        Stat clacStat = new Stat();
 
         clacStat.health = stat.health / amount;
         clacStat.maxHealth = stat.maxHealth / amount;
@@ -213,9 +213,16 @@ public class Stat
 
         clacStat.reduceDamage = (float)Math.Round(stat.reduceDamage / amount, 1);
 
-        clacStat.critChance = (float)Math.Round(stat.critChance * amount, 1);
-        clacStat.critDamage = (float)Math.Round(stat.critDamage * amount, 1);
-        clacStat.coolDown = (float)Math.Round(stat.coolDown * amount, 1);
+        clacStat.critChance = (float)Math.Round(stat.critChance / amount, 1);
+        clacStat.critDamage = (float)Math.Round(stat.critDamage / amount, 1);
+        clacStat.coolDown = (float)Math.Round(stat.coolDown / amount, 1);
+
+        clacStat.MaxHealthLevel = stat.MaxHealthLevel;
+        clacStat.AtkLevel = stat.AtkLevel;
+        clacStat.DefLevel = stat.DefLevel;
+        clacStat.ReduceDamageLevel = stat.ReduceDamageLevel;
+        clacStat.CriticalRateLevel = stat.CriticalRateLevel;
+        clacStat.CriticalDamageLevel = stat.CriticalDamageLevel;
 
         return clacStat;
     }

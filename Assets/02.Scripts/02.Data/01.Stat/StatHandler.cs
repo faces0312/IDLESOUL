@@ -197,16 +197,16 @@ public class StatHandler
     {
         additionalStats.Add(itemStat);
 
-        Stat itemStatSum = CalculateAdditionalStats();
+        //Stat itemStatSum = CalculateAdditionalStats();
 
-        currentStat += itemStatSum;
+        currentStat += itemStat;
     }
 
     public void UnEquipItem(Stat itemStat)
     {
         additionalStats.Remove(itemStat);
 
-        currentStat -= itemStat;
+        currentStat -= itemStat; 
     }
 
 
