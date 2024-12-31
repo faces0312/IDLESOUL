@@ -831,7 +831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1473,7 +1473,7 @@ CapsuleCollider:
   m_Radius: 1.9
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0.5, y: 0.5, z: 0}
+  m_Center: {x: 0.3, y: 0.5, z: 0}
 --- !u!114 &4986376983220177522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1512,7 +1512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0232bfa80febb7f4196eab6f5c2f156a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHpSystem: {fileID: 0}
+  baseHpSystem: {fileID: 3498087185882550602}
   rb: {fileID: 0}
   attackType: 0
   slash: {fileID: 7121104220156569651}
@@ -1537,6 +1537,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   animator: {fileID: 8900702365910489509}
   healthBar: {fileID: 6943077816121637070}
+  maxHealth: 0
   currentHealth: 0
   skillZone: {fileID: 4440956020437451128}
   skillChargingEffect: {fileID: 7247622969348079885}
@@ -1767,7 +1768,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -60}
+  m_AnchoredPosition: {x: 160, y: -60}
   m_SizeDelta: {x: 700, y: 60}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &7022404002287334445
@@ -1797,7 +1798,7 @@ Transform:
   m_GameObject: {fileID: 7022404002287334445}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -0.6, y: 1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1867,7 +1868,7 @@ Transform:
   m_GameObject: {fileID: 7121104220156569651}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 1, z: 0}
+  m_LocalPosition: {x: -0.7, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

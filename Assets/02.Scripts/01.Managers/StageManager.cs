@@ -43,6 +43,7 @@ public class StageManager : SingletonDDOL<StageManager>
 
     public void Init()
     {
+        Debug.Log(curStageID);
         curStageData = DataManager.Instance.StageDB.GetByKey(curStageID);
 
         for (int i = 0; i < stageMapList.Count; i++)

@@ -51,11 +51,10 @@ public abstract class PlayerBaseState : IState
 
     private void Move()
     {
+        Vector3 movementDirection = GetMovementDirection();
         //자동모드일때
         if (stateMachine._Player.isAuto)
         {
-            Vector3 movementDirection = GetMovementDirection();
-
             Move(movementDirection);
         }
     }

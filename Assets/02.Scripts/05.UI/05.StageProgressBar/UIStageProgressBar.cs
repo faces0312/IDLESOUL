@@ -13,6 +13,7 @@ using UnityEngine.UI;
 
 public class UIStageProgressBar : UIBase<UIStageProgressBarModel, UIStageProgressBarView, UIStageProgressBarController>
 {
+    public GameObject tryBoss;
     //public string UIKey;
 
     //private UIStageProgressBarModel model;
@@ -23,11 +24,19 @@ public class UIStageProgressBar : UIBase<UIStageProgressBarModel, UIStageProgres
     {
         //Model(Data) 초기화
         model = StageManager.Instance.StageProgressModel;
+        UIManager.Instance.tryBoss = tryBoss;
         base.Start();
         //controller = new UIStageProgressBarController();
         //controller.Initialize(view, model);
 
         //UIManager.Instance.RegisterController(UIKey, controller);
+    }
+
+    public void TryBoss()
+    {
+        UIManager.Instance.tryBoss.SetActive(false);
+        EnemyManager.Instance.BossSpawn(StageManager.Instance.CurStageData.SummonBossID);
+        //controller?.BossTriggerCheck();
     }
 
 }

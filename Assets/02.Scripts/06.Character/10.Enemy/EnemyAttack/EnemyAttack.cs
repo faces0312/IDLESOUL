@@ -17,7 +17,7 @@ public class EnemyAttack : MonoBehaviour
         if (TargetLayer == ((1 << other.gameObject.layer) | TargetLayer))
         {
             //BigInteger.ToInt32(enemy.StatHandler.CurrentStat.atk)
-            Debug.Log($"공격이 {other.gameObject.name}에 충돌");
+            //Debug.Log($"공격이 {other.gameObject.name}에 충돌");
             BigInteger attackPower = new BigInteger((int)enemy.GetAttackPower());
             DamageCaculate(other.gameObject, attackPower);
             KnockBackCaculate(other.gameObject, 0);

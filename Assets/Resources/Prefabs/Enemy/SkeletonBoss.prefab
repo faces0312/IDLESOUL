@@ -93,7 +93,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -672,7 +672,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -1140,7 +1140,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -1181,7 +1181,7 @@ Transform:
   m_GameObject: {fileID: 5597059983469057555}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -0.6, y: 1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1257,7 +1257,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -60}
+  m_AnchoredPosition: {x: 160, y: -60}
   m_SizeDelta: {x: 700, y: 60}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &5721867926643136414
@@ -1333,6 +1333,7 @@ Transform:
   - {fileID: 5566049725450734786}
   - {fileID: 517448289914479681}
   - {fileID: 8615123860360981863}
+  - {fileID: 4323160379152754489}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &38348744507261664
@@ -1384,7 +1385,7 @@ CapsuleCollider:
   m_Radius: 1.9
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0.5, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &4986376983220177522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1423,7 +1424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 840b05e818681284399baffe7e835a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHpSystem: {fileID: 0}
+  baseHpSystem: {fileID: 3498087185882550602}
   rb: {fileID: 38348744507261664}
   attackType: 1
   slash: {fileID: 0}
@@ -1448,6 +1449,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   animator: {fileID: 6175394926275884764}
   healthBar: {fileID: 8586952787318062965}
+  maxHealth: 0
   currentHealth: 0
   skillZone: {fileID: 4440956020437451128}
   skillChargingEffect: {fileID: 7247622969348079885}
@@ -1528,6 +1530,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6321310670538621745
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4323160379152754489}
+  m_Layer: 7
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4323160379152754489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6321310670538621745}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2587960406012087847}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7034566537427880052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1627,7 +1660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -6658,7 +6691,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -6814,7 +6847,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
