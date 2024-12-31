@@ -31,6 +31,7 @@ public abstract class Enemy : BaseCharacter
 
     [Header("CurrentStats")]
     public Slider healthBar;
+    public float maxHealth;
     public float currentHealth;
 
     //public StatHandler StatHandler { get => base.statHandler; set => base.statHandler = value; }
@@ -73,6 +74,9 @@ public abstract class Enemy : BaseCharacter
         statHandler.CurrentStat.critDamage = enemyDB.CritDamage * increaseStat * chapter;
         stateMachine.Initialize();
         HpUpdate();
+
+        maxHealth = BigInteger.ToInt32(statHandler.CurrentStat.maxHealth);
+        currentHealth = BigInteger.ToInt32(statHandler.CurrentStat.health);
     }
 
     public virtual void BossAppear()
@@ -119,15 +123,12 @@ public abstract class Enemy : BaseCharacter
 
     public void Die()
     {
-        //OnEventTargetRemove?.Invoke();
-        //OnDieEvent?.Invoke();
         if (attackType == AttackType.Melee)
             slash.SetActive(false);
         gameObject.SetActive(false);
         AchieveEvent achieveEvent = new AchieveEvent(Enums.AchievementType.KillMonster,Enums.ActionType.Kill, 1);
         EventManager.Instance.Publish<AchieveEvent>(Enums.Channel.Achievement, achieveEvent);
 
-        //Debug.Log($"{gameObject.name} »ç¸Á!!");
     }
 
     public void Update()
@@ -155,5 +156,11 @@ public abstract class Enemy : BaseCharacter
     public float GetAttackPower()
     {
         return BigInteger.ToInt32(statHandler.CurrentStat.atk);
+    }
+
+    private void OnDisable()
+    {
+        if (attackType == AttackType.Melee)
+            slash.SetActive(false);
     }
 }
