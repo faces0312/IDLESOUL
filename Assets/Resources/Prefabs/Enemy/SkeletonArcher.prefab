@@ -1078,7 +1078,7 @@ CapsuleCollider:
   m_Radius: 1
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0.5, y: 0, z: 0}
+  m_Center: {x: 0.2, y: 0, z: 0}
 --- !u!114 &1328347012730416658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1091,7 +1091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0af86195ee2bef4aaac4d1cd8280dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHpSystem: {fileID: 0}
+  baseHpSystem: {fileID: 1940058247621827178}
   rb: {fileID: 0}
   attackType: 1
   slash: {fileID: 0}
@@ -1116,6 +1116,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   animator: {fileID: 0}
   healthBar: {fileID: 7835965282708907878}
+  maxHealth: 0
   currentHealth: 0
 --- !u!114 &7912652396146340021
 MonoBehaviour:
@@ -1499,7 +1500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}

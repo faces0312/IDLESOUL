@@ -51,7 +51,6 @@ public class PlayerIdelState : PlayerBaseState
                 //이동 상태로 전환
                 stateMachine.ChangeState(stateMachine.MoveState);
             }
-          
         }      
     }
 

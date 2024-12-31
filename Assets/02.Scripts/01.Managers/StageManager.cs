@@ -43,6 +43,7 @@ public class StageManager : SingletonDDOL<StageManager>
 
     public void Init()
     {
+        Debug.Log(curStageID);
         curStageData = DataManager.Instance.StageDB.GetByKey(curStageID);
         SceneDataManager.Instance.MainStageModifier *= curStageData.CurStageModifier;
 

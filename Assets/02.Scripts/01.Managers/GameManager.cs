@@ -111,6 +111,16 @@ public class GameManager : SingletonDDOL<GameManager>
             player.targetSearch.TargetClear();
         }
 
+        if(isTryBoss == true)
+        {
+            UIManager.Instance.HideUI<UIStageProgressBarController>();
+            UIManager.Instance.tryBoss.SetActive(true);
+        }
+        else
+        {
+            UIManager.Instance.tryBoss.SetActive(false);
+        }    
+
         EnemyManager.Instance.EnemySpawnStart();
     }
 
@@ -149,7 +159,7 @@ public class GameManager : SingletonDDOL<GameManager>
         StageManager.Instance.StageProgressModel.CurCountDataClear();
 
         IsBoss = false;
-        isTryBoss = false; // MVP 이후에 보스 트라이 버튼 따로 구현해야됨
+        //isTryBoss = false; // MVP 이후에 보스 트라이 버튼 따로 구현해야됨
         Invoke("NextStage", 3.0f);
     }
 
