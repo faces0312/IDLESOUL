@@ -66,6 +66,8 @@ public class SpawnSoulButton : MonoBehaviour
     {
         if (spawnCoolTime.IsSpawn) return;
         if (GameManager.Instance.player.PlayerSouls.SpawnIndex == index) return;
+        if (GameManager.Instance.player.PlayerSouls.SoulSlot[index] == null) return; //해당 버튼에 Soul이 등록되지 않은 경우
+        
         spawnCoolTime.IsSpawn = true;
 
         GameManager.Instance.player.PlayerSouls.SpawnSoul(index);

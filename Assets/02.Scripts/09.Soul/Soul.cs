@@ -53,6 +53,8 @@ public abstract class Soul
     public StatHandler StatHandler { get { return statHandler; } }
     public int OwnStack { get { return ownStack; } }
 
+    public int ID { get { return iD; } }
+
     // TODO : 소환 중인지 확인 여부의 bool 변수가 필요할 수도 있음
 
     public Soul(int key)
