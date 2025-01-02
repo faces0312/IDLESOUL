@@ -89,7 +89,7 @@ public class UserSoulData
 
     public UserSoulData(Soul soul)
     {
-        ID = soul.StatHandler.CurrentStat.iD;
+        ID = soul.ID;
         Level = soul.level;
         PassiveSkillLevel = soul.Skills[(int)SkillType.Passive].level;
         DefaultSkillLevel = soul.Skills[(int)SkillType.Default].level;
@@ -218,22 +218,42 @@ public class Player : BaseCharacter
 
     public void RegisterSoul()
     {
+        //PlayerSouls.RegisterSoul("클라리스", new SoulMagician(11000));
+        //PlayerSouls.RegisterSoul("플뢰르", new SoulKnight(11001));
+        //PlayerSouls.RegisterSoul("루엔", new SoulArcher(11002));
+        //PlayerSouls.EquipSoul("클라리스", 0);
+        //PlayerSouls.EquipSoul("플뢰르", 1);
+        //PlayerSouls.EquipSoul("루엔", 2);
+        //OnUpdateSoulStats?.Invoke();    // 착용 시 패시브 업데이트
+
+        //PlayerSouls.SpawnSoul(0);
+
         PlayerSouls.RegisterSoul("클라리스", new SoulMagician(11000));
-        PlayerSouls.RegisterSoul("플뢰르", new SoulKnight(11001));
-        PlayerSouls.RegisterSoul("루엔", new SoulArcher(11002));
+        //PlayerSouls.RegisterSoul("플뢰르", new SoulKnight(11001));
+        //PlayerSouls.RegisterSoul("루엔", new SoulArcher(11002));
         PlayerSouls.EquipSoul("클라리스", 0);
-        PlayerSouls.EquipSoul("플뢰르", 1);
-        PlayerSouls.EquipSoul("루엔", 2);
+        //PlayerSouls.EquipSoul("플뢰르", 1);
+        //PlayerSouls.EquipSoul("루엔", 2);
         OnUpdateSoulStats?.Invoke();    // 착용 시 패시브 업데이트
 
         PlayerSouls.SpawnSoul(0);
 
-        //StatViewUpdate();
+        //Debug : 소울 데이터 저장 체크 목적 
+        //Soul[] playerSouls = GameManager.Instance.player.PlayerSouls.SoulSlot;
+
+        foreach (SoulSlot slot in PlayerSouls.SoulInventory.SoulInventoryModel.Slots)
+        {
+            if(slot.soul != null) //인벤토리에 소울이 비지 않으면 유저데이터에 저장 
+            {
+                GameManager.Instance.player.UserData.GainSoul.Add(new UserSoulData(slot.soul));
+            }
+        }
     }
 
     public void Initialize()
     {
         baseHpSystem.IsDead = false;
+        isAuto = false;
 
         //MVP 이후에 고쳐야 될 플레이어 유저 데이터 불러오기 로직
         //Model(UserData) 세팅

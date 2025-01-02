@@ -18,6 +18,7 @@ public class SoulInventory : MonoBehaviour
 
     public SoulSquadSlot SoulSquadSlot { get; set; }
     public SoulSlot SoulSlot { get; set; }
+    public SoulInventoryModel SoulInventoryModel { get => soulInventoryModel;  }
 
     private void Awake()
     {
@@ -37,7 +38,8 @@ public class SoulInventory : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.player.PlayerSouls.SoulInventory = this;
-        TestManager.Instance.OnClickRegisterSoul(); // TODO : 씬 합칠때 위치 조정
+        GameManager.Instance.player.RegisterSoul();
+        //TestManager.Instance.OnClickRegisterSoul(); // TODO : 씬 합칠때 위치 조정
         gameObject.SetActive(false);
     }
 

@@ -24,5 +24,14 @@ public class TestManager : SingletonDDOL<TestManager>
         GameManager.Instance.player.PlayerSouls.SpawnSoul(0);
 
         playerStatHandler = GameManager.Instance.player.StatHandler;
+
+        //Debug : 소울 데이터 저장 체크 목적 
+        Soul[] playerSouls = GameManager.Instance.player.PlayerSouls.SoulSlot;
+        for(int i = 0; i< playerSouls.Length; i++)
+        {
+            GameManager.Instance.player.UserData.GainSoul.Add(new UserSoulData(playerSouls[i]));
+        }
+            
+
     }
 }

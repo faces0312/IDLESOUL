@@ -13,8 +13,8 @@ public class PlayerSouls : MonoBehaviour
 
     private GameObject[] spawnEffects = new GameObject[Const.MAX_SOUL];
 
-    public SoulSquad SoulSquad { get; set; }
-    public SoulInventory SoulInventory { get; set; }
+    public SoulSquad SoulSquad { get; set; } // 스쿼드가 3인
+    public SoulInventory SoulInventory { get; set; } // 소유한 인벤토리 
 
     public event Action<Sprite> OnUpdateDefaultSprite;
     public event Action<Sprite> OnUpdateUltimateSprite;
