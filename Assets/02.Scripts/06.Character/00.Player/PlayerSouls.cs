@@ -42,6 +42,10 @@ public class PlayerSouls : MonoBehaviour
         {
             soulDic.Add(name, soul);
             SoulInventory.AddSoul(soul); // TODO : 씬 합칠때 주석 제거
+
+            //신규 소울 획득시 UserData에 저장후, 게임 파일 세이브 
+            GameManager.Instance.player.UserData.GainSoul.Add(new UserSoulData(soul));
+            DataManager.Instance.SaveUserData(GameManager.Instance.player.UserData);
         }
         else
         {

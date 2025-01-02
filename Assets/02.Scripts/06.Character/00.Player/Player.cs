@@ -241,13 +241,14 @@ public class Player : BaseCharacter
         //Debug : 소울 데이터 저장 체크 목적 
         //Soul[] playerSouls = GameManager.Instance.player.PlayerSouls.SoulSlot;
 
-        foreach (SoulSlot slot in PlayerSouls.SoulInventory.SoulInventoryModel.Slots)
-        {
-            if(slot.soul != null) //인벤토리에 소울이 비지 않으면 유저데이터에 저장 
-            {
-                GameManager.Instance.player.UserData.GainSoul.Add(new UserSoulData(slot.soul));
-            }
-        }
+        
+        //foreach (SoulSlot slot in PlayerSouls.SoulInventory.SoulInventoryModel.Slots)
+        //{
+        //    if(slot.soul != null) //인벤토리에 소울이 비지 않으면 유저데이터에 저장 
+        //    {
+        //        GameManager.Instance.player.UserData.GainSoul.Add(new UserSoulData(slot.soul));
+        //    }
+        //}
     }
 
     public void Initialize()
