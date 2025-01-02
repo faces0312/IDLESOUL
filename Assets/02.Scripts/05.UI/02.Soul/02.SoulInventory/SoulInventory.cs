@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,7 +31,7 @@ public class SoulInventory : MonoBehaviour
             soulInventoryController = new SoulInventoryController();
             soulInventoryController.Initialize(soulInventoryView, soulInventoryModel);
             UIManager.Instance.RegisterController(uiKey, soulInventoryController);
-
+            
             Initialize();
         }
     }
@@ -43,11 +44,6 @@ public class SoulInventory : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void Update()
-    {
-        CheckInteractableBtn();
-    }
-
     private void Initialize()
     {
         for(int i = 0; i < Slots.transform.childCount; ++i)
@@ -55,13 +51,27 @@ public class SoulInventory : MonoBehaviour
             if(Slots.transform.GetChild(i).TryGetComponent(out SoulSlot slot))
             {
                 slot.index = i;
+                slot.OnSlotChanged += ChangeSoulSlot;
+                slot.OnUpdateInteractable += CheckInteractableBtn;
                 soulInventoryModel.AddSlot(slot);
             }
         }
     }
 
+    private void ChangeSoulSlot(SoulSlot slot)
+    {
+        SoulSlot = slot;
+    }
+
     private void CheckInteractableBtn()
     {
+        if(SoulSquadSlot.soul == null)
+        {
+            equipBtn.interactable = true;
+            unEquipBtn.interactable = false;
+            return;
+        }
+
         if(SoulSquadSlot.soul == SoulSlot.soul)
         {
             if (GameManager.Instance.player.PlayerSouls.CurrentSoul == SoulSlot.soul)

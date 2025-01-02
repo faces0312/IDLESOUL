@@ -71,6 +71,7 @@ public class CursorDescription : MonoBehaviour
     {
         progress.fillAmount = 0f;
 
-        StopCoroutine(coroutine);
+        if (coroutine != null)
+            StopCoroutine(coroutine);
     }
 }
