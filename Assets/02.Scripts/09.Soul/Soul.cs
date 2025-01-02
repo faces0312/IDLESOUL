@@ -1,4 +1,5 @@
 ﻿using Enums;
+using Spine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -55,6 +56,9 @@ public abstract class Soul
 
     public int ID { get { return iD; } }
 
+    public SoulType SoulType { get { return soulType; } }
+    public JobType Job { get { return job; } }
+
     // TODO : 소환 중인지 확인 여부의 bool 변수가 필요할 수도 있음
 
     public Soul(int key)
@@ -90,11 +94,34 @@ public abstract class Soul
     {
         level += amount;
         statHandler.LevelUp(level);
+
+        //UserSoulData에서 해당 Soul 데이터를 불러와서 해당 상승된 레벨을 저장 후 세이브
+        UserSoulData soulData = GameManager.Instance.player.UserData.GainSoul.Find(x => x.ID == iD);
+        soulData.Level = level;
+        DataManager.Instance.SaveUserData(GameManager.Instance.player.UserData);
     }
 
     public void UpgradeSkill(SkillType type, int amount)
     {
         skills[(int)type].UpgradeSkill(amount);
+
+        //UserSoulData에서 해당 Soul 데이터를 불러와서 해당 상승된 레벨을 저장 후 세이브
+        UserSoulData soulData = GameManager.Instance.player.UserData.GainSoul.Find(x => x.ID == iD);
+
+        switch (type)
+        {
+            case SkillType.Passive:
+                soulData.PassiveSkillLevel = Skills[(int)type].level;
+                break;
+            case SkillType.Default:
+                soulData.DefaultSkillLevel = Skills[(int)type].level;
+                break;
+            case SkillType.Ultimate:
+                soulData.UltimateSkillLevel = Skills[(int)type].level;
+                break;
+        }
+
+        DataManager.Instance.SaveUserData(GameManager.Instance.player.UserData);
     }
 
     public void ApplyPassiveSkill()
@@ -110,6 +137,7 @@ public abstract class Soul
 
     public void UseSkill(Skill skill)
     {
+        skill.UseSkillSoundPlay();
         skill.UseSkill(GameManager.Instance.player.StatHandler);
     }
 

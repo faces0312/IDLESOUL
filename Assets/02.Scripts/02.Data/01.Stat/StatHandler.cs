@@ -24,6 +24,7 @@ public class StatHandler
     // 추가 스텟을 List로 관리 (장비, 패시브 등)
     private List<Stat> additionalStats = new List<Stat>();
     public Stat CurrentStat { get { return currentStat; } }
+    public Stat BaseStat { get => baseStat; }
 
     public StatHandler(StatType type, int key = 0 , UserData userData = null)
     {

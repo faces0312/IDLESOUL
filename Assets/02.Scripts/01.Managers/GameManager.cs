@@ -33,6 +33,8 @@ public class GameManager : SingletonDDOL<GameManager>
     public event Action OnGameOverEvent;
     public event Action OnGameClearEvent;
 
+    public bool LoadGame;
+
     //현재 맵에 활성화되어 있는 적 리스트
     public List<GameObject> enemies = new List<GameObject>();
 
@@ -71,7 +73,8 @@ public class GameManager : SingletonDDOL<GameManager>
         OnGameClearEvent?.Invoke();
         Debug.Log("게임 클리어!!");
 
-        
+        _player.PlayerSFX.PlayClipSFXOneShot((SoundType)UnityEngine.Random.Range(4, 6));
+
         StageManager.Instance.StageProgressModel.CurCountDataClear();
 
         _player.UserData.curStageID += 1;

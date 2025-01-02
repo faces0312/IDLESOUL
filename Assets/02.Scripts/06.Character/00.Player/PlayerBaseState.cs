@@ -2,7 +2,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public abstract class PlayerBaseState : IState
 {
@@ -86,7 +85,7 @@ public abstract class PlayerBaseState : IState
             return targetDir;
         }
         else
-        {
+        { 
             return Vector3.zero;
         }
 

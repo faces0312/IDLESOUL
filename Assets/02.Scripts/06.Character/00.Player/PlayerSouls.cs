@@ -35,6 +35,45 @@ public class PlayerSouls : MonoBehaviour
         LoadSpawnEffects();
     }
 
+    // 불러오기(Load) : 소울 등록
+    public void RegisterSoul(UserSoulData soulData,  int amount = 1)
+    {
+        Soul LoadSoul = null;
+
+        switch ((SoulType)soulData.SoulType)
+        {
+            case SoulType.Magician:
+                LoadSoul = new SoulMagician(soulData.ID);
+                break;
+            case SoulType.Knight:
+                LoadSoul = new SoulKnight(soulData.ID);
+                break;
+            case SoulType.Archer:
+                LoadSoul = new SoulArcher(soulData.ID);
+                break;
+            case SoulType.DummyRare: //더미용 테스트 데이터 
+                LoadSoul = new SoulMagician(soulData.ID);
+                break;
+        }
+
+        //SoulData에서 레벨 -1 한 이유 : 전부 해당 수치만큼 레벨업을 하기에 불러오기시에 -1에서 보정
+        LoadSoul.LevelUP(soulData.Level - 1); //불러온 저장 데이터의 레벨만큼 스텟 적용
+        LoadSoul.UpgradeSkill(SkillType.Passive, soulData.PassiveSkillLevel - 1);
+        LoadSoul.UpgradeSkill(SkillType.Default, soulData.DefaultSkillLevel - 1);
+        LoadSoul.UpgradeSkill(SkillType.Ultimate, soulData.UltimateSkillLevel - 1);
+
+        if (!soulDic.ContainsKey(LoadSoul.soulName))
+        {
+            soulDic.Add(LoadSoul.soulName, LoadSoul);
+            SoulInventory.AddSoul(LoadSoul); // TODO : 씬 합칠때 주석 제거
+        }
+        else
+        {
+            soulDic[name].CollectSoul(amount);
+        }
+    }
+
+
     // 소울 등록
     public void RegisterSoul(string name, Soul soul, int amount = 1)
     {
@@ -42,11 +81,16 @@ public class PlayerSouls : MonoBehaviour
         {
             soulDic.Add(name, soul);
             SoulInventory.AddSoul(soul); // TODO : 씬 합칠때 주석 제거
+
+            //신규 소울 획득시 UserData에 저장후, 게임 파일 세이브 
+            GameManager.Instance.player.UserData.GainSoul.Add(new UserSoulData(soul));
         }
         else
         {
             soulDic[name].CollectSoul(amount);
         }
+
+        DataManager.Instance.SaveUserData(GameManager.Instance.player.UserData);
     }
 
     // 소울 장착

@@ -39,6 +39,8 @@ public class PlayerShotAttackState : PlayerAttackState
 
             if (stateMachine._Player.UserData.stat.atkSpeed <= currentAttackTimer)
             {
+                stateMachine._Player.PlayerSFX.PlayClipSFXOneShot((SoundType)Random.Range(0, 2));
+
                 string animName = stateMachine._Player.PlayerAnimationController.ShotAttackAnimationName;
                 stateMachine._Player.PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, false);
 

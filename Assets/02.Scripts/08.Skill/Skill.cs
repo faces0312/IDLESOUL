@@ -83,4 +83,10 @@ public abstract class Skill : ISkill
     {
 
     }
+
+    public virtual void UseSkillSoundPlay()
+    {
+        //2번 3번 클립에서 랜덤으로 재생되게 하였음 ( 캐릭터의 기합 소리 )
+        GameManager.Instance.player.PlayerSFX.PlayClipSFXOneShot((SoundType)Random.Range(2, 4));
+    }
 }

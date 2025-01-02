@@ -17,6 +17,9 @@ public class UserData
     public int ClearStageCycle; //현재 클리어한 Stage 루프 횟수를 지정
     public float StageModifier; //여태 클리어한 stage의 배율의 곱셈 값을 저장
 
+    public Dictionary<int,UserItemData> GainItemDict = new Dictionary<int, UserItemData>();
+    public Dictionary<int, UserSoulData> GainSoulDict = new Dictionary<int, UserSoulData>();
+
     public List<UserItemData> GainItem = new List<UserItemData>();
     public List<UserSoulData> GainSoul = new List<UserSoulData>();
 
@@ -83,6 +86,8 @@ public class UserSoulData
 {
     public int ID;                  // 소울의 ID
     public int Level;               // 소울의 강화 레벨
+    public int Job;             // 소울의 직업군 (Soul.JobType 참고)
+    public int SoulType;            // 소울의 형태 (Soul.JobType 참고)
     public int PassiveSkillLevel;   // 소울 패시브 스킬 레벨
     public int DefaultSkillLevel;   // 소울 액티브 스킬 레벨
     public int UltimateSkillLevel;   // 소울 궁극기 스킬 레벨
@@ -94,28 +99,32 @@ public class UserSoulData
         PassiveSkillLevel = soul.Skills[(int)SkillType.Passive].level;
         DefaultSkillLevel = soul.Skills[(int)SkillType.Default].level;
         UltimateSkillLevel = soul.Skills[(int)SkillType.Ultimate].level;
+
+        Job = (int)soul.Job;
+        SoulType = (int)soul.SoulType;
     }
 }
 
 public class Player : BaseCharacter
 {
-    private readonly int TestID = 12345678;
+    private readonly int TestID = 12345678; //플레이어가 소지한 ID(Key값)
 
     //Debug - 테스트용 근접,원거리 공격 타입 선택 변수 나중에 변수타입 변경할것 
     public bool DefaultAttackType = false; //true : 근접공격 , false : 원거리 공격
 
     [Header("Data")]
-    private UserData userData;
+    private UserData userData; // 플레이어의 저장/불러오기용 데이터
 
     [Header("References")]
-    public TargetSearch targetSearch;
-    private PlayerAnimationController playerAnimationController;
-    public GameObject CamarePivot;
-    private PlayerSouls playerSouls;
-    public InventoryModel Inventory; //플레이어 인벤토리 데이터
+    public TargetSearch targetSearch; //적이 있는 위치를 찾을때 사용되는 클래스
+    private PlayerAnimationController playerAnimationController; // Spine 용 애니메이션 컨트롤러
+    public GameObject CamarePivot; // 시네머신에서 사용할 카메라 피봇 위치
+    private PlayerSouls playerSouls; //플레이어가 소지한 Soul 데이터 클래스
+    public InventoryModel Inventory; //플레이어 인벤토리 데이터 클래스 
+    public PlayerSFXController PlayerSFX; //플레이어의 효과음 클래스
 
     [Header("State Machine")]
-    public PlayerStateMachine playerStateMachine;
+    public PlayerStateMachine playerStateMachine; //플레이어 FSM 
 
     [Header("EquipData")]
     private Item equipItem; //장착 아이템 여부 
@@ -174,6 +183,10 @@ public class Player : BaseCharacter
         {
             playerSouls = GetComponent<PlayerSouls>();
         }
+        if(PlayerSFX == null)
+        {
+            PlayerSFX = GetComponent<PlayerSFXController>();
+        }
         //FSM 초기 상태 설정 (Idle)
         playerStateMachine = new PlayerStateMachine(this);
 
@@ -216,56 +229,48 @@ public class Player : BaseCharacter
         }
     }
 
-    public void RegisterSoul()
+    public void PlayerSoulInit(bool LoadData = false)
     {
-        //PlayerSouls.RegisterSoul("클라리스", new SoulMagician(11000));
-        //PlayerSouls.RegisterSoul("플뢰르", new SoulKnight(11001));
-        //PlayerSouls.RegisterSoul("루엔", new SoulArcher(11002));
-        //PlayerSouls.EquipSoul("클라리스", 0);
-        //PlayerSouls.EquipSoul("플뢰르", 1);
-        //PlayerSouls.EquipSoul("루엔", 2);
-        //OnUpdateSoulStats?.Invoke();    // 착용 시 패시브 업데이트
 
-        //PlayerSouls.SpawnSoul(0);
+        if(LoadData) // 불러오기(Load)
+        {
+            //불러온 SoulData를 PlayerSouls에 초기화 하는 반복문 
+            foreach (UserSoulData soulData in userData.GainSoul)
+            {
+                PlayerSouls.RegisterSoul(soulData);
+            }
 
-        PlayerSouls.RegisterSoul("클라리스", new SoulMagician(11000));
-        //PlayerSouls.RegisterSoul("플뢰르", new SoulKnight(11001));
-        //PlayerSouls.RegisterSoul("루엔", new SoulArcher(11002));
-        PlayerSouls.EquipSoul("클라리스", 0);
-        //PlayerSouls.EquipSoul("플뢰르", 1);
-        //PlayerSouls.EquipSoul("루엔", 2);
-        OnUpdateSoulStats?.Invoke();    // 착용 시 패시브 업데이트
+            //편성 데이터를 토대로 Soul 편성 장착 
+            PlayerSouls.EquipSoul("클라리스", 0);
+            PlayerSouls.EquipSoul("플뢰르", 1);
+            PlayerSouls.EquipSoul("루엔", 2);
+            OnUpdateSoulStats?.Invoke();  // 착용 시 패시브 업데이트
+        }
+        else // 새로하기
+        {
+            PlayerSouls.RegisterSoul("클라리스", new SoulMagician(11000));
+            PlayerSouls.EquipSoul("클라리스", 0);
+            OnUpdateSoulStats?.Invoke();  // 착용 시 패시브 업데이트
+        }
 
         PlayerSouls.SpawnSoul(0);
-
-        //Debug : 소울 데이터 저장 체크 목적 
-        //Soul[] playerSouls = GameManager.Instance.player.PlayerSouls.SoulSlot;
-
-        foreach (SoulSlot slot in PlayerSouls.SoulInventory.SoulInventoryModel.Slots)
-        {
-            if(slot.soul != null) //인벤토리에 소울이 비지 않으면 유저데이터에 저장 
-            {
-                GameManager.Instance.player.UserData.GainSoul.Add(new UserSoulData(slot.soul));
-            }
-        }
     }
 
     public void Initialize()
     {
         baseHpSystem.IsDead = false;
-        isAuto = false;
 
-        //MVP 이후에 고쳐야 될 플레이어 유저 데이터 불러오기 로직
-        //Model(UserData) 세팅
         if (DataManager.Instance.LoadUserData() == null)
         {
             //새로하기 , 기본 능력치를 제공 
-            userData = new UserData(DataManager.Instance.UserDB.GetByKey(TestID));  
+            userData = new UserData(DataManager.Instance.UserDB.GetByKey(TestID));
+            GameManager.Instance.LoadGame = false;
         }
         else
         {
             //이어하기
             userData = new UserData(DataManager.Instance.LoadUserData());
+            GameManager.Instance.LoadGame = true;
         }
 
         statHandler = new StatHandler(StatType.Player,0,userData);
@@ -273,12 +278,9 @@ public class Player : BaseCharacter
         //Controller(FSM 세팅)
         playerStateMachine.ChangeState(playerStateMachine.IdleState);
 
-        //Debug 소울 초기화 -> 리팩토링 및 호출 시점 재조정 필요
-        //RegisterSoul();
-
         Debug.Log("Player 세팅 완료!!");
 
-        DataManager.Instance.SaveUserData(userData);
+        DataManager.Instance.SaveUserData(userData); //초기화 한 시점에서 플레이어 유저데이터 한번더 저장 
     }
 
     public override void TakeDamage(BigInteger damage)
@@ -305,6 +307,8 @@ public class Player : BaseCharacter
     {
         if (!baseHpSystem.IsDead)
         {
+            PlayerSFX.PlayClipSFXOneShot((SoundType)UnityEngine.Random.Range(6, 8));
+
             baseHpSystem.IsDead = true;
             Debug.Log("Player Die!!! ");
             string animName = PlayerAnimationController.DeathAnimationName;

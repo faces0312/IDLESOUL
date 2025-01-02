@@ -39,7 +39,14 @@ public class SoulInventory : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.player.PlayerSouls.SoulInventory = this;
-        GameManager.Instance.player.RegisterSoul();
+        if (GameManager.Instance.LoadGame)
+        {
+            GameManager.Instance.player.PlayerSoulInit(true);
+        }
+        else
+        {
+            GameManager.Instance.player.PlayerSoulInit();
+        }
         //TestManager.Instance.OnClickRegisterSoul(); // TODO : 씬 합칠때 위치 조정
         gameObject.SetActive(false);
     }
