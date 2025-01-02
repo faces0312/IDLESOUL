@@ -121,6 +121,7 @@ public class Player : BaseCharacter
     public GameObject CamarePivot; // 시네머신에서 사용할 카메라 피봇 위치
     private PlayerSouls playerSouls; //플레이어가 소지한 Soul 데이터 클래스
     public InventoryModel Inventory; //플레이어 인벤토리 데이터 클래스 
+    public PlayerSFXController PlayerSFX; //플레이어의 효과음 클래스
 
     [Header("State Machine")]
     public PlayerStateMachine playerStateMachine; //플레이어 FSM 
@@ -181,6 +182,10 @@ public class Player : BaseCharacter
         if (playerSouls == null)
         {
             playerSouls = GetComponent<PlayerSouls>();
+        }
+        if(PlayerSFX == null)
+        {
+            PlayerSFX = GetComponent<PlayerSFXController>();
         }
         //FSM 초기 상태 설정 (Idle)
         playerStateMachine = new PlayerStateMachine(this);
@@ -302,6 +307,8 @@ public class Player : BaseCharacter
     {
         if (!baseHpSystem.IsDead)
         {
+            PlayerSFX.PlayClipSFXOneShot((SoundType)UnityEngine.Random.Range(6, 8));
+
             baseHpSystem.IsDead = true;
             Debug.Log("Player Die!!! ");
             string animName = PlayerAnimationController.DeathAnimationName;

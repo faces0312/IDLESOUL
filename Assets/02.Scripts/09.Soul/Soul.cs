@@ -137,6 +137,7 @@ public abstract class Soul
 
     public void UseSkill(Skill skill)
     {
+        skill.UseSkillSoundPlay();
         skill.UseSkill(GameManager.Instance.player.StatHandler);
     }
 

@@ -73,7 +73,8 @@ public class GameManager : SingletonDDOL<GameManager>
         OnGameClearEvent?.Invoke();
         Debug.Log("게임 클리어!!");
 
-        
+        _player.PlayerSFX.PlayClipSFXOneShot((SoundType)UnityEngine.Random.Range(4, 6));
+
         StageManager.Instance.StageProgressModel.CurCountDataClear();
 
         _player.UserData.curStageID += 1;
