@@ -24,21 +24,22 @@ public class SoulInfo : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    //Prefeb에 Soul에 버튼으로 연결 되어 있음
     public void SoulLevelUp(int amount)
     {
         soulInfoModel.SoulLevelUp(amount);
     }
-
+    //Prefeb에 Soul에 버튼으로 연결 되어 있음
     public void DefaultLevelUp(int amount)
     {
         soulInfoModel.DefaultLevelUp(amount);
     }
-
+    //Prefeb에 Soul에 버튼으로 연결 되어 있음
     public void UltimateLevelUp(int amount)
     {
         soulInfoModel.UltimateLevelUp(amount);
     }
-
+    //Prefeb에 Soul에 버튼으로 연결 되어 있음
     public void PassiveLevelUp(int amount)
     {
         soulInfoModel.PassiveLevelUp(amount);

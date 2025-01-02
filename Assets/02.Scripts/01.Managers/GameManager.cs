@@ -33,6 +33,8 @@ public class GameManager : SingletonDDOL<GameManager>
     public event Action OnGameOverEvent;
     public event Action OnGameClearEvent;
 
+    public bool LoadGame;
+
     //현재 맵에 활성화되어 있는 적 리스트
     public List<GameObject> enemies = new List<GameObject>();
 

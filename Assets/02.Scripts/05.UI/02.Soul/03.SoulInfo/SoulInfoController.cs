@@ -6,6 +6,7 @@ public class SoulInfoController : UIController
 {
     private SoulInfoModel soulInfoModel;
     public SoulInfoModel SoulInfoModel { get => soulInfoModel; }
+    public SoulInfoModel SoulInfoModel1 { get => soulInfoModel; }
 
     public override void Initialize(IUIBase view, UIModel model)
     {
