@@ -3,37 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class TouchToStartButton : MonoBehaviour
 {
-    [SerializeField] private Button StartButton;
-    [SerializeField] private string LoadScene;
-    [SerializeField] private Image TitleImg;
+    [SerializeField] private Button NewStartButton;
+    [SerializeField] private Button LoadStartButton;
+
+    [SerializeField] private TextMeshProUGUI StartButton;
+    [SerializeField] private TextMeshProUGUI LoadButton;
 
     private void Awake()
     {
-        StartButton.onClick.AddListener(StartGame);
+        NewStartButton.onClick.AddListener(NewStartGame);
+        NewStartButton.onClick.AddListener(() => UITween.OnClickEffect(NewStartButton.gameObject));
 
-        StartCoroutine(StartSceneEffect());
+        LoadStartButton.onClick.AddListener(LoadStartGame);
+        NewStartButton.onClick.AddListener(() => UITween.OnClickEffect(LoadStartButton.gameObject));
+
+        UITween.ShowUI(NewStartButton.gameObject);
+        UITween.ShowUI(LoadStartButton.gameObject);
     }
 
-    public void StartGame()
+    public void NewStartGame()
     {
+       SceneDataManager.Instance.LoadGameCheck(false);
+       SceneDataManager.Instance.LoadScene("GameScene_SMS");
+    }
+    public void LoadStartGame()
+    {
+        SceneDataManager.Instance.LoadGameCheck(true);
         SceneDataManager.Instance.LoadScene("GameScene_SMS");
     }
 
-    IEnumerator StartSceneEffect()
-    {
-        TitleImg.material.SetFloat("_FadeAmount", 1.0f);
 
-        float time = TitleImg.material.GetFloat("_FadeAmount");
-        while (time >= -1)
-        {
-            time -= Time.deltaTime;
-            TitleImg.material.SetFloat("_FadeAmount", time);
-
-            yield return new WaitForSeconds(0.01f);
-        }
-
-    }
 }

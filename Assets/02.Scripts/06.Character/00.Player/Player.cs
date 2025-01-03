@@ -260,7 +260,8 @@ public class Player : BaseCharacter
     {
         baseHpSystem.IsDead = false;
 
-        if (DataManager.Instance.LoadUserData() == null)
+        //if (DataManager.Instance.LoadUserData() == null)
+        if (!GameManager.Instance.LoadGame)
         {
             //새로하기 , 기본 능력치를 제공 
             userData = new UserData(DataManager.Instance.UserDB.GetByKey(TestID));
