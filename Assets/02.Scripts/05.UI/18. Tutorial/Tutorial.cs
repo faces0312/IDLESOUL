@@ -21,6 +21,8 @@ public class Tutorial : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
+        GameManager.Instance.joyStick.AutoButtton();
+        Time.timeScale = 0;
         click = Click();
         tempVector = new Vector2();
         tutIndex = DataManager.Instance.TutorialDB.ItemsList;
@@ -101,5 +103,11 @@ public class Tutorial : MonoBehaviour, IPointerClickHandler
     {
         this.gameObject.SetActive(true);
         StartCoroutine(CoTutorial());
+    }
+
+    void OnDisable()
+    {
+        Time.timeScale = 1f;
+        GameManager.Instance.joyStick.AutoButtton();
     }
 }

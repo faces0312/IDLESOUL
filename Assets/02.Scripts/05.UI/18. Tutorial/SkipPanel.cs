@@ -13,6 +13,8 @@ public class SkipPanel : MonoBehaviour
         confirm.onClick.AddListener(() =>
         {
             isDone = true;
+            Time.timeScale = 1f;
+            GameManager.Instance.joyStick.AutoButtton();
         });
 
         cancel.onClick.AddListener(() =>
