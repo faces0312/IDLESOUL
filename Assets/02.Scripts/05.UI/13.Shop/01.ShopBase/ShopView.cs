@@ -42,6 +42,8 @@ public class ShopView : MonoBehaviour, IUIBase
             itemPanel.SetActive(true);
             itemPanel.GetComponent<ShopGrid>().SetItem(Enums.ShopType.Product);
         });
+
+        HideUI();
     }
 
     public void HideUI()

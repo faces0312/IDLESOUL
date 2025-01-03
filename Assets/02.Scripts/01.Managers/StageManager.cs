@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class StageManager : SingletonDDOL<StageManager>
     private int curStageID;
     private StageDB curStageData;
     private StageMap curStageMap;
+    
 
     private List<StageMap> stageMapList = new List<StageMap>(); // 0 : ¼º , 1 : ½£
 
@@ -35,6 +37,7 @@ public class StageManager : SingletonDDOL<StageManager>
         for (int i = 0; i < stageMapList.Count; i++)
         {
             stageMapList[i].gameObject.SetActive(false);
+
         }
     }
 
