@@ -126,7 +126,7 @@ public abstract class Enemy : BaseCharacter
             healthBar.gameObject.SetActive(false);
     }
 
-    public void Die()
+    public virtual void Die()
     {
         if (attackType == AttackType.Melee)
             slash.SetActive(false);
