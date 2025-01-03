@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class SoulSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     private Image outLine;
     private Image icon;
     private Button button;
+    private TextMeshProUGUI ownStackText;
     private bool isEquip;
 
     public Soul soul;
@@ -32,6 +34,8 @@ public class SoulSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     {
         outLine = transform.GetChild(0).GetComponent<Image>();
         icon = transform.GetChild(1).GetComponent<Image>();
+        ownStackText = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        ownStackText.text = string.Empty;
         button = GetComponent<Button>();
         button.onClick.AddListener(OnUpdateThumbnail);
         outLine.color = Color.white;
@@ -126,5 +130,18 @@ public class SoulSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
         isEquip = false;
         outLine.color = Color.white;
         outLine.enabled = false;
+    }
+
+    public void UpdateStack()
+    {
+        if (soul != null)
+        {
+            int stack = soul.OwnStack;
+
+            if (soul.OwnStack > 0)
+                ownStackText.text = $"+{stack}";
+            else
+                ownStackText.text = string.Empty;
+        }
     }
 }

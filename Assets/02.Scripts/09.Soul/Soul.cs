@@ -39,7 +39,7 @@ public abstract class Soul
     protected int upgradeCount = 1;
     protected int upgradeStack = 0;
 
-    protected int ownStack = 0; // TODO : DB 추가
+    protected int ownStack = 0;
 
     protected JobType job = JobType.None;
     protected AttackType attackType;
