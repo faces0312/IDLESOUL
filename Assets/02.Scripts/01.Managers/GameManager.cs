@@ -143,6 +143,11 @@ public class GameManager : SingletonDDOL<GameManager>
     }
 
     [ContextMenu("GameOver")]
+    public void DebugGameOver()
+    {
+        _player.TakeDamage(new ScottGarland.BigInteger(9999999));
+    }
+
     //플레이어의 체력이 0이 되면 호출
     public void GameOver()
     {

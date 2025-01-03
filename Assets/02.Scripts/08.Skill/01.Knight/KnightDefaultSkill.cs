@@ -12,9 +12,9 @@ public class KnightDefaultSkill : Skill
     public KnightDefaultSkill(int id) : base(id)
     {
         // TODO : DB 에서 받아 넣기
-        coolTime = 3f;
+        coolTime = 6f;
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/SpinSword");
-        range = 5f;
+        range = 4f;
         totalValue = level * upgradeValue;
     }
 

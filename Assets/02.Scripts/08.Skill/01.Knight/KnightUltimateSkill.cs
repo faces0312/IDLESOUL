@@ -12,9 +12,9 @@ public class KnightUltimateSkill : Skill
     public KnightUltimateSkill(int id) : base(id)
     {
         // TODO : DB 에서 받아 넣기
-        coolTime = 5f;
+        coolTime = 25f;
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/SlashDance");
-        range = 5f;
+        range = 10f;
         totalValue = level * upgradeValue;
     }
 

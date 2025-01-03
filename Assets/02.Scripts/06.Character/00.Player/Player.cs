@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using ScottGarland;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class UserData
 {
@@ -286,6 +287,8 @@ public class Player : BaseCharacter
 
     public override void TakeDamage(BigInteger damage)
     {
+        damage = Mathf.Max(0, BigInteger.ToInt32(damage - StatHandler.CurrentStat.def)); //Player 의 방어력 계수 적용 
+
         baseHpSystem.TakeDamage(damage, statHandler);
         UIManager.Instance.ShowUI<UIPlayerHPDisplayController>();
 
@@ -331,6 +334,7 @@ public class Player : BaseCharacter
         enabled = true;
         baseHpSystem.IsDead = false;
         targetSearch.TargetClear();
+       
         UIManager.Instance.ShowUI<UIPlayerHPDisplayController>();
     }
 

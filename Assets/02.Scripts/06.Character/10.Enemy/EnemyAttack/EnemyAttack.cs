@@ -29,8 +29,9 @@ public class EnemyAttack : MonoBehaviour
         //TODO :: 무적시간이 아닐때에도 조건에 추가해야됨
         if (damageable != null)
         {
-            damageable.TakeDamage(Damage);//매직넘버 (플레이어나 Enemy의 Stat값을 받아와서 적용 시켜야됨)
+            Damage = Utils.CriticalCaculate(enemy.StatHandler,Damage);
 
+            damageable.TakeDamage(Damage);//매직넘버 (플레이어나 Enemy의 Stat값을 받아와서 적용 시켜야됨)
         }
     }
 

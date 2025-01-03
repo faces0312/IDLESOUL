@@ -12,9 +12,9 @@ public class MagicianUltimateSkill : Skill
     public MagicianUltimateSkill(int id) : base(id)
     {
         // TODO : DB 에서 받아 넣기
-        coolTime = 5f;
+        coolTime = 30f;
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/Meteor");
-        range = 10f;
+        range = 7f;
         totalValue = level * upgradeValue;
     }
 

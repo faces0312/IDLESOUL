@@ -12,6 +12,7 @@ public class SpinSword : MonoBehaviour
 
     private BigInteger value;
     private float range;
+    private int atkAcount = 15; //공격 횟수
 
     private Collider myCollider;
     private LayerMask layerMask;
@@ -84,7 +85,10 @@ public class SpinSword : MonoBehaviour
         {
             if (hitObj.TryGetComponent(out ITakeDamageAble damageable) && !damageable.IsInvulnerable)
             {
-                damageable.TakeDamage(BigInteger.Divide(value, 15));
+                for (int i = 0; i < atkAcount; i++)
+                {
+                    damageable.TakeDamage(Utils.CriticalCaculate(GameManager.Instance.player.StatHandler, value));
+                }
             }
 
             yield return coroutineTime;

@@ -14,9 +14,9 @@ public class ArcherDefaultSkill : Skill
     public ArcherDefaultSkill(int id) : base(id)
     {
         // TODO : DB 에서 받아 넣기
-        coolTime = 3f;
+        coolTime = 4f;
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/ArrowShot");
-        range = 10f;
+        range = 6f;
         searchRange = 15f;
         totalValue = level * upgradeValue;
         playerTransform = GameManager.Instance.player.transform;

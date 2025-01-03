@@ -52,5 +52,8 @@ public class GameSceneTigger : MonoBehaviour
 
         //UIManager 초기화
         UIManager.Instance.Init();
+
+        //조이스틱 자동모드 해제 
+        GameManager.Instance.joyStick.AutoButtton();
     }
 }
