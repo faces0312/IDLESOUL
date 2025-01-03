@@ -22,6 +22,19 @@ public class SoundManager : SingletonDDOL<SoundManager>
         Init();
         ChangeBGMForScene("TitleScene");
     }
+    private void Start()
+    {
+        InitializeVolumes();
+    }
+
+    public void InitializeVolumes()
+    {
+        SetMasterVolume(masterVolume);
+        SetBGMVolume(musicVolume);
+        SetSoundEffectVolume(soundEffectVolume);
+        audioSource.volume = musicVolume;
+    }
+
 
     public void Init()
     {
@@ -29,12 +42,6 @@ public class SoundManager : SingletonDDOL<SoundManager>
         audioSource = gameObject.AddComponent<AudioSource>(); // 2
         audioSource.loop = true; //BGM�̱⿡ true
         audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("BGM")[0];
-        
-        SetMasterVolume(masterVolume);
-        SetBGMVolume(musicVolume);
-        SetSoundEffectVolume(soundEffectVolume);
-
-        audioSource.volume = musicVolume;
     }
 
     public void ChangeBGMForScene(string sceneName)
