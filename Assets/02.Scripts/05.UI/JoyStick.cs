@@ -113,20 +113,27 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         }            
     }
 
+    public void AutoFalse()
+    {
+        player.isAuto = false;
+        onImage.SetActive(false);
+        offImage.SetActive(true);
+        StopAutoSkillCoroutine();
+    }
     public void AutoButtton()
     {
         player.isAuto = !player.isAuto;
         onImage.SetActive(player.isAuto);
         offImage.SetActive(!player.isAuto);
 
-        if (player.isAuto)
-        {
-            StartAutoSkillCoroutine();
-        }
-        else
+        if(!player.isAuto)
         {
             player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
             StopAutoSkillCoroutine();
+        }
+        else
+        {
+            StartAutoSkillCoroutine();
         }
     }
 
@@ -151,6 +158,8 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         while (player.isAuto)
         {
+            yield return new WaitForSeconds(1f);
+
             int curSoulIndex = GameManager.Instance.player.PlayerSouls.SpawnIndex;
 
             if (IsAnySkillReady(curSoulIndex))
@@ -167,23 +176,12 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
                 GameManager.Instance.joyStick.FindSkillButtons();
             }
 
-            yield return new WaitForSeconds(1.2f);
+            yield return new WaitForSeconds(1f);
         }
     }
 
     private bool IsAnySkillReady(int soulIndex)
     {
         return !skill1Button.isUses[soulIndex] || !skill2Button.isUses[soulIndex];
-    }
-
-    public void AutoFalse()
-    {
-        if (player.isAuto == true)
-        {
-            player.isAuto = false;
-            onImage.SetActive(false);
-            offImage.SetActive(true);
-            StopAutoSkillCoroutine();
-        }
     }
 }
