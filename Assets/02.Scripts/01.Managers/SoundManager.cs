@@ -30,7 +30,7 @@ public class SoundManager : SingletonDDOL<SoundManager>
         audioSource.loop = true; //BGM�̱⿡ true
         audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("BGM")[0];
         
-         SetMasterVolume(masterVolume);
+        SetMasterVolume(masterVolume);
         SetBGMVolume(musicVolume);
         SetSoundEffectVolume(soundEffectVolume);
 

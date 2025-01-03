@@ -22,7 +22,7 @@ public class ArrowStrikeHit : MonoBehaviour
 
     void Start()
     {
-        lifeTime = time - 2.6f;
+        lifeTime = time - 2f;
         curTime = Time.time;
         myCollider = GetComponent<Collider>();
         layerMask = 1 << LayerMask.NameToLayer("Enemy");
