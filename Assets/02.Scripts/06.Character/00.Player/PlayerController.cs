@@ -43,39 +43,42 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (!player.BaseHpSystem.IsDead) //플레이어가 살아 있는 경우에만 동작 
         {
-            Vector2 inputVector = context.ReadValue<Vector2>();
-
-            if (inputVector.magnitude > inputThreashold)
+            if (context.phase == InputActionPhase.Performed)
             {
-                if (player.isJoyStick == false)
+                Vector2 inputVector = context.ReadValue<Vector2>();
+
+                if (inputVector.magnitude > inputThreashold)
                 {
-                    player.playerStateMachine.ChangeState(player.playerStateMachine.MoveState);
-                    if (inputVector.x < 0)
-                        player.playerStateMachine.CurrentState.FlipCharacter(false);
-                    else if (inputVector.x > 0)
-                        player.playerStateMachine.CurrentState.FlipCharacter(true);
+                    if (player.isJoyStick == false)
+                    {
+                        player.playerStateMachine.ChangeState(player.playerStateMachine.MoveState);
+                        if (inputVector.x < 0)
+                            player.playerStateMachine.CurrentState.FlipCharacter(false);
+                        else if (inputVector.x > 0)
+                            player.playerStateMachine.CurrentState.FlipCharacter(true);
+                    }
+                    curMovementInput = inputVector;
+                    GameManager.Instance.joyStick.AutoFalse();
+                    player.isController = true;
+                    OnDirectionChanged?.Invoke(curMovementInput);
                 }
-                curMovementInput = inputVector;
-                GameManager.Instance.joyStick.AutoFalse();
-                player.isController = true;
-                OnDirectionChanged?.Invoke(curMovementInput);
+                else
+                {
+                    curMovementInput = Vector2.zero;
+                    player.isController = false;
+                }
             }
-            else
+            else if (context.phase == InputActionPhase.Canceled)
             {
                 curMovementInput = Vector2.zero;
                 player.isController = false;
-            }
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            curMovementInput = Vector2.zero;
-            player.isController = false;
-            if(player.isJoyStick == false)
-            {
-                player.targetSearch.TargetClear();
-                player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
+                if (player.isJoyStick == false)
+                {
+                    player.targetSearch.TargetClear();
+                    player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
+                }
             }
         }
     }

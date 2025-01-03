@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using UnityEngine.Rendering.PostProcessing;
+using Unity.VisualScripting;
 
 public class CameraController : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Camera minimapCamera;
 
     private PostProcessingTrigger postProcessingTrigger;
+    private Ray mainCameraRay;
+    [SerializeField] private LayerMask CullingTarget;
+
+    private Queue<GameObject> DisableObjects = new Queue<GameObject>();
 
     public CinemachineVirtualCamera VirtualCamera { get => virtualCamera; }
     public Camera MinimapCamera { get => minimapCamera; }
@@ -25,8 +30,8 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void Initialize(Transform Follow , Transform LookAt)
-    {        
+    public void Initialize(Transform Follow, Transform LookAt)
+    {
         virtualCamera.Follow = Follow;
         virtualCamera.LookAt = LookAt;
 
@@ -37,7 +42,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void ToggleFollowTarget(Transform newFollowTr , float closeUpTime)
+    public void ToggleFollowTarget(Transform newFollowTr, float closeUpTime)
     {
         UIManager.Instance.ShowUI<UIBossSummonAlarmController>();
 
@@ -47,7 +52,7 @@ public class CameraController : MonoBehaviour
             virtualCamera.LookAt = newFollowTr;
 
             Invoke("ResetFollowTarget", closeUpTime);
-        } 
+        }
     }
 
     public void ResetFollowTarget()
@@ -75,6 +80,50 @@ public class CameraController : MonoBehaviour
     public void MeteorEffect()
     {
         postProcessingTrigger.MeteorEffect();
+    }
+
+    public void LateUpdate()
+    {
+        mainCameraRay = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+
+        if (Physics.Raycast(mainCameraRay, out RaycastHit hit, 5.0f, CullingTarget))
+        {
+             MeshRenderer renderer = hit.collider.GetComponent<MeshRenderer>();
+
+            if (renderer.enabled)
+            {
+                renderer.enabled = false;
+                StartCoroutine(ActiveObject(hit));
+            }
+        }
+    }
+
+    IEnumerator ActiveObject(RaycastHit hitObj)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            yield return new WaitForSeconds(1.0f);
+
+            mainCameraRay = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+
+            if (Physics.Raycast(mainCameraRay, out RaycastHit hit, 5.0f, CullingTarget))
+            {
+                if (hitObj.collider.gameObject != hit.collider.gameObject)
+                {
+                    hitObj.collider.GetComponent<MeshRenderer>().enabled = true;
+                    yield break;
+                }
+            }
+        }
+
+        hitObj.collider.GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        mainCameraRay = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Gizmos.DrawLine(Camera.main.transform.position, Camera.main.transform.position + (mainCameraRay.direction.normalized * 5.0f));
     }
 }
 

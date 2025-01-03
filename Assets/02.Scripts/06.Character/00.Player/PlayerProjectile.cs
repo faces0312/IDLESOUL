@@ -34,6 +34,7 @@ public class PlayerProjectile : BaseProjectile
             BigInteger Damage = BigInteger.Multiply(GameManager.Instance.player.StatHandler.CurrentStat.atk, value);
             atkHealAmount = BigInteger.Divide(Damage, HealAmount); // 적용된 데미지의 HealAmount 만큼 피흡 
 
+            Damage = Utils.CriticalCaculate(GameManager.Instance.player.StatHandler, Damage);
             DamageCaculate(other.gameObject, Damage);
             //적에게 공격을 맞출때마다 피회복하는 기능 
             GameManager.Instance.player.BaseHpSystem.TakeHeal(atkHealAmount, GameManager.Instance.player.StatHandler);

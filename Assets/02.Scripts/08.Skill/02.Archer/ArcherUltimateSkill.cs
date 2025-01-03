@@ -12,9 +12,9 @@ public class ArcherUltimateSkill : Skill
     public ArcherUltimateSkill(int id) : base(id)
     {
         // TODO : DB 에서 받아 넣기
-        coolTime = 5f;
+        coolTime = 20f;
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/ArrowStrike");
-        range = 10f;
+        range = 7f;
         totalValue = level * upgradeValue;
     }
 

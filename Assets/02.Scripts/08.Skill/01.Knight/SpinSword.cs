@@ -12,6 +12,7 @@ public class SpinSword : MonoBehaviour
 
     private BigInteger value;
     private float range;
+    private int atkAcount = 15; //공격 횟수
 
     private Collider myCollider;
     private LayerMask layerMask;
@@ -74,6 +75,7 @@ public class SpinSword : MonoBehaviour
             if (enemyDic.TryGetValue(other.GetInstanceID(), out Coroutine coroutine))
             {
                 StopCoroutine(coroutine);
+                enemyDic.Remove(other.GetInstanceID());
             }
         }
     }
@@ -84,7 +86,15 @@ public class SpinSword : MonoBehaviour
         {
             if (hitObj.TryGetComponent(out ITakeDamageAble damageable) && !damageable.IsInvulnerable)
             {
-                damageable.TakeDamage(BigInteger.Divide(value, 15));
+                var audioSource = ObjectPoolManager.Instance.GetPool(Const.AUDIO_SOURCE_KEY, Const.AUDIO_SOURCE_POOL_KEY).GetObject();
+                audioSource.SetActive(true);
+                AudioSource audio = audioSource.GetComponent<AudioSource>();
+                audio.Play();
+
+                 for (int i = 0; i < atkAcount; i++)
+                {
+                    damageable.TakeDamage(Utils.CriticalCaculate(GameManager.Instance.player.StatHandler, value));
+                }
             }
 
             yield return coroutineTime;

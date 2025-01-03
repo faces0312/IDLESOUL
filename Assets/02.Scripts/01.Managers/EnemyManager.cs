@@ -26,16 +26,16 @@ public class EnemyManager : SingletonDDOL<EnemyManager>
     {
         List<int> summonEnenyIDList = StageManager.Instance.CurStageData.SummonEnemyIDList;
 
-        foreach(int ID in summonEnenyIDList)
+        foreach (int ID in summonEnenyIDList)
         {
             //소환 갯수 , ID , 소환 주기
-            enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(60, ID, 3.0f)));
+            enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine( ID, 3.0f)));
         }
     }
 
     public void EnemySpawnStop()
     {
-        for(int i =0; i <  enemySpawnCoroutines.Count; i++)
+        for (int i = 0; i < enemySpawnCoroutines.Count; i++)
         {
             StopCoroutine(enemySpawnCoroutines[i]);
             enemySpawnCoroutines[i] = null;
@@ -113,37 +113,45 @@ public class EnemyManager : SingletonDDOL<EnemyManager>
         }
         while (curAttaempt < maxAttempt && 4.0f >= Vector3.Distance(RandomPostion, playerPosition));
 
-        Vector3 respawnPosition =  RandomPostion;
+        Vector3 respawnPosition = RandomPostion;
         return respawnPosition;
     }
 
-    IEnumerator EnemySpawnCoroutine(int cycle, int id, float summonCoolTime)
+    IEnumerator EnemySpawnCoroutine( int id, float summonCoolTime, int cycle = 0)
     {
         yield return new WaitForSeconds(0.1f);
         ObjectPool pool = ObjectPoolManager.Instance.GetPool(Const.ENEMY_POOL_KEY, id);
 
         Enemy prefabEnemy = GetInitializedEnemy(id);
-        for (int i = 0; i < cycle; i++)
+
+        while (true)
         {
-            GameObject enemyObject = pool.GetObject();
-            if (enemyObject.TryGetComponent(out RegularEnemy enemy))
+            if (GameManager.Instance.enemies.Count < 120) // 몬스터가 120마리만 생성되게 세팅 
             {
-                enemy.enemyDB = prefabEnemy.enemyDB;
-                enemy.Initialize();
-                enemy.target = GameManager.Instance.player.gameObject;
-            }
-            enemyObject.transform.position = RandomSpawn();
-            enemyObject.SetActive(true);
-            GameManager.Instance.enemies.Add(enemyObject);
+                GameObject enemyObject = pool.GetObject();
+                if (enemyObject.TryGetComponent(out RegularEnemy enemy))
+                {
+                    enemy.enemyDB = prefabEnemy.enemyDB;
+                    enemy.Initialize();
+                    enemy.target = GameManager.Instance.player.gameObject;
+                }
+                enemyObject.transform.position = RandomSpawn();
+                enemyObject.SetActive(true);
+                GameManager.Instance.enemies.Add(enemyObject);
 
-            yield return new WaitForSeconds(summonCoolTime);
+                yield return new WaitForSeconds(summonCoolTime);
 
-            //Test : 소환 주기가 점점 짧아지게 설정 ( 매직넘버 수정할것)
-            if (summonCoolTime >= 0.5f)
-            {
-                summonCoolTime *= 0.9f;
+                //Test : 소환 주기가 점점 짧아지게 설정 ( 매직넘버 수정할것)
+                if (summonCoolTime >= 0.7f)
+                {
+                    summonCoolTime *= 0.9f;
+                }
             }
         }
+
+        //for (int i = 0; i < cycle; i++)
+        //{
+        //}
     }
 
     public void BossSpawn(int id)
@@ -181,7 +189,7 @@ public class EnemyManager : SingletonDDOL<EnemyManager>
         Debug.Log("보스 생성");
 
         UIManager.Instance.GetController<UIBossSummonAlarmController>().BossSummonAlarmView.BossNameSet(tempEnemy.enemyDB.Name);
-        GameManager.Instance.cameraController.ToggleFollowTarget(tempEnemy.transform , bossCameraCloseUpTime);
+        GameManager.Instance.cameraController.ToggleFollowTarget(tempEnemy.transform, bossCameraCloseUpTime);
     }
 
     public GameObject EnemyAttackSpawn(int id, Vector3 position, Quaternion rotation)

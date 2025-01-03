@@ -66,6 +66,9 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
     {
         ObjectPool dmgFontPool = new ObjectPool(Const.DAMAGE_FONT_POOL_KEY, Const.INITIAL_POOL_SIZE, Const.DAMAGE_FONT_PATH);
         ObjectPoolManager.Instance.AddPool(Const.DAMAGE_FONT_KEY, dmgFontPool);
+
+        ObjectPool audioSourcePool = new ObjectPool(Const.AUDIO_SOURCE_POOL_KEY, Const.INITIAL_POOL_SIZE, Const.AUDIO_SOURCE_PATH);
+        ObjectPoolManager.Instance.AddPool(Const.AUDIO_SOURCE_KEY, audioSourcePool);
     }
 
     #endregion

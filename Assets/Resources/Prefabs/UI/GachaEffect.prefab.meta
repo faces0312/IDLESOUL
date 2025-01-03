@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Prefabs/UI/GachaEffect.prefab.meta
 guid: 17d98c5ea32001b4faea4564e00d947b
 PrefabImporter:
+========
+guid: 2cb36ca52afb42941823d5bd90c5cb4d
+DefaultImporter:
+>>>>>>>> Dev:Assets/Plugins/AllIn1SpriteShader/2DRenderer-URP-pre2021.2.unitypackage.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

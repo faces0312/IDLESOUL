@@ -10,8 +10,9 @@ public class SlashDanceHit : MonoBehaviour
 
     private float curTime;
 
-    private BigInteger value;
+    private BigInteger value; // 데미지 계수
     private float time;
+    private int atkAcount = 10; //공격 횟수
 
     private Collider myCollider;
     private LayerMask layerMask;
@@ -70,7 +71,10 @@ public class SlashDanceHit : MonoBehaviour
         {
             if (hitObj.TryGetComponent(out ITakeDamageAble damageable) && !damageable.IsInvulnerable)
             {
-                damageable.TakeDamage(BigInteger.Divide(value, 10));
+                for(int i =  0; i < atkAcount; i++)
+                {
+                    damageable.TakeDamage(Utils.CriticalCaculate(GameManager.Instance.player.StatHandler, value));
+                }   
             }
 
             yield return coroutineTime;

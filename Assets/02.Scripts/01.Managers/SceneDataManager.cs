@@ -8,10 +8,16 @@ public class SceneDataManager : SingletonDDOL<SceneDataManager>
     public string NextScene;
     public float Modifier;
 
+
     protected override void Awake()
     {
         base.Awake();
     }   
+
+    public void LoadGameCheck(bool LoadDataCheck)
+    {
+        GameManager.Instance.LoadGame = LoadDataCheck;
+    }
 
     public void LoadScene(string nextScene)
     {

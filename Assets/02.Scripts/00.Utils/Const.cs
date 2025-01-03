@@ -45,6 +45,10 @@ public static class Const
     public static readonly string DAMAGE_FONT_KEY = "DamageFont";
     public static readonly string DAMAGE_FONT_PATH = "Prefabs/UI/DamageFont";
 
+    public static readonly int AUDIO_SOURCE_POOL_KEY = 20;
+    public static readonly string AUDIO_SOURCE_KEY = "AudioSource";
+    public static readonly string AUDIO_SOURCE_PATH = "Sound/Skills/AudioSource";
+
     public static readonly string STAGE_CASTHLE_MAP_PATH = "Prefabs/Stage/CasthleStageMap";
     public static readonly string STAGE_FORESET_MAP_PATH = "Prefabs/Stage/ForestStageMap";
 

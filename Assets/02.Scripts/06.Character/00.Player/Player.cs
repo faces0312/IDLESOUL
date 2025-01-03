@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using ScottGarland;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class UserData
 {
@@ -38,6 +39,8 @@ public class UserData
         curStageID = userDB.CurStageID;
         ClearStageCycle = userDB.ClearStageCycle;
         StageModifier = userDB.StageModifier;
+        Exp = userDB.Exp;
+        MaxExp = userDB.MaxExp;
 
         stat = new Stat();
         stat.iD = UID;
@@ -260,7 +263,8 @@ public class Player : BaseCharacter
     {
         baseHpSystem.IsDead = false;
 
-        if (DataManager.Instance.LoadUserData() == null)
+        //if (DataManager.Instance.LoadUserData() == null)
+        if (!GameManager.Instance.LoadGame)
         {
             //새로하기 , 기본 능력치를 제공 
             userData = new UserData(DataManager.Instance.UserDB.GetByKey(TestID));
@@ -285,6 +289,8 @@ public class Player : BaseCharacter
 
     public override void TakeDamage(BigInteger damage)
     {
+        damage = Mathf.Max(0, BigInteger.ToInt32(damage - StatHandler.CurrentStat.def)); //Player 의 방어력 계수 적용 
+
         baseHpSystem.TakeDamage(damage, statHandler);
         UIManager.Instance.ShowUI<UIPlayerHPDisplayController>();
 
@@ -330,6 +336,7 @@ public class Player : BaseCharacter
         enabled = true;
         baseHpSystem.IsDead = false;
         targetSearch.TargetClear();
+       
         UIManager.Instance.ShowUI<UIPlayerHPDisplayController>();
     }
 

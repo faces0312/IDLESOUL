@@ -39,6 +39,10 @@ public class ConfigView : MonoBehaviour, IUIBase
         });
         //ConfigPanel.SetActive(false);
 
+        SoundManager.Instance.SetMasterVolume(SoundManager.Instance.masterVolume);
+        SoundManager.Instance.SetBGMVolume(SoundManager.Instance.musicVolume);
+        SoundManager.Instance.SetSoundEffectVolume(SoundManager.Instance.soundEffectVolume);
+
         mainVolume.value = SoundManager.Instance.masterVolume;
         bgmVolume.value = SoundManager.Instance.musicVolume;
         sfxVolume.value = SoundManager.Instance.soundEffectVolume;

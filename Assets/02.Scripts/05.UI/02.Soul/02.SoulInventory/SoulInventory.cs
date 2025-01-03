@@ -36,6 +36,14 @@ public class SoulInventory : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        if (soulInventoryModel != null)
+        {
+            soulInventoryModel.UpdateSlotInfo();
+        }
+    }
+
     private void Start()
     {
         GameManager.Instance.player.PlayerSouls.SoulInventory = this;

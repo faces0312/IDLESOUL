@@ -12,6 +12,7 @@ public class ArrowStrikeHit : MonoBehaviour
 
     private BigInteger value;
     private float time;
+    private int atkAccount = 10;
 
     private Collider myCollider;
     private LayerMask layerMask;
@@ -22,7 +23,7 @@ public class ArrowStrikeHit : MonoBehaviour
 
     void Start()
     {
-        lifeTime = time - 2.6f;
+        lifeTime = time - 2f;
         curTime = Time.time;
         myCollider = GetComponent<Collider>();
         layerMask = 1 << LayerMask.NameToLayer("Enemy");
@@ -70,7 +71,10 @@ public class ArrowStrikeHit : MonoBehaviour
         {
             if (hitObj.TryGetComponent(out ITakeDamageAble damageable) && !damageable.IsInvulnerable)
             {
-                damageable.TakeDamage(BigInteger.Divide(value, 10));
+                for (int i = 0; i < atkAccount; i++)
+                {
+                    damageable.TakeDamage(Utils.CriticalCaculate(GameManager.Instance.player.StatHandler, value));
+                }
             }
 
             yield return coroutineTime;

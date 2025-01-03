@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Experimental.GraphView.GraphView;
 using Enums;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 public class GameManager : SingletonDDOL<GameManager>
@@ -65,6 +65,7 @@ public class GameManager : SingletonDDOL<GameManager>
     //보스의 체력이 0이 되면 호출
     public void GameClear()
     {
+        GainExp();
         enemies.Clear();
         //이벤트 등록을 통해
         //GameManager.Instance.OnGameClearEvent += 게임클리어페이지를 선언할 수 있음
@@ -82,7 +83,6 @@ public class GameManager : SingletonDDOL<GameManager>
 
         //Utils.StartFadeOut();
         Invoke("NextStage", 3.0f);
-
     }
 
     public void NextStage()
@@ -144,6 +144,11 @@ public class GameManager : SingletonDDOL<GameManager>
     }
 
     [ContextMenu("GameOver")]
+    public void DebugGameOver()
+    {
+        _player.TakeDamage(new ScottGarland.BigInteger(9999999));
+    }
+
     //플레이어의 체력이 0이 되면 호출
     public void GameOver()
     {
@@ -194,6 +199,17 @@ public class GameManager : SingletonDDOL<GameManager>
         if (UIManager.Instance != null && UIManager.Instance.uiLobbyCanvas != null)
         {
             UIManager.Instance.uiLobbyCanvas.gameObject.SetActive(true);
+        }
+    }
+
+    private void GainExp()
+    {
+        _player.UserData.Exp += (int)(_player.UserData.MaxExp / 10f);
+
+        if (_player.UserData.Exp >= _player.UserData.MaxExp)
+        {
+            _player.UserData.Level++;
+            _player.UserData.Exp = 0;
         }
     }
 

@@ -5740,7 +5740,7 @@ GameObject:
   - component: {fileID: 7167538911355909022}
   - component: {fileID: 6030359456210038864}
   m_Layer: 5
-  m_Name: PlayerPortrait
+  m_Name: AutoMode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

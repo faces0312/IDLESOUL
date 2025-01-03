@@ -31,6 +31,7 @@ public abstract class Enemy : BaseCharacter
 
     [Header("CurrentStats")]
     public Slider healthBar;
+    public float attack;
     public float maxHealth;
     public float currentHealth;
 
@@ -64,19 +65,16 @@ public abstract class Enemy : BaseCharacter
 
         //현재스테이지에 따른 스텟 증가량을 적용 받음 
         statHandler.CurrentStat.iD = enemyDB.key;
-        statHandler.CurrentStat.health = new BigInteger((long)(enemyDB.Health * StageManager.Instance.MainStageModifier));
-        statHandler.CurrentStat.maxHealth = new BigInteger((long)(enemyDB.Health * StageManager.Instance.MainStageModifier));
-        statHandler.CurrentStat.atk = new BigInteger((long)(enemyDB.Attack * StageManager.Instance.MainStageModifier));
-        statHandler.CurrentStat.def = new BigInteger((long)(enemyDB.Defence * StageManager.Instance.MainStageModifier));
+        statHandler.CurrentStat.health = new BigInteger((long)(enemyDB.Health * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter));
+        statHandler.CurrentStat.maxHealth = new BigInteger((long)(enemyDB.Health * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter));
+        statHandler.CurrentStat.atk = new BigInteger((long)(enemyDB.Attack * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter));
+        statHandler.CurrentStat.def = new BigInteger((long)(enemyDB.Defence * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter));
         statHandler.CurrentStat.moveSpeed = enemyDB.MoveSpeed;
         statHandler.CurrentStat.atkSpeed = enemyDB.AttackSpeed;
-        statHandler.CurrentStat.critChance = enemyDB.CritChance * StageManager.Instance.MainStageModifier;
-        statHandler.CurrentStat.critDamage = enemyDB.CritDamage * StageManager.Instance.MainStageModifier;
+        statHandler.CurrentStat.critChance = enemyDB.CritChance * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter;
+        statHandler.CurrentStat.critDamage = enemyDB.CritDamage * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter;
         stateMachine.Initialize();
         HpUpdate();
-
-        maxHealth = BigInteger.ToInt32(statHandler.CurrentStat.maxHealth);
-        currentHealth = BigInteger.ToInt32(statHandler.CurrentStat.health);
     }
 
     public virtual void BossAppear()
@@ -93,6 +91,8 @@ public abstract class Enemy : BaseCharacter
     {
         if (statHandler.CurrentStat.health <= 0)
             return;
+
+        damage = Mathf.Max(0, BigInteger.ToInt32(damage - StatHandler.CurrentStat.def)); //해당 Enemy의 방어력 계수 적용 
 
         base.TakeDamage(damage);
         HpUpdate();
@@ -126,7 +126,7 @@ public abstract class Enemy : BaseCharacter
             healthBar.gameObject.SetActive(false);
     }
 
-    public void Die()
+    public virtual void Die()
     {
         if (attackType == AttackType.Melee)
             slash.SetActive(false);

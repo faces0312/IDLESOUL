@@ -18,7 +18,8 @@
       "MaxExp": 100,
       "IconPath": "Sprite/SoulSprite/SoulIcon/Claris",
       "SpritePath": "Sprite/SoulSprite/SoulFull/Claris",
-      "SoulType" :  1
+      "SoulType": 1,
+      "OwnStack" : 1
     },
     {
       "key": 11001,
@@ -38,7 +39,8 @@
       "MaxExp": 100,
       "IconPath": "Sprite/SoulSprite/SoulIcon/Fleur",
       "SpritePath": "Sprite/SoulSprite/SoulFull/Fleur",
-      "SoulType": 2
+      "SoulType": 2,
+      "OwnStack": 0
     },
     {
       "key": 11002,
@@ -58,7 +60,8 @@
       "MaxExp": 100,
       "IconPath": "Sprite/SoulSprite/SoulIcon/Luen",
       "SpritePath": "Sprite/SoulSprite/SoulFull/Luen",
-      "SoulType": 3
+      "SoulType": 3,
+      "OwnStack": 0
     },
     {
       "key": 11003,
@@ -78,7 +81,8 @@
       "MaxExp": 100,
       "IconPath": "Sprite/SoulSprite/SoulIcon/Carmilla",
       "SpritePath": "Sprite/SoulSprite/SoulFull/Carmilla",
-      "SoulType": 4
+      "SoulType": 4,
+      "OwnStack": 0
     }
   ]
 }

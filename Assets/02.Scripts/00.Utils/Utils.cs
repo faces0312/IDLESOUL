@@ -289,4 +289,18 @@ public static class Utils
 
         return new BigInteger(Cost);
     }
+
+    public static BigInteger CriticalCaculate(StatHandler Stat, BigInteger Damage)
+    {
+        //크리티컬 적용 
+        if (Random.Range(0, 100) < Stat.CurrentStat.critChance)
+        {
+            //크리티컬 데미지 적용 , BigInteger 라이브러리는 소숫점 계산을 지원하지 않음
+            //그러기에 해당 크리티컬 데미지 증가율을 곱한뒤 100을 나눠서 보정함(백분율)
+            Damage = BigInteger.Multiply(Damage, (int)(Stat.CurrentStat.critDamage));
+            Damage = BigInteger.Divide(Damage, 100);
+        }
+
+        return Damage;
+    }
 }

@@ -216,6 +216,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 4243458703681811631}
   minimapCamera: {fileID: 8054861974628576340}
+  CullingTarget:
+    serializedVersion: 2
+    m_Bits: 16384
 --- !u!1 &8389074646875379045
 GameObject:
   m_ObjectHideFlags: 0

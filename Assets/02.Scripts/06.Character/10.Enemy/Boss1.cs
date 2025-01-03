@@ -1,9 +1,12 @@
+using ScottGarland;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss1 : BossEnemy
 {
+    public AudioSource audio;
+
     public float skillSpeed;
     public float skillSpeedTmp;
 
@@ -22,6 +25,14 @@ public class Boss1 : BossEnemy
     {
         StartCoroutine(Skill(10f));
     }
+
+    public override void TakeDamage(BigInteger damage)
+    {
+        base.TakeDamage(damage);
+        if (statHandler.CurrentStat.health <= 0)
+            audio.Play();
+    }
+
     IEnumerator Skill(float delay)
     {
         while (true)

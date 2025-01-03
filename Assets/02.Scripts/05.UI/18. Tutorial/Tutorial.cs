@@ -35,6 +35,8 @@ public class Tutorial : MonoBehaviour, IPointerClickHandler
         if (GameManager.Instance.player.UserData.ClearStageCycle == 1 
             && GameManager.Instance.player.UserData.curStageID == 7000)
         {
+            Time.timeScale = 0;
+            GameManager.Instance.joyStick.AutoFalse();
             CoStart();
         }
         else this.gameObject.SetActive(false);
@@ -101,5 +103,10 @@ public class Tutorial : MonoBehaviour, IPointerClickHandler
     {
         this.gameObject.SetActive(true);
         StartCoroutine(CoTutorial());
+    }
+
+    void OnDisable()
+    {
+        Time.timeScale = 1f;
     }
 }
