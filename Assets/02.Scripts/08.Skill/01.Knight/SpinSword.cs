@@ -74,6 +74,7 @@ public class SpinSword : MonoBehaviour
             if (enemyDic.TryGetValue(other.GetInstanceID(), out Coroutine coroutine))
             {
                 StopCoroutine(coroutine);
+                enemyDic.Remove(other.GetInstanceID());
             }
         }
     }
@@ -84,6 +85,10 @@ public class SpinSword : MonoBehaviour
         {
             if (hitObj.TryGetComponent(out ITakeDamageAble damageable) && !damageable.IsInvulnerable)
             {
+                var audioSource = ObjectPoolManager.Instance.GetPool(Const.AUDIO_SOURCE_KEY, Const.AUDIO_SOURCE_POOL_KEY).GetObject();
+                audioSource.SetActive(true);
+                AudioSource audio = audioSource.GetComponent<AudioSource>();
+                audio.Play();
                 damageable.TakeDamage(BigInteger.Divide(value, 15));
             }
 
