@@ -65,7 +65,7 @@ public class PlayerSouls : MonoBehaviour
         if (!soulDic.ContainsKey(LoadSoul.soulName))
         {
             soulDic.Add(LoadSoul.soulName, LoadSoul);
-            SoulInventory.AddSoul(LoadSoul); // TODO : 씬 합칠때 주석 제거
+            SoulInventory.AddSoul(LoadSoul);
         }
         else
         {

@@ -70,4 +70,18 @@ public class SoulInventoryModel : UIModel
             }
         }
     }
+
+    public void UpdateSlotInfo()
+    {
+        foreach (var slot in slots)
+        {
+            if (slot.soul != null)
+            {
+                slot.UpdateStack();
+                // TODO : 돌파 횟수 업데이트
+
+            }
+        }
+
+    }
 }
