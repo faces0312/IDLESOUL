@@ -87,7 +87,10 @@ public class DamageFont : MonoBehaviour
     {
         owner = type;
         this.damage = damage;
-        damageFont.text = Utils.FormatBigInteger(this.damage);
+        if (this.damage != 0)
+            damageFont.text = Utils.FormatBigInteger(this.damage);
+        else
+            damageFont.text = "Miss";
         transform.position += Vector3.up * 0.5f;
 
         StartCoroutine(CoroutineDamageView());
