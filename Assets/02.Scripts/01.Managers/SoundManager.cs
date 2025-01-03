@@ -9,13 +9,16 @@ public class SoundManager : SingletonDDOL<SoundManager>
     private AudioSource audioSource;
 
     public float masterVolume;// { get; private set; }
-    public float musicVolume;// { get; private set; }
-    public float soundEffectVolume;// { get; private set; }
+    public float musicVolume = 0.2f;// { get; private set; }
+    public float soundEffectVolume = 0.2f;// { get; private set; }
 
 
     protected override void Awake()
     {
         base.Awake();
+        masterVolume = 1f;
+        musicVolume = 0.2f;
+        soundEffectVolume = 0.2f;
         Init();
         ChangeBGMForScene("TitleScene");
     }
@@ -25,11 +28,13 @@ public class SoundManager : SingletonDDOL<SoundManager>
         //audioSource = Resources.Load<AudioSource>("Prefebs/Sample/AudioSource"); // 1
         audioSource = gameObject.AddComponent<AudioSource>(); // 2
         audioSource.loop = true; //BGM�̱⿡ true
-        audioSource.volume = 0.2f;
         audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("BGM")[0];
-
+        
+         SetMasterVolume(masterVolume);
         SetBGMVolume(musicVolume);
         SetSoundEffectVolume(soundEffectVolume);
+
+        audioSource.volume = musicVolume;
     }
 
     public void ChangeBGMForScene(string sceneName)

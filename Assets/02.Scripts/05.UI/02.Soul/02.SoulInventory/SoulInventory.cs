@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ public class SoulInventory : MonoBehaviour
 
     public SoulSquadSlot SoulSquadSlot { get; set; }
     public SoulSlot SoulSlot { get; set; }
+    public SoulInventoryModel SoulInventoryModel { get => soulInventoryModel;  }
 
     private void Awake()
     {
@@ -29,7 +31,7 @@ public class SoulInventory : MonoBehaviour
             soulInventoryController = new SoulInventoryController();
             soulInventoryController.Initialize(soulInventoryView, soulInventoryModel);
             UIManager.Instance.RegisterController(uiKey, soulInventoryController);
-
+            
             Initialize();
         }
     }
@@ -37,13 +39,16 @@ public class SoulInventory : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.player.PlayerSouls.SoulInventory = this;
-        TestManager.Instance.OnClickRegisterSoul(); // TODO : 씬 합칠때 위치 조정
+        if (GameManager.Instance.LoadGame)
+        {
+            GameManager.Instance.player.PlayerSoulInit(true);
+        }
+        else
+        {
+            GameManager.Instance.player.PlayerSoulInit();
+        }
+        //TestManager.Instance.OnClickRegisterSoul(); // TODO : 씬 합칠때 위치 조정
         gameObject.SetActive(false);
-    }
-
-    private void Update()
-    {
-        CheckInteractableBtn();
     }
 
     private void Initialize()
@@ -53,13 +58,27 @@ public class SoulInventory : MonoBehaviour
             if(Slots.transform.GetChild(i).TryGetComponent(out SoulSlot slot))
             {
                 slot.index = i;
+                slot.OnSlotChanged += ChangeSoulSlot;
+                slot.OnUpdateInteractable += CheckInteractableBtn;
                 soulInventoryModel.AddSlot(slot);
             }
         }
     }
 
+    private void ChangeSoulSlot(SoulSlot slot)
+    {
+        SoulSlot = slot;
+    }
+
     private void CheckInteractableBtn()
     {
+        if(SoulSquadSlot.soul == null)
+        {
+            equipBtn.interactable = true;
+            unEquipBtn.interactable = false;
+            return;
+        }
+
         if(SoulSquadSlot.soul == SoulSlot.soul)
         {
             if (GameManager.Instance.player.PlayerSouls.CurrentSoul == SoulSlot.soul)

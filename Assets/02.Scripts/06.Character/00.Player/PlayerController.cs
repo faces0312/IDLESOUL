@@ -132,4 +132,12 @@ public class PlayerController : MonoBehaviour
     {
         OnSwitch?.Invoke(_index);
     }
+
+    public void OnAuto(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            GameManager.Instance.joyStick.AutoButtton();
+        }
+    }
 }

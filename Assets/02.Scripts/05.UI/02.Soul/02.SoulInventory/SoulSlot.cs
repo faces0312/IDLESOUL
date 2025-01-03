@@ -25,6 +25,9 @@ public class SoulSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
     private Color selectedColor = new Color(0f, 248f / 255f, 159f / 255f);
 
+    public event Action<SoulSlot> OnSlotChanged;
+    public event Action OnUpdateInteractable;
+
     private void Awake()
     {
         outLine = transform.GetChild(0).GetComponent<Image>();
@@ -32,6 +35,12 @@ public class SoulSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
         button = GetComponent<Button>();
         button.onClick.AddListener(OnUpdateThumbnail);
         outLine.color = Color.white;
+    }
+
+    private void OnEnable()
+    {
+        if (soul != null)
+            icon.sprite = soul.icon;
     }
 
     private void Start()
@@ -43,9 +52,13 @@ public class SoulSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     public void OnPointerDown(PointerEventData eventData)
     {
         if (soul == null) return;
+        if (!cursorDescription.activeSelf)
+            cursorDescription.SetActive(true);
 
         cursorDescription.GetComponent<CursorDescription>().StartProgress();
         Invoke(nameof(ShowInfo), holdTime);
+        OnSlotChanged?.Invoke(this);
+        OnUpdateInteractable?.Invoke();
     }
 
     public void OnPointerUp(PointerEventData eventData)

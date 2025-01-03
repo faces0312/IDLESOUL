@@ -17,11 +17,13 @@ public class PlayerMoveState : PlayerBaseState
         stateMachine._Player.PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, true);
 
         moveSpeedModifier = moveStateMoveModifter;
+        stateMachine._Player.PlayerSFX.PlayFootStepSFX();
     }
 
     public override void Exit()
     {
         //Debug.Log("Player Move State Exit");
+        stateMachine._Player.PlayerSFX.StopFootStepSFX();
     }
 
     public override void Update()

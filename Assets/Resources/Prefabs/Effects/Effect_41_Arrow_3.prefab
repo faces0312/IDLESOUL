@@ -9893,3 +9893,4 @@ MonoBehaviour:
   mtag: 
   isShieldActive: 0
   isHitMake: 0
+  hitScale: {x: 1, y: 1, z: 1}

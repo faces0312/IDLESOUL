@@ -28,6 +28,8 @@ public class KnightDefaultSkill : Skill
 
     public override void UseSkill(StatHandler statHandler)
     {
+        
+
         Vector3 playerPos = GameManager.Instance.player.transform.position;
 
         playerPos += skillPrefab.transform.position;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using ScottGarland;
+using System.Linq;
 
 [Serializable]
 public class UserDB
@@ -182,6 +183,10 @@ public class UserDB
 
         GainItem = userData.GainItem;
         GainSoul = userData.GainSoul;
+
+        //Dict으로 리팩토링할떄 사용할 코드들
+        //GainItem = userData.GainItemDict.Values.ToList();
+        //GainSoul = userData.GainSoulDict.Values.ToList();
     }
 
 }

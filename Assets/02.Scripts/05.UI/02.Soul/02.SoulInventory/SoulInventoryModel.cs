@@ -11,6 +11,8 @@ public class SoulInventoryModel : UIModel
     // TODO : 완성 후 SerializeField 제거
     [SerializeField]private List<SoulSlot> slots = new List<SoulSlot>();
 
+    public List<SoulSlot> Slots { get => slots; }
+
     public void AddSlot(SoulSlot slot)
     {
         slots.Add(slot);
