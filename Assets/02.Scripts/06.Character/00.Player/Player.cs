@@ -39,6 +39,8 @@ public class UserData
         curStageID = userDB.CurStageID;
         ClearStageCycle = userDB.ClearStageCycle;
         StageModifier = userDB.StageModifier;
+        Exp = userDB.Exp;
+        MaxExp = userDB.MaxExp;
 
         stat = new Stat();
         stat.iD = UID;

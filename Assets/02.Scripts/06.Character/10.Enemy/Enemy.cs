@@ -31,6 +31,7 @@ public abstract class Enemy : BaseCharacter
 
     [Header("CurrentStats")]
     public Slider healthBar;
+    public float attack;
     public float maxHealth;
     public float currentHealth;
 
@@ -74,9 +75,6 @@ public abstract class Enemy : BaseCharacter
         statHandler.CurrentStat.critDamage = enemyDB.CritDamage * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter;
         stateMachine.Initialize();
         HpUpdate();
-
-        maxHealth = BigInteger.ToInt32(statHandler.CurrentStat.maxHealth);
-        currentHealth = BigInteger.ToInt32(statHandler.CurrentStat.health);
     }
 
     public virtual void BossAppear()
