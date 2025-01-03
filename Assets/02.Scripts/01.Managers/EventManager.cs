@@ -9,10 +9,11 @@ using System;
 public class EventManager : SingletonDDOL<EventManager>
 {
     public Dictionary<Channel, List<Delegate>> Events = new Dictionary<Channel, List<Delegate>>();
+    public event Action<SoulDB> OnPickUpSoul;
 
     public void Init()
     {
-
+        
     }
 
     public void Subscribe(Channel channel, UnityAction listener)
@@ -65,5 +66,10 @@ public class EventManager : SingletonDDOL<EventManager>
                 ((UnityAction<T>)action)(parameter);
             }
         }
+    }
+
+    public void OnPickup(Soul soul)
+    {
+        OnPickUpSoul?.Invoke(DataManager.Instance.SoulDB.GetByKey(soul.ID));
     }
 }
