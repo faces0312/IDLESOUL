@@ -7,34 +7,45 @@ using TMPro;
 
 public class TouchToStartButton : MonoBehaviour
 {
-    [SerializeField] private Button NewStartButton;
+    [SerializeField] private Button DataDeleteButton;
     [SerializeField] private Button LoadStartButton;
 
-    [SerializeField] private TextMeshProUGUI StartButton;
-    [SerializeField] private TextMeshProUGUI LoadButton;
+    [SerializeField] private GameObject DataDeleteAlarmPopUp;
+
+    private JsonController jsonController = new JsonController();
 
     private void Awake()
     {
-        NewStartButton.onClick.AddListener(NewStartGame);
-        NewStartButton.onClick.AddListener(() => UITween.OnClickEffect(NewStartButton.gameObject));
+        DataDeleteButton.onClick.AddListener(DataDelete);
+        DataDeleteButton.onClick.AddListener(() => UITween.OnClickEffect(DataDeleteButton.gameObject));
 
         LoadStartButton.onClick.AddListener(LoadStartGame);
-        NewStartButton.onClick.AddListener(() => UITween.OnClickEffect(LoadStartButton.gameObject));
+        LoadStartButton.onClick.AddListener(() => UITween.OnClickEffect(LoadStartButton.gameObject));
 
-        UITween.ShowUI(NewStartButton.gameObject);
+        UITween.ShowUI(DataDeleteButton.gameObject);
         UITween.ShowUI(LoadStartButton.gameObject);
     }
 
-    public void NewStartGame()
+    public void DataDelete()
     {
-       SceneDataManager.Instance.LoadGameCheck(false);
-       SceneDataManager.Instance.LoadScene("GameScene_SMS");
+        if (jsonController.CheckJsonData(Const.JsonUserDataPath))
+        {
+            jsonController.DeleteJsonData(Const.JsonUserDataPath);
+            OpenDataDeletePopUp();
+            Invoke("ClodseDataDeletePopUp", 3.0f);
+        }
     }
     public void LoadStartGame()
     {
-        SceneDataManager.Instance.LoadGameCheck(true);
         SceneDataManager.Instance.LoadScene("GameScene_SMS");
     }
 
-
+    public void OpenDataDeletePopUp()
+    {
+        UITween.ShowUI(DataDeleteAlarmPopUp);
+    }
+    public void ClodseDataDeletePopUp()
+    {
+        UITween.HideUI(DataDeleteAlarmPopUp);
+    }
 }

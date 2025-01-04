@@ -14,11 +14,6 @@ public class SceneDataManager : SingletonDDOL<SceneDataManager>
         base.Awake();
     }   
 
-    public void LoadGameCheck(bool LoadDataCheck)
-    {
-        GameManager.Instance.LoadGame = LoadDataCheck;
-    }
-
     public void LoadScene(string nextScene)
     {
         NextScene = nextScene;

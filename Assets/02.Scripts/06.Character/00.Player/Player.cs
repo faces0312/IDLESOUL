@@ -263,18 +263,17 @@ public class Player : BaseCharacter
     {
         baseHpSystem.IsDead = false;
 
-        //if (DataManager.Instance.LoadUserData() == null)
-        if (!GameManager.Instance.LoadGame)
-        {
-            //새로하기 , 기본 능력치를 제공 
-            userData = new UserData(DataManager.Instance.UserDB.GetByKey(TestID));
-            GameManager.Instance.LoadGame = false;
-        }
-        else
+        //해당 경로에 Json 저장데이터가 존재하면 이어하기 없으면 새로하기 
+        if (DataManager.Instance.JsonController.CheckJsonData(Const.JsonUserDataPath))
         {
             //이어하기
             userData = new UserData(DataManager.Instance.LoadUserData());
-            GameManager.Instance.LoadGame = true;
+
+        }
+        else
+        {
+            //새로하기 , 기본 능력치를 제공 
+            userData = new UserData(DataManager.Instance.UserDB.GetByKey(TestID));
         }
 
         statHandler = new StatHandler(StatType.Player,0,userData);

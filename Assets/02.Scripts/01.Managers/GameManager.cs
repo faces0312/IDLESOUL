@@ -3,7 +3,6 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 using Enums;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 public class GameManager : SingletonDDOL<GameManager>
@@ -32,8 +31,6 @@ public class GameManager : SingletonDDOL<GameManager>
     public event Action OnEventBossSummon;
     public event Action OnGameOverEvent;
     public event Action OnGameClearEvent;
-
-    public bool LoadGame;
 
     //현재 맵에 활성화되어 있는 적 리스트
     public List<GameObject> enemies = new List<GameObject>();
