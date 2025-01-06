@@ -61,4 +61,11 @@ public class EnemyAttackState : EnemyBaseState
             }
         }
     }
+
+    public void MimicAttack()
+    {
+        Vector3 rotationAngles = new Vector3(180, 0, 0);
+        GameObject attack = EnemyManager.Instance.EnemyAttackSpawn(6008, GameManager.Instance.player.transform.position, Quaternion.Euler(rotationAngles));
+        //attack.SetActive(true);
+    }
 }

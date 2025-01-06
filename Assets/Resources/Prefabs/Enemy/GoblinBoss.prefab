@@ -1538,6 +1538,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   animator: {fileID: 8900702365910489509}
   healthBar: {fileID: 6943077816121637070}
+  attack: 0
   maxHealth: 0
   currentHealth: 0
   isSkillCharging: 0

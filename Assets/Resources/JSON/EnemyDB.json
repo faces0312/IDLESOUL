@@ -197,6 +197,24 @@
       "Distance": 5,
       "KnockBackPower": 10,
       "KnockBackResistance": 1
+    },
+    {
+      "key": 5600,
+      "Name": "미믹",
+      "Descripton": "미믹 설명",
+      "DropGold": 100,
+      "DropDia": 10,
+      "Attack": 300,
+      "AttackSpeed": 3,
+      "AttackDistance": 10,
+      "Defence": 0,
+      "MoveSpeed": 0,
+      "Health": 20000,
+      "CritChance": 1,
+      "CritDamage": 100,
+      "Distance": 10000,
+      "KnockBackPower": 10,
+      "KnockBackResistance": 1
     }
   ]
 }

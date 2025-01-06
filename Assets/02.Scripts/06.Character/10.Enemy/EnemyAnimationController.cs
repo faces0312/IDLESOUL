@@ -79,6 +79,11 @@ public class EnemyAnimationController : MonoBehaviour
         enemy.stateMachine.AttackState.RangedAttack(6005);
     }
 
+    public void MimicAttack()
+    {
+        enemy.stateMachine.AttackState.MimicAttack();
+    }
+
     public void EnemyBossDie()
     {
         if (enemy is BossEnemy bossEnemy)
