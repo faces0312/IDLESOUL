@@ -43,9 +43,12 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
         ObjectPool arrowSkeletonPool = new ObjectPool(6005, 60, Const.ENEMY_PREFEB_SKELETONARROW_PATH);
         ObjectPool energyBoltBOSSPool = new ObjectPool(6006, 60, Const.ENEMY_PREFEB_SKELETONENERGYBOLTBOSS_PATH);
         ObjectPool skillBoss2Pool = new ObjectPool(6007, 10, Const.ENEMY_PREFEB_SKELETONSKILLBOSS2_PATH);
+        ObjectPool mimicAttack = new ObjectPool(6008, 10, Const.ENEMY_PREFEB_MIMICATTACK_PATH);
 
         ObjectPool goblinBossPool = new ObjectPool(5500, 1, Const.ENEMY_PREFEB_GOBLINBOSS_PATH);
         ObjectPool skeletonBossPool = new ObjectPool(5501, 1, Const.ENEMY_PREFEB_SKELETONBOSS_PATH);
+
+        ObjectPool mimicPool = new ObjectPool(5600, 1, Const.ENEMY_PREFEB_Mimic_PATH);
 
         AddPool(Const.ENEMY_POOL_KEY, goblinPool);
         AddPool(Const.ENEMY_POOL_KEY, goblinMagicianPool);
@@ -57,9 +60,12 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
         AddPool(Const.ENEMY_EFFECT_POOL_KEY, arrowSkeletonPool);
         AddPool(Const.ENEMY_EFFECT_POOL_KEY, energyBoltBOSSPool);
         AddPool(Const.ENEMY_EFFECT_POOL_KEY, skillBoss2Pool);
+        AddPool(Const.ENEMY_EFFECT_POOL_KEY, mimicAttack);
 
         AddPool(Const.ENEMY_BOSS_POOL_KEY, goblinBossPool);
         AddPool(Const.ENEMY_BOSS_POOL_KEY, skeletonBossPool);
+
+        AddPool(Const.ENEMY_BOSS_POOL_KEY, mimicPool);
     }
 
     private void DamageFontObjectPoolSetting()

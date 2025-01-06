@@ -16,6 +16,7 @@ public class EnemyManager : SingletonDDOL<EnemyManager>
 
     public void Init()
     {
+        //MimicSpawn();
         InitializeEnemyPool();
         EnemySpawnStart();
 
@@ -211,6 +212,37 @@ public class EnemyManager : SingletonDDOL<EnemyManager>
             }
         }
         return null;
+    }
 
+    public void MimicSpawn()
+    {
+        foreach (Coroutine spawnCoroutine in enemySpawnCoroutines)
+        {
+            StopCoroutine(spawnCoroutine);
+        }
+
+        foreach (GameObject enemyTmp in GameManager.Instance.enemies)
+        {
+            if (enemyTmp != null)
+            {
+                enemyTmp.SetActive(false);
+            }
+        }
+
+        GameManager.Instance.enemies.Clear();
+
+        ObjectPool pool = ObjectPoolManager.Instance.GetPool(Const.ENEMY_BOSS_POOL_KEY, 5600);
+        GameObject mimic = pool.GetObject();
+        Enemy tempEnemy = mimic.GetComponent<BossEnemy>();
+        tempEnemy.enemyDB = DataManager.Instance.EnemyDB.GetByKey(5600);
+        tempEnemy.Initialize();
+        tempEnemy.target = GameManager.Instance.player.gameObject;
+        mimic.transform.position = new Vector3(0, 0, 3);
+        mimic.SetActive(true);
+        //tempEnemy.BossAppear();
+        GameManager.Instance.enemies.Add(mimic);
+/*
+        UIManager.Instance.GetController<UIBossSummonAlarmController>().BossSummonAlarmView.BossNameSet(tempEnemy.enemyDB.Name);
+        GameManager.Instance.cameraController.ToggleFollowTarget(tempEnemy.transform, bossCameraCloseUpTime);*/
     }
 }

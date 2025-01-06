@@ -138,11 +138,11 @@ public abstract class Enemy : BaseCharacter
 
     }
 
-    public void Update()
+    public virtual void Update()
     {
         stateMachine.Update();
     }
-    private void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         stateMachine.FixedUpdateState();
     }
