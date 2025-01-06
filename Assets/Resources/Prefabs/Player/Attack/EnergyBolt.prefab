@@ -9808,6 +9808,9 @@ MonoBehaviour:
   TargetLayer:
     serializedVersion: 2
     m_Bits: 128
+  DisableLayer:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!108 &108556751418608030
 Light:
   m_ObjectHideFlags: 0

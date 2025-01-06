@@ -22,6 +22,7 @@ public class BaseProjectile : MonoBehaviour
     public float knockbackPower;//투사체 넉백 파워
     public Vector3 dir; //투사체가 발사되는 방향 
     public LayerMask TargetLayer; //해당 투사체를 맞추기 위한 타겟 레이어
+    public LayerMask DisableLayer; //해당 투사체를 맞추면 오브젝트 풀에 반납
 
     protected virtual void Start()
     {

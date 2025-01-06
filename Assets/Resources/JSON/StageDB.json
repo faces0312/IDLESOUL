@@ -18,7 +18,7 @@
       "key": 7001,
       "ChapterNum": 1,
       "StageNum": 2,
-      "CurStageModifier": 1.2,
+      "CurStageModifier": 2.0,
       "stageName": "처음의 숲 2",
       "SlayEnemyCount": 20,
       "SummonEnemyIDList": [
@@ -33,7 +33,7 @@
       "key": 7002,
       "ChapterNum": 1,
       "StageNum": 3,
-      "CurStageModifier": 1.2,
+      "CurStageModifier": 3.0,
       "stageName": "처음의 숲 3",
       "SlayEnemyCount": 30,
       "SummonEnemyIDList": [
@@ -48,7 +48,7 @@
       "key": 7003,
       "ChapterNum": 1,
       "StageNum": 4,
-      "CurStageModifier": 1.5,
+      "CurStageModifier": 10.0,
       "stageName": "처음의 숲 4",
       "SlayEnemyCount": 50,
       "SummonEnemyIDList": [
