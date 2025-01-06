@@ -47,6 +47,7 @@ public class GachaBase : MonoBehaviour
         {
             this.gameObject.SetActive(true);
         }
+
         switch (arg.type)
         {
             case GachaType.Weapon:
