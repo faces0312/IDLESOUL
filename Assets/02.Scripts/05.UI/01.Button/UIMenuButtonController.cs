@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIMenuButtonController : MonoBehaviour
@@ -38,7 +39,10 @@ public class UIMenuButtonController : MonoBehaviour
 
         exitGame.onClick.AddListener(() =>
         {
-            Application.Quit();
+            SceneManager.LoadScene("Ending");
+            EnemyManager.Instance.EnemySpawnStop();
+            SoundManager.Instance.StopBGM();
+            //Application.Quit();
         });
 
         gameObject.SetActive(false);

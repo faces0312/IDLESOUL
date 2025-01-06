@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/GameScene_SMS.unity
     guid: 01b6ff4415dfcf14a9676f8f559e5559
+  - enabled: 1
+    path: Assets/01.Scenes/Ending.unity
+    guid: b863079b408e8a54489241e61d676ba1
   m_configObjects: {}
