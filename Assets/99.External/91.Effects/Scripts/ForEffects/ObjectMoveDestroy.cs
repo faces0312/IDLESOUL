@@ -48,7 +48,8 @@ public class ObjectMoveDestroy : MonoBehaviour
             if (Time.time > time + ObjectDestroyTime)
             {
                 MakeHitObject(transform);
-                Destroy(gameObject);
+                gameObject.SetActive(false);
+                //Destroy(gameObject);
             }
         }
     }
