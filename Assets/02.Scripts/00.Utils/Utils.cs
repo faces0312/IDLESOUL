@@ -156,9 +156,10 @@ public static class Utils
     /// <param name="baseStat">스탯의 기본 값</param>
     /// <param name="playerStatLevel">스탯 현재 레벨</param>
     /// <param name="growRate">스탯 성장율 (예: 1.5~2.0 사이).</param>
-    /// <param name="growthExponent">성장 곡선의 형태를 결정. (성장속도) </param>
+    /// <param name="growthExponent">성장 곡선의 형태를 결정. (성장속도) </param>    
+    /// <param name="constStat"> 해당 스텟의 추가 고정값 </param>
     /// <returns></returns>
-    public static BigInteger UpgradePlayerStatBigInteger(Status statType)
+    public static BigInteger UpgradePlayerStatBigInteger(Status statType , int nextLevelStat = 0)
     {
         //스탯 = 기본값 × (1 + 성장 계수 × (player의 현재 스텟 레벨 ^ 성장 지수))
 
@@ -166,6 +167,7 @@ public static class Utils
         float growRate = 0;
         float growthExponent = 1.1f;
         int playerStatLevel = 0;
+        BigInteger constStat = new BigInteger();
 
         switch (statType)
         {
@@ -175,23 +177,26 @@ public static class Utils
                 growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).MaxHealthGrowRate;
                 /*플레이어의 현재 스텟 레벨을 호출 */
                 playerStatLevel = GameManager.Instance.player.StatHandler.CurrentStat.MaxHealthLevel;
+                constStat = GameManager.Instance.player.StatHandler.BaseStat.maxHealth;
                 break;
             case Status.Atk:
                 baseStat = DataManager.Instance.StatUpgradeDB.GetByKey(100).AtkBaseStat;
                 growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).AtkGrowRate;
                 playerStatLevel = GameManager.Instance.player.StatHandler.CurrentStat.AtkLevel;
+                constStat = GameManager.Instance.player.StatHandler.BaseStat.atk;
                 break;
             case Status.Def:
                 baseStat = DataManager.Instance.StatUpgradeDB.GetByKey(100).DefBaseStat;
                 growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).DefGrowRate;
                 playerStatLevel = GameManager.Instance.player.StatHandler.CurrentStat.DefLevel;
+                constStat = GameManager.Instance.player.StatHandler.BaseStat.def;
                 break;
         }
 
         //스탯 = 기본값 × (1 + 성장 계수 × (player의 현재 스텟 레벨 ^ 성장 지수))
-        int statResult = (int)(baseStat * (1 + growRate * (Mathf.Pow(playerStatLevel, growthExponent))));
+        int statResult = (int)(baseStat * (1 + growRate * (Mathf.Pow(playerStatLevel + nextLevelStat, growthExponent))));
 
-        return new BigInteger(statResult);
+        return new BigInteger(statResult) + constStat;
 
     }
 
@@ -202,8 +207,9 @@ public static class Utils
     /// <param name="playerStatLevel">스탯 현재 레벨</param>
     /// <param name="growRate">스탯 성장율 (예: 1.5~2.0 사이).</param>
     /// <param name="growthExponent">성장 곡선의 형태를 결정. (성장속도) </param>
+    /// <param name="constStat"> 해당 스텟의 추가 고정값 </param>
     /// <returns></returns>
-    public static float UpgradePlayerStat(Status statType)
+    public static float UpgradePlayerStat(Status statType, int nextLevelStat = 0)
     {
         //스탯 = 기본값 × (1 + 성장 계수 × (player의 현재 스텟 레벨 ^ 성장 지수))
 
@@ -211,6 +217,7 @@ public static class Utils
         float growRate = 0;
         float growthExponent = 1.1f;
         int playerStatLevel = 0;
+        var constStat = 0f;
 
         switch (statType)
         {
@@ -218,23 +225,26 @@ public static class Utils
                 baseStat = DataManager.Instance.StatUpgradeDB.GetByKey(100).ReduceDamageBaseStat;
                 growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).ReduceDamageGrowRate;
                 playerStatLevel = GameManager.Instance.player.StatHandler.CurrentStat.ReduceDamageLevel;
+                constStat = GameManager.Instance.player.StatHandler.BaseStat.reduceDamage;
                 break;
             case Status.CritChance:
                 baseStat = DataManager.Instance.StatUpgradeDB.GetByKey(100).CriticalRateBaseStat;
                 growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).CriticalRateGrowRate;
                 playerStatLevel = GameManager.Instance.player.StatHandler.CurrentStat.CriticalRateLevel;
+                constStat = GameManager.Instance.player.StatHandler.BaseStat.critChance;
                 break;
             case Status.CritDmg:
                 baseStat = DataManager.Instance.StatUpgradeDB.GetByKey(100).CriticalDamageBaseStat;
                 growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).CriticalDamageGrowRate;
                 playerStatLevel = GameManager.Instance.player.StatHandler.CurrentStat.CriticalDamageLevel;
+                constStat = GameManager.Instance.player.StatHandler.BaseStat.critDamage;
                 break;
         }
 
         //스탯 = 기본값 × (1 + 성장 계수 × (player의 현재 스텟 레벨 ^ 성장 지수))
-        float statResult = (int)(baseStat * (1 + growRate * (Mathf.Pow(playerStatLevel, growthExponent))));
+        float statResult = (int)(baseStat * (1 + growRate * (Mathf.Pow(playerStatLevel + nextLevelStat, growthExponent))));
 
-        return statResult;
+        return statResult + constStat;
 
     }
 

@@ -144,26 +144,7 @@ public class Player : BaseCharacter
 
     public Action OnUpdateSoulStats;
 
-    public void EquipItem(Item item)
-    {
-        if(equipItem != null)
-        {
-            equipItem.equip = false;
-            StatHandler.UnEquipItem(equipItem.ItemStat);
-        }
-        equipItem = item;
-        item.equip = true;
 
-        StatHandler.EquipItem(item.ItemStat);
-
-    }
-
-    public void DisEquipItem()
-    {
-        equipItem.equip = false;
-        StatHandler.UnEquipItem(equipItem.ItemStat);
-        equipItem = null;
-    }
 
     protected override void Awake()
     {
@@ -196,6 +177,84 @@ public class Player : BaseCharacter
         GameManager.Instance.player = this;
 
         Initialize();
+    }
+
+
+
+    public void Initialize()
+    {
+        baseHpSystem.IsDead = false;
+
+        //해당 경로에 Json 저장데이터가 존재하면 이어하기 없으면 새로하기 
+        if (DataManager.Instance.JsonController.CheckJsonData(Const.JsonUserDataPath))
+        {
+            //이어하기
+            userData = new UserData(DataManager.Instance.LoadUserData());
+            GameManager.Instance.LoadData = true;
+        }
+        else
+        {
+            //새로하기 , 기본 능력치를 제공 
+            userData = new UserData(DataManager.Instance.UserDB.GetByKey(TestID));
+        }
+
+        statHandler = new StatHandler(StatType.Player, 0, userData);
+
+        //Controller(FSM 세팅)
+        playerStateMachine.ChangeState(playerStateMachine.IdleState);
+
+        Debug.Log("Player 세팅 완료!!");
+
+        DataManager.Instance.SaveUserData(userData); //초기화 한 시점에서 플레이어 유저데이터 한번더 저장 
+    }
+
+    public void PlayerSoulInit(bool LoadData = false)
+    {
+
+        if(LoadData) // 불러오기(Load)
+        {
+            //불러온 SoulData를 PlayerSouls에 초기화 하는 반복문 
+            foreach (UserSoulData soulData in userData.GainSoul)
+            {
+                PlayerSouls.RegisterSoul(soulData);
+            }
+
+            //편성 데이터를 토대로 Soul 편성 장착 
+            for (int i = 0; i <  userData.GainSoul.Count; i++)
+            {
+                if (i >= PlayerSouls.SoulSlot.Length) break;
+                PlayerSouls.EquipSoul(DataManager.Instance.SoulDB.GetByKey(userData.GainSoul[i].ID).Name, i);
+            }
+            OnUpdateSoulStats?.Invoke();  // 착용 시 패시브 업데이트
+        }
+        else // 새로하기
+        {
+            PlayerSouls.RegisterSoul("클라리스", new SoulMagician(11000));
+            PlayerSouls.EquipSoul("클라리스", 0);
+            OnUpdateSoulStats?.Invoke();  // 착용 시 패시브 업데이트
+        }
+
+        PlayerSouls.SpawnSoul(0);
+    }
+    public override void TakeDamage(BigInteger damage)
+    {
+        damage = Mathf.Max(0, BigInteger.ToInt32(damage - StatHandler.CurrentStat.def)); //Player 의 방어력 계수 적용 
+
+        baseHpSystem.TakeDamage(damage, statHandler);
+        UIManager.Instance.ShowUI<UIPlayerHPDisplayController>();
+
+        // 데미지 폰트를 적용하는 부분
+        // TODO : 크리티컬 데미지 시, 변화를 준다
+        var dmgFont = ObjectPoolManager.Instance.GetPool(Const.DAMAGE_FONT_KEY, Const.DAMAGE_FONT_POOL_KEY).GetObject();
+        dmgFont.SetActive(true);
+        dmgFont.transform.position = transform.position;
+        dmgFont.transform.rotation = Quaternion.identity;
+        dmgFont.GetComponent<DamageFont>().SetDamage(Owner.Player, damage);
+
+        if (statHandler.CurrentStat.health <= 0)
+        {
+            Die();
+        }
     }
 
     public void LevelUp(int level, Status status)
@@ -231,81 +290,28 @@ public class Player : BaseCharacter
                 break;
         }
     }
-
-    public void PlayerSoulInit(bool LoadData = false)
+    public void EquipItem(Item item)
     {
-
-        if(LoadData) // 불러오기(Load)
+        if (equipItem != null)
         {
-            //불러온 SoulData를 PlayerSouls에 초기화 하는 반복문 
-            foreach (UserSoulData soulData in userData.GainSoul)
-            {
-                PlayerSouls.RegisterSoul(soulData);
-            }
-
-            //편성 데이터를 토대로 Soul 편성 장착 
-            PlayerSouls.EquipSoul("클라리스", 0);
-            PlayerSouls.EquipSoul("플뢰르", 1);
-            PlayerSouls.EquipSoul("루엔", 2);
-            OnUpdateSoulStats?.Invoke();  // 착용 시 패시브 업데이트
+            equipItem.equip = false;
+            StatHandler.UnEquipItem(equipItem.ItemStat);
         }
-        else // 새로하기
-        {
-            PlayerSouls.RegisterSoul("클라리스", new SoulMagician(11000));
-            PlayerSouls.EquipSoul("클라리스", 0);
-            OnUpdateSoulStats?.Invoke();  // 착용 시 패시브 업데이트
-        }
+        equipItem = item;
+        item.equip = true;
 
-        PlayerSouls.SpawnSoul(0);
+        StatHandler.EquipItem(item.ItemStat);
+
     }
 
-    public void Initialize()
+    public void DisEquipItem()
     {
-        baseHpSystem.IsDead = false;
-
-        //해당 경로에 Json 저장데이터가 존재하면 이어하기 없으면 새로하기 
-        if (DataManager.Instance.JsonController.CheckJsonData(Const.JsonUserDataPath))
-        {
-            //이어하기
-            userData = new UserData(DataManager.Instance.LoadUserData());
-
-        }
-        else
-        {
-            //새로하기 , 기본 능력치를 제공 
-            userData = new UserData(DataManager.Instance.UserDB.GetByKey(TestID));
-        }
-
-        statHandler = new StatHandler(StatType.Player,0,userData);
-
-        //Controller(FSM 세팅)
-        playerStateMachine.ChangeState(playerStateMachine.IdleState);
-
-        Debug.Log("Player 세팅 완료!!");
-
-        DataManager.Instance.SaveUserData(userData); //초기화 한 시점에서 플레이어 유저데이터 한번더 저장 
+        equipItem.equip = false;
+        StatHandler.UnEquipItem(equipItem.ItemStat);
+        equipItem = null;
     }
 
-    public override void TakeDamage(BigInteger damage)
-    {
-        damage = Mathf.Max(0, BigInteger.ToInt32(damage - StatHandler.CurrentStat.def)); //Player 의 방어력 계수 적용 
 
-        baseHpSystem.TakeDamage(damage, statHandler);
-        UIManager.Instance.ShowUI<UIPlayerHPDisplayController>();
-
-        // 데미지 폰트를 적용하는 부분
-        // TODO : 크리티컬 데미지 시, 변화를 준다
-        var dmgFont = ObjectPoolManager.Instance.GetPool(Const.DAMAGE_FONT_KEY, Const.DAMAGE_FONT_POOL_KEY).GetObject();
-        dmgFont.SetActive(true);
-        dmgFont.transform.position = transform.position;
-        dmgFont.transform.rotation = Quaternion.identity;
-        dmgFont.GetComponent<DamageFont>().SetDamage(Owner.Player, damage);
-
-        if (statHandler.CurrentStat.health <= 0)
-        {
-            Die();
-        }
-    }
 
     [ContextMenu("PlayerDie")]
     public void Die()
