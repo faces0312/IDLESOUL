@@ -11,7 +11,7 @@ public class StageManager : SingletonDDOL<StageManager>
     private int curStageID;
     private StageDB curStageData;
     private StageMap curStageMap;
-    
+
 
     private List<StageMap> stageMapList = new List<StageMap>(); // 0 : ¼º , 1 : ½£
 
@@ -67,12 +67,11 @@ public class StageManager : SingletonDDOL<StageManager>
             MainStageModifier = GameManager.Instance.player.UserData.StageModifier;
         }
 
-        curStageData = DataManager.Instance.StageDB.GetByKey(CurStageID);
-
-        if (GameManager.Instance.player.UserData.curStageID != curStageID)
-            MainStageModifier *= curStageData.CurStageModifier;
-
         SaveStageData();
+
+        curStageData = DataManager.Instance.StageDB.GetByKey(CurStageID);
+        MainStageModifier *= curStageData.CurStageModifier;
+
 
         for (int i = 0; i < stageMapList.Count; i++)
         {

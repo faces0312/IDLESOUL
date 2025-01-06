@@ -35,6 +35,8 @@ public abstract class Enemy : BaseCharacter
     public float maxHealth;
     public float currentHealth;
 
+    public string health;
+
     //public StatHandler StatHandler { get => base.statHandler; set => base.statHandler = value; }
 
     public event Action OnDieEvent;
