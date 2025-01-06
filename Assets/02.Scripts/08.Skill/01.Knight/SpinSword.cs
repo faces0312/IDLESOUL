@@ -94,6 +94,7 @@ public class SpinSword : MonoBehaviour
                  for (int i = 0; i < atkAcount; i++)
                 {
                     damageable.TakeDamage(Utils.CriticalCaculate(GameManager.Instance.player.StatHandler, value));
+                    yield return coroutineTime;
                 }
             }
 

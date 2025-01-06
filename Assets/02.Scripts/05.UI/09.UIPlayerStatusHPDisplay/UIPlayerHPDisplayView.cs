@@ -11,8 +11,8 @@ public class UIPlayerHPDisplayView : MonoBehaviour, IUIBase
 
     public void HpRatioChange(BigInteger curHp , BigInteger maxHP)
     {
-        int curHpNum = BigInteger.ToInt32(curHp);
-        int maxHpNum = BigInteger.ToInt32(maxHP);
+        ulong curHpNum = BigInteger.ToUInt64(curHp);
+        ulong maxHpNum = BigInteger.ToUInt64(maxHP);
         float result = curHpNum / (float)maxHpNum;
 
         HPFrontImg.localScale = new Vector3(result, 1, 1);

@@ -74,6 +74,7 @@ public class ArrowStrikeHit : MonoBehaviour
                 for (int i = 0; i < atkAccount; i++)
                 {
                     damageable.TakeDamage(Utils.CriticalCaculate(GameManager.Instance.player.StatHandler, value));
+                    yield return coroutineTime;
                 }
             }
 

@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 3
-  tickTime: 0.1
+  tickTime: 0.4
 --- !u!82 &8113606353371038377
 AudioSource:
   m_ObjectHideFlags: 0

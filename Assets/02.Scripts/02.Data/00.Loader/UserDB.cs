@@ -36,7 +36,7 @@ public class UserDB
     /// <summary>
     /// Health
     /// </summary>
-    public int Health;
+    public ulong Health;
 
     /// <summary>
     /// MaxHealthLevel
@@ -46,7 +46,7 @@ public class UserDB
     /// <summary>
     /// MaxHealth
     /// </summary>
-    public int MaxHealth;
+    public ulong MaxHealth;
 
     /// <summary>
     /// AtkLevel
@@ -56,7 +56,7 @@ public class UserDB
     /// <summary>
     /// Atk
     /// </summary>
-    public int Atk;
+    public ulong Atk;
 
     /// <summary>
     /// DefLevel
@@ -66,7 +66,7 @@ public class UserDB
     /// <summary>
     /// Def
     /// </summary>
-    public int Def;
+    public ulong Def;
 
     /// <summary>
     /// ReduceDamageLevel
@@ -160,10 +160,10 @@ public class UserDB
         ClearStageCycle = userData.ClearStageCycle;
         StageModifier = userData.StageModifier;
 
-        Health = BigInteger.ToInt32(userData.stat.health); ;
-        MaxHealth = BigInteger.ToInt32(userData.stat.maxHealth);
-        Atk = BigInteger.ToInt32(userData.stat.atk);
-        Def = BigInteger.ToInt32(userData.stat.def);
+        Health = BigInteger.ToUInt64(userData.stat.health); ;
+        MaxHealth = BigInteger.ToUInt64(userData.stat.maxHealth);
+        Atk = BigInteger.ToUInt64(userData.stat.atk);
+        Def = BigInteger.ToUInt64(userData.stat.def);
 
         MaxHealthLevel = userData.stat.MaxHealthLevel;
         AtkLevel = userData.stat.AtkLevel;

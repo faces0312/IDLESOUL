@@ -41,6 +41,8 @@ public class UIMenuButtonController : MonoBehaviour
 
         exitGame.onClick.AddListener(() =>
         {
+            DataManager.Instance.SaveUserData(GameManager.Instance.player.UserData); //게임 종료시 데이터를 세이브함 
+
             fadeOutImg.gameObject.SetActive(true);
 
             var seq = DOTween.Sequence();

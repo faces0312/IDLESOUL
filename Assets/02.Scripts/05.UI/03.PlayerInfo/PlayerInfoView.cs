@@ -161,11 +161,11 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
         valueTexts[(int)Status.CritChance].text = $"{playerStatHandler.BaseStat.critChance}%";
         valueTexts[(int)Status.CritDmg].text = $"{playerStatHandler.BaseStat.critDamage}%";
 
-        nextValueTexts[(int)Status.Hp].text = $"-> {Utils.FormatBigInteger( Utils.UpgradePlayerStatBigInteger(Status.Hp,1))}";
-        nextValueTexts[(int)Status.Atk].text = $"-> {Utils.FormatBigInteger( Utils.UpgradePlayerStatBigInteger(Status.Atk,1))}";
-        nextValueTexts[(int)Status.Def].text = $"-> {Utils.FormatBigInteger(Utils.UpgradePlayerStatBigInteger(Status.Def,1))}";
-        nextValueTexts[(int)Status.ReduceDmg].text = $"-> { Utils.UpgradePlayerStat(Status.ReduceDmg,1)}%";
-        nextValueTexts[(int)Status.CritChance].text = $"-> { Utils.UpgradePlayerStat(Status.CritChance,1)}%";
-        nextValueTexts[(int)Status.CritDmg].text = $"-> { Utils.UpgradePlayerStat(Status.CritDmg,1)}%";
+        nextValueTexts[(int)Status.Hp].text = $"-> {Utils.FormatBigInteger(playerStatHandler.BaseStat.maxHealth + Utils.UpgradePlayerStatBigInteger(Status.Hp,1))}";
+        nextValueTexts[(int)Status.Atk].text = $"-> {Utils.FormatBigInteger(playerStatHandler.BaseStat.atk + Utils.UpgradePlayerStatBigInteger(Status.Atk,1))}";
+        nextValueTexts[(int)Status.Def].text = $"-> {Utils.FormatBigInteger(playerStatHandler.BaseStat.def + Utils.UpgradePlayerStatBigInteger(Status.Def,1))}";
+        nextValueTexts[(int)Status.ReduceDmg].text = $"-> {playerStatHandler.BaseStat.reduceDamage + Utils.UpgradePlayerStat(Status.ReduceDmg,1)}%";
+        nextValueTexts[(int)Status.CritChance].text = $"-> {playerStatHandler.BaseStat.critChance +  Utils.UpgradePlayerStat(Status.CritChance,1)}%";
+        nextValueTexts[(int)Status.CritDmg].text = $"-> {playerStatHandler.BaseStat.critDamage + Utils.UpgradePlayerStat(Status.CritDmg,1)}%";
     }
 }

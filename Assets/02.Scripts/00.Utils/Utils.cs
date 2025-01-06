@@ -163,7 +163,7 @@ public static class Utils
     {
         //스탯 = 기본값 × (1 + 성장 계수 × (player의 현재 스텟 레벨 ^ 성장 지수))
 
-        var baseStat = 0f;
+        float baseStat = 0f;
         float growRate = 0;
         float growthExponent = 1.1f;
         int playerStatLevel = 0;
@@ -201,7 +201,7 @@ public static class Utils
 
         int result = (int)(baseStat * (Mathf.Log(playerStatLevel + 1, growRate)) * 100); // 0.957511 -> 95.71..%
 
-        return BigInteger.Divide(BigInteger.Multiply(playerStat, result),100) + constStat;
+        return BigInteger.Divide(BigInteger.Multiply(playerStat, result),100)/* + constStat*/;
 
     }
 
@@ -250,7 +250,7 @@ public static class Utils
         //float statResult = (int)(baseStat * (1 + growRate * (Mathf.Pow(playerStatLevel + nextLevelStat, growthExponent))));
         float statResult = baseStat * Mathf.Log(playerStatLevel + 1, growRate);
 
-        return statResult + constStat;
+        return statResult/* + constStat*/;
 
     }
 

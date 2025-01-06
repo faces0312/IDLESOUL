@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fdd89be9968e045b9f9d3b4fb5470a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tickTime: 0.05
+  tickTime: 0.15
 --- !u!82 &8789656498394716763
 AudioSource:
   m_ObjectHideFlags: 0

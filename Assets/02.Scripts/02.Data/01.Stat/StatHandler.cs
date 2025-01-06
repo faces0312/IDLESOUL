@@ -162,48 +162,48 @@ public class StatHandler
                 //currentStat.MaxHealthLevel += level;
                 //currentStat.maxHealth = Utils.UpgradePlayerStatBigInteger(Status.Hp);
                 BaseStat.MaxHealthLevel += level;
-                BaseStat.maxHealth = Utils.UpgradePlayerStatBigInteger(Status.Hp);
+                BaseStat.maxHealth += Utils.UpgradePlayerStatBigInteger(Status.Hp);
                 currentStat.maxHealth += BaseStat.maxHealth;
                 break;
             case Status.Atk:
                 //currentStat.AtkLevel += level;
                 //currentStat.atk = Utils.UpgradePlayerStatBigInteger(Status.Atk);
                 BaseStat.AtkLevel += level;
-                BaseStat.atk = Utils.UpgradePlayerStatBigInteger(Status.Atk);
+                BaseStat.atk += Utils.UpgradePlayerStatBigInteger(Status.Atk);
                 currentStat.atk += BaseStat.atk;
                 break;
             case Status.Def:
                 //currentStat.DefLevel += level;
                 //currentStat.def = Utils.UpgradePlayerStatBigInteger(Status.Def);
                 BaseStat.DefLevel += level;
-                BaseStat.def = Utils.UpgradePlayerStatBigInteger(Status.Def);
+                BaseStat.def += Utils.UpgradePlayerStatBigInteger(Status.Def);
                 currentStat.def += BaseStat.def;
                 break;
             case Status.ReduceDmg:
                 //currentStat.ReduceDamageLevel += level;
                 //currentStat.reduceDamage = Utils.UpgradePlayerStat(Status.ReduceDmg);
                 BaseStat.ReduceDamageLevel += level;
-                BaseStat.reduceDamage = Utils.UpgradePlayerStat(Status.ReduceDmg);
+                BaseStat.reduceDamage += Utils.UpgradePlayerStat(Status.ReduceDmg);
                 currentStat.reduceDamage += BaseStat.reduceDamage;
                 break;
             case Status.CritChance:
                 //currentStat.CriticalRateLevel += level;
                 //currentStat.critChance = Utils.UpgradePlayerStat(Status.CritChance);
                 BaseStat.CriticalRateLevel += level;
-                BaseStat.critChance = Utils.UpgradePlayerStat(Status.CritChance);
+                BaseStat.critChance += Utils.UpgradePlayerStat(Status.CritChance);
                 currentStat.critChance += BaseStat.critChance;
                 break;
             case Status.CritDmg:
                 //currentStat.CriticalDamageLevel += level;
                 //currentStat.critDamage = Utils.UpgradePlayerStat(Status.CritDmg);
                 BaseStat.CriticalDamageLevel += level;
-                BaseStat.critDamage = Utils.UpgradePlayerStat(Status.CritDmg);
+                BaseStat.critDamage += Utils.UpgradePlayerStat(Status.CritDmg);
                 currentStat.critDamage += BaseStat.critDamage;
                 break;
         }
 
         // 소울과 아이템의 정보를 다시 갱신해주어야 함
-        currentStat += CalculateAdditionalStats();
+        currentStat = CalculateAdditionalStats() + BaseStat;
     }
 
     public void EquipItem(Stat itemStat)

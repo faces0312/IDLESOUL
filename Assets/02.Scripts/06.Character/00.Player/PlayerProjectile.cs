@@ -7,7 +7,7 @@ public class PlayerProjectile : BaseProjectile
 {
     private int value = 1; // 해당 투사체의 계수(%)
     private BigInteger atkHealAmount;
-    private int HealAmount = 1; // 평타 공격시 회복 계수 , 1%
+    private int HealAmount = 100; // 평타 공격시 회복 계수 , 1/100 -> 1%
 
     protected override void Start()
     {
@@ -29,7 +29,7 @@ public class PlayerProjectile : BaseProjectile
         if (TargetLayer == ((1 << other.gameObject.layer) | TargetLayer))
         {
             //ToDoCode : 데미지 오차 범위 만들것
-            BigInteger Damage = BigInteger.Multiply(GameManager.Instance.player.StatHandler.CurrentStat.atk + GameManager.Instance.player.StatHandler.BaseStat.atk, value);
+            BigInteger Damage = BigInteger.Multiply(GameManager.Instance.player.StatHandler.CurrentStat.atk, value);
             atkHealAmount = BigInteger.Divide(Damage, HealAmount); // 적용된 데미지의 HealAmount 만큼 피흡 
 
             Damage = Utils.CriticalCaculate(GameManager.Instance.player.StatHandler, Damage);
