@@ -14757,6 +14757,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e17d10c4e020147ae8b5e49a85fd67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1088
   m_gameObjectMain: {fileID: 3080159530407030450, guid: 4bbb80028db14f346b2fc667f36f828c, type: 3}
   m_gameObjectTail: {fileID: 0}
   m_hitObject: {fileID: 4278782263554330417, guid: e2b4962e6bf7611439e26c8240ae9304, type: 3}

@@ -1,11 +1,9 @@
-﻿using System;
+﻿
 using UnityEngine;
 using Cinemachine;
 using System.Collections.Generic;
 using System.Collections;
-using System.Linq;
 using UnityEngine.Rendering.PostProcessing;
-using Unity.VisualScripting;
 
 public class CameraController : MonoBehaviour
 {
@@ -15,6 +13,7 @@ public class CameraController : MonoBehaviour
     private PostProcessingTrigger postProcessingTrigger;
     private Ray mainCameraRay;
     [SerializeField] private LayerMask CullingTarget;
+    private Collider[] colliders;
 
     private Queue<GameObject> DisableObjects = new Queue<GameObject>();
 
@@ -84,11 +83,23 @@ public class CameraController : MonoBehaviour
 
     public void LateUpdate()
     {
-        mainCameraRay = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        //colliders = Physics.OverlapSphere(transform.position, 5.0f, CullingTarget);
 
+        //foreach (Collider col in colliders)
+        //{
+        //    MeshRenderer renderer = col.GetComponent<MeshRenderer>();
+
+        //    if (renderer.enabled)
+        //    {
+        //        renderer.enabled = false;
+        //        StartCoroutine(ActiveObject(col));
+        //    }
+        //}
+
+        mainCameraRay = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         if (Physics.Raycast(mainCameraRay, out RaycastHit hit, 5.0f, CullingTarget))
         {
-             MeshRenderer renderer = hit.collider.GetComponent<MeshRenderer>();
+            MeshRenderer renderer = hit.collider.GetComponent<MeshRenderer>();
 
             if (renderer.enabled)
             {
@@ -118,6 +129,30 @@ public class CameraController : MonoBehaviour
 
         hitObj.collider.GetComponent<MeshRenderer>().enabled = true;
     }
+
+    //IEnumerator ActiveObject(Collider hitObj)
+    //{
+    //    for (int i = 0; i < 3; i++)
+    //    {
+    //        yield return new WaitForSeconds(1.0f);
+
+    //        colliders = Physics.OverlapSphere(transform.position, 5.0f, CullingTarget);
+
+    //        foreach (Collider col in colliders)
+    //        {
+    //            MeshRenderer renderer = col.GetComponent<MeshRenderer>();
+
+    //            if (hitObj.gameObject != col.gameObject)
+    //            {
+    //                hitObj.GetComponent<MeshRenderer>().enabled = true;
+    //                yield break;
+    //            }
+    //        }
+
+    //    }
+
+    //    hitObj.GetComponent<MeshRenderer>().enabled = true;
+    //}
 
     private void OnDrawGizmos()
     {

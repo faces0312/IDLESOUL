@@ -147,13 +147,17 @@ public class EnemyManager : SingletonDDOL<EnemyManager>
                     summonCoolTime *= 0.9f;
                 }
             }
+            else
+            {
+                yield return new WaitForSeconds(summonCoolTime);
+            }
         }
 
         //for (int i = 0; i < cycle; i++)
         //{
         //}
     }
-
+        
     public void BossSpawn(int id)
     {
         foreach (Coroutine spawnCoroutine in enemySpawnCoroutines)
