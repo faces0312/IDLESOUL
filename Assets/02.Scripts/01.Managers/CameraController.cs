@@ -14,6 +14,7 @@ public class CameraController : MonoBehaviour
     private Ray mainCameraRay;
     [SerializeField] private LayerMask CullingTarget;
     private Collider[] colliders;
+    private float radius = 5.0f;
 
     private Queue<GameObject> DisableObjects = new Queue<GameObject>();
 
@@ -154,11 +155,17 @@ public class CameraController : MonoBehaviour
     //    hitObj.GetComponent<MeshRenderer>().enabled = true;
     //}
 
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.green;
+    //    mainCameraRay = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+    //    Gizmos.DrawLine(Camera.main.transform.position, Camera.main.transform.position + (mainCameraRay.direction.normalized * 5.0f));
+    //}
+
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
-        mainCameraRay = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        Gizmos.DrawLine(Camera.main.transform.position, Camera.main.transform.position + (mainCameraRay.direction.normalized * 5.0f));
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }
 

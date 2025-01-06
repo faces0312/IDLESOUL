@@ -238,7 +238,7 @@ public class Player : BaseCharacter
     }
     public override void TakeDamage(BigInteger damage)
     {
-        damage = Mathf.Max(0, BigInteger.ToInt32(damage - StatHandler.CurrentStat.def)); //Player 의 방어력 계수 적용 
+        damage = Mathf.Max(0, BigInteger.ToInt32(damage - (StatHandler.CurrentStat.def))); //Player 의 방어력 계수 적용 
 
         baseHpSystem.TakeDamage(damage, statHandler);
         UIManager.Instance.ShowUI<UIPlayerHPDisplayController>();
@@ -265,28 +265,40 @@ public class Player : BaseCharacter
         switch (status)
         {
             case Status.Hp:
-                userData.stat.MaxHealthLevel = statHandler.CurrentStat.MaxHealthLevel;
-                userData.stat.maxHealth = statHandler.CurrentStat.maxHealth;
+                //userData.stat.MaxHealthLevel = statHandler.CurrentStat.MaxHealthLevel;
+                //userData.stat.maxHealth = statHandler.CurrentStat.maxHealth;
+                userData.stat.MaxHealthLevel = statHandler.BaseStat.MaxHealthLevel;
+                userData.stat.maxHealth = statHandler.BaseStat.maxHealth;
                 break;
             case Status.Atk:
-                userData.stat.AtkLevel = statHandler.CurrentStat.AtkLevel;
-                userData.stat.atk = statHandler.CurrentStat.atk;
+                //userData.stat.AtkLevel = statHandler.CurrentStat.AtkLevel;
+                //userData.stat.atk = statHandler.CurrentStat.atk;       
+                userData.stat.AtkLevel = statHandler.BaseStat.AtkLevel;
+                userData.stat.atk = statHandler.BaseStat.atk;
                 break;
             case Status.Def:
-                userData.stat.DefLevel = statHandler.CurrentStat.DefLevel;
-                userData.stat.def = statHandler.CurrentStat.def;
+                //userData.stat.DefLevel = statHandler.CurrentStat.DefLevel;
+                //userData.stat.def = statHandler.CurrentStat.def;       
+                userData.stat.DefLevel = statHandler.BaseStat.DefLevel;
+                userData.stat.def = statHandler.BaseStat.def;
                 break;
             case Status.ReduceDmg:
-                userData.stat.ReduceDamageLevel = statHandler.CurrentStat.ReduceDamageLevel;
-                userData.stat.reduceDamage = statHandler.CurrentStat.reduceDamage;
+                //userData.stat.ReduceDamageLevel = statHandler.CurrentStat.ReduceDamageLevel;
+                //userData.stat.reduceDamage = statHandler.CurrentStat.reduceDamage;     
+                userData.stat.ReduceDamageLevel = statHandler.BaseStat.ReduceDamageLevel;
+                userData.stat.reduceDamage = statHandler.BaseStat.reduceDamage;
                 break;
             case Status.CritChance:
-                userData.stat.CriticalRateLevel = statHandler.CurrentStat.CriticalRateLevel;
-                userData.stat.critChance = statHandler.CurrentStat.critChance;
+                //userData.stat.CriticalRateLevel = statHandler.CurrentStat.CriticalRateLevel;
+                //userData.stat.critChance = statHandler.CurrentStat.critChance;       
+                userData.stat.CriticalRateLevel = statHandler.BaseStat.CriticalRateLevel;
+                userData.stat.critChance = statHandler.BaseStat.critChance;
                 break;
             case Status.CritDmg:
-                userData.stat.CriticalDamageLevel = statHandler.CurrentStat.CriticalDamageLevel;
-                userData.stat.critDamage = statHandler.CurrentStat.critDamage;
+                //userData.stat.CriticalDamageLevel = statHandler.CurrentStat.CriticalDamageLevel;
+                //userData.stat.critDamage = statHandler.CurrentStat.critDamage;         
+                userData.stat.CriticalDamageLevel = statHandler.BaseStat.CriticalDamageLevel;
+                userData.stat.critDamage = statHandler.BaseStat.critDamage;
                 break;
         }
     }
@@ -336,6 +348,7 @@ public class Player : BaseCharacter
     {
         //ToDoCode : 플레이어가 죽을경우 재세팅하는 함수
         statHandler.CurrentStat.health = statHandler.CurrentStat.maxHealth;
+        statHandler.BaseStat.health = statHandler.BaseStat.maxHealth;
         transform.position = Vector3.up;
         rb.isKinematic = false;
         enabled = true;

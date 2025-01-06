@@ -29,7 +29,7 @@ public class PlayerProjectile : BaseProjectile
         if (TargetLayer == ((1 << other.gameObject.layer) | TargetLayer))
         {
             //ToDoCode : 데미지 오차 범위 만들것
-            BigInteger Damage = BigInteger.Multiply(GameManager.Instance.player.StatHandler.CurrentStat.atk, value);
+            BigInteger Damage = BigInteger.Multiply(GameManager.Instance.player.StatHandler.CurrentStat.atk + GameManager.Instance.player.StatHandler.BaseStat.atk, value);
             atkHealAmount = BigInteger.Divide(Damage, HealAmount); // 적용된 데미지의 HealAmount 만큼 피흡 
 
             Damage = Utils.CriticalCaculate(GameManager.Instance.player.StatHandler, Damage);

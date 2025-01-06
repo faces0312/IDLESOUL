@@ -14,12 +14,12 @@ public class UIPlayerHPDisplayModel : UIModel
     public void Init()
     {
         curHealth = GameManager.Instance.player.StatHandler.CurrentStat.health;
-        maxHealth = GameManager.Instance.player.StatHandler.CurrentStat.maxHealth;
+        maxHealth = GameManager.Instance.player.StatHandler.CurrentStat.maxHealth; 
     }
 
     public void Update()
     {
         curHealth = GameManager.Instance.player.StatHandler.CurrentStat.health;
         maxHealth = GameManager.Instance.player.StatHandler.CurrentStat.maxHealth;
-    }
+    }    
 }
