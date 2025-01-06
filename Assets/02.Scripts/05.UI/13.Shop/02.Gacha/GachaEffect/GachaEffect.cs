@@ -23,16 +23,15 @@ public class GachaEffect : MonoBehaviour
         Sequence seq = DOTween.Sequence();
         seq.Append(gachaImage.transform.DOMoveY(600, 0));
         seq.Append(gachaText.DOFade(0, 0));
-        seq.Append(gachaText.DOFade(1, 3));
-        seq.Append(gachaText.DOFade(0, 1));
-        seq.Append(gachaImage.DOColor(Color.white, 2));
-        seq.Append(gachaImage.transform.DOMoveY(-600, 2));
-        seq.Append(gachaImage.DOColor(Color.black, 2));
+        seq.Append(gachaText.DOFade(1, 1));
+        seq.Append(gachaText.DOFade(0, 0.5f));
+        seq.Append(gachaImage.DOColor(Color.white, 1));
+        seq.Append(gachaImage.transform.DOMoveY(-600, 1));
+        seq.Append(gachaImage.DOColor(Color.black, 1));
         seq.OnComplete(() =>
         {
             this.gameObject.SetActive(false);
         });
-
     }
 
     public void ShowEffect(SoulDB soul)

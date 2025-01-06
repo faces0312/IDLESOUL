@@ -1,7 +1,9 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIMenuButtonController : MonoBehaviour
@@ -18,6 +20,7 @@ public class UIMenuButtonController : MonoBehaviour
     [SerializeField] private GameObject configObject;
 
     [SerializeField] private Button exitGame;
+    [SerializeField] private Image fadeOutImg;
 
     private void Start()
     {
@@ -38,7 +41,20 @@ public class UIMenuButtonController : MonoBehaviour
 
         exitGame.onClick.AddListener(() =>
         {
-            Application.Quit();
+            fadeOutImg.gameObject.SetActive(true);
+
+            var seq = DOTween.Sequence();
+
+            seq.Append(fadeOutImg.DOFade(1.0f, 1.0f));
+            seq.Play().SetUpdate(true);
+            seq.OnComplete(() =>
+            {
+                SceneManager.LoadScene("Ending");
+                EnemyManager.Instance.EnemySpawnStop();
+                SoundManager.Instance.StopBGM();
+            });
+
+            //Application.Quit();
         });
 
         gameObject.SetActive(false);
