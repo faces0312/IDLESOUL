@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public event Action OnSkill2; // K키 스킬 이벤트
     public event Action<int> OnSwitch; // 스킬 틀 전환 이벤트
 
+    public bool isStunned = false;
+    public float stunDuration = 2f;
 
     private void Start()
     {
@@ -26,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (curMovementInput.magnitude > 0)
+        if (!isStunned && curMovementInput.magnitude > 0)
         {
             Move();
         }
@@ -43,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (!player.BaseHpSystem.IsDead) //플레이어가 살아 있는 경우에만 동작 
+        if (!player.BaseHpSystem.IsDead && !isStunned) //플레이어가 살아 있는 경우에만 동작 
         {
             if (context.phase == InputActionPhase.Performed)
             {
@@ -85,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnSkill1Action(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Performed && !isStunned)
         {
             UseSkill1();
         }
@@ -93,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnSkill2Action(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Performed && !isStunned)
         {
             UseSkill2();
         }
@@ -101,17 +103,23 @@ public class PlayerController : MonoBehaviour
 
     public void UseSkill1()
     {
-        OnSkill1?.Invoke();
+        if (!isStunned)
+        {
+            OnSkill1?.Invoke();
+        }
     }
 
     public void UseSkill2()
     {
-        OnSkill2?.Invoke();
+        if (!isStunned)
+        {
+            OnSkill2?.Invoke();
+        }
     }
 
     public void OnSwitchAction(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Performed && !isStunned)
         {
             int switchIndex = 0;
 
@@ -138,9 +146,26 @@ public class PlayerController : MonoBehaviour
 
     public void OnAuto(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Performed && !isStunned)
         {
             GameManager.Instance.joyStick.AutoButtton();
         }
+    }
+
+    public void ApplyStun()
+    {
+        if (!isStunned)
+        {
+            StartCoroutine(StunCoroutine());
+        }
+    }
+
+    private IEnumerator StunCoroutine()
+    {
+        isStunned = true;
+        player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
+        yield return new WaitForSeconds(stunDuration);
+        isStunned = false;
+        GameManager.Instance.joyStick.ResumeAutoModeAfterStun();
     }
 }

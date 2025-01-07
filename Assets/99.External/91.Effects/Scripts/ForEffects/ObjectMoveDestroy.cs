@@ -27,10 +27,22 @@ public class ObjectMoveDestroy : MonoBehaviour
 
     public Vector3 hitScale = new Vector3(1,1,1);
 
+    private void OnEnable()
+    {
+        ResetState();
+    }
+
     private void Start()
     {
         m_scalefactor = VariousEffectsScene.m_gaph_scenesizefactor;//transform.parent.localScale.x;
+        ResetState();
+    }
+
+    private void ResetState()
+    {
+        ishit = false;
         time = Time.time;
+        // 필요한 경우 다른 변수들도 여기서 초기화
     }
 
     void LateUpdate()

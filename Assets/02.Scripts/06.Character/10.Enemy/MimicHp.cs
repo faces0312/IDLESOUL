@@ -8,7 +8,7 @@ public class MimicHp : MonoBehaviour
     public Slider hpSlider;
     public float gameDuration;
 
-    private void Start()
+    private void OnEnable()
     {
         gameDuration = 30f;
         StartCoroutine(DecreaseHPOverTime());
@@ -26,9 +26,6 @@ public class MimicHp : MonoBehaviour
 
             yield return null;
         }
-
-        //TODO
-        //던전 종료 로직
-        //GameOver();
+        GameManager.Instance.GoldDungeon();
     }
 }

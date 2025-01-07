@@ -125,6 +125,7 @@ public class Player : BaseCharacter
     private PlayerSouls playerSouls; //플레이어가 소지한 Soul 데이터 클래스
     public InventoryModel Inventory; //플레이어 인벤토리 데이터 클래스 
     public PlayerSFXController PlayerSFX; //플레이어의 효과음 클래스
+    private PlayerController playerController;
 
     [Header("State Machine")]
     public PlayerStateMachine playerStateMachine; //플레이어 FSM 
@@ -170,6 +171,10 @@ public class Player : BaseCharacter
         if(PlayerSFX == null)
         {
             PlayerSFX = GetComponent<PlayerSFXController>();
+        }
+        if (playerController == null)
+        {
+            playerController = GetComponent<PlayerController>();
         }
         //FSM 초기 상태 설정 (Idle)
         playerStateMachine = new PlayerStateMachine(this);
@@ -360,7 +365,7 @@ public class Player : BaseCharacter
 
     private void Update()
     {
-        if (isJoyStick == false && isController == false)
+        if ((isJoyStick == false && isController == false) && !playerController.isStunned)
             playerStateMachine.Update();
     }
 
@@ -368,6 +373,4 @@ public class Player : BaseCharacter
     {
         playerStateMachine.FixedUpdateState();
     }
-
-
 }

@@ -16,7 +16,6 @@ public class EnemyManager : SingletonDDOL<EnemyManager>
 
     public void Init()
     {
-        //MimicSpawn();
         InitializeEnemyPool();
         EnemySpawnStart();
 
@@ -27,11 +26,16 @@ public class EnemyManager : SingletonDDOL<EnemyManager>
     {
         List<int> summonEnenyIDList = StageManager.Instance.CurStageData.SummonEnemyIDList;
 
-        foreach (int ID in summonEnenyIDList)
+        if (GameManager.Instance.isGoldDungeon == false)
         {
-            //소환 갯수 , ID , 소환 주기
-            enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine( ID, 3.0f)));
+            foreach (int ID in summonEnenyIDList)
+            {
+                //소환 갯수 , ID , 소환 주기
+                enemySpawnCoroutines.Add(StartCoroutine(EnemySpawnCoroutine(ID, 3.0f)));
+            }
         }
+        else
+            MimicSpawn();
     }
 
     public void EnemySpawnStop()
