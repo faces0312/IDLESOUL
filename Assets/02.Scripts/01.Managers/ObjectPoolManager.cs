@@ -43,7 +43,7 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
         ObjectPool arrowSkeletonPool = new ObjectPool(6005, 60, Const.ENEMY_PREFEB_SKELETONARROW_PATH);
         ObjectPool energyBoltBOSSPool = new ObjectPool(6006, 60, Const.ENEMY_PREFEB_SKELETONENERGYBOLTBOSS_PATH);
         ObjectPool skillBoss2Pool = new ObjectPool(6007, 10, Const.ENEMY_PREFEB_SKELETONSKILLBOSS2_PATH);
-        ObjectPool mimicAttack = new ObjectPool(6008, 10, Const.ENEMY_PREFEB_MIMICATTACK_PATH);
+        ObjectPool mimicAttack = new ObjectPool(6008, 25, Const.ENEMY_PREFEB_MIMICATTACK_PATH);
 
         ObjectPool goblinBossPool = new ObjectPool(5500, 1, Const.ENEMY_PREFEB_GOBLINBOSS_PATH);
         ObjectPool skeletonBossPool = new ObjectPool(5501, 1, Const.ENEMY_PREFEB_SKELETONBOSS_PATH);

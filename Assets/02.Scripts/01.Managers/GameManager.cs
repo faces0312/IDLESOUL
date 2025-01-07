@@ -26,7 +26,7 @@ public class GameManager : SingletonDDOL<GameManager>
     public bool IsBoss;//현재 Boss가 필드에 있는지를 체크하는 변수 
     public bool isTryBoss;//보스를 트라이 한적이 있는지
     GameObject gameOverPage;
-    private bool isGameOver = false;
+    public bool isGameOver = false;
 
     public event Action OnEventBossSummon;
     public event Action OnGameOverEvent;
@@ -35,6 +35,8 @@ public class GameManager : SingletonDDOL<GameManager>
     //현재 맵에 활성화되어 있는 적 리스트
     public List<GameObject> enemies = new List<GameObject>();
     public bool LoadData; //현재 게임이 불러온 게임인지 체크하는 변수 
+
+    public bool isGoldDungeon;
 
     protected override void Awake()
     {
@@ -215,6 +217,14 @@ public class GameManager : SingletonDDOL<GameManager>
     {
         ClearManager();
         SceneManager.LoadScene("TestHS");
+    }
+
+    public void GoldDungeon()
+    {
+        isGameOver = true;
+        isGoldDungeon = !isGoldDungeon;
+        player.BaseHpSystem.IsDead = true;
+        NextStage();
     }
 }
 public static class Wait

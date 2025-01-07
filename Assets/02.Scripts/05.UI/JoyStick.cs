@@ -56,7 +56,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     void FixedUpdate()
     {
-        if (player.isJoyStick)
+        if (player.isJoyStick && !GameManager.Instance.playerController.isStunned)
         {
             player.rb.velocity = new Vector3(m_vecMove.x * m_fSpeed, player.rb.velocity.y, m_vecMove.z * m_fSpeed);
 
@@ -70,7 +70,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
                 player.playerStateMachine.CurrentState.FlipCharacter(true);
             }
         }
-        else if (player.isJoyStick == false && player.isAuto == false && player.isController == false)
+        else if (player.isJoyStick == false && player.isAuto == false && player.isController == false || GameManager.Instance.playerController.isStunned)
         {
             player.rb.velocity = new Vector3(0, player.rb.velocity.y, 0);
         }
@@ -88,16 +88,22 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public void OnDrag(PointerEventData eventData)
     {
-        OnTouch(eventData.position);
-        player.isJoyStick = true;
+        if(!GameManager.Instance.playerController.isStunned)
+        {
+            OnTouch(eventData.position);
+            player.isJoyStick = true;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        player.playerStateMachine.ChangeState(player.playerStateMachine.MoveState);
-        AutoFalse();
-        OnTouch(eventData.position);
-        player.isJoyStick = true;
+        if (!GameManager.Instance.playerController.isStunned)
+        {
+            player.playerStateMachine.ChangeState(player.playerStateMachine.MoveState);
+            AutoFalse();
+            OnTouch(eventData.position);
+            player.isJoyStick = true;
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -158,7 +164,12 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         while (player.isAuto)
         {
-            yield return new WaitForSeconds(1f);
+            if (GameManager.Instance.playerController.isStunned)
+            {
+                yield return new WaitUntil(() => !GameManager.Instance.playerController.isStunned);
+            }
+
+            yield return new WaitForSeconds(0.5f);
 
             int curSoulIndex = GameManager.Instance.player.PlayerSouls.SpawnIndex;
 
@@ -168,7 +179,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
                     GameManager.Instance.playerController.UseSkill1();
                 else if (!skill2Button.isUses[curSoulIndex])
                     GameManager.Instance.playerController.UseSkill2();
-             }
+            }
             else
             {
                 currentSoulIndex = (currentSoulIndex % 3) + 1; // 1, 2, 3 순환
@@ -177,6 +188,16 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             }
 
             yield return new WaitForSeconds(1f);
+        }
+    }
+
+    // 스턴 해제 시 자동 모드 재시작 메서드
+    public void ResumeAutoModeAfterStun()
+    {
+        if (player.isAuto)
+        {
+            StopAutoSkillCoroutine();
+            StartAutoSkillCoroutine();
         }
     }
 
