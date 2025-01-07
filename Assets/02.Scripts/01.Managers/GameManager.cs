@@ -37,6 +37,7 @@ public class GameManager : SingletonDDOL<GameManager>
     public bool LoadData; //현재 게임이 불러온 게임인지 체크하는 변수 
 
     public bool isGoldDungeon;
+    GameObject dungeonEndingPage;
 
     protected override void Awake()
     {
@@ -87,7 +88,8 @@ public class GameManager : SingletonDDOL<GameManager>
 
     public void NextStage()
     {
-        if(isGameOver == true) EventManager.Instance.Publish<AchieveEvent>(Channel.Achievement, new AchieveEvent(AchievementType.Kill, ActionType.Player, 1));
+        playerController.isStunned = false;
+        if (isGameOver == true) EventManager.Instance.Publish<AchieveEvent>(Channel.Achievement, new AchieveEvent(AchievementType.Kill, ActionType.Player, 1));
         SetGameOverFlag(false);
         //SceneManager.LoadScene("GameScene_SMS");
         Destroy(gameOverPage);
@@ -219,8 +221,20 @@ public class GameManager : SingletonDDOL<GameManager>
         SceneManager.LoadScene("TestHS");
     }
 
+    public void GoldDungeonEndilg()
+    {
+        dungeonEndingPage = Instantiate(Resources.Load<GameObject>("Prefabs/UI/DungeonEndingPage"), UIManager.Instance.popupCanvas);
+        _player.PlayerSFX.PlayClipSFXOneShot((SoundType)UnityEngine.Random.Range(4, 6));
+        playerController.isStunned = true;
+        player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
+        player.targetSearch.TargetClear();
+        Invoke("GoldDungeon", 3f);
+    }
+
     public void GoldDungeon()
     {
+        if (dungeonEndingPage != null)
+            Destroy(dungeonEndingPage);
         isGameOver = true;
         isGoldDungeon = !isGoldDungeon;
         player.BaseHpSystem.IsDead = true;
