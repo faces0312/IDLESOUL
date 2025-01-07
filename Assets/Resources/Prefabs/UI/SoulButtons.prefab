@@ -646,6 +646,7 @@ MonoBehaviour:
   index: 2
   soulImg: {fileID: 9192385768291653516}
   cooldownImg: {fileID: 98558797127456332}
+  frameImg: {fileID: 2512989717433913593}
   timeText: {fileID: 9121098864577814374}
   textBackground: {fileID: 1138700660965678423}
 --- !u!1 &1138700660965678423
@@ -1071,6 +1072,7 @@ MonoBehaviour:
   index: 0
   soulImg: {fileID: 6726222949932217811}
   cooldownImg: {fileID: 5416192394583859214}
+  frameImg: {fileID: 7053569458936050285}
   timeText: {fileID: 3476634713810768913}
   textBackground: {fileID: 6753581612214686469}
 --- !u!1 &1437337671409555093
@@ -2074,7 +2076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4383,6 +4385,7 @@ MonoBehaviour:
   index: 1
   soulImg: {fileID: 1199059559902064075}
   cooldownImg: {fileID: 3890253848017515464}
+  frameImg: {fileID: 3395020186923087480}
   timeText: {fileID: 7603131908413777370}
   textBackground: {fileID: 5983317673446633457}
 --- !u!1 &9081423319201525459

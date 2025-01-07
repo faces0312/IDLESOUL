@@ -12,6 +12,7 @@ public class SpawnSoulButton : MonoBehaviour
     [Header("Image")]
     [SerializeField] private Image soulImg;
     [SerializeField] private Image cooldownImg;
+    [SerializeField] private Image frameImg;
 
     [Header("Time")]
     [SerializeField] private TextMeshProUGUI timeText;
@@ -49,6 +50,7 @@ public class SpawnSoulButton : MonoBehaviour
         GameManager.Instance.playerController.OnSwitch += HandleSwitch;
 
         GameManager.Instance.player.PlayerSouls.OnUpdateSoulIcon += UpdateIcon;
+        GameManager.Instance.player.PlayerSouls.OnUpdateSpawnSoul += UpdateSpawn;
         UpdateIcon();
         GameManager.Instance.OnGameClearEvent += ResetAll;
         GameManager.Instance.OnGameOverEvent += ResetAll;
@@ -109,6 +111,15 @@ public class SpawnSoulButton : MonoBehaviour
         timeText.text = string.Empty;
         spawnCoolTime.IsSpawn = false;
         textBackground.SetActive(false);
+        frameImg.color = Color.white;
+    }
+
+    private void UpdateSpawn()
+    {
+        if(GameManager.Instance.player.PlayerSouls.SpawnIndex == index)
+            frameImg.color = Color.red;
+        else
+            frameImg.color = Color.white;
     }
 
     public void UpdateIcon()
