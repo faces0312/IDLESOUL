@@ -62,10 +62,25 @@ public class EnemyAttackState : EnemyBaseState
         }
     }
 
-    public void MimicAttack()
+    public void MimicAttack(Transform transform)
     {
         Vector3 rotationAngles = new Vector3(180, 0, 0);
-        GameObject attack = EnemyManager.Instance.EnemyAttackSpawn(6008, GameManager.Instance.player.transform.position, Quaternion.Euler(rotationAngles));
+        Vector3 enemyPosition = GameManager.Instance.player.transform.position; // 현재 적의 위치
+
+        for (int i = 0; i < 6; i++)
+        {
+            // 랜덤한 x와 z 오프셋 생성 (-5에서 5 사이)
+            float randomX = Random.Range(-8f, 8f);
+            float randomZ = Random.Range(-8f, 8f);
+
+            // 새로운 스폰 위치 계산
+            Vector3 spawnPosition = enemyPosition + new Vector3(randomX, 0, randomZ);
+
+            // 공격 오브젝트 생성
+            GameObject attack = EnemyManager.Instance.EnemyAttackSpawn(6008, spawnPosition, Quaternion.Euler(rotationAngles));
+            //attack.SetActive(true);
+        }
+        //GameObject attack = EnemyManager.Instance.EnemyAttackSpawn(6008, GameManager.Instance.player.transform.position, Quaternion.Euler(rotationAngles));
         //attack.SetActive(true);
     }
 }

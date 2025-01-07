@@ -81,7 +81,7 @@ public class EnemyAnimationController : MonoBehaviour
 
     public void MimicAttack()
     {
-        enemy.stateMachine.AttackState.MimicAttack();
+        enemy.stateMachine.AttackState.MimicAttack(enemy.transform);
     }
 
     public void EnemyBossDie()

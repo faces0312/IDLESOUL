@@ -26,7 +26,7 @@ public class UIMenuButtonController : MonoBehaviour
     {
         enterDungeon.onClick.AddListener(() =>
         {
-            UIManager.Instance.ShowUI("selectDungeon");
+            GameManager.Instance.GoldDungeon();
         });
 
         achievement.onClick.AddListener(() =>
