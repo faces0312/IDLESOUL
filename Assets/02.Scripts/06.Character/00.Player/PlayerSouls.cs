@@ -19,6 +19,7 @@ public class PlayerSouls : MonoBehaviour
     public event Action<Sprite> OnUpdateDefaultSprite;
     public event Action<Sprite> OnUpdateUltimateSprite;
     public event Action OnUpdateSoulIcon;
+    public event Action OnUpdateSpawnSoul;
 
     public int SpawnIndex { get => spawnIndex; }
     public Soul CurrentSoul { get; private set; }
@@ -178,6 +179,8 @@ public class PlayerSouls : MonoBehaviour
 
         // TODO : 스킬의 이미지가 변경
         UpdateSkillSprite();
+
+        OnUpdateSpawnSoul?.Invoke();
     }
 
     public void LevelUp()

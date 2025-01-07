@@ -25,6 +25,8 @@ public class SoundManager : SingletonDDOL<SoundManager>
     private void Start()
     {
         InitializeVolumes();
+
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void InitializeVolumes()
