@@ -73,8 +73,15 @@ public class SoulInventory : MonoBehaviour
 
     private void CheckInteractableBtn()
     {
-        if(SoulSquadSlot.soul == null)
+        if (SoulSquadSlot.soul == null)
         {
+            if (SoulSlot.soul == null)
+            {
+                equipBtn.interactable = false;
+                unEquipBtn.interactable = false;
+                return;
+            }
+
             equipBtn.interactable = true;
             unEquipBtn.interactable = false;
             return;
@@ -94,8 +101,23 @@ public class SoulInventory : MonoBehaviour
         }
         else
         {
-            equipBtn.interactable = true;
+            if (SoulSlot.soul == null)
+            {
+                equipBtn.interactable = false;
+                unEquipBtn.interactable = false;
+                return;
+            }
+
             unEquipBtn.interactable = false;
+
+            if (GameManager.Instance.player.PlayerSouls.CurrentSoul == SoulSlot.soul)
+            {
+                equipBtn.interactable = false;
+            }
+            else
+            {
+                equipBtn.interactable = true;
+            }
         }
     }
 
@@ -130,6 +152,8 @@ public class SoulInventory : MonoBehaviour
 
     public void OnEquipSoul()
     {
+        if (SoulSlot == null) return;
+
         SoulSlot.EquipSlot();
         GameManager.Instance.player.PlayerSouls.EquipSoul(SoulSlot.soulName, SoulSquadSlot.index);
         SoulSquadSlot.EquipSoul();
@@ -137,6 +161,8 @@ public class SoulInventory : MonoBehaviour
 
     public void OnUnEquipSoul()
     {
+        if (SoulSlot == null) return;
+
         SoulSlot.UnEquipSlot();
         GameManager.Instance.player.PlayerSouls.UnEquipSoul(SoulSquadSlot.index);
         SoulSquadSlot.UnEquipSoul();
