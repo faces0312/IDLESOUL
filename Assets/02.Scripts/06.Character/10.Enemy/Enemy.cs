@@ -67,8 +67,8 @@ public abstract class Enemy : BaseCharacter
 
         //현재스테이지에 따른 스텟 증가량을 적용 받음 
         statHandler.CurrentStat.iD = enemyDB.key;
-        statHandler.CurrentStat.health = new BigInteger((long)(enemyDB.Health * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter));
         statHandler.CurrentStat.maxHealth = new BigInteger((long)(enemyDB.Health * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter));
+        statHandler.CurrentStat.health = statHandler.CurrentStat.maxHealth;
         statHandler.CurrentStat.atk = new BigInteger((long)(enemyDB.Attack * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter));
         statHandler.CurrentStat.def = new BigInteger((long)(enemyDB.Defence * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter));
         statHandler.CurrentStat.moveSpeed = enemyDB.MoveSpeed;
@@ -94,7 +94,7 @@ public abstract class Enemy : BaseCharacter
         if (statHandler.CurrentStat.health <= 0)
             return;
 
-        damage = Mathf.Max(0, BigInteger.ToInt32(damage - StatHandler.CurrentStat.def)); //해당 Enemy의 방어력 계수 적용 
+        damage = Math.Max(0, BigInteger.ToUInt64(damage - StatHandler.CurrentStat.def)); //해당 Enemy의 방어력 계수 적용 
 
         base.TakeDamage(damage);
         HpUpdate();

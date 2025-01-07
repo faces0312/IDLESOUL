@@ -2,11 +2,6 @@ using System;
 using System.Text;
 using UnityEngine;
 
-[Serializable]
-public class ClearStageData
-{
-
-}
 
 public class DataManager : SingletonDDOL<DataManager>
 {

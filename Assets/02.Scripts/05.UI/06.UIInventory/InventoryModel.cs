@@ -84,7 +84,11 @@ public class InventoryModel : UIModel
 
                 //획득시 보유효과(패시브) 스텟 적용
                 GameManager.Instance.player.StatHandler.EquipItem(DictItems[userItem.ID].PassiveStat);
+            }
 
+            if(DictItems[userItem.ID].equip)
+            {
+                
             }
         }
     }

@@ -74,12 +74,14 @@ public class UserItemData
     public int ID;                  // 아이템의 ID
     public int Level;               // 아이템 강화 레벨
     public int GainStack;           // 아이템의 소유 갯수
+    public bool isEquip;            // 아이템 장착 여부
 
     public UserItemData(Item item)
     {
         ID = item.ItemStat.iD;
         Level = item.UpgradeLevel;
         GainStack = item.stack;
+        isEquip = item.equip;
     }
 
 }
@@ -313,7 +315,7 @@ public class Player : BaseCharacter
         item.equip = true;
 
         StatHandler.EquipItem(item.ItemStat);
-
+        DataManager.Instance.SaveUserData(UserData);
     }
 
     public void DisEquipItem()
@@ -321,6 +323,8 @@ public class Player : BaseCharacter
         equipItem.equip = false;
         StatHandler.UnEquipItem(equipItem.ItemStat);
         equipItem = null;
+
+        DataManager.Instance.SaveUserData(UserData);
     }
 
 
