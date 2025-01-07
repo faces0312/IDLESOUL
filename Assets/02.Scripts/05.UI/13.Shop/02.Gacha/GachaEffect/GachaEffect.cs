@@ -9,7 +9,6 @@ public class GachaEffect : MonoBehaviour
 {
     [SerializeField] private Image gachaImage;
     [SerializeField] private TextMeshProUGUI gachaText;
-    private List<Vector2> zoomPosition;
 
 
     private void Start()
