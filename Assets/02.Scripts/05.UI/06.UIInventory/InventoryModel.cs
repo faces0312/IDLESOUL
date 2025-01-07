@@ -86,9 +86,10 @@ public class InventoryModel : UIModel
                 GameManager.Instance.player.StatHandler.EquipItem(DictItems[userItem.ID].PassiveStat);
             }
 
+            //데이터 로드시 해당 아이템에 장착되어있으면 장착함
             if(DictItems[userItem.ID].equip)
             {
-                
+                GameManager.Instance.player.EquipItem(DictItems[userItem.ID]);
             }
         }
     }

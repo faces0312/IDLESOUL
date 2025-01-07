@@ -3,6 +3,7 @@ using System;
 using ScottGarland;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using static UnityEditor.Progress;
 
 public class UserData
 {
@@ -315,9 +316,13 @@ public class Player : BaseCharacter
         {
             equipItem.equip = false;
             StatHandler.UnEquipItem(equipItem.ItemStat);
+            GameManager.Instance.player.UserData.GainItem.Find(x => x.ID == equipItem.ItemStat.iD).isEquip = false;
         }
+
         equipItem = item;
         item.equip = true;
+
+        GameManager.Instance.player.UserData.GainItem.Find(x => x.ID == item.ItemStat.iD).isEquip = true;
 
         StatHandler.EquipItem(item.ItemStat);
         DataManager.Instance.SaveUserData(UserData);
@@ -327,8 +332,9 @@ public class Player : BaseCharacter
     {
         equipItem.equip = false;
         StatHandler.UnEquipItem(equipItem.ItemStat);
-        equipItem = null;
+        GameManager.Instance.player.UserData.GainItem.Find(x => x.ID == equipItem.ItemStat.iD).isEquip = false;
 
+        equipItem = null;
         DataManager.Instance.SaveUserData(UserData);
     }
 

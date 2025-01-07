@@ -14,7 +14,7 @@ public class BaseHpSystem : MonoBehaviour
 
     public void TakeDamage(BigInteger damage, StatHandler statHandler)
     {
-        var maxHelth = BigInteger.ToUInt64(statHandler.CurrentStat.maxHealth);
+        //var maxHelth = BigInteger.ToUInt64(statHandler.CurrentStat.maxHealth);
         var curHelth = BigInteger.ToUInt64(statHandler.CurrentStat.health);
 
         var result = BigInteger.ToUInt64(damage);
