@@ -55,14 +55,15 @@ public class SoulSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        OnSlotChanged?.Invoke(this);
+        OnUpdateInteractable?.Invoke();
+
         if (soul == null) return;
         if (!cursorDescription.activeSelf)
             cursorDescription.SetActive(true);
 
         cursorDescription.GetComponent<CursorDescription>().StartProgress();
         Invoke(nameof(ShowInfo), holdTime);
-        OnSlotChanged?.Invoke(this);
-        OnUpdateInteractable?.Invoke();
     }
 
     public void OnPointerUp(PointerEventData eventData)

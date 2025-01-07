@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MimicHp : MonoBehaviour
 {
+    public MimicEnemy mimic;
     public Slider hpSlider;
     public float gameDuration;
 
@@ -26,6 +27,7 @@ public class MimicHp : MonoBehaviour
 
             yield return null;
         }
-        GameManager.Instance.GoldDungeon();
+        GameManager.Instance.GoldDungeonEndilg();
+        mimic.gameObject.SetActive(false);
     }
 }
