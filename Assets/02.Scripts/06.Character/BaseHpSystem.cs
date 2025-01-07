@@ -14,28 +14,19 @@ public class BaseHpSystem : MonoBehaviour
 
     public void TakeDamage(BigInteger damage, StatHandler statHandler)
     {
-        //var maxHelth = BigInteger.ToUInt64(statHandler.CurrentStat.maxHealth);
-        var curHelth = BigInteger.ToUInt64(statHandler.CurrentStat.health);
-
-        var result = BigInteger.ToUInt64(damage);
-        if(curHelth - result > result) //unsinged 자료형이기에 
-        {
-            statHandler.CurrentStat.health = 0;
-        }
-        else
-        {
-            //statHandler.CurrentStat.health = Math.Clamp(curHelth - result, 0, maxHelth);
-            statHandler.CurrentStat.health = curHelth - result;
-        }
-       
-
+        statHandler.CurrentStat.health = statHandler.CurrentStat.health - damage;
         HpUpdate();
     }
     public void TakeHeal(BigInteger heal, StatHandler statHandler)
     {
-        var maxHelth = BigInteger.ToUInt64(statHandler.CurrentStat.maxHealth);
-        var curHelth = BigInteger.ToUInt64(statHandler.CurrentStat.health);
-        statHandler.CurrentStat.health = Math.Clamp(curHelth + BigInteger.ToUInt64(heal), 0, maxHelth);
+        if (statHandler.CurrentStat.health + heal >= statHandler.CurrentStat.maxHealth)
+        {
+            statHandler.CurrentStat.health = statHandler.CurrentStat.maxHealth;
+        }
+        else
+        {
+            statHandler.CurrentStat.health += heal;
+        }
 
         HpUpdate();
     }

@@ -11,11 +11,13 @@ public class UIPlayerHPDisplayView : MonoBehaviour, IUIBase
 
     public void HpRatioChange(BigInteger curHp , BigInteger maxHP)
     {
-        ulong curHpNum = BigInteger.ToUInt64(curHp);
-        ulong maxHpNum = BigInteger.ToUInt64(maxHP);
-        float result = curHpNum / (float)maxHpNum;
+        long curHpNum = BigInteger.ToInt64(curHp);
+        long maxHpNum = BigInteger.ToInt64(maxHP);
 
-        HPFrontImg.localScale = new Vector3(result, 1, 1);
+        // ulong을 double로 캐스팅하여 소수점 값을 계산
+        double healthValue = (double)curHpNum / maxHpNum;
+
+        HPFrontImg.localScale = new Vector3((float)healthValue, 1, 1);
 
         string curHealthString = Utils.FormatBigInteger(curHp);
         string maxHealthString = Utils.FormatBigInteger(maxHP);

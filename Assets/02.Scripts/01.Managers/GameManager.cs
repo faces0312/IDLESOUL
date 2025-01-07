@@ -67,7 +67,6 @@ public class GameManager : SingletonDDOL<GameManager>
     public void GameClear()
     {
         GainExp();
-        enemies.Clear();
         //이벤트 등록을 통해
         //GameManager.Instance.OnGameClearEvent += 게임클리어페이지를 선언할 수 있음
         isTryBoss = false;
@@ -126,8 +125,9 @@ public class GameManager : SingletonDDOL<GameManager>
         else
         {
             UIManager.Instance.tryBoss.SetActive(false);
-        }    
+        }
 
+        enemies.Clear();
         EnemyManager.Instance.EnemySpawnStart();
     }
 

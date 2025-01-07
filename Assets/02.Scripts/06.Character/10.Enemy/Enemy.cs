@@ -94,7 +94,15 @@ public abstract class Enemy : BaseCharacter
         if (statHandler.CurrentStat.health <= 0)
             return;
 
-        damage = Math.Max(0, BigInteger.ToUInt64(damage - StatHandler.CurrentStat.def)); //해당 Enemy의 방어력 계수 적용 
+        if (StatHandler.CurrentStat.def  > damage) //unsinged 자료형이기에 
+        {
+            damage = 0;
+        }
+        else
+        {
+            damage -= StatHandler.CurrentStat.def;//해당 Enemy의 방어력 계수 적용 
+        }
+
 
         base.TakeDamage(damage);
         HpUpdate();
@@ -118,9 +126,13 @@ public abstract class Enemy : BaseCharacter
 
     public void HpUpdate()
     {
-        float maxHelth = BigInteger.ToInt32(statHandler.CurrentStat.maxHealth);
-        float curHelth = BigInteger.ToInt32(statHandler.CurrentStat.health);
-        healthBar.value = curHelth/maxHelth;
+        long maxHelth = BigInteger.ToInt64(statHandler.CurrentStat.maxHealth);
+        long curHelth = BigInteger.ToInt64(statHandler.CurrentStat.health);
+
+        // ulong을 double로 캐스팅하여 소수점 값을 계산
+        double healthValue = (double)curHelth / maxHelth;
+
+        healthBar.value = (float)healthValue;
 
         if (healthBar.value < 1 && healthBar.value > 0)
             healthBar.gameObject.SetActive(true);
@@ -162,7 +174,7 @@ public abstract class Enemy : BaseCharacter
 
     public float GetAttackPower()
     {
-        return BigInteger.ToInt32(statHandler.CurrentStat.atk);
+        return BigInteger.ToUInt64(statHandler.CurrentStat.atk);
     }
 
     public virtual void OnDisable()

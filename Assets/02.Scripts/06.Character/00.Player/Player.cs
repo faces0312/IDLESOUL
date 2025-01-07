@@ -246,9 +246,17 @@ public class Player : BaseCharacter
     }
     public override void TakeDamage(BigInteger damage)
     {
-        damage = Mathf.Max(0, BigInteger.ToInt32(damage - (StatHandler.CurrentStat.def))); //Player 의 방어력 계수 적용 
+        ulong damageResult = BigInteger.ToUInt64(damage);
+        if (StatHandler.CurrentStat.def > damageResult) //unsinged 자료형이기에 
+        {
+            damageResult = 0;
+        }
+        else
+        {
+            damageResult = BigInteger.ToUInt64(damage - StatHandler.CurrentStat.def);//해당 Player의 방어력 계수 적용 
+        }
 
-        baseHpSystem.TakeDamage(damage, statHandler);
+        baseHpSystem.TakeDamage(damageResult, statHandler);
         UIManager.Instance.ShowUI<UIPlayerHPDisplayController>();
 
         // 데미지 폰트를 적용하는 부분
@@ -257,7 +265,7 @@ public class Player : BaseCharacter
         dmgFont.SetActive(true);
         dmgFont.transform.position = transform.position;
         dmgFont.transform.rotation = Quaternion.identity;
-        dmgFont.GetComponent<DamageFont>().SetDamage(Owner.Player, damage);
+        dmgFont.GetComponent<DamageFont>().SetDamage(Owner.Player, damageResult);
 
         if (statHandler.CurrentStat.health <= 0)
         {
@@ -273,38 +281,26 @@ public class Player : BaseCharacter
         switch (status)
         {
             case Status.Hp:
-                //userData.stat.MaxHealthLevel = statHandler.CurrentStat.MaxHealthLevel;
-                //userData.stat.maxHealth = statHandler.CurrentStat.maxHealth;
                 userData.stat.MaxHealthLevel = statHandler.BaseStat.MaxHealthLevel;
                 userData.stat.maxHealth = statHandler.BaseStat.maxHealth;
                 break;
-            case Status.Atk:
-                //userData.stat.AtkLevel = statHandler.CurrentStat.AtkLevel;
-                //userData.stat.atk = statHandler.CurrentStat.atk;       
+            case Status.Atk:     
                 userData.stat.AtkLevel = statHandler.BaseStat.AtkLevel;
                 userData.stat.atk = statHandler.BaseStat.atk;
                 break;
-            case Status.Def:
-                //userData.stat.DefLevel = statHandler.CurrentStat.DefLevel;
-                //userData.stat.def = statHandler.CurrentStat.def;       
+            case Status.Def:      
                 userData.stat.DefLevel = statHandler.BaseStat.DefLevel;
                 userData.stat.def = statHandler.BaseStat.def;
                 break;
-            case Status.ReduceDmg:
-                //userData.stat.ReduceDamageLevel = statHandler.CurrentStat.ReduceDamageLevel;
-                //userData.stat.reduceDamage = statHandler.CurrentStat.reduceDamage;     
+            case Status.ReduceDmg:  
                 userData.stat.ReduceDamageLevel = statHandler.BaseStat.ReduceDamageLevel;
                 userData.stat.reduceDamage = statHandler.BaseStat.reduceDamage;
                 break;
-            case Status.CritChance:
-                //userData.stat.CriticalRateLevel = statHandler.CurrentStat.CriticalRateLevel;
-                //userData.stat.critChance = statHandler.CurrentStat.critChance;       
+            case Status.CritChance:   
                 userData.stat.CriticalRateLevel = statHandler.BaseStat.CriticalRateLevel;
                 userData.stat.critChance = statHandler.BaseStat.critChance;
                 break;
-            case Status.CritDmg:
-                //userData.stat.CriticalDamageLevel = statHandler.CurrentStat.CriticalDamageLevel;
-                //userData.stat.critDamage = statHandler.CurrentStat.critDamage;         
+            case Status.CritDmg:      
                 userData.stat.CriticalDamageLevel = statHandler.BaseStat.CriticalDamageLevel;
                 userData.stat.critDamage = statHandler.BaseStat.critDamage;
                 break;
