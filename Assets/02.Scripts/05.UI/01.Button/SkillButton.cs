@@ -101,8 +101,11 @@ public class SkillButton : MonoBehaviour
         coolTimes[CurSoulIndex] = soul.Skills[(int)skillType].CoolTime;
         StartCoroutine(CoroutineCoolTime());
 
-        if(cutSceneObj != null)
+        if (cutSceneObj != null)
+        {
+            cutSceneObj.SetActive(true);
             ShowCutScene(soul);
+        }
     }
 
     private IEnumerator CoroutineCoolTime()
@@ -143,6 +146,9 @@ public class SkillButton : MonoBehaviour
 
     private void ShowCutScene(Soul soul)
     {
-
+        if(cutSceneObj.TryGetComponent(out UICutScene cutScene))
+        {
+            cutScene.SetSoulSprite(soul.soulName);
+        }
     }
 }

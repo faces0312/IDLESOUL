@@ -16,7 +16,7 @@ public class UICutScene : MonoBehaviour
     private Vector2 originBackPos;
     private Vector2 originSoulPos;
 
-    private Dictionary<string, Image> dicImages = new Dictionary<string, Image>();
+    private Dictionary<string, Sprite> dicImages = new Dictionary<string, Sprite>();
 
     private void Awake()
     {
@@ -30,12 +30,24 @@ public class UICutScene : MonoBehaviour
         originBackPos = backGroundImg.transform.localPosition;
         originSoulPos = soulImg.transform.localPosition;
 
-        //Image[] images = Resources.LoadAll<Image>("Sprite/TalkSprite");
+        var image1 = Resources.Load<Sprite>("Sprite/TalkSprite/Carmilla");
+        var image2 = Resources.Load<Sprite>("Sprite/TalkSprite/Claris");
+        var image3 = Resources.Load<Sprite>("Sprite/TalkSprite/Fleur");
+        var image4 = Resources.Load<Sprite>("Sprite/TalkSprite/Luen");
+        dicImages.Add("카르밀라", image1);
+        dicImages.Add("클라리스", image2);
+        dicImages.Add("플뢰르", image3);
+        dicImages.Add("루엔", image4);
 
+        GameManager.Instance.OnGameClearEvent += ResetValue;
+        GameManager.Instance.OnGameOverEvent += ResetValue;
     }
 
     private void OnEnable()
     {
+        // TODO : 컷신 때 게임이 멈춰야함
+        //Time.timeScale = 0f;
+
         // 활성화 시
         var seq = DOTween.Sequence();
 
@@ -46,15 +58,12 @@ public class UICutScene : MonoBehaviour
 
         soulImg.transform.DOLocalMoveY(70, 0.5f);
 
-        Invoke("TweenImage", 1.5f);
+        Invoke("TweenImage", 1f);
     }
 
     private void OnDisable()
     {
-        cutSceneImg.color = endColor;
-        backGroundImg.transform.localPosition = originBackPos;
-        soulImg.transform.localPosition = originSoulPos;
-        soulImg.color = new Color(soulImg.color.r, soulImg.color.g, soulImg.color.b, 0f);
+        ResetValue();
     }
 
     private void TweenImage()
@@ -70,11 +79,26 @@ public class UICutScene : MonoBehaviour
 
         seq2.Append(backGroundImg.transform.DOLocalMoveX(-190, 0.3f)).SetEase(Ease.InCubic);
         seq2.Append(cutSceneImg.DOFade(0f, 0.2f));
-        seq2.Play().SetUpdate(true).OnComplete(() => gameObject.SetActive(false));
+        seq2.Play().SetUpdate(true).OnComplete(() =>
+        {
+            gameObject.SetActive(false);
+            //Time.timeScale = 1f;
+        });
     }
 
-    public void SetSoulSprite(Sprite spr)
+    private void ResetValue()
     {
-        soulImg.sprite = spr;
+        cutSceneImg.color = endColor;
+        backGroundImg.transform.localPosition = originBackPos;
+        soulImg.transform.localPosition = originSoulPos;
+        soulImg.color = new Color(soulImg.color.r, soulImg.color.g, soulImg.color.b, 0f);
+    }
+
+    public void SetSoulSprite(string name)
+    {
+        if(dicImages.ContainsKey(name))
+        {
+            soulImg.sprite = dicImages[name];
+        }
     }
 }
