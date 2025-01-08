@@ -203,6 +203,8 @@ public class Player : BaseCharacter
         {
             //새로하기 , 기본 능력치를 제공 
             userData = new UserData(DataManager.Instance.UserDB.GetByKey(TestID));
+            userData.NickName = SceneDataManager.Instance.NickName;
+            DialogManager.Instance.NewStart = true;
         }
 
         statHandler = new StatHandler(StatType.Player, 0, userData);

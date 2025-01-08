@@ -52,5 +52,8 @@ public class GameSceneTigger : MonoBehaviour
 
         //UIManager 초기화
         UIManager.Instance.Init();
+
+        //DialogueManager 초기화
+        DialogManager.Instance.Init();
     }
 }
