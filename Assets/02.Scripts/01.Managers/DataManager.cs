@@ -20,6 +20,8 @@ public class DataManager : SingletonDDOL<DataManager>
     private ExchangeDBLoader exchangeDB;
     private TutorialDBLoader tutorialDB;
 
+    private DialogueLoader dialogue;
+
     public EnemyDBLoader EnemyDB { get => enemyDB; }
     public ItemDBLoader ItemDB { get => itemDB; }
     public SellItemDBLoader SellItemDB { get => sellItemDB; }
@@ -34,6 +36,7 @@ public class DataManager : SingletonDDOL<DataManager>
     public UserDB UserData { get => userData; set => userData = value; }
     public ExchangeDBLoader ExchangeDB { get => exchangeDB; }
     public TutorialDBLoader TutorialDB { get => tutorialDB; }
+    public DialogueLoader Dialogue { get => dialogue; }
 
     protected override void Awake()
     {
@@ -50,6 +53,7 @@ public class DataManager : SingletonDDOL<DataManager>
         statUpgradeDB = new StatUpgradeDBLoader(Const.JsonStatUpgradeDBPath);
         exchangeDB = new ExchangeDBLoader(Const.JsonExchangeDBPath);
         tutorialDB = new TutorialDBLoader(Const.JsonTutorialDBPath);
+        dialogue = new DialogueLoader(Const.JsonDialogue);
     }
 
     public void Init()

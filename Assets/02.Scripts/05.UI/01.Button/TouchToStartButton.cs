@@ -11,6 +11,9 @@ public class TouchToStartButton : MonoBehaviour
     [SerializeField] private Button LoadStartButton;
 
     [SerializeField] private GameObject DataDeleteAlarmPopUp;
+    [SerializeField] private GameObject GetNameObject;
+
+    [SerializeField] private Button NameConfirm;
 
     private JsonController jsonController = new JsonController();
 
@@ -22,6 +25,8 @@ public class TouchToStartButton : MonoBehaviour
         LoadStartButton.onClick.AddListener(LoadStartGame);
         LoadStartButton.onClick.AddListener(() => UITween.OnClickEffect(LoadStartButton.gameObject));
 
+        NameConfirm.onClick.AddListener(NameIsSet);
+
         UITween.ShowUI(DataDeleteButton.gameObject);
         UITween.ShowUI(LoadStartButton.gameObject);
     }
@@ -32,12 +37,19 @@ public class TouchToStartButton : MonoBehaviour
         {
             jsonController.DeleteJsonData(Const.JsonUserDataPath);
             OpenDataDeletePopUp();
-            Invoke("ClodseDataDeletePopUp", 3.0f);
+            Invoke("ClodseDataDeletePopUp", 3.0f); 
         }
     }
     public void LoadStartGame()
     {
-        SceneDataManager.Instance.LoadScene("GameScene_SMS");
+        if(jsonController.CheckJsonData(Const.JsonUserDataPath) == false)
+        {
+            GetNameObject.SetActive(true);
+        }
+        else
+        {
+            SceneDataManager.Instance.LoadScene("GameScene_SMS");
+        }
     }
 
     public void OpenDataDeletePopUp()
@@ -47,5 +59,10 @@ public class TouchToStartButton : MonoBehaviour
     public void ClodseDataDeletePopUp()
     {
         UITween.HideUI(DataDeleteAlarmPopUp);
+    }
+    public void NameIsSet()
+    {
+        SceneDataManager.Instance.NickName = GetNameObject.GetComponentInChildren<TMP_InputField>().text;
+        SceneDataManager.Instance.LoadScene("GameScene_SMS");
     }
 }
