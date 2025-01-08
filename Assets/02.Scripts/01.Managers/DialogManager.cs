@@ -8,6 +8,7 @@ public class DialogManager : Singleton<DialogManager>
     public ConversationUI ConversationUI;
 
     public bool NewStart;
+    private bool isDead;
 
     protected override void Awake()
     {
@@ -31,8 +32,9 @@ public class DialogManager : Singleton<DialogManager>
     
     public void IfDead(AchieveEvent arg)
     {
-        if(arg.Action == Enums.ActionType.Player && arg.Type == Enums.AchievementType.Kill)
+        if(arg.Action == Enums.ActionType.Player && arg.Type == Enums.AchievementType.Kill && isDead == false)
         {
+            isDead = true;
             StartConversation(2);
         }
     }

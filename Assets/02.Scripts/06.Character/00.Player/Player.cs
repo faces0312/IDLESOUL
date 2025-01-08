@@ -3,6 +3,7 @@ using System;
 using ScottGarland;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using System.Diagnostics.Contracts;
 
 public class UserData
 {
@@ -139,6 +140,7 @@ public class Player : BaseCharacter
     public bool isAuto;//오토버튼이 활성화됐는지
     public bool isJoyStick;//조이스틱으로 조종 중인지
     public bool isController;//컨트롤러로 조종 중인지
+    public bool isDead; //사망 시 모디파이어 조정용
 
     public PlayerAnimationController PlayerAnimationController { get => playerAnimationController; }
     public PlayerSouls PlayerSouls { get => playerSouls; }
@@ -198,6 +200,7 @@ public class Player : BaseCharacter
             //이어하기
             userData = new UserData(DataManager.Instance.LoadUserData());
             GameManager.Instance.LoadData = true;
+            isDead = true;
         }
         else
         {
@@ -351,6 +354,7 @@ public class Player : BaseCharacter
 
             rb.velocity = Vector3.zero; //캐릭터 이동되지않게 속도를 0으로 수정
             rb.isKinematic = true;
+            isDead = true;
             GameManager.Instance.GameOver();
             enabled = false;
         }

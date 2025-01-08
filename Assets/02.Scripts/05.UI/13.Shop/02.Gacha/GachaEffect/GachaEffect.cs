@@ -24,12 +24,12 @@ public class GachaEffect : MonoBehaviour
         Time.timeScale = 0;
         Sequence seq = DOTween.Sequence();
         seq.SetUpdate(true);
-        seq.Append(gachaImage.transform.DOMoveY(600, 0));
+        seq.Append(gachaImage.transform.DOMoveY(500, 0));
         seq.Append(gachaText.DOFade(0, 0));
         seq.Append(gachaText.DOFade(1, 1));
         seq.Append(gachaText.DOFade(0, 0.5f));
         seq.Append(gachaImage.DOColor(Color.white, 1));
-        seq.Append(gachaImage.transform.DOMoveY(-600, 1));
+        seq.Append(gachaImage.transform.DOMoveY(-500, 1));
         seq.Append(gachaImage.DOColor(Color.black, 1));
         seq.OnComplete(() =>
         {
