@@ -58,7 +58,7 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
 
     private Color HexaToColor(string hexa) //헥사코드 기반 컬러로 변경
     {
-        if(hexa != null)
+        if (hexa != null)
         {
             ColorUtility.TryParseHtmlString(hexa, out Color color);
             return color;
@@ -75,16 +75,23 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
 
     private IEnumerator CoConversation(int cycle) //사이클을 입력하면 해당 사이클의 모든 내용을 출력
     {
-        while(true)
+        while (true)
         {
             this.gameObject.SetActive(true);
             Dialog = DataManager.Instance.Dialog.GetByCycle(cycle);
-            for(int i = 1; i < Dialog.Count + 1; i ++)
+            for (int i = 1; i < Dialog.Count; i++)
             {
                 if (Dialog[i].ConversationType == 1 || Dialog[i].ConversationType == 2)
                 {
                     Print(Dialog[i]);
                 }
+                else
+                {
+                    i = Selection(Dialog[i + 1], Dialog[i + 2]);
+                }
+
+                if (Dialog[i].NextIndex != 0) i = Dialog[i].NextIndex - 1;
+
                 isConfirm = false;
                 yield return click;
             }
@@ -100,8 +107,10 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
         isConfirm = true;
     }
 
-    public void Selection(Dialog log)
+    public int Selection(Dialog log1, Dialog log2)
     {
-
+        //선택지 1번 = log1
+        //선택지 2번 = log2
+        return 0; //선택지 결과에 따른 다음 index값 반환
     }
 }
