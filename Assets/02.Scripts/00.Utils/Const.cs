@@ -18,7 +18,7 @@ public static class Const
 
     public static readonly string JsonUserDataPath = "/userdata.json";
 
-    public static readonly string JsonDialogue = "JSON/Dialogue";
+    public static readonly string JsonDialog = "JSON/Dialogue";
 
     public static readonly int POOL_KEY_PLAYERPROJECTILE = 10; //Player 투사체 DB가 없기에 따로 Const에 저장됨
     public static readonly string PLAYER_PROJECTILE_ENERGYBOLT_PATH = "Prefabs/Player/Attack/EnergyBolt";

@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 
 [Serializable]
-public class Dialogue
+public class Dialog
 {
     /// <summary>
     /// key
@@ -62,19 +62,19 @@ public class Dialogue
     public int NextIndex;
 
 }
-public class DialogueLoader
+public class DialogLoader
 {
-    public List<Dialogue> ItemsList { get; private set; }
-    public Dictionary<int, Dialogue> ItemsDict { get; private set; }
-    public List<Dialogue> ListByCycle { get; private set; }
+    public List<Dialog> ItemsList { get; private set; }
+    public Dictionary<int, Dialog> ItemsDict { get; private set; }
+    public List<Dialog> ListByCycle { get; private set; }
 
-    public DialogueLoader(string path = "JSON/Dialogue")
+    public DialogLoader(string path = "JSON/Dialogue")
     {
         string jsonData;
         jsonData = Resources.Load<TextAsset>(path).text;
         ItemsList = JsonUtility.FromJson<Wrapper>(jsonData).Items;
-        ItemsDict = new Dictionary<int, Dialogue>();
-        ListByCycle = new List<Dialogue>();
+        ItemsDict = new Dictionary<int, Dialog>();
+        ListByCycle = new List<Dialog>();
         foreach (var item in ItemsList)
         {
             ItemsDict.Add(item.key, item);
@@ -84,10 +84,10 @@ public class DialogueLoader
     [Serializable]
     private class Wrapper
     {
-        public List<Dialogue> Items;
+        public List<Dialog> Items;
     }
 
-    public Dialogue GetByKey(int key)
+    public Dialog GetByKey(int key)
     {
         if (ItemsDict.ContainsKey(key))
         {
@@ -95,7 +95,7 @@ public class DialogueLoader
         }
         return null;
     }
-    public Dialogue GetByIndex(int index)
+    public Dialog GetByIndex(int index)
     {
         if (index >= 0 && index < ItemsList.Count)
         {
@@ -104,10 +104,10 @@ public class DialogueLoader
         return null;
     }
 
-    public List<Dialogue> GetByCycle(int cycle)
+    public List<Dialog> GetByCycle(int cycle)
     {
         ListByCycle.Clear();
-        foreach (Dialogue log in ItemsList)
+        foreach (Dialog log in ItemsList)
         {
             if(log.cycle == cycle)
             {

@@ -14,17 +14,20 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Button skip;
 
     public Action CycleDone;
+    public int CurCycle = 0;
 
     private Coroutine conversation;
-    private List<Dialogue> dialogue;
+    private List<Dialog> Dialog;
     private WaitUntil click;
     private bool isConfirm;
     private bool isSkip;
     private string Name;
 
-    private void Start()
+    private void Awake()
     {
-        dialogue = new List<Dialogue>();
+        DialogManager.Instance.ConversationUI = this;
+
+        Dialog = new List<Dialog>();
         click = new WaitUntil(() => //클릭 시 true를 반환
         {
             if (isSkip == true)
@@ -39,7 +42,7 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
         this.gameObject.SetActive(false);
     }
 
-    private void Print(Dialogue log) //출력
+    private void Print(Dialog log) //출력
     {
         this.characterImage.sprite = Resources.Load<Sprite>(log.CharacterImage);
         this.characterImage.color = HexaToColor(log.ImageColor);
@@ -49,7 +52,7 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
 
     private string ReplaceHolder(string text)
     {
-        text.Replace("${Name}", Name);
+        text.Replace("{Name}", Name);
         return text;
     }
 
@@ -65,7 +68,9 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
 
     public void StartConversation(int cycle) //외부에서 접근 가능한 코루틴 시작 트리거
     {
+        this.gameObject.SetActive(true);
         conversation = StartCoroutine(CoConversation(cycle));
+        CurCycle = cycle;
     }
 
     private IEnumerator CoConversation(int cycle) //사이클을 입력하면 해당 사이클의 모든 내용을 출력
@@ -73,15 +78,19 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
         while(true)
         {
             this.gameObject.SetActive(true);
-            dialogue = DataManager.Instance.Dialogue.GetByCycle(cycle);
-            foreach(var log in dialogue)
+            Dialog = DataManager.Instance.Dialog.GetByCycle(cycle);
+            for(int i = 1; i < Dialog.Count + 1; i ++)
             {
-                Print(log);
+                if (Dialog[i].ConversationType == 1 || Dialog[i].ConversationType == 2)
+                {
+                    Print(Dialog[i]);
+                }
                 isConfirm = false;
-                yield return click; //클릭 시 계속 진행
+                yield return click;
             }
             StopCoroutine(conversation);
             this.gameObject.SetActive(false);
+            CycleDone?.Invoke();
             yield return null;
         }
     }
@@ -91,7 +100,7 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
         isConfirm = true;
     }
 
-    private void StartTutorial()
+    public void Selection(Dialog log)
     {
 
     }
