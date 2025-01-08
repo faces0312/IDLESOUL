@@ -39,6 +39,8 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
         if (GameManager.Instance.player.UserData == null) Name = "a";
         else Name = GameManager.Instance.player.UserData.NickName;
 
+        skip.onClick.AddListener(() => isSkip = true);
+
         this.gameObject.SetActive(false);
     }
 
@@ -70,6 +72,7 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
     {
         this.gameObject.SetActive(true);
         conversation = StartCoroutine(CoConversation(cycle));
+        Time.timeScale = 0;
         CurCycle = cycle;
     }
 
@@ -79,7 +82,7 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
         {
             this.gameObject.SetActive(true);
             Dialog = DataManager.Instance.Dialog.GetByCycle(cycle);
-            for (int i = 1; i < Dialog.Count; i++)
+            for (int i = 0; i < Dialog.Count; i++)
             {
                 if (Dialog[i].ConversationType == 1 || Dialog[i].ConversationType == 2)
                 {
@@ -103,6 +106,8 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
                 isConfirm = false;
                 yield return click;
             }
+            if (Time.timeScale < 1) Time.timeScale = 1;
+            isSkip = false;
             StopCoroutine(conversation);
             this.gameObject.SetActive(false);
             CycleDone?.Invoke();
