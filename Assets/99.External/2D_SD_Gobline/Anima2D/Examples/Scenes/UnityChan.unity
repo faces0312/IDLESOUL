@@ -3401,37 +3401,37 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   springBones:
-  - {fileID: 1538763718}
-  - {fileID: 1024937446}
-  - {fileID: 488907789}
-  - {fileID: 498080695}
-  - {fileID: 2006437127}
-  - {fileID: 938744059}
-  - {fileID: 1882902505}
-  - {fileID: 1312059607}
-  - {fileID: 2146141749}
-  - {fileID: 1750586126}
-  - {fileID: 1269695016}
-  - {fileID: 1166255367}
-  - {fileID: 937933337}
-  - {fileID: 1141462348}
-  - {fileID: 1269118997}
-  - {fileID: 673183565}
-  - {fileID: 1003696187}
-  - {fileID: 1480816829}
-  - {fileID: 714723620}
-  - {fileID: 1574128761}
-  - {fileID: 1738895998}
-  - {fileID: 1208690065}
-  - {fileID: 1537933523}
-  - {fileID: 1243443576}
-  - {fileID: 909037441}
-  - {fileID: 457077248}
-  - {fileID: 2079033698}
-  - {fileID: 1879731470}
-  - {fileID: 1136976460}
-  - {fileID: 1382742428}
-  - {fileID: 295410371}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!95 &1029556012
 Animator:
   serializedVersion: 5
