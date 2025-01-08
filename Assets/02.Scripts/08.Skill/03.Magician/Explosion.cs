@@ -50,7 +50,7 @@ public class Explosion : MonoBehaviour
             {
                 damageable.TakeDamage(Utils.CriticalCaculate(GameManager.Instance.player.StatHandler, value));
                 //damageable.TakeDamage(value);
-                damageable.TakeDamage(value);
+                //damageable.TakeDamage(value);
             }
         }
     }

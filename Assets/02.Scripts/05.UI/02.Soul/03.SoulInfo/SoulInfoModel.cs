@@ -20,7 +20,7 @@ public class SoulInfoModel : UIModel
         {
             //플레이어 골드 - 업그레이드 코스트 비용 적용
             GameManager.Instance.player.UserData.Gold =
-                Mathf.Max(0, GameManager.Instance.player.UserData.Gold - BigInteger.ToInt32(Utils.SoulUpgradeCost(LevelType.Soul, soul)));
+                Math.Max(0, GameManager.Instance.player.UserData.Gold - BigInteger.ToInt32(Utils.SoulUpgradeCost(LevelType.Soul, soul)));
 
             soul.LevelUP(amount);
             OnInfoChanged?.Invoke();

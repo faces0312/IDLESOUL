@@ -92,61 +92,65 @@ public static class Utils
     /// <param name="baseCost">초기 비용. 레벨 1에서의 기본 비용입니다.</param>
     /// <param name="playerStatLevel">현재 레벨</param>
     /// <param name="growRate">코스트 증가율 (예: 1.5~2.0 사이).</param>
+    /// <param name="growthExponent">성장 곡선의 형태를 결정. (성장속도) </param>    
     /// <param name="constantIncrease">레벨마다 고정적으로 추가되는 비용 (선택 사항).</param>
     /// <returns></returns>
     public static BigInteger UpgradeCost(Status statType)
     {
-        int baseCost = 0;
+        float baseCost = 0;
         float growRate = 0;
         int playerStatLevel = 0;
         int constIncrease = 0;
+        float growthExponent = 1.2f;
 
         switch (statType)
         {
             case Status.Hp:
                 /*필요한 데이터를 StatUpgradeDB에서 호출해서 사용 */
                 baseCost = DataManager.Instance.StatUpgradeDB.GetByKey(100).MaxHealthBaseCost;
-                growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).MaxHealthGrowRate;
+                growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).MaxHealthGrowCost;
                 /*플레이어의 스텟 레벨을 호출 */
                 playerStatLevel = GameManager.Instance.player.StatHandler.BaseStat.MaxHealthLevel;
-                constIncrease = 20;
+
                 break;
             case Status.Atk:
                 baseCost = DataManager.Instance.StatUpgradeDB.GetByKey(100).AtkBaseCost;
-                growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).AtkGrowRate;
+                growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).AtkGrowCost;
                 playerStatLevel = GameManager.Instance.player.StatHandler.BaseStat.AtkLevel;
-                constIncrease = 20;
+
                 break;
             case Status.Def:
                 baseCost = DataManager.Instance.StatUpgradeDB.GetByKey(100).DefBaseCost;
-                growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).DefGrowRate;
+                growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).DefGrowCost;
                 playerStatLevel = GameManager.Instance.player.StatHandler.BaseStat.DefLevel;
-                constIncrease = 20;
+
                 break;
             case Status.ReduceDmg:
                 baseCost = DataManager.Instance.StatUpgradeDB.GetByKey(100).ReduceDamageBaseCost;
-                growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).ReduceDamageGrowRate;
+                growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).ReduceDamageGrowCost;
                 playerStatLevel = GameManager.Instance.player.StatHandler.BaseStat.ReduceDamageLevel;
-                constIncrease = 20;
+
                 break;
             case Status.CritChance:
                 baseCost = DataManager.Instance.StatUpgradeDB.GetByKey(100).CriticalRateBaseCost;
-                growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).CriticalRateGrowRate;
+                growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).CriticalRateGrowCost;
                 playerStatLevel = GameManager.Instance.player.StatHandler.BaseStat.CriticalRateLevel;
-                constIncrease = 20;
+
                 break;
             case Status.CritDmg:
                 baseCost = DataManager.Instance.StatUpgradeDB.GetByKey(100).CriticalDamageBaseCost;
-                growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).CriticalDamageGrowRate;
+                growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).CriticalDamageGrowCost;
                 playerStatLevel = GameManager.Instance.player.StatHandler.BaseStat.CriticalDamageLevel;
-                constIncrease = 20;
+
                 break;
         }
 
         //코스트가 증가하는 기본적인 적용 수식 중 하나 
-        //int Cost = (int)(baseCost * Mathf.Pow(playerStatLevel, growRate) + (playerStatLevel * constIncrease));
-        int Cost = (int)(baseCost * ((Mathf.Log(playerStatLevel + 1, growRate))));
-        return new BigInteger(Cost);
+        //int Cost = (int)(baseCost * Mathf.Pow(playerStatLevel +1, growRate) + (playerStatLevel));
+        int Cost = (int)(baseCost * (1 + growRate * (Mathf.Pow(playerStatLevel + 1, growthExponent))));
+
+        //int Cost = (int)(baseCost * ((Mathf.Log(playerStatLevel + 1, growRate))));
+        return Cost;
 
     }
 
@@ -178,27 +182,26 @@ public static class Utils
                 /*플레이어의 현재 스텟 레벨을 호출 */
                 playerStatLevel = GameManager.Instance.player.StatHandler.BaseStat.MaxHealthLevel;
                 constStat = DataManager.Instance.UserDB.GetByKey().MaxHealth;
-                playerStat = GameManager.Instance.player.StatHandler.CurrentStat.maxHealth;
+                playerStat = GameManager.Instance.player.StatHandler.BaseStat.maxHealth;
                 break;
             case Status.Atk:
                 baseStat = DataManager.Instance.StatUpgradeDB.GetByKey(100).AtkBaseStat;
                 growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).AtkGrowRate;
                 playerStatLevel = GameManager.Instance.player.StatHandler.BaseStat.AtkLevel;
                 constStat = DataManager.Instance.UserDB.GetByKey().Atk;
-                playerStat = GameManager.Instance.player.StatHandler.CurrentStat.atk;
+                playerStat = GameManager.Instance.player.StatHandler.BaseStat.atk;
                 break;
             case Status.Def:
                 baseStat = DataManager.Instance.StatUpgradeDB.GetByKey(100).DefBaseStat;
                 growRate = DataManager.Instance.StatUpgradeDB.GetByKey(100).DefGrowRate;
                 playerStatLevel = GameManager.Instance.player.StatHandler.BaseStat.DefLevel;
                 constStat = DataManager.Instance.UserDB.GetByKey().Def;
-                playerStat = GameManager.Instance.player.StatHandler.CurrentStat.def;
+                playerStat = GameManager.Instance.player.StatHandler.BaseStat.def;
                 break;
         }
 
         //스탯 = 기본값 × (1 + 성장 계수 × (player의 현재 스텟 레벨 ^ 성장 지수))
         //int statResult = (int)(baseStat * (1 + growRate * (Mathf.Pow(playerStatLevel + nextLevelStat, growthExponent))));
-
         int result = (int)(baseStat * (Mathf.Log(playerStatLevel + 1, growRate)) * 100); // 0.957511 -> 95.71..%
 
         return BigInteger.Divide(BigInteger.Multiply(playerStat, result),100)/* + constStat*/;

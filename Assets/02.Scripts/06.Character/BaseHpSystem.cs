@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using ScottGarland;
 using UnityEngine.UI;
+using System;
 
 public class BaseHpSystem : MonoBehaviour
 {
@@ -13,17 +14,19 @@ public class BaseHpSystem : MonoBehaviour
 
     public void TakeDamage(BigInteger damage, StatHandler statHandler)
     {
-        int maxHelth = BigInteger.ToInt32(statHandler.CurrentStat.maxHealth);
-        int curHelth = BigInteger.ToInt32(statHandler.CurrentStat.health);
-        statHandler.CurrentStat.health = Mathf.Clamp(curHelth - BigInteger.ToInt32(damage), 0, maxHelth);
-
+        statHandler.CurrentStat.health = statHandler.CurrentStat.health - damage;
         HpUpdate();
     }
     public void TakeHeal(BigInteger heal, StatHandler statHandler)
     {
-        int maxHelth = BigInteger.ToInt32(statHandler.CurrentStat.maxHealth);
-        int curHelth = BigInteger.ToInt32(statHandler.CurrentStat.health);
-        statHandler.CurrentStat.health = Mathf.Clamp(curHelth + BigInteger.ToInt32(heal), 0, maxHelth);
+        if (statHandler.CurrentStat.health + heal >= statHandler.CurrentStat.maxHealth)
+        {
+            statHandler.CurrentStat.health = statHandler.CurrentStat.maxHealth;
+        }
+        else
+        {
+            statHandler.CurrentStat.health += heal;
+        }
 
         HpUpdate();
     }

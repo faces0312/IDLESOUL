@@ -10,9 +10,9 @@
       "MaxHealthLevel": 1,
       "MaxHealth": 500,
       "AtkLevel": 1,
-      "Atk": 100,
+      "Atk": 70,
       "DefLevel": 1,
-      "Def": 10,
+      "Def": 50,
       "ReduceDamageLevel": 1,
       "ReduceDamage": 0,
       "CriticalRateLevel": 1,
@@ -27,7 +27,8 @@
       "PlayTimeInSeconds": 0,
       "CurStageID": 0,
       "ClearStageCycle": 0,
-      "StageModifier": 0
+      "StageModifier": 0,
+      "EquipItemID": 0
     }
   ]
 }
