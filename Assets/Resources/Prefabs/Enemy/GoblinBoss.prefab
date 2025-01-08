@@ -1541,6 +1541,7 @@ MonoBehaviour:
   attack: 0
   maxHealth: 0
   currentHealth: 0
+  health: 
   isSkillCharging: 0
   skillZone: {fileID: 4440956020437451128}
   skillChargingEffect: {fileID: 7247622969348079885}
@@ -2022,7 +2023,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2.3
+  m_Radius: 3.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2550392190413295080
 MonoBehaviour:

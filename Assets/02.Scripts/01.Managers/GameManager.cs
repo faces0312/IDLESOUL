@@ -127,6 +127,8 @@ public class GameManager : SingletonDDOL<GameManager>
             UIManager.Instance.tryBoss.SetActive(false);
         }
 
+        joyStick.ResumeAutoModeAfterStun();
+
         enemies.Clear();
         EnemyManager.Instance.EnemySpawnStart();
     }

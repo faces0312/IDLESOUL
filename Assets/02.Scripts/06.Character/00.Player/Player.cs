@@ -3,7 +3,6 @@ using System;
 using ScottGarland;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
-using static UnityEditor.Progress;
 
 public class UserData
 {
