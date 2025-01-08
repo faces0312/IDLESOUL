@@ -116,12 +116,12 @@ public class UserDB
     /// <summary>
     /// Gold
     /// </summary>
-    public int Gold;
+    public long Gold;
 
     /// <summary>
     /// Diamonds
     /// </summary>
-    public int Diamonds;
+    public long Diamonds;
 
     /// <summary>
     /// PlayTimeInSeconds

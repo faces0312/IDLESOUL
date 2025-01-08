@@ -13,14 +13,27 @@ public class SoulInfoModel : UIModel
 
     public Soul soul;
 
+    public void GoldCheck(LevelType buyType)
+    {
+        long result = GameManager.Instance.player.UserData.Gold - BigInteger.ToInt32(Utils.SoulUpgradeCost(buyType, soul));
+
+        if (result >= 0)
+        {
+            GameManager.Instance.player.UserData.Gold = result;
+        }
+        else
+        {
+            GameManager.Instance.player.UserData.Gold = 0;
+        }
+    }
+
     public void SoulLevelUp(int amount)
     {
         //플레이어가 가지고 있는 골드가 업그레이드 코스트보다 높으면 true
         if (GameManager.Instance.player.UserData.Gold >= Utils.SoulUpgradeCost(LevelType.Soul, soul))
         {
             //플레이어 골드 - 업그레이드 코스트 비용 적용
-            GameManager.Instance.player.UserData.Gold =
-                Math.Max(0, GameManager.Instance.player.UserData.Gold - BigInteger.ToInt32(Utils.SoulUpgradeCost(LevelType.Soul, soul)));
+            GoldCheck(LevelType.Soul);
 
             soul.LevelUP(amount);
             OnInfoChanged?.Invoke();
@@ -34,8 +47,7 @@ public class SoulInfoModel : UIModel
         if (GameManager.Instance.player.UserData.Gold >= Utils.SoulUpgradeCost(LevelType.Default, soul))
         {
             //플레이어 골드 - 업그레이드 코스트 비용 적용
-            GameManager.Instance.player.UserData.Gold =
-                Mathf.Max(0, GameManager.Instance.player.UserData.Gold - BigInteger.ToInt32(Utils.SoulUpgradeCost(LevelType.Default, soul)));
+            GoldCheck(LevelType.Default);
 
             soul.UpgradeSkill(SkillType.Default, amount);
             OnDefaultSkillChanged?.Invoke();
@@ -48,8 +60,7 @@ public class SoulInfoModel : UIModel
         if (GameManager.Instance.player.UserData.Gold >= Utils.SoulUpgradeCost(LevelType.Ultimate, soul))
         {
             //플레이어 골드 - 업그레이드 코스트 비용 적용
-            GameManager.Instance.player.UserData.Gold =
-                Mathf.Max(0, GameManager.Instance.player.UserData.Gold - BigInteger.ToInt32(Utils.SoulUpgradeCost(LevelType.Ultimate, soul)));
+            GoldCheck(LevelType.Ultimate);
 
             soul.UpgradeSkill(SkillType.Ultimate, amount);
             OnUltimateSkillChanged?.Invoke();
@@ -62,8 +73,7 @@ public class SoulInfoModel : UIModel
         if (GameManager.Instance.player.UserData.Gold >= Utils.SoulUpgradeCost(LevelType.Passive, soul))
         {
             //플레이어 골드 - 업그레이드 코스트 비용 적용
-            GameManager.Instance.player.UserData.Gold =
-                Mathf.Max(0, GameManager.Instance.player.UserData.Gold - BigInteger.ToInt32(Utils.SoulUpgradeCost(LevelType.Passive, soul)));
+            GoldCheck(LevelType.Passive);
 
             soul.UpgradeSkill(SkillType.Passive, amount);
             soul.ApplyPassiveSkill();

@@ -8,8 +8,8 @@ public class UserData
 {
     public int UID;
     public string NickName;
-    public int Gold;
-    public int Diamonds;
+    public long Gold;
+    public long Diamonds;
     public int PlayTimeInSeconds;
     public int Level; // 계정 레벨
     public int Exp; // 계정 현재 경험치
