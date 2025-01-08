@@ -9,7 +9,7 @@
       "text": "이… …세요?",
       "CharacterImage": "Sprite/TalkSprite/Claris",
       "BackgroundMusic": "",
-      "EffectMusic": "Sound/Talk/Chat",
+      "EffectMusic": "",
       "ImageColor": "#000000",
       "NextIndex": 0
     },
@@ -22,7 +22,7 @@
       "text": "정신이... 드세요?",
       "CharacterImage": "Sprite/TalkSprite/Claris",
       "BackgroundMusic": "",
-      "EffectMusic": "Sound/Talk/Chat",
+      "EffectMusic": "",
       "ImageColor": "#000000",
       "NextIndex": 0
     },
@@ -61,7 +61,7 @@
       "text": "앗... 천천히요. 갑자기 움직이시면... 다치실지도 몰라요.",
       "CharacterImage": "Sprite/TalkSprite/Claris",
       "BackgroundMusic": "",
-      "EffectMusic": "Sound/Talk/Chat",
+      "EffectMusic": "",
       "ImageColor": "#FFFFFF",
       "NextIndex": 0
     },
@@ -87,7 +87,7 @@
       "text": "저.. 저는 클라리스.. 에요…\n기억이 안나시나요…? {Name}님..",
       "CharacterImage": "Sprite/TalkSprite/Claris",
       "BackgroundMusic": "",
-      "EffectMusic": "Sound/Talk/Chat",
+      "EffectMusic": "",
       "ImageColor": "#FFFFFF",
       "NextIndex": 0
     },
@@ -113,7 +113,7 @@
       "text": "네..? 아, 네 맞아요..",
       "CharacterImage": "Sprite/TalkSprite/Claris",
       "BackgroundMusic": "",
-      "EffectMusic": "Sound/Talk/Chat",
+      "EffectMusic": "",
       "ImageColor": "#FFFFFF",
       "NextIndex": 0
     },
@@ -152,7 +152,7 @@
       "text": "놈.. 놈들이에요!! 시간이 없어요!!",
       "CharacterImage": "Sprite/TalkSprite/Claris",
       "BackgroundMusic": "",
-      "EffectMusic": "Sound/Talk/Chat",
+      "EffectMusic": "",
       "ImageColor": "#FFFFFF",
       "NextIndex": 0
     },
@@ -178,7 +178,7 @@
       "text": "설명은 나중에 해드릴테니깐!\n잠시 몸 좀 빌리겠습니다..!!",
       "CharacterImage": "Sprite/TalkSprite/Claris",
       "BackgroundMusic": "",
-      "EffectMusic": "Sound/Talk/Chat",
+      "EffectMusic": "",
       "ImageColor": "#000000",
       "NextIndex": 0
     },

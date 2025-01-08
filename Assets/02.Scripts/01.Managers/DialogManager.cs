@@ -20,4 +20,9 @@ public class DialogManager : Singleton<DialogManager>
             ConversationUI.StartConversation(1);
         }
     }
+
+    public void StartConversation(int cycle)
+    {
+        ConversationUI.StartConversation(cycle);
+    }
 }

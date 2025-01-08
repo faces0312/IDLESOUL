@@ -89,6 +89,14 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
                 {
                     i = Selection(Dialog[i + 1], Dialog[i + 2]);
                 }
+                if (Resources.Load<AudioClip>(Dialog[i].EffectMusic) != null)
+                {
+                    var audioSource = ObjectPoolManager.Instance.GetPool(Const.AUDIO_SOURCE_KEY, Const.AUDIO_SOURCE_POOL_KEY).GetObject();
+                    audioSource.SetActive(true);
+                    AudioSource audio = audioSource.GetComponent<AudioSource>();
+                    audio.clip = Resources.Load<AudioClip>(Dialog[i].EffectMusic);
+                    audio.Play();
+                }
 
                 if (Dialog[i].NextIndex != 0) i = Dialog[i].NextIndex - 1;
 
