@@ -2065,6 +2065,7 @@ MonoBehaviour:
   attack: 0
   maxHealth: 0
   currentHealth: 0
+  health: 
 --- !u!114 &5835875655679491700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2290,7 +2291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &974755421555962794
 Transform:
   m_ObjectHideFlags: 0
@@ -2353,7 +2354,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.2
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6182402150709385972
 MonoBehaviour:

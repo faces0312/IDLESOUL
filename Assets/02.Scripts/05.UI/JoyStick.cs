@@ -88,7 +88,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public void OnDrag(PointerEventData eventData)
     {
-        if(!GameManager.Instance.playerController.isStunned)
+        if (!GameManager.Instance.playerController.isStunned)
         {
             OnTouch(eventData.position);
             player.isJoyStick = true;
@@ -116,7 +116,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         {
             player.targetSearch.TargetClear();
             player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
-        }            
+        }
     }
 
     public void AutoFalse()
@@ -132,7 +132,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         onImage.SetActive(player.isAuto);
         offImage.SetActive(!player.isAuto);
 
-        if(!player.isAuto)
+        if (!player.isAuto)
         {
             player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
             StopAutoSkillCoroutine();
