@@ -17,6 +17,9 @@ public class SkillButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private GameObject textBackground;
 
+    [Header("CutScene")]
+    [SerializeField] private GameObject cutSceneObj;
+
     private Button button;
 
     private float[] fillAmounts = new float[Const.MAX_SOUL];
@@ -97,6 +100,12 @@ public class SkillButton : MonoBehaviour
 
         coolTimes[CurSoulIndex] = soul.Skills[(int)skillType].CoolTime;
         StartCoroutine(CoroutineCoolTime());
+
+        if (cutSceneObj != null)
+        {
+            cutSceneObj.SetActive(true);
+            ShowCutScene(soul);
+        }
     }
 
     private IEnumerator CoroutineCoolTime()
@@ -133,5 +142,13 @@ public class SkillButton : MonoBehaviour
         timeText.text = string.Empty;
         textBackground.SetActive(false);
         cooldownImg.fillAmount = 0f;
+    }
+
+    private void ShowCutScene(Soul soul)
+    {
+        if(cutSceneObj.TryGetComponent(out UICutScene cutScene))
+        {
+            cutScene.SetSoulSprite(soul.soulName);
+        }
     }
 }

@@ -19,8 +19,10 @@ public class Tutorial : MonoBehaviour, IPointerClickHandler
 
     private Vector2 tempVector;
 
-    private void Start()
+    private void Awake()
     {
+        DialogManager.Instance.Tutorial = this;
+
         click = Click();
         tempVector = new Vector2();
         tutIndex = DataManager.Instance.TutorialDB.ItemsList;
@@ -31,15 +33,7 @@ public class Tutorial : MonoBehaviour, IPointerClickHandler
         });
         
         skipPanel.gameObject.SetActive(false);
-
-        if (GameManager.Instance.player.UserData.ClearStageCycle == 1 
-            && GameManager.Instance.player.UserData.curStageID == 7000)
-        {
-            Time.timeScale = 0;
-            GameManager.Instance.joyStick.AutoFalse();
-            CoStart();
-        }
-        else this.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
     }
 
     private IEnumerator CoTutorial()
@@ -102,6 +96,8 @@ public class Tutorial : MonoBehaviour, IPointerClickHandler
     public void CoStart()
     {
         this.gameObject.SetActive(true);
+        Time.timeScale = 0;
+        GameManager.Instance.joyStick.AutoFalse();
         StartCoroutine(CoTutorial());
     }
 
