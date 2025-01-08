@@ -17,6 +17,7 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
     [SerializeField] private RectTransform upgradeScroll;
 
     [Header("Status")]
+    [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private GameObject statusBundle;
     [SerializeField] private GameObject statusBaseBundle;
     [SerializeField] private TextMeshProUGUI powerText;
@@ -47,6 +48,8 @@ public class PlayerInfoView : MonoBehaviour, IUIBase
             statusText[i] = statusBundle.transform.GetChild(i).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             statusBaseText[i] = statusBaseBundle.transform.GetChild(i).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         }
+
+        nameText.text = GameManager.Instance.player.UserData.NickName;
     }
 
     public void ShowUI()

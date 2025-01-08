@@ -24,12 +24,14 @@ public class UIManager : SingletonDDOL<UIManager>
 
         var SoulStatus = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Soul"), uiLobbyCanvas);
         var SoulBtns = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SoulButtons"), uiLobbyCanvas);
+        //var Cursor = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Cursor"), uiLobbyCanvas);
         Instantiate(Resources.Load<GameObject>("Prefabs/UI/PlayerInfoPanel"), uiLobbyCanvas);
         Instantiate(Resources.Load<GameObject>("Prefabs/UI/GachaEffect"));
         Instantiate(Resources.Load<GameObject>("Prefabs/UI/ConversationUI"));
 
         SoulStatus.transform.SetAsLastSibling();
         SoulBtns.transform.SetAsFirstSibling();
+        //Cursor.transform.SetAsFirstSibling();
     }
     public void RegisterController(string key, UIController controller)
     {
