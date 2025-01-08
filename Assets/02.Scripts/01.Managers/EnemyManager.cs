@@ -70,6 +70,8 @@ public class EnemyManager : SingletonDDOL<EnemyManager>
         InitializeEnemyPrefab(5001, Const.ENEMY_PREFEB_GOBLINMAGICIAN_PATH);
         InitializeEnemyPrefab(5002, Const.ENEMY_PREFEB_SKELETON_PATH);
         InitializeEnemyPrefab(5003, Const.ENEMY_PREFEB_SKELETONARCHER_PATH);
+        InitializeEnemyPrefab(5004, Const.ENEMY_PREFEB_WOLF_PATH);
+        InitializeEnemyPrefab(5005, Const.ENEMY_PREFEB_WOLFGREEN_PATH);
     }
 
     private void InitializeEnemyPrefab(int id, string prefabPath)
