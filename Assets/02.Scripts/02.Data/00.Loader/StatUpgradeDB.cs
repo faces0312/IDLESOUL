@@ -14,7 +14,12 @@ public class StatUpgradeDB
     /// <summary>
     /// MaxHealthBaseCost
     /// </summary>
-    public int MaxHealthBaseCost;
+    public float MaxHealthBaseCost;
+
+    /// <summary>
+    /// MaxHealthGrowRateCost
+    /// </summary>
+    public float MaxHealthGrowCost;
 
     /// <summary>
     /// MaxHealthGrowRate
@@ -29,7 +34,12 @@ public class StatUpgradeDB
     /// <summary>
     /// AtkBaseCost
     /// </summary>
-    public int AtkBaseCost;
+    public float AtkBaseCost;
+
+    /// <summary>
+    /// AtkBaseGrowCost
+    /// </summary>
+    public float AtkGrowCost;
 
     /// <summary>
     /// AtkAtkGrowRate
@@ -44,7 +54,12 @@ public class StatUpgradeDB
     /// <summary>
     /// DefBaseCost
     /// </summary>
-    public int DefBaseCost;
+    public float DefBaseCost;
+
+    /// <summary>
+    /// DefGrowCost
+    /// </summary>
+    public float DefGrowCost;
 
     /// <summary>
     /// DefGrowRate
@@ -59,7 +74,12 @@ public class StatUpgradeDB
     /// <summary>
     /// ReduceDamageBaseCost
     /// </summary>
-    public int ReduceDamageBaseCost;
+    public float ReduceDamageBaseCost;
+
+    /// <summary>
+    /// ReduceDamageGrowCost
+    /// </summary>
+    public float ReduceDamageGrowCost;
 
     /// <summary>
     /// ReduceDamageGrowRate
@@ -74,7 +94,12 @@ public class StatUpgradeDB
     /// <summary>
     /// CriticalRateBaseCost
     /// </summary>
-    public int CriticalRateBaseCost;
+    public float CriticalRateBaseCost;
+
+    /// <summary>
+    /// CriticalRateGrowCost
+    /// </summary>
+    public float CriticalRateGrowCost;
 
     /// <summary>
     /// CriticalRateGrowRate
@@ -89,7 +114,12 @@ public class StatUpgradeDB
     /// <summary>
     /// CriticalDamageBaseCost
     /// </summary>
-    public int CriticalDamageBaseCost;
+    public float CriticalDamageBaseCost;
+
+    /// <summary>
+    /// CriticalDamageGrowCost
+    /// </summary>
+    public float CriticalDamageGrowCost;
 
     /// <summary>
     /// CriticalDamageGrowRate

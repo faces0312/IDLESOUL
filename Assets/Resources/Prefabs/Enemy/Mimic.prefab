@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c052ff2381c834f93da5fe4e0c8f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mimic: {fileID: 891179267253269948}
   hpSlider: {fileID: 8245835833166357771}
   gameDuration: 60
 --- !u!1 &327211990514140929

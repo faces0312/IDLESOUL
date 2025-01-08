@@ -51,5 +51,7 @@ public class Item : BaseItem
         UpgradeStackCount *= UpgradeCostIncreaseRatio * UpgradeLevel;
 
         PassiveStat = ItemStat / PassiveStatValue;
+
+        equip = itemData.isEquip;
     }
 }

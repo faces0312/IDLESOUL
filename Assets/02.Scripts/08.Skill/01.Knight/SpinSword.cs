@@ -91,10 +91,9 @@ public class SpinSword : MonoBehaviour
                 AudioSource audio = audioSource.GetComponent<AudioSource>();
                 audio.Play();
 
-                 for (int i = 0; i < atkAcount; i++)
+                for (int i = 0; i < atkAcount; i++)
                 {
                     damageable.TakeDamage(Utils.CriticalCaculate(GameManager.Instance.player.StatHandler, value));
-                    yield return coroutineTime;
                 }
             }
 
