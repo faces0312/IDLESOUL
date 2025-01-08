@@ -342,10 +342,10 @@ public class Player : BaseCharacter
     {
         if (!baseHpSystem.IsDead)
         {
+            //죽었을때 플레이어 캐릭터 사운드 쟂생
             PlayerSFX.PlayClipSFXOneShot((SoundType)UnityEngine.Random.Range(6, 8));
 
             baseHpSystem.IsDead = true;
-            Debug.Log("Player Die!!! ");
             string animName = PlayerAnimationController.DeathAnimationName;
             PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, false);
 
