@@ -35,7 +35,6 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
         });
         if (GameManager.Instance.player.UserData == null) Name = "a";
         else Name = GameManager.Instance.player.UserData.NickName;
-        StartConversation(1);
     }
 
     private void Print(Dialogue log) //Ãâ·Â
