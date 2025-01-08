@@ -7,6 +7,7 @@ public class SceneDataManager : SingletonDDOL<SceneDataManager>
 {
     public string NextScene;
     public float Modifier;
+    public string NickName;
 
 
     protected override void Awake()
@@ -25,5 +26,4 @@ public class SceneDataManager : SingletonDDOL<SceneDataManager>
     {
         //Todo : 현재 씬 값 저장, 로드 시 Stage값이 저장 값과 같다면 modifier에 추가로 곱하지 않음
     }
-
 }

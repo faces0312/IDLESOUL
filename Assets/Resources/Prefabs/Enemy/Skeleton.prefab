@@ -323,8 +323,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.5
+  m_Center: {x: -1, y: 0, z: 0}
 --- !u!114 &8728071632625761844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1500,8 +1500,10 @@ MonoBehaviour:
   collider: {fileID: 0}
   animator: {fileID: 0}
   healthBar: {fileID: 7605842529889700067}
+  attack: 0
   maxHealth: 0
   currentHealth: 0
+  health: 
 --- !u!114 &5835875655679491700
 MonoBehaviour:
   m_ObjectHideFlags: 0

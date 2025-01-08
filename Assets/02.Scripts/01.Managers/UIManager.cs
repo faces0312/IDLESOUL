@@ -27,6 +27,7 @@ public class UIManager : SingletonDDOL<UIManager>
         //var Cursor = Instantiate(Resources.Load<GameObject>("Prefabs/UI/Cursor"), uiLobbyCanvas);
         Instantiate(Resources.Load<GameObject>("Prefabs/UI/PlayerInfoPanel"), uiLobbyCanvas);
         Instantiate(Resources.Load<GameObject>("Prefabs/UI/GachaEffect"));
+        Instantiate(Resources.Load<GameObject>("Prefabs/UI/ConversationUI"));
 
         SoulStatus.transform.SetAsLastSibling();
         SoulBtns.transform.SetAsFirstSibling();
