@@ -34,6 +34,7 @@ public static class Const
 
     public static readonly string ENEMY_PREFEB_GOBLINBOSS_PATH = "Prefabs/Enemy/GoblinBoss";
     public static readonly string ENEMY_PREFEB_SKELETONBOSS_PATH = "Prefabs/Enemy/SkeletonBoss";
+    public static readonly string ENEMY_PREFEB_WOLFBOSS_PATH = "Prefabs/Enemy/WolfBoss";
 
     public static readonly string ENEMY_PREFEB_Mimic_PATH = "Prefabs/Enemy/Mimic";
 
