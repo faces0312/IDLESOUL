@@ -33,6 +33,7 @@ public class GameManager : SingletonDDOL<GameManager>
     public event Action OnEventBossSummon;
     public event Action OnGameOverEvent;
     public event Action OnGameClearEvent;
+    public event Action OnBossDieEvent;
 
     //현재 맵에 활성화되어 있는 적 리스트
     public List<GameObject> enemies = new List<GameObject>();
@@ -165,11 +166,11 @@ public class GameManager : SingletonDDOL<GameManager>
                 enemyTmp.SetActive(false);
             }
         }
-        //이벤트 등록을 통해
-        //GameManager.Instance.OnGameOverEvent += 게임종료페이지를 선언할 수 있음
+        
+
         OnGameOverEvent?.Invoke();
         SetGameOverFlag(true);
-
+        OnBossDieEvent?.Invoke();
 
         UIManager.Instance.AllHidePopUpUI();
         //Utils.fader.FadeTo(0f, 1f, 2.0f).OnComplete(Utils.fader.Release);
@@ -177,7 +178,7 @@ public class GameManager : SingletonDDOL<GameManager>
         StageManager.Instance.StageProgressModel.CurCountDataClear();
 
         IsBoss = false;
-        //isTryBoss = false; // MVP 이후에 보스 트라이 버튼 따로 구현해야됨
+
         Invoke("NextStage", 3.0f);
     }
 

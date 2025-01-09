@@ -6,6 +6,13 @@ public class EnemyAnimationController : MonoBehaviour
 {
     public Enemy enemy;
 
+    private void Start()
+    {
+        if (enemy != null)
+        {
+            GameManager.Instance.OnBossDieEvent += EnemyBossSet;
+        }
+    }
     public void MeleeAttackBoss()
     {
         enemy.slash.SetActive(true);
@@ -133,5 +140,18 @@ public class EnemyAnimationController : MonoBehaviour
         enemy.animator.Rebind();
         enemy.Die();
         GameManager.Instance.GameClear();
+    }
+
+    public void EnemyBossSet()
+    {
+        if (enemy is BossEnemy bossEnemy)
+        {
+            // skillZone 비활성화
+            foreach (Transform child in bossEnemy.skillZone.transform)
+                child.gameObject.SetActive(false);
+            bossEnemy.skillChargingEffect.SetActive(false);
+        }
+        enemy.animator.Rebind();
+        enemy.Die();
     }
 }
