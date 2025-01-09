@@ -61,20 +61,25 @@ public class Dialog
     /// </summary>
     public int NextIndex;
 
+    /// <summary>
+    /// 0 = none, 1 = jump, 2 = move, 3 = move with flip
+    /// </summary>
+    public int AnimControll;
+
 }
 public class DialogLoader
 {
     public List<Dialog> ItemsList { get; private set; }
     public Dictionary<int, Dialog> ItemsDict { get; private set; }
-    public List<Dialog> ListByCycle { get; private set; }
+    private List<Dialog> tempList;
 
-    public DialogLoader(string path = "JSON/Dialogue")
+    public DialogLoader(string path = "JSON/Dialog")
     {
         string jsonData;
         jsonData = Resources.Load<TextAsset>(path).text;
         ItemsList = JsonUtility.FromJson<Wrapper>(jsonData).Items;
         ItemsDict = new Dictionary<int, Dialog>();
-        ListByCycle = new List<Dialog>();
+        tempList = new List<Dialog>();
         foreach (var item in ItemsList)
         {
             ItemsDict.Add(item.key, item);
@@ -103,18 +108,14 @@ public class DialogLoader
         }
         return null;
     }
-
     public List<Dialog> GetByCycle(int cycle)
     {
-        ListByCycle.Clear();
-        foreach (Dialog log in ItemsList)
+        tempList.Clear();
+        foreach (var item in ItemsList)
         {
-            if(log.cycle == cycle)
-            {
-                ListByCycle.Add(log);
-            }
+            if (item.cycle == cycle)
+                tempList.Add(item);
         }
-
-        return ListByCycle;
+        return tempList;
     }
 }

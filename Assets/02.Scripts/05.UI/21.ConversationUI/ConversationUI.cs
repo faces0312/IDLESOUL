@@ -100,7 +100,6 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
                     audio.clip = Resources.Load<AudioClip>(Dialog[i].EffectMusic);
                     audio.Play();
                 }
-
                 if (Dialog[i].NextIndex != 0) i = Dialog[i].NextIndex - 1;
 
                 isConfirm = false;
