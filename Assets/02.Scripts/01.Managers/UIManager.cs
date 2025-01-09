@@ -50,8 +50,6 @@ public class UIManager : SingletonDDOL<UIManager>
         }
     }
 
-
-
     public void HideUI(string key)
     {
         if (controllers.TryGetValue(key, out UIController controller))
@@ -114,5 +112,25 @@ public class UIManager : SingletonDDOL<UIManager>
         }
 
         return null;
+    }
+
+    //모든 PopUpUI를 비활성화하는 메서드
+    public void AllHidePopUpUI()
+    {
+        //PopUpUI 목록//
+        /*
+         "Prefabs/UI/PopupCanvas_copy"
+         "Prefabs/UI/UIInventory"
+         "Prefabs/UI/Soul"
+         "Prefabs/UI/PlayerInfoPanel"
+         "Prefabs/UI/ConversationUI"
+         */
+
+        HideUI<InventoryController>();
+        HideUI<ItemStatusController>();
+        HideUI<PlayerInfoController>();
+
+        //ToDoCode : ShopController 옜날 구조로 작성되어있음 수정 해야됨 
+        HideUI("shopController");
     }
 }

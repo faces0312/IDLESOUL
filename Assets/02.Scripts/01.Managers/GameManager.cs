@@ -170,6 +170,8 @@ public class GameManager : SingletonDDOL<GameManager>
         OnGameOverEvent?.Invoke();
         SetGameOverFlag(true);
 
+
+        UIManager.Instance.AllHidePopUpUI();
         //Utils.fader.FadeTo(0f, 1f, 2.0f).OnComplete(Utils.fader.Release);
         gameOverPage = Instantiate(Resources.Load<GameObject>("Prefabs/UI/GameOverPage"), UIManager.Instance.popupCanvas);
         StageManager.Instance.StageProgressModel.CurCountDataClear();
