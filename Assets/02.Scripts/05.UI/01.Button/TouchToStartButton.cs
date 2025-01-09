@@ -63,6 +63,10 @@ public class TouchToStartButton : MonoBehaviour
     public void NameIsSet()
     {
         SceneDataManager.Instance.NickName = GetNameObject.GetComponentInChildren<TMP_InputField>().text;
+        if(SceneDataManager.Instance.NickName == "")
+        {
+            SceneDataManager.Instance.NickName = "¾Æ¸®½º";
+        }
         SceneDataManager.Instance.LoadScene("GameScene_SMS");
     }
 }
