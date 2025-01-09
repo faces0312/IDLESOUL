@@ -96,16 +96,17 @@ public class SkillButton : MonoBehaviour
         textBackground.SetActive(isUses[CurSoulIndex]);
 
         Soul soul = GameManager.Instance.player.PlayerSouls.CurrentSoul;
-        soul.UseSkill(soul.Skills[(int)skillType]);
-
-        coolTimes[CurSoulIndex] = soul.Skills[(int)skillType].CoolTime;
-        StartCoroutine(CoroutineCoolTime());
 
         if (cutSceneObj != null)
         {
             cutSceneObj.SetActive(true);
-            ShowCutScene(soul);
+            ShowCutScene(soul, soul.Skills[(int)skillType]);
         }
+
+        soul.UseSkill(soul.Skills[(int)skillType]);
+
+        coolTimes[CurSoulIndex] = soul.Skills[(int)skillType].CoolTime;
+        StartCoroutine(CoroutineCoolTime());
     }
 
     private IEnumerator CoroutineCoolTime()
@@ -144,11 +145,11 @@ public class SkillButton : MonoBehaviour
         cooldownImg.fillAmount = 0f;
     }
 
-    private void ShowCutScene(Soul soul)
+    private void ShowCutScene(Soul soul, Skill skill)
     {
         if(cutSceneObj.TryGetComponent(out UICutScene cutScene))
         {
-            cutScene.SetSoulSprite(soul.soulName);
+            cutScene.SetSoulSprite(soul.soulName, skill.skillName);
         }
     }
 }

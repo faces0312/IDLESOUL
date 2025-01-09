@@ -28,6 +28,16 @@ public class KnightUltimateSkill : Skill
 
     public override void UseSkill(StatHandler statHandler)
     {
+        CoroutineHelper.Instance.StartCoroutineHelper(CoroutineSkillStart(statHandler));
+    }
+
+    private IEnumerator CoroutineSkillStart(StatHandler statHandler)
+    {
+        while (GameManager.Instance.isCutScene)
+        {
+            yield return null;
+        }
+
         Vector3 playerPos = GameManager.Instance.player.transform.position;
 
         playerPos += skillPrefab.transform.position;
