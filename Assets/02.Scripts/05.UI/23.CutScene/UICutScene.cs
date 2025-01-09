@@ -61,8 +61,13 @@ public class UICutScene : MonoBehaviour
         seq.Append(cutSceneImg.DOColor(endColor, 0.3f)).OnComplete(() => soulImg.gameObject.SetActive(true));
         seq.Play().SetUpdate(true);
 
-        soulImg.transform.DOLocalMoveY(70, 0.5f);
-        skillNameText.transform.DOLocalMoveY(455, 0.5f);
+        var seq2 = DOTween.Sequence();
+        seq2.Append(soulImg.transform.DOLocalMoveY(70, 0.5f));
+        seq2.Play().SetUpdate(true);
+
+        var seq3 = DOTween.Sequence();
+        seq3.Append(skillNameText.transform.DOLocalMoveY(455, 0.5f));
+        seq3.Play().SetUpdate(true);
 
         //Invoke("TweenImage", 1f);
         StartCoroutine(CoroutineTween(1f));
