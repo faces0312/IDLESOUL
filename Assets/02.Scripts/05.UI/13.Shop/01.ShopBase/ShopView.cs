@@ -31,15 +31,15 @@ public class ShopView : MonoBehaviour, IUIBase
 
         itemButton.onClick.AddListener(() =>
         {
-            gachaPanel.SetActive(false);
             itemPanel.SetActive(true);
+            gachaPanel.SetActive(false);
             itemPanel.GetComponent<ShopGrid>().SetItem(Enums.ShopType.Item);
         });
 
         moneyButton.onClick.AddListener(() =>
         {
-            gachaPanel.SetActive(false);
             itemPanel.SetActive(true);
+            gachaPanel.SetActive(false);
             itemPanel.GetComponent<ShopGrid>().SetItem(Enums.ShopType.Product);
         });
 
@@ -63,7 +63,6 @@ public class ShopView : MonoBehaviour, IUIBase
 
     public void UpdateUI()
     {
-        gachaPanel.SetActive(true);
-        itemPanel.SetActive(false);
+
     }
 }
