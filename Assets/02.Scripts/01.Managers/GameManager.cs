@@ -28,6 +28,7 @@ public class GameManager : SingletonDDOL<GameManager>
     public bool isTryBoss;//보스를 트라이 한적이 있는지
     GameObject gameOverPage;
     public bool isGameOver = false;
+    public bool isCutScene = false;
 
     public event Action OnEventBossSummon;
     public event Action OnGameOverEvent;

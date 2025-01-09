@@ -33,7 +33,7 @@
       "key": 7002,
       "ChapterNum": 1,
       "StageNum": 3,
-      "CurStageModifier": 3.0,
+      "CurStageModifier": 2.0,
       "stageName": "처음의 숲 3",
       "SlayEnemyCount": 30,
       "SummonEnemyIDList": [
@@ -48,7 +48,7 @@
       "key": 7003,
       "ChapterNum": 1,
       "StageNum": 4,
-      "CurStageModifier": 10.0,
+      "CurStageModifier": 2.0,
       "stageName": "처음의 숲 4",
       "SlayEnemyCount": 50,
       "SummonEnemyIDList": [
@@ -63,7 +63,7 @@
       "key": 7004,
       "ChapterNum": 1,
       "StageNum": 5,
-      "CurStageModifier": 1.5,
+      "CurStageModifier": 2.0,
       "stageName": "침략된 마을 1",
       "SlayEnemyCount": 80,
       "SummonEnemyIDList": [
@@ -78,7 +78,7 @@
       "key": 7005,
       "ChapterNum": 1,
       "StageNum": 6,
-      "CurStageModifier": 1.5,
+      "CurStageModifier": 2.0,
       "stageName": "침략된 마을 2",
       "SlayEnemyCount": 120,
       "SummonEnemyIDList": [
@@ -95,7 +95,7 @@
       "key": 7006,
       "ChapterNum": 1,
       "StageNum": 7,
-      "CurStageModifier": 1.5,
+      "CurStageModifier": 2.0,
       "stageName": "침략된 마을 3",
       "SlayEnemyCount": 120,
       "SummonEnemyIDList": [
@@ -112,7 +112,7 @@
       "key": 7007,
       "ChapterNum": 1,
       "StageNum": 8,
-      "CurStageModifier": 1.5,
+      "CurStageModifier": 2.0,
       "stageName": "침략된 마을 4",
       "SlayEnemyCount": 120,
       "SummonEnemyIDList": [

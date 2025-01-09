@@ -64,6 +64,11 @@ public class EnemyAnimationController : MonoBehaviour
         enemy.slash.SetActive(true);
     }
 
+    public void WolfAttackStart()
+    {
+        enemy.slash.SetActive(true);
+    }
+
     public void MeleeAttackEnd()
     {
         enemy.slash.SetActive(false);
@@ -77,6 +82,11 @@ public class EnemyAnimationController : MonoBehaviour
     public void ArrowRangedAttack()
     {
         enemy.stateMachine.AttackState.RangedAttack(6005);
+    }
+
+    public void WolfRangedAttack()
+    {
+        enemy.stateMachine.AttackState.RangedAttack(6009);
     }
 
     public void MimicAttack()

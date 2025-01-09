@@ -67,11 +67,14 @@ public class StageManager : SingletonDDOL<StageManager>
             MainStageModifier = GameManager.Instance.player.UserData.StageModifier;
         }
 
-        SaveStageData();
-
         curStageData = DataManager.Instance.StageDB.GetByKey(CurStageID);
-        MainStageModifier *= curStageData.CurStageModifier;
+        if (GameManager.Instance.player.isDead == false)
+        {
+            MainStageModifier *= curStageData.CurStageModifier;
+        }
+        GameManager.Instance.player.isDead = false;
 
+        SaveStageData();
 
         for (int i = 0; i < stageMapList.Count; i++)
         {

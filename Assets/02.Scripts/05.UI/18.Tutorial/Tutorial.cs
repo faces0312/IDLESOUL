@@ -38,6 +38,7 @@ public class Tutorial : MonoBehaviour, IPointerClickHandler
 
     private IEnumerator CoTutorial()
     {
+        Time.timeScale = 0;
         foreach (TutorialDB data in tutIndex)
         {
             tutMask.GetComponentInChildren<CutOutMask>().maskable = false;
@@ -50,7 +51,9 @@ public class Tutorial : MonoBehaviour, IPointerClickHandler
                 yield return click;
             }
             else isConfirm = true;
+            if(Time.timeScale > 0) Time.timeScale = 0;
         }
+        Time.timeScale = 1;
         skipPanel.isDone = true;
         this.gameObject.SetActive(false);
         yield return null;
@@ -96,7 +99,6 @@ public class Tutorial : MonoBehaviour, IPointerClickHandler
     public void CoStart()
     {
         this.gameObject.SetActive(true);
-        Time.timeScale = 0;
         GameManager.Instance.joyStick.AutoFalse();
         StartCoroutine(CoTutorial());
     }
