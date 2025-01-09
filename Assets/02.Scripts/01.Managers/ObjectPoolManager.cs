@@ -33,17 +33,17 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
     }
     private void EnemyObjectPoolSetting()
     {
-        ObjectPool goblinPool = new ObjectPool(5000, 60, Const.ENEMY_PREFEB_GOBLIN_PATH);
-        ObjectPool goblinMagicianPool = new ObjectPool(5001, 60, Const.ENEMY_PREFEB_GOBLINMAGICIAN_PATH);
-        ObjectPool skeletonPool = new ObjectPool(5002, 60, Const.ENEMY_PREFEB_SKELETON_PATH);
-        ObjectPool skeletonArcherPool = new ObjectPool(5003, 60, Const.ENEMY_PREFEB_SKELETONARCHER_PATH);
-        ObjectPool wolfPool = new ObjectPool(5004, 60, Const.ENEMY_PREFEB_WOLF_PATH);
-        ObjectPool wolfGreenPool = new ObjectPool(5005, 60, Const.ENEMY_PREFEB_WOLFGREEN_PATH);
+        ObjectPool goblinPool = new ObjectPool(5000, 100, Const.ENEMY_PREFEB_GOBLIN_PATH);
+        ObjectPool goblinMagicianPool = new ObjectPool(5001, 100, Const.ENEMY_PREFEB_GOBLINMAGICIAN_PATH);
+        ObjectPool skeletonPool = new ObjectPool(5002, 100, Const.ENEMY_PREFEB_SKELETON_PATH);
+        ObjectPool skeletonArcherPool = new ObjectPool(5003, 100, Const.ENEMY_PREFEB_SKELETONARCHER_PATH);
+        ObjectPool wolfPool = new ObjectPool(5004, 100, Const.ENEMY_PREFEB_WOLF_PATH);
+        ObjectPool wolfGreenPool = new ObjectPool(5005, 100, Const.ENEMY_PREFEB_WOLFGREEN_PATH);
 
         ObjectPool energyBoltPool = new ObjectPool(6001, 60, Const.ENEMY_PREFEB_GOBLINEENERGYBOLT_PATH);
         ObjectPool skillBoss1Pool = new ObjectPool(6003, 10, Const.ENEMY_PREFEB_GOBLINSKILLBOSS1_PATH);
-        ObjectPool arrowSkeletonPool = new ObjectPool(6005, 60, Const.ENEMY_PREFEB_SKELETONARROW_PATH);
-        ObjectPool energyBoltBOSSPool = new ObjectPool(6006, 60, Const.ENEMY_PREFEB_SKELETONENERGYBOLTBOSS_PATH);
+        ObjectPool arrowSkeletonPool = new ObjectPool(6005, 100, Const.ENEMY_PREFEB_SKELETONARROW_PATH);
+        ObjectPool energyBoltBOSSPool = new ObjectPool(6006, 100, Const.ENEMY_PREFEB_SKELETONENERGYBOLTBOSS_PATH);
         ObjectPool skillBoss2Pool = new ObjectPool(6007, 10, Const.ENEMY_PREFEB_SKELETONSKILLBOSS2_PATH);
         ObjectPool mimicAttack = new ObjectPool(6008, 25, Const.ENEMY_PREFEB_MIMICATTACK_PATH);
         ObjectPool wolfRange = new ObjectPool(6009, 25, Const.ENEMY_PREFEB_WOLFRANGE_PATH);

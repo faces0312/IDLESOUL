@@ -49,7 +49,7 @@ public abstract class Enemy : BaseCharacter
         collider = GetComponent<CapsuleCollider>();
         animator = GetComponentInChildren<Animator>();
         animatorHashData = new AnimatorHashData();
-        stateMachine = new EnemyStateMachine(this);
+        //stateMachine = new EnemyStateMachine(this); //호출시점이 이상해서 Init으로 위치 이동 
         OnDieEvent += StageManager.Instance.StageProgressModel.AddCurEnemyCount;
         //HP 게임
     }
@@ -75,6 +75,12 @@ public abstract class Enemy : BaseCharacter
         statHandler.CurrentStat.atkSpeed = enemyDB.AttackSpeed;
         statHandler.CurrentStat.critChance = enemyDB.CritChance * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter;
         statHandler.CurrentStat.critDamage = enemyDB.CritDamage * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter;
+
+        //호출시점이 이상해서 Init으로 위치 이동완료,
+        if (stateMachine == null)
+        {
+            stateMachine = new EnemyStateMachine(this);
+        }
         stateMachine.Initialize();
         HpUpdate();
     }

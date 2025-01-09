@@ -7,6 +7,7 @@ public class EnemyManager : SingletonDDOL<EnemyManager>
     [SerializeField] private bool isBoss;
     [SerializeField] private float spawnTime;
     private float spawnTimer;
+    private int EnemyLimit = 100; //스테이지에 등장 할 수 있는 몬스터의 갯수 
 
     private List<Coroutine> enemySpawnCoroutines = new List<Coroutine>();
 
@@ -133,7 +134,7 @@ public class EnemyManager : SingletonDDOL<EnemyManager>
 
         while (true)
         {
-            if (GameManager.Instance.enemies.Count < 120) // 몬스터가 120마리만 생성되게 세팅 
+            if (GameManager.Instance.enemies.Count < EnemyLimit) // 몬스터가 120마리만 생성되게 세팅 
             {
                 GameObject enemyObject = pool.GetObject();
                 if (enemyObject.TryGetComponent(out RegularEnemy enemy))

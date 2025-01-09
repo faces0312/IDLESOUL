@@ -5,10 +5,10 @@ using ScottGarland;
 
 public class EnemyAttackState : EnemyBaseState
 {
-    private float attackSpeedTmp;
-    private bool firstAtkTry; // 첫 공격 시도 
+    private float attackSpeedTmp ;// 해당 Enemy의 현재 공격 쿨타임 저장,(대상일 잃었다 다시 찾더라도 해당 쿨타임이 돌아가게 설계)
     public EnemyAttackState(EnemyStateMachine _stateMachine) : base(_stateMachine)
     {
+        attackSpeedTmp = stateMachine.Enemy.StatHandler.CurrentStat.atkSpeed;
     }
 
     public override void Enter()
@@ -20,8 +20,6 @@ public class EnemyAttackState : EnemyBaseState
         animator.SetBool(animatorHashData.WalkParameterHash, false);
         animator.SetTrigger(animatorHashData.AttackParameterHash);
         animator.SetFloat(animatorHashData.AttackSpeedParameterHash, stateMachine.Enemy.enemyDB.AttackSpeed);*/
-        attackSpeedTmp = stateMachine.Enemy.StatHandler.CurrentStat.atkSpeed;
-        firstAtkTry = false;
     }
 
     public override void Update()
@@ -36,7 +34,7 @@ public class EnemyAttackState : EnemyBaseState
         }
 
         float distanceTmp = Vector3.Distance(stateMachine.Enemy.transform.position, stateMachine.Enemy.target.transform.position);
-        if (distanceTmp > stateMachine.Enemy.enemyDB.Distance && firstAtkTry)
+        if (distanceTmp > stateMachine.Enemy.enemyDB.Distance)
         {
             stateMachine.ChangeState(stateMachine.MoveState);
         }
@@ -44,7 +42,7 @@ public class EnemyAttackState : EnemyBaseState
 
     public void Attack()
     {
-        firstAtkTry = true;
+       
         StartAnimationTrigger(animatorHashData.AttackParameterHash);
     }
 
