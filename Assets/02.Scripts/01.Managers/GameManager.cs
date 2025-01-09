@@ -249,8 +249,10 @@ public class GameManager : SingletonDDOL<GameManager>
 
     public void OnDestroy()
     {
+        _player.UserData.UsersAchieveData.Clear();
+
         //게임이 종료될때, 즉 게임매니저가 파괴돌때 해당 게임의 업적 데이터를 Json파일에 저장하는 메서드 
-        foreach(KeyValuePair<AchievementType,List<AchieveData>> achieveList in AchievementManager.Instance.achievements )
+        foreach (KeyValuePair<AchievementType,List<AchieveData>> achieveList in AchievementManager.Instance.achievements )
         {
             foreach(AchieveData achieve  in achieveList.Value)
             {
