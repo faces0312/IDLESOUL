@@ -40,8 +40,8 @@ public static class StatConverter
 
         baseStat.iD = userData.UID;
 
-        baseStat.health = userData.stat.health;
         baseStat.maxHealth = userData.stat.maxHealth;
+        baseStat.health = baseStat.maxHealth;
         baseStat.atk = userData.stat.atk;
         baseStat.def = userData.stat.def;
 
