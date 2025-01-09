@@ -107,6 +107,42 @@
       "ApplyCount": 1,
       "UpgradeCost": 500,
       "SpritePath": "Sprite/Skills/12008"
+    },
+    {
+      "key": 12009,
+      "Name": "장미의 가시",
+      "Descripton": "공격력이 50% 증가한다.",
+      "SkillType": 0,
+      "MaxLevel": 10,
+      "Value": 30,
+      "UpgradeValue": 3,
+      "ApplyCount": 1,
+      "UpgradeCost": 100,
+      "SpritePath": "Sprite/Skills/12006"
+    },
+    {
+      "key": 12010,
+      "Name": "장미 폭풍",
+      "Descripton": "적들을 추적하는 붉은 폭풍을 날린다.",
+      "SkillType": 1,
+      "MaxLevel": 5,
+      "Value": 10,
+      "UpgradeValue": 5,
+      "ApplyCount": 1,
+      "UpgradeCost": 200,
+      "SpritePath": "Sprite/Skills/12007"
+    },
+    {
+      "key": 12011,
+      "Name": "스칼렛 템페스트",
+      "Descripton": "전 방향으로 적을 관통하는 붉은 폭풍을 날린다.",
+      "SkillType": 2,
+      "MaxLevel": 3,
+      "Value": 30,
+      "UpgradeValue": 10,
+      "ApplyCount": 1,
+      "UpgradeCost": 500,
+      "SpritePath": "Sprite/Skills/12008"
     }
   ]
 }
