@@ -16,7 +16,12 @@ public class ShopView : MonoBehaviour, IUIBase
 
     //private ShopController shopController;
 
-    private void Start()
+    public void HideUI()
+    {
+        shopPanel.SetActive(false);
+    }
+
+    public void Initialize()
     {
         exitButton.onClick.AddListener(() =>
         {
@@ -32,27 +37,18 @@ public class ShopView : MonoBehaviour, IUIBase
         itemButton.onClick.AddListener(() =>
         {
             gachaPanel.SetActive(false);
-            itemPanel.SetActive(true);
             itemPanel.GetComponent<ShopGrid>().SetItem(Enums.ShopType.Item);
+            itemPanel.SetActive(true);
         });
 
         moneyButton.onClick.AddListener(() =>
         {
-            gachaPanel.SetActive(false);
-            itemPanel.SetActive(true);
+            gachaPanel.SetActive(false); 
             itemPanel.GetComponent<ShopGrid>().SetItem(Enums.ShopType.Product);
+            itemPanel.SetActive(true);
         });
 
         HideUI();
-    }
-
-    public void HideUI()
-    {
-        shopPanel.SetActive(false);
-    }
-
-    public void Initialize()
-    {
     }
 
     public void ShowUI()

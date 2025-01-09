@@ -14,7 +14,19 @@ public class PlayerInfoModel : UIModel
     public event Action OnCritChanceUpgrade;
     public event Action OnCritDmgUpgrade;
 
+    public void GoldCheck(Status buyType)
+    {
+        long result = GameManager.Instance.player.UserData.Gold - BigInteger.ToInt64(Utils.UpgradeCost(buyType));
 
+        if ( result >= 0 )
+        {
+            GameManager.Instance.player.UserData.Gold = result;
+        }
+        else
+        {
+            GameManager.Instance.player.UserData.Gold = 0;
+        }
+    }
 
     public void HpLevelUp(int amount)
     {
@@ -22,8 +34,7 @@ public class PlayerInfoModel : UIModel
         if (GameManager.Instance.player.UserData.Gold >= Utils.UpgradeCost(Status.Hp))
         {
             //플레이어 골드 - 업그레이드 코스트 비용 적용
-            GameManager.Instance.player.UserData.Gold =
-                Mathf.Max(0, GameManager.Instance.player.UserData.Gold - BigInteger.ToInt32(Utils.UpgradeCost(Status.Hp)));
+            GoldCheck(Status.Hp);
             //플레이어 레벨업 => 스텟 증가량 및 스테이터스 타입을 전달하여 스탯 증가
             GameManager.Instance.player.LevelUp(amount, Status.Hp);
             OnHpUpgrade?.Invoke(); //View에 데이터를 전달하여 출력을 갱신함
@@ -34,8 +45,7 @@ public class PlayerInfoModel : UIModel
     {
         if (GameManager.Instance.player.UserData.Gold >= Utils.UpgradeCost(Status.Atk))
         {
-            GameManager.Instance.player.UserData.Gold = 
-                Mathf.Max(0, GameManager.Instance.player.UserData.Gold - BigInteger.ToInt32(Utils.UpgradeCost(Status.Atk)));
+            GoldCheck(Status.Atk);
             GameManager.Instance.player.LevelUp(amount, Status.Atk);
             OnAtkUpgrade?.Invoke();
         }
@@ -45,8 +55,7 @@ public class PlayerInfoModel : UIModel
     {
         if (GameManager.Instance.player.UserData.Gold >= Utils.UpgradeCost(Status.Def))
         {
-            GameManager.Instance.player.UserData.Gold = 
-                Mathf.Max(0, GameManager.Instance.player.UserData.Gold - BigInteger.ToInt32(Utils.UpgradeCost(Status.Def)));
+            GoldCheck(Status.Def);
             GameManager.Instance.player.LevelUp(amount, Status.Def);
             OnDefUpgrade?.Invoke();
         }
@@ -56,8 +65,7 @@ public class PlayerInfoModel : UIModel
     {
         if (GameManager.Instance.player.UserData.Gold >= Utils.UpgradeCost(Status.ReduceDmg))
         {
-            GameManager.Instance.player.UserData.Gold = 
-                Mathf.Max(0, GameManager.Instance.player.UserData.Gold - BigInteger.ToInt32(Utils.UpgradeCost(Status.ReduceDmg)));
+            GoldCheck(Status.ReduceDmg);
             GameManager.Instance.player.LevelUp(amount, Status.ReduceDmg);
             OnReduceDmgUpgrade?.Invoke();
         }
@@ -67,8 +75,7 @@ public class PlayerInfoModel : UIModel
     {
         if (GameManager.Instance.player.UserData.Gold >= Utils.UpgradeCost(Status.CritChance))
         {
-            GameManager.Instance.player.UserData.Gold = 
-                Mathf.Max(0, GameManager.Instance.player.UserData.Gold - BigInteger.ToInt32(Utils.UpgradeCost(Status.CritChance)));
+            GoldCheck(Status.CritChance);
             GameManager.Instance.player.LevelUp(amount, Status.CritChance);
             OnCritChanceUpgrade?.Invoke();
         }
@@ -78,8 +85,7 @@ public class PlayerInfoModel : UIModel
     {
         if (GameManager.Instance.player.UserData.Gold >= Utils.UpgradeCost(Status.CritDmg))
         {
-            GameManager.Instance.player.UserData.Gold = 
-                Mathf.Max(0, GameManager.Instance.player.UserData.Gold - BigInteger.ToInt32(Utils.UpgradeCost(Status.CritDmg)));
+            GoldCheck(Status.CritDmg);
             GameManager.Instance.player.LevelUp(amount, Status.CritDmg);
             OnCritDmgUpgrade?.Invoke();
         }

@@ -3,14 +3,15 @@ using System;
 using ScottGarland;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using Enums;
 using System.Diagnostics.Contracts;
 
 public class UserData
 {
     public int UID;
     public string NickName;
-    public int Gold;
-    public int Diamonds;
+    public long Gold;
+    public long Diamonds;
     public int PlayTimeInSeconds;
     public int Level; // 계정 레벨
     public int Exp; // 계정 현재 경험치
@@ -24,12 +25,14 @@ public class UserData
 
     public List<UserItemData> GainItem = new List<UserItemData>();
     public List<UserSoulData> GainSoul = new List<UserSoulData>();
+    public List<UserAchieveData> UsersAchieveData = new List<UserAchieveData>();
 
     public Stat stat;
     public UserData(UserDB userDB)
     {
         GainItem = userDB.GainItem;
         GainSoul = userDB.GainSoul;
+        UsersAchieveData = userDB.UserAchieveData;
 
         UID = userDB.key;
         NickName = userDB.Nickname;
@@ -108,6 +111,24 @@ public class UserSoulData
 
         Job = (int)soul.Job;
         SoulType = (int)soul.SoulType;
+    }
+}
+
+[System.Serializable]
+public class UserAchieveData
+{
+    public int ID;                  // 업적의 ID
+    public AchievementType Type;    // 업적의 타입(Kill,재화,Soul,플레이시간 등등)
+    public float Progress;          // 업적의 진행도
+    public bool IsClear;            // 업적의 클리어 유무
+    public bool IsPublish;          // 업적의 성공 팝업 출력 유무
+    public UserAchieveData(AchieveData AcieveData)
+    {
+        ID = AcieveData.ID;
+        Type = AcieveData.AchievementType;
+        Progress = AcieveData.progress;
+        IsClear = AcieveData.isClear;
+        IsPublish = AcieveData.isPublished;
     }
 }
 
@@ -345,10 +366,13 @@ public class Player : BaseCharacter
     {
         if (!baseHpSystem.IsDead)
         {
+            //죽을경우 플레이어컨트롤러의 인풋값을 0 으로 초기화함
+            playerController.curMovementInput = Vector2.zero;
+
+            //죽었을때 플레이어 캐릭터 사운드 쟂생
             PlayerSFX.PlayClipSFXOneShot((SoundType)UnityEngine.Random.Range(6, 8));
 
             baseHpSystem.IsDead = true;
-            Debug.Log("Player Die!!! ");
             string animName = PlayerAnimationController.DeathAnimationName;
             PlayerAnimationController.spineAnimationState.SetAnimation(0, animName, false);
 
