@@ -366,6 +366,9 @@ public class Player : BaseCharacter
     {
         if (!baseHpSystem.IsDead)
         {
+            //죽을경우 플레이어컨트롤러의 인풋값을 0 으로 초기화함
+            playerController.curMovementInput = Vector2.zero;
+
             //죽었을때 플레이어 캐릭터 사운드 쟂생
             PlayerSFX.PlayClipSFXOneShot((SoundType)UnityEngine.Random.Range(6, 8));
 
