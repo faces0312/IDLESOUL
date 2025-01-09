@@ -41,9 +41,24 @@ public class AchievementManager : SingletonDDOL<AchievementManager>
             {
                 achievements[(AchievementType)item.AchievementType] = new List<AchieveData>();
             }
-            achievements[(AchievementType)item.AchievementType].Add(data);
+
+            UserAchieveData userAchieveData = GameManager.Instance.player.UserData.UsersAchieveData.Find(x => data.ID == x.ID);
+
+            if (userAchieveData != null)
+            {
+                data.progress = userAchieveData.Progress;
+                data.isClear = userAchieveData.IsClear;
+                data.isPublished = userAchieveData.IsPublish;
+                achievements[(AchievementType)item.AchievementType].Add(data);
+            }
+            else
+            {
+                achievements[(AchievementType)item.AchievementType].Add(data);
+            }
         }
         EventManager.Instance.Subscribe<AchieveEvent>(Channel.Achievement, OnTriggerAction);
+
+        
     }
 
     public void OnTriggerAction(AchieveEvent data)

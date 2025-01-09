@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
         {
             Move();
         }
+
+        Debug.Log(curMovementInput);
     }
 
     void Move()

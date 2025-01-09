@@ -116,12 +116,12 @@ public class UserDB
     /// <summary>
     /// Gold
     /// </summary>
-    public int Gold;
+    public long Gold;
 
     /// <summary>
     /// Diamonds
     /// </summary>
-    public int Diamonds;
+    public long Diamonds;
 
     /// <summary>
     /// PlayTimeInSeconds
@@ -145,7 +145,7 @@ public class UserDB
 
     public List<UserItemData> GainItem;
     public List<UserSoulData> GainSoul;
-
+    public List<UserAchieveData> UserAchieveData;
     public void JsonDataConvert(UserData userData)
     {
         key = userData.UID;
@@ -183,6 +183,7 @@ public class UserDB
 
         GainItem = userData.GainItem;
         GainSoul = userData.GainSoul;
+        UserAchieveData = userData.UsersAchieveData;
 
         //Dict으로 리팩토링할떄 사용할 코드들
         //GainItem = userData.GainItemDict.Values.ToList();

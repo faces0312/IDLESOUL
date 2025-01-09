@@ -49,6 +49,33 @@ public class EnemyAnimationController : MonoBehaviour
         enemy.stateMachine.ChangeState(enemy.stateMachine.MoveState);
     }
 
+    public void WolfBossSkillCharging()
+    {
+        enemy.SetSkillCharging(true);
+    }
+
+    public void WolfBossSkillStart()
+    {
+        enemy.stateMachine.SkillState.WolfSkillBossStart();
+        if (enemy is Boss3 boss3)
+        {
+            boss3.isRush = true;
+            boss3.rush.SetActive(true);
+        }
+    }
+
+    public void WolfBossSkillEnd()
+    {
+        enemy.SetSkillCharging(false);
+        if (enemy is Boss3 boss3)
+        {
+            boss3.isRush = false;
+            boss3.rush.SetActive(false);
+        }
+        enemy.animator.Rebind();
+        enemy.stateMachine.ChangeState(enemy.stateMachine.MoveState);
+    }
+
     public void EnemyDie()
     {
         enemy.animator.Rebind();

@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/05.Animations/ConversationUI/LittleJump.anim.meta
 guid: b5f0249c1e35241469d21c9ef530b4e9
 NativeFormatImporter:
+========
+guid: 31208a2a521903244983a5eb84f518c9
+PrefabImporter:
+>>>>>>>> Dev:Assets/Resources/Prefabs/Skills/sample/Effect_18_FloatingWindStorm(Clone).prefab.meta
   externalObjects: {}
   mainObjectFileID: 7400000
   userData: 
