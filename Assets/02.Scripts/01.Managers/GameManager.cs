@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 using Enums;
+using UnityEngine.SocialPlatforms.Impl;
 
 
 public class GameManager : SingletonDDOL<GameManager>
@@ -242,9 +243,25 @@ public class GameManager : SingletonDDOL<GameManager>
         player.BaseHpSystem.IsDead = true;
         NextStage();
     }
+
+    public void OnDestroy()
+    {
+        //게임이 종료될때, 즉 게임매니저가 파괴돌때 해당 게임의 업적 데이터를 Json파일에 저장하는 메서드 
+        foreach(KeyValuePair<AchievementType,List<AchieveData>> achieveList in AchievementManager.Instance.achievements )
+        {
+            foreach(AchieveData achieve  in achieveList.Value)
+            {
+                UserAchieveData data = new UserAchieveData(achieve);
+                _player.UserData.UsersAchieveData.Add(data);
+            }
+
+            DataManager.Instance.SaveUserData(_player.UserData);
+        }
+    }
 }
 public static class Wait
 {
+
     public readonly static WaitForSeconds Wait1s = new WaitForSeconds(1);
     public readonly static WaitForSeconds Wait3s = new WaitForSeconds(3);
     public readonly static WaitForSeconds Wait5s = new WaitForSeconds(5);

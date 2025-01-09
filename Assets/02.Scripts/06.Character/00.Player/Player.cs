@@ -3,6 +3,7 @@ using System;
 using ScottGarland;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using Enums;
 
 public class UserData
 {
@@ -23,12 +24,14 @@ public class UserData
 
     public List<UserItemData> GainItem = new List<UserItemData>();
     public List<UserSoulData> GainSoul = new List<UserSoulData>();
+    public List<UserAchieveData> UsersAchieveData = new List<UserAchieveData>();
 
     public Stat stat;
     public UserData(UserDB userDB)
     {
         GainItem = userDB.GainItem;
         GainSoul = userDB.GainSoul;
+        UsersAchieveData = userDB.UserAchieveData;
 
         UID = userDB.key;
         NickName = userDB.Nickname;
@@ -107,6 +110,24 @@ public class UserSoulData
 
         Job = (int)soul.Job;
         SoulType = (int)soul.SoulType;
+    }
+}
+
+[System.Serializable]
+public class UserAchieveData
+{
+    public int ID;                  // 업적의 ID
+    public AchievementType Type;    // 업적의 타입(Kill,재화,Soul,플레이시간 등등)
+    public float Progress;          // 업적의 진행도
+    public bool IsClear;            // 업적의 클리어 유무
+    public bool IsPublish;          // 업적의 성공 팝업 출력 유무
+    public UserAchieveData(AchieveData AcieveData)
+    {
+        ID = AcieveData.ID;
+        Type = AcieveData.AchievementType;
+        Progress = AcieveData.progress;
+        IsClear = AcieveData.isClear;
+        IsPublish = AcieveData.isPublished;
     }
 }
 

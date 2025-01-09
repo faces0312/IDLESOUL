@@ -28,12 +28,12 @@ public class Item : BaseItem
         ID = itemStat.iD;
         //ToDo : 플레이어 유저데이터를 참고하여 갱신할수 있게 해야됨
         IsGain = false;
-        stack = 1;
+        stack = 0;
         UpgradeLevel = 1;
         UpgradeLevelMax = 10;
-        UpgradeStackCount = 1;
         UpgradeStatIncreaseRatio = 2;
         UpgradeCostIncreaseRatio = 3;
+        UpgradeStackCount = UpgradeCostIncreaseRatio * UpgradeLevel;
     }
 
     public void LoadInitData(UserItemData itemData)
