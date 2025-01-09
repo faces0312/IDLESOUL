@@ -62,4 +62,13 @@ public class EnemySkillState : EnemyBaseState
 
         bossSkill2.SkillAttack2();
     }
+
+    public void WolfSkillBossStart()
+    {
+        bossEnemy.skillChargingEffect.SetActive(false);
+        foreach (Transform child in bossEnemy.skillZone.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }
 }

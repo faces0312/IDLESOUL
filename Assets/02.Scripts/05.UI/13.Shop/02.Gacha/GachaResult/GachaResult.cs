@@ -123,6 +123,10 @@ public class GachaResult : MonoBehaviour, IPointerClickHandler
                 SoulArcher soulA = new SoulArcher(data.GetKey());
                 GameManager.Instance.player.PlayerSouls.RegisterSoul(data.Name, soulA);
                 break;
+            //case SoulType.Mage:
+            //    SoulMage soulMg = new SoulMage(data.GetKey());
+            //    GameManager.Instance.player.PlayerSouls.RegisterSoul(data.Name, soulMg);
+            //    break;
             case SoulType.DummyRare:
                 SoulDummyRare soulR = new SoulDummyRare(data.GetKey());
                 GameManager.Instance.player.PlayerSouls.RegisterSoul(data.Name, soulR);

@@ -10,9 +10,10 @@ public class SoulDummyRare : Soul
 
     protected override void InitSkills()
     {
-        attackType = AttackType.Melee;
-        skills[(int)SkillType.Passive] = new MagicianPassiveSkill(12000, statHandler.CurrentStat);
-        skills[(int)SkillType.Default] = new MagicianDefaultSkill(12001);
-        skills[(int)SkillType.Ultimate] = new MagicianUltimateSkill(12002);
+        // TODO : SoulDB에서 받아서 넣기
+        attackType = AttackType.Ranged;
+        skills[(int)SkillType.Passive] = new MagePassiveSkill(12009, statHandler.CurrentStat);
+        skills[(int)SkillType.Default] = new MageDefaultSkill(12010);
+        skills[(int)SkillType.Ultimate] = new MageUltimateSkill(12011);
     }
 }

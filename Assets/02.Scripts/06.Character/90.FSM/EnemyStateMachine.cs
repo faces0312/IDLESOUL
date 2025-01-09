@@ -20,6 +20,7 @@
         ChangeState(MoveState);
     }
 
+
     //public BaseSlimeTower SlimeTower { get; private set; }
     //public SlimeTowerIdleState IdleState { get; private set; }
     //public SlimeTowerAttackState AttackState { get; private set; }

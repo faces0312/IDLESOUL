@@ -199,6 +199,24 @@
       "KnockBackResistance": 1
     },
     {
+      "key": 5502,
+      "Name": "늑대보스",
+      "Descripton": "미믹 설명",
+      "DropGold": 1000,
+      "DropDia": 50,
+      "Attack": 300,
+      "AttackSpeed": 2,
+      "AttackDistance": 10,
+      "Defence": 100,
+      "MoveSpeed": 3,
+      "Health": 15000,
+      "CritChance": 1,
+      "CritDamage": 100,
+      "Distance": 5,
+      "KnockBackPower": 10,
+      "KnockBackResistance": 1
+    },
+    {
       "key": 5600,
       "Name": "미믹",
       "Descripton": "미믹 설명",
