@@ -1,16 +1,16 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoulDummyRare : Soul
+public class SoulMage : Soul
 {
-    public SoulDummyRare(int key) : base(key)
+    public SoulMage(int key) : base(key)
     {
     }
 
     protected override void InitSkills()
     {
-        // TODO : SoulDBø°º≠ πﬁæ∆º≠ ≥÷±‚
+        // TODO : SoulDBÏóêÏÑú Î∞õÏïÑÏÑú ÎÑ£Í∏∞
         attackType = AttackType.Ranged;
         skills[(int)SkillType.Passive] = new MagePassiveSkill(12009, statHandler.CurrentStat);
         skills[(int)SkillType.Default] = new MageDefaultSkill(12010);
