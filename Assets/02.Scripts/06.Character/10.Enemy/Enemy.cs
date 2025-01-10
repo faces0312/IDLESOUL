@@ -73,8 +73,8 @@ public abstract class Enemy : BaseCharacter
         statHandler.CurrentStat.def = new BigInteger((long)(enemyDB.Defence * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter));
         statHandler.CurrentStat.moveSpeed = enemyDB.MoveSpeed;
         statHandler.CurrentStat.atkSpeed = enemyDB.AttackSpeed;
-        statHandler.CurrentStat.critChance = enemyDB.CritChance * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter;
-        statHandler.CurrentStat.critDamage = enemyDB.CritDamage * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter;
+        //statHandler.CurrentStat.critChance = enemyDB.CritChance * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter;
+        //statHandler.CurrentStat.critDamage = enemyDB.CritDamage * StageManager.Instance.MainStageModifier * StageManager.Instance.Chapter;
 
         //호출시점이 이상해서 Init으로 위치 이동완료,
         if (stateMachine == null)
