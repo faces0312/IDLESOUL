@@ -5,7 +5,7 @@ public abstract class BaseItem
 {
     protected ItemDB itemData;
     protected Stat itemStat = new Stat();
-    public ItemDB ItemData { get => itemData; set => itemData = value; }
+    public ItemDB ItemData { get => itemData; }
     public Stat ItemStat { get => itemStat; }
 
     public virtual void Initialize(ItemDB data)

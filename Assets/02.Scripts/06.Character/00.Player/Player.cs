@@ -298,6 +298,11 @@ public class Player : BaseCharacter
         }
     }
 
+    public void TakeHeal(BigInteger heal)
+    {
+        baseHpSystem.TakeHeal(heal, statHandler);
+    }
+
     public void LevelUp(int level, Status status)
     {
         statHandler.LevelUp(level, status);

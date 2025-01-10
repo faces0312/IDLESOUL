@@ -17,9 +17,13 @@ public class InventoryModel : UIModel
     {
         foreach (ItemDB Data in DataManager.Instance.ItemDB.ItemsDict.Values)
         {
-            Item itemObj = new Item();
-            itemObj.Initialize(Data);
-            Items.Add(itemObj);
+            //리팩토링 필요함
+            if (Data.Type == "Weapon")
+            {
+                Item itemObj = new Item();
+                itemObj.Initialize(Data);
+                Items.Add(itemObj);
+            }
         }
 
         foreach (Item item in Items)

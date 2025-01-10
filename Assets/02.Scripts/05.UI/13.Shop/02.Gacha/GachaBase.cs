@@ -54,7 +54,8 @@ public class GachaBase : MonoBehaviour
                 gachaList.Clear();
                 foreach(ItemDB item in DataManager.Instance.ItemDB.ItemsList)
                 {
-                    if(item.GetRairity() != Rairity.Legendary)
+                    //item의 타입이 무기 타입일때만 가챠 리스트에 추가함 
+                    if(item.Type == "Weapon"  && item.GetRairity() != Rairity.Legendary)
                     {
                         gachaList.Add(item);
                     }

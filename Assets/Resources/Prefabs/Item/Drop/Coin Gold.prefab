@@ -4934,9 +4934,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2748822349688538197}
   - component: {fileID: 1122428648778490595}
-  - component: {fileID: 1110793702300604648}
   - component: {fileID: 4505960696273023145}
-  - component: {fileID: 91938181847174297}
+  - component: {fileID: 6723393346887952215}
   m_Layer: 0
   m_Name: Coin Gold
   m_TagString: Item
@@ -4981,29 +4980,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!135 &1110793702300604648
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4626030191119583890}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 3
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Radius: 2
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!54 &4505960696273023145
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5031,7 +5009,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 90
   m_CollisionDetection: 0
---- !u!114 &91938181847174297
+--- !u!114 &6723393346887952215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5040,11 +5018,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4626030191119583890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d258da28cb4c664ba14eb493366960e, type: 3}
+  m_Script: {fileID: 11500000, guid: 02280ec51efb1164caf57072d695e7fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dropItemData:
     iD: 2000
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &7830017877316879267
 GameObject:
   m_ObjectHideFlags: 0

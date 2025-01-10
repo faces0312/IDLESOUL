@@ -5039,9 +5039,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5722750393590327114}
   - component: {fileID: 430717833699968916}
-  - component: {fileID: 3011397934199239493}
   - component: {fileID: 385260617699360549}
-  - component: {fileID: -4112790054821571210}
+  - component: {fileID: 2449046273914684146}
   m_Layer: 0
   m_Name: Item Heart
   m_TagString: Item
@@ -5086,29 +5085,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!135 &3011397934199239493
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8412108547670058178}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 3
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Radius: 2
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!54 &385260617699360549
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5136,7 +5114,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &-4112790054821571210
+--- !u!114 &2449046273914684146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5145,8 +5123,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8412108547670058178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d258da28cb4c664ba14eb493366960e, type: 3}
+  m_Script: {fileID: 11500000, guid: 9af3fea61d8d65442b3e09fea4e588e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dropItemData:
     iD: 2001
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64

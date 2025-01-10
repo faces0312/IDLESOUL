@@ -37,8 +37,6 @@ public abstract class Enemy : BaseCharacter
 
     public string health;
 
-    //public StatHandler StatHandler { get => base.statHandler; set => base.statHandler = value; }
-
     public event Action OnDieEvent;
     public static event Action OnEventTargetRemove;
 

@@ -18,13 +18,16 @@ public class EnemyDropItem : MonoBehaviour
     private void DropItem()
     {
         //골드, 다이아 드롭
-        GameManager.Instance.player.UserData.Gold += enemy.enemyDB.DropGold;
+        //GameManager.Instance.player.UserData.Gold += enemy.enemyDB.DropGold;
         GameManager.Instance.player.UserData.Diamonds += enemy.enemyDB.DropDia;
 
         if (dropItemsID.Length > 0)
         {
             //Debug - 드랍 아이템 
-            ObjectPoolManager.Instance.GetPool(Const.DROPITEM_POOL_KEY, dropItemsID[Random.Range(0, dropItemsID.Length)]).GetObject();
+            GameObject DropItem = ObjectPoolManager.Instance.GetPool(Const.DROPITEM_POOL_KEY, dropItemsID[Random.Range(0, dropItemsID.Length)]).GetObject();
+            DropItem.GetComponent<BaseDropItem>().Enemy = enemy; // 해당 아이템을 떨어뜨린 몬스터를 저장
+            DropItem.transform.position = enemy.transform.position;
+            DropItem.SetActive(true);
         }
     }
 }
