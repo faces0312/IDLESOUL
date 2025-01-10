@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1702810626019279511}
   - component: {fileID: 5971841367181985895}
   - component: {fileID: 5345353894351624099}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_18_Wind_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4927,10 +4927,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5035064069667915802}
-  - component: {fileID: 8948041165343401446}
   - component: {fileID: 2381495158777552236}
   - component: {fileID: 7070566962017417472}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WindStorm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4947,7 +4946,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1176569227499042307}
@@ -4958,25 +4957,6 @@ Transform:
   - {fileID: 8982632740217676609}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8948041165343401446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1362478420752342513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaa5cb770ff50fd45be824531ff122e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 5
-  MoveSpeed: 5
-  AbleHit: 0
-  HitDelay: 0
-  m_hitObject: {fileID: 0}
-  MaxLength: 0
-  DestroyTime2: 0
 --- !u!114 &2381495158777552236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4989,8 +4969,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83b8872d64a12544bc7431046eb4e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 0
+  lifeTime: 5
   tickTime: 0.1
+  moveSpeed: 5
+  targetEnemy: {fileID: 0}
 --- !u!136 &7070566962017417472
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5010,7 +4992,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 1
   m_Height: 7
   m_Direction: 1
   m_Center: {x: 0, y: 2.5, z: 0}
@@ -5026,7 +5008,7 @@ GameObject:
   - component: {fileID: 6378143529701865789}
   - component: {fileID: 2429112639297648558}
   - component: {fileID: 1532363282699097037}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_18_Wind_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9944,7 +9926,7 @@ GameObject:
   - component: {fileID: 8459402917347141620}
   - component: {fileID: 2026266689191796543}
   - component: {fileID: 3383544123239636953}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_18_Storm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14862,7 +14844,7 @@ GameObject:
   - component: {fileID: 7326318709708363134}
   - component: {fileID: 633069287768868989}
   - component: {fileID: 4037270032603446575}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_18_Wind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19780,7 +19762,7 @@ GameObject:
   - component: {fileID: 2799656480356647464}
   - component: {fileID: 1306251979652245452}
   - component: {fileID: 5150146251563479679}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_18_StormBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24698,7 +24680,7 @@ GameObject:
   - component: {fileID: 7548140377571740397}
   - component: {fileID: 5054308004429175863}
   - component: {fileID: 1030440470041614883}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_18_StormMid
   m_TagString: Untagged
   m_Icon: {fileID: 0}

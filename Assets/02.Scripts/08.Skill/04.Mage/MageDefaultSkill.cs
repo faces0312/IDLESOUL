@@ -7,7 +7,6 @@ public class MageDefaultSkill : Skill
 {
     GameObject skillPrefab;
     private float range;
-    private float searchRange;
     private float totalValue;
     Transform playerTransform;
 
@@ -16,8 +15,7 @@ public class MageDefaultSkill : Skill
         // TODO : DB 에서 받아 넣기
         coolTime = 7f;
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/WindStorm");
-        range = 5f;
-        searchRange = 15f;
+        range = 10f;
         totalValue = level * upgradeValue;
         playerTransform = GameManager.Instance.player.transform;
     }
