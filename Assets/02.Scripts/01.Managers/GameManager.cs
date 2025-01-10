@@ -36,6 +36,9 @@ public class GameManager : SingletonDDOL<GameManager>
 
     //현재 맵에 활성화되어 있는 적 리스트
     public List<GameObject> enemies = new List<GameObject>();
+    
+    public int curDropItemCount = 0;  //현재 맵에 있는 아이템의 갯수
+    public int DropItemLimit = 5;  //현재 맵에 있는 아이템의 갯수
     public bool LoadData; //현재 게임이 불러온 게임인지 체크하는 변수 
 
     public bool isGoldDungeon;

@@ -33,7 +33,7 @@ public class DropHeart : BaseDropItem
                 GameManager.Instance.player.TakeHeal(dropItemData.ItemStat.maxHealth);
             }
 
-          
+            GameManager.Instance.curDropItemCount--;
             gameObject.SetActive(false);
         }
     }

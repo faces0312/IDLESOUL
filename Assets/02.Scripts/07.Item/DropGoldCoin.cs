@@ -18,6 +18,7 @@ public class DropGoldCoin : BaseDropItem
         {
             GameManager.Instance.player.UserData.Gold += enemy.enemyDB.DropGold;
 
+            GameManager.Instance.curDropItemCount--;
             gameObject.SetActive(false);
         }
     }

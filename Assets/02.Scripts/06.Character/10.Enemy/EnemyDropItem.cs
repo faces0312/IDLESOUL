@@ -21,12 +21,14 @@ public class EnemyDropItem : MonoBehaviour
         //GameManager.Instance.player.UserData.Gold += enemy.enemyDB.DropGold;
         GameManager.Instance.player.UserData.Diamonds += enemy.enemyDB.DropDia;
 
-        if (dropItemsID.Length > 0)
+        if (dropItemsID.Length > 0 && GameManager.Instance.curDropItemCount < GameManager.Instance.DropItemLimit)
         {
             //Debug - 드랍 아이템 
             GameObject DropItem = ObjectPoolManager.Instance.GetPool(Const.DROPITEM_POOL_KEY, dropItemsID[Random.Range(0, dropItemsID.Length)]).GetObject();
             DropItem.GetComponent<BaseDropItem>().Enemy = enemy; // 해당 아이템을 떨어뜨린 몬스터를 저장
             DropItem.transform.position = enemy.transform.position;
+
+            GameManager.Instance.curDropItemCount++; 
             DropItem.SetActive(true);
         }
     }
