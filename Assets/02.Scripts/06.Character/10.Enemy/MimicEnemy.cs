@@ -7,14 +7,13 @@ public class MimicEnemy : BossEnemy
 {
     public override void Initialize()
     {
-        UIManager.Instance.HideUI<UIStageProgressBarController>();
         base.Initialize();
         healthBar.gameObject.SetActive(true);
     }
 
     public override void TakeDamage(BigInteger damage)
     {
-        BigInteger goldToAdd = damage / 2;
+        BigInteger goldToAdd = damage / 5;
         var dmgFont = ObjectPoolManager.Instance.GetPool(Const.DAMAGE_FONT_KEY, Const.DAMAGE_FONT_POOL_KEY).GetObject();
         dmgFont.SetActive(true);
         dmgFont.transform.position = new Vector3(transform.position.x,transform.position.y +1f, transform.position.z - 1f);

@@ -163,6 +163,9 @@ public class EnemyManager : SingletonDDOL<EnemyManager>
         
     public void BossSpawn(int id)
     {
+        GameManager.Instance.player.targetSearch.TargetClear();
+        GameManager.Instance.player.playerStateMachine.ChangeState(GameManager.Instance.player.playerStateMachine.IdleState);
+
         foreach (Coroutine spawnCoroutine in enemySpawnCoroutines)
         {
             StopCoroutine(spawnCoroutine);

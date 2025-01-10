@@ -116,11 +116,11 @@ public class GameManager : SingletonDDOL<GameManager>
         {
             player.Respwan();
             //Controller(FSM ¼¼ÆÃ)
-            player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
             player.targetSearch.TargetClear();
+            player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
         }
 
-        if(isTryBoss == true)
+        if (isTryBoss == true)
         {
             UIManager.Instance.HideUI<UIStageProgressBarController>();
             UIManager.Instance.tryBoss.SetActive(true);

@@ -132,10 +132,15 @@ public class EnemyAnimationController : MonoBehaviour
     {
         if (enemy is BossEnemy bossEnemy)
         {
-            // skillZone 비활성화
-            foreach (Transform child in bossEnemy.skillZone.transform)
-                child.gameObject.SetActive(false);
-            bossEnemy.skillChargingEffect.SetActive(false);
+            if (bossEnemy.skillZone != null)
+            {
+                foreach (Transform child in bossEnemy.skillZone.transform)
+                    child.gameObject.SetActive(false);
+            }
+            if (bossEnemy.skillChargingEffect != null)
+            {
+                bossEnemy.skillChargingEffect.SetActive(false);
+            }
         }
         enemy.animator.Rebind();
         enemy.Die();
@@ -146,10 +151,15 @@ public class EnemyAnimationController : MonoBehaviour
     {
         if (enemy is BossEnemy bossEnemy)
         {
-            // skillZone 비활성화
-            foreach (Transform child in bossEnemy.skillZone.transform)
-                child.gameObject.SetActive(false);
-            bossEnemy.skillChargingEffect.SetActive(false);
+            if (bossEnemy.skillZone != null)
+            {
+                foreach (Transform child in bossEnemy.skillZone.transform)
+                    child.gameObject.SetActive(false);
+            }
+            if (bossEnemy.skillChargingEffect != null)
+            {
+                bossEnemy.skillChargingEffect.SetActive(false);
+            }
         }
         enemy.animator.Rebind();
         enemy.Die();

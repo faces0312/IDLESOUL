@@ -14,7 +14,9 @@ public class DungeonSelectorView : MonoBehaviour, IUIBase
     {
         money.onClick.AddListener(() =>
         {
+            UIManager.Instance.HideUI<UIStageProgressBarController>();
             GameManager.Instance.GoldDungeon();
+            UIManager.Instance.tryBoss.SetActive(false);
             HideUI();
         });
         past.onClick.AddListener(() =>
