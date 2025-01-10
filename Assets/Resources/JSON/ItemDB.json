@@ -272,6 +272,48 @@
       "Cost": 99999,
       "StackMaxCount": 1,
       "IconPath": "Sprite/Item/Scroll/scroll13"
+    },
+    {
+      "key": 2000,
+      "Name": "드랍용 골드",
+      "Type": "Drop",
+      "Rairity": "Common",
+      "Descripton": "적 처치시 드랍되는 골드",
+      "Attack": 0,
+      "AttackPercent": false,
+      "Defence": 0,
+      "DefencePercent": false,
+      "Health": 0,
+      "HealthPercent": false,
+      "CritChance": 0,
+      "CritChancePercent": true,
+      "CritDamage": 0,
+      "CritDamagePercent": true,
+      "Effect": "",
+      "Cost": 100,
+      "StackMaxCount": 1,
+      "IconPath": ""
+    },
+    {
+      "key": 2001,
+      "Name": "드랍용 회복아이템",
+      "Type": "Drop",
+      "Rairity": "Common",
+      "Descripton": "적 처치시 드랍되는 회복 아이템",
+      "Attack": 0,
+      "AttackPercent": false,
+      "Defence": 0,
+      "DefencePercent": false,
+      "Health": 150,
+      "HealthPercent": false,
+      "CritChance": 0,
+      "CritChancePercent": true,
+      "CritDamage": 0,
+      "CritDamagePercent": true,
+      "Effect": "",
+      "Cost": 0,
+      "StackMaxCount": 1,
+      "IconPath": ""
     }
   ]
 }

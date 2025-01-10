@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
         EnemyObjectPoolSetting();
         InventoryObjectPoolSetting();
         DamageFontObjectPoolSetting();
+        DropItemObjectPoolSetting();
         Debug.Log("ObjectPoolManager Init ¿Ï·á!!");
     }
 
@@ -83,6 +85,14 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
 
         ObjectPool audioSourcePool = new ObjectPool(Const.AUDIO_SOURCE_POOL_KEY, Const.INITIAL_POOL_SIZE, Const.AUDIO_SOURCE_PATH);
         ObjectPoolManager.Instance.AddPool(Const.AUDIO_SOURCE_KEY, audioSourcePool);
+    }
+
+    private void DropItemObjectPoolSetting()
+    {
+        ObjectPool DropItemGoldCoinPool = new ObjectPool(2000, Const.DROPITEM_POOL_SIZE, Const.DROPITEM_GOLDCOIN_PATH);
+        ObjectPool DropItemHeartPool = new ObjectPool(2001, Const.DROPITEM_POOL_SIZE, Const.DROPITEM_HEART_PATH);
+        AddPool(Const.DROPITEM_POOL_KEY, DropItemGoldCoinPool);
+        AddPool(Const.DROPITEM_POOL_KEY, DropItemHeartPool);
     }
 
     #endregion
@@ -156,7 +166,7 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
 
     private void ObjectPoolAllClear()
     {
-        foreach(KeyValuePair<string, List<ObjectPool>> pool in poolDict)
+        foreach (KeyValuePair<string, List<ObjectPool>> pool in poolDict)
         {
             pool.Value.Clear();
         }
