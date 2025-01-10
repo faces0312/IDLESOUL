@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -22,6 +23,7 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
     private bool isConfirm;
     private bool isSkip;
     private string Name;
+    private StringBuilder sb = new StringBuilder();
 
     private void Awake()
     {
@@ -36,8 +38,6 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
             }
             else return isConfirm;
         });
-        if (GameManager.Instance.player.UserData == null) Name = "a";
-        else Name = GameManager.Instance.player.UserData.NickName;
 
         skip.onClick.AddListener(() => isSkip = true);
 
@@ -54,8 +54,12 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
 
     private string ReplaceHolder(string text)
     {
-        text.Replace("{Name}", Name);
-        return text;
+        Name = GameManager.Instance.player.UserData.NickName;
+        sb.Clear();
+        sb.Append(text);
+        sb.Replace("{Name}", Name);
+        sb.Replace("{PostPosition}", ReplacePostPosition(Name));
+        return sb.ToString();
     }
 
     private Color HexaToColor(string hexa) //헥사코드 기반 컬러로 변경
@@ -100,7 +104,6 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
                     audio.clip = Resources.Load<AudioClip>(Dialog[i].EffectMusic);
                     audio.Play();
                 }
-
                 if (Dialog[i].NextIndex != 0) i = Dialog[i].NextIndex - 1;
 
                 isConfirm = false;
@@ -118,6 +121,27 @@ public class ConversationUI : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         isConfirm = true;
+    }
+
+    private string ReplacePostPosition(string name)
+    {
+        if (string.IsNullOrEmpty(name)) return name;
+
+        char lastchar = name[name.Length - 1];
+
+        if(FinalConsonant(lastchar)) return "이";
+        else return("가");
+        
+    }
+
+    private bool FinalConsonant(char c)
+    {
+        if (c < 0xAC00 || c > 0xD7A3) return false;
+
+        int unicodevalue = c - 0xAC00;
+        int finalConsonant = unicodevalue % 28;
+
+        return finalConsonant != 0;
     }
 
     public int Selection(Dialog log1, Dialog log2)
