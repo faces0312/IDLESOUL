@@ -20,13 +20,11 @@ public class AchievementView : MonoBehaviour, IUIBase
     private void Start()
     {
         scroll.SetContent += SetContent;
+        scroll.Init();
         exit.onClick.AddListener(() =>
         {
             this.gameObject.SetActive(false);
         });
-        if (this.gameObject.activeSelf == true) this.gameObject.SetActive(false);
-
-        scroll.Init();
     }
 
     private void SetContent(GameObject obj, int arg)

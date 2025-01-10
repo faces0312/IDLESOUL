@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 8292508579247072507}
   - component: {fileID: 3647358251004649652}
   m_Layer: 5
-  m_Name: ExpDungeon
+  m_Name: PastDungeon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14277,7 +14277,7 @@ GameObject:
   - component: {fileID: 5131766069707234717}
   - component: {fileID: 5228502146224397951}
   m_Layer: 5
-  m_Name: DailyDungeon
+  m_Name: MoneyDungeon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16725,8 +16725,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3675146354000388958}
   - {fileID: 8385776307782392740}
+  - {fileID: 3675146354000388958}
   m_Father: {fileID: 4409397645779265612}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -16785,9 +16785,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StageSelector: {fileID: 6526679470281550991}
-  daily: {fileID: 5228502146224397951}
-  exp: {fileID: 3647358251004649652}
-  upgrade: {fileID: 1367477268110706919}
+  money: {fileID: 5228502146224397951}
+  past: {fileID: 3647358251004649652}
+  develop: {fileID: 1367477268110706919}
   exit: {fileID: 4387604267074411763}
 --- !u!1 &6132305331280139479
 GameObject:
@@ -19053,7 +19053,7 @@ GameObject:
   - component: {fileID: 481728365835725696}
   - component: {fileID: 1367477268110706919}
   m_Layer: 5
-  m_Name: UpgradeDungeon
+  m_Name: nowDeveloped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

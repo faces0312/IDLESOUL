@@ -242,7 +242,6 @@ public class GameManager : SingletonDDOL<GameManager>
     {
         if (dungeonEndingPage != null)
             Destroy(dungeonEndingPage);
-        isGameOver = true;
         isGoldDungeon = !isGoldDungeon;
         player.BaseHpSystem.IsDead = true;
         NextStage();
