@@ -22,8 +22,14 @@ public class SpinSword : MonoBehaviour
     private WaitForSecondsRealtime coroutineTime;
 
     private Dictionary<int, Coroutine> enemyDic = new Dictionary<int, Coroutine>();
+    private AudioClip clip;
 
     public Vector3 OriginPos { get; set; }
+
+    private void Awake()
+    {
+        clip = Resources.Load<AudioClip>("Sound/Skills/SFX_SpinSwordHit");
+    }
 
     void Start()
     {
@@ -61,6 +67,12 @@ public class SpinSword : MonoBehaviour
         {
             if (!enemyDic.ContainsKey(other.GetInstanceID()))
             {
+                var audioSource = ObjectPoolManager.Instance.GetPool(Const.AUDIO_SOURCE_KEY, Const.AUDIO_SOURCE_POOL_KEY).GetObject();
+                audioSource.SetActive(true);
+                AudioSource audio = audioSource.GetComponent<AudioSource>();
+                audio.clip = clip;
+                audio.Play();
+
                 enemyDic.Add(other.GetInstanceID(), StartCoroutine(CoroutineTickDamage(other.gameObject)));
             }
             /*enemyDic.Add(other.GetInstanceID(),
@@ -86,11 +98,6 @@ public class SpinSword : MonoBehaviour
         {
             if (hitObj.TryGetComponent(out ITakeDamageAble damageable) && !damageable.IsInvulnerable)
             {
-                var audioSource = ObjectPoolManager.Instance.GetPool(Const.AUDIO_SOURCE_KEY, Const.AUDIO_SOURCE_POOL_KEY).GetObject();
-                audioSource.SetActive(true);
-                AudioSource audio = audioSource.GetComponent<AudioSource>();
-                audio.Play();
-
                 for (int i = 0; i < atkAcount; i++)
                 {
                     damageable.TakeDamage(Utils.CriticalCaculate(GameManager.Instance.player.StatHandler, value));
