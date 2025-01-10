@@ -30,7 +30,7 @@ public class MageDefaultSkill : Skill
 
     public override void UseSkill(StatHandler statHandler)
     {
-        Vector3 playerPos = playerTransform.position;
+        Vector3 playerPos = new Vector3(playerTransform.position.x, 0, playerTransform.position.z);
 
         GameObject windStorm = Object.Instantiate(skillPrefab, playerPos, Quaternion.LookRotation(skillPrefab.transform.forward));
         if (windStorm.TryGetComponent(out WindStorm component))

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_makeObjs:
-  - {fileID: 7968518731121406162, guid: 60c1dd9dab63b774ca46f977ad9a9b24, type: 3}
+  - {fileID: 7968518731121406162, guid: 3765233cd40bf0047ad6e4c8473f702d, type: 3}
   m_startDelay: 0
   m_makeCount: 1
   m_makeDelay: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_makeObjs:
-  - {fileID: 7968518731121406162, guid: 60c1dd9dab63b774ca46f977ad9a9b24, type: 3}
+  - {fileID: 7968518731121406162, guid: 3765233cd40bf0047ad6e4c8473f702d, type: 3}
   m_startDelay: 0
   m_makeCount: 1
   m_makeDelay: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_makeObjs:
-  - {fileID: 7968518731121406162, guid: 60c1dd9dab63b774ca46f977ad9a9b24, type: 3}
+  - {fileID: 7968518731121406162, guid: 3765233cd40bf0047ad6e4c8473f702d, type: 3}
   m_startDelay: 0
   m_makeCount: 1
   m_makeDelay: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_makeObjs:
-  - {fileID: 7968518731121406162, guid: 60c1dd9dab63b774ca46f977ad9a9b24, type: 3}
+  - {fileID: 7968518731121406162, guid: 3765233cd40bf0047ad6e4c8473f702d, type: 3}
   m_startDelay: 0
   m_makeCount: 1
   m_makeDelay: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_makeObjs:
-  - {fileID: 7968518731121406162, guid: 60c1dd9dab63b774ca46f977ad9a9b24, type: 3}
+  - {fileID: 7968518731121406162, guid: 3765233cd40bf0047ad6e4c8473f702d, type: 3}
   m_startDelay: 0
   m_makeCount: 1
   m_makeDelay: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_makeObjs:
-  - {fileID: 7968518731121406162, guid: 60c1dd9dab63b774ca46f977ad9a9b24, type: 3}
+  - {fileID: 7968518731121406162, guid: 3765233cd40bf0047ad6e4c8473f702d, type: 3}
   m_startDelay: 0
   m_makeCount: 1
   m_makeDelay: 0
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_makeObjs:
-  - {fileID: 7968518731121406162, guid: 60c1dd9dab63b774ca46f977ad9a9b24, type: 3}
+  - {fileID: 7968518731121406162, guid: 3765233cd40bf0047ad6e4c8473f702d, type: 3}
   m_startDelay: 0
   m_makeCount: 1
   m_makeDelay: 0
@@ -416,7 +416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_makeObjs:
-  - {fileID: 7968518731121406162, guid: 60c1dd9dab63b774ca46f977ad9a9b24, type: 3}
+  - {fileID: 7968518731121406162, guid: 3765233cd40bf0047ad6e4c8473f702d, type: 3}
   m_startDelay: 0
   m_makeCount: 1
   m_makeDelay: 0
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_makeObjs:
-  - {fileID: 7968518731121406162, guid: 60c1dd9dab63b774ca46f977ad9a9b24, type: 3}
+  - {fileID: 7968518731121406162, guid: 3765233cd40bf0047ad6e4c8473f702d, type: 3}
   m_startDelay: 0
   m_makeCount: 1
   m_makeDelay: 0
@@ -486,6 +486,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3311469103798886150}
+  - component: {fileID: 4198297867104387979}
   m_Layer: 0
   m_Name: MultipleStorm
   m_TagString: Untagged
@@ -520,6 +521,20 @@ Transform:
   - {fileID: 4202214236175913949}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4198297867104387979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6368038937574769432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 808f93c081a595a44a4bd26a241b9266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 5
+  tickTime: 0.1
 --- !u!1 &7343679115814950579
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_makeObjs:
-  - {fileID: 7968518731121406162, guid: 60c1dd9dab63b774ca46f977ad9a9b24, type: 3}
+  - {fileID: 7968518731121406162, guid: 3765233cd40bf0047ad6e4c8473f702d, type: 3}
   m_startDelay: 0
   m_makeCount: 1
   m_makeDelay: 0
@@ -618,7 +633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_makeObjs:
-  - {fileID: 7968518731121406162, guid: 60c1dd9dab63b774ca46f977ad9a9b24, type: 3}
+  - {fileID: 7968518731121406162, guid: 3765233cd40bf0047ad6e4c8473f702d, type: 3}
   m_startDelay: 0
   m_makeCount: 1
   m_makeDelay: 0
@@ -671,7 +686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_makeObjs:
-  - {fileID: 7968518731121406162, guid: 60c1dd9dab63b774ca46f977ad9a9b24, type: 3}
+  - {fileID: 7968518731121406162, guid: 3765233cd40bf0047ad6e4c8473f702d, type: 3}
   m_startDelay: 0
   m_makeCount: 1
   m_makeDelay: 0

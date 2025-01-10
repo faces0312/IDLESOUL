@@ -139,6 +139,7 @@ public class WindStorm : MonoBehaviour
     private void ChaseEnemy()
     {
         Vector3 dir = (targetEnemy.transform.position - transform.position).normalized;
+        dir.y = 0;
 
         transform.position += dir * moveSpeed * Time.deltaTime;
     }

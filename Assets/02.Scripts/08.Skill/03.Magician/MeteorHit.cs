@@ -49,7 +49,6 @@ public class MeteorHit : MonoBehaviour
             if (other.gameObject.TryGetComponent(out ITakeDamageAble damageable) && !damageable.IsInvulnerable)
             {
                 damageable.TakeDamage(Utils.CriticalCaculate(GameManager.Instance.player.StatHandler, value));
-                //damageable.TakeDamage(value);
             }
         }
     }
