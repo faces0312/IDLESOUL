@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Prefabs/Item/Drop.meta
 guid: 10ce4109041026b4ea00c3fd3f4c0d72
 folderAsset: yes
 DefaultImporter:
+========
+guid: 3765233cd40bf0047ad6e4c8473f702d
+PrefabImporter:
+>>>>>>>> Dev:Assets/Resources/Prefabs/Skills/Effect_18_WindStorm.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

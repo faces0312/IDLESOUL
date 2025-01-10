@@ -44,7 +44,7 @@ public class TouchToStartButton : MonoBehaviour
     {
         if(jsonController.CheckJsonData(Const.JsonUserDataPath) == false)
         {
-            UITween.ShowUI(GetNameObject);
+            GetNameObject.SetActive(true);
         }
         else
         {
@@ -62,15 +62,11 @@ public class TouchToStartButton : MonoBehaviour
     }
     public void NameIsSet()
     {
-        if (GetNameObject.GetComponentInChildren<TMP_InputField>().text == "")
+        SceneDataManager.Instance.NickName = GetNameObject.GetComponentInChildren<TMP_InputField>().text;
+        if(SceneDataManager.Instance.NickName == "")
         {
             SceneDataManager.Instance.NickName = "¾Æ¸®½º";
         }
-        else
-        {
-            SceneDataManager.Instance.NickName = GetNameObject.GetComponentInChildren<TMP_InputField>().text;
-        }
-        
         SceneDataManager.Instance.LoadScene("GameScene_SMS");
     }
 }

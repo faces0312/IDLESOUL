@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ScottGarland;
 
 public class MageUltimateSkill : Skill
 {
@@ -37,22 +38,16 @@ public class MageUltimateSkill : Skill
             yield return null;
         }
 
-        Vector3 playerPos = GameManager.Instance.player.transform.position;
+        Vector3 playerPos = new Vector3(GameManager.Instance.player.transform.position.x, 0, GameManager.Instance.player.transform.position.z);
 
         playerPos += skillPrefab.transform.position;
 
         GameObject multipleStorm = Object.Instantiate(skillPrefab, playerPos, Quaternion.LookRotation(skillPrefab.transform.forward));
 
-        //if (GameManager.Instance.player.PlayerAnimationController.skeleton.ScaleX > 0)
-        //{
-        //    meteor.transform.position -= new Vector3(skillPrefab.transform.position.x * 2f, 0, 0);
-        //    meteor.transform.Rotate(new Vector3(90f, 0, 0));
-        //}
-
-        //if (meteor.TryGetComponent(out Meteor component))
-        //{
-        //    component.InitSettings((BigInteger.Divide(statHandler.CurrentStat.atk, 10) + (int)totalValue) * (int)value, range);
-        //}
+        if (multipleStorm.TryGetComponent(out MultipleStorm component))
+        {
+            component.InitSettings((BigInteger.Divide(statHandler.CurrentStat.atk, 10) + (int)totalValue) * (int)value, range);
+        }
 
         //GameManager.Instance.cameraController.MeteorEffect();
     }

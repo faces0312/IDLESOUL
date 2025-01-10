@@ -6,39 +6,48 @@ using ScottGarland;
 public class WindStorm : MonoBehaviour
 {
     [SerializeField] private float lifeTime;
-    [SerializeField] private float tickTime = 0.1f;
+    [SerializeField] private float tickTime = 0.5f;
+    [SerializeField] private float moveSpeed = 5f;
 
     private float curTime;
 
     private BigInteger value;
-    private float range;
+    private float searchRange;
     private int atkAcount = 15; //공격 횟수
 
     private Collider myCollider;
     private LayerMask layerMask;
 
-    private Transform playerTransform;
-
     private WaitForSecondsRealtime coroutineTime;
 
     private Dictionary<int, Coroutine> enemyDic = new Dictionary<int, Coroutine>();
 
+    private GameObject targetEnemy;
+
+    private AudioClip clip;
+
     public Vector3 OriginPos { get; set; }
+
+    private void Awake()
+    {
+        clip = Resources.Load<AudioClip>("Sound/Skills/SFX_WindStormHit2");
+    }
 
     void Start()
     {
         curTime = Time.time;
         myCollider = GetComponent<Collider>();
         layerMask = 1 << LayerMask.NameToLayer("Enemy");
-        //transform.localScale = new Vector3(range, range, range);
-        playerTransform = GameManager.Instance.player.transform;
         coroutineTime = new WaitForSecondsRealtime(tickTime);
     }
 
     void Update()
     {
-        // TODO : 적을 계속 추적해서 따라다녀야 함
-        //UpdateEnemies();
+        if(targetEnemy == null)
+            UpdateEnemies();
+
+        if (targetEnemy != null)
+            ChaseEnemy();
 
         // 지속 시간 후, 콜라이더 Off
         if (Time.time > curTime + lifeTime)
@@ -52,7 +61,7 @@ public class WindStorm : MonoBehaviour
     public void InitSettings(BigInteger value, float range)
     {
         this.value = value;
-        this.range = range;
+        this.searchRange = range;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -61,6 +70,12 @@ public class WindStorm : MonoBehaviour
         {
             if (!enemyDic.ContainsKey(other.GetInstanceID()))
             {
+                var audioSource = ObjectPoolManager.Instance.GetPool(Const.AUDIO_SOURCE_KEY, Const.AUDIO_SOURCE_POOL_KEY).GetObject();
+                audioSource.SetActive(true);
+                AudioSource audio = audioSource.GetComponent<AudioSource>();
+                audio.clip = clip;
+                audio.Play();
+
                 enemyDic.Add(other.GetInstanceID(), StartCoroutine(CoroutineTickDamage(other.gameObject)));
             }
             /*enemyDic.Add(other.GetInstanceID(),
@@ -86,11 +101,6 @@ public class WindStorm : MonoBehaviour
         {
             if (hitObj.TryGetComponent(out ITakeDamageAble damageable) && !damageable.IsInvulnerable)
             {
-                var audioSource = ObjectPoolManager.Instance.GetPool(Const.AUDIO_SOURCE_KEY, Const.AUDIO_SOURCE_POOL_KEY).GetObject();
-                audioSource.SetActive(true);
-                AudioSource audio = audioSource.GetComponent<AudioSource>();
-                audio.Play();
-
                 for (int i = 0; i < atkAcount; i++)
                 {
                     damageable.TakeDamage(Utils.CriticalCaculate(GameManager.Instance.player.StatHandler, value));
@@ -101,48 +111,49 @@ public class WindStorm : MonoBehaviour
         }
     }
 
-    //private void UpdateEnemies()
-    //{
-    //    // 가장 가까운 Enemy 를 찾는 로직
-    //    // Enemy 리스트를 받아와 거리 기반 탐지
+    private void UpdateEnemies()
+    {
+        // 가장 가까운 Enemy 를 찾는 로직
+        // Enemy 리스트를 받아와 거리 기반 탐지
 
-    //    List<GameObject> targets = GameManager.Instance.enemies;    // Enemy 리스트
-    //    GameObject closestTarget = null;
-    //    float closestDistanceSqr = Mathf.Infinity;
+        List<GameObject> targets = GameManager.Instance.enemies;    // Enemy 리스트
+        GameObject closestTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
 
-    //    Vector3 playerPos = playerTransform.position;
+        Vector3 thisPos = transform.position;
 
-    //    foreach (GameObject target in targets)
-    //    {
-    //        float distanceSqr = (playerPos - target.transform.position).sqrMagnitude;
+        foreach (GameObject target in targets)
+        {
+            float distanceSqr = (thisPos - target.transform.position).sqrMagnitude;
 
-    //        if (distanceSqr < closestDistanceSqr)
-    //        {
-    //            closestTarget = target;
-    //            closestDistanceSqr = distanceSqr;
-    //        }
-    //    }
+            if (distanceSqr < closestDistanceSqr)
+            {
+                closestTarget = target;
+                closestDistanceSqr = distanceSqr;
+            }
+        }
 
-    //    // 탐색 범위를 넘어선 대상은 null 처리
-    //    if (searchRange * searchRange < closestDistanceSqr)
-    //        closestTarget = null;
+        if (closestTarget != null)
+        {
+            targetEnemy = closestTarget;
 
-    //    Vector3 targetPos = playerPos;
+            if (targetEnemy.TryGetComponent(out Enemy enemy))
+            {
+                enemy.OnDieEvent += DieEnemy;
+            }
+        }
+    }
+    
+    private void ChaseEnemy()
+    {
+        Vector3 dir = (targetEnemy.transform.position - transform.position).normalized;
+        dir.y = 0;
 
-    //    if (closestTarget != null)
-    //    {
-    //        targetPos = closestTarget.transform.position;
-    //    }
-    //    else
-    //    {
-    //        if (GameManager.Instance.player.PlayerAnimationController.skeleton.ScaleX > 0)
-    //        {
-    //            targetPos += playerTransform.right * 5f;
-    //        }
-    //        else
-    //        {
-    //            targetPos -= playerTransform.right * 5f;
-    //        }
-    //    }
-    //}
+        transform.position += dir * moveSpeed * Time.deltaTime;
+    }
+
+    private void DieEnemy()
+    {
+        targetEnemy = null;
+    }
 }

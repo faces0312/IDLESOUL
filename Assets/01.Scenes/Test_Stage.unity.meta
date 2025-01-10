@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/05.Animations/ConversationUI.meta
+guid: 3798dcc74ffe44846912fae024751c2f
+folderAsset: yes
+========
 guid: ad0d332c5612b1c43b9b02fcd0646027
+>>>>>>>> Dev:Assets/01.Scenes/Test_Stage.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

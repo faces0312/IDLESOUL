@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Prefabs/Item/Drop/Coin Gold.prefab.meta
 guid: aef01b620c79f9e4bbd90eceec5a1f41
 PrefabImporter:
+========
+guid: 9c9675d6543a53349871bbe31f496370
+NativeFormatImporter:
+>>>>>>>> Dev:Assets/05.Animations/ConversationUI/MoveWithFlip.anim.meta
   externalObjects: {}
+  mainObjectFileID: 7400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

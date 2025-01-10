@@ -24,6 +24,6 @@ public class UIStageLabelView : MonoBehaviour, IUIBase
 
     public void UpdateUI()
     {
-    }
 
+    }
 }

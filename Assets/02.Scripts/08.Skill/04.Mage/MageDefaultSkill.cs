@@ -7,7 +7,6 @@ public class MageDefaultSkill : Skill
 {
     GameObject skillPrefab;
     private float range;
-    private float searchRange;
     private float totalValue;
     Transform playerTransform;
 
@@ -16,8 +15,7 @@ public class MageDefaultSkill : Skill
         // TODO : DB 에서 받아 넣기
         coolTime = 7f;
         skillPrefab = Resources.Load<GameObject>("Prefabs/Skills/WindStorm");
-        range = 5f;
-        searchRange = 15f;
+        range = 10f;
         totalValue = level * upgradeValue;
         playerTransform = GameManager.Instance.player.transform;
     }
@@ -32,7 +30,7 @@ public class MageDefaultSkill : Skill
 
     public override void UseSkill(StatHandler statHandler)
     {
-        Vector3 playerPos = playerTransform.position;
+        Vector3 playerPos = new Vector3(playerTransform.position.x, 0, playerTransform.position.z);
 
         GameObject windStorm = Object.Instantiate(skillPrefab, playerPos, Quaternion.LookRotation(skillPrefab.transform.forward));
         if (windStorm.TryGetComponent(out WindStorm component))

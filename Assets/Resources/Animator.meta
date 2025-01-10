@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Animator.meta
 guid: 8d6232b6448110847b6a109fde52b62c
+========
+guid: 64a71b62cd093b2488158c92aa527b6b
+>>>>>>>> Dev:Assets/Resources/Sprite/Stage.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

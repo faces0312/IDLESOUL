@@ -8,8 +8,7 @@ public class AchievementController : UIController
         achievementModel = model as AchievementModel;
         achievementView = view as AchievementView;
 
-        base.Initialize(view, model);
-
+        base.Initialize(achievementView, achievementModel);
     }
 
     public override void OnHide()
@@ -20,7 +19,6 @@ public class AchievementController : UIController
     public override void OnShow()
     {
         view.ShowUI();
-        UpdateView();
     }
 
     public override void UpdateView()

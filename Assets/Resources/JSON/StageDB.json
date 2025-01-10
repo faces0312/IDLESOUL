@@ -6,7 +6,7 @@
       "StageNum": 1,
       "CurStageModifier": 1,
       "stageName": "처음의 숲 1",
-      "SlayEnemyCount": 10,
+      "SlayEnemyCount": 2,
       "SummonEnemyIDList": [
         5000
       ],
