@@ -52,8 +52,8 @@ public class PlayerSouls : MonoBehaviour
             case SoulType.Archer:
                 LoadSoul = new SoulArcher(soulData.ID);
                 break;
-            case SoulType.DummyRare: //더미용 테스트 데이터 
-                LoadSoul = new SoulMagician(soulData.ID);
+            case SoulType.Mage: //더미용 테스트 데이터 
+                LoadSoul = new SoulMage(soulData.ID);
                 break;
         }
 

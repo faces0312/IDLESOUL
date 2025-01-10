@@ -19,7 +19,7 @@ public enum SoulType
     Magician,
     Knight,
     Archer,
-    //Mage,
+    Mage,
     DummyRare,
     DummyEpic
 }
