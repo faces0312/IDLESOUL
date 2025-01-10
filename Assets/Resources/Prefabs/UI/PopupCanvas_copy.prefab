@@ -16705,7 +16705,8 @@ GameObject:
   - component: {fileID: 2230548810564255587}
   - component: {fileID: 8991679411408943594}
   - component: {fileID: 6446282496333498028}
-  - component: {fileID: 8201738271593524281}
+  - component: {fileID: 2057121838779079381}
+  - component: {fileID: 2552571760444189746}
   m_Layer: 5
   m_Name: POPUP_SelectDungeon
   m_TagString: Untagged
@@ -16772,7 +16773,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8201738271593524281
+--- !u!114 &2057121838779079381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097159311225486399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54af18ec646856145b37887eeb2883d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StageSelector: {fileID: 6526679470281550991}
+  money: {fileID: 5228502146224397951}
+  past: {fileID: 3647358251004649652}
+  develop: {fileID: 1367477268110706919}
+  exit: {fileID: 4387604267074411763}
+--- !u!114 &2552571760444189746
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16784,11 +16802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9457147a99e13f543beb783a6670ffd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StageSelector: {fileID: 6526679470281550991}
-  money: {fileID: 5228502146224397951}
-  past: {fileID: 3647358251004649652}
-  develop: {fileID: 1367477268110706919}
-  exit: {fileID: 4387604267074411763}
+  view: {fileID: 2057121838779079381}
 --- !u!1 &6132305331280139479
 GameObject:
   m_ObjectHideFlags: 0
