@@ -132,5 +132,6 @@ public class UIManager : SingletonDDOL<UIManager>
 
         //ToDoCode : ShopController 옜날 구조로 작성되어있음 수정 해야됨 
         HideUI("shopController");
+        HideUI("dungeonSelectorController");
     }
 }

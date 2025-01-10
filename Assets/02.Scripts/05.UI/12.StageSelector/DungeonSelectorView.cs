@@ -14,18 +14,18 @@ public class DungeonSelectorView : MonoBehaviour, IUIBase
     {
         money.onClick.AddListener(() =>
         {
-            StageSelector.SetStageType(Enums.StageType.Daily);
-            UIManager.Instance.ShowUI("stageSelectorController");
+            GameManager.Instance.GoldDungeon();
+            HideUI();
         });
         past.onClick.AddListener(() =>
         {
             StageSelector.SetStageType(Enums.StageType.EXP);
             UIManager.Instance.ShowUI("stageSelectorController");
+            HideUI();
         });
         develop.onClick.AddListener(() =>
         {
-            StageSelector.SetStageType(Enums.StageType.Upgrade);
-            UIManager.Instance.ShowUI("stageSelectorController");
+            
         });
         exit.onClick.AddListener(() =>
         {
