@@ -62,9 +62,12 @@ public static class Const
     public static readonly string STAGE_FORESET_MAP_PATH = "Prefabs/Stage/ForestStageMap";
 
     public static readonly string DROPITEM_POOL_KEY = "DropItem";
-    public static readonly string DROPITEM_GOLDCOIN_PATH = "Prefabs/Item/Drop/Coin Gold";
-    public static readonly string DROPITEM_HEART_PATH = "Prefabs/Item/Drop/Item Heart";
-    public static readonly int DROPITEM_POOL_SIZE = 10;
+    public static readonly string DROPITEM_GOLDCOIN_PATH = "Prefabs/Item/Drop/DropItemGold";
+    public static readonly string DROPITEM_HEART_PATH = "Prefabs/Item/Drop/DropItemHeart";
+    public static readonly string DROPITEM_DIAMOND_PATH = "Prefabs/Item/Drop/DropItemDiamond";
+    public static readonly string DROPITEM_DUNGEONKEY_PATH = "Prefabs/Item/Drop/DropItemDungeonKey";
+    public static readonly int DROPITEM_POOL_SIZE = 20;
+    public static readonly int DROPITEM_STAGE_LIMIT_COUNT = 10;
 
     public static readonly int INITIAL_POOL_SIZE = 60;
 

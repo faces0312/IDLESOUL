@@ -25830,6 +25830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 7522472972209169311}
+  dropItemsID: d0070000d1070000d2070000
 --- !u!114 &3186178141203442221
 MonoBehaviour:
   m_ObjectHideFlags: 0

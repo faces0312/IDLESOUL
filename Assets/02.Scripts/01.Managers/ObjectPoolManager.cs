@@ -91,8 +91,14 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
     {
         ObjectPool DropItemGoldCoinPool = new ObjectPool(2000, Const.DROPITEM_POOL_SIZE, Const.DROPITEM_GOLDCOIN_PATH);
         ObjectPool DropItemHeartPool = new ObjectPool(2001, Const.DROPITEM_POOL_SIZE, Const.DROPITEM_HEART_PATH);
+        ObjectPool DropItemDiamondPool = new ObjectPool(2002, Const.DROPITEM_POOL_SIZE, Const.DROPITEM_DIAMOND_PATH);
+        ObjectPool DropItemDungeonKeydPool = new ObjectPool(2003, Const.DROPITEM_POOL_SIZE, Const.DROPITEM_DUNGEONKEY_PATH);
+        
         AddPool(Const.DROPITEM_POOL_KEY, DropItemGoldCoinPool);
         AddPool(Const.DROPITEM_POOL_KEY, DropItemHeartPool);
+        AddPool(Const.DROPITEM_POOL_KEY, DropItemDiamondPool);
+        AddPool(Const.DROPITEM_POOL_KEY, DropItemDungeonKeydPool);
+
     }
 
     #endregion

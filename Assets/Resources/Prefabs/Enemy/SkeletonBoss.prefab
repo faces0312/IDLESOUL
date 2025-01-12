@@ -1399,6 +1399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1008513698298412085}
+  dropItemsID: d0070000d1070000d2070000
 --- !u!114 &3498087185882550602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1449,8 +1450,10 @@ MonoBehaviour:
   collider: {fileID: 0}
   animator: {fileID: 6175394926275884764}
   healthBar: {fileID: 8586952787318062965}
+  attack: 0
   maxHealth: 0
   currentHealth: 0
+  health: 
   isSkillCharging: 0
   skillZone: {fileID: 4440956020437451128}
   skillChargingEffect: {fileID: 7247622969348079885}

@@ -1488,6 +1488,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4204753529944905457}
+  dropItemsID: d0070000d1070000d2070000
+  dropItems:
+  - ID: 2000
+    DropPercent: 100
+  - ID: 2001
+    DropPercent: 10
+  - ID: 2002
+    DropPercent: 0
 --- !u!114 &3498087185882550602
 MonoBehaviour:
   m_ObjectHideFlags: 0
