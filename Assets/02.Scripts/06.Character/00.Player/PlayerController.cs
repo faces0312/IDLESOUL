@@ -157,6 +157,7 @@ public class PlayerController : MonoBehaviour
         if (!isStunned)
         {
             StartCoroutine(StunCoroutine());
+            player.PlayerAnimationController.StunAnimationStart();
         }
     }
 
@@ -166,6 +167,7 @@ public class PlayerController : MonoBehaviour
         player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
         yield return new WaitForSeconds(stunDuration);
         isStunned = false;
+        player.PlayerAnimationController.StunAnimationEnd();
         GameManager.Instance.joyStick.ResumeAutoModeAfterStun();
     }
 }

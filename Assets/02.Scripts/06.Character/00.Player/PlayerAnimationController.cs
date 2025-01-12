@@ -36,9 +36,7 @@ public class PlayerAnimationController : MonoBehaviour
     //public float runWalkDuration = 1.5f;
     #endregion
 
-    #region
-
-    #endregion
+    [SerializeField] private GameObject StunDebuffAniamtion; //스턴 디버프 상태이상 애니메이션 
 
     private SkeletonAnimation skeletonAnimation;
     public Spine.AnimationState spineAnimationState;
@@ -51,4 +49,13 @@ public class PlayerAnimationController : MonoBehaviour
         skeleton = skeletonAnimation.Skeleton;
     }
     
+    public void StunAnimationStart()
+    {
+        StunDebuffAniamtion.gameObject.SetActive(true);
+    }
+
+    public void StunAnimationEnd()
+    {
+        StunDebuffAniamtion.gameObject.SetActive(false);
+    }
 }
