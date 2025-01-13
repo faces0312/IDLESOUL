@@ -71,10 +71,7 @@ public class SlashDanceHit : MonoBehaviour
         {
             if (hitObj.TryGetComponent(out ITakeDamageAble damageable) && !damageable.IsInvulnerable)
             {
-                for(int i =  0; i < atkAcount; i++)
-                {
-                    damageable.TakeDamage(Utils.CriticalCaculate(GameManager.Instance.player.StatHandler, value));
-                }   
+                damageable.TakeDamage(Utils.CriticalCaculate(GameManager.Instance.player.StatHandler, value));
             }
 
             yield return coroutineTime;
