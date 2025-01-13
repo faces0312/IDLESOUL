@@ -15,8 +15,8 @@ public class CameraController : MonoBehaviour
     private Ray mainCameraRay;
     [SerializeField] private LayerMask CullingTarget;
     private Collider[] colliders;
-    private float radius = 3.0f;
-    private float maxDistance = 3.0f;
+    private float radius = 4.0f;
+    private float maxDistance = 0.0f;
 
     private Queue<GameObject> DisableObjects = new Queue<GameObject>();
 
@@ -42,6 +42,8 @@ public class CameraController : MonoBehaviour
         {
             postProcessingTrigger = new PostProcessingTrigger(volume);
         }
+
+        
     }
 
     public void ToggleFollowTarget(Transform newFollowTr, float closeUpTime)
@@ -111,7 +113,7 @@ public class CameraController : MonoBehaviour
         //    }
         //}
 
-      
+
         if (Physics.SphereCast(Camera.main.transform.position, radius, Camera.main.transform.forward,out RaycastHit hit, maxDistance, CullingTarget))
         {
             MeshRenderer renderer = hit.collider.GetComponent<MeshRenderer>();
@@ -147,6 +149,8 @@ public class CameraController : MonoBehaviour
 
     IEnumerator ActiveObject(RaycastHit hitObj)
     {
+     
+
         for (int i = 0; i < 10; i++)
         {
             yield return new WaitForSeconds(1.0f);

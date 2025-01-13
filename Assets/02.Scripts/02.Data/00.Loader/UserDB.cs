@@ -124,6 +124,11 @@ public class UserDB
     public long Diamonds;
 
     /// <summary>
+    /// DungeonKey
+    /// </summary>
+    public int DungeonKey;
+
+    /// <summary>
     /// PlayTimeInSeconds
     /// </summary>
     public int PlayTimeInSeconds;
@@ -153,6 +158,7 @@ public class UserDB
         Level = userData.Level;
         Gold = userData.Gold;
         Diamonds = userData.Diamonds;
+        DungeonKey = userData.DungeonKey;
         PlayTimeInSeconds = userData.PlayTimeInSeconds;
         Exp = userData.Exp;
         MaxExp = userData.MaxExp;

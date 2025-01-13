@@ -17,7 +17,8 @@ public class DropDungeonKey : BaseDropItem
         if (playerLayer == (1 << collision.gameObject.layer | playerLayer))
         {
             //ToDoCode : 던전 입장용 티켓(열쇠)   
-            //GameManager.Instance.player.UserData.DungeonKey++;
+            GameManager.Instance.player.UserData.DungeonKey++;
+            UIManager.Instance.ShowUI<UICurGainKeyCountController>();
 
             GameManager.Instance.curDropItemCount--;
             gameObject.SetActive(false);

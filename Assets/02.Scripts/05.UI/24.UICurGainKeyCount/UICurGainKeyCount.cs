@@ -2,18 +2,12 @@
 using UnityEngine;
 using TMPro;
 
-public class UICurGainKeyCount : UIB
+public class UICurGainKeyCount : UIBase<UICurGainKeyCountModel, UICurGainKeyCountView, UICurGainKeyCountController>
 {
-    [SerializeField] private TextMeshProUGUI curGainKeyCount;
-    private GameManager gameManager; //참조를 미리 해놓고 카운팅에 업데이트하여 최적화를 생각함
-
-    private void Awake()
+    public override void Start()
     {
-        gameManager = GameManager.Instance;
-    }
-
-    public void PrintGainKeyCount(int gainKeyCount)
-    {
-        curGainKeyCount.text = ;
+        model = new UICurGainKeyCountModel();
+        base.Start();
+        controller.OnShow();
     }
 }

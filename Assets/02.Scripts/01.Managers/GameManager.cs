@@ -104,7 +104,7 @@ public class GameManager : SingletonDDOL<GameManager>
         //_player.transform.position = Vector3.up; //플레이어 위치 초기화
 
         //StageManager 초기화
-        StageManager.Instance.Init();
+        StageManager.Instance.Init(true);
         UIManager.Instance.ShowUI<UIStageLabelController>();
 
         //EnemyManager 소환 재실행
@@ -237,10 +237,34 @@ public class GameManager : SingletonDDOL<GameManager>
         playerController.isStunned = true;
         player.playerStateMachine.ChangeState(player.playerStateMachine.IdleState);
         player.targetSearch.TargetClear();
-        Invoke("GoldDungeon", 3f);
+        Invoke("GoldDungeonSetting", 3f);
     }
 
-    public void GoldDungeon()
+    public bool GoldDungeon()
+    {
+        if (!isGoldDungeon && _player.UserData.DungeonKey >= 1)
+        {
+            //플레이어가 소지한 던전 입장 재료 소모
+            _player.UserData.DungeonKey--;
+            UIManager.Instance.ShowUI<UICurGainKeyCountController>();
+
+            //게임 진척도 UI 비활성화
+            UIManager.Instance.HideUI<UIStageProgressBarController>();
+            UIManager.Instance.tryBoss.SetActive(false); //보스 트라이 버튼 UI 비활성화
+
+            GoldDungeonSetting();
+
+            return true;
+        }
+        else
+        {
+            //ToDoCode : 던전 입장재료가 부족하다는 UI 출력 
+            return false;
+        }
+        
+    }
+
+    private void GoldDungeonSetting()
     {
         if (dungeonEndingPage != null)
             Destroy(dungeonEndingPage);

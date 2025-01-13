@@ -12,6 +12,7 @@ public class UserData
     public string NickName;
     public long Gold;
     public long Diamonds;
+    public int DungeonKey;
     public int PlayTimeInSeconds;
     public int Level; // 계정 레벨
     public int Exp; // 계정 현재 경험치
@@ -39,6 +40,7 @@ public class UserData
         Level = userDB.Level;
         Gold = userDB.Gold;
         Diamonds = userDB.Diamonds;
+        DungeonKey = userDB.DungeonKey;
         PlayTimeInSeconds = userDB.PlayTimeInSeconds;
         curStageID = userDB.CurStageID;
         ClearStageCycle = userDB.ClearStageCycle;

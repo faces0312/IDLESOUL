@@ -52,7 +52,7 @@ public class StageManager : SingletonDDOL<StageManager>
         curStageID = stageID;
     }
 
-    public void Init()
+    public void Init(bool SpecialDungeonInit = false)
     {
         if (DataManager.Instance.StageDB.GetByKey(GameManager.Instance.player.UserData.curStageID) == null)
         {
@@ -68,7 +68,7 @@ public class StageManager : SingletonDDOL<StageManager>
         }
 
         curStageData = DataManager.Instance.StageDB.GetByKey(CurStageID);
-        if (GameManager.Instance.player.isDead == false)
+        if (!SpecialDungeonInit && GameManager.Instance.player.isDead == false)
         {
             MainStageModifier *= curStageData.CurStageModifier;
         }
@@ -89,7 +89,6 @@ public class StageManager : SingletonDDOL<StageManager>
         curStageMap.gameObject.SetActive(true);
 
         StageProgressModel.Initialize(CurStageData.SlayEnemyCount);
-
 
         Debug.Log("StageManager 세팅 완료!!");
     }
