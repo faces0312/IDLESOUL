@@ -6,6 +6,7 @@ using UnityEngine;
 public class UIStageLabelView : MonoBehaviour, IUIBase
 {
     [SerializeField] private TextMeshProUGUI stageLabal;
+    private StageDB tempStage;
 
     public void HideUI()
     {
@@ -17,13 +18,18 @@ public class UIStageLabelView : MonoBehaviour, IUIBase
 
     public void ShowUI()
     {
-        StageDB stagedb = StageManager.Instance.CurStageData;
-        stageLabal.text = $"{StageManager.Instance.Chapter} - {stagedb.StageNum} {stagedb.stageName}";
-        StageManager.Instance.Stage = stagedb.StageNum;
+        SetUI(StageManager.Instance.CurStageData);
     }
 
     public void UpdateUI()
     {
 
+    }
+
+    public void SetUI(StageDB stageDB)
+    {
+        tempStage = stageDB;
+        stageLabal.text = $"{StageManager.Instance.Chapter} - {tempStage.StageNum} {tempStage.stageName}";
+        StageManager.Instance.Stage = tempStage.StageNum;
     }
 }

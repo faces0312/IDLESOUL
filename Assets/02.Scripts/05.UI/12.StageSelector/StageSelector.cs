@@ -26,7 +26,8 @@ public class StageSelector : MonoBehaviour
         sortedData = new List<StageDB>();
         stageData = DataManager.Instance.StageDB.ItemsList;
         recycleScroll = GetComponent<RecycleScrollX>();
-        //recycleScroll.SetContent += SetStage;
+        recycleScroll.SetContent += SetStage;
+        recycleScroll.Init();
         this.gameObject.SetActive(false);
     }
 
@@ -45,9 +46,6 @@ public class StageSelector : MonoBehaviour
                 sortedData.Add(data);
             }
         }
-
-        obj.GetComponent<Stage>().SetData(sortedData[idx]);
+        obj.GetComponent<Stage>().SetData(idx);
     }
-
-
 }

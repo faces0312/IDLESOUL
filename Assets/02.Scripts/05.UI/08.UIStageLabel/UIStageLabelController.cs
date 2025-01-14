@@ -22,4 +22,10 @@ public class UIStageLabelController : UIController
         // Model 데이터를 기반으로 View 갱신
         view.UpdateUI();
     }
+
+    public void SetStage(StageDB stage)
+    {
+        stageLabelView = view as UIStageLabelView;
+        stageLabelView.SetUI(stage);
+    }
 }

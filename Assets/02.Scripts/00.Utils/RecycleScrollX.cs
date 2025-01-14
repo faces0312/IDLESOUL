@@ -27,7 +27,7 @@ public class RecycleScrollX : MonoBehaviour
 
     public Action<GameObject, int> SetContent;
 
-    private void Start()
+    public void Init()
     {
         pastPos = 0;
 
@@ -63,8 +63,6 @@ public class RecycleScrollX : MonoBehaviour
         int pageCnt = rectCnt - showCnt;
         int pageOffset = pageCnt - 2;
         int curPage = pageCnt - (int)Mathf.Round(delta.x * pageCnt);
-
-        Debug.Log(curPage);
 
         float deltaX = pastPos - delta.x;
 
