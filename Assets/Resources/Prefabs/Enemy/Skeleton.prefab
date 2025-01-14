@@ -1480,22 +1480,22 @@ MonoBehaviour:
   attackType: 0
   slash: {fileID: 1695457264415836873}
   enemyDB:
-    key: 0
-    Name: 
-    Descripton: 
-    DropGold: 0
-    DropDia: 0
-    Attack: 0
-    AttackSpeed: 0
-    AttackDistance: 0
-    Defence: 0
-    MoveSpeed: 0
-    Health: 0
-    CritChance: 0
-    CritDamage: 0
-    Distance: 0
-    KnockBackPower: 0
-    KnockBackResistance: 0
+    key: 5002
+    Name: "\uC2A4\uCF08\uB808\uD1A4"
+    Descripton: "\uC2A4\uCF08\uB808\uD1A4 \uC124\uBA85"
+    DropGold: 100
+    DropDia: 10
+    Attack: 150
+    AttackSpeed: 2
+    AttackDistance: 0.5
+    Defence: 45
+    MoveSpeed: 3
+    Health: 300
+    CritChance: 1
+    CritDamage: 100
+    Distance: 2
+    KnockBackPower: 10
+    KnockBackResistance: 1
   target: {fileID: 0}
   collider: {fileID: 0}
   animator: {fileID: 0}
@@ -1517,7 +1517,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 7522472972209169311}
-  dropItemsID: d0070000d1070000d2070000
+  dropItems:
+  - ID: 2000
+    DropPercent: 100
+    DropCount: 0
+  - ID: 2001
+    DropPercent: 30
+    DropCount: 1
+  - ID: 2002
+    DropPercent: 45
+    DropCount: 1
+  - ID: 2003
+    DropPercent: 5
+    DropCount: 1
 --- !u!114 &3186178141203442221
 MonoBehaviour:
   m_ObjectHideFlags: 0

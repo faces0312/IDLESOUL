@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6363178598746393575}
   - component: {fileID: 7544657651470381739}
   - component: {fileID: 1105735569966236699}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4923,10 +4923,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1045191855833719654}
+  - component: {fileID: 5632116986705702893}
   - component: {fileID: 9108884139751922261}
   - component: {fileID: 4520518390375943588}
-  - component: {fileID: 5632116986705702893}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: DropItemDiamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4952,6 +4952,23 @@ Transform:
   - {fileID: 6363178598746393575}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5632116986705702893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6027105395131548662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3a97f4b4d7a6a469cc8dd03d85d271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItemData:
+    iD: 2002
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!135 &9108884139751922261
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4982,8 +4999,8 @@ Rigidbody:
   m_GameObject: {fileID: 6027105395131548662}
   serializedVersion: 4
   m_Mass: 50
-  m_Drag: 3
-  m_AngularDrag: 0.5
+  m_Drag: 2
+  m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -5000,23 +5017,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 1
---- !u!114 &5632116986705702893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6027105395131548662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3a97f4b4d7a6a469cc8dd03d85d271, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropItemData:
-    iD: 2002
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!1 &7239223789288919299
 GameObject:
   m_ObjectHideFlags: 0
@@ -5027,7 +5027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4946649218565502716}
   - component: {fileID: 3330272701871200812}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5043,7 +5043,7 @@ Transform:
   m_GameObject: {fileID: 7239223789288919299}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5123,7 +5123,7 @@ GameObject:
   - component: {fileID: 9128393013438634410}
   - component: {fileID: 3545428627772078416}
   - component: {fileID: 8136975524599122014}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Mesh Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -15,8 +15,8 @@ public class CameraController : MonoBehaviour
     private Ray mainCameraRay;
     [SerializeField] private LayerMask CullingTarget;
     private Collider[] colliders;
-    private float radius = 4.0f;
-    private float maxDistance = 0.0f;
+    private float radius = 3.0f;
+    private float maxDistance = 3.0f;
 
     private Queue<GameObject> DisableObjects = new Queue<GameObject>();
 

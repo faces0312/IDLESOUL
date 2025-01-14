@@ -25793,20 +25793,20 @@ MonoBehaviour:
   attackType: 0
   slash: {fileID: 8581950062308342474}
   enemyDB:
-    key: 5000
-    Name: "\uACE0\uBE14\uB9B0"
-    Descripton: "\uACE0\uBE14\uB9B0 \uC124\uBA85"
+    key: 5004
+    Name: "\uB291\uB300"
+    Descripton: "\uB291\uB300 \uC124\uBA85"
     DropGold: 100
     DropDia: 10
-    Attack: 5
+    Attack: 100
     AttackSpeed: 2
     AttackDistance: 0.5
-    Defence: 1
-    MoveSpeed: 2
-    Health: 4000
+    Defence: 40
+    MoveSpeed: 4
+    Health: 550
     CritChance: 1
     CritDamage: 100
-    Distance: 1.5
+    Distance: 2.5
     KnockBackPower: 10
     KnockBackResistance: 1
   target: {fileID: 0}
@@ -25830,7 +25830,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 7522472972209169311}
-  dropItemsID: d0070000d1070000d2070000
+  dropItems:
+  - ID: 2000
+    DropPercent: 100
+    DropCount: 0
+  - ID: 2001
+    DropPercent: 30
+    DropCount: 1
+  - ID: 2002
+    DropPercent: 45
+    DropCount: 1
+  - ID: 2003
+    DropPercent: 5
+    DropCount: 1
 --- !u!114 &3186178141203442221
 MonoBehaviour:
   m_ObjectHideFlags: 0

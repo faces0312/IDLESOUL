@@ -844,7 +844,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -1405,20 +1405,20 @@ MonoBehaviour:
   attackType: 0
   slash: {fileID: 8581950062308342474}
   enemyDB:
-    key: 5000
-    Name: "\uACE0\uBE14\uB9B0"
-    Descripton: "\uACE0\uBE14\uB9B0 \uC124\uBA85"
+    key: 5006
+    Name: "\uACE8\uB818"
+    Descripton: "\uACE8\uB818 \uC124\uBA85"
     DropGold: 100
     DropDia: 10
-    Attack: 5
+    Attack: 100
     AttackSpeed: 2
     AttackDistance: 0.5
-    Defence: 1
-    MoveSpeed: 2
-    Health: 4000
+    Defence: 40
+    MoveSpeed: 4
+    Health: 550
     CritChance: 1
     CritDamage: 100
-    Distance: 1.5
+    Distance: 2.5
     KnockBackPower: 10
     KnockBackResistance: 1
   target: {fileID: 0}
@@ -1445,15 +1445,15 @@ MonoBehaviour:
   dropItems:
   - ID: 2000
     DropPercent: 100
-    DropCount: 3
+    DropCount: 0
   - ID: 2001
-    DropPercent: 10
+    DropPercent: 30
     DropCount: 1
   - ID: 2002
-    DropPercent: 5
+    DropPercent: 45
     DropCount: 1
   - ID: 2003
-    DropPercent: 100
+    DropPercent: 5
     DropCount: 1
 --- !u!114 &3186178141203442221
 MonoBehaviour:

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6509647570182387708}
   - component: {fileID: 6776344353167796711}
   - component: {fileID: 3692488757890056250}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4924,7 +4924,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8742377435333800534}
   - component: {fileID: 4158262246396763275}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5020,7 +5020,7 @@ GameObject:
   - component: {fileID: 8880410205253460618}
   - component: {fileID: 7298157020767694084}
   - component: {fileID: 6534923760342869648}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Mesh Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5122,10 +5122,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5722750393590327114}
+  - component: {fileID: 2449046273914684146}
   - component: {fileID: 430717833699968916}
   - component: {fileID: 385260617699360549}
-  - component: {fileID: 2449046273914684146}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: DropItemHeart
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -5151,6 +5151,23 @@ Transform:
   - {fileID: 6509647570182387708}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2449046273914684146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8412108547670058178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af3fea61d8d65442b3e09fea4e588e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItemData:
+    iD: 2001
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!135 &430717833699968916
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5170,7 +5187,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.42
+  m_Radius: 1.51
   m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!54 &385260617699360549
 Rigidbody:
@@ -5181,8 +5198,8 @@ Rigidbody:
   m_GameObject: {fileID: 8412108547670058178}
   serializedVersion: 4
   m_Mass: 50
-  m_Drag: 3
-  m_AngularDrag: 0.5
+  m_Drag: 2
+  m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -5199,20 +5216,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 1
---- !u!114 &2449046273914684146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8412108547670058178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af3fea61d8d65442b3e09fea4e588e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropItemData:
-    iD: 2001
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64

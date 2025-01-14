@@ -344,6 +344,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cdefcd715a192c14fa63b249ee6d6546, type: 3}
   - {fileID: 8300000, guid: fd420432288a54c46874f184902d2163, type: 3}
   - {fileID: 8300000, guid: b6da2cc3df0d78c42903c0780ca86c72, type: 3}
+  - {fileID: 8300000, guid: ee482cca2dc769a45bea45ead050f458, type: 3}
   audioSource: {fileID: 5563021801721848002}
   footStepAudioSource: {fileID: 7517931123910284961}
 --- !u!136 &5600163587873179472
@@ -426,6 +427,9 @@ MonoBehaviour:
   targetSearch: {fileID: 0}
   CamarePivot: {fileID: 7301968224359757862}
   PlayerSFX: {fileID: 0}
+  dropItemlayer:
+    serializedVersion: 2
+    m_Bits: 32768
   isAuto: 0
   isJoyStick: 0
   isController: 0

@@ -18,7 +18,7 @@ public class DropHeart : BaseDropItem
         if (playerLayer == (1 << collision.gameObject.layer | playerLayer))
         {
             //회복 아이템이 퍼센트 적용인경우 
-            if(dropItemData.ItemData.HealthPercent)
+            if (dropItemData.ItemData.HealthPercent)
             {
                 GameManager.Instance.player.TakeHeal(
                     BigInteger.Divide(
@@ -26,7 +26,7 @@ public class DropHeart : BaseDropItem
                      dropItemData.ItemStat.maxHealth,
                      100
                      )
-                     );
+                       );
             }
             else
             {

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8190183345373598033}
   - component: {fileID: 2255551942823733207}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 2005369200186884571}
   - component: {fileID: 3011995854630193170}
   - component: {fileID: 4305584138133235596}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5017,10 +5017,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2748822349688538197}
+  - component: {fileID: 6723393346887952215}
   - component: {fileID: 1122428648778490595}
   - component: {fileID: 4505960696273023145}
-  - component: {fileID: 6723393346887952215}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: DropItemGold
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -5046,6 +5046,23 @@ Transform:
   - {fileID: 2005369200186884571}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6723393346887952215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4626030191119583890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02280ec51efb1164caf57072d695e7fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItemData:
+    iD: 2000
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!135 &1122428648778490595
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5065,7 +5082,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.23
+  m_Radius: 1.39
   m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!54 &4505960696273023145
 Rigidbody:
@@ -5076,8 +5093,8 @@ Rigidbody:
   m_GameObject: {fileID: 4626030191119583890}
   serializedVersion: 4
   m_Mass: 50
-  m_Drag: 3
-  m_AngularDrag: 0.5
+  m_Drag: 2
+  m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -5094,23 +5111,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 1
---- !u!114 &6723393346887952215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4626030191119583890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02280ec51efb1164caf57072d695e7fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropItemData:
-    iD: 2000
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!1 &7830017877316879267
 GameObject:
   m_ObjectHideFlags: 0
@@ -5123,7 +5123,7 @@ GameObject:
   - component: {fileID: 1276152587372389578}
   - component: {fileID: 1991607549632546282}
   - component: {fileID: 3515852646765745070}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Mesh Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}

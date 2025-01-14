@@ -8,6 +8,7 @@ public enum SoundType
     Skill1= 2, Skill2= 3,
     Clear1= 4, Clear2= 5,
     Death1= 6, Death2= 7,
+    PickUp = 8
 }
 
 public class PlayerSFXController : MonoBehaviour

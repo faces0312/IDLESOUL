@@ -11,6 +11,7 @@ public class DropDiamond : BaseDropItem
         base.Awake();
     }
 
+
     private void OnCollisionEnter(Collision collision)
     {
         //타겟이 플레이어 레이어인경우 아이템 적용 

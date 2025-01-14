@@ -21,7 +21,7 @@ public class UserData
     public int ClearStageCycle; //현재 클리어한 Stage 루프 횟수를 지정
     public float StageModifier; //여태 클리어한 stage의 배율의 곱셈 값을 저장
 
-    public Dictionary<int,UserItemData> GainItemDict = new Dictionary<int, UserItemData>();
+    public Dictionary<int, UserItemData> GainItemDict = new Dictionary<int, UserItemData>();
     public Dictionary<int, UserSoulData> GainSoulDict = new Dictionary<int, UserSoulData>();
 
     public List<UserItemData> GainItem = new List<UserItemData>();
@@ -152,6 +152,7 @@ public class Player : BaseCharacter
     public InventoryModel Inventory; //플레이어 인벤토리 데이터 클래스 
     public PlayerSFXController PlayerSFX; //플레이어의 효과음 클래스
     private PlayerController playerController;
+    [SerializeField] private LayerMask dropItemlayer;
 
     [Header("State Machine")]
     public PlayerStateMachine playerStateMachine; //플레이어 FSM 
@@ -167,8 +168,8 @@ public class Player : BaseCharacter
 
     public PlayerAnimationController PlayerAnimationController { get => playerAnimationController; }
     public PlayerSouls PlayerSouls { get => playerSouls; }
-    public UserData UserData { get => userData;  }
-    public Item IsEquipItem { get => equipItem;  }
+    public UserData UserData { get => userData; }
+    public Item IsEquipItem { get => equipItem; }
 
     public Action OnUpdateSoulStats;
 
@@ -186,7 +187,7 @@ public class Player : BaseCharacter
         {
             rb = GetComponent<Rigidbody>();
         }
-        if(playerAnimationController == null)
+        if (playerAnimationController == null)
         {
             playerAnimationController = GetComponentInChildren<PlayerAnimationController>();
             playerAnimationController.Initialize();
@@ -195,7 +196,7 @@ public class Player : BaseCharacter
         {
             playerSouls = GetComponent<PlayerSouls>();
         }
-        if(PlayerSFX == null)
+        if (PlayerSFX == null)
         {
             PlayerSFX = GetComponent<PlayerSFXController>();
         }
@@ -246,7 +247,7 @@ public class Player : BaseCharacter
     public void PlayerSoulInit(bool LoadData = false)
     {
 
-        if(LoadData) // 불러오기(Load)
+        if (LoadData) // 불러오기(Load)
         {
             //불러온 SoulData를 PlayerSouls에 초기화 하는 반복문 
             foreach (UserSoulData soulData in userData.GainSoul)
@@ -255,7 +256,7 @@ public class Player : BaseCharacter
             }
 
             //편성 데이터를 토대로 Soul 편성 장착 
-            for (int i = 0; i <  userData.GainSoul.Count; i++)
+            for (int i = 0; i < userData.GainSoul.Count; i++)
             {
                 if (i >= PlayerSouls.SoulSlot.Length) break;
                 PlayerSouls.EquipSoul(DataManager.Instance.SoulDB.GetByKey(userData.GainSoul[i].ID).Name, i);
@@ -316,23 +317,23 @@ public class Player : BaseCharacter
                 userData.stat.MaxHealthLevel = statHandler.BaseStat.MaxHealthLevel;
                 userData.stat.maxHealth = statHandler.BaseStat.maxHealth;
                 break;
-            case Status.Atk:     
+            case Status.Atk:
                 userData.stat.AtkLevel = statHandler.BaseStat.AtkLevel;
                 userData.stat.atk = statHandler.BaseStat.atk;
                 break;
-            case Status.Def:      
+            case Status.Def:
                 userData.stat.DefLevel = statHandler.BaseStat.DefLevel;
                 userData.stat.def = statHandler.BaseStat.def;
                 break;
-            case Status.ReduceDmg:  
+            case Status.ReduceDmg:
                 userData.stat.ReduceDamageLevel = statHandler.BaseStat.ReduceDamageLevel;
                 userData.stat.reduceDamage = statHandler.BaseStat.reduceDamage;
                 break;
-            case Status.CritChance:   
+            case Status.CritChance:
                 userData.stat.CriticalRateLevel = statHandler.BaseStat.CriticalRateLevel;
                 userData.stat.critChance = statHandler.BaseStat.critChance;
                 break;
-            case Status.CritDmg:      
+            case Status.CritDmg:
                 userData.stat.CriticalDamageLevel = statHandler.BaseStat.CriticalDamageLevel;
                 userData.stat.critDamage = statHandler.BaseStat.critDamage;
                 break;
@@ -401,7 +402,7 @@ public class Player : BaseCharacter
         enabled = true;
         baseHpSystem.IsDead = false;
         targetSearch.TargetClear();
-       
+
         UIManager.Instance.ShowUI<UIPlayerHPDisplayController>();
     }
 
@@ -414,5 +415,13 @@ public class Player : BaseCharacter
     private void FixedUpdate()
     {
         playerStateMachine.FixedUpdateState();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (dropItemlayer == (1 << collision.gameObject.layer | dropItemlayer))
+        {
+            PlayerSFX.PlayClipSFXOneShot(SoundType.PickUp);
+        }
     }
 }

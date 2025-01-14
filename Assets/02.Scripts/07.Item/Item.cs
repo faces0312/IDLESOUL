@@ -48,7 +48,7 @@ public class Item : BaseItem
         ItemStat.critChance *= UpgradeStatIncreaseRatio * UpgradeLevel;
         ItemStat.critDamage *= UpgradeStatIncreaseRatio * UpgradeLevel;
 
-        UpgradeStackCount *= UpgradeCostIncreaseRatio * UpgradeLevel;
+        UpgradeStackCount = UpgradeCostIncreaseRatio * UpgradeLevel;
 
         PassiveStat = ItemStat / PassiveStatValue;
 
