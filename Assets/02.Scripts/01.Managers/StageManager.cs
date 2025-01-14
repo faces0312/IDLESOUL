@@ -70,14 +70,14 @@ public class StageManager : SingletonDDOL<StageManager>
             }
         }
 
-        foreach(var item in DataManager.Instance.StageDB.ItemsList)
+        foreach (var item in DataManager.Instance.StageDB.ItemsList)
         {
             if (item.StageNum == stage && item.ChapterNum == 1)
             {
                 tempStage = item;
                 break;
             }
-                
+
         }
 
         curStageMap = stageMapList[(int)tempStage.StageName];
@@ -134,10 +134,14 @@ public class StageManager : SingletonDDOL<StageManager>
     private void SetStageModifier(int chapter, int stage)
     {
         MainStageModifier = 1;
-        int pow = 2;
-        if(stage > 1) Mathf.Pow(pow, stage - 1);
-        if(chapter > 1) Mathf.Pow(pow, (chapter - 1) * 9);
-
-        MainStageModifier *= pow;
+        float mod = 1;
+        for (; chapter > 1; chapter--)
+        {
+            mod = mod * 5.8f;
+        }
+        for (int i = 7000; i < 7000 + stage; i++)
+        {
+            mod *= DataManager.Instance.StageDB.GetByKey(i).CurStageModifier;
+        }
     }
 }
