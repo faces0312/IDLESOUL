@@ -118,7 +118,7 @@
       "UpgradeValue": 3,
       "ApplyCount": 1,
       "UpgradeCost": 100,
-      "SpritePath": "Sprite/Skills/12006"
+      "SpritePath": "Sprite/Skills/12009"
     },
     {
       "key": 12010,
@@ -130,7 +130,7 @@
       "UpgradeValue": 5,
       "ApplyCount": 1,
       "UpgradeCost": 200,
-      "SpritePath": "Sprite/Skills/12007"
+      "SpritePath": "Sprite/Skills/12010"
     },
     {
       "key": 12011,
@@ -142,7 +142,7 @@
       "UpgradeValue": 10,
       "ApplyCount": 1,
       "UpgradeCost": 500,
-      "SpritePath": "Sprite/Skills/12008"
+      "SpritePath": "Sprite/Skills/12011"
     }
   ]
 }

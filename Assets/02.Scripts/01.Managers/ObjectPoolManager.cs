@@ -41,6 +41,8 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
         ObjectPool skeletonArcherPool = new ObjectPool(5003, 100, Const.ENEMY_PREFEB_SKELETONARCHER_PATH);
         ObjectPool wolfPool = new ObjectPool(5004, 100, Const.ENEMY_PREFEB_WOLF_PATH);
         ObjectPool wolfGreenPool = new ObjectPool(5005, 100, Const.ENEMY_PREFEB_WOLFGREEN_PATH);
+        ObjectPool golemPool = new ObjectPool(5006, 100, Const.ENEMY_PREFEB_GOLEM_PATH);
+        ObjectPool golemIcePool = new ObjectPool(5007, 100, Const.ENEMY_PREFEB_GOLEMICE_PATH);
 
         ObjectPool energyBoltPool = new ObjectPool(6001, 60, Const.ENEMY_PREFEB_GOBLINEENERGYBOLT_PATH);
         ObjectPool skillBoss1Pool = new ObjectPool(6003, 10, Const.ENEMY_PREFEB_GOBLINSKILLBOSS1_PATH);
@@ -49,10 +51,12 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
         ObjectPool skillBoss2Pool = new ObjectPool(6007, 10, Const.ENEMY_PREFEB_SKELETONSKILLBOSS2_PATH);
         ObjectPool mimicAttack = new ObjectPool(6008, 25, Const.ENEMY_PREFEB_MIMICATTACK_PATH);
         ObjectPool wolfRange = new ObjectPool(6009, 25, Const.ENEMY_PREFEB_WOLFRANGE_PATH);
+        ObjectPool golemSkill = new ObjectPool(6010, 25, Const.ENEMY_PREFEB_GOLEMSKILL_PATH);
 
         ObjectPool goblinBossPool = new ObjectPool(5500, 1, Const.ENEMY_PREFEB_GOBLINBOSS_PATH);
         ObjectPool skeletonBossPool = new ObjectPool(5501, 1, Const.ENEMY_PREFEB_SKELETONBOSS_PATH);
         ObjectPool wolfBossPool = new ObjectPool(5502, 1, Const.ENEMY_PREFEB_WOLFBOSS_PATH);
+        ObjectPool golemBossPool = new ObjectPool(5503, 1, Const.ENEMY_PREFEB_GOLEMBOSS_PATH);
 
         ObjectPool mimicPool = new ObjectPool(5600, 1, Const.ENEMY_PREFEB_Mimic_PATH);
 
@@ -62,6 +66,8 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
         AddPool(Const.ENEMY_POOL_KEY, skeletonArcherPool);
         AddPool(Const.ENEMY_POOL_KEY, wolfPool);
         AddPool(Const.ENEMY_POOL_KEY, wolfGreenPool);
+        AddPool(Const.ENEMY_POOL_KEY, golemPool);
+        AddPool(Const.ENEMY_POOL_KEY, golemIcePool);
 
         AddPool(Const.ENEMY_EFFECT_POOL_KEY, energyBoltPool);
         AddPool(Const.ENEMY_EFFECT_POOL_KEY, skillBoss1Pool);
@@ -70,10 +76,12 @@ public class ObjectPoolManager : SingletonDDOL<ObjectPoolManager>
         AddPool(Const.ENEMY_EFFECT_POOL_KEY, skillBoss2Pool);
         AddPool(Const.ENEMY_EFFECT_POOL_KEY, mimicAttack);
         AddPool(Const.ENEMY_EFFECT_POOL_KEY, wolfRange);
+        AddPool(Const.ENEMY_EFFECT_POOL_KEY, golemSkill);
 
         AddPool(Const.ENEMY_BOSS_POOL_KEY, goblinBossPool);
         AddPool(Const.ENEMY_BOSS_POOL_KEY, skeletonBossPool);
         AddPool(Const.ENEMY_BOSS_POOL_KEY, wolfBossPool);
+        AddPool(Const.ENEMY_BOSS_POOL_KEY, golemBossPool);
 
         AddPool(Const.ENEMY_BOSS_POOL_KEY, mimicPool);
     }
