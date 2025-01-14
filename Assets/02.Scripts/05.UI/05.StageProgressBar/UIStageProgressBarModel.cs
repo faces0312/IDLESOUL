@@ -38,6 +38,4 @@ public class UIStageProgressBarModel : UIModel
             OnEventCurEnemyAddCount?.Invoke();
         }
     }
-
-
 }

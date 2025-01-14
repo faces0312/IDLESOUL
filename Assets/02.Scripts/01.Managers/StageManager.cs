@@ -1,6 +1,8 @@
+using ScottGarland;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -52,26 +54,55 @@ public class StageManager : SingletonDDOL<StageManager>
         curStageID = stageID;
     }
 
+    public void StartSelectStage(int chapter, int stage)
+    {
+        StageDB tempStage = new StageDB();
+        SetStageModifier(chapter, stage);
+        Chapter = chapter;
+        Stage = stage;
+
+        for (int i = 0; i < stageMapList.Count; i++)
+        {
+            if (stageMapList[i].gameObject.activeSelf)
+            {
+                stageMapList[i].gameObject.SetActive(false);
+                break;
+            }
+        }
+
+        foreach (var item in DataManager.Instance.StageDB.ItemsList)
+        {
+            if (item.StageNum == stage && item.ChapterNum == 1)
+            {
+                tempStage = item;
+                break;
+            }
+
+        }
+
+        curStageMap = stageMapList[(int)tempStage.StageName];
+        curStageMap.gameObject.SetActive(true);
+
+        StageProgressModel.Initialize(CurStageData.SlayEnemyCount);
+        UIManager.Instance.GetController<UIStageLabelController>().SetStage(tempStage);
+    }
+
+
     public void Init(bool SpecialDungeonInit = false)
     {
         if (DataManager.Instance.StageDB.GetByKey(GameManager.Instance.player.UserData.curStageID) == null)
         {
             Chapter = 1;
             curStageID = 7000;
-            MainStageModifier = 1;
         }
         else
         {
             Chapter = GameManager.Instance.player.UserData.ClearStageCycle;
             curStageID = GameManager.Instance.player.UserData.curStageID;
-            MainStageModifier = GameManager.Instance.player.UserData.StageModifier;
         }
 
         curStageData = DataManager.Instance.StageDB.GetByKey(CurStageID);
-        if (!SpecialDungeonInit && GameManager.Instance.player.isDead == false)
-        {
-            MainStageModifier *= curStageData.CurStageModifier;
-        }
+        SetStageModifier(GameManager.Instance.player.UserData.ClearStageCycle, curStageData.StageNum);
         GameManager.Instance.player.isDead = false;
 
         SaveStageData();
@@ -98,5 +129,22 @@ public class StageManager : SingletonDDOL<StageManager>
         GameManager.Instance.player.UserData.ClearStageCycle = Chapter;
         GameManager.Instance.player.UserData.curStageID = curStageID;
         GameManager.Instance.player.UserData.StageModifier = MainStageModifier;
+    }
+
+    private void SetStageModifier(int chapter, int stage)
+    {
+        float mod = 1;
+        for (; chapter > 1; chapter--)
+        {
+            for(int i = 7000; i < 7009; i ++)
+            {
+                mod *= DataManager.Instance.StageDB.GetByKey(i).CurStageModifier;
+            }
+        }
+        for (int i = 7000; i < 7000 + stage; i++)
+        {
+            mod *= DataManager.Instance.StageDB.GetByKey(i).CurStageModifier;
+        }
+        MainStageModifier = mod;
     }
 }

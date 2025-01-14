@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Text;
 using TMPro;
 using UnityEditor;
@@ -8,31 +9,61 @@ using UnityEngine.UI;
 //스테이지 맵과 병합 예정
 public class Stage : MonoBehaviour
 {
-    private StageDB stageData;
     private Button click;
     private TextMeshProUGUI text;
+    private Image image;
+    int chapter;
+    int stage;
 
-    private void Start()
+    private void Awake()
     {
-        text = GetComponent<TextMeshProUGUI>();
+        text = GetComponentInChildren<TextMeshProUGUI>();
         click = GetComponent<Button>();
+        image = GetComponent<Image>();
+        image.color = Color.gray;
+    }
 
-        click.onClick.AddListener(SendData);
+    private void OnEnable()
+    {
+        Unlock();
     }
 
     private void SendData()
     {
-        //메인 게임 씬 스테이지 데이터에 현재 데이터 전송
+        StageManager.Instance.StartSelectStage(chapter, stage);
+        Debug.Log($"{chapter} - {stage}");
     }
 
-    public void SetData(StageDB stageData)
+    public void SetData(int idx)
     {
-        this.stageData = stageData;
-
+        chapter = ((idx) / 10) + 1;
+        stage = idx % 10 + 1;
         StringBuilder sb = new StringBuilder();
-        sb.AppendLine(stageData.stageName);
-        sb.AppendLine(stageData.StageNum.ToString() + stageData.ChapterNum.ToString());
-
+        sb.AppendLine($"{chapter} - {stage}");
+        Unlock();
         text.text = sb.ToString();
     }
+
+    private void Unlock()
+    {
+        click.onClick.RemoveListener(SendData);
+        if (this.stage <= DataManager.Instance.StageDB.GetByKey(StageManager.Instance.CurStageID).StageNum && 
+            this.chapter <= GameManager.Instance.player.UserData.ClearStageCycle)
+        {
+            image.color = Color.white;
+            click.onClick.AddListener(SendData);
+        }
+        else if(this.chapter < GameManager.Instance.player.UserData.ClearStageCycle)
+        {
+            image.color = Color.white;
+            click.onClick.AddListener(SendData);
+        }
+        else
+        {
+            image.color = Color.gray;
+            click.onClick.RemoveListener(SendData);
+        }
+        return;
+    }
+
 }
