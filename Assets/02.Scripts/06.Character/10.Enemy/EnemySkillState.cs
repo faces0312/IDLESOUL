@@ -9,12 +9,14 @@ public class EnemySkillState : EnemyBaseState
     private int currentSkillIndex = 0;
     private EnemySkill1 bossSkill1; // EnemySkill1 인스턴스를 저장할 필드
     public EnemySkill2 bossSkill2; // EnemySkill1 인스턴스를 저장할 필드
+    public EnemySkill4 bossSkill4; // EnemySkill1 인스턴스를 저장할 필드
 
     public EnemySkillState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
         bossEnemy = stateMachine.Enemy as BossEnemy;
         bossSkill1 = new EnemySkill1(bossEnemy, stateMachine);
         bossSkill2 = new EnemySkill2(bossEnemy, stateMachine);
+        bossSkill4 = new EnemySkill4(bossEnemy, stateMachine);
     }
 
     public override void Enter()
@@ -70,5 +72,16 @@ public class EnemySkillState : EnemyBaseState
         {
             child.gameObject.SetActive(false);
         }
+    }
+    public void GolemSkillBossStart()
+    {
+        Transform skillZoneTransform = bossEnemy.skillZone.transform;
+        int childCount = skillZoneTransform.childCount;
+        for (int i = childCount - 1; i >= 0; i--)
+        {
+            skillZoneTransform.GetChild(i).gameObject.SetActive(false);
+        }
+
+        bossSkill4.SkillAttack4();
     }
 }
