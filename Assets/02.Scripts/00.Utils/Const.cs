@@ -31,10 +31,13 @@ public static class Const
     public static readonly string ENEMY_PREFEB_SKELETONARCHER_PATH = "Prefabs/Enemy/SkeletonArcher";
     public static readonly string ENEMY_PREFEB_WOLF_PATH = "Prefabs/Enemy/Wolf";
     public static readonly string ENEMY_PREFEB_WOLFGREEN_PATH = "Prefabs/Enemy/WolfGreen";
+    public static readonly string ENEMY_PREFEB_GOLEM_PATH = "Prefabs/Enemy/Golem";
+    public static readonly string ENEMY_PREFEB_GOLEMICE_PATH = "Prefabs/Enemy/GolemIce";
 
     public static readonly string ENEMY_PREFEB_GOBLINBOSS_PATH = "Prefabs/Enemy/GoblinBoss";
     public static readonly string ENEMY_PREFEB_SKELETONBOSS_PATH = "Prefabs/Enemy/SkeletonBoss";
     public static readonly string ENEMY_PREFEB_WOLFBOSS_PATH = "Prefabs/Enemy/WolfBoss";
+    public static readonly string ENEMY_PREFEB_GOLEMBOSS_PATH = "Prefabs/Enemy/GolemBoss";
 
     public static readonly string ENEMY_PREFEB_Mimic_PATH = "Prefabs/Enemy/Mimic";
 
@@ -45,6 +48,7 @@ public static class Const
     public static readonly string ENEMY_PREFEB_SKELETONSKILLBOSS2_PATH = "Prefabs/Enemy/Effects/SkillBoss2";
     public static readonly string ENEMY_PREFEB_MIMICATTACK_PATH = "Prefabs/Enemy/Effects/MimicAttack";
     public static readonly string ENEMY_PREFEB_WOLFRANGE_PATH = "Prefabs/Enemy/Effects/WolfRange";
+    public static readonly string ENEMY_PREFEB_GOLEMSKILL_PATH = "Prefabs/Enemy/Effects/GolemSkill";
 
     public static readonly string ENEMY_BOSS_POOL_KEY = "EnemyBoss";
     public static readonly string ENEMY_POOL_KEY = "Enemies";
