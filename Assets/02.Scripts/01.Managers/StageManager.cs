@@ -133,15 +133,18 @@ public class StageManager : SingletonDDOL<StageManager>
 
     private void SetStageModifier(int chapter, int stage)
     {
-        MainStageModifier = 1;
         float mod = 1;
         for (; chapter > 1; chapter--)
         {
-            mod = mod * 5.8f;
+            for(int i = 7000; i < 7009; i ++)
+            {
+                mod *= DataManager.Instance.StageDB.GetByKey(i).CurStageModifier;
+            }
         }
         for (int i = 7000; i < 7000 + stage; i++)
         {
             mod *= DataManager.Instance.StageDB.GetByKey(i).CurStageModifier;
         }
+        MainStageModifier = mod;
     }
 }
