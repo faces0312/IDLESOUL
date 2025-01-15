@@ -8,6 +8,17 @@ public class EnemySkill : MonoBehaviour
     public float attack;
     public LayerMask TargetLayer; //해당 투사체를 맞추기 위한 타겟 레이어
 
+    private void OnEnable()
+    {
+        StartCoroutine("DisAble");
+    }
+
+    IEnumerator DisAble()
+    {
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (TargetLayer == ((1 << other.gameObject.layer) | TargetLayer))

@@ -28,6 +28,9 @@ public class EnemySkill4 : EnemySkillBase
 
     public void SkillAttack4()
     {
-        bulletInstances = EnemyManager.Instance.EnemyAttackSpawn(6010, bossEnemy.transform.position, Quaternion.Euler(0, 0, 0));
+        if (bossEnemy.transform.localScale.x > 0)
+            bulletInstances = EnemyManager.Instance.EnemyAttackSpawn(6010, bossEnemy.transform.position, Quaternion.Euler(0, 0, 0));
+        else
+            bulletInstances = EnemyManager.Instance.EnemyAttackSpawn(6010, bossEnemy.transform.position, Quaternion.Euler(0, 180, 0));
     }
 }
