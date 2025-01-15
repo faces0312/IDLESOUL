@@ -134,6 +134,16 @@ public class UserDB
     public int PlayTimeInSeconds;
 
     /// <summary>
+    /// BestStageChapter
+    /// </summary>
+    public int BestStageChapter;
+
+    /// <summary>
+    /// BestStageNum
+    /// </summary>
+    public int BestStageNum;
+
+    /// <summary>
     /// CurStageID
     /// </summary>
     public int CurStageID;
@@ -162,6 +172,8 @@ public class UserDB
         PlayTimeInSeconds = userData.PlayTimeInSeconds;
         Exp = userData.Exp;
         MaxExp = userData.MaxExp;
+        BestStageChapter = userData.BestStageChapter;
+        BestStageNum = userData.BestStageNum;
         CurStageID = userData.curStageID;
         ClearStageCycle = userData.ClearStageCycle;
         StageModifier = userData.StageModifier;

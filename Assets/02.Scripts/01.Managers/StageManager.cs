@@ -44,10 +44,13 @@ public class StageManager : SingletonDDOL<StageManager>
 
     public void StageSelect(int stageID)
     {
+        Stage++;
         if (stageID > 7009)
         {
             stageID = 7000;
+            Stage = 1;
             GameManager.Instance.player.UserData.ClearStageCycle++;
+            Chapter = GameManager.Instance.player.UserData.ClearStageCycle;
             EventManager.Instance.Publish<AchieveEvent>(Enums.Channel.Achievement, new AchieveEvent(Enums.AchievementType.Clear, Enums.ActionType.Stage, 0));
         }
         curStageID = stageID;
@@ -90,17 +93,30 @@ public class StageManager : SingletonDDOL<StageManager>
     }
 
 
-    public void Init(bool SpecialDungeonInit = false)
+    public void Init(bool curStageCheck = false)
     {
         if (DataManager.Instance.StageDB.GetByKey(GameManager.Instance.player.UserData.curStageID) == null)
         {
             Chapter = 1;
+            Stage = 1;
             curStageID = 7000;
+            GameManager.Instance.player.UserData.BestStageChapter = Chapter;
+            GameManager.Instance.player.UserData.BestStageNum = Stage;
         }
         else
         {
-            Chapter = GameManager.Instance.player.UserData.ClearStageCycle;
-            curStageID = GameManager.Instance.player.UserData.curStageID;
+            if(curStageCheck) //현재 머무르고 있는 스테이지 데이터 반영하여 다음스테이지를 세팅
+            {
+                Chapter = GameManager.Instance.player.UserData.ClearStageCycle;
+                curStageID = GameManager.Instance.player.UserData.curStageID;
+            }
+            else //도달했던 최고 스테이지로 세팅 
+            {
+                Chapter = GameManager.Instance.player.UserData.BestStageChapter;
+                Stage = GameManager.Instance.player.UserData.BestStageNum;
+                curStageID = GameManager.Instance.player.UserData.curStageID;
+            }
+          
         }
 
         curStageData = DataManager.Instance.StageDB.GetByKey(CurStageID);

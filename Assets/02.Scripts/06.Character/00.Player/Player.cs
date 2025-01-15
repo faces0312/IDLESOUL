@@ -17,6 +17,8 @@ public class UserData
     public int Level; // 계정 레벨
     public int Exp; // 계정 현재 경험치
     public int MaxExp; // 계정 최고 경험치 
+    public int BestStageChapter; //도달한 Stage 챕터를 저장
+    public int BestStageNum; //도달한 Stage 넘버를 저장
     public int curStageID; //현재 진행중인 Stage ID를 저장
     public int ClearStageCycle; //현재 클리어한 Stage 루프 횟수를 지정
     public float StageModifier; //여태 클리어한 stage의 배율의 곱셈 값을 저장
@@ -42,6 +44,8 @@ public class UserData
         Diamonds = userDB.Diamonds;
         DungeonKey = userDB.DungeonKey;
         PlayTimeInSeconds = userDB.PlayTimeInSeconds;
+        BestStageChapter = userDB.BestStageChapter;
+        BestStageNum = userDB.BestStageNum;
         curStageID = userDB.CurStageID;
         ClearStageCycle = userDB.ClearStageCycle;
         StageModifier = userDB.StageModifier;

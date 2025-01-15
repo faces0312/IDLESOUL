@@ -54,13 +54,13 @@ public class Stage : MonoBehaviour
     private void Unlock()
     {
         click.onClick.RemoveListener(SendData);
-        if (this.stage <= DataManager.Instance.StageDB.GetByKey(StageManager.Instance.CurStageID).StageNum && 
-            this.chapter <= GameManager.Instance.player.UserData.ClearStageCycle)
+        if (this.stage <= GameManager.Instance.player.UserData.BestStageNum && 
+            this.chapter <= GameManager.Instance.player.UserData.BestStageChapter)
         {
             image.color = Color.white;
             click.onClick.AddListener(SendData);
         }
-        else if(this.chapter < GameManager.Instance.player.UserData.ClearStageCycle)
+        else if (this.chapter < GameManager.Instance.player.UserData.BestStageChapter)
         {
             image.color = Color.white;
             click.onClick.AddListener(SendData);

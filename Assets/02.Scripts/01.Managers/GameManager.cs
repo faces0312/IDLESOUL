@@ -4,6 +4,7 @@ using System;
 using UnityEngine.SceneManagement;
 using Enums;
 using UnityEngine.SocialPlatforms.Impl;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 public class GameManager : SingletonDDOL<GameManager>
@@ -86,7 +87,15 @@ public class GameManager : SingletonDDOL<GameManager>
         _player.UserData.curStageID += 1;
         StageManager.Instance.StageSelect(_player.UserData.curStageID);//다음 Stage로 이동
 
-        //Utils.StartFadeOut();
+        if (StageManager.Instance.Chapter > _player.UserData.BestStageChapter)
+        {
+            _player.UserData.BestStageChapter = StageManager.Instance.Chapter;
+        }
+        if (StageManager.Instance.Stage > _player.UserData.BestStageNum)
+        {
+            _player.UserData.BestStageNum = StageManager.Instance.Stage;
+        }
+       //Utils.StartFadeOut();
         Invoke("NextStage", 3.0f);
     }
 
@@ -98,6 +107,7 @@ public class GameManager : SingletonDDOL<GameManager>
         //SceneManager.LoadScene("GameScene_SMS");
         Destroy(gameOverPage);
 
+        _player.UserData.ClearStageCycle = StageManager.Instance.Chapter;
         _player.UserData.curStageID = StageManager.Instance.CurStageID;
         UIManager.Instance.ShowUI<UIStageProgressBarController>();
         DataManager.Instance.SaveUserData(_player.UserData);

@@ -2,7 +2,7 @@
   "Items": [
     {
       "key": 12345678,
-      "Nickname": "지존감자탕",
+      "Nickname": "아리스",
       "Level": 1,
       "Exp": 0,
       "MaxExp": 200,
@@ -26,6 +26,8 @@
       "Diamonds": 1300,
       "DungeonKey": 0,
       "PlayTimeInSeconds": 0,
+      "BestStageChapter": 0,
+      "BestStageNum": 0,
       "CurStageID": 0,
       "ClearStageCycle": 0,
       "StageModifier": 0,
