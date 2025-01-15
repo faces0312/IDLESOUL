@@ -1,3 +1,4 @@
+using Enums;
 using System;
 using System.Linq;
 using System.Text;
@@ -43,6 +44,11 @@ public class Stage : MonoBehaviour
         sb.AppendLine($"{chapter} - {stage}");
         Unlock();
         text.text = sb.ToString();
+        if ((DataManager.Instance.StageDB.ItemsList[stage - 1].StageName == StageNameType.Casthle))
+        {
+            this.image.sprite = Resources.Load<Sprite>("Sprite/Stage/Castle");
+        }
+        else this.image.sprite = Resources.Load<Sprite>("Sprite/Stage/Forest");
     }
 
     private void Unlock()
