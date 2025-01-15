@@ -14,7 +14,6 @@ public class StageManager : SingletonDDOL<StageManager>
     private StageDB curStageData;
     private StageMap curStageMap;
 
-
     private List<StageMap> stageMapList = new List<StageMap>(); // 0 : ¼º , 1 : ½£
 
     public int Chapter;
@@ -80,11 +79,14 @@ public class StageManager : SingletonDDOL<StageManager>
 
         }
 
-        curStageMap = stageMapList[(int)tempStage.StageName];
+        curStageData = tempStage;
+        curStageID = curStageData.key;
+        curStageMap = stageMapList[(int)curStageData.StageName];
         curStageMap.gameObject.SetActive(true);
 
         StageProgressModel.Initialize(CurStageData.SlayEnemyCount);
-        UIManager.Instance.GetController<UIStageLabelController>().SetStage(tempStage);
+        UIManager.Instance.GetController<UIStageLabelController>().SetStage(curStageData);
+        UIManager.Instance.ShowUI<UIStageLabelController>();
     }
 
 

@@ -31,6 +31,7 @@ public class Stage : MonoBehaviour
     private void SendData()
     {
         StageManager.Instance.StartSelectStage(chapter, stage);
+        GameManager.Instance.NextStage();
         Debug.Log($"{chapter} - {stage}");
     }
 

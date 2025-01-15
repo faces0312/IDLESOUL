@@ -51,8 +51,8 @@ public class UserData
         stat = new Stat();
         stat.iD = UID;
 
-        stat.health = userDB.Health;
         stat.maxHealth = userDB.MaxHealth;
+        stat.health = stat.maxHealth;
         stat.atk = userDB.Atk;
         stat.def = userDB.Def;
 
