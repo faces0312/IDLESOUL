@@ -178,8 +178,9 @@ public class UserDB
         ClearStageCycle = userData.ClearStageCycle;
         StageModifier = userData.StageModifier;
 
-        Health = BigInteger.ToUInt64(userData.stat.health); ;
         MaxHealth = BigInteger.ToUInt64(userData.stat.maxHealth);
+        //Health = BigInteger.ToUInt64(userData.stat.health);
+        Health = MaxHealth;
         Atk = BigInteger.ToUInt64(userData.stat.atk);
         Def = BigInteger.ToUInt64(userData.stat.def);
 

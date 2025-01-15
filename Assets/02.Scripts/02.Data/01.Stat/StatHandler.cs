@@ -164,6 +164,7 @@ public class StatHandler
                 BaseStat.MaxHealthLevel += level;
                 BaseStat.maxHealth += Utils.UpgradePlayerStatBigInteger(Status.Hp);
                 currentStat.maxHealth += BaseStat.maxHealth;
+                currentStat.health += BaseStat.maxHealth;
                 break;
             case Status.Atk:
                 //currentStat.AtkLevel += level;
