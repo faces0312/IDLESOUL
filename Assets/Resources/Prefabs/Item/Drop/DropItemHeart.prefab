@@ -4940,7 +4940,7 @@ Transform:
   m_GameObject: {fileID: 3907790261578956918}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5036,7 +5036,7 @@ Transform:
   m_GameObject: {fileID: 7768479238924904658}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.6, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5123,8 +5123,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5722750393590327114}
   - component: {fileID: 2449046273914684146}
-  - component: {fileID: 430717833699968916}
   - component: {fileID: 385260617699360549}
+  - component: {fileID: 1303946188011766088}
   m_Layer: 15
   m_Name: DropItemHeart
   m_TagString: Item
@@ -5141,7 +5141,7 @@ Transform:
   m_GameObject: {fileID: 8412108547670058178}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -5168,27 +5168,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
---- !u!135 &430717833699968916
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8412108547670058178}
-  m_Material: {fileID: 13400000, guid: 510dbd96de68ca34c94a745f9ac06b32, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 32896
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.51
-  m_Center: {x: 0, y: 1.5, z: 0}
+  dropColider: {fileID: 1303946188011766088}
+  colliderSize: {x: 4, y: 2.5, z: 4}
+  rigid: {fileID: 385260617699360549}
 --- !u!54 &385260617699360549
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5216,3 +5198,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 1
+--- !u!65 &1303946188011766088
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8412108547670058178}
+  m_Material: {fileID: 13400000, guid: 510dbd96de68ca34c94a745f9ac06b32, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 32896
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 2.5, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}

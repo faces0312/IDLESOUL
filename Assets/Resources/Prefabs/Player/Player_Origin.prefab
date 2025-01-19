@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1183389342154958249}
   - component: {fileID: 7527343034460028105}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WallColider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,7 +604,7 @@ GameObject:
   - component: {fileID: 8665945520794142712}
   - component: {fileID: 8301032712261339364}
   - component: {fileID: 569543578270287518}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -817,13 +817,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2993275500687785657, guid: 1469fd259e73b104aa63b33983ccaffc, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7304364916172830901, guid: 1469fd259e73b104aa63b33983ccaffc, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466799096718427779, guid: 1469fd259e73b104aa63b33983ccaffc, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8069829341272905266, guid: 1469fd259e73b104aa63b33983ccaffc, type: 3}
       propertyPath: m_Name
       value: CharacterStunDebuff
       objectReference: {fileID: 0}
     - target: {fileID: 8069829341272905266, guid: 1469fd259e73b104aa63b33983ccaffc, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069829341272905266, guid: 1469fd259e73b104aa63b33983ccaffc, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9211481289160192419, guid: 1469fd259e73b104aa63b33983ccaffc, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

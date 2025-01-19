@@ -74,6 +74,7 @@ public class EnemyDropItem : MonoBehaviour
         Vector3 pos = enemy.transform.position;
         pos.x += Random.Range(-1, 2); // x : -1 ~ 1 범위 offset 
         pos.z += Random.Range(-1, 2); // z : -1 ~ 1 범위 offset 
+        pos.y = 1.0f; // y : 1 범위 고정
         return pos;
     }
 }
