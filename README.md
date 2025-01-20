@@ -70,8 +70,9 @@ K : 궁극기 스킬
 
 ---
 ## [개발 기간]
-**2024.11.25(월) ~ 2025.01.17(금) 약 7주**
-**개발 인원 : 4명**
+**2024.11.25(월) ~ 2025.01.17(금) 약 7주**  
+**개발 인원 : 4명**  
+**브로셔 : https://teamsparta.notion.site/Idle-Soul-e78dacd5fd8049c08b49a6f489e1f667**  
 <pre>
 <code>
 송명성 : Game Roop Cycle, DataManager, StageManager, Player, Inventory, Item, DropItem
