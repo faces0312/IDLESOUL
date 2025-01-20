@@ -71,7 +71,7 @@ public static class Const
     public static readonly string DROPITEM_DIAMOND_PATH = "Prefabs/Item/Drop/DropItemDiamond";
     public static readonly string DROPITEM_DUNGEONKEY_PATH = "Prefabs/Item/Drop/DropItemDungeonKey";
     public static readonly int DROPITEM_POOL_SIZE = 20;
-    public static readonly int DROPITEM_STAGE_LIMIT_COUNT = 10;
+    public static readonly int DROPITEM_STAGE_LIMIT_COUNT = 30;
 
     public static readonly int INITIAL_POOL_SIZE = 60;
 

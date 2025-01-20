@@ -4,7 +4,6 @@ using Cinemachine;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.Rendering.PostProcessing;
-using UnityEditor.PackageManager;
 
 public class CameraController : MonoBehaviour
 {

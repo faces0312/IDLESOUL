@@ -11,6 +11,10 @@ public class DropDiamond : BaseDropItem
         base.Awake();
     }
 
+    public override void OnEnable()
+    {
+        base.OnEnable();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

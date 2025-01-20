@@ -3,8 +3,6 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 using Enums;
-using UnityEngine.SocialPlatforms.Impl;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 public class GameManager : SingletonDDOL<GameManager>

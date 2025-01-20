@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1202386309934067089}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5018,8 +5018,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2748822349688538197}
   - component: {fileID: 6723393346887952215}
-  - component: {fileID: 1122428648778490595}
   - component: {fileID: 4505960696273023145}
+  - component: {fileID: -4459735623195601660}
   m_Layer: 15
   m_Name: DropItemGold
   m_TagString: Item
@@ -5036,7 +5036,7 @@ Transform:
   m_GameObject: {fileID: 4626030191119583890}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -5063,27 +5063,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
---- !u!135 &1122428648778490595
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4626030191119583890}
-  m_Material: {fileID: 13400000, guid: 510dbd96de68ca34c94a745f9ac06b32, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 32896
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.39
-  m_Center: {x: 0, y: 1.5, z: 0}
+  dropColider: {fileID: -4459735623195601660}
+  colliderSize: {x: 4, y: 2.5, z: 4}
+  rigid: {fileID: 4505960696273023145}
 --- !u!54 &4505960696273023145
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5111,6 +5093,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 1
+--- !u!65 &-4459735623195601660
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4626030191119583890}
+  m_Material: {fileID: 13400000, guid: 510dbd96de68ca34c94a745f9ac06b32, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 32896
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4, y: 2.5, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7830017877316879267
 GameObject:
   m_ObjectHideFlags: 0
@@ -5139,7 +5142,7 @@ Transform:
   m_GameObject: {fileID: 7830017877316879267}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.2, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
