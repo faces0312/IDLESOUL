@@ -1402,15 +1402,15 @@ MonoBehaviour:
   dropItems:
   - ID: 2000
     DropPercent: 100
-    DropCount: 0
+    DropCount: 7
   - ID: 2001
-    DropPercent: 30
-    DropCount: 1
+    DropPercent: 100
+    DropCount: 2
   - ID: 2002
-    DropPercent: 45
-    DropCount: 1
+    DropPercent: 100
+    DropCount: 2
   - ID: 2003
-    DropPercent: 5
+    DropPercent: 1
     DropCount: 1
 --- !u!114 &3498087185882550602
 MonoBehaviour:

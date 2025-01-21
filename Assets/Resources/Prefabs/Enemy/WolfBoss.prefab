@@ -21407,7 +21407,7 @@ MonoBehaviour:
   dropItems:
   - ID: 2000
     DropPercent: 100
-    DropCount: 5
+    DropCount: 7
   - ID: 2001
     DropPercent: 100
     DropCount: 2
